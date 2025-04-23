@@ -110,7 +110,35 @@ nav {
     z-index: 1;
 }
 
-
-@media (max-width:768px){
-    
+#mobile-menu {
+    display: none;
 }
+
+
+/* ÉCRANS MOBILES */
+@media (max-width: 768px) {
+    /* Cacher le menu classique de navigation */
+    .header-right {
+        display: none;
+    }
+    
+    /* Afficher le bouton hamburger */
+    #mobile-menu {
+        display: block;
+        cursor: pointer;
+        color: var(--white);
+        font-size: 30px;
+    }
+
+    /* Cacher la navigation principale par défaut sur mobile */
+    nav {
+        display: none;
+    }
+
+    /* Afficher la navigation quand le menu est actif */
+    .header-right.active {
+        display: block;
+    }
+}
+
+

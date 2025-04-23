@@ -61,8 +61,10 @@ header img {
     margin-left: auto;
 }
 
-.title {
+.title a {
     font-size: 25px;
+    color: var(--white);
+    text-decoration: none;
 }
 
 .header-right a {

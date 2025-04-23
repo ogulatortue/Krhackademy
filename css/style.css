@@ -24,6 +24,7 @@
 }
 
 header {
+    position: fixed;
     background-image: 
     url(../images/scratch_texture.png),
     url(../images/header_background_blured3.png);
@@ -36,6 +37,8 @@ header {
     padding: 15px 25px;
     margin: 20px;
     border-radius: 25px;
+    width: calc(100% - 40px);
+    transition: .2s;
 }
 
 h1{
@@ -106,6 +109,11 @@ header .fa-times{
     color: var(--white);
 }
 
+.header-active{
+    margin: 0px;
+    width: 100%;
+    border-radius: 0px;
+}
 
 @media (max-width:768px){
 
@@ -127,7 +135,7 @@ header .fa-times{
         width: fit-content;
         border-radius: 25px;
         transform: translateX(125%);
-        transition: transform 0.3s ease-in-out;
+        transition: transform 0.2s ease-in-out;
     }
 
     header .nav_bar ul{
@@ -150,15 +158,17 @@ header .fa-times{
 
     header .nav_bar.open {
         transform: translateX(0%);
-        transition: transform 0.3s ease-in-out;
+        transition: transform 0.2s ease-in-out;
     }
 
 }
 
-body, html {
+body{
     margin: 0;
     padding: 0;
     background: url(../images/pattern.png) repeat top left;
     background-color: var(--grey);
     font-size: 100%;
+
+    height: 3000px;
 }

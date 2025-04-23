@@ -26,8 +26,8 @@
 header {
     position: fixed;
     background-image: 
-    url(../images/scratch_texture.png),
-    url(../images/header_background_blured3.png);
+    url(../images/scratch_texture.webp),
+    url(../images/header_background_blured3.webp);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -139,8 +139,8 @@ header .fa-times{
 
     header .nav_bar ul{
         background-image: 
-        url(../images/scratch_texture.png),
-        url(../images/header_background_blured3.png);
+        url(../images/scratch_texture.webp),
+        url(../images/header_background_blured3.webp);
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;

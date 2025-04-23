@@ -98,7 +98,7 @@ nav li {
 
 header .fa-bars{
     color: var(--white);
-    font-size: 40px;
+    font-size: 30px;
     cursor: pointer;
     display: none;
     transition: .2s;

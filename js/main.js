@@ -1,5 +1,7 @@
+
 $(document).ready(function(){
     $('.fa-bars').click(function(){
-        $(this).toggleClass('fa-times')
+        $('.nav_bar').toggleClass('open');
+        $(this).toggleClass('fa-times');
     });
 });

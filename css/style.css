@@ -23,14 +23,6 @@
     color: var(--white);
 }
 
-
-body, html {
-    margin: 0;
-    padding: 0;
-    background: url(../images/pattern.png) repeat top left;
-    background-color: var(--grey);
-}
-
 header {
     background-image: 
     url(../images/scratch_texture.png),
@@ -39,7 +31,6 @@ header {
     background-position: center;
     background-repeat: no-repeat;
     background-color: var(--violet);
-    color: var(--white);
     display: flex;
     align-items: center;
     padding: 15px 25px;
@@ -52,26 +43,29 @@ h1{
     font-weight: normal;
 }
 
-header img {
-    margin-right: 20px;
+.title a {
+    color: var(--white);
+    font-size: 25px;
+    text-decoration: none;
+    margin-left: 20px;
 }
 
-.header-right {
+.nav_bar {
     display: flex;
     margin-left: auto;
 }
 
-.title a {
-    font-size: 25px;
-    color: var(--white);
-    text-decoration: none;
-}
-
-.header-right a {
+.nav_bar a {
     color: var(--white);
     text-decoration: none;
     padding: 10px 15px;
     font-size: 18px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    border-bottom: 2px solid var(--white);
 }
 
 nav li[active] {
@@ -92,25 +86,79 @@ nav li[active]:hover {
     background: var(--white);
 }
 
-nav ul {
-    list-style: none;
-    padding: 0;
-    border-bottom: 2px solid var(--white);
-}
-
 nav li {
     display: inline-block;
     padding: 7px 10px;
     font-family: 'Roboto Condensed', sans-serif;
-    font-size: 1.2em;
+    font-size: 20px;
 }
 
-nav {
-    position: relative;
-    z-index: 1;
+header .fa-bars{
+    color: var(--white);
+    font-size: 40px;
+    cursor: pointer;
+    display: none;
+    transition: .2s;
+}
+
+header .fa-times{
+    transform: rotate(180deg);
+    color: var(--white);
 }
 
 
 @media (max-width:768px){
-    
+
+    html{
+        font-size: 55%;
+    }
+
+    header .fa-bars{
+        display: block;
+        margin-left: auto;
+    }
+
+    header .nav_bar{
+        right: 20px;
+        position: fixed;
+        margin-top: 275px;
+        background: var(--violet);
+        text-align: right;
+        width: fit-content;
+        border-radius: 25px;
+        transform: translateX(125%);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    header .nav_bar ul{
+        background-image: 
+        url(../images/scratch_texture.png),
+        url(../images/header_background_blured3.png);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-color: var(--violet);
+        flex-flow: column;
+        border-radius: 25px;
+        padding: 20px 0px;
+        border-bottom: 0px;
+    }
+
+    header .nav_bar ul li {
+        display: block;
+    }
+
+    header .nav_bar.open {
+        transform: translateX(0%);
+        transition: transform 0.3s ease-in-out;
+    }
+
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    background: url(../images/pattern.png) repeat top left;
+    background-color: var(--grey);
+    font-size: 100%;
 }

@@ -112,7 +112,6 @@ header .fa-times{
 .header-active{
     margin: 0px;
     width: 100%;
-    border-radius: 0px;
 }
 
 @media (max-width:768px){
@@ -129,9 +128,9 @@ header .fa-times{
     header .nav_bar{
         right: 20px;
         position: fixed;
-        margin-top: 275px;
+        margin-top: 225px;
         background: var(--violet);
-        text-align: right;
+        text-align: center;
         width: fit-content;
         border-radius: 25px;
         transform: translateX(125%);
@@ -148,7 +147,6 @@ header .fa-times{
         background-color: var(--violet);
         flex-flow: column;
         border-radius: 25px;
-        padding: 20px 0px;
         border-bottom: 0px;
     }
 
@@ -161,6 +159,9 @@ header .fa-times{
         transition: transform 0.2s ease-in-out;
     }
 
+    nav li[active] {
+        border-radius: 25px;
+    }
 }
 
 body{

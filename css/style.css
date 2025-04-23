@@ -27,14 +27,14 @@
 body, html {
     margin: 0;
     padding: 0;
-    background: url(/images/pattern.png) repeat top left;
+    background: url(./images/pattern.png) repeat top left;
     background-color: var(--grey);
 }
 
 header {
     background-image: 
-    url(/images/scratch_texture.png),
-    url(/images/header_background_blured3.png);
+    url(./images/scratch_texture.png),
+    url(./images/header_background_blured3.png);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

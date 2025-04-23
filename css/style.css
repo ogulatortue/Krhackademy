@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 
@@ -36,6 +35,11 @@ header {
     padding: 15px 25px;
     margin: 20px;
     border-radius: 25px;
+}
+
+.header-computer{
+    display: flex;
+    align-items: center;
 }
 
 h1{
@@ -106,7 +110,11 @@ header .fa-times{
     color: var(--white);
 }
 
+#mobile-menu {
+    display: none;
+}
 
+<<<<<<< HEAD
 @media (max-width:768px){
 
     html{
@@ -161,4 +169,58 @@ body, html {
     background: url(../images/pattern.png) repeat top left;
     background-color: var(--grey);
     font-size: 100%;
+=======
+
+/* ÉCRANS MOBILES */
+@media (max-width: 768px) {
+    /* Cacher le menu classique de navigation */
+    nav {
+        display: none;
+    }
+    
+    /* Afficher le bouton hamburger */
+    #mobile-menu {
+        display: block;
+        cursor: pointer;
+        color: var(--white);
+        font-size: 30px;
+    }
+
+    /* Cacher la navigation principale par défaut sur mobile */
+    nav {
+        display: none;
+    }
+
+    /* Afficher la navigation quand le menu est actif */
+    .header-right.active {
+        display: block;
+    }
+
+    .header-mobile-right {
+        display: flex;
+        margin-left: auto;
+    }
+
+    .header-mobile-right a {
+        color: var(--white);
+        text-decoration: none;
+        padding: 10px 15px;
+        font-size: 18px;
+    }
+    #mobile-nav.active {
+        display: flex;
+    }
+}
+
+/* Cacher la navigation principale par défaut sur mobile */
+.header-mobile-right {
+    display: none;
+}
+
+header-mobile-right nav ul {
+    list-style: none;
+    padding: 0;
+    border-bottom: 2px solid var(--white);
+    vertical-align: middle;
+>>>>>>> 0b238dfa416b983501f12850eb8c0221765d6b43
 }

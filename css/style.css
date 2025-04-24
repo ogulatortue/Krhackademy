@@ -50,6 +50,7 @@ header {
     border-radius: 25px;
     width: calc(100% - 40px);
     transition: .2s;
+    z-index: 1000;
 }
 
 h1{

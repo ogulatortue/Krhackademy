@@ -123,6 +123,7 @@ header .fa-times{
 .header-active{
     margin: 0px;
     width: 100%;
+    border-radius: 0px;
 }
 
 @media (max-width:768px){

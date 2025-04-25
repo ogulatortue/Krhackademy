@@ -43,7 +43,7 @@ header {
     background-color: var(--violet);
     display: flex;
     align-items: center;
-    padding: 15px 25px;
+    padding: 7px 25px;
     margin: 20px;
     border-radius: 25px;
     width: calc(100% - 40px);

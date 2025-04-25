@@ -139,7 +139,7 @@ header .fa-times{
     header .nav_bar{
         right: 20px;
         position: fixed;
-        margin-top: 217px;
+        margin-top: 220px;
         background: var(--violet);
         text-align: center;
         width: fit-content;

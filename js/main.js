@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     main.addEventListener('click', function () {
         navBar.classList.remove('open');
-        menuIcon.classList.toggle('fa-times');
+        menuIcon.classList.remove('fa-times');
     });
 
     window.addEventListener('scroll', handleScroll);

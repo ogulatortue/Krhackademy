@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <meta charset="UTF-8">
     <meta name="description" content="leçons projets et défis de cybersécurité">
     <meta name="keywords" content="Leçons, projets, défis, Kraken, cyber, esisar">
     <meta name="author" content="BRUCHON Hugo">
@@ -9,9 +10,9 @@
     <title>Kr[HACK]ademy</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
-    <link rel="stylesheet" href="css/style.css"/>
-    <link rel="icon" type="image/png" href="images/logo_krhacken_r.ico" />
-    
+    <link rel="stylesheet" href="./css/style.css"/>
+    <link rel="icon" type="image/png" href="./images/logo_krhacken_r.ico" />
+
     <link rel="preload" as="image" href="./images/header_background_blured3.webp" type="image/webp" fetchpriority="high">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
@@ -20,9 +21,8 @@
 <body>
 
     <header>
+        <a href="./index.html"><img src="./images/logo_krhacken_invert2.webp" alt="logo_krhackademy" width="40" height="40"/></a>
 
-        <a href="./index.html"><img src="images/logo_krhacken_invert2.webp" alt="logo_krhackademy" width="40" height="40"/></a>
-        
         <h1 class="title"> <a href="./index.html">Kr[HACK]ademy</a> </h1>
 
         <nav class="nav_bar">
@@ -31,68 +31,47 @@
                 <li><a href="./lessons.html">LEÇONS</a></li>
                 <li><a href="./projects.html">PROJETS</a></li>
                 <li><a href="./challenges.html">DÉFIS</a></li>
-
             </ul>
         </nav>
 
         <div class="fas fa-bars"></div>
-
-        </div>
-
     </header>
 
-    <section id="Main">
-        
-        <section id="Presentation">
-            <div id="Logo">
-                <img src="images/logo_krhacken_invert2.webp" alt="logo_krhackademy" width="100px" height="100px"/>
+    <div class="main">
+
+        <section class="intro">
+            <div class="text_intro">
+                <h2>Apprends la cybersécurité en ligne</h2>
+                <h3>Créé par le Kr[HACK]en pour accompagner les élèves dans leur apprentissage de débutant à expert</h3>
             </div>
-            <div>
 
-            </div>
-        </section>
-
-        <section id="Projets" class="projects">
-            <div class="container">
-                <div class="project-grid">
-                    <div class="project-card">
-                        <a href="">
-                            <img src="https://letsenhance.io/static/73136da51c245e80edc6ccfe44888a99/1015f/MainBefore.jpg" alt="Projet 1">
-                            <div class="project-info">
-                                <h2> Leçons </h2>
-                                <p> Pour apprendre ...</p>
-                            </div>
-                        </a>
+            <div class="box_container">
+                <div class="box">
+                    <img src="./images/header_background_blured3.webp" alt="Icône Leçons"/>
+                    <div class="box_info">
+                        <h4>Leçons</h4>
+                        <p>Pour découvrir et approfondir vos connaissances</p>
                     </div>
-                    <div class="project-card">
-                        <a href="">
-                            <img src="https://letsenhance.io/static/73136da51c245e80edc6ccfe44888a99/1015f/MainBefore.jpg" alt="Projet 2">
-                            <div class="project-info">
-                                <h2> Projets </h2>
-                                <p> Pour en savoir un petit peu plus sur les projets..</p>
-                            </div>
-                        </a>
+                </div>
+                <div class="box">
+                    <img src="./images/header_background_blured3.webp" alt="Icône Défis"/>
+                    <div class="box_info">
+                        <h4>Défis</h4>
+                        <p>Pour exercer et tester vos compétences</p>
                     </div>
-                    <div class="project-card">
-                        <a href="">
-                            <img src="https://letsenhance.io/static/73136da51c245e80edc6ccfe44888a99/1015f/MainBefore.jpg" alt="Projet 2">
-                            <div class="project-info">
-                                <h2> Challenges </h2>
-                                <p> Venez tenter les défis </p>
-                            </div>
-                        </a>
-
+                </div>
+                <div class="box">
+                    <img src="./images/header_background_blured3.webp" alt="Icône Projets"/>
+                    <div class="box_info">
+                        <h4>Projets</h4>
+                        <p>Pour mettre en pratique vos compétences et connaissance sur des projets concrets</p>
                     </div>
                 </div>
             </div>
         </section>
-    
+    </div>
 
+    <script src="js/main.js" defer></script>
 
-
-    </section>
 </body>
-
-<script src="js/main.js" defer></script>
-
 </html>

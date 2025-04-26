@@ -2,14 +2,14 @@ document.addEventListener('DOMContentLoaded', function () {
     const menuIcon = document.querySelector('.fa-bars');
     const navBar = document.querySelector('.nav_bar');
     const header = document.querySelector('header');
-    const projects = document.getElementById("Projets");
+    const main = document.querySelector(".main");
 
     menuIcon.addEventListener('click', function () {
         navBar.classList.toggle('open');
         menuIcon.classList.toggle('fa-times');
     });
 
-    projects.addEventListener('click', function () {
+    main.addEventListener('click', function () {
         navBar.classList.remove('open');
         menuIcon.classList.toggle('fa-times');
     });

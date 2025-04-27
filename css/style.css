@@ -172,7 +172,7 @@ header .fa-times{
     padding: 0 20px;
 }
 
-.box {
+.box_intro {
     transition: 0.2s;
     background-color: var(--grey);
     border-radius: 10px;
@@ -181,7 +181,7 @@ header .fa-times{
     width: 300px;
 }
 
-.box img {
+.box_intro img {
     width: 100%;
     height: auto;
     display: block;
@@ -189,11 +189,11 @@ header .fa-times{
     transition: filter 0.3s;
 }
 
-.box:hover {
+.box_intro:hover {
     filter: brightness(70%);
 }
 
-.box .box_info {
+.box_intro .box_info {
     padding: 10px;
 }
 

@@ -27,7 +27,7 @@
 body{
     background: url(../images/pattern.png) repeat top left, var(--grey);
     font-size: 100%;
-    height: 3000px;
+    height: 100%;
 }
 
 /* --------- Header ---------- */
@@ -209,11 +209,6 @@ header .fa-times{
 }
 
 
-
-
-
-
-
 @media (max-width:768px){
 
     html{
@@ -268,4 +263,42 @@ header .fa-times{
         margin-bottom: 30px;
     }
     
+}
+
+
+/* --------- Footer ---------- */
+
+footer {
+    text-align: center;
+    opacity: 0.5;
+    margin-top: 50px;
+    padding: 0 50px;
+    padding-bottom: 20px;
+}
+
+footer img {
+    width: 100px;
+    vertical-align: middle;
+    margin: 20px;
+}
+
+footer h5 {
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    font-size: 0.7em;
+    text-transform: uppercase;
+    color: #888991;
+}
+
+@media screen and (min-width: 700px) {
+    footer h5 {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 699px) {
+    footer h5 {
+        width: 100%;
+    }
 }

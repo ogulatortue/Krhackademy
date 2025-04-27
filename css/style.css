@@ -169,7 +169,7 @@ header .fa-times{
     display: flex;
     gap: 40px;
     flex-wrap: wrap;
-    padding: 0 20px;
+    padding: 20px 20px;
 }
 
 .box_intro {

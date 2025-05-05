@@ -208,6 +208,11 @@ header .fa-times{
     color: #d6d6d6;
 }
 
+.box_container h2 {
+    color:var(--white);
+    font-size: 200%;
+}
+
 
 @media (max-width:768px){
 
@@ -266,6 +271,12 @@ header .fa-times{
 }
 
 
+
+
+
+
+
+
 /* --------- Footer ---------- */
 
 footer {
@@ -302,3 +313,6 @@ footer h5 {
         width: 100%;
     }
 }
+
+
+

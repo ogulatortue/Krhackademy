@@ -181,6 +181,8 @@ header .fa-times{
     width: 70%;
 }
 
+
+
 /* --------- Intro_2 ---------- */
 .intro_2 {
     width: 100%;
@@ -192,6 +194,29 @@ header .fa-times{
     display: flex;
     flex-direction: row;
     justify-content: center;
+}
+
+@media (max-width:804px){
+    .intro {
+        flex-direction: column-reverse;
+        padding-top: 10vh;
+    }
+    .intro .image_intro{
+        width: 100%;
+        padding-bottom:0;
+    }
+    .text_intro{
+        text-align: center;
+        width: 100%;
+        padding-left: 0;
+        padding-top:0;
+        justify-self: center;
+        padding-left:5%;
+        padding-right:5%;
+    }
+    .intro .text_intro h3 {
+        width:100%;
+    }
 }
 
 
@@ -247,7 +272,7 @@ header .fa-times{
 }
 
 
-@media (max-width:768px){
+@media (max-width:804px){
 
     html{
         font-size: 55%;
@@ -287,20 +312,7 @@ header .fa-times{
     }
     nav li[active] {
         border-radius: 25px;
-    }
-
-    .intro {
-        padding-bottom: 60px;
-    }
-    .text_intro{
-        padding-top: 150px;
-        padding-bottom: 25px;
-    }
-    .intro .text_intro h3 {
-        padding-top: 25px;
-        margin-bottom: 30px;
-    }
-    
+    }    
 }
 
 

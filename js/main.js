@@ -4,6 +4,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const header = document.querySelector('header');
     const main = document.querySelector(".main");
 
+    const dynamicTextSpan = document.getElementById('dynamic-text');
+    const words = ["en ligne", "gratuitement", "facilement"];
+    let currentIndex = 0;
+
     menuIcon.addEventListener('click', function () {
         navBar.classList.toggle('open');
         menuIcon.classList.toggle('fa-times');
@@ -27,4 +31,24 @@ document.addEventListener('DOMContentLoaded', function () {
             header.classList.remove('header-active');
         }
     }
+
+    function changeText() {
+        dynamicTextSpan.classList.remove('glitch');
+
+        currentIndex = (currentIndex + 1) % words.length;
+        const newText = words[currentIndex];
+
+        void dynamicTextSpan.offsetWidth;
+        dynamicTextSpan.textContent = newText; 
+
+        dynamicTextSpan.setAttribute('data-text', newText);
+
+        requestAnimationFrame(() => {
+            dynamicTextSpan.classList.add('glitch');
+        });
+    }
+
+    changeText(); 
+
+    setInterval(changeText, 4000);
 });

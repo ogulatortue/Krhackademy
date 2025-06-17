@@ -135,8 +135,9 @@ header .fa-times{
     flex-direction: row;
     justify-content: left;
     padding-top: 0;
-    padding-top: 30vh;
+    padding-top: 20vh;
     padding-bottom: 5vh;
+    align-items: center
 }
 
 .intro .image_intro{
@@ -148,10 +149,10 @@ header .fa-times{
 }
 
 .intro .image_intro >img{
-    width: 250px;
+    width: 100vh;
     height: auto;
-    max-width: 40%;
     object-fit: contain;
+    max-width:60%
 }
 
 .text_intro{

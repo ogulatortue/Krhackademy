@@ -126,22 +126,38 @@ header .fa-times{
 /* --------- Intro ---------- */
 .intro {
     width: 100%;
-    text-align: center;
     background-image: url(../images/backhome.webp);
     background-size: cover;
     background-position: center;
     z-index: 0;
-    overflow: hidden;
     min-height: 100vh;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: left;
+    padding-top: 0;
+    padding-top: 30vh;
+    padding-bottom: 5vh;
+}
+
+.intro .image_intro{
+    width: 50%;
+    display: flex;
     justify-content: center;
+    align-items: center;
+    padding-bottom: 10vh;
+}
+
+.intro .image_intro >img{
+    width: 250px;
+    height: auto;
+    max-width: 40%;
+    object-fit: contain;
 }
 
 .text_intro{
-    padding-top: 20vh;
-    padding-bottom: 5vh;
-    margin: 0 20px;
+    padding-left: 10vh;
+    text-align: left;
+    width: 50%;
 }
 
 .intro .text_intro h2 {
@@ -160,8 +176,24 @@ header .fa-times{
     color: var(--white);
     z-index: 1;
     margin-bottom: 10vh;
-    padding-top: 5vh;
+    padding-top: 10vh;
+    width: 70%;
 }
+
+/* --------- Intro_2 ---------- */
+.intro_2 {
+    width: 100%;
+    text-align: center;
+    background: url(../images/pattern.png) repeat top left, var(--grey);
+    z-index: 0;
+    text-wrap-mode: wrap;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+
 
 /* --------- Box Container ---------- */
 .box_container {

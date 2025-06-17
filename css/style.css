@@ -135,7 +135,7 @@ header .fa-times{
     width: 100%;
     background-image: url(../images/backhome.webp);
     background-size: cover;
-    background-position: center;
+    background-position: bottom;
     z-index: 0;
     min-height: 100vh;
     display: flex;
@@ -199,7 +199,9 @@ header .fa-times{
 .intro_2 {
     width: 100%;
     text-align: center;
-    background: url(../images/pattern.png) repeat top left, var(--grey);
+    background: url(../images/back2.webp);
+    background-size: cover;
+    background-position: top;
     z-index: 0;
     min-height: 100vh;
     display: flex;

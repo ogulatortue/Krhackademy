@@ -1,15 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
-/* --------- Variables CSS ---------- */
 :root{
     --violet:#9216a8;
     --grey:#2b2b2d;
     --white:#fff;
     --black:#0e101c;
     --grey2:#ffffff4d;
+
+    --border: 0.05em;
+    --shadow-primary: #0e101c;
+    --shadow-secondary: #9216a8;
+    --primary: var(--white);
+    --text-color: var(--white);
+
+    --clip-one: inset(0 0 0 0);
+    --clip-two: inset(0.2em 0 0.1em 0);
+    --clip-three: inset(0.4em 0 0.3em 0);
+    --clip-four: inset(0.6em 0 0.5em 0);
+    --clip-five: inset(0.8em 0 0.7em 0);
+    --clip-six: inset(0.1em 0 0.9em 0);
+    --clip-seven: inset(0.3em 0 0.7em 0);
+    --shimmy-distance: 3;
 }
 
-/* --------- Reset CSS et styles de base ---------- */
 *{
     font-family: "Roboto Condensed", sans-serif;
     text-decoration: none;
@@ -30,7 +43,6 @@ body{
     height: 100%;
 }
 
-/* --------- Header ---------- */
 header {
     position: fixed;
     background-image: url(../images/header_background_blured3.webp);
@@ -119,11 +131,6 @@ header .fa-times{
     border-radius: 0px;
 }
 
-/* --------- Main ---------- 
-.main{
-}*/
-
-/* --------- Intro ---------- */
 .intro {
     width: 100%;
     background-image: url(../images/backhome.webp);
@@ -134,7 +141,6 @@ header .fa-times{
     display: flex;
     flex-direction: row;
     justify-content: left;
-    padding-top: 0;
     padding-top: 20vh;
     padding-bottom: 5vh;
     align-items: center
@@ -157,6 +163,7 @@ header .fa-times{
 
 .text_intro{
     padding-left: 10vh;
+    padding-top: 5vh;
     text-align: left;
     width: 50%;
 }
@@ -168,6 +175,14 @@ header .fa-times{
     font-size: 50px;
     color: var(--white);
     z-index: 1;
+    position: relative;
+}
+
+.intro .text_intro h2 span#dynamic-text {
+    position: relative;
+    display: inline-block;
+    color: var(--text-color);
+    line-height: 1;
 }
 
 .intro .text_intro h3 {
@@ -178,25 +193,23 @@ header .fa-times{
     z-index: 1;
     margin-bottom: 10vh;
     padding-top: 10vh;
-    width: 70%;
+    width: 100%;
 }
 
-
-
-/* --------- Intro_2 ---------- */
 .intro_2 {
     width: 100%;
     text-align: center;
     background: url(../images/pattern.png) repeat top left, var(--grey);
     z-index: 0;
-    text-wrap-mode: wrap;
     min-height: 100vh;
     display: flex;
     flex-direction: row;
     justify-content: center;
+    align-items: center;
+    padding: 50px 0;
 }
 
-@media (max-width:804px){
+@media (max-width:823px){
     .intro {
         flex-direction: column-reverse;
         padding-top: 10vh;
@@ -219,9 +232,6 @@ header .fa-times{
     }
 }
 
-
-
-/* --------- Box Container ---------- */
 .box_container {
     justify-content: center;
     display: flex;
@@ -271,8 +281,7 @@ header .fa-times{
     font-size: 200%;
 }
 
-
-@media (max-width:804px){
+@media (max-width:823px){
 
     html{
         font-size: 55%;
@@ -312,17 +321,8 @@ header .fa-times{
     }
     nav li[active] {
         border-radius: 25px;
-    }    
+    }     
 }
-
-
-
-
-
-
-
-
-/* --------- Footer ---------- */
 
 footer {
     text-align: center;
@@ -347,17 +347,14 @@ footer h5 {
     color: #888991;
 }
 
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 823px) {
     footer h5 {
         width: 50%;
     }
 }
 
-@media screen and (max-width: 699px) {
+@media screen and (max-width: 823px) {
     footer h5 {
         width: 100%;
     }
 }
-
-
-

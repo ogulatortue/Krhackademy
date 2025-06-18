@@ -1,3 +1,20 @@
+:root{
+    --border: 0.05em;
+    --shadow-primary: #0e101c;
+    --shadow-secondary: #9216a8;
+    --primary: var(--white);
+    --text-color: var(--white); /* S'assurer que cette variable est définie ici si elle est utilisée par le glitch */
+
+    --clip-one: inset(0 0 0 0);
+    --clip-two: inset(0.2em 0 0.1em 0);
+    --clip-three: inset(0.4em 0 0.3em 0);
+    --clip-four: inset(0.6em 0 0.5em 0);
+    --clip-five: inset(0.8em 0 0.7em 0);
+    --clip-six: inset(0.1em 0 0.9em 0);
+    --clip-seven: inset(0.3em 0 0.7em 0);
+    --shimmy-distance: 15;
+}
+
 .glitch {
     color: transparent;
 }

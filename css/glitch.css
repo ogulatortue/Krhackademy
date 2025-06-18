@@ -44,8 +44,8 @@
     z-index: 2;
     -webkit-clip-path: var(--clip-one);
     clip-path: var(--clip-one);
-    -webkit-animation: glitch 2s infinite, glitch-pseudo 2s infinite alternate-reverse;
-    animation: glitch 2s infinite, glitch-pseudo 2s infinite alternate-reverse;
+    -webkit-animation: glitch 2s forwards, glitch-pseudo 2s forwards alternate-reverse;
+    animation: glitch 2s forwards, glitch-pseudo 2s forwards alternate-reverse;
 }
 
 .glitch:after {
@@ -55,9 +55,12 @@
     z-index: 3;
     -webkit-clip-path: var(--clip-one);
     clip-path: var(--clip-one);
-    -webkit-animation: glitch 2s infinite, glitch-pseudo 2s infinite alternate;
-    animation: glitch 2s infinite, glitch-pseudo 2s infinite alternate;
+    -webkit-animation: glitch 2s forwards, glitch-pseudo 2s forwards alternate;
+    animation: glitch 2s forwards, glitch-pseudo 2s forwards alternate;
 }
+
+
+
 
 @-webkit-keyframes glitch {
     0% {

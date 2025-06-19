@@ -26,7 +26,8 @@
 }
 
 .box_pres {
-  width: 300px;
+  width: 40vh;
+  margin: 0 0vh;
   background-color: var(--grey);
   border-radius: 10px;
   overflow: hidden;

@@ -1,0 +1,118 @@
+header {
+  position: fixed;
+  z-index: 1000;
+  width: calc(100% - 40px);
+  margin: 20px;
+  display: flex;
+  align-items: center;
+  padding: 7px 25px;
+  background-image: url(../images/header_background_blured3.webp);
+  background-size: 100% auto;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: var(--violet);
+  border-radius: 25px;
+  transition: 0.2s;
+}
+
+.title a {
+  color: var(--white);
+  font-size: 25px;
+  margin-left: 20px;
+}
+
+.nav_bar {
+  display: flex;
+  margin-left: auto;
+}
+
+.nav_bar a {
+  color: var(--white);
+  padding: 10px 15px;
+  font-size: 18px;
+}
+
+nav ul {
+  list-style: none;
+  border-bottom: 2px solid var(--white);
+}
+
+nav li.active {
+  background: var(--white);
+}
+
+nav li.active a {
+  color: var(--black);
+}
+
+nav li:hover {
+  cursor: pointer;
+  background: var(--grey2);
+  transition: 0.2s;
+}
+
+nav li.active:hover {
+  background: var(--white);
+}
+
+nav li {
+  display: inline-block;
+  padding: 7px 10px;
+  font-size: 20px;
+}
+
+header .fa-bars {
+  color: var(--white);
+  font-size: 30px;
+  cursor: pointer;
+  display: none;
+  transition: 0.2s;
+}
+
+header .fa-times {
+  transform: rotate(180deg);
+  color: var(--white);
+}
+
+.header-active {
+  margin: 0px;
+  width: 100%;
+  border-radius: 0px;
+}
+
+@media (max-width: 823px) {
+  header .fa-bars {
+    display: block;
+    margin-left: auto;
+  }
+  header .nav_bar {
+    right: 20px;
+    position: fixed;
+    margin-top: 210px;
+    background: var(--violet);
+    text-align: center;
+    width: fit-content;
+    border-radius: 25px;
+    transform: translateX(125%);
+    transition: transform 0.2s ease-in-out;
+  }
+  header .nav_bar ul {
+    background-image: url(../images/header_background_blured3.webp);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    flex-flow: column;
+    border-radius: 25px;
+    border-bottom: 0px;
+  }
+  header .nav_bar ul li {
+    display: block;
+  }
+  header .nav_bar.open {
+    transform: translateX(0%);
+    transition: transform 0.2s ease-in-out;
+  }
+  nav li.active {
+    border-radius: 25px;
+  }
+}

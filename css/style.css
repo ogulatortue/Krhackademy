@@ -92,7 +92,7 @@ h1 {
 .check_box {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: left;
     width: 100%;
     margin-top: 15px;
     margin-bottom: 5px;

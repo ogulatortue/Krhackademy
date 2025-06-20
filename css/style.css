@@ -123,4 +123,7 @@ h1 {
   .main-title{
         text-align: center;
   }
+  .check_box p {
+    font-size: 1em;
+  }
 }

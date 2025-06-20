@@ -124,6 +124,9 @@ h1 {
         text-align: center;
   }
   .check_box p {
-    font-size: 1em;
+    font-size: 15px;
+  }
+  .checkbox-icon {
+    font-size: 15px;
   }
 }

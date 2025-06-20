@@ -1,0 +1,119 @@
+/* Variables spécifiques aux couleurs des cartes de leçons */
+:root {
+  --dark-purple: #4c0e5a; /* Couleur de fond pour les cartes */
+  --light-green: #28a745; /* Pour l'icône "Complété" */
+  --red: #dc3545; /* Pour l'icône "Non complété" */
+}
+
+/* Styles pour le contenu principal des leçons */
+.lessons-main-content {
+    padding-top: 100px; /* Ajustement pour éviter le chevauchement avec l'en-tête */
+    padding-bottom: 50px;
+    width: 100%;
+    max-width: 1200px; /* Largeur maximale pour le contenu */
+    margin: 0 auto; /* Centrer le contenu */
+}
+
+.lesson-category-section {
+    margin-bottom: 60px; /* Espace entre les catégories */
+    text-align: center; /* Centrer le titre de la catégorie */
+}
+
+.category-title {
+    margin-bottom: 40px;
+    font-size: 45px; /* Taille de police légèrement plus petite pour les titres de section */
+    text-align: center;
+}
+
+.lesson-card {
+    background-color: var(--dark-purple); /* Fond de carte */
+    border-radius: 15px; /* Bords arrondis pour les cartes */
+    padding: 25px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Ombre subtile */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    width: 300px; /* Largeur fixe pour la cohérence */
+    min-height: 200px; /* Hauteur minimale pour la cohérence */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Pousse la boîte de vérification vers le bas */
+    align-items: flex-start; /* Aligner le texte à gauche */
+    border: 2px solid transparent; /* Bordure par défaut */
+}
+
+.lesson-card:hover {
+    transform: translateY(-10px); /* Effet de soulèvement au survol */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); /* Ombre plus prononcée au survol */
+    border-color: var(--violet); /* Bordure mise en évidence au survol */
+}
+
+.lesson-card .box_info {
+    width: 100%;
+    align-items: flex-start; /* Assurer que le texte est aligné à gauche dans la boîte d'information */
+}
+
+.lesson-card .box_info h4 {
+    color: var(--white);
+    font-size: 22px;
+    margin-bottom: 10px;
+    text-align: left; /* Aligner le titre à gauche */
+}
+
+.lesson-card .box_info p:not(.check_box p) {
+    color: #c7c7c7;
+    font-size: 16px;
+    text-align: left; /* Aligner la description à gauche */
+    flex-grow: 1; /* Permet à la description de prendre l'espace disponible */
+}
+
+.lesson-card .check_box {
+    margin-top: auto; /* Pousser vers le bas */
+    justify-content: flex-start; /* Aligner la coche à gauche */
+}
+
+.checkbox-icon.completed {
+    color: var(--light-green); /* Vert pour complété */
+}
+
+.checkbox-icon.not-completed {
+    color: var(--red); /* Rouge pour non complété */
+}
+
+/* Ajustements responsifs pour les cartes de leçons */
+@media (max-width: 768px) {
+    .lessons-main-content {
+        padding-top: 80px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .box_container {
+        row-gap: 3vh;
+        column-gap: 5vh;
+        padding: 3vh;
+    }
+
+    .lesson-card {
+        width: calc(100% - 20px); /* Rend les cartes plus larges sur les petits écrans */
+        max-width: 350px; /* Limite la largeur maximale pour la lisibilité */
+    }
+
+    .category-title {
+        font-size: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .category-title {
+        font-size: 35px;
+    }
+
+    .lesson-card {
+        padding: 20px;
+    }
+    .box_info h4 {
+        font-size: 20px;
+    }
+    .box_info p:not(.check_box p) {
+        font-size: 14px;
+    }
+}

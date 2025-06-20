@@ -53,3 +53,13 @@
   flex-direction: column;
   justify-content: start;
 }
+
+
+
+
+@media (max-width: 768px) {
+  .pres{
+    padding-bottom: 10vh;
+    padding-top: 0;
+  }
+}

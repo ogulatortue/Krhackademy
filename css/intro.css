@@ -48,6 +48,7 @@
   .intro {
     flex-direction: column-reverse;
     padding-top: 10vh;
+    padding-bottom: 10vh;
   }
   .intro .image_intro {
     width: 100%;

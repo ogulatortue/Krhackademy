@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="fr">
-
-
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="leçons projets et défis de cybersécurité">
-    <meta name="keywords" content="Leçons, projets, défis, Krhacken, cyber, esisar">
+    <meta name="description" content="leçons scénarios et défis de cybersécurité">
+    <meta name="keywords" content="Leçons, scénarios, défis, Krhacken, cyber, esisar">
     <meta name="author" content="BRUCHON Hugo">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -20,6 +18,7 @@
     <link rel="stylesheet" href="./css/pres.css"/>
     <link rel="stylesheet" href="./css/new.css"/>
     <link rel="stylesheet" href="./css/footer.css"/>
+    <link rel="stylesheet" href="./css/lessons.css"/>
 
     <link rel="icon" type="image/png" href="./images/logo_krhacken_r.ico" />
 
@@ -28,8 +27,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
-
 <body>
+
     <header>
         <a href="./index.html"><img src="./images/logo_krhacken_invert2.webp" alt="logo_krhackademy" width="40" height="40"/></a>
 
@@ -38,120 +37,188 @@
         <nav class="nav_bar">
             <ul>
                 <li><a href="./index.html">ACCUEIL</a></li>
-                <li active><a href="./lessons.html">LEÇONS</a></li>
+                <li class="active"><a href="./lessons.html">LEÇONS</a></li>
                 <li><a href="./challenges.html">CHALLENGES</a></li>
-                <li><a href="./projects.html">PROJETS</a></li>
+                <li><a href="./scenarios.html">SCÉNARIOS</a></li>
             </ul>
         </nav>
 
         <div class="fas fa-bars"></div>
     </header>
 
-    <div class="main">
-        <section class="intro">
-            <div class="text_intro">
-                <h2>l'ensemble des cours que nous proposons</h2>
-            </div>
-
-            <div class="box_container" class="osint">
-                <h2> OSINT </h2>
-                <a href="pdf/test.pdf">
-                    <div class="box_intro">
-                        <img src="./images/lessons.webp" alt="Icône Leçons"/>
-                        <div class="box_info">
-                             <h4>Leçon 1</h4>
-                             <p>Cours d'introduction à la cybersécurité</p>
-                      </div>
-                     </div>
+    <!-- Début du contenu principal des leçons -->
+    <div class="lessons-main-content">
+        <section class="lesson-category-section">
+            <h2 class="main-title category-title">Web Hacking</h2>
+            <div class="box_container">
+                <!-- Leçon 1: Injection SQL Basique -->
+                <a href="#" class="lesson-card">
+                    <div class="box_info">
+                        <h4>Injection SQL Basique</h4>
+                        <p>Découvrez les bases des injections SQL et comment les prévenir.</p>
+                        <div class="check_box">
+                            <i class="fas fa-check-circle checkbox-icon completed"></i>
+                            <p>Complété</p>
+                        </div>
+                    </div>
                 </a>
-                <a href="pdf/test.pdf" >
-                    <div class="box_intro">
-                        <img src="./images/lessons.webp" alt="Icône Leçons"/>
-                        <div class="box_info">
-                             <h4>Leçon 2</h4>
-                             <p>Cours 2</p>
-                      </div>
-                     </div>
-                </a> 
-                <a href="pdf/test.pdf">
-                    <div class="box_intro">
-                        <img src="./images/lessons.webp" alt="Icône Leçons"/>
-                        <div class="box_info">
-                             <h4>Leçon 3</h4>
-                             <p>Cours 3</p>
-                      </div>
-                     </div>
-                </a> 
-                <a href="pdf/test.pdf">
-                    <div class="box_intro">
-                        <img src="./images/lessons.webp" alt="Icône Leçons"/>
-                        <div class="box_info">
-                             <h4>Leçon 4</h4>
-                             <p>Cours 4</p>
-                      </div>
-                     </div>
-                </a>                 
-
-            </div>
-
-            <div class="box_container" class="web">
-                <h2> WEB </h2>
-                <a href="pdf/test.pdf">
-                    <div class="box_intro">
-                        <img src="./images/lessons.webp" alt="Icône Leçons"/>
-                        <div class="box_info">
-                             <h4>Leçon 5</h4>
-                             <p>Cours 5</p>
-                      </div>
-                     </div>
+                <!-- Leçon 2: Cross-Site Scripting (XSS) -->
+                <a href="#" class="lesson-card">
+                    <div class="box_info">
+                        <h4>Cross-Site Scripting (XSS)</h4>
+                        <p>Apprenez à identifier et exploiter les vulnérabilités XSS.</p>
+                        <div class="check_box">
+                            <i class="fas fa-times-circle checkbox-icon not-completed"></i>
+                            <p>Non complété</p>
+                        </div>
+                    </div>
                 </a>
-                <a href="pdf/test.pdf">
-                    <div class="box_intro">
-                        <img src="./images/lessons.webp" alt="Icône Leçons"/>
-                        <div class="box_info">
-                             <h4>Leçon 6</h4>
-                             <p>Cours 6</p>
-                      </div>
-                     </div>
-                </a> 
-                <a href="pdf/test.pdf">
-                    <div class="box_intro">
-                        <img src="./images/lessons.webp" alt="Icône Leçons"/>
-                        <div class="box_info">
-                             <h4>Leçon 7</h4>
-                             <p>Cours 7</p>
-                      </div>
-                     </div>
-                </a> 
-                <a href="pdf/test.pdf">
-                    <div class="box_intro">
-                        <img src="./images/lessons.webp" alt="Icône Leçons"/>
-                        <div class="box_info">
-                             <h4>Leçon 8</h4>
-                             <p>Cours 8</p>
-                      </div>
-                     </div>
-                </a>                 
-
+                <!-- Leçon 3: Inclusion de Fichiers -->
+                <a href="#" class="lesson-card">
+                    <div class="box_info">
+                        <h4>Inclusion de Fichiers (LFI/RFI)</h4>
+                        <p>Explorez les failles d'inclusion de fichiers locaux et distants.</p>
+                        <div class="check_box">
+                            <i class="fas fa-times-circle checkbox-icon not-completed"></i>
+                            <p>Non complété</p>
+                        </div>
+                    </div>
+                </a>
+                <!-- Leçon 4: Contournement d'Authentification -->
+                <a href="#" class="lesson-card">
+                    <div class="box_info">
+                        <h4>Contournement d'Authentification</h4>
+                        <p>Comprenez comment les mécanismes d'authentification peuvent être contournés.</p>
+                        <div class="check_box">
+                            <i class="fas fa-times-circle checkbox-icon not-completed"></i>
+                            <p>Non complété</p>
+                        </div>
+                    </div>
+                </a>
             </div>
+        </section>
 
+        <section class="lesson-category-section">
+            <h2 class="main-title category-title">OSINT</h2>
+            <div class="box_container">
+                <!-- Leçon 1: Introduction à l'OSINT -->
+                <a href="#" class="lesson-card">
+                    <div class="box_info">
+                        <h4>Introduction à l'OSINT</h4>
+                        <p>Découvrez les principes fondamentaux de la recherche d'informations en sources ouvertes.</p>
+                        <div class="check_box">
+                            <i class="fas fa-check-circle checkbox-icon completed"></i>
+                            <p>Complété</p>
+                        </div>
+                    </div>
+                </a>
+                <!-- Leçon 2: Reconnaissance sur les Médias Sociaux -->
+                <a href="#" class="lesson-card">
+                    <div class="box_info">
+                        <h4>Reconnaissance sur les Médias Sociaux</h4>
+                        <p>Techniques avancées pour collecter des informations via les plateformes sociales.</p>
+                        <div class="check_box">
+                            <i class="fas fa-times-circle checkbox-icon not-completed"></i>
+                            <p>Non complété</p>
+                        </div>
+                    </div>
+                </a>
+                <!-- Leçon 3: Géolocalisation -->
+                <a href="#" class="lesson-card">
+                    <div class="box_info">
+                        <h4>Techniques de Géolocalisation</h4>
+                        <p>Utilisez des indices visuels pour localiser des photos ou vidéos.</p>
+                        <div class="check_box">
+                            <i class="fas fa-times-circle checkbox-icon not-completed"></i>
+                            <p>Non complété</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section class="lesson-category-section">
+            <h2 class="main-title category-title">Pwned (Exploitation Binaire)</h2>
+            <div class="box_container">
+                <!-- Leçon 1: Buffer Overflows -->
+                <a href="#" class="lesson-card">
+                    <div class="box_info">
+                        <h4>Buffer Overflows Basiques</h4>
+                        <p>Comprenez comment une surcharge de tampon peut mener à l'exécution de code.</p>
+                        <div class="check_box">
+                            <i class="fas fa-check-circle checkbox-icon completed"></i>
+                            <p>Complété</p>
+                        </div>
+                    </div>
+                </a>
+                <!-- Leçon 2: Vulnérabilités Format String -->
+                <a href="#" class="lesson-card">
+                    <div class="box_info">
+                        <h4>Vulnérabilités Format String</h4>
+                        <p>Explorez les failles liées aux fonctions de formatage de chaînes.</p>
+                        <div class="check_box">
+                            <i class="fas fa-times-circle checkbox-icon not-completed"></i>
+                            <p>Non complété</p>
+                        </div>
+                    </div>
+                </a>
+                <!-- Leçon 3: Introduction au Shellcoding -->
+                <a href="#" class="lesson-card">
+                    <div class="box_info">
+                        <h4>Introduction au Shellcoding</h4>
+                        <p>Créez votre propre shellcode pour l'exploitation binaire.</p>
+                        <div class="check_box">
+                            <i class="fas fa-times-circle checkbox-icon not-completed"></i>
+                            <p>Non complété</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section class="lesson-category-section">
+            <h2 class="main-title category-title">Reverse Engineering</h2>
+            <div class="box_container">
+                <!-- Leçon 1: Introduction à l'Assemblage -->
+                <a href="#" class="lesson-card">
+                    <div class="box_info">
+                        <h4>Introduction à l'Assemblage</h4>
+                        <p>Apprenez les bases du langage assembleur pour l'analyse de binaires.</p>
+                        <div class="check_box">
+                            <i class="fas fa-check-circle checkbox-icon completed"></i>
+                            <p>Complété</p>
+                        </div>
+                    </div>
+                </a>
+                <!-- Leçon 2: Analyse Statique (Ghidra/IDA) -->
+                <a href="#" class="lesson-card">
+                    <div class="box_info">
+                        <h4>Analyse Statique (Ghidra/IDA)</h4>
+                        <p>Utilisez des désassembleurs pour comprendre le fonctionnement des programmes sans les exécuter.</p>
+                        <div class="check_box">
+                            <i class="fas fa-times-circle checkbox-icon not-completed"></i>
+                            <p>Non complété</p>
+                        </div>
+                    </div>
+                </a>
+                <!-- Leçon 3: Analyse Dynamique (Debuggers) -->
+                <a href="#" class="lesson-card">
+                    <div class="box_info">
+                        <h4>Analyse Dynamique (Debuggers)</h4>
+                        <p>Débogage de programmes pour observer leur comportement en temps réel.</p>
+                        <div class="check_box">
+                            <i class="fas fa-times-circle checkbox-icon not-completed"></i>
+                            <p>Non complété</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
         </section>
     </div>
+    <!-- Fin du contenu principal des leçons -->
 
-    <section> 
-
-    </section>
-
-    <footer>
-        <img src="images/logo.webp" alt="krhacken cybersecurity & ethical hacking">
-        <a href="https://esisar.grenoble-inp.fr" target="_blank"> <img src="images/logo_esisar.webp" alt="Grenoble-INP Esisar"> </a>
-        <h5>L'ENSEMBLE DE CE SITE RELÈVE DE LA LÉGISLATION FRANÇAISE ET INTERNATIONALE SUR LE DROIT D'AUTEUR ET LA PROPRIÉTÉ INTELLECTUELLE. TOUS LES DROITS DE REPRODUCTION SONT RÉSERVÉS, Y COMPRIS POUR LES DOCUMENTS TÉLÉCHARGEABLES ET LES REPRÉSENTATIONS ICONOGRAPHIQUES ET PHOTOGRAPHIQUES. LA REPRODUCTION DE TOUT OU PARTIE DE CE SITE SUR UN SUPPORT ÉLECTRONIQUE QUEL QU'IL SOIT EST FORMELLEMENT INTERDITE SAUF AUTORISATION EXPRESSE DU DIRECTEUR DE LA PUBLICATION. CE SITE EST ÉDITÉ PAR Le club kr[HACK]en, Grenoble INP Esisar, 50 Rue Barthélémy de Laffemas, 26000 Valence, France.<br>EMAIL : contact<i class="far fa-at"></i>krhacken.org
-    </footer>
 
     <script src="js/main.js" defer></script>
 
 </body>
-
-
-
 </html>

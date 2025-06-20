@@ -120,4 +120,7 @@ h1 {
   html {
     font-size: 55%;
   }
+  .main-title{
+        text-align: center;
+  }
 }

@@ -94,3 +94,17 @@
 .clickable-image-wrapper:hover .overlay-subtitle {
     opacity: 0.9;
 }
+
+
+@media (max-width: 768px) {
+  .new .new_info {
+    padding-left: 0;
+    padding-top: 8vh;
+  }
+  .overlay-title {
+    font-size: 4rem;
+  }
+  .overlay-subtitle {
+    font-size: 2rem;
+  }
+}

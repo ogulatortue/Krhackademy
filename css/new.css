@@ -96,7 +96,7 @@
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 800px) {
   .new .new_info {
     padding-left: 0;
     padding-top: 8vh;

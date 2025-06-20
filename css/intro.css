@@ -44,7 +44,7 @@
   line-height: 1;
 }
 
-@media (max-width: 823px) {
+@media (max-width: 800px) {
   .intro {
     flex-direction: column-reverse;
     padding-top: 10vh;

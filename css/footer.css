@@ -20,14 +20,8 @@ footer h5 {
   color: #888991;
 }
 
-@media (max-width: 823px) {
+@media (max-width: 800px) {
   footer h5 {
     width: 100%;
-  }
-}
-
-@media screen and (min-width: 823px) {
-  footer h5 {
-    width: 50%;
   }
 }

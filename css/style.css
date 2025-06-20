@@ -116,7 +116,7 @@ h1 {
   color: #fff;
 }
 
-@media (max-width: 823px) {
+@media (max-width: 800px) {
   html {
     font-size: 55%;
   }

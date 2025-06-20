@@ -79,7 +79,7 @@
 }
 
 /* Ajustements responsifs pour les cartes de leçons */
-@media (max-width: 768px) {
+@media (max-width: 800px) {
     .lessons-main-content {
         padding-top: 80px;
         padding-left: 10px;

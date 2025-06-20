@@ -100,6 +100,8 @@
   .new .new_info {
     padding-left: 0;
     padding-top: 8vh;
+    padding-left: 2vh;
+    padding-right: 2vh;
   }
   .overlay-title {
     font-size: 4rem;

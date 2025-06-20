@@ -7,9 +7,6 @@
   align-items: center;
   padding-top: 20vh;
   padding-bottom: 10vh;
-  background-image: url(../images/backhome.webp);
-  background-size: cover;
-  background-position: bottom;
   z-index: 0;
 }
 

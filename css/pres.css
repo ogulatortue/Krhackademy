@@ -6,9 +6,6 @@
   justify-content: start;
   align-items: center;
   padding: 10vh 0;
-  background: url(../images/back2.webp);
-  background-size: cover;
-  background-position: top;
   z-index: 0;
 }
 

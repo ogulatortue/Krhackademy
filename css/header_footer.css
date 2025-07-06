@@ -1,3 +1,29 @@
+footer {
+  text-align: center;
+  margin-top: 50px;
+  padding: 0 50px 20px;
+}
+
+footer img {
+  width: 100px;
+  vertical-align: middle;
+  margin: 20px;
+}
+
+footer h5 {
+  width: 50%;
+  margin: auto;
+  font-size: 0.7em;
+  text-transform: uppercase;
+  color: #888991;
+}
+
+@media (max-width: 800px) {
+  footer h5 {
+    width: 100%;
+  }
+}
+
 header {
   position: fixed;
   z-index: 1000;
@@ -37,6 +63,12 @@ nav ul {
   border-bottom: 2px solid var(--white);
 }
 
+nav li {
+  display: inline-block;
+  padding: 7px 10px;
+  font-size: 20px;
+}
+
 nav li.active {
   background: var(--white);
 }
@@ -53,12 +85,6 @@ nav li:hover {
 
 nav li.active:hover {
   background: var(--white);
-}
-
-nav li {
-  display: inline-block;
-  padding: 7px 10px;
-  font-size: 20px;
 }
 
 header .fa-bars {

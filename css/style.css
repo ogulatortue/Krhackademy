@@ -54,79 +54,11 @@ h1 {
   width: 100%;
 }
 
-.box_container {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  row-gap: 5vh;
-  column-gap: 10vh;
-  padding: 5vh 5vh;
-  padding-bottom: 0;
-  align-items: stretch;
-  flex-grow: 1;
-  align-content: stretch;
-}
-
-.box_container > a {
-  display: flex;
-  flex-direction: column;
-}
-
-.box_info {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-.box_info h4 {
-  margin-bottom: 10px;
-  font-size: 20px;
-  color: #ddd;
-  text-align: center;
-  width: 100%;
-}
-
-.box_info p:not(.check_box p) {
-  font-size: 15px;
-  color: #d6d6d6;
-  text-align: center;
-  display: block;
-}
-
-.check_box {
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    width: 100%;
-    margin-top: 15px;
-    margin-bottom: 5px;
-}
-
-.check_box p {
-    margin: 0;
-    padding: 0;
-    font-size: 1em;
-    color: #fff;
-    display: inline-block;
-}
-
-.checkbox-icon {
-  font-size: 1.2em;
-  margin-right: 8px;
-  color: #fff;
-}
-
 @media (max-width: 800px) {
   html {
     font-size: 55%;
   }
-  .main-title{
-        text-align: center;
-  }
-  .check_box p {
-    font-size: 15px;
-  }
-  .checkbox-icon {
-    font-size: 15px;
+  .main-title {
+    text-align: center;
   }
 }

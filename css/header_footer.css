@@ -38,7 +38,7 @@ header {
   background-repeat: no-repeat;
   background-color: var(--violet);
   border-radius: 25px;
-  transition: 0.2s;
+  transition: 0.3s;
 }
 
 .title a {
@@ -80,7 +80,7 @@ nav li.active a {
 nav li:hover {
   cursor: pointer;
   background: var(--grey2);
-  transition: 0.2s;
+  transition: 0.3s;
 }
 
 nav li.active:hover {
@@ -120,7 +120,7 @@ header .fa-times {
     width: fit-content;
     border-radius: 25px;
     transform: translateX(125%);
-    transition: transform 0.2s ease-in-out;
+    transition: transform 0.3s ease-in-out;
   }
   header .nav_bar ul {
     background-image: url(../images/header_background_blured3.webp);
@@ -136,7 +136,7 @@ header .fa-times {
   }
   header .nav_bar.open {
     transform: translateX(0%);
-    transition: transform 0.2s ease-in-out;
+    transition: transform 0.3s ease-in-out;
   }
   nav li.active {
     border-radius: 25px;

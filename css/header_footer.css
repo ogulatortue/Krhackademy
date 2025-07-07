@@ -52,7 +52,7 @@ header .title a {
 .nav_bar li a {
     display: block;
     color: var(--white);
-    padding: 12px 20px;
+    padding: 7px 20px;
     font-size: 18px;
     transition: background-color 0.3s ease;
 }
@@ -114,7 +114,7 @@ footer h5 {
     header .nav_bar {
         display: block;
         position: fixed;
-        top: 80px;
+        top: 76px;
         right: 20px;
         width: auto;
         background: var(--violet);
@@ -123,6 +123,11 @@ footer h5 {
         transition: transform 0.3s ease-in-out;
         box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         margin-left: 0;
+    }
+
+    header.header-active .nav_bar {
+        top: 56px;
+        right: 0px;
     }
 
     header .nav_bar.open {
@@ -140,7 +145,7 @@ footer h5 {
     }
 
     .nav_bar li a {
-        padding: 15px 30px;
+        padding: 7px 15px;
     }
     
     .nav_bar li.active a {

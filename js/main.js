@@ -8,24 +8,20 @@ document.addEventListener('DOMContentLoaded', function () {
     const words = ["en ligne", "gratuitement", "facilement"];
     let currentIndex = 0;
 
-    menuIcon.addEventListener('click', function () {
+    menuIcon.addEventListener('click', function (event) {
+        event.stopPropagation();
         navBar.classList.toggle('open');
         menuIcon.classList.toggle('fa-times');
     });
 
-    if (contentArea) {
-        contentArea.addEventListener('click', function () {
+    const clickOutsideTarget = contentArea || document.body;
+
+    clickOutsideTarget.addEventListener('click', function (event) {
+        if (navBar.classList.contains('open') && !navBar.contains(event.target) && !menuIcon.contains(event.target)) {
             navBar.classList.remove('open');
             menuIcon.classList.remove('fa-times');
-        });
-    } else {
-        document.body.addEventListener('click', function() {
-            if (navBar.classList.contains('open')) {
-                navBar.classList.remove('open');
-                menuIcon.classList.remove('fa-times');
-            }
-        });
-    }
+        }
+    });
 
     window.addEventListener('scroll', handleScroll);
     window.addEventListener('load', handleScroll);
@@ -63,4 +59,14 @@ document.addEventListener('DOMContentLoaded', function () {
         changeText();
         setInterval(changeText, 4000);
     }
+
+    document.querySelectorAll('.box_pres').forEach(box => {
+        box.addEventListener('mousemove', e => {
+            const rect = box.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            box.style.setProperty('--x', `${x}px`);
+            box.style.setProperty('--y', `${y}px`);
+        });
+    });
 });

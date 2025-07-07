@@ -172,7 +172,7 @@
 }
 
 .card-title {
-    font-size: 2rem;
+    font-size: 5vh; /* Valeur d'origine pour ordinateur */
     font-weight: 700;
     margin-bottom: 0.5rem;
     color: var(--white);
@@ -188,7 +188,7 @@
 }
 
 .card-subtitle {
-    font-size: 1.1rem;
+    font-size: 3vh; /* Valeur d'origine pour ordinateur */
     font-weight: 400;
     color: #e0e0e0;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
@@ -395,10 +395,10 @@
         padding-bottom: 75%;
     }
     .card-title {
-        font-size: 1.8rem;
+        font-size: 3.5vh;
     }
     .card-subtitle {
-        font-size: 1rem;
+        font-size: 2vh;
     }
     .card-overlay {
         padding: 1.2rem;
@@ -435,5 +435,15 @@
     .check_box p,
     .checkbox-icon {
         font-size: 1.8vh;
+    }
+    .news-card .card-overlay {
+        opacity: 1;
+        pointer-events: auto;
+        background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.4) 30%, rgba(0,0,0,0.85) 100%);
+    }
+    .news-card .card-title,
+    .news-card .card-subtitle {
+        opacity: 1;
+        transform: translateY(0);
     }
 }

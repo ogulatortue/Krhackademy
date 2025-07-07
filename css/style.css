@@ -1,64 +1,66 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
-  --violet: #9216a8;
-  --grey: #2b2b2d;
-  --white: #fff;
-  --black: #0e101c;
-  --grey2: #ffffff4d;
+    --violet: #9216a8;
+    --grey: #2b2b2d;
+    --white: #fff;
+    --black: #0e101c;
+    --grey2: #ffffff4d;
 }
 
 * {
-  font-family: "Roboto Condensed", sans-serif;
-  text-decoration: none;
-  outline: none;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    outline: none;
+    box-sizing: border-box;
+    font-family: "Roboto Condensed", sans-serif;
+    text-decoration: none;
 }
 
 *::selection {
-  background-color: var(--grey);
-  color: var(--white);
+    background-color: var(--grey);
+    color: var(--white);
 }
 
 body {
-  font-size: 100%;
-  height: 100%;
-  background-image: url(../images/back.webp);
-  background-color: var(--grey);
-  background-repeat: no-repeat;
-  background-size: cover; 
-  background-position: center center;
+    min-height: 100vh;
+    font-size: 100%;
+    background-color: var(--grey);
+    background-image: url(../images/back.webp);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-attachment: scroll;
 }
 
 h1 {
-  font-weight: normal;
+    font-weight: normal;
 }
 
 .main-title {
-  font-style: italic;
-  text-transform: uppercase;
-  font-size: 50px;
-  color: var(--white);
-  position: relative;
+    font-style: italic;
+    text-transform: uppercase;
+    font-size: 50px;
+    color: var(--white);
+    position: relative;
 }
 
 .subtitle {
-  font-weight: normal;
-  font-size: 30px;
-  color: var(--white);
+    font-weight: normal;
+    font-size: 30px;
+    color: var(--white);
 }
 
 .filler {
-  width: 100%;
+    width: 100%;
 }
 
 @media (max-width: 800px) {
-  html {
-    font-size: 55%;
-  }
-  .main-title {
-    text-align: center;
-  }
+    html {
+        font-size: 55%;
+    }
+
+    .main-title {
+        text-align: center;
+    }
 }

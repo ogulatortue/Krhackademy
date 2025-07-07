@@ -25,21 +25,11 @@
     color: var(--white);
 }
 
-body {
-    font-size: 100%;
-    height: 100%;
-    background-image: url(../images/back.webp);
-    background-color: var(--grey);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-}
-
 h1 {
     font-weight: normal;
 }
 
-.intro .main-title{
+.intro .main-title {
     font-size: 60px;
 }
 
@@ -106,31 +96,53 @@ h1 {
     line-height: 1;
 }
 
-.new {
+.news {
     width: 100%;
+    padding: 20vh 0;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    padding-bottom: 10vh;
     z-index: 0;
 }
 
-.new .new_info {
-    text-align: center;
-}
-
-.new_images {
+.news-grid {
     display: flex;
     flex-wrap: wrap;
-    flex-direction: row;
     gap: 3rem;
-    padding: 3rem;
     justify-content: center;
+    width: 100%;
 }
 
-.clickable-image-wrapper {
+.news-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 13vh;
+    margin-bottom: 5vh;
+    gap: 5vh;
+    flex-wrap: wrap;
+}
+
+.news-info .main-title {
+    flex: 1;
+    text-align: left;
+}
+
+.news-card.event {
+    flex-grow: 1;
+    max-width: 60%;
+}
+
+.event .card-image-container {
+    padding-bottom: 30%;
+}
+
+.news-card {
     display: block;
     text-decoration: none;
     color: inherit;
-    max-width: 360px;
+    max-width: 380px;
     width: 100%;
     border-radius: 1.2rem;
     overflow: hidden;
@@ -142,7 +154,7 @@ h1 {
     border: 1px solid var(--grey2);
 }
 
-.clickable-image-wrapper::before {
+.news-card::before {
     content: '';
     position: absolute;
     top: -2px;
@@ -158,17 +170,17 @@ h1 {
     transition: opacity 0.4s ease, background-position 0.4s ease;
 }
 
-.clickable-image-wrapper:hover::before {
+.news-card:hover::before {
     opacity: 0.8;
     background-position: 100% 100%;
 }
 
-.clickable-image-wrapper:hover {
+.news-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
 }
 
-.image-container {
+.card-image-container {
     position: relative;
     width: 100%;
     padding-bottom: 60%;
@@ -176,7 +188,7 @@ h1 {
     overflow: hidden;
 }
 
-.image-container img {
+.card-image-container img {
     position: absolute;
     top: 0;
     left: 0;
@@ -186,17 +198,17 @@ h1 {
     transition: transform 0.4s ease;
 }
 
-.clickable-image-wrapper:hover img {
+.news-card:hover img {
     transform: scale(1.1);
 }
 
-.overlay {
+.card-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.85) 100%);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.85) 100%);
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -208,12 +220,12 @@ h1 {
     pointer-events: none;
 }
 
-.clickable-image-wrapper:hover .overlay {
+.news-card:hover .card-overlay {
     opacity: 1;
     pointer-events: auto;
 }
 
-.overlay-title {
+.card-title {
     font-size: 2rem;
     font-weight: 700;
     margin-bottom: 0.5rem;
@@ -224,12 +236,12 @@ h1 {
     transition: opacity 0.4s ease 0.2s, transform 0.4s ease 0.2s;
 }
 
-.clickable-image-wrapper:hover .overlay-title {
+.news-card:hover .card-title {
     opacity: 1;
     transform: translateY(0);
 }
 
-.overlay-subtitle {
+.card-subtitle {
     font-size: 1.1rem;
     font-weight: 400;
     color: #e0e0e0;
@@ -239,7 +251,7 @@ h1 {
     transition: opacity 0.4s ease 0.3s, transform 0.4s ease 0.3s;
 }
 
-.clickable-image-wrapper:hover .overlay-subtitle {
+.news-card:hover .card-subtitle {
     opacity: 1;
     transform: translateY(0);
 }
@@ -383,36 +395,6 @@ h1 {
     width: 20px;
 }
 
-.event {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    padding: 0vh 15vh;
-    padding-top: 20vh;
-    gap: 5vh;
-    z-index: 0;
-}
-
-.event .event_info {
-    flex-basis: 40%;
-    text-align: left;
-}
-
-.event .main-title {
-    text-align: left;
-}
-
-.event .clickable-image-wrapper {
-    flex-basis: 50%;
-    max-width: none;
-    width: 100%;
-}
-
-.event .image-container {
-    padding-bottom: 40%;
-}
-
 @media (max-width: 800px) {
     html {
         font-size: 55%;
@@ -432,29 +414,30 @@ h1 {
     .text_intro {
         text-align: center;
         width: 100%;
-        padding-left: 0;
-        padding-top: 0;
-        justify-self: center;
         padding-left: 5%;
         padding-right: 5%;
+        padding-top: 0;
+        justify-self: center;
     }
     .intro .text_intro .subtitle {
         width: 100%;
     }
-    .clickable-image-wrapper {
+    .news {
+        padding: 10vh 1rem 5vh 1rem;
+    }
+    .news-card {
         max-width: 90%;
     }
-    .image-container {
+    .card-image-container {
         padding-bottom: 75%;
     }
-    .overlay-title {
+    .card-title {
         font-size: 1.8rem;
-        margin-bottom: 0.5rem;
     }
-    .overlay-subtitle {
+    .card-subtitle {
         font-size: 1rem;
     }
-    .overlay {
+    .card-overlay {
         padding: 1.2rem;
     }
     .pres {
@@ -462,16 +445,13 @@ h1 {
     }
     .pres-subtitle {
         font-size: 2.5vh;
-        margin-left: 5vh;
-        margin-right: 5vh;
-        margin-bottom: 5vh;
+        margin: 0 5vh 5vh 5vh;
     }
     .box_container {
         flex-direction: column;
         align-items: center;
         row-gap: 4vh;
-        column-gap: 0;
-        padding: 3vh 3vh;
+        padding: 3vh;
     }
     .box_pres {
         width: 80vw;
@@ -492,23 +472,5 @@ h1 {
     .check_box p,
     .checkbox-icon {
         font-size: 1.8vh;
-    }
-    .event {
-        flex-direction: column;
-        padding-top: 10vh;
-        padding-bottom: 10vh;
-    }
-    .event .event_info {
-        text-align: center;
-        margin-bottom: 3rem;
-    }
-    .event .main-title {
-        text-align: center;
-    }
-    .event .clickable-image-wrapper {
-        max-width: 90%;
-    }
-    .event .image-container {
-        padding-bottom: 75%; /* Rétablit le ratio pour mobile */
     }
 }

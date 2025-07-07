@@ -6,15 +6,18 @@
     --white: #fff;
     --black: #0e101c;
     --grey2: #ffffff4d;
+    --card-bg: #1a1a1c;
+    --accent-gradient: linear-gradient(45deg, #9216a8, #c74dff, #9216a8);
+    --overlay-dark: rgba(0, 0, 0, 0.85);
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    outline: none;
-    box-sizing: border-box;
     font-family: "Roboto Condensed", sans-serif;
     text-decoration: none;
+    outline: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 *::selection {

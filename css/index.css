@@ -1,56 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
-
-:root {
-    --violet: #9216a8;
-    --grey: #2b2b2d;
-    --white: #fff;
-    --black: #0e101c;
-    --grey2: #ffffff4d;
-    --card-bg: #1a1a1c;
-    --accent-gradient: linear-gradient(45deg, #9216a8, #c74dff, #9216a8);
-    --overlay-dark: rgba(0, 0, 0, 0.85);
-}
-
-* {
-    font-family: "Roboto Condensed", sans-serif;
-    text-decoration: none;
-    outline: none;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-*::selection {
-    background-color: var(--grey);
-    color: var(--white);
-}
-
-h1 {
-    font-weight: normal;
-}
-
-.intro .main-title {
-    font-size: 60px;
-}
-
-.main-title {
-    font-style: italic;
-    text-transform: uppercase;
-    font-size: 50px;
-    color: var(--white);
-    position: relative;
-}
-
-.subtitle {
-    font-weight: normal;
-    font-size: 30px;
-    color: var(--white);
-}
-
-.filler {
-    width: 100%;
-}
-
 .intro {
     width: 100%;
     min-height: 100vh;
@@ -87,6 +34,10 @@ h1 {
 .intro .text_intro .subtitle {
     margin-bottom: 10vh;
     padding-top: 10vh;
+}
+
+.intro .text_intro h2{
+    font-size: 60px;
 }
 
 .intro .text_intro h2 span#dynamic-text {
@@ -129,15 +80,6 @@ h1 {
     text-align: left;
 }
 
-.news-card.event {
-    flex-grow: 1;
-    max-width: 60%;
-}
-
-.event .card-image-container {
-    padding-bottom: 30%;
-}
-
 .news-card {
     display: block;
     text-decoration: none;
@@ -154,13 +96,19 @@ h1 {
     border: 1px solid var(--grey2);
 }
 
+.news-card.event {
+    flex-grow: 1;
+    max-width: 60%;
+}
+
+.event .card-image-container {
+    padding-bottom: 30%;
+}
+
 .news-card::before {
     content: '';
     position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
+    top: -2px; left: -2px; right: -2px; bottom: -2px;
     background: var(--accent-gradient);
     background-size: 200% 200%;
     border-radius: 1.3rem;
@@ -190,8 +138,7 @@ h1 {
 
 .card-image-container img {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 0; left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -204,11 +151,10 @@ h1 {
 
 .card-overlay {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 0; left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.85) 100%);
+    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.85) 100%);
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -318,10 +264,7 @@ h1 {
 .box_pres::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    top: 0; left: 0; right: 0; bottom: 0;
     border-radius: var(--border-radius);
     background: radial-gradient(300px at var(--x) var(--y), rgba(199, 77, 255, 0.3), transparent 80%);
     opacity: 0;
@@ -396,12 +339,6 @@ h1 {
 }
 
 @media (max-width: 800px) {
-    html {
-        font-size: 55%;
-    }
-    .main-title {
-        text-align: center;
-    }
     .intro {
         flex-direction: column-reverse;
         padding-top: 10vh;

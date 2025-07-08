@@ -34,12 +34,7 @@
 body {
     min-height: 100vh;
     font-size: 100%;
-    background-color: var(--grey);
-    background-image: url(../images/back.webp);
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    background-attachment: scroll;
+    background: var(--grey) url(../images/back.webp) no-repeat center center/cover;
 }
 
 h1 {
@@ -71,5 +66,6 @@ h1 {
 
     .main-title {
         text-align: center;
+        font-size: 35px;
     }
 }

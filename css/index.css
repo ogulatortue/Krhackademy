@@ -3,10 +3,9 @@
     min-height: 100vh;
     display: flex;
     flex-direction: row;
-    justify-content: left;
+    justify-content: flex-start;
     align-items: center;
     padding-top: 20vh;
-    z-index: 0;
 }
 
 .intro .image_intro {
@@ -18,7 +17,7 @@
 }
 
 .intro .image_intro > img {
-    width: 100vh;
+    width: 100%;
     height: auto;
     object-fit: contain;
     max-width: 60%;
@@ -36,7 +35,7 @@
     padding-top: 10vh;
 }
 
-.intro .text_intro h2{
+.intro .text_intro h2 {
     font-size: 60px;
 }
 
@@ -53,7 +52,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    z-index: 0;
 }
 
 .news-grid {
@@ -92,7 +90,6 @@
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
     transition: transform 0.4s ease, box-shadow 0.4s ease;
     position: relative;
-    z-index: 1;
     border: 1px solid var(--grey2);
     will-change: transform, box-shadow;
 }
@@ -109,7 +106,7 @@
 .news-card::before {
     content: '';
     position: absolute;
-    top: -2px; left: -2px; right: -2px; bottom: -2px;
+    inset: -2px;
     background: var(--accent-gradient);
     background-size: 200% 200%;
     border-radius: 1.3rem;
@@ -140,7 +137,8 @@
 
 .card-image-container img {
     position: absolute;
-    top: 0; left: 0;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -154,16 +152,13 @@
 
 .card-overlay {
     position: absolute;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.85) 100%);
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     padding: 1.5rem;
     color: white;
-    box-sizing: border-box;
     opacity: 0;
     transition: opacity 0.5s ease;
     pointer-events: none;
@@ -213,10 +208,9 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
     padding-top: 15vh;
-    z-index: 0;
     position: relative;
     overflow: hidden;
 }
@@ -252,7 +246,6 @@
 
 .box_pres {
     --border-radius: 1.5rem;
-    --border-size: 0.2rem;
     background-color: var(--card-bg);
     border-radius: var(--border-radius);
     width: 42vh;
@@ -271,7 +264,7 @@
 .box_pres::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
+    inset: 0;
     border-radius: var(--border-radius);
     background: radial-gradient(300px at var(--x) var(--y), rgba(199, 77, 255, 0.3), transparent 80%);
     opacity: 0;
@@ -360,15 +353,11 @@
     .intro .image_intro > img {
         width: 80%;
         max-width: 350px;
-        height: auto;
     }
     .text_intro {
         text-align: center;
         width: 100%;
-        padding-left: 5%;
-        padding-right: 5%;
-        padding-top: 0;
-        justify-self: center;
+        padding: 0 5%;
     }
     .intro .text_intro h2 {
         font-size: 50px;
@@ -394,9 +383,7 @@
         width: 100%;
         text-align: center;
     }
-    .news-card {
-        max-width: 90%;
-    }
+    .news-card,
     .news-card.event {
         max-width: 90%;
     }
@@ -422,7 +409,7 @@
     .box_container {
         flex-direction: column;
         align-items: center;
-        row-gap: 4vh;
+        gap: 4vh;
         padding: 3vh;
     }
     .box_pres {

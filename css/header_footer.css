@@ -43,7 +43,6 @@ header .title a {
     border-bottom: 2px solid var(--white);
     padding: 0;
     margin: 0;
-    gap: 5px;
 }
 
 .nav_bar li {

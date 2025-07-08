@@ -1,5 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    const lessonContainers = document.querySelectorAll('.box_container');
+
+    function setupStaggeredAnimation() {
+        if (lessonContainers.length === 0) return;
+
+        lessonContainers.forEach(container => {
+            const lessons = container.querySelectorAll('a.lesson-card');
+            lessons.forEach((lesson, index) => {
+                lesson.style.animationDelay = `${(index + 1) * 0.1}s`;
+                lesson.style.animationFillMode = 'backwards'; 
+            });
+        });
+    }
+
     const LESSON_STATES_KEY = 'lessonStates';
 
     const getLessonStates = () => {
@@ -50,7 +64,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!lessonId) return;
 
         const lessonStates = getLessonStates();
-        
         const newStatus = !lessonStates[lessonId];
         
         lessonStates[lessonId] = newStatus;
@@ -58,8 +71,8 @@ document.addEventListener('DOMContentLoaded', () => {
         
         updateCardAppearance(card, newStatus);
     };
-
+    
+    setupStaggeredAnimation(); 
     initializeCards();
     document.querySelector('.lessons-main-content').addEventListener('click', handleCheckClick);
-
 });

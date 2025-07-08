@@ -7,6 +7,12 @@
     --black: #0e101c;
     --grey2: #ffffff4d;
     --card-bg: #1a1a1c;
+    --completed-color: #48ff00;
+    --not-completed-color: #9216a8;
+    --easy: #7f8c8d;
+    --medium: #320083;
+    --hard: #44055f;
+    --expert: #000000;
     --accent-gradient: linear-gradient(45deg, #9216a8, #c74dff, #9216a8);
     --overlay-dark: rgba(0, 0, 0, 0.85);
 }

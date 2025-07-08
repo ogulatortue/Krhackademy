@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const navBar = document.querySelector('.nav_bar');
     const dynamicTextSpan = document.getElementById('dynamic-text');
     const presentationBoxes = document.querySelectorAll('.box_pres');
+    const lessonContainers = document.querySelectorAll('.box_container');
 
     function setupMobileNavigation() {
         if (!menuIcon || !navBar) return;
@@ -84,8 +85,20 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    function setupStaggeredAnimation() {
+        if (lessonContainers.length === 0) return;
+
+        lessonContainers.forEach(container => {
+            const lessons = container.querySelectorAll('a.lesson-card');
+            lessons.forEach((lesson, index) => {
+                lesson.style.animationDelay = `${(index + 1) * 0.1}s`;
+            });
+        });
+    }
+
     setupMobileNavigation();
     setupScrollEffects();
     setupDynamicText();
     setupCardHoverEffect();
+    setupStaggeredAnimation();
 });

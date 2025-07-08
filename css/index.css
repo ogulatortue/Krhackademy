@@ -94,7 +94,7 @@
     position: relative;
     z-index: 1;
     border: 1px solid var(--grey2);
-    will-change: transform, box-shadow; /* Optimisation pour la performance */
+    will-change: transform, box-shadow;
 }
 
 .news-card.event {
@@ -117,7 +117,7 @@
     opacity: 0;
     filter: blur(8px);
     transition: opacity 0.4s ease, background-position 0.4s ease;
-    will-change: opacity, background-position; /* Optimisation pour la performance */
+    will-change: opacity, background-position;
 }
 
 .news-card:hover::before {
@@ -145,7 +145,7 @@
     height: 100%;
     object-fit: cover;
     transition: transform 0.4s ease;
-    will-change: transform; /* Optimisation pour la performance */
+    will-change: transform;
 }
 
 .news-card:hover img {
@@ -167,7 +167,7 @@
     opacity: 0;
     transition: opacity 0.5s ease;
     pointer-events: none;
-    will-change: opacity; /* Optimisation pour la performance */
+    will-change: opacity;
 }
 
 .news-card:hover .card-overlay {
@@ -184,7 +184,7 @@
     transform: translateY(15px);
     opacity: 0;
     transition: opacity 0.4s ease 0.2s, transform 0.4s ease 0.2s;
-    will-change: opacity, transform; /* Optimisation pour la performance */
+    will-change: opacity, transform;
 }
 
 .news-card:hover .card-title {
@@ -200,7 +200,7 @@
     transform: translateY(15px);
     opacity: 0;
     transition: opacity 0.4s ease 0.3s, transform 0.4s ease 0.3s;
-    will-change: opacity, transform; /* Optimisation pour la performance */
+    will-change: opacity, transform;
 }
 
 .news-card:hover .card-subtitle {
@@ -265,7 +265,7 @@
     position: relative;
     border: 1px solid var(--grey2);
     flex-grow: 1;
-    will-change: transform, box-shadow; /* Optimisation pour la performance */
+    will-change: transform, box-shadow;
 }
 
 .box_pres::before {
@@ -277,7 +277,7 @@
     opacity: 0;
     transition: opacity 0.4s ease;
     pointer-events: none;
-    will-change: opacity; /* Optimisation pour la performance */
+    will-change: opacity;
 }
 
 .box_pres:hover::before {
@@ -296,7 +296,7 @@
     display: block;
     border-bottom: 2px solid var(--violet);
     transition: transform 0.3s ease;
-    will-change: transform; /* Optimisation pour la performance */
+    will-change: transform;
 }
 
 .box_pres:hover img {

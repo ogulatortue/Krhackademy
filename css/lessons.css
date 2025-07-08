@@ -1,6 +1,5 @@
 .lessons-main-content {
-    padding: 10vh 2vh 5vh;
-    max-width: 1200px;
+    padding: 20vh 5vh;
     margin: 0 auto;
     color: var(--white);
 }
@@ -38,116 +37,176 @@
 }
 
 .box_container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 3vh;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2vh;
     justify-content: center;
-    align-items: stretch;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .lesson-card {
-    background-color: var(--grey);
-    border: 1px solid var(--violet);
+    width: 60vh;
+    height: 17vh;
+    background-color: var(--card-bg);
+    border: 1px solid var(--not-completed-color);
     border-radius: 10px;
-    padding: 2.5vh;
+    padding: 20px;
     text-decoration: none;
     color: inherit;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    overflow: hidden;
+    align-items: center;
+    gap: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    animation: fadeInUp 0.5s ease-out forwards;
+    opacity: 0;
 }
 
 .lesson-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-    filter: brightness(70%);
+    box-shadow: 0 0 15px var(--not-completed-color);
 }
 
-.box_info h4 {
-    font-size: 20px;
+.card-icon {
+    font-size: 32px;
+    color: var(--not-completed-color);
+    flex-shrink: 0;
+    transition: color 0.3s ease;
+}
+
+.lesson-text-content {
+    flex-grow: 1;
+}
+
+.lesson-text-content h4 {
+    font-size: 18px;
+    font-weight: 700;
     color: var(--white);
-    margin-bottom: 1vh;
-    text-align: center;
-    width: 100%;
+    margin: 0;
+    text-align: left;
 }
 
-.box_info p {
-    font-size: 15px;
-    line-height: 1.6;
-    color: #d6d6d6;
-    margin-bottom: 1.5vh;
-    text-align: center;
+.lesson-text-content p {
+    font-size: 14px;
+    line-height: 1.4;
+    color: #a9a9a9;
+    margin: 2px 0 0 0;
+    text-align: left;
 }
 
 .check_box {
     display: flex;
     align-items: center;
-    justify-content: center;
-    margin-top: auto;
-    width: 100%;
-    margin-top: 1.5vh;
-    margin-bottom: 0.5vh;
+    margin-left: auto;
+    flex-shrink: 0;
+    cursor: pointer;
 }
 
 .checkbox-icon {
-    font-size: 15px;
-    margin-right: 0.8vh;
-    color: var(--white);
+    font-size: 24px;
 }
 
 .checkbox-icon.completed {
-    color: #4CAF50;
+    color: var(--completed-color);
 }
 
 .checkbox-icon.not-completed {
-    color: #f44336;
+    color: var(--not-completed-color);
 }
 
-.check_box p {
+.lesson-card.completed-lesson {
+    border-color: var(--completed-color);
+}
+
+.lesson-card.completed-lesson .card-icon {
+    color: var(--completed-color);
+}
+
+.lesson-card.completed-lesson:hover {
+    box-shadow: 0 0 15px var(--completed-color);
+}
+
+.lesson-card.completed-lesson .lesson-text-content h4 {
+    color: #bdc3c7;
+}
+
+.lesson-card.completed-lesson .lesson-text-content p {
+    color: #8c979e;
+}
+
+.lesson-title-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 2px;
+}
+
+.lesson-title-wrapper h4 {
     margin: 0;
-    padding: 0;
-    font-size: 15px;
-    color: var(--white);
-    display: inline-block;
+}
+
+.difficulty-tag {
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff;
+    flex-shrink: 0;
+}
+
+.difficulty-tag.difficulty-easy {
+    background-color: var(--easy);
+    box-shadow: 0 0 8px var(--easy);
+}
+
+.difficulty-tag.difficulty-medium {
+    background-color: var(--medium);
+    box-shadow: 0 0 8px var(--medium);
+}
+
+.difficulty-tag.difficulty-hard {
+    background-color: var(--hard);
+    box-shadow: 0 0 8px var(--hard);
+}
+
+.difficulty-tag.difficulty-expert {
+    background-color: var(--expert);
+    box-shadow: 0 0 8px var(--expert);
 }
 
 @media (max-width: 800px) {
-    .lessons-main-content {
-        padding: 8vh 1.5vh 4vh;
-    }
-
     .main-title.category-title {
         font-size: 35px;
-        margin-bottom: 3vh;
-        text-align: center;
-    }
-
-    .main-title.category-title::after {
-        left: 50%;
-        transform: translateX(-50%);
-    }
-
-    .box_container {
-        grid-template-columns: 1fr;
-        gap: 2vh;
     }
 
     .lesson-card {
-        padding: 2vh;
+        padding: 15px;
+        gap: 15px;
+    }
+    
+    .card-icon {
+        font-size: 28px;
     }
 
-    .box_info h4 {
-        font-size: 1.2em;
+    .lesson-text-content h4 {
+        font-size: 16px;
     }
 
-    .box_info p {
-        font-size: 0.9em;
+    .lesson-text-content p {
+        font-size: 12px;
     }
-
-    .check_box p, .checkbox-icon {
-        font-size: 14px;
+    
+    .checkbox-icon {
+        font-size: 22px;
     }
 }

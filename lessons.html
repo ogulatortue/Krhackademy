@@ -7,10 +7,10 @@
     <meta name="author" content="BRUCHON Hugo">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Kr[HACK]ademy</title>
+    <title>Kr[HACK]ademy - Leçons</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
-
+    
     <link rel="stylesheet" href="./css/style.css"/>
     <link rel="stylesheet" href="./css/glitch.css"/>
     <link rel="stylesheet" href="./css/header_footer.css"/>
@@ -20,16 +20,12 @@
 
     <link rel="preload" as="image" href="./images/header_background_blured3.webp" type="image/webp" fetchpriority="high">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
 <body>
 
     <header>
         <a href="./index.html"><img src="./images/logo_krhacken_invert2.webp" alt="logo_krhackademy" width="40" height="40"/></a>
-
         <h1 class="title"> <a href="./index.html">Kr[HACK]ademy</a> </h1>
-
         <nav class="nav_bar">
             <ul>
                 <li><a href="./index.html">ACCUEIL</a></li>
@@ -38,57 +34,50 @@
                 <li><a href="./scenarios.html">SCÉNARIOS</a></li>
             </ul>
         </nav>
-
         <div class="fas fa-bars"></div>
     </header>
 
-    <!-- Début du contenu principal des leçons -->
     <div class="lessons-main-content">
         <section class="lesson-category-section">
             <h2 class="main-title category-title">Web Hacking</h2>
             <div class="box_container">
-                <!-- Leçon 1: Injection SQL Basique -->
-                <a href="#" class="lesson-card">
-                    <div class="box_info">
-                        <h4>Injection SQL Basique</h4>
+                <a href="#" class="lesson-card" data-lesson-id="web-sql">
+                    <i class="fas fa-globe card-icon"></i>
+                    <div class="lesson-text-content">
+                        <div class="lesson-title-wrapper">
+                            <h4>Injection SQL Basique</h4>
+                            <span class="difficulty-tag difficulty-easy">Débutant</span>
+                        </div>
                         <p>Découvrez les bases des injections SQL et comment les prévenir.</p>
-                        <div class="check_box">
-                            <i class="fas fa-check-circle checkbox-icon completed"></i>
-                            <p>Complété</p>
-                        </div>
+                    </div>
+                    <div class="check_box">
+                        <i class="fas fa-times-circle checkbox-icon not-completed"></i>
                     </div>
                 </a>
-                <!-- Leçon 2: Cross-Site Scripting (XSS) -->
-                <a href="#" class="lesson-card">
-                    <div class="box_info">
-                        <h4>Cross-Site Scripting (XSS)</h4>
+                <a href="#" class="lesson-card" data-lesson-id="web-xss">
+                    <i class="fas fa-globe card-icon"></i>
+                    <div class="lesson-text-content">
+                        <div class="lesson-title-wrapper">
+                            <h4>Cross-Site Scripting (XSS)</h4>
+                            <span class="difficulty-tag difficulty-medium">Confirmé</span>
+                        </div>
                         <p>Apprenez à identifier et exploiter les vulnérabilités XSS.</p>
-                        <div class="check_box">
-                            <i class="fas fa-times-circle checkbox-icon not-completed"></i>
-                            <p>Non complété</p>
-                        </div>
+                    </div>
+                    <div class="check_box">
+                        <i class="fas fa-times-circle checkbox-icon not-completed"></i>
                     </div>
                 </a>
-                <!-- Leçon 3: Inclusion de Fichiers -->
-                <a href="#" class="lesson-card">
-                    <div class="box_info">
-                        <h4>Inclusion de Fichiers (LFI/RFI)</h4>
+                <a href="#" class="lesson-card" data-lesson-id="web-lfi-rfi">
+                    <i class="fas fa-globe card-icon"></i>
+                    <div class="lesson-text-content">
+                        <div class="lesson-title-wrapper">
+                            <h4>Inclusion de Fichiers (LFI/RFI)</h4>
+                            <span class="difficulty-tag difficulty-hard">Avancé</span>
+                        </div>
                         <p>Explorez les failles d'inclusion de fichiers locaux et distants.</p>
-                        <div class="check_box">
-                            <i class="fas fa-times-circle checkbox-icon not-completed"></i>
-                            <p>Non complété</p>
-                        </div>
                     </div>
-                </a>
-                <!-- Leçon 4: Contournement d'Authentification -->
-                <a href="#" class="lesson-card">
-                    <div class="box_info">
-                        <h4>Contournement d'Authentification</h4>
-                        <p>Comprenez comment les mécanismes d'authentification peuvent être contournés.</p>
-                        <div class="check_box">
-                            <i class="fas fa-times-circle checkbox-icon not-completed"></i>
-                            <p>Non complété</p>
-                        </div>
+                    <div class="check_box">
+                        <i class="fas fa-times-circle checkbox-icon not-completed"></i>
                     </div>
                 </a>
             </div>
@@ -97,37 +86,30 @@
         <section class="lesson-category-section">
             <h2 class="main-title category-title">OSINT</h2>
             <div class="box_container">
-                <!-- Leçon 1: Introduction à l'OSINT -->
-                <a href="#" class="lesson-card">
-                    <div class="box_info">
-                        <h4>Introduction à l'OSINT</h4>
-                        <p>Découvrez les principes fondamentaux de la recherche d'informations en sources ouvertes.</p>
-                        <div class="check_box">
-                            <i class="fas fa-check-circle checkbox-icon completed"></i>
-                            <p>Complété</p>
+                <a href="#" class="lesson-card" data-lesson-id="osint-intro">
+                    <i class="fas fa-user-secret card-icon"></i>
+                    <div class="lesson-text-content">
+                        <div class="lesson-title-wrapper">
+                            <h4>Introduction à l'OSINT</h4>
+                            <span class="difficulty-tag difficulty-easy">Débutant</span>
                         </div>
+                        <p>Découvrez les principes fondamentaux de la recherche d'informations.</p>
+                    </div>
+                    <div class="check_box">
+                        <i class="fas fa-times-circle checkbox-icon not-completed"></i>
                     </div>
                 </a>
-                <!-- Leçon 2: Reconnaissance sur les Médias Sociaux -->
-                <a href="#" class="lesson-card">
-                    <div class="box_info">
-                        <h4>Reconnaissance sur les Médias Sociaux</h4>
+                <a href="#" class="lesson-card" data-lesson-id="osint-social">
+                    <i class="fas fa-user-secret card-icon"></i>
+                    <div class="lesson-text-content">
+                        <div class="lesson-title-wrapper">
+                            <h4>Reconnaissance sur les Médias Sociaux</h4>
+                            <span class="difficulty-tag difficulty-medium">Confirmé</span>
+                        </div>
                         <p>Techniques avancées pour collecter des informations via les plateformes sociales.</p>
-                        <div class="check_box">
-                            <i class="fas fa-times-circle checkbox-icon not-completed"></i>
-                            <p>Non complété</p>
-                        </div>
                     </div>
-                </a>
-                <!-- Leçon 3: Géolocalisation -->
-                <a href="#" class="lesson-card">
-                    <div class="box_info">
-                        <h4>Techniques de Géolocalisation</h4>
-                        <p>Utilisez des indices visuels pour localiser des photos ou vidéos.</p>
-                        <div class="check_box">
-                            <i class="fas fa-times-circle checkbox-icon not-completed"></i>
-                            <p>Non complété</p>
-                        </div>
+                    <div class="check_box">
+                        <i class="fas fa-times-circle checkbox-icon not-completed"></i>
                     </div>
                 </a>
             </div>
@@ -136,84 +118,50 @@
         <section class="lesson-category-section">
             <h2 class="main-title category-title">Pwned (Exploitation Binaire)</h2>
             <div class="box_container">
-                <!-- Leçon 1: Buffer Overflows -->
-                <a href="#" class="lesson-card">
-                    <div class="box_info">
-                        <h4>Buffer Overflows Basiques</h4>
+                <a href="#" class="lesson-card" data-lesson-id="pwned-buffer">
+                    <i class="fas fa-terminal card-icon"></i>
+                    <div class="lesson-text-content">
+                        <div class="lesson-title-wrapper">
+                            <h4>Buffer Overflows Basiques</h4>
+                            <span class="difficulty-tag difficulty-medium">Confirmé</span>
+                        </div>
                         <p>Comprenez comment une surcharge de tampon peut mener à l'exécution de code.</p>
-                        <div class="check_box">
-                            <i class="fas fa-check-circle checkbox-icon completed"></i>
-                            <p>Complété</p>
-                        </div>
+                    </div>
+                    <div class="check_box">
+                        <i class="fas fa-times-circle checkbox-icon not-completed"></i>
                     </div>
                 </a>
-                <!-- Leçon 2: Vulnérabilités Format String -->
-                <a href="#" class="lesson-card">
-                    <div class="box_info">
-                        <h4>Vulnérabilités Format String</h4>
+                <a href="#" class="lesson-card" data-lesson-id="pwned-format">
+                    <i class="fas fa-terminal card-icon"></i>
+                    <div class="lesson-text-content">
+                        <div class="lesson-title-wrapper">
+                            <h4>Vulnérabilités Format String</h4>
+                            <span class="difficulty-tag difficulty-hard">Avancé</span>
+                        </div>
                         <p>Explorez les failles liées aux fonctions de formatage de chaînes.</p>
-                        <div class="check_box">
-                            <i class="fas fa-times-circle checkbox-icon not-completed"></i>
-                            <p>Non complété</p>
-                        </div>
+                    </div>
+                    <div class="check_box">
+                        <i class="fas fa-times-circle checkbox-icon not-completed"></i>
                     </div>
                 </a>
-                <!-- Leçon 3: Introduction au Shellcoding -->
-                <a href="#" class="lesson-card">
-                    <div class="box_info">
-                        <h4>Introduction au Shellcoding</h4>
-                        <p>Créez votre propre shellcode pour l'exploitation binaire.</p>
-                        <div class="check_box">
-                            <i class="fas fa-times-circle checkbox-icon not-completed"></i>
-                            <p>Non complété</p>
+                <a href="#" class="lesson-card" data-lesson-id="pwned-kernel">
+                    <i class="fas fa-terminal card-icon"></i>
+                    <div class="lesson-text-content">
+                        <div class="lesson-title-wrapper">
+                            <h4>Kernel Exploitation</h4>
+                            <span class="difficulty-tag difficulty-expert">Expert</span>
                         </div>
+                        <p>Plongez au cœur du système et exploitez des vulnérabilités au niveau du noyau.</p>
                     </div>
-                </a>
-            </div>
-        </section>
-
-        <section class="lesson-category-section">
-            <h2 class="main-title category-title">Reverse Engineering</h2>
-            <div class="box_container">
-                <!-- Leçon 1: Introduction à l'Assemblage -->
-                <a href="#" class="lesson-card">
-                    <div class="box_info">
-                        <h4>Introduction à l'Assemblage</h4>
-                        <p>Apprenez les bases du langage assembleur pour l'analyse de binaires.</p>
-                        <div class="check_box">
-                            <i class="fas fa-check-circle checkbox-icon completed"></i>
-                            <p>Complété</p>
-                        </div>
-                    </div>
-                </a>
-                <!-- Leçon 2: Analyse Statique (Ghidra/IDA) -->
-                <a href="#" class="lesson-card">
-                    <div class="box_info">
-                        <h4>Analyse Statique (Ghidra/IDA)</h4>
-                        <p>Utilisez des désassembleurs pour comprendre le fonctionnement des programmes sans les exécuter.</p>
-                        <div class="check_box">
-                            <i class="fas fa-times-circle checkbox-icon not-completed"></i>
-                            <p>Non complété</p>
-                        </div>
-                    </div>
-                </a>
-                <!-- Leçon 3: Analyse Dynamique (Debuggers) -->
-                <a href="#" class="lesson-card">
-                    <div class="box_info">
-                        <h4>Analyse Dynamique (Debuggers)</h4>
-                        <p>Débogage de programmes pour observer leur comportement en temps réel.</p>
-                        <div class="check_box">
-                            <i class="fas fa-times-circle checkbox-icon not-completed"></i>
-                            <p>Non complété</p>
-                        </div>
+                    <div class="check_box">
+                        <i class="fas fa-times-circle checkbox-icon not-completed"></i>
                     </div>
                 </a>
             </div>
         </section>
     </div>
-    <!-- Fin du contenu principal des leçons -->
 
-
+    <script src="js/lessons.js" defer></script>
     <script src="js/main.js" defer></script>
 
 </body>

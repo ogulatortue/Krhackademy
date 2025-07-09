@@ -1,55 +1,58 @@
 .lesson-page-container {
-    padding: 15vh 5vh;
+    padding: 5vh;
     margin: 0 auto;
-    color: var(--primary-text);
+    max-width: 1200px;
 }
 
 .lesson-content {
-    background-color: rgba(30, 30, 30, 0.8);
+    background-color: var(--card-bg);
     border-radius: 10px;
     padding: 4vh 5vh;
     border: 1px solid var(--border-color);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(5px);
 }
 
 .lesson-header {
-    border-bottom: 2px solid var(--accent-color);
-    padding-bottom: 3vh;
-    margin-bottom: 4vh;
-}
-
-.lesson-title-block {
     display: flex;
     align-items: center;
-    gap: 15px;
-    margin-bottom: 2vh;
+    justify-content: space-between;
+    gap: 5vh;
+    padding-bottom: 3vh;
+    border-bottom: 2px solid var(--violet);
 }
 
 .lesson-icon {
-    font-size: 2.5em;
-    color: var(--accent-color);
+    font-size: 4em; /* Taille augmentée */
+    color: var(--violet);
 }
 
-.lesson-header h1 {
+.fas {
+    color: var(--violet);
+}
+
+.lesson-title-group {
+    flex-grow: 1;
+}
+
+.lesson-title-group h1 {
     font-size: 2.2em;
-    color: var(--title-color);
+    color: var(--violet);
+    font-weight: bold;
     letter-spacing: 1px;
-    margin: 0;
+    margin: 0 0 5px 0;
 }
 
-.lesson-meta {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-left: 55px;
-}
-
-.lesson-intro {
+.lesson-title-group .lesson-intro {
     font-size: 1.1em;
     line-height: 1.6;
     font-style: italic;
-    color: #a9a9a9;
+    color: var(--violet);
+    font-weight: bold;
+    margin: 0;
+}
+
+.difficulty-tag {
+    padding: 1vh 2vh;
 }
 
 .lesson-section {
@@ -57,23 +60,25 @@
 }
 
 .lesson-section h2, .lesson-section h4 {
-    color: var(--title-color);
+    color: white;
     margin-bottom: 1.5vh;
     display: flex;
     align-items: center;
     gap: 10px;
+    margin-top: 5vh;
 }
 
 .lesson-section h2 {
     font-size: 1.8em;
-    border-left: 4px solid var(--accent-color);
+    border-left: 4px solid var(--violet);
     padding-left: 15px;
+    margin-top: 7vh;
 }
 
 .lesson-section h4 {
     font-size: 1.3em;
     font-style: italic;
-    color: #ccc;
+    color: white;
 }
 
 .lesson-section p, .lesson-section ul {
@@ -100,13 +105,13 @@
     position: absolute;
     left: 0;
     top: 2px;
-    color: var(--accent-color);
+    color: var(--violet);
 }
 
 pre {
     background-color: #0d0d0d;
     border: 1px solid #222;
-    border-left: 5px solid var(--easy);
+    border-left: 5px solid var(--violet);
     border-radius: 5px;
     padding: 15px;
     overflow-x: auto;
@@ -114,20 +119,21 @@ pre {
     font-family: 'Courier New', Courier, monospace;
     font-size: 0.95em;
     box-shadow: inset 0 2px 5px rgba(0,0,0,0.4);
+    margin-bottom: 5vh;
 }
 
 code {
     font-family: 'Courier New', Courier, monospace;
-    color: #e74c3c;
+    color: white;
     background: rgba(45, 45, 45, 0.7);
     padding: 2px 5px;
     border-radius: 3px;
 }
 
 pre code {
-    color: var(--white);
     background: none;
     padding: 0;
+    color: white;
 }
 
 .user-input-example {
@@ -144,17 +150,17 @@ pre code {
     font-weight: bold;
 }
 
-
 .interactive-demo {
-    background: var(--card-bg);
+    background: rgba(0,0,0,0.2);
     border: 1px solid var(--border-color);
     border-radius: 8px;
     padding: 25px;
     margin-top: 3vh;
 }
 
-.interactive-demo p {
+.interactive-demo > p {
     text-align: center;
+    margin-top: 0;
     margin-bottom: 20px;
     font-style: italic;
 }
@@ -171,29 +177,27 @@ pre code {
     padding: 10px 15px;
     border: 1px solid #444;
     background-color: #2c2c2c;
-    color: var(--white);
+    color: white;
     border-radius: 5px;
     font-size: 1em;
 }
 
 .fake-form input:focus {
     outline: none;
-    border-color: var(--accent-color);
-    box-shadow: 0 0 8px var(--accent-color);
+    border-color: var(--violet);
+    box-shadow: 0 0 8px var(--violet);
 }
 
 .fake-form button {
-    background-color: var(--accent-color);
-    border-color: var(--accent-color);
+    background-color: var(--violet);
+    border-color: var(--violet);
     cursor: pointer;
     transition: all 0.2s ease;
 }
 
 .fake-form button:hover {
-    background-color: #ffffff;
-    color: #121212;
+    filter: brightness(1.2);
     transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
 }
 
 .demo-result {
@@ -219,7 +223,7 @@ pre code {
 
 .nav-button {
     text-decoration: none;
-    color: var(--primary-text);
+    color: white;
     background-color: #2c2c2c;
     padding: 12px 25px;
     border-radius: 5px;
@@ -229,27 +233,29 @@ pre code {
 }
 
 .nav-button:hover {
-    color: var(--title-color);
-    border-color: var(--accent-color);
+    color: white;
+    border-color: var(--violet);
     transform: scale(1.05);
 }
 
+.nav-button.disabled {
+    filter: grayscale(80%);
+    pointer-events: none;
+    opacity: 0.6;
+}
 
 @media (max-width: 800px) {
     .lesson-content {
         padding: 3vh;
     }
 
-    .lesson-header h1 {
+    .lesson-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .lesson-title-group h1 {
         font-size: 1.8em;
-    }
-
-    .lesson-icon {
-        font-size: 2em;
-    }
-
-    .lesson-meta {
-        margin-left: 0;
     }
 
     .fake-form {

@@ -133,34 +133,6 @@
     margin-bottom: 2px;
 }
 
-.difficulty-tag {
-    padding: 3px 10px;
-    border-radius: 12px;
-    font-size: 12px;
-    font-weight: 600;
-    color: #fff;
-    flex-shrink: 0;
-}
-
-.difficulty-tag.difficulty-easy {
-    background-color: var(--easy);
-    box-shadow: 0 0 8px var(--easy);
-}
-
-.difficulty-tag.difficulty-medium {
-    background-color: var(--medium);
-    box-shadow: 0 0 8px var(--medium);
-}
-
-.difficulty-tag.difficulty-hard {
-    background-color: var(--hard);
-    box-shadow: 0 0 8px var(--hard);
-}
-
-.difficulty-tag.difficulty-expert {
-    background-color: var(--expert);
-    box-shadow: 0 0 8px var(--expert);
-}
 
 @media (max-width: 800px) {
     .lesson-card {

@@ -2,57 +2,40 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <title>Kr[HACK]ademy - Leçon: Injection SQL</title>
     <meta name="description" content="Leçon détaillée sur les injections SQL basiques et comment s'en protéger.">
     <meta name="keywords" content="Injection SQL, Leçon, Cybersécurité, Web Hacking, Krhacken">
     <meta name="author" content="BRUCHON Hugo">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Kr[HACK]ademy - Leçon: Injection SQL</title>
-
+    <link rel="icon" type="image/png" href="../../images/logo_krhacken_r.ico" />
+    
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
     
     <link rel="stylesheet" href="../../css/style.css"/>
-    <link rel="stylesheet" href="../../css/header_footer.css"/>
     <link rel="stylesheet" href="../../css/lesson-page.css"/>
 
-    <link rel="icon" type="image/png" href="../../images/logo_krhacken_r.ico" />
-
-    <link rel="preload" as="image" href="../../images/header_background_blured3.webp" type="image/webp" fetchpriority="high">
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <script src="web-sql-easy.js" defer></script>
 </head>
 <body>
 
-    <header>
-        <a href="../../index.html"><img src="../../images/logo_krhacken_invert2.webp" alt="logo_krhackademy" width="40" height="40"/></a>
-        <h1 class="title"> <a href="../../index.html">Kr[HACK]ademy</a> </h1>
-        <nav class="nav_bar">
-            <ul>
-                <li><a href="../../index.html">ACCUEIL</a></li>
-                <li class="active"><a href="../../lessons.html">LEÇONS</a></li>
-                <li><a href="../../challenges.html">CHALLENGES</a></li>
-                <li><a href="../../scenarios.html">SCÉNARIOS</a></li>
-            </ul>
-        </nav>
-        <div class="fas fa-bars"></div>
-    </header>
-
     <div class="lesson-page-container">
         <article class="lesson-content">
+            
             <header class="lesson-header">
-                <div class="lesson-title-block">
-                    <i class="fas fa-globe lesson-icon"></i>
+                <i class="fas fa-globe lesson-icon" aria-hidden="true"></i>
+                <div class="lesson-title-group">
                     <h1>Injection SQL Basique</h1>
-                </div>
-                <div class="lesson-meta">
-                    <span class="difficulty-tag difficulty-easy">Débutant</span>
                     <p class="lesson-intro">
-                        Apprenez l'une des vulnérabilités web les plus courantes et les plus dévastatrices. Découvrez comment une simple chaîne de texte peut tromper une base de données et comment sécuriser vos applications.
+                        Apprenez l'une des vulnérabilités web les plus courantes et dévastatrices.
                     </p>
                 </div>
+                <span class="difficulty-tag difficulty-easy">Débutant</span>
             </header>
 
             <section class="lesson-section">
-                <h2><i class="fas fa-question-circle"></i> Qu'est-ce qu'une Injection SQL ?</h2>
+                <h2><i class="fas fa-question-circle" aria-hidden="true"></i> Qu'est-ce qu'une Injection SQL ?</h2>
                 <p>
                     Une injection SQL (SQLi) est une faille de sécurité qui permet à un attaquant d'interférer avec les requêtes (queries) qu'une application envoie à sa base de données. Le langage SQL n'a pas été conçu avec la sécurité en tête. Il interprète simplement les chaînes de caractères qu'on lui envoie, sans faire la différence entre une commande légitime et une commande malveillante.
                 </p>
@@ -62,7 +45,7 @@
             </section>
 
             <section class="lesson-section">
-                <h2><i class="fas fa-exchange-alt"></i> Données vs Code : Le cœur de la faille</h2>
+                <h2><i class="fas fa-exchange-alt" aria-hidden="true"></i> Données vs Code : Le cœur de la faille</h2>
                 <p>
                     Pour bien comprendre, imaginez que vous donnez des ordres à un robot. Vous lui dites : "Va chercher l'objet nommé `balle rouge`". Le robot comprend que `"balle rouge"` est le nom de l'objet, c'est une **donnée**.
                 </p>
@@ -70,16 +53,12 @@
                     Maintenant, imaginez qu'une personne malintentionnée puisse choisir le nom de l'objet. Au lieu de "balle rouge", elle choisit : `"rien' et va ouvrir le coffre-fort"`. Si votre robot est naïf, il entendra l'ordre complet : "Va chercher l'objet nommé `rien` et va ouvrir le coffre-fort".
                 </p>
                 <p>
-                    Le robot exécute la nouvelle instruction malveillante car il ne fait pas la différence entre le nom de l'objet (la donnée) et un ordre supplémentaire (le code). L'injection SQL fonctionne exactement sur ce principe : **tromper la base de données pour qu'elle interprète des données comme étant des instructions.**
+                    L'injection SQL fonctionne exactement sur ce principe : **tromper la base de données pour qu'elle interprète des données comme étant des instructions.**
                 </p>
             </section>
 
             <section class="lesson-section">
-                <h2><i class="fas fa-cogs"></i> Un exemple concret : Le formulaire de connexion</h2>
-                <p>
-                    Imaginons un site avec un formulaire de connexion simple. L'application utilise le nom d'utilisateur et le mot de passe pour construire une requête SQL afin de vérifier les informations d'identification.
-                </p>
-                
+                <h2><i class="fas fa-cogs" aria-hidden="true"></i> Un exemple concret : Le formulaire de connexion</h2>
                 <h4>Code PHP vulnérable :</h4>
                 <pre><code class="language-php">
 $username = $_POST['username'];
@@ -90,44 +69,33 @@ $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$passwo
                 </code></pre>
                 
                 <p>
-                    Si un utilisateur normal entre `admin` et `password123`, la requête finale est :
-                </p>
-                <pre><code class="language-sql">
-SELECT * FROM users WHERE username = 'admin' AND password = 'password123';
-                </code></pre>
-
-                <p>
-                    Cependant, un attaquant peut entrer la chaîne suivante (le *payload*) dans le champ du nom d'utilisateur :
+                    Un attaquant peut entrer le *payload* suivant dans le champ du nom d'utilisateur :
                 </p>
                 <div class="user-input-example">
                     <code>' OR '1'='1' --</code>
                 </div>
-                <p>
-                    La requête SQL, après insertion du payload, devient :
-                </p>
+                
+                <p>La requête SQL devient alors :</p>
                 <pre><code class="language-sql">
 SELECT * FROM users WHERE username = '' OR '1'='1' -- ' AND password = '...';
                 </code></pre>
-                <p>
-                    Analysons cette requête malveillante :
-                </p>
                 <ul>
-                    <li>Le <code>'</code> initial ferme la chaîne de caractères attendue pour <code>username</code>. Le champ est donc vide.</li>
-                    <li><code>OR '1'='1'</code> ajoute une condition qui est toujours vraie. La clause `WHERE` devient donc `WHERE username = '' OR TRUE`, ce qui sélectionne tous les utilisateurs.</li>
-                    <li><code>--</code> est un commentaire en SQL. Tout ce qui suit sur la ligne est ignoré, ce qui neutralise la vérification du mot de passe (`AND password = '...'`).</li>
+                    <li>Le <code>'</code> initial ferme la chaîne de caractères attendue pour <code>username</code>.</li>
+                    <li><code>OR '1'='1'</code> ajoute une condition toujours vraie, sélectionnant tous les utilisateurs.</li>
+                    <li><code>--</code> transforme le reste de la ligne en commentaire, neutralisant la vérification du mot de passe.</li>
                 </ul>
                 <p>
-                    Résultat : la requête retourne tous les utilisateurs de la table. L'application, voyant qu'elle a reçu des données en retour, connecte l'attaquant en tant que premier utilisateur de la liste (souvent un administrateur).
+                    Résultat : l'attaquant est connecté en tant que premier utilisateur de la table (souvent un admin).
                 </p>
             </section>
             
             <section class="lesson-section">
-                <h2><i class="fas fa-terminal"></i> Mini-Terminal de Démonstration</h2>
+                <h2><i class="fas fa-terminal" aria-hidden="true"></i> Mini-Terminal de Démonstration</h2>
                 <div class="interactive-demo">
                     <p>Essayez de vous connecter en tant qu'<strong>admin</strong> sans mot de passe en utilisant la technique ci-dessus.</p>
                     <div class="fake-form">
-                        <input type="text" id="demo-user" placeholder="Nom d'utilisateur">
-                        <input type="password" id="demo-pass" placeholder="Mot de passe (peut être laissé vide)">
+                        <input type="text" id="demo-user" placeholder="Nom d'utilisateur" aria-label="Nom d'utilisateur">
+                        <input type="password" id="demo-pass" placeholder="Mot de passe" aria-label="Mot de passe">
                         <button id="demo-submit">Connexion</button>
                     </div>
                     <div class="demo-result" id="demo-result">
@@ -137,74 +105,34 @@ SELECT * FROM users WHERE username = '' OR '1'='1' -- ' AND password = '...';
             </section>
 
             <section class="lesson-section">
-                <h2><i class="fas fa-exclamation-triangle"></i> Quels sont les risques ?</h2>
-                <p>Une injection SQL réussie peut avoir des conséquences catastrophiques :</p>
-                <ul>
-                    <li><strong>Vol de données :</strong> Exfiltration d'informations sensibles (identifiants, informations personnelles, données bancaires).</li>
-                    <li><strong>Modification ou suppression de données :</strong> Altération de l'intégrité du site ou de la base de données.</li>
-                    <li><strong>Usurpation d'identité :</strong> Prise de contrôle de comptes utilisateurs ou administrateurs.</li>
-                    <li><strong>Prise de contrôle du serveur :</strong> Dans certains cas, il est possible d'exécuter des commandes sur le système d'exploitation du serveur de base de données, menant à une compromission totale.</li>
-                    <li><strong>Déni de service (DoS) :</strong> Rendre l'application ou la base de données indisponible.</li>
-                </ul>
-            </section>
-
-            <section class="lesson-section">
-                <h2><i class="fas fa-stream"></i> Autres types d'injections SQL</h2>
-                <p>L'exemple ci-dessus est une injection "en bande" (In-band), la plus simple. Il en existe d'autres, plus subtiles :</p>
-                <h4>Injection SQL aveugle (Blind SQLi)</h4>
-                <p>L'attaquant ne voit pas directement le résultat de sa requête. Il doit déduire les informations bit par bit en posant une série de questions "vrai ou faux". Par exemple : "Le premier caractère du mot de passe de l'admin est-il un 'a' ?". Si la page se charge normalement, c'est vrai. Si elle affiche une erreur, c'est faux. C'est une technique lente mais redoutable.</p>
-                <h4>Injection SQL hors-bande (Out-of-band SQLi)</h4>
-                <p>Utilisée quand l'attaquant ne peut obtenir aucune information via les réponses du serveur. Il force alors la base de données à envoyer les informations vers un autre canal qu'il contrôle (comme une requête DNS ou HTTP vers son propre serveur).</p>
-            </section>
-
-            <section class="lesson-section">
-                <h2><i class="fas fa-shield-alt"></i> Comment se protéger ? (Défense en profondeur)</h2>
-                <p>
-                    Aucune mesure de sécurité n'est parfaite à elle seule. La meilleure approche est la "défense en profondeur", qui combine plusieurs couches de protection.
-                </p>
+                <h2><i class="fas fa-shield-alt" aria-hidden="true"></i> Comment se protéger ? (Défense en profondeur)</h2>
+                <p>La meilleure approche est la "défense en profondeur", qui combine plusieurs couches de protection.</p>
                 
                 <h4>1. Requêtes Préparées (Paramétrées)</h4>
                 <p>
-                    C'est la défense **la plus importante et la plus efficace**. Avec cette technique, la requête SQL (le code) et les données sont envoyées séparément. La base de données reçoit d'abord le "modèle" de la requête, puis les données qui doivent y être insérées. Elle ne les mélangera jamais, rendant l'injection impossible.
+                    C'est la défense **la plus importante et la plus efficace**. La requête (code) et les données sont envoyées séparément à la base de données, rendant l'injection impossible.
                 </p>
                 <pre><code class="language-php">
-// Le modèle de la requête est envoyé en premier, avec des marqueurs (?)
+// Le modèle de la requête est envoyé avec des marqueurs (?)
 $stmt = $pdo->prepare("SELECT * FROM users WHERE username = ? AND password = ?");
 
-// Les données de l'utilisateur sont envoyées ensuite, et sont traitées UNIQUEMENT comme des données.
+// Les données sont envoyées ensuite et ne sont traitées que comme des données
 $stmt->execute([$_POST['username'], $_POST['password']]);
                 </code></pre>
                 
                 <h4>2. Validation des entrées (Whitelisting)</h4>
-                <p>Ne faites jamais confiance aux données venant des utilisateurs. Validez-les systématiquement. La meilleure approche est la "liste blanche" (whitelist) : n'autorisez que les caractères et formats que vous attendez. Par exemple, si vous attendez un code postal de 5 chiffres, n'acceptez que 5 caractères numériques et rejetez tout le reste.</p>
+                <p>Ne faites jamais confiance aux données des utilisateurs. Validez-les systématiquement en n'autorisant que les caractères et formats attendus (ex: un code postal ne doit contenir que des chiffres).</p>
 
                 <h4>3. Principe de moindre privilège</h4>
-                <p>L'utilisateur de base de données utilisé par votre application web ne devrait avoir que les permissions strictement nécessaires à son fonctionnement. Il ne devrait pas pouvoir supprimer des tables ou modifier la structure de la base s'il n'a besoin que de lire et écrire des données dans certaines tables. Cela limite considérablement les dégâts en cas de compromission.</p>
+                <p>Le compte de base de données de votre application ne doit avoir que les permissions strictement nécessaires, limitant les dégâts en cas de compromission.</p>
             </section>
 
             <nav class="lesson-navigation">
-                <a href="../../lessons.html" class="nav-button prev-button"><i class="fas fa-arrow-left"></i> Retour aux leçons</a>
-                <a href="#" class="nav-button next-button disabled">Leçon suivante <i class="fas fa-arrow-right"></i></a>
+                <a href="../../lessons.html" class="nav-button prev-button"><i class="fas fa-arrow-left" aria-hidden="true"></i> Retour aux leçons</a>
+                <a href="#" class="nav-button next-button disabled">Leçon suivante <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
             </nav>
         </article>
     </div>
-
-    <script>
-        document.getElementById('demo-submit').addEventListener('click', () => {
-            const userInput = document.getElementById('demo-user').value;
-            const resultBox = document.getElementById('demo-result');
-            const successPayload = "' OR '1'='1' --";
-
-            if (userInput.trim() === successPayload) {
-                resultBox.innerHTML = `<p style="color: #2ecc71; font-weight: bold;"><i class="fas fa-check-circle"></i> Succès ! Authentification contournée. Vous êtes connecté en tant que 'admin'.</p>`;
-                resultBox.style.borderColor = '#2ecc71';
-            } else {
-                resultBox.innerHTML = `<p style="color: #e74c3c;"><i class="fas fa-times-circle"></i> Échec. Identifiants incorrects. Essayez avec <code>' OR '1'='1' --</code> comme nom d'utilisateur.</p>`;
-                resultBox.style.borderColor = '#e74c3c';
-            }
-        });
-    </script>
-    <script src="../../js/header.js" defer></script>
 
 </body>
 </html>

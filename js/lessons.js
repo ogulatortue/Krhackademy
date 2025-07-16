@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    const lessonContainers = document.querySelectorAll('.box_container');
+    const lessonContainers = document.querySelectorAll('.box-container');
 
     function setupStaggeredAnimation() {
         if (lessonContainers.length === 0) return;

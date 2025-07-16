@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-    const dynamicTextSpan = document.getElementById('dynamic_text');
-    const presentationBoxes = document.querySelectorAll('.box_pres');
+    const dynamicTextSpan = document.getElementById('dynamic-text');
+    const presentationBoxes = document.querySelectorAll('.box-pres');
 
     function setupDynamicText() {
         if (!dynamicTextSpan) return;

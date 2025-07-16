@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Kr[HACK]ademy - Leçon: Injection SQL</title>
-    <meta name="description" content="Leçon détaillée sur les injections SQL basiques et comment s'en protéger.">
-    <meta name="keywords" content="Injection SQL, Leçon, Cybersécurité, Web Hacking, Krhacken">
+    <meta name="description" content="Leçon détaillée sur les injections SQL basiques, leur fonctionnement et comment s'en protéger.">
+    <meta name="keywords" content="Injection SQL, Leçon, Cybersécurité, Web Hacking, Apprendre, Krhacken">
     <meta name="author" content="BRUCHON Hugo">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="icon" type="image/png" href="../../images/logo_krhacken_r.ico" />
     
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
     
     <link rel="stylesheet" href="../../css/style.css"/>
     <link rel="stylesheet" href="../../css/lesson-page.css"/>
@@ -20,7 +20,7 @@
 </head>
 <body>
 
-    <div class="lesson-page-container">
+    <main class="lesson-page-container">
         <article class="lesson-content">
             
             <header class="lesson-header">
@@ -47,45 +47,50 @@
             <section class="lesson-section">
                 <h2><i class="fas fa-exchange-alt" aria-hidden="true"></i> Données vs Code : Le cœur de la faille</h2>
                 <p>
-                    Pour bien comprendre, imaginez que vous donnez des ordres à un robot. Vous lui dites : "Va chercher l'objet nommé `balle rouge`". Le robot comprend que `"balle rouge"` est le nom de l'objet, c'est une **donnée**.
+                    Pour bien comprendre, imaginez que vous donnez des ordres à un robot. Vous lui dites : "Va chercher l'objet nommé `balle rouge`". Le robot comprend que `"balle rouge"` est le nom de l'objet, c'est une <strong>donnée</strong>.
                 </p>
                 <p>
                     Maintenant, imaginez qu'une personne malintentionnée puisse choisir le nom de l'objet. Au lieu de "balle rouge", elle choisit : `"rien' et va ouvrir le coffre-fort"`. Si votre robot est naïf, il entendra l'ordre complet : "Va chercher l'objet nommé `rien` et va ouvrir le coffre-fort".
                 </p>
                 <p>
-                    L'injection SQL fonctionne exactement sur ce principe : **tromper la base de données pour qu'elle interprète des données comme étant des instructions.**
+                    L'injection SQL fonctionne exactement sur ce principe : <strong>tromper la base de données pour qu'elle interprète des données comme étant des instructions.</strong>
                 </p>
             </section>
 
             <section class="lesson-section">
                 <h2><i class="fas fa-cogs" aria-hidden="true"></i> Un exemple concret : Le formulaire de connexion</h2>
                 <h4>Code PHP vulnérable :</h4>
-                <pre><code class="language-php">
+                <div class="code-block">
+                    <pre><code class="language-php">
 $username = $_POST['username'];
 $password = $_POST['password'];
 
 $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
 // Exécute la requête...
-                </code></pre>
+                    </code></pre>
+                </div>
                 
                 <p>
-                    Un attaquant peut entrer le *payload* suivant dans le champ du nom d'utilisateur :
+                    Un attaquant peut entrer le <em>payload</em> suivant dans le champ du nom d'utilisateur :
                 </p>
                 <div class="user-input-example">
                     <code>' OR '1'='1' --</code>
                 </div>
                 
                 <p>La requête SQL devient alors :</p>
-                <pre><code class="language-sql">
+                <div class="code-block">
+                    <pre><code class="language-sql">
 SELECT * FROM users WHERE username = '' OR '1'='1' -- ' AND password = '...';
-                </code></pre>
+                    </code></pre>
+                </div>
+
                 <ul>
                     <li>Le <code>'</code> initial ferme la chaîne de caractères attendue pour <code>username</code>.</li>
                     <li><code>OR '1'='1'</code> ajoute une condition toujours vraie, sélectionnant tous les utilisateurs.</li>
                     <li><code>--</code> transforme le reste de la ligne en commentaire, neutralisant la vérification du mot de passe.</li>
                 </ul>
                 <p>
-                    Résultat : l'attaquant est connecté en tant que premier utilisateur de la table (souvent un admin).
+                    <strong>Résultat :</strong> l'attaquant est connecté en tant que premier utilisateur de la table (souvent un admin).
                 </p>
             </section>
             
@@ -94,8 +99,8 @@ SELECT * FROM users WHERE username = '' OR '1'='1' -- ' AND password = '...';
                 <div class="interactive-demo">
                     <p>Essayez de vous connecter en tant qu'<strong>admin</strong> sans mot de passe en utilisant la technique ci-dessus.</p>
                     <div class="fake-form">
-                        <input type="text" id="demo-user" placeholder="Nom d'utilisateur" aria-label="Nom d'utilisateur">
-                        <input type="password" id="demo-pass" placeholder="Mot de passe" aria-label="Mot de passe">
+                        <input type="text" id="demo-user" placeholder="Nom d'utilisateur" aria-label="Nom d'utilisateur de démonstration">
+                        <input type="password" id="demo-pass" placeholder="Mot de passe" aria-label="Mot de passe de démonstration">
                         <button id="demo-submit">Connexion</button>
                     </div>
                     <div class="demo-result" id="demo-result">
@@ -108,23 +113,31 @@ SELECT * FROM users WHERE username = '' OR '1'='1' -- ' AND password = '...';
                 <h2><i class="fas fa-shield-alt" aria-hidden="true"></i> Comment se protéger ? (Défense en profondeur)</h2>
                 <p>La meilleure approche est la "défense en profondeur", qui combine plusieurs couches de protection.</p>
                 
-                <h4>1. Requêtes Préparées (Paramétrées)</h4>
-                <p>
-                    C'est la défense **la plus importante et la plus efficace**. La requête (code) et les données sont envoyées séparément à la base de données, rendant l'injection impossible.
-                </p>
-                <pre><code class="language-php">
+                <ol class="defense-list">
+                    <li>
+                        <h4>Requêtes Préparées (Paramétrées)</h4>
+                        <p>
+                            C'est la défense <strong>la plus importante et la plus efficace</strong>. La requête (code) et les données sont envoyées séparément à la base de données, rendant l'injection impossible.
+                        </p>
+                        <div class="code-block">
+                            <pre><code class="language-php">
 // Le modèle de la requête est envoyé avec des marqueurs (?)
 $stmt = $pdo->prepare("SELECT * FROM users WHERE username = ? AND password = ?");
 
 // Les données sont envoyées ensuite et ne sont traitées que comme des données
 $stmt->execute([$_POST['username'], $_POST['password']]);
-                </code></pre>
-                
-                <h4>2. Validation des entrées (Whitelisting)</h4>
-                <p>Ne faites jamais confiance aux données des utilisateurs. Validez-les systématiquement en n'autorisant que les caractères et formats attendus (ex: un code postal ne doit contenir que des chiffres).</p>
-
-                <h4>3. Principe de moindre privilège</h4>
-                <p>Le compte de base de données de votre application ne doit avoir que les permissions strictement nécessaires, limitant les dégâts en cas de compromission.</p>
+                            </code></pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h4>Validation des entrées (Whitelisting)</h4>
+                        <p>Ne faites jamais confiance aux données des utilisateurs. Validez-les systématiquement en n'autorisant que les caractères et formats attendus (ex: un code postal ne doit contenir que des chiffres).</p>
+                    </li>
+                    <li>
+                        <h4>Principe de moindre privilège</h4>
+                        <p>Le compte de base de données de votre application ne doit avoir que les permissions strictement nécessaires, limitant les dégâts en cas de compromission.</p>
+                    </li>
+                </ol>
             </section>
 
             <nav class="lesson-navigation">
@@ -132,7 +145,7 @@ $stmt->execute([$_POST['username'], $_POST['password']]);
                 <a href="#" class="nav-button next-button disabled">Leçon suivante <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
             </nav>
         </article>
-    </div>
+    </main>
 
 </body>
 </html>

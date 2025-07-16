@@ -2,163 +2,177 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="leçons scénarios et défis de cybersécurité">
-    <meta name="keywords" content="Leçons, scénarios, défis, Krhacken, cyber, esisar">
+    <meta name="description" content="Explorez nos leçons de cybersécurité, du hacking web à l'exploitation binaire, conçues par le club Krhacken pour tous les niveaux.">
+    <meta name="keywords" content="Leçons, Web Hacking, OSINT, Pwned, Injection SQL, XSS, Krhacken, Esisar, apprendre, cybersécurité">
     <meta name="author" content="BRUCHON Hugo">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Kr[HACK]ademy - Leçons</title>
+    <title>Kr[HACK]ademy - Leçons de Cybersécurité</title>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
     
     <link rel="stylesheet" href="./css/style.css"/>
-    <link rel="stylesheet" href="./css/header_footer.css"/>
+    <link rel="stylesheet" href="./css/header-footer.css"/>
     <link rel="stylesheet" href="./css/lessons.css"/>
 
     <link rel="icon" type="image/png" href="./images/logo_krhacken_r.ico" />
 
     <link rel="preload" as="image" href="./images/header_background_blured3.webp" type="image/webp" fetchpriority="high">
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 </head>
 <body>
 
     <header>
-        <a href="./index.html"><img src="./images/logo_krhacken_invert2.webp" alt="logo_krhackademy" width="40" height="40"/></a>
+        <a href="./index.html"><img src="./images/logo_krhacken_invert2.webp" alt="Logo Krhackademy" width="40" height="40"/></a>
         <h1 class="title"> <a href="./index.html">Kr[HACK]ademy</a> </h1>
-        <nav class="nav_bar">
-            <ul>
+        <nav class="nav-bar" aria-label="Navigation principale">
+            <ul id="nav-links">
                 <li><a href="./index.html">ACCUEIL</a></li>
                 <li class="active"><a href="./lessons.html">LEÇONS</a></li>
                 <li><a href="./challenges.html">CHALLENGES</a></li>
                 <li><a href="./scenarios.html">SCÉNARIOS</a></li>
             </ul>
         </nav>
-        <div class="fas fa-bars"></div>
+        <button class="fas fa-bars" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="nav-links"></button>
     </header>
 
-    <div class="lessons-main-content">
-        <section class="lesson-category-section">
-            <h2 class="main-title category-title">Web Hacking</h2>
-            <div class="box_container">
-                <a href="lessons/web-sql-easy/web-sql-easy.html" class="lesson-card" data-lesson-id="web-sql-easy">
-                    <i class="fas fa-globe card-icon"></i>
-                    <div class="lesson-text-content">
-                        <div class="lesson-title-wrapper">
-                            <h4>Injection SQL Basique</h4>
-                            <span class="difficulty-tag difficulty-easy">Débutant</span>
+    <main>
+        <div class="lessons-main-content">
+            <section class="lesson-category-section">
+                <h2 class="main-title category-title">Web Hacking</h2>
+                <div class="box_container">
+                    <a href="lessons/web-sql-easy/web-sql-easy.html" class="lesson-card" data-lesson-id="web-sql-easy">
+                        <i class="fas fa-globe card-icon"></i>
+                        <div class="lesson-text-content">
+                            <div class="lesson-title-wrapper">
+                                <h4>Injection SQL Basique</h4>
+                                <span class="difficulty-tag difficulty-easy">Débutant</span>
+                            </div>
+                            <p>Découvrez les bases des injections SQL et comment les prévenir.</p>
                         </div>
-                        <p>Découvrez les bases des injections SQL et comment les prévenir.</p>
-                    </div>
-                    <div class="check_box">
-                        <i class="fas fa-times-circle checkbox-icon not-completed"></i>
-                    </div>
-                </a>
-                <a href="#" class="lesson-card" data-lesson-id="web-xss">
-                    <i class="fas fa-globe card-icon"></i>
-                    <div class="lesson-text-content">
-                        <div class="lesson-title-wrapper">
-                            <h4>Cross-Site Scripting (XSS)</h4>
-                            <span class="difficulty-tag difficulty-medium">Confirmé</span>
+                        <div class="check_box">
+                            <i class="fas fa-times-circle checkbox-icon not-completed"></i>
                         </div>
-                        <p>Apprenez à identifier et exploiter les vulnérabilités XSS.</p>
-                    </div>
-                    <div class="check_box">
-                        <i class="fas fa-times-circle checkbox-icon not-completed"></i>
-                    </div>
-                </a>
-                <a href="#" class="lesson-card" data-lesson-id="web-lfi-rfi">
-                    <i class="fas fa-globe card-icon"></i>
-                    <div class="lesson-text-content">
-                        <div class="lesson-title-wrapper">
-                            <h4>Inclusion de Fichiers (LFI/RFI)</h4>
-                            <span class="difficulty-tag difficulty-hard">Avancé</span>
+                    </a>
+                    <a href="#" class="lesson-card" data-lesson-id="web-xss">
+                        <i class="fas fa-globe card-icon"></i>
+                        <div class="lesson-text-content">
+                            <div class="lesson-title-wrapper">
+                                <h4>Cross-Site Scripting (XSS)</h4>
+                                <span class="difficulty-tag difficulty-medium">Confirmé</span>
+                            </div>
+                            <p>Apprenez à identifier et exploiter les vulnérabilités XSS.</p>
                         </div>
-                        <p>Explorez les failles d'inclusion de fichiers locaux et distants.</p>
-                    </div>
-                    <div class="check_box">
-                        <i class="fas fa-times-circle checkbox-icon not-completed"></i>
-                    </div>
-                </a>
-            </div>
-        </section>
+                        <div class="check_box">
+                            <i class="fas fa-times-circle checkbox-icon not-completed"></i>
+                        </div>
+                    </a>
+                    <a href="#" class="lesson-card" data-lesson-id="web-lfi-rfi">
+                        <i class="fas fa-globe card-icon"></i>
+                        <div class="lesson-text-content">
+                            <div class="lesson-title-wrapper">
+                                <h4>Inclusion de Fichiers (LFI/RFI)</h4>
+                                <span class="difficulty-tag difficulty-hard">Avancé</span>
+                            </div>
+                            <p>Explorez les failles d'inclusion de fichiers locaux et distants.</p>
+                        </div>
+                        <div class="check_box">
+                            <i class="fas fa-times-circle checkbox-icon not-completed"></i>
+                        </div>
+                    </a>
+                </div>
+            </section>
 
-        <section class="lesson-category-section">
-            <h2 class="main-title category-title">OSINT</h2>
-            <div class="box_container">
-                <a href="#" class="lesson-card" data-lesson-id="osint-intro">
-                    <i class="fas fa-user-secret card-icon"></i>
-                    <div class="lesson-text-content">
-                        <div class="lesson-title-wrapper">
-                            <h4>Introduction à l'OSINT</h4>
-                            <span class="difficulty-tag difficulty-easy">Débutant</span>
+            <section class="lesson-category-section">
+                <h2 class="main-title category-title">OSINT</h2>
+                <div class="box_container">
+                    <a href="#" class="lesson-card" data-lesson-id="osint-intro">
+                        <i class="fas fa-user-secret card-icon"></i>
+                        <div class="lesson-text-content">
+                            <div class="lesson-title-wrapper">
+                                <h4>Introduction à l'OSINT</h4>
+                                <span class="difficulty-tag difficulty-easy">Débutant</span>
+                            </div>
+                            <p>Découvrez les principes fondamentaux de la recherche d'informations.</p>
                         </div>
-                        <p>Découvrez les principes fondamentaux de la recherche d'informations.</p>
-                    </div>
-                    <div class="check_box">
-                        <i class="fas fa-times-circle checkbox-icon not-completed"></i>
-                    </div>
-                </a>
-                <a href="#" class="lesson-card" data-lesson-id="osint-social">
-                    <i class="fas fa-user-secret card-icon"></i>
-                    <div class="lesson-text-content">
-                        <div class="lesson-title-wrapper">
-                            <h4>Reconnaissance sur les Médias Sociaux</h4>
-                            <span class="difficulty-tag difficulty-medium">Confirmé</span>
+                        <div class="check_box">
+                            <i class="fas fa-times-circle checkbox-icon not-completed"></i>
                         </div>
-                        <p>Techniques avancées pour collecter des informations via les plateformes sociales.</p>
-                    </div>
-                    <div class="check_box">
-                        <i class="fas fa-times-circle checkbox-icon not-completed"></i>
-                    </div>
-                </a>
-            </div>
-        </section>
+                    </a>
+                    <a href="#" class="lesson-card" data-lesson-id="osint-social">
+                        <i class="fas fa-user-secret card-icon"></i>
+                        <div class="lesson-text-content">
+                            <div class="lesson-title-wrapper">
+                                <h4>Reconnaissance sur les Médias Sociaux</h4>
+                                <span class="difficulty-tag difficulty-medium">Confirmé</span>
+                            </div>
+                            <p>Techniques avancées pour collecter des informations via les plateformes sociales.</p>
+                        </div>
+                        <div class="check_box">
+                            <i class="fas fa-times-circle checkbox-icon not-completed"></i>
+                        </div>
+                    </a>
+                </div>
+            </section>
 
-        <section class="lesson-category-section">
-            <h2 class="main-title category-title">Pwned (Exploitation Binaire)</h2>
-            <div class="box_container">
-                <a href="#" class="lesson-card" data-lesson-id="pwned-buffer">
-                    <i class="fas fa-terminal card-icon"></i>
-                    <div class="lesson-text-content">
-                        <div class="lesson-title-wrapper">
-                            <h4>Buffer Overflows Basiques</h4>
-                            <span class="difficulty-tag difficulty-medium">Confirmé</span>
+            <section class="lesson-category-section">
+                <h2 class="main-title category-title">Pwned (Exploitation Binaire)</h2>
+                <div class="box_container">
+                    <a href="#" class="lesson-card" data-lesson-id="pwned-buffer">
+                        <i class="fas fa-terminal card-icon"></i>
+                        <div class="lesson-text-content">
+                            <div class="lesson-title-wrapper">
+                                <h4>Buffer Overflows Basiques</h4>
+                                <span class="difficulty-tag difficulty-medium">Confirmé</span>
+                            </div>
+                            <p>Comprenez comment une surcharge de tampon peut mener à l'exécution de code.</p>
                         </div>
-                        <p>Comprenez comment une surcharge de tampon peut mener à l'exécution de code.</p>
-                    </div>
-                    <div class="check_box">
-                        <i class="fas fa-times-circle checkbox-icon not-completed"></i>
-                    </div>
-                </a>
-                <a href="#" class="lesson-card" data-lesson-id="pwned-format">
-                    <i class="fas fa-terminal card-icon"></i>
-                    <div class="lesson-text-content">
-                        <div class="lesson-title-wrapper">
-                            <h4>Vulnérabilités Format String</h4>
-                            <span class="difficulty-tag difficulty-hard">Avancé</span>
+                        <div class="check_box">
+                            <i class="fas fa-times-circle checkbox-icon not-completed"></i>
                         </div>
-                        <p>Explorez les failles liées aux fonctions de formatage de chaînes.</p>
-                    </div>
-                    <div class="check_box">
-                        <i class="fas fa-times-circle checkbox-icon not-completed"></i>
-                    </div>
-                </a>
-                <a href="#" class="lesson-card" data-lesson-id="pwned-kernel">
-                    <i class="fas fa-terminal card-icon"></i>
-                    <div class="lesson-text-content">
-                        <div class="lesson-title-wrapper">
-                            <h4>Kernel Exploitation</h4>
-                            <span class="difficulty-tag difficulty-expert">Expert</span>
+                    </a>
+                    <a href="#" class="lesson-card" data-lesson-id="pwned-format">
+                        <i class="fas fa-terminal card-icon"></i>
+                        <div class="lesson-text-content">
+                            <div class="lesson-title-wrapper">
+                                <h4>Vulnérabilités Format String</h4>
+                                <span class="difficulty-tag difficulty-hard">Avancé</span>
+                            </div>
+                            <p>Explorez les failles liées aux fonctions de formatage de chaînes.</p>
                         </div>
-                        <p>Plongez au cœur du système et exploitez des vulnérabilités au niveau du noyau.</p>
-                    </div>
-                    <div class="check_box">
-                        <i class="fas fa-times-circle checkbox-icon not-completed"></i>
-                    </div>
-                </a>
-            </div>
-        </section>
-    </div>
+                        <div class="check_box">
+                            <i class="fas fa-times-circle checkbox-icon not-completed"></i>
+                        </div>
+                    </a>
+                    <a href="#" class="lesson-card" data-lesson-id="pwned-kernel">
+                        <i class="fas fa-terminal card-icon"></i>
+                        <div class="lesson-text-content">
+                            <div class="lesson-title-wrapper">
+                                <h4>Kernel Exploitation</h4>
+                                <span class="difficulty-tag difficulty-expert">Expert</span>
+                            </div>
+                            <p>Plongez au cœur du système et exploitez des vulnérabilités au niveau du noyau.</p>
+                        </div>
+                        <div class="check_box">
+                            <i class="fas fa-times-circle checkbox-icon not-completed"></i>
+                        </div>
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <a href="https://krhacken.org" target="_blank" rel="noopener noreferrer"> <img src="images/logo.webp" alt="Logo du club Krhacken"> </a>
+        <a href="https://esisar.grenoble-inp.fr" target="_blank" rel="noopener noreferrer"> <img src="images/logo_esisar.webp" alt="Logo de Grenoble-INP Esisar"> </a>
+        <p class="footer-legal">
+            L'ENSEMBLE DE CE SITE RELÈVE DE LA LÉGISLATION FRANÇAISE ET INTERNATIONALE SUR LE DROIT D'AUTEUR ET LA PROPRIÉTÉ INTELLECTUELLE. TOUS LES DROITS DE REPRODUCTION SONT RÉSERVÉS, Y COMPRIS POUR LES DOCUMENTS TÉLÉCHARGEABLES ET LES REPRÉSENTATIONS ICONOGRAPHIQUES ET PHOTOGRAPHIQUES. LA REPRODUCTION DE TOUT OU PARTIE DE CE SITE SUR UN SUPPORT ÉLECTRONIQUE QUEL QU'IL SOIT EST FORMELLEMENT INTERDITE SAUF AUTORISATION EXPRESSE DU DIRECTEUR DE LA PUBLICATION. CE SITE EST ÉDITÉ PAR Le club kr[HACK]en, Grenoble INP Esisar, 50 Rue Barthélémy de Laffemas, 26000 Valence, France.<br>
+            EMAIL : <a href="mailto:contact@krhacken.org">contact@krhacken.org</a>
+        </p>
+    </footer>
 
     <script src="js/lessons.js" defer></script>
     <script src="js/header.js" defer></script>

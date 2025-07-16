@@ -16,14 +16,23 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 5vh;
-    padding-bottom: 3vh;
-    border-bottom: 2px solid var(--purple);
+    gap: 3vh;
+    padding: 25px;
+    margin-bottom: 3vh;
+    border-radius: 25px;
+    background-image: url(../../images/header_background_blured3.webp);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.lesson-header .fas{
+    color: var(--white);
 }
 
 .lesson-icon {
     font-size: 4em;
-    color: var(--purple);
+    color: var(--white);
 }
 
 .fas {
@@ -36,23 +45,21 @@
 
 .lesson-title-group h1 {
     font-size: 2.2em;
-    color: var(--purple);
+    color: var(--white);
     font-weight: bold;
     letter-spacing: 1px;
     margin: 0 0 5px 0;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .lesson-title-group .lesson-intro {
     font-size: 1.1em;
     line-height: 1.6;
     font-style: italic;
-    color: var(--purple);
+    color: var(--white);
     font-weight: bold;
     margin: 0;
-}
-
-.difficulty-tag {
-    padding: 1vh 2vh;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
 }
 
 .lesson-section {
@@ -242,6 +249,22 @@ pre code {
     filter: grayscale(80%);
     pointer-events: none;
     opacity: 0.6;
+}
+
+.defense-list {
+    list-style-position: inside;
+    padding-left: 0;
+}
+
+.defense-list li::marker {
+    color: var(--white);
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+.defense-list h4 {
+    margin-top: 0;
+    display: inline-block;
 }
 
 @media (max-width: 800px) {

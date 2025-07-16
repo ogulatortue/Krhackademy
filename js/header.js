@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const header = document.querySelector('header');
     const menuIcon = document.querySelector('.fa-bars');
-    const navBar = document.querySelector('.nav_bar');
+    const navBar = document.querySelector('.nav-bar');
 
     function setupMobileNavigation() {
         if (!menuIcon || !navBar) return;

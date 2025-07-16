@@ -1,5 +1,5 @@
 .lessons-main-content {
-    padding: 15vh 5vh;
+    padding: 15vh 5vw;
     margin: 0 auto;
     color: var(--white);
 }
@@ -70,6 +70,13 @@
     flex-grow: 1;
 }
 
+.lesson-title-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 5px;
+}
+
 .lesson-text-content h4 {
     font-size: 18px;
     font-weight: 700;
@@ -98,12 +105,12 @@
     font-size: 24px;
 }
 
-.checkbox-icon.completed {
-    color: var(--completed-color);
-}
-
 .checkbox-icon.not-completed {
     color: var(--not-completed-color);
+}
+
+.checkbox-icon.completed {
+    color: var(--completed-color);
 }
 
 .lesson-card.completed-lesson {
@@ -114,10 +121,6 @@
     color: var(--completed-color);
 }
 
-.lesson-card.completed-lesson:hover {
-    box-shadow: 0 20px 40px var(--shadow-heavy);
-}
-
 .lesson-card.completed-lesson .lesson-text-content h4 {
     color: var(--text-completed-title);
 }
@@ -126,48 +129,24 @@
     color: var(--text-completed-body);
 }
 
-.lesson-title-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 5px;
-}
-
-.difficulty-tag {
-    padding: 4px 12px;
-    font-size: 12px;
-    font-weight: 700;
-    border-radius: 15px;
-    color: var(--white);
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
-    flex-shrink: 0;
-    margin-left: 15px;
-}
-
-.difficulty-easy {
-    background-color: var(--easy);
-    box-shadow: 0 0 8px var(--easy);
-}
-
-.difficulty-medium {
-    background-color: var(--medium);
-    box-shadow: 0 0 8px var(--medium);
-}
-
-.difficulty-hard {
-    background-color: var(--hard);
-    box-shadow: 0 0 8px var(--hard);
-}
-
-.difficulty-expert {
-    background-color: var(--expert);
-    box-shadow: 0 0 8px var(--expert);
-}
 
 @media (max-width: 800px) {
     .lesson-card {
         padding: 15px;
         gap: 15px;
+        flex-direction: column;
+        height: auto;
+        text-align: center;
+    }
+
+    .lesson-text-content h4,
+    .lesson-text-content p {
+        text-align: center;
+    }
+
+    .lesson-title-wrapper {
+        justify-content: center;
+        flex-wrap: wrap;
     }
     
     .card-icon {
@@ -184,5 +163,10 @@
     
     .checkbox-icon {
         font-size: 22px;
+    }
+
+    .check_box {
+        margin-top: 10px;
+        margin-left: 0;
     }
 }

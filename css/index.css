@@ -1,3 +1,24 @@
+
+
+.main-title {
+    font-style: italic;
+    text-transform: uppercase;
+    font-size: 50px;
+    color: var(--white);
+    position: relative;
+}
+
+.subtitle {
+    font-weight: normal;
+    font-size: 30px;
+    color: var(--white);
+}
+
+.filler {
+    width: 100%;
+}
+
+
 .intro {
     width: 100%;
     min-height: 100vh;
@@ -36,7 +57,7 @@
 }
 
 .intro .text_intro h2 {
-    font-size: 60px;
+    font-size: 65px;
 }
 
 .intro .text_intro h2 span#dynamic-text {
@@ -45,6 +66,155 @@
     color: var(--white);
     line-height: 1;
 }
+
+
+.pres {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 15vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.pres .text_pres {
+    text-align: center;
+    margin-bottom: 5vh;
+}
+
+.pres-subtitle {
+    font-size: 3vh;
+    color: #bbb;
+    text-align: center;
+    margin-bottom: 8vh;
+    margin-left: 10vh;
+    margin-right: 10vh;
+    padding-top: 2vh;
+}
+
+.box_container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 7vh;
+    padding: 3vh;
+    align-items: stretch;
+}
+
+.box_container > a {
+    text-decoration: none;
+    display: flex;
+}
+
+.box_pres {
+    --border-radius: 1.5rem;
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    width: 42vh;
+    min-height: 55vh;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    border: 1px solid var(--grey2);
+    flex-grow: 1;
+    will-change: transform, box-shadow;
+}
+
+.box_pres::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--border-radius);
+    background: radial-gradient(300px at var(--x) var(--y), rgba(199, 77, 255, 0.3), transparent 80%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    will-change: opacity;
+}
+
+.box_pres:hover::before {
+    opacity: 1;
+}
+
+.box_pres:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+}
+
+.box_pres img {
+    width: 100%;
+    height: 22vh;
+    object-fit: cover;
+    display: block;
+    border-bottom: 2px solid var(--violet);
+    transition: transform 0.3s ease;
+    will-change: transform;
+}
+
+.box_pres:hover img {
+    transform: scale(1.05);
+}
+
+.box_pres .box_info {
+    padding: 2rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.box_info h4 {
+    margin-bottom: 1rem;
+    font-size: 2.5vh;
+    color: var(--white);
+    font-weight: 700;
+}
+
+
+.box_info > p {
+    font-size: 1.9vh;
+    color: #c0c0c0;
+    line-height: 1.6;
+    flex-grow: 1;
+    margin-bottom: 2vh;
+}
+
+
+.box_info ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+
+.box_info li {
+    display: flex;
+    align-items: center;
+    font-size: 1.9vh;
+    color: var(--white);
+    text-align: left;
+}
+
+.checkbox-icon {
+    font-size: 2.2vh;
+    margin-right: 1rem;
+    color: var(--violet);
+    width: 20px;
+}
+
+
 
 .news {
     width: 100%;
@@ -203,144 +373,17 @@
     transform: translateY(0);
 }
 
-.pres {
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    padding-top: 15vh;
-    position: relative;
-    overflow: hidden;
-}
-
-.pres .text_pres {
-    text-align: center;
-    margin-bottom: 5vh;
-}
-
-.pres-subtitle {
-    font-size: 3vh;
-    color: #bbb;
-    text-align: center;
-    margin-bottom: 8vh;
-    margin-left: 10vh;
-    margin-right: 10vh;
-    padding-top: 2vh;
-}
-
-.box_container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 7vh;
-    padding: 3vh;
-    align-items: stretch;
-}
-
-.box_container > a {
-    text-decoration: none;
-    display: flex;
-}
-
-.box_pres {
-    --border-radius: 1.5rem;
-    background-color: var(--card-bg);
-    border-radius: var(--border-radius);
-    width: 42vh;
-    min-height: 55vh;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    border: 1px solid var(--grey2);
-    flex-grow: 1;
-    will-change: transform, box-shadow;
-}
-
-.box_pres::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: var(--border-radius);
-    background: radial-gradient(300px at var(--x) var(--y), rgba(199, 77, 255, 0.3), transparent 80%);
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    pointer-events: none;
-    will-change: opacity;
-}
-
-.box_pres:hover::before {
-    opacity: 1;
-}
-
-.box_pres:hover {
-    transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
-}
-
-.box_pres img {
-    width: 100%;
-    height: 22vh;
-    object-fit: cover;
-    display: block;
-    border-bottom: 2px solid var(--violet);
-    transition: transform 0.3s ease;
-    will-change: transform;
-}
-
-.box_pres:hover img {
-    transform: scale(1.05);
-}
-
-.box_pres .box_info {
-    padding: 2rem;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-}
-
-.box_info h4 {
-    margin-bottom: 1rem;
-    font-size: 2.5vh;
-    color: var(--white);
-    font-weight: 700;
-}
-
-.box_info p:not(.check_box p) {
-    font-size: 1.9vh;
-    color: #c0c0c0;
-    line-height: 1.6;
-    flex-grow: 1;
-    margin-bottom: 2vh;
-}
-
-.check_box {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    width: 100%;
-    margin-top: 0.5rem;
-}
-
-.check_box p {
-    font-size: 1.9vh;
-    color: var(--white);
-    text-align: left;
-}
-
-.checkbox-icon {
-    font-size: 2.2vh;
-    margin-right: 1rem;
-    color: var(--violet);
-    width: 20px;
-}
 
 @media (max-width: 800px) {
+    html {
+        font-size: 55%;
+    }
+
+    .main-title {
+        text-align: center;
+        font-size: 35px;
+    }
+
     .intro {
         flex-direction: column-reverse;
         padding-top: 10vh;
@@ -424,10 +467,12 @@
         font-size: 2.2vh;
         margin-bottom: 1.5vh;
     }
+    
     .box_info p:not(.check_box p) {
         font-size: 1.7vh;
         margin-bottom: 2.5vh;
     }
+    
     .check_box p,
     .checkbox-icon {
         font-size: 1.8vh;

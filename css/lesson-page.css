@@ -9,7 +9,7 @@
     border-radius: 10px;
     padding: 4vh 5vh;
     border: 1px solid var(--border-color);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 10px 30px var(--shadow-medium);
 }
 
 .lesson-header {
@@ -18,16 +18,16 @@
     justify-content: space-between;
     gap: 5vh;
     padding-bottom: 3vh;
-    border-bottom: 2px solid var(--violet);
+    border-bottom: 2px solid var(--purple);
 }
 
 .lesson-icon {
-    font-size: 4em; /* Taille augmentée */
-    color: var(--violet);
+    font-size: 4em;
+    color: var(--purple);
 }
 
 .fas {
-    color: var(--violet);
+    color: var(--purple);
 }
 
 .lesson-title-group {
@@ -36,7 +36,7 @@
 
 .lesson-title-group h1 {
     font-size: 2.2em;
-    color: var(--violet);
+    color: var(--purple);
     font-weight: bold;
     letter-spacing: 1px;
     margin: 0 0 5px 0;
@@ -46,7 +46,7 @@
     font-size: 1.1em;
     line-height: 1.6;
     font-style: italic;
-    color: var(--violet);
+    color: var(--purple);
     font-weight: bold;
     margin: 0;
 }
@@ -70,7 +70,7 @@
 
 .lesson-section h2 {
     font-size: 1.8em;
-    border-left: 4px solid var(--violet);
+    border-left: 4px solid var(--purple);
     padding-left: 15px;
     margin-top: 7vh;
 }
@@ -105,27 +105,27 @@
     position: absolute;
     left: 0;
     top: 2px;
-    color: var(--violet);
+    color: var(--purple);
 }
 
 pre {
-    background-color: #0d0d0d;
-    border: 1px solid #222;
-    border-left: 5px solid var(--violet);
+    background-color: var(--code-bg);
+    border: 1px solid var(--border-dark);
+    border-left: 5px solid var(--purple);
     border-radius: 5px;
     padding: 15px;
     overflow-x: auto;
     white-space: pre;
     font-family: 'Courier New', Courier, monospace;
     font-size: 0.95em;
-    box-shadow: inset 0 2px 5px rgba(0,0,0,0.4);
+    box-shadow: inset 0 2px 5px var(--shadow-light);
     margin-bottom: 5vh;
 }
 
 code {
     font-family: 'Courier New', Courier, monospace;
     color: white;
-    background: rgba(45, 45, 45, 0.7);
+    background: var(--inline-code-bg);
     padding: 2px 5px;
     border-radius: 3px;
 }
@@ -139,8 +139,8 @@ pre code {
 .user-input-example {
     text-align: center;
     padding: 15px;
-    background-color: #111;
-    border: 1px dashed #444;
+    background-color: var(--dashed-bg);
+    border: 1px dashed var(--border-medium);
     border-radius: 5px;
     margin: 2vh 0;
 }
@@ -175,8 +175,8 @@ pre code {
 
 .fake-form input, .fake-form button {
     padding: 10px 15px;
-    border: 1px solid #444;
-    background-color: #2c2c2c;
+    border: 1px solid var(--border-medium);
+    background-color: var(--button-bg);
     color: white;
     border-radius: 5px;
     font-size: 1em;
@@ -184,13 +184,13 @@ pre code {
 
 .fake-form input:focus {
     outline: none;
-    border-color: var(--violet);
-    box-shadow: 0 0 8px var(--violet);
+    border-color: var(--purple);
+    box-shadow: 0 0 8px var(--purple);
 }
 
 .fake-form button {
-    background-color: var(--violet);
-    border-color: var(--violet);
+    background-color: var(--purple);
+    border-color: var(--purple);
     cursor: pointer;
     transition: all 0.2s ease;
 }
@@ -203,7 +203,7 @@ pre code {
 .demo-result {
     margin-top: 20px;
     padding: 15px;
-    border: 2px dashed #555;
+    border: 2px dashed var(--border-light-dashed);
     border-radius: 5px;
     text-align: center;
     transition: all 0.3s ease;
@@ -224,17 +224,17 @@ pre code {
 .nav-button {
     text-decoration: none;
     color: white;
-    background-color: #2c2c2c;
+    background-color: var(--button-bg);
     padding: 12px 25px;
     border-radius: 5px;
-    border: 1px solid #444;
+    border: 1px solid var(--border-medium);
     transition: all 0.3s ease;
     font-weight: bold;
 }
 
 .nav-button:hover {
     color: white;
-    border-color: var(--violet);
+    border-color: var(--purple);
     transform: scale(1.05);
 }
 

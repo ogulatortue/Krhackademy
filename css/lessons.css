@@ -49,14 +49,14 @@
     align-items: center;
     gap: 20px;
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 4px 15px var(--shadow-medium);
     will-change: transform, box-shadow;
     animation: fadeInUp 0.5s ease-out;
 }
 
 .lesson-card:hover {
     transform: translateY(-5px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 20px 40px var(--shadow-heavy);
 }
 
 .card-icon {
@@ -81,7 +81,7 @@
 .lesson-text-content p {
     font-size: 14px;
     line-height: 1.4;
-    color: #a9a9a9;
+    color: var(--text-subtle);
     margin: 2px 0 0 0;
     text-align: left;
 }
@@ -115,24 +115,54 @@
 }
 
 .lesson-card.completed-lesson:hover {
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 20px 40px var(--shadow-heavy);
 }
 
 .lesson-card.completed-lesson .lesson-text-content h4 {
-    color: #bdc3c7;
+    color: var(--text-completed-title);
 }
 
 .lesson-card.completed-lesson .lesson-text-content p {
-    color: #8c979e;
+    color: var(--text-completed-body);
 }
 
 .lesson-title-wrapper {
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-bottom: 2px;
+    margin-bottom: 5px;
 }
 
+.difficulty-tag {
+    padding: 4px 12px;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 15px;
+    color: var(--white);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+    flex-shrink: 0;
+    margin-left: 15px;
+}
+
+.difficulty-easy {
+    background-color: var(--easy);
+    box-shadow: 0 0 8px var(--easy);
+}
+
+.difficulty-medium {
+    background-color: var(--medium);
+    box-shadow: 0 0 8px var(--medium);
+}
+
+.difficulty-hard {
+    background-color: var(--hard);
+    box-shadow: 0 0 8px var(--hard);
+}
+
+.difficulty-expert {
+    background-color: var(--expert);
+    box-shadow: 0 0 8px var(--expert);
+}
 
 @media (max-width: 800px) {
     .lesson-card {

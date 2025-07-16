@@ -7,7 +7,7 @@ header {
     display: flex;
     align-items: center;
     padding: 7px 25px;
-    background-color: var(--violet);
+    background-color: var(--purple);
     background-image: url(../images/header_background_blured3.webp);
     background-size: cover;
     background-position: center;
@@ -59,7 +59,7 @@ header .title a {
 }
 
 .nav_bar li:hover a {
-    background-color: var(--grey2);
+    background-color: var(--light-grey);
 }
 
 .nav_bar li.active a {
@@ -84,8 +84,6 @@ header .fa-bars.fa-times {
     transform: rotate(180deg);
 }
 
-
-
 footer {
     text-align: center;
     margin-top: 50px;
@@ -98,14 +96,13 @@ footer img {
     margin: 20px;
 }
 
-
-footer .footer-legal {
+footer .footer_legal {
     max-width: 800px;
     width: 90%;
     margin: 0 auto;
     font-size: 0.7em;
     text-transform: uppercase;
-    color: #888991;
+    color: var(--light-grey);
     line-height: 1.5;
     font-weight: normal;
 }
@@ -121,11 +118,11 @@ footer .footer-legal {
         top: 76px;
         right: 20px;
         width: auto;
-        background: var(--violet);
+        background: var(--purple);
         border-radius: 20px;
         transform: translateX(120%);
         transition: transform 0.3s ease-in-out;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        box-shadow: 0 5px 15px var(--shadow-xlight);
         margin-left: 0;
     }
 
@@ -156,7 +153,7 @@ footer .footer-legal {
         border-radius: 0;
     }
 
-    footer .footer-legal {
+    footer .footer_legal {
         width: 100%;
     }
 }

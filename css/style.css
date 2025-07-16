@@ -1,20 +1,34 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
-    --violet: #9216a8;
+    --purple: #9216a8;
     --grey: #2b2b2d;
     --white: #fff;
     --black: #0e101c;
-    --grey2: #ffffff4d;
+    --light-grey: #ffffff4d;
     --card-bg: #1a1a1c;
+    --button-bg: #2c2c2c;
+    --code-bg: #0d0d0d;
+    --inline-code-bg: rgba(45, 45, 45, 0.7);
+    --dashed-bg: #111;
     --completed-color: #48ff00;
     --not-completed-color: #9216a8;
+    --text-subtle: #c0c0c0;
+    --text-completed-title: #bdc3c7;
+    --text-completed-body: #8c979e;
     --border-color: #333;
+    --border-dark: #222;
+    --border-medium: #444;
+    --border-light-dashed: #555;
     --accent-color: #3498db;
     --easy: #17b32c;
     --medium: #cbce1e;
     --hard: #d7650e;
     --expert: #ff0000;
+    --shadow-xlight: rgba(0,0,0,0.3);
+    --shadow-light: rgba(0, 0, 0, 0.4);
+    --shadow-medium: rgba(0, 0, 0, 0.5);
+    --shadow-heavy: rgba(0, 0, 0, 0.7);
     --accent-gradient: linear-gradient(45deg, #9216a8, #c74dff, #9216a8);
     --overlay-dark: rgba(0, 0, 0, 0.85);
 }

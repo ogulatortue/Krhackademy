@@ -4,7 +4,7 @@
     justify-content: flex-start;
     align-items: center;
     width: 100%;
-    min-height: 100svh; 
+    min-height: 100svh;
     padding-top: 20svh;
 }
 
@@ -152,7 +152,7 @@
 .box-info li {
     display: flex;
     align-items: center;
-    font-size: 1.9svh;
+    font-size: 0.9rem;
     color: var(--white);
     text-align: left;
 }
@@ -160,7 +160,7 @@
 .checkbox-icon {
     width: 20px;
     margin-right: 1rem;
-    font-size: 2.2svh;
+    font-size: 1rem;
     color: var(--purple);
 }
 

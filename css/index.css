@@ -1,3 +1,8 @@
+main.main {
+    flex-grow: 1;
+    background-color: transparent;
+}
+
 .intro {
     display: flex;
     flex-direction: row;

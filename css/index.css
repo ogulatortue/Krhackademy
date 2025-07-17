@@ -4,14 +4,14 @@
     justify-content: flex-start;
     align-items: center;
     width: 100%;
-    min-height: 100lvh; 
-    padding-top: 20vh;
+    min-height: 100svh; 
+    padding-top: 20svh;
 }
 
 .text-intro {
     width: 50%;
-    padding-left: 10vh;
-    padding-top: 5vh;
+    padding-left: 10svh;
+    padding-top: 5svh;
     text-align: left;
 }
 
@@ -27,8 +27,8 @@
 }
 
 .intro .text-intro h3 {
-    padding-top: 10vh;
-    margin-bottom: 10vh;
+    padding-top: 10svh;
+    margin-bottom: 10svh;
 }
 
 .intro .image-intro {
@@ -36,7 +36,7 @@
     justify-content: center;
     align-items: center;
     width: 50%;
-    padding-bottom: 10vh;
+    padding-bottom: 10svh;
 }
 
 .intro .image-intro > img {
@@ -52,14 +52,14 @@
     justify-content: flex-start;
     align-items: center;
     width: 100%;
-    min-height: 100lvh; 
-    padding-top: 15vh;
+    min-height: 100svh;
+    padding-top: 15svh;
     position: relative;
     overflow: hidden;
 }
 
 .pres .text-pres {
-    margin-bottom: 5vh;
+    margin-bottom: 5svh;
 }
 
 .box-container {
@@ -67,8 +67,8 @@
     justify-content: center;
     flex-wrap: wrap;
     align-items: stretch;
-    gap: 7vh;
-    padding: 3vh;
+    gap: 7svh;
+    padding: 3svh;
 }
 
 .box-container > a {
@@ -82,8 +82,8 @@
     flex-direction: column;
     flex-grow: 1;
     position: relative;
-    width: 42vh;
-    min-height: 55vh;
+    width: 42svh;
+    min-height: 55svh;
     background-color: var(--card-bg);
     border-radius: var(--border-radius);
     border: 1px solid var(--light-grey);
@@ -107,7 +107,7 @@
 
 .box-pres img {
     width: 100%;
-    height: 22vh;
+    height: 22svh;
     display: block;
     object-fit: cover;
     border-bottom: 2px solid var(--purple);
@@ -125,15 +125,15 @@
 
 .box-info h4 {
     margin-bottom: 1rem;
-    font-size: 2.5vh;
+    font-size: 2.5svh;
     font-weight: 700;
     color: var(--white);
 }
 
 .box-info > p {
     flex-grow: 1;
-    margin-bottom: 2vh;
-    font-size: 1.9vh;
+    margin-bottom: 2svh;
+    font-size: 1.9svh;
     line-height: 1.6;
     color: var(--text-subtle);
 }
@@ -152,7 +152,7 @@
 .box-info li {
     display: flex;
     align-items: center;
-    font-size: 1.9vh;
+    font-size: 1.9svh;
     color: var(--white);
     text-align: left;
 }
@@ -160,7 +160,7 @@
 .checkbox-icon {
     width: 20px;
     margin-right: 1rem;
-    font-size: 2.2vh;
+    font-size: 2.2svh;
     color: var(--purple);
 }
 
@@ -169,7 +169,7 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    padding: 20vh 0;
+    padding: 20svh 0;
 }
 
 .news-info {
@@ -180,8 +180,8 @@
     align-items: center;
     width: 100%;
     padding: 0 10%;
-    margin-bottom: 5vh;
-    gap: 5vh;
+    margin-bottom: 5svh;
+    gap: 5svh;
 }
 
 .news-info h2 {
@@ -194,7 +194,7 @@
     flex-wrap: wrap;
     justify-content: center;
     width: 100%;
-    gap: 3vh;
+    gap: 3svh;
 }
 
 .news-card {
@@ -279,14 +279,14 @@
 
 .card-title {
     margin-bottom: 0.5rem;
-    font-size: 5vh;
+    font-size: 5svh;
     font-weight: 700;
     color: var(--white);
     transition: opacity 0.4s ease 0.2s, transform 0.4s ease 0.2s;
 }
 
 .card-subtitle {
-    font-size: 3vh;
+    font-size: 3svh;
     font-weight: 400;
     color: var(--text-subtle);
     transition: opacity 0.4s ease 0.3s, transform 0.4s ease 0.3s;
@@ -345,7 +345,7 @@
 
     .intro {
         flex-direction: column-reverse;
-        padding: 6rem 0; 
+        padding: 6rem 0;
     }
     
     .intro .image-intro {
@@ -370,8 +370,8 @@
     
     .intro .text-intro h3 {
         width: 100%;
-        margin-bottom: 3rem; 
-        padding-top: 2rem; 
+        margin-bottom: 3rem;
+        padding-top: 2rem;
     }
     
     .hyphen {
@@ -379,14 +379,14 @@
     }
 
     .pres {
-        padding: 3rem 0; 
+        padding: 3rem 0;
     }
     
     .box-container {
         flex-direction: column;
         align-items: center;
-        gap: 2.5rem; 
-        padding: 1.5rem; 
+        gap: 2.5rem;
+        padding: 1.5rem;
     }
     
     .box-pres {
@@ -396,16 +396,16 @@
     }
     
     .box-pres img {
-        height: 150px; 
+        height: 150px;
     }
     
     .box-info h4 {
-        font-size: 1.6rem; 
+        font-size: 1.6rem;
         margin-bottom: 1.5rem;
     }
     
     .box-info p:not(.check-box p) {
-        font-size: 1.4rem; 
+        font-size: 1.4rem;
         margin-bottom: 2rem;
     }
     

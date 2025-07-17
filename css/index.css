@@ -87,10 +87,10 @@
     background-color: var(--card-bg);
     border-radius: var(--border-radius);
     border: 1px solid var(--light-grey);
-    box-shadow: 0 10px 30px var(--shadow-medium);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    will-change: transform, box-shadow;
+    transition: transform 0.3s ease;
+    will-change: transform;
 }
 
 .box-pres::before {
@@ -102,6 +102,18 @@
     opacity: 0;
     transition: opacity 0.4s ease;
     pointer-events: none;
+    will-change: opacity;
+}
+
+.box-pres::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: var(--border-radius);
+    box-shadow: 0 20px 40px var(--shadow-heavy);
+    opacity: 0;
+    transition: opacity 0.3s ease;
     will-change: opacity;
 }
 
@@ -184,11 +196,6 @@
     gap: 5svh;
 }
 
-.news-info h2 {
-    flex-basis: 40%;
-    text-align: left;
-}
-
 .news-grid {
     display: flex;
     flex-wrap: wrap;
@@ -209,8 +216,8 @@
     border: 1px solid var(--light-grey);
     box-shadow: 0 8px 25px var(--shadow-light);
     overflow: hidden;
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-    will-change: transform, box-shadow;
+    transition: transform 0.4s ease;
+    will-change: transform;
 }
 
 .news-card.event {
@@ -292,40 +299,33 @@
     transition: opacity 0.4s ease 0.3s, transform 0.4s ease 0.3s;
 }
 
-
 @media (hover: hover) and (pointer: fine) {
     .box-pres:hover {
         transform: translateY(-10px) scale(1.02);
-        box-shadow: 0 20px 40px var(--shadow-heavy);
     }
-
+    .box-pres:hover::after {
+        opacity: 1;
+    }
     .box-pres:hover::before {
         opacity: 1;
     }
-
     .box-pres:hover img {
         transform: scale(1.05);
     }
-    
     .news-card:hover {
         transform: translateY(-10px);
-        box-shadow: 0 15px 35px var(--shadow-heavy);
     }
-
     .news-card:hover::before {
         opacity: 0.8;
         background-position: 100% 100%;
     }
-    
     .news-card:hover img {
         transform: scale(1.1);
     }
-    
     .news-card:hover .card-overlay {
         opacity: 1;
         pointer-events: auto;
     }
-    
     .news-card:hover .card-title,
     .news-card:hover .card-subtitle {
         opacity: 1;
@@ -334,90 +334,72 @@
 }
 
 @media (max-width: 800px) {
-
     .intro {
         flex-direction: column-reverse;
         padding: 6rem 0;
     }
-    
     .intro .image-intro {
         width: 100%;
         padding-bottom: 0;
     }
-    
     .intro .image-intro > img {
         width: 80%;
         max-width: 350px;
     }
-    
     .text-intro {
         width: 100%;
         padding: 0 5%;
         text-align: center;
     }
-    
     .intro .text-intro h3 {
         width: 100%;
         margin-bottom: 3rem;
         padding-top: 2rem;
     }
-
     .intro .text-intro h2{
         font-size: 40px;
     }
-    
     .hyphen {
         display: none;
     }
-
     .pres {
         padding: 3rem 0;
     }
-    
     .box-container {
         flex-direction: column;
         align-items: center;
         gap: 2.5rem;
         padding: 1.5rem;
     }
-    
     .box-pres {
         width: 80vw;
         max-width: 400px;
         min-height: auto;
     }
-    
     .box-pres img {
         height: 150px;
     }
-    
     .box-info h4 {
         font-size: 1.6rem;
         margin-bottom: 1.5rem;
     }
-    
     .box-info p:not(.check-box p) {
         font-size: 1.4rem;
         margin-bottom: 2rem;
     }
-
     .box-info li {
         font-size: 1.5rem;
     }
-    
     .checkbox-icon {
         font-size: 1.4rem;
     }
-
     .check-box p,
     .checkbox-icon {
-        font-size: 1.4rem; 
+        font-size: 1.4rem;
     }
-
     .news {
         padding: 5rem 1rem;
     }
-    
     .news-info {
         flex-direction: column;
         flex-wrap: wrap;
@@ -425,29 +407,23 @@
         padding: 0 1rem;
         gap: 1.5rem;
     }
-    
     .news-card,
     .news-card.event {
         max-width: 90%;
         flex-basis: auto;
     }
-    
     .card-image-container {
         padding-bottom: 40%;
     }
-    
     .card-overlay {
         padding: 1.2rem;
     }
-    
     .card-title {
         font-size: 2.5rem;
     }
-    
     .card-subtitle {
         font-size: 1.6rem;
     }
-
     .news-card .card-overlay,
     .news-card .card-title,
     .news-card .card-subtitle {
@@ -455,7 +431,6 @@
         transform: translateY(0);
         pointer-events: auto;
     }
-
     .news-card .card-overlay {
         background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.4) 30%, rgba(0,0,0,0.85) 100%);
     }

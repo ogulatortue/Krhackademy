@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const initializeLessonDetailPage = () => {
 
         const nextButton = document.querySelector('.next-button');
-        const lessonContainer = document.querySelector('.lesson-page-container');
+        const lessonContainer = document.querySelector('.lesson-container'); 
         
         if (!nextButton || !lessonContainer) {
             return;

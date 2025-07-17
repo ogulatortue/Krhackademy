@@ -106,15 +106,6 @@
     will-change: opacity;
 }
 
-.box-pres:hover {
-    transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 20px 40px var(--shadow-heavy);
-}
-
-.box-pres:hover::before {
-    opacity: 1;
-}
-
 .box-pres img {
     width: 100%;
     height: 22vh;
@@ -123,10 +114,6 @@
     border-bottom: 2px solid var(--purple);
     transition: transform 0.3s ease;
     will-change: transform;
-}
-
-.box-pres:hover img {
-    transform: scale(1.05);
 }
 
 .box-pres .box-info {
@@ -246,16 +233,6 @@
     will-change: opacity, background-position;
 }
 
-.news-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 35px var(--shadow-heavy);
-}
-
-.news-card:hover::before {
-    opacity: 0.8;
-    background-position: 100% 100%;
-}
-
 .card-image-container {
     position: relative;
     width: 100%;
@@ -279,10 +256,6 @@
     will-change: transform;
 }
 
-.news-card:hover img {
-    transform: scale(1.1);
-}
-
 .card-overlay {
     position: absolute;
     inset: 0;
@@ -296,11 +269,6 @@
     transition: opacity 0.5s ease;
     pointer-events: none;
     will-change: opacity;
-}
-
-.news-card:hover .card-overlay {
-    opacity: 1;
-    pointer-events: auto;
 }
 
 .card-title, .card-subtitle {
@@ -325,10 +293,45 @@
     transition: opacity 0.4s ease 0.3s, transform 0.4s ease 0.3s;
 }
 
-.news-card:hover .card-title,
-.news-card:hover .card-subtitle {
-    opacity: 1;
-    transform: translateY(0);
+
+@media (hover: hover) and (pointer: fine) {
+    .box-pres:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 20px 40px var(--shadow-heavy);
+    }
+
+    .box-pres:hover::before {
+        opacity: 1;
+    }
+
+    .box-pres:hover img {
+        transform: scale(1.05);
+    }
+    
+    .news-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 35px var(--shadow-heavy);
+    }
+
+    .news-card:hover::before {
+        opacity: 0.8;
+        background-position: 100% 100%;
+    }
+    
+    .news-card:hover img {
+        transform: scale(1.1);
+    }
+    
+    .news-card:hover .card-overlay {
+        opacity: 1;
+        pointer-events: auto;
+    }
+    
+    .news-card:hover .card-title,
+    .news-card:hover .card-subtitle {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @media (max-width: 800px) {

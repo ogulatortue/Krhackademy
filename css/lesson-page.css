@@ -1,4 +1,4 @@
-.lesson-page-container {
+.lesson-container {
     padding: 5vh;
     margin: 0 auto;
     max-width: 1200px;
@@ -26,7 +26,7 @@
     background-repeat: no-repeat;
 }
 
-.lesson-header .fas{
+.lesson-header .fas {
     color: var(--white);
 }
 
@@ -62,11 +62,11 @@
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
 }
 
-.lesson-section {
+.lesson-block {
     margin-bottom: 5vh;
 }
 
-.lesson-section h2, .lesson-section h4 {
+.lesson-block h2, .lesson-block h4 {
     color: white;
     margin-bottom: 1.5vh;
     display: flex;
@@ -75,37 +75,37 @@
     margin-top: 5vh;
 }
 
-.lesson-section h2 {
+.lesson-block h2 {
     font-size: 1.8em;
     border-left: 4px solid var(--purple);
     padding-left: 15px;
     margin-top: 7vh;
 }
 
-.lesson-section h4 {
+.lesson-block h4 {
     font-size: 1.3em;
     font-style: italic;
     color: white;
 }
 
-.lesson-section p, .lesson-section ul {
+.lesson-block p, .lesson-block ul, .lesson-block ol {
     font-size: 1em;
     line-height: 1.7;
     margin-bottom: 2vh;
 }
 
-.lesson-section ul {
+.lesson-block ul {
     list-style-type: none;
     padding-left: 20px;
 }
 
-.lesson-section ul li {
+.lesson-block ul li {
     position: relative;
     padding-left: 25px;
     margin-bottom: 10px;
 }
 
-.lesson-section ul li::before {
+.lesson-block ul li::before {
     content: '\f105';
     font-family: 'Font Awesome 6 Free';
     font-weight: 900;
@@ -202,11 +202,6 @@ pre code {
     transition: all 0.2s ease;
 }
 
-.fake-form button:hover {
-    filter: brightness(1.2);
-    transform: translateY(-2px);
-}
-
 .demo-result {
     margin-top: 20px;
     padding: 15px;
@@ -219,6 +214,7 @@ pre code {
 .demo-result code {
     font-size: 1.1em;
 }
+
 
 .lesson-navigation {
     display: flex;
@@ -239,33 +235,56 @@ pre code {
     font-weight: bold;
 }
 
-.nav-button:hover {
-    color: white;
-    border-color: var(--purple);
-    transform: scale(1.05);
-}
-
 .nav-button.disabled {
     filter: grayscale(80%);
     pointer-events: none;
     opacity: 0.6;
 }
 
-.defense-list {
+
+.feature-list {
     list-style-position: inside;
     padding-left: 0;
 }
 
-.defense-list li::marker {
+.feature-list li::marker {
     color: var(--white);
     font-size: 1.3em;
     font-weight: bold;
 }
 
-.defense-list h4 {
+.feature-list h4 {
     margin-top: 0;
     display: inline-block;
 }
+
+.demo-result.success {
+    border-color: var(--easy);
+}
+.demo-result.success p {
+    color: var(--easy);
+    font-weight: bold;
+}
+.demo-result.error {
+    border-color: var(--danger);
+}
+.demo-result.error p {
+    color: var(--danger);
+}
+
+
+@media (hover: hover) and (pointer: fine) {
+    .fake-form button:hover {
+        filter: brightness(1.2);
+        transform: translateY(-2px);
+    }
+
+    .nav-button:hover {
+        color: white;
+        border-color: var(--purple);
+    }
+}
+
 
 @media (max-width: 800px) {
     .lesson-content {

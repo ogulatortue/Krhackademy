@@ -8,14 +8,24 @@ document.addEventListener('DOMContentLoaded', () => {
     if (submitButton && userInput && resultBox) {
         submitButton.addEventListener('click', () => {
             const username = userInput.value.trim();
+            
+            resultBox.textContent = '';
 
+            const p = document.createElement('p');
+            const i = document.createElement('i');
+            
             if (username === successPayload) {
-                resultBox.innerHTML = `<p style="color: var(--easy); font-weight: bold;"><i class="fas fa-check-circle"></i> Succès ! Authentification contournée. Vous êtes connecté en tant que 'admin'.</p>`;
-                resultBox.style.borderColor = 'var(--easy)';
+                resultBox.className = 'demo-result success';
+                i.className = 'fas fa-check-circle';
+                p.append(i, " Succès ! Authentification contournée. Vous êtes connecté en tant que 'admin'.");
             } else {
-                resultBox.innerHTML = `<p style="color: var(--danger);"><i class="fas fa-times-circle"></i> Échec. Identifiants incorrects. Essayez avec <code>' OR '1'='1' --</code> comme nom d'utilisateur.</p>`;
-                resultBox.style.borderColor = 'var(--danger)';
+                const code = document.createElement('code');
+                resultBox.className = 'demo-result error';
+                i.className = 'fas fa-times-circle';
+                code.textContent = "' OR '1'='1' --";
+                p.append(i, " Échec. Identifiants incorrects. Essayez avec ", code, " comme nom d'utilisateur.");
             }
+            resultBox.append(p);
         });
     } else {
         console.error("Un ou plusieurs éléments de la démo sont introuvables sur la page.");

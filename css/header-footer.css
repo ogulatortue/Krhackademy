@@ -58,10 +58,6 @@ header .title a {
     transition: background-color 0.3s ease;
 }
 
-.nav-bar li:hover a {
-    background-color: var(--light-grey);
-}
-
 .nav-bar li.active a {
     background-color: var(--white);
     color: var(--black);
@@ -107,6 +103,13 @@ footer .footer-legal {
     line-height: 1.5;
     font-weight: normal;
 }
+
+@media (hover: hover) and (pointer: fine) {
+    .nav-bar li:hover a {
+        background-color: var(--light-grey);
+    }
+}
+
 
 @media (max-width: 800px) {
     header .fa-bars {

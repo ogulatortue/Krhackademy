@@ -54,9 +54,12 @@
     animation: fadeInUp 0.5s ease-out;
 }
 
-.lesson-card:hover {
-    transform: translateY(-5px) scale(1.02);
-    box-shadow: 0 20px 40px var(--shadow-heavy);
+
+@media (hover: hover) and (pointer: fine) {
+    .lesson-card:hover {
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 0 20px 40px var(--shadow-heavy);
+    }
 }
 
 .card-icon {
@@ -129,44 +132,33 @@
     color: var(--text-completed-body);
 }
 
-
 @media (max-width: 800px) {
+
+    .lessons-main-content {
+        padding: 8vh 5vw;
+    }
+
     .lesson-card {
+        width: 100%;
+        max-width: 480px;
+        height: 120px;
         padding: 15px;
         gap: 15px;
-        flex-direction: column;
-        height: auto;
-        text-align: center;
     }
 
-    .lesson-text-content h4,
-    .lesson-text-content p {
-        text-align: center;
-    }
-
-    .lesson-title-wrapper {
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-    
     .card-icon {
-        font-size: 28px;
+        font-size: 26px;
     }
 
     .lesson-text-content h4 {
-        font-size: 16px;
+        font-size: 20px;
     }
 
     .lesson-text-content p {
-        font-size: 12px;
+        font-size: 13px;
     }
     
     .checkbox-icon {
         font-size: 22px;
-    }
-
-    .check_box {
-        margin-top: 10px;
-        margin-left: 0;
     }
 }

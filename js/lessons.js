@@ -1,19 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    const lessonContainers = document.querySelectorAll('.box-container');
-
-    function setupStaggeredAnimation() {
-        if (lessonContainers.length === 0) return;
-
-        lessonContainers.forEach(container => {
-            const lessons = container.querySelectorAll('a.lesson-card');
-            lessons.forEach((lesson, index) => {
-                lesson.style.animationDelay = `${(index + 1) * 0.1}s`;
-                lesson.style.animationFillMode = 'backwards'; 
-            });
-        });
-    }
-
     const LESSON_STATES_KEY = 'lessonStates';
 
     const getLessonStates = () => {
@@ -25,54 +11,56 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem(LESSON_STATES_KEY, JSON.stringify(states));
     };
 
-    const updateCardAppearance = (card, isCompleted) => {
-        const icon = card.querySelector('.checkbox-icon');
-        if (!icon) return;
 
-        card.classList.toggle('completed-lesson', isCompleted);
-        
-        icon.classList.toggle('completed', isCompleted);
-        icon.classList.toggle('not-completed', !isCompleted);
-        
-        icon.classList.toggle('fa-check-circle', isCompleted);
-        icon.classList.toggle('fa-times-circle', !isCompleted);
-    };
+    const initializeLessonListPage = () => {
 
-    const initializeCards = () => {
+        const lessonCards = document.querySelectorAll('.lesson-card');
+        if (lessonCards.length === 0) {
+
+            return; 
+        }
+
         const lessonStates = getLessonStates();
-        const cards = document.querySelectorAll('.lesson-card');
-
-        cards.forEach(card => {
+        
+        lessonCards.forEach(card => {
             const lessonId = card.dataset.lessonId;
-            if (lessonId) {
-                const isCompleted = lessonStates[lessonId] || false;
-                updateCardAppearance(card, isCompleted);
+            if (lessonId && lessonStates[lessonId]) {
+
+                const icon = card.querySelector('.checkbox-icon');
+                card.classList.add('completed-lesson');
+                if (icon) {
+                    icon.classList.remove('fa-times-circle', 'not-completed');
+                    icon.classList.add('fa-check-circle', 'completed');
+                }
             }
         });
     };
 
-    const handleCheckClick = (event) => {
-        const checkBox = event.target.closest('.check_box');
-        if (!checkBox) return;
+
+    const initializeLessonDetailPage = () => {
+
+        const nextButton = document.querySelector('.next-button');
+        const lessonContainer = document.querySelector('.lesson-page-container');
         
-        event.preventDefault();
-        event.stopPropagation();
+        if (!nextButton || !lessonContainer) {
+            return;
+        }
 
-        const card = checkBox.closest('.lesson-card');
-        const lessonId = card.dataset.lessonId;
-
+        const lessonId = lessonContainer.dataset.lessonId;
         if (!lessonId) return;
 
-        const lessonStates = getLessonStates();
-        const newStatus = !lessonStates[lessonId];
-        
-        lessonStates[lessonId] = newStatus;
-        saveLessonStates(lessonStates);
-        
-        updateCardAppearance(card, newStatus);
+        nextButton.addEventListener('click', (event) => {
+            event.preventDefault();
+            
+            const lessonStates = getLessonStates();
+            lessonStates[lessonId] = true;
+            saveLessonStates(lessonStates);
+            
+            window.location.href = nextButton.href;
+        });
     };
-    
-    setupStaggeredAnimation(); 
-    initializeCards();
-    document.querySelector('.lessons-main-content').addEventListener('click', handleCheckClick);
+
+    initializeLessonListPage();
+    initializeLessonDetailPage();
+
 });

@@ -4,7 +4,7 @@
     justify-content: flex-start;
     align-items: center;
     width: 100%;
-    min-height: 100vh;
+    min-height: 100svh; 
     padding-top: 20vh;
 }
 
@@ -52,7 +52,7 @@
     justify-content: flex-start;
     align-items: center;
     width: 100%;
-    min-height: 100vh;
+    min-height: 100svh; 
     padding-top: 15vh;
     position: relative;
     overflow: hidden;
@@ -60,7 +60,6 @@
 
 .pres .text-pres {
     margin-bottom: 5vh;
-    text-align: center;
 }
 
 .box-container {
@@ -346,7 +345,7 @@
 
     .intro {
         flex-direction: column-reverse;
-        padding: 10vh 0;
+        padding: 6rem 0; 
     }
     
     .intro .image-intro {
@@ -371,8 +370,8 @@
     
     .intro .text-intro h3 {
         width: 100%;
-        margin-bottom: 5vh;
-        padding-top: 4vh;
+        margin-bottom: 3rem; 
+        padding-top: 2rem; 
     }
     
     .hyphen {
@@ -380,14 +379,14 @@
     }
 
     .pres {
-        padding: 5vh 0;
+        padding: 3rem 0; 
     }
     
     .box-container {
         flex-direction: column;
         align-items: center;
-        gap: 4vh;
-        padding: 3vh;
+        gap: 2.5rem; 
+        padding: 1.5rem; 
     }
     
     .box-pres {
@@ -397,26 +396,26 @@
     }
     
     .box-pres img {
-        height: 20vh;
+        height: 150px; 
     }
     
     .box-info h4 {
-        font-size: 2.2vh;
-        margin-bottom: 1.5vh;
+        font-size: 1.6rem; 
+        margin-bottom: 1.5rem;
     }
     
     .box-info p:not(.check-box p) {
-        font-size: 1.7vh;
-        margin-bottom: 2.5vh;
+        font-size: 1.4rem; 
+        margin-bottom: 2rem;
     }
     
     .check-box p,
     .checkbox-icon {
-        font-size: 1.8vh;
+        font-size: 1.4rem; 
     }
 
     .news {
-        padding: 10vh 1rem 5vh 1rem;
+        padding: 5rem 1rem;
     }
     
     .news-info {
@@ -424,6 +423,7 @@
         flex-wrap: wrap;
         align-items: center;
         padding: 0 1rem;
+        gap: 1.5rem;
     }
     
     .news-info h2 {
@@ -447,11 +447,11 @@
     }
     
     .card-title {
-        font-size: 3.5vh;
+        font-size: 2.5rem;
     }
     
     .card-subtitle {
-        font-size: 2vh;
+        font-size: 1.6rem;
     }
 
     .news-card .card-overlay,

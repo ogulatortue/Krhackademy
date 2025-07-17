@@ -46,11 +46,23 @@
     color: var(--white);
 }
 
+html {
+    height: 100%;
+}
+
 body {
-    min-height: 100svh;
+    min-height: 100%;
     font-size: 100%;
     background: var(--grey) url(../images/back.webp) no-repeat center center/cover;
+    background-attachment: scroll;
     color: var(--white);
+    
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex-grow: 1;
 }
 
 h2 {

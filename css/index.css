@@ -344,7 +344,7 @@
     }
     
     .intro .text-intro h2 {
-        font-size: 35px;
+        font-size: 50px;
     }
 
     .intro {
@@ -358,7 +358,7 @@
     }
     
     .intro .image-intro > img {
-        width: 60%;
+        width: 80%;
         max-width: 350px;
     }
     
@@ -370,7 +370,7 @@
     
     .intro .text-intro h3 {
         width: 100%;
-        font-size: 20px;
+        font-size: 25px;
         margin-bottom: 3rem;
         padding-top: 2rem;
     }

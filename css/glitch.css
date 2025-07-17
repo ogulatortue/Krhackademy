@@ -60,128 +60,40 @@
 }
 
 @-webkit-keyframes glitch {
-    0% {
-        -webkit-clip-path: var(--clip-one);
-        clip-path: var(--clip-one);
-    }
-    2%, 8% {
-        -webkit-clip-path: var(--clip-two);
-        clip-path: var(--clip-two);
-    }
-    6% {
-        -webkit-clip-path: var(--clip-two);
-        clip-path: var(--clip-two);
-    }
-    9% {
-        -webkit-clip-path: var(--clip-two);
-        clip-path: var(--clip-two);
-    }
-    10% {
-        -webkit-clip-path: var(--clip-three);
-        clip-path: var(--clip-three);
-    }
-    13% {
-        -webkit-clip-path: var(--clip-three);
-        clip-path: var(--clip-three);
-    }
-    14%, 21% {
-        -webkit-clip-path: var(--clip-four);
-        clip-path: var(--clip-four);
-    }
-    25% {
-        -webkit-clip-path: var(--clip-five);
-        clip-path: var(--clip-five);
-    }
-    30% {
-        -webkit-clip-path: var(--clip-five);
-        clip-path: var(--clip-five);
-    }
-    35%, 45% {
-        -webkit-clip-path: var(--clip-six);
-        clip-path: var(--clip-six);
-    }
-    40% {
-        -webkit-clip-path: var(--clip-six);
-        clip-path: var(--clip-six);
-    }
-    50% {
-        -webkit-clip-path: var(--clip-six);
-        clip-path: var(--clip-six);
-    }
-    55% {
-        -webkit-clip-path: var(--clip-seven);
-        clip-path: var(--clip-seven);
-    }
-    60% {
-        -webkit-clip-path: var(--clip-seven);
-        clip-path: var(--clip-seven);
-    }
-    31%, 61%, 100% {
-        -webkit-clip-path: var(--clip-four);
-        clip-path: var(--clip-four);
-    }
+    0% { -webkit-clip-path: var(--clip-one); clip-path: var(--clip-one); }
+    2%, 8% { -webkit-clip-path: var(--clip-two); clip-path: var(--clip-two); }
+    6% { -webkit-clip-path: var(--clip-two); clip-path: var(--clip-two); }
+    9% { -webkit-clip-path: var(--clip-two); clip-path: var(--clip-two); }
+    10% { -webkit-clip-path: var(--clip-three); clip-path: var(--clip-three); }
+    13% { -webkit-clip-path: var(--clip-three); clip-path: var(--clip-three); }
+    14%, 21% { -webkit-clip-path: var(--clip-four); clip-path: var(--clip-four); }
+    25% { -webkit-clip-path: var(--clip-five); clip-path: var(--clip-five); }
+    30% { -webkit-clip-path: var(--clip-five); clip-path: var(--clip-five); }
+    35%, 45% { -webkit-clip-path: var(--clip-six); clip-path: var(--clip-six); }
+    40% { -webkit-clip-path: var(--clip-six); clip-path: var(--clip-six); }
+    50% { -webkit-clip-path: var(--clip-six); clip-path: var(--clip-six); }
+    55% { -webkit-clip-path: var(--clip-seven); clip-path: var(--clip-seven); }
+    60% { -webkit-clip-path: var(--clip-seven); clip-path: var(--clip-seven); }
+    31%, 61%, 99% { -webkit-clip-path: var(--clip-four); clip-path: var(--clip-four); }
+    100% { -webkit-clip-path: inset(50%); clip-path: inset(50%); }
 }
 @keyframes glitch {
-    0% {
-        -webkit-clip-path: var(--clip-one);
-        clip-path: var(--clip-one);
-    }
-    2%, 8% {
-        -webkit-clip-path: var(--clip-two);
-        clip-path: var(--clip-two);
-    }
-    6% {
-        -webkit-clip-path: var(--clip-two);
-        clip-path: var(--clip-two);
-    }
-    9% {
-        -webkit-clip-path: var(--clip-two);
-        clip-path: var(--clip-two);
-    }
-    10% {
-        -webkit-clip-path: var(--clip-three);
-        clip-path: var(--clip-three);
-    }
-    13% {
-        -webkit-clip-path: var(--clip-three);
-        clip-path: var(--clip-three);
-    }
-    14%, 21% {
-        -webkit-clip-path: var(--clip-four);
-        clip-path: var(--clip-four);
-    }
-    25% {
-        -webkit-clip-path: var(--clip-five);
-        clip-path: var(--clip-five);
-    }
-    30% {
-        -webkit-clip-path: var(--clip-five);
-        clip-path: var(--clip-five);
-    }
-    35%, 45% {
-        -webkit-clip-path: var(--clip-six);
-        clip-path: var(--clip-six);
-    }
-    40% {
-        -webkit-clip-path: var(--clip-six);
-        clip-path: var(--clip-six);
-    }
-    50% {
-        -webkit-clip-path: var(--clip-six);
-        clip-path: var(--clip-six);
-    }
-    55% {
-        -webkit-clip-path: var(--clip-seven);
-        clip-path: var(--clip-seven);
-    }
-    60% {
-        -webkit-clip-path: var(--clip-seven);
-        clip-path: var(--clip-seven);
-    }
-    31%, 61%, 100% {
-        -webkit-clip-path: var(--clip-four);
-        clip-path: var(--clip-four);
-    }
+    0% { -webkit-clip-path: var(--clip-one); clip-path: var(--clip-one); }
+    2%, 8% { -webkit-clip-path: var(--clip-two); clip-path: var(--clip-two); }
+    6% { -webkit-clip-path: var(--clip-two); clip-path: var(--clip-two); }
+    9% { -webkit-clip-path: var(--clip-two); clip-path: var(--clip-two); }
+    10% { -webkit-clip-path: var(--clip-three); clip-path: var(--clip-three); }
+    13% { -webkit-clip-path: var(--clip-three); clip-path: var(--clip-three); }
+    14%, 21% { -webkit-clip-path: var(--clip-four); clip-path: var(--clip-four); }
+    25% { -webkit-clip-path: var(--clip-five); clip-path: var(--clip-five); }
+    30% { -webkit-clip-path: var(--clip-five); clip-path: var(--clip-five); }
+    35%, 45% { -webkit-clip-path: var(--clip-six); clip-path: var(--clip-six); }
+    40% { -webkit-clip-path: var(--clip-six); clip-path: var(--clip-six); }
+    50% { -webkit-clip-path: var(--clip-six); clip-path: var(--clip-six); }
+    55% { -webkit-clip-path: var(--clip-seven); clip-path: var(--clip-seven); }
+    60% { -webkit-clip-path: var(--clip-seven); clip-path: var(--clip-seven); }
+    31%, 61%, 99% { -webkit-clip-path: var(--clip-four); clip-path: var(--clip-four); }
+    100% { -webkit-clip-path: inset(50%); clip-path: inset(50%); }
 }
 
 @-webkit-keyframes glitch-pseudo {

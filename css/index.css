@@ -1,433 +1,326 @@
 .intro {
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     width: 100%;
-    min-height: 100 vh;
-    padding-top: 8rem;
+    min-height: 90vh;
+    padding: 6rem 3rem;
+    gap: 2rem;
 }
 
 .text-intro {
     width: 50%;
-    padding-left: 6rem;
-    padding-top: 2rem;
     text-align: left;
 }
 
 .intro .text-intro h2 {
-    font-size: 54px;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 800;
+    line-height: 1.2;
+    text-wrap: balance;
 }
 
 #dynamic-text {
     position: relative;
     display: inline-block;
-    line-height: 1;
     color: var(--white);
 }
 
 .intro .text-intro h3 {
-    padding-top: 4rem;
-    margin-bottom: 4rem;
+    font-size: clamp(1rem, 2.5vw, 1.1rem);
+    color: var(--text-subtle);
+    max-width: 55ch;
+    line-height: 1.7;
+    margin-top: 1.5rem;
+    text-wrap: balance;
 }
 
 .intro .image-intro {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50%;
-    padding-bottom: 4rem;
+    width: 45%;
 }
 
 .intro .image-intro > img {
     width: 100%;
-    max-width: 60%;
+    max-width: 450px;
     height: auto;
     object-fit: contain;
 }
 
-.pres {
+.pres, .news {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
     align-items: center;
     width: 100%;
-    min-height: 100 vh;
-    padding-top: 6rem;
-    position: relative;
-    overflow: hidden;
+    padding: 6rem 2rem;
 }
 
-.pres .text-pres {
-    margin-bottom: 3rem;
+.pres h2, .news h2 {
+    font-size: clamp(2rem, 5vw, 2.75rem);
+    text-align: center;
+    margin-bottom: 1rem;
+    text-wrap: balance;
+    color: var(--white);
 }
+
+.news .section-subtitle {
+    font-size: clamp(1rem, 2.5vw, 1.1rem);
+    color: var(--text-subtle);
+    max-width: 65ch;
+    line-height: 1.7;
+    text-align: center;
+    margin-bottom: 4rem;
+    text-wrap: balance;
+}
+
 
 .box-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    align-items: stretch;
-    gap: 3rem;
-    padding: 1.5rem;
-}
-
-.box-container > a {
-    display: flex;
-    text-decoration: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+    width: 100%;
+    max-width: 1100px;
 }
 
 .box-pres {
-    --border-radius: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
+    --border-radius: 1rem;
     position: relative;
-    width: 320px;
-    min-height: 440px;
-    background-color: var(--card-bg);
+    background: linear-gradient(145deg, var(--grey), black);
     border-radius: var(--border-radius);
-    border: 1px solid var(--light-grey);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    overflow: hidden;
-    transition: transform 0.3s ease;
-    will-change: transform;
+    padding: 2px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .box-pres::before {
     content: '';
     position: absolute;
-    inset: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     border-radius: var(--border-radius);
-    background: radial-gradient(300px at var(--x) var(--y), rgba(199, 77, 255, 0.3), transparent 80%);
-    opacity: 0;
+    padding: 2px;
+    background: var(--purple);
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0.5;
     transition: opacity 0.4s ease;
-    pointer-events: none;
-    will-change: opacity;
 }
 
-.box-pres::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    border-radius: var(--border-radius);
-    box-shadow: 0 20px 40px var(--shadow-heavy);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    will-change: opacity;
+.box-content-inner {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    background: var(--bg-dark);
+    border-radius: calc(var(--border-radius) - 2px);
+    height: 100%;
 }
 
-.box-pres img {
-    width: 100%;
-    height: 150px;
-    display: block;
-    object-fit: cover;
-    border-bottom: 2px solid var(--purple);
-    transition: transform 0.3s ease;
-    will-change: transform;
+.box-header {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    margin-bottom: 1.5rem;
 }
 
-.box-pres .box-info {
+.box-icon-wrapper {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: var(--white);
+    box-shadow: 0 0 20px rgba(118, 75, 162, 0.6);
+    flex-shrink: 0;
+}
+
+.box-icon {
+    font-size: 28px;
+    color: var(--purple);
+}
+
+.box-header h4 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--white);
+    margin: 0;
+}
+
+.box-info {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    padding: 1.5rem;
-    text-align: center;
-}
-
-.box-info h4 {
-    margin-bottom: 1rem;
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--white);
+    text-align: left;
 }
 
 .box-info > p {
     flex-grow: 1;
     margin-bottom: 1.5rem;
-    font-size: 15px;
+    font-size: 1rem;
     line-height: 1.6;
     color: var(--text-subtle);
 }
 
 .box-info ul {
+    list-style: none;
+    padding: 0;
+    margin-top: auto;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
-    margin: 0.5rem 0 0 0;
-    padding: 0;
-    list-style: none;
-    gap: 0.5rem;
+    gap: 0.75rem;
 }
 
 .box-info li {
     display: flex;
     align-items: center;
-    font-size: 14px;
+    font-size: 0.95rem;
     color: var(--white);
-    text-align: left;
 }
 
 .checkbox-icon {
-    width: 22px;
-    margin-right: 1rem;
-    font-size: 16px;
+    width: 20px;
+    margin-right: 0.75rem;
+    font-size: 1.1rem;
     color: var(--purple);
 }
 
-.news {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    padding: 8rem 0;
-}
-
-.news-info {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 0 10%;
-    margin-bottom: 3rem;
-    gap: 3rem;
-}
-
 .news-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
     width: 100%;
-    gap: 1.5rem;
+    max-width: 1200px;
 }
 
 .news-card {
-    display: block;
-    position: relative;
-    width: 100%;
-    max-width: 380px;
-    color: inherit;
+    display: flex;
+    flex-direction: column;
     text-decoration: none;
-    background-color: var(--card-bg);
-    border-radius: 1.2rem;
-    border: 1px solid var(--light-grey);
-    box-shadow: 0 8px 25px var(--shadow-light);
+    background: linear-gradient(145deg, hsl(270, 8%, 18%), hsl(270, 8%, 12%));
+    border-radius: 1rem;
+    border: 1px solid hsl(270, 8%, 25%);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     overflow: hidden;
-    transition: transform 0.4s ease;
-    will-change: transform;
-}
-
-.news-card.event {
-    flex-basis: 60%;
-    max-width: none;
-}
-
-.news-card::before {
-    content: '';
-    position: absolute;
-    inset: -2px;
-    z-index: -1;
-    background: var(--accent-gradient);
-    background-size: 200% 200%;
-    border-radius: 1.3rem;
-    opacity: 0;
-    filter: blur(8px);
-    transition: opacity 0.4s ease, background-position 0.4s ease;
-    will-change: opacity, background-position;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card-image-container {
-    position: relative;
     width: 100%;
-    height: 0;
-    padding-bottom: 60%;
+    aspect-ratio: 16 / 10;
     overflow: hidden;
 }
 
-.event .card-image-container {
-    padding-bottom: 30%;
-}
-
 .card-image-container img {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.4s ease;
-    will-change: transform;
+    transition: transform 0.3s ease;
 }
 
-.card-overlay {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+.card-content {
     padding: 1.5rem;
     color: var(--white);
-    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 40%, rgba(0,0,0,0.95) 100%);
-    opacity: 0;
-    transition: opacity 0.5s ease;
-    pointer-events: none;
-    will-change: opacity;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
-.card-title, .card-subtitle {
-    opacity: 0;
-    transform: translateY(15px);
-    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
-    will-change: opacity, transform;
+.card-tag {
+    align-self: flex-start;
+    background-color: var(--purple);
+    color: var(--white);
+    padding: 0.25rem 0.75rem;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .card-title {
-    margin-bottom: 0.5rem;
-    font-size: 34px;
+    margin: 0 0 0.5rem 0;
+    font-size: 1.4rem;
     font-weight: 700;
     color: var(--white);
-    transition: opacity 0.4s ease 0.2s, transform 0.4s ease 0.2s;
+    transition: color 0.3s ease;
 }
 
 .card-subtitle {
-    font-size: 18px;
+    font-size: 1rem;
     font-weight: 400;
     color: var(--text-subtle);
-    transition: opacity 0.4s ease 0.3s, transform 0.4s ease 0.3s;
+    line-height: 1.6;
 }
 
 @media (hover: hover) and (pointer: fine) {
     .box-pres:hover {
-        transform: translateY(-10px) scale(1.02);
+        transform: translateY(-10px);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
     }
-    .box-pres:hover::after {
-        opacity: 1;
-    }
+
     .box-pres:hover::before {
         opacity: 1;
     }
-    .box-pres:hover img {
+
+    .news-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .news-card:hover img {
         transform: scale(1.05);
     }
-    .news-card:hover {
-        transform: translateY(-10px);
+
+    .news-card:hover .card-title {
+        color: var(--purple);
     }
-    .news-card:hover::before {
-        opacity: 0.8;
-        background-position: 100% 100%;
+}
+
+@media (max-width: 900px) {
+    .intro {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding: 5rem 1.5rem;
     }
-    .news-card:hover img {
-        transform: scale(1.1);
+    .text-intro {
+        width: 100%;
     }
-    .news-card:hover .card-overlay {
-        opacity: 1;
-        pointer-events: auto;
+    .intro .text-intro h3 {
+        margin: 1.5rem auto 0 auto;
     }
-    .news-card:hover .card-title,
-    .news-card:hover .card-subtitle {
-        opacity: 1;
-        transform: translateY(0);
+    .intro .image-intro {
+        width: 60%;
+        max-width: 300px;
+        margin-bottom: 2rem;
     }
 }
 
 @media (max-width: 800px) {
-    .intro {
-        flex-direction: column-reverse;
-        padding: 5rem 0;
-    }
-    .intro .image-intro {
-        width: 100%;
-        padding-bottom: 0;
-    }
-    .intro .image-intro > img {
-        width: 80%;
-        max-width: 350px;
-    }
-    .text-intro {
-        width: 100%;
-        padding: 0 5%;
-        text-align: center;
-    }
-    .intro .text-intro h3 {
-        width: 100%;
-        margin-bottom: 2.5rem;
-        padding-top: 1.5rem;
-    }
-    .intro .text-intro h2{
-        font-size: 38px;
-    }
     .hyphen {
         display: none;
     }
-    .pres {
-        padding: 2.5rem 0;
+    .pres, .news {
+        padding: 4rem 1.5rem;
     }
-    .box-container {
-        flex-direction: column;
-        align-items: center;
-        gap: 2.5rem;
-        padding: 1.5rem;
+    .pres h2, .news h2 {
+        margin-bottom: 3rem;
     }
-    .box-pres {
-        width: 80vw;
-        max-width: 400px;
-        min-height: auto;
+    .news .section-subtitle {
+        margin-bottom: 3rem;
     }
-    .box-pres img {
-        height: 150px;
-    }
-    .box-info h4 {
-        font-size: 22px;
-        margin-bottom: 1.5rem;
-    }
-    .box-info > p {
-        font-size: 15px;
-        margin-bottom: 2rem;
-    }
-    .box-info li {
-        font-size: 15px;
-    }
-    .checkbox-icon {
-        font-size: 16px;
-    }
-    .news {
-        padding: 5rem 1rem;
-    }
-    .news-info {
-        flex-direction: column;
-        flex-wrap: wrap;
-        align-items: center;
-        padding: 0 1rem;
+    .box-container, .news-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 1.5rem;
-    }
-    .news-card,
-    .news-card.event {
-        max-width: 90%;
-        flex-basis: auto;
-    }
-    .card-image-container {
-        padding-bottom: 40%;
-    }
-    .card-overlay {
-        padding: 1.2rem;
-    }
-    .card-title {
-        font-size: 32px;
-    }
-    .card-subtitle {
-        font-size: 16px;
-    }
-    .news-card .card-overlay,
-    .news-card .card-title,
-    .news-card .card-subtitle {
-        opacity: 1;
-        transform: translateY(0);
-        pointer-events: auto;
-    }
-    .news-card .card-overlay {
-        background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.4) 30%, rgba(0,0,0,0.85) 100%);
     }
 }

@@ -4,7 +4,7 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    min-height: 90vh;
+    min-height: 43em;
     padding: 6rem 3rem;
     gap: 2rem;
 }
@@ -55,7 +55,8 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    padding: 6rem 2rem;
+    padding: 5rem;
+    margin-bottom: 2rem;
 }
 
 .pres h2, .news h2 {
@@ -66,21 +67,10 @@
     color: var(--white);
 }
 
-.news .section-subtitle {
-    font-size: clamp(1rem, 2.5vw, 1.1rem);
-    color: var(--text-subtle);
-    max-width: 65ch;
-    line-height: 1.7;
-    text-align: center;
-    margin-bottom: 4rem;
-    text-wrap: balance;
-}
-
-
 .box-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
     width: 100%;
     max-width: 1100px;
 }
@@ -93,6 +83,7 @@
     padding: 2px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
 }
 
 .box-pres::before {
@@ -106,11 +97,11 @@
     padding: 2px;
     background: var(--purple);
     -webkit-mask:
-        linear-gradient(#fff 0 0) content-box,
-        linear-gradient(#fff 0 0);
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
     mask:
-        linear-gradient(#fff 0 0) content-box,
-        linear-gradient(#fff 0 0);
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     opacity: 0.5;
@@ -120,7 +111,7 @@
 .box-content-inner {
     display: flex;
     flex-direction: column;
-    padding: 2rem;
+    padding: 1.5rem;
     background: var(--bg-dark);
     border-radius: calc(var(--border-radius) - 2px);
     height: 100%;
@@ -196,8 +187,8 @@
 
 .news-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
     width: 100%;
     max-width: 1200px;
 }
@@ -211,13 +202,14 @@
     border: 1px solid hsl(270, 8%, 25%);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .card-image-container {
     width: 100%;
-    aspect-ratio: 16 / 10;
+    aspect-ratio: 16 / 9;
     overflow: hidden;
+    background-color: hsl(270, 8%, 10%);
 }
 
 .card-image-container img {
@@ -228,7 +220,7 @@
 }
 
 .card-content {
-    padding: 1.5rem;
+    padding: 1rem;
     color: var(--white);
     display: flex;
     flex-direction: column;
@@ -246,18 +238,19 @@
     margin-bottom: 1rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    box-shadow: 0 0 8px var(--purple);
 }
 
 .card-title {
     margin: 0 0 0.5rem 0;
-    font-size: 1.4rem;
+    font-size: 1.15rem;
     font-weight: 700;
     color: var(--white);
     transition: color 0.3s ease;
 }
 
 .card-subtitle {
-    font-size: 1rem;
+    font-size: 0.85rem;
     font-weight: 400;
     color: var(--text-subtle);
     line-height: 1.6;
@@ -268,22 +261,48 @@
         transform: translateY(-10px);
         box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
     }
-
     .box-pres:hover::before {
         opacity: 1;
     }
-
     .news-card:hover {
         transform: translateY(-8px);
-        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+        border-color: var(--purple);
+        box-shadow: 0 12px 30px rgba(0,0,0,0.3), 0 0 20px rgba(118, 75, 162, 0.4);
     }
-
     .news-card:hover img {
         transform: scale(1.05);
     }
+}
 
-    .news-card:hover .card-title {
-        color: var(--purple);
+@media (min-width: 901px) {
+    .news-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+
+    .news-card.featured {
+        grid-column: 1 / -1;
+        flex-direction: row;
+        align-items: stretch;
+    }
+
+    .news-card.featured .card-image-container {
+        flex-basis: 50%;
+        height: auto;
+        aspect-ratio: unset;
+    }
+
+    .news-card.featured .card-content {
+        justify-content: center;
+        padding: 1rem;
+    }
+
+    .news-card.featured .card-title {
+        font-size: 1.75rem;
+    }
+
+    .news-card.featured .card-subtitle {
+        font-size: 1rem;
     }
 }
 
@@ -291,36 +310,94 @@
     .intro {
         flex-direction: column-reverse;
         text-align: center;
-        padding: 5rem 1.5rem;
+        padding: 4rem 1.5rem;
+        min-height: auto;
     }
+
     .text-intro {
         width: 100%;
+        text-align: center;
     }
+
     .intro .text-intro h3 {
         margin: 1.5rem auto 0 auto;
     }
+    
     .intro .image-intro {
         width: 60%;
         max-width: 300px;
         margin-bottom: 2rem;
     }
+
+    .news-card.featured {
+      flex-direction: column;
+    }
 }
 
 @media (max-width: 800px) {
-    .hyphen {
-        display: none;
-    }
     .pres, .news {
         padding: 4rem 1.5rem;
     }
+
     .pres h2, .news h2 {
         margin-bottom: 3rem;
     }
-    .news .section-subtitle {
-        margin-bottom: 3rem;
-    }
-    .box-container, .news-grid {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    
+    .box-container {
         gap: 1.5rem;
+    }
+    
+    .hyphen {
+        display: none;
+    }
+
+    .pres h2 {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .pres, .news {
+        padding: 3rem 1rem;
+    }
+
+    .intro {
+      padding: 3rem 1rem;
+    }
+
+    .box-content-inner {
+      padding: 1.25rem;
+    }
+
+    .box-header {
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .box-icon-wrapper {
+      width: 50px;
+      height: 50px;
+    }
+
+    .box-icon {
+      font-size: 24px;
+    }
+
+    .box-header h4 {
+      font-size: 1.2rem;
+    }
+
+    .card-content {
+      padding: 1rem 0.75rem;
+    }
+
+    .card-title {
+      font-size: 1.1rem;
+    }
+
+    .card-subtitle {
+      font-size: 0.8rem;
     }
 }

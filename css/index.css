@@ -335,14 +335,6 @@
 
 @media (max-width: 800px) {
 
-    h2 {
-        text-align: center;
-    }
-    
-    .intro .text-intro h2 {
-        font-size: 45px;
-    }
-
     .intro {
         flex-direction: column-reverse;
         padding: 6rem 0;
@@ -428,12 +420,6 @@
         align-items: center;
         padding: 0 1rem;
         gap: 1.5rem;
-    }
-    
-    .news-info h2 {
-        flex: none;
-        width: 100%;
-        text-align: center;
     }
     
     .news-card,

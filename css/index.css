@@ -342,6 +342,10 @@
         font-size: 35px;
         text-align: center;
     }
+    
+    .intro .text-intro h2 {
+        font-size: 35px;
+    }
 
     .intro {
         flex-direction: column-reverse;
@@ -354,7 +358,7 @@
     }
     
     .intro .image-intro > img {
-        width: 80%;
+        width: 60%;
         max-width: 350px;
     }
     

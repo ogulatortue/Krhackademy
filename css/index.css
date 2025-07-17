@@ -4,7 +4,7 @@
     justify-content: flex-start;
     align-items: center;
     width: 100%;
-    min-height: 100svh;
+    min-height: 100 vh;
     padding-top: 8rem;
 }
 
@@ -52,7 +52,7 @@
     justify-content: flex-start;
     align-items: center;
     width: 100%;
-    min-height: 100svh;
+    min-height: 100 vh;
     padding-top: 6rem;
     position: relative;
     overflow: hidden;

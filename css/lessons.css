@@ -135,7 +135,19 @@
 @media (max-width: 800px) {
 
     .lessons-main-content {
-        padding: 8vh 5vw;
+        padding: 4rem 5vw;
+    }
+
+    .lesson-category-section {
+        margin-bottom: 3rem;
+    }
+
+    .main-title.category-title {
+        padding: 2.5rem 0;
+    }
+
+    .box_container {
+        gap: 1.5rem;
     }
 
     .lesson-card {

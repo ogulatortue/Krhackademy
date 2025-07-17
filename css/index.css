@@ -361,6 +361,10 @@
         margin-bottom: 3rem;
         padding-top: 2rem;
     }
+
+    .intro .text-intro h2{
+        font-size: 40px;
+    }
     
     .hyphen {
         display: none;

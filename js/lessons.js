@@ -11,12 +11,9 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem(LESSON_STATES_KEY, JSON.stringify(states));
     };
 
-
     const initializeLessonListPage = () => {
-
         const lessonCards = document.querySelectorAll('.lesson-card');
         if (lessonCards.length === 0) {
-
             return; 
         }
 
@@ -25,7 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
         lessonCards.forEach(card => {
             const lessonId = card.dataset.lessonId;
             if (lessonId && lessonStates[lessonId]) {
-
                 const icon = card.querySelector('.checkbox-icon');
                 card.classList.add('completed-lesson');
                 if (icon) {
@@ -36,11 +32,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-
     const initializeLessonDetailPage = () => {
-
         const nextButton = document.querySelector('.next-button');
-        const lessonContainer = document.querySelector('.lesson-container'); 
+        const lessonContainer = document.querySelector('.lesson-container');
         
         if (!nextButton || !lessonContainer) {
             return;
@@ -62,5 +56,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     initializeLessonListPage();
     initializeLessonDetailPage();
-
 });

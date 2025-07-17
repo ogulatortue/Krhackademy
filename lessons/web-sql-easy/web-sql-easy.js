@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-
     const submitButton = document.getElementById('demo-submit');
     const userInput = document.getElementById('demo-user');
     const resultBox = document.getElementById('demo-result');
@@ -8,9 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (submitButton && userInput && resultBox) {
         submitButton.addEventListener('click', () => {
             const username = userInput.value.trim();
-            
             resultBox.textContent = '';
-
             const p = document.createElement('p');
             const i = document.createElement('i');
             
@@ -27,7 +24,5 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             resultBox.append(p);
         });
-    } else {
-        console.error("Un ou plusieurs éléments de la démo sont introuvables sur la page.");
     }
 });

@@ -47,7 +47,7 @@
 }
 
 body {
-    min-height: 100vh;
+    min-height: 100svh;
     font-size: 100%;
     background: var(--grey) url(../images/back.webp) no-repeat center center/cover;
     color: var(--white);

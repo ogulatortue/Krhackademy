@@ -1,5 +1,5 @@
 .lesson-container {
-    padding: 5vh;
+    padding: 5svh;
     margin: 0 auto;
     max-width: 1200px;
 }
@@ -7,7 +7,7 @@
 .lesson-content {
     background-color: var(--card-bg);
     border-radius: 10px;
-    padding: 4vh 5vh;
+    padding: 4svh 5svh;
     border: 1px solid var(--border-color);
     box-shadow: 0 10px 30px var(--shadow-medium);
 }
@@ -16,9 +16,9 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 3vh;
+    gap: 3svh;
     padding: 25px;
-    margin-bottom: 3vh;
+    margin-bottom: 3svh;
     border-radius: 25px;
     background-image: url(../../images/header_background_blured3.webp);
     background-size: cover;
@@ -63,23 +63,23 @@
 }
 
 .lesson-block {
-    margin-bottom: 5vh;
+    margin-bottom: 5svh;
 }
 
 .lesson-block h2, .lesson-block h4 {
     color: white;
-    margin-bottom: 1.5vh;
+    margin-bottom: 1.5svh;
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-top: 5vh;
+    margin-top: 5svh;
 }
 
 .lesson-block h2 {
     font-size: 1.8em;
     border-left: 4px solid var(--purple);
     padding-left: 15px;
-    margin-top: 7vh;
+    margin-top: 7svh;
 }
 
 .lesson-block h4 {
@@ -91,7 +91,7 @@
 .lesson-block p, .lesson-block ul, .lesson-block ol {
     font-size: 1em;
     line-height: 1.7;
-    margin-bottom: 2vh;
+    margin-bottom: 2svh;
 }
 
 .lesson-block ul {
@@ -126,7 +126,7 @@ pre {
     font-family: 'Courier New', Courier, monospace;
     font-size: 0.95em;
     box-shadow: inset 0 2px 5px var(--shadow-light);
-    margin-bottom: 5vh;
+    margin-bottom: 5svh;
 }
 
 code {
@@ -149,7 +149,7 @@ pre code {
     background-color: var(--dashed-bg);
     border: 1px dashed var(--border-medium);
     border-radius: 5px;
-    margin: 2vh 0;
+    margin: 2svh 0;
 }
 
 .user-input-example code {
@@ -162,7 +162,7 @@ pre code {
     border: 1px solid var(--border-color);
     border-radius: 8px;
     padding: 25px;
-    margin-top: 3vh;
+    margin-top: 3svh;
 }
 
 .interactive-demo > p {
@@ -219,9 +219,9 @@ pre code {
 .lesson-navigation {
     display: flex;
     justify-content: space-between;
-    margin-top: 6vh;
+    margin-top: 6svh;
     border-top: 1px solid var(--border-color);
-    padding-top: 3vh;
+    padding-top: 3svh;
 }
 
 .nav-button {

@@ -160,4 +160,8 @@ footer .footer-legal {
     footer .footer-legal {
         width: 100%;
     }
+
+    footer img {
+        width: 70px;
+    }
 }

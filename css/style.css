@@ -50,6 +50,11 @@ html {
     font-size: 100%;
 }
 
+main.main {
+    flex-grow: 1;
+    background-color: transparent;
+}
+
 body {
     min-height: 100svh;
     font-size: 100%;
@@ -101,4 +106,10 @@ h3 {
 .difficulty-expert {
     background-color: var(--expert);
     box-shadow: 0 0 8px var(--expert);
+}
+
+@media (max-width: 800px) {
+    html {
+        font-size: 55%;
+    }
 }

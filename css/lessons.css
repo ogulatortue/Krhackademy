@@ -1,5 +1,5 @@
 .lessons-main-content {
-    padding: 15svh 5vw;
+    padding: 10svh 5vw;
     margin: 0 auto;
     color: var(--white);
 }
@@ -133,10 +133,6 @@
 }
 
 @media (max-width: 800px) {
-
-    .lessons-main-content {
-        padding: 4rem 5vw;
-    }
 
     .lesson-category-section {
         margin-bottom: 3rem;

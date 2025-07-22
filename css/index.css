@@ -341,6 +341,13 @@
   
     .pres, .news {
       padding: 3rem 1rem;
+      margin-bottom: 10rem;
+    }
+
+    .news {
+        max-width: 80%;
+        margin-left: auto;
+        margin-right: auto;
     }
   
     .pres h2 {
@@ -356,7 +363,7 @@
     }
   
     .box-container {
-      gap: 1.5rem;
+      max-width: 80%;
     }
   
     .box-content-inner {
@@ -391,7 +398,7 @@
         margin-bottom: 1rem;
     }
 
-    .news-card.featured {
+    .news-card, .news-header .news-card.featured {
         aspect-ratio: 16 / 9;
     }
     
@@ -410,19 +417,11 @@
       padding: 1rem 0.75rem;
     }
     
-    .news-card.featured .card-title {
+    .card-title {
       font-size: 1.5rem;
     }
   
-    .news-card.featured .card-subtitle {
-      font-size: 0.9rem;
-    }
-  
-    .card-title {
-      font-size: 1.1rem;
-    }
-  
     .card-subtitle {
-      font-size: 0.8rem;
+      font-size: 0.9rem;
     }
 }

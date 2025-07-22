@@ -10,22 +10,11 @@ document.addEventListener('DOMContentLoaded', function () {
         let currentIndex = 0;
 
         const changeText = () => {
-            dynamicTextSpan.classList.remove('glitch');
-            
             currentIndex = (currentIndex + 1) % words.length;
-            const newText = words[currentIndex];
-            
-            void dynamicTextSpan.offsetWidth; 
-
-            dynamicTextSpan.textContent = newText;
-            dynamicTextSpan.setAttribute('data-text', newText);
-            
-            requestAnimationFrame(() => {
-                dynamicTextSpan.classList.add('glitch');
-            });
+            dynamicTextSpan.textContent = words[currentIndex];
         };
 
-        changeText();
+        changeText(); 
         setInterval(changeText, 4000);
     }
 

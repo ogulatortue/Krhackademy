@@ -166,4 +166,11 @@
     .lesson-card {
         min-height: 12rem;
     }
+    .lesson-card.completed-lesson .checkbox-icon.completed {
+        font-size: 2rem;
+    }
+    .lesson-card.completed-lesson .check-box {
+        width: 3rem;
+        height: 3rem;
+    }
 }

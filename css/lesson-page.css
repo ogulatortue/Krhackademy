@@ -1,13 +1,12 @@
 .lesson-container {
-    padding: 5svh;
+    padding: 3rem;
     margin: 0 auto;
-    max-width: 1200px;
 }
 
 .lesson-content {
     background-color: var(--card-bg);
     border-radius: 10px;
-    padding: 4svh 5svh;
+    padding: 2.5rem 3rem;
     border: 1px solid var(--border-color);
     box-shadow: 0 10px 30px var(--shadow-medium);
 }
@@ -16,15 +15,15 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 3svh;
-    padding: 25px;
-    margin-bottom: 3svh;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    margin-bottom: 2.5rem;
     border-radius: 25px;
     background-image: url(../images/header_background_blured3.webp);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    min-height: 80px;
+    min-height: 5rem;
 }
 
 .lesson-header .fas {
@@ -32,7 +31,7 @@
 }
 
 .lesson-icon {
-    font-size: 4rem;
+    font-size: 3.5rem;
     color: var(--white);
 }
 
@@ -45,16 +44,16 @@
 }
 
 .lesson-title-group h1 {
-    font-size: 3rem;
+    font-size: 2.75rem;
     color: var(--white);
     font-weight: bold;
     letter-spacing: 1px;
-    margin: 0 0 5px 0;
+    margin: 0 0 0.5rem 0;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .lesson-title-group .lesson-intro {
-    font-size: 1rem;
+    font-size: 1.1rem;
     line-height: 1.6;
     font-style: italic;
     color: var(--white);
@@ -64,27 +63,27 @@
 }
 
 .lesson-block {
-    margin-bottom: 5svh;
+    margin-bottom: 3rem;
 }
 
 .lesson-block h2, .lesson-block h4 {
     color: white;
-    margin-bottom: 1.5svh;
+    margin-bottom: 1rem;
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin-top: 5svh;
+    gap: 0.625rem;
+    margin-top: 3rem;
 }
 
 .lesson-block h2 {
-    font-size: 2rem;
+    font-size: 1.75rem;
     border-left: 4px solid var(--purple);
-    padding-left: 15px;
-    margin-top: 7svh;
+    padding-left: 1rem;
+    margin-top: 4rem;
 }
 
 .lesson-block h4 {
-    font-size: 1rem;
+    font-size: 1.25rem;
     font-style: italic;
     color: white;
 }
@@ -92,18 +91,18 @@
 .lesson-block p, .lesson-block ul, .lesson-block ol {
     font-size: 1rem;
     line-height: 1.7;
-    margin-bottom: 2svh;
+    margin-bottom: 1.25rem;
 }
 
 .lesson-block ul {
     list-style-type: none;
-    padding-left: 20px;
+    padding-left: 1.25rem;
 }
 
 .lesson-block ul li {
     position: relative;
-    padding-left: 25px;
-    margin-bottom: 10px;
+    padding-left: 1.5rem;
+    margin-bottom: 0.625rem;
 }
 
 .lesson-block ul li::before {
@@ -112,7 +111,7 @@
     font-weight: 900;
     position: absolute;
     left: 0;
-    top: 2px;
+    top: 0.125em;
     color: var(--purple);
 }
 
@@ -121,20 +120,20 @@ pre {
     border: 1px solid var(--border-dark);
     border-left: 5px solid var(--purple);
     border-radius: 5px;
-    padding: 15px;
+    padding: 1rem;
     overflow-x: auto;
     white-space: pre;
     font-family: 'Courier New', Courier, monospace;
-    font-size: 1rem;
+    font-size: 0.9rem;
     box-shadow: inset 0 2px 5px var(--shadow-light);
-    margin-bottom: 5svh;
+    margin-bottom: 2rem;
 }
 
 code {
     font-family: 'Courier New', Courier, monospace;
     color: white;
     background: var(--inline-code-bg);
-    padding: 2px 5px;
+    padding: 0.125rem 0.3125rem;
     border-radius: 3px;
 }
 
@@ -146,11 +145,11 @@ pre code {
 
 .user-input-example {
     text-align: center;
-    padding: 15px;
+    padding: 1rem;
     background-color: var(--dashed-bg);
     border: 1px dashed var(--border-medium);
     border-radius: 5px;
-    margin: 2svh 0;
+    margin: 1.5rem 0;
 }
 
 .user-input-example code {
@@ -162,27 +161,27 @@ pre code {
     background: rgba(0,0,0,0.2);
     border: 1px solid var(--border-color);
     border-radius: 8px;
-    padding: 25px;
-    margin-top: 3svh;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
 }
 
 .interactive-demo > p {
     text-align: center;
     margin-top: 0;
-    margin-bottom: 20px;
+    margin-bottom: 1.25rem;
     font-style: italic;
 }
 
 .fake-form {
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 0.625rem;
     flex-wrap: wrap;
-    margin-bottom: 20px;
+    margin-bottom: 1.25rem;
 }
 
 .fake-form input, .fake-form button {
-    padding: 10px 15px;
+    padding: 0.625rem 1rem;
     border: 1px solid var(--border-medium);
     background-color: var(--button-bg);
     color: white;
@@ -204,8 +203,8 @@ pre code {
 }
 
 .demo-result {
-    margin-top: 20px;
-    padding: 15px;
+    margin-top: 1.25rem;
+    padding: 1rem;
     border: 2px dashed var(--border-light-dashed);
     border-radius: 5px;
     text-align: center;
@@ -216,20 +215,19 @@ pre code {
     font-size: 1rem;
 }
 
-
 .lesson-navigation {
     display: flex;
     justify-content: space-between;
-    margin-top: 6svh;
+    margin-top: 4rem;
     border-top: 1px solid var(--border-color);
-    padding-top: 3svh;
+    padding-top: 2rem;
 }
 
 .nav-button {
     text-decoration: none;
     color: white;
     background-color: var(--button-bg);
-    padding: 12px 25px;
+    padding: 0.75rem 1.5rem;
     border-radius: 5px;
     border: 1px solid var(--border-medium);
     transition: all 0.3s ease;
@@ -241,7 +239,6 @@ pre code {
     pointer-events: none;
     opacity: 0.6;
 }
-
 
 .feature-list {
     list-style-position: inside;
@@ -286,8 +283,7 @@ pre code {
     }
 }
 
-
-@media (max-width: 800px) {
+@media (max-width: 50em) {
     .lesson-container {
         padding: 1.5rem; 
     }
@@ -297,12 +293,18 @@ pre code {
     }
 
     .lesson-header {
+        flex-direction: column;
         gap: 1rem; 
-        margin-bottom: 1.5rem; 
+        margin-bottom: 2rem; 
     }
     
     .lesson-title-group h1 {
-        font-size: 1.8em;
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .lesson-title-group .lesson-intro {
+        text-align: center;
     }
 
     .fake-form {
@@ -310,16 +312,21 @@ pre code {
     }
 
     .lesson-block {
-        margin-bottom: 2.5rem; 
+        margin-bottom: 2.5rem;
     }
 
     .lesson-block h2, .lesson-block h4 {
         margin-bottom: 1rem; 
-        margin-top: 2.5rem; 
+        margin-top: 2rem; 
     }
 
     .lesson-block h2 {
-        margin-top: 3.5rem; 
+        font-size: 1.5rem;
+        margin-top: 3rem; 
+    }
+
+    .lesson-block h4 {
+        font-size: 1.15rem;
     }
 
     .lesson-block p, .lesson-block ul, .lesson-block ol {
@@ -327,11 +334,7 @@ pre code {
     }
 
     pre {
-        margin-bottom: 2.5rem; 
-    }
-
-    .user-input-example {
-        margin: 1rem 0; 
+        margin-bottom: 2rem; 
     }
     
     .interactive-demo {
@@ -339,7 +342,7 @@ pre code {
     }
 
     .lesson-navigation {
-        margin-top: 4rem; 
+        margin-top: 3rem; 
         padding-top: 1.5rem; 
         flex-direction: column; 
         align-items: center; 

@@ -20,7 +20,7 @@
     padding: 25px;
     margin-bottom: 3svh;
     border-radius: 25px;
-    background-image: url(../../images/header_background_blured3.webp);
+    background-image: url(../images/header_background_blured3.webp);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -32,7 +32,7 @@
 }
 
 .lesson-icon {
-    font-size: 4em;
+    font-size: 4rem;
     color: var(--white);
 }
 
@@ -45,7 +45,7 @@
 }
 
 .lesson-title-group h1 {
-    font-size: 2.2em;
+    font-size: 3rem;
     color: var(--white);
     font-weight: bold;
     letter-spacing: 1px;
@@ -54,7 +54,7 @@
 }
 
 .lesson-title-group .lesson-intro {
-    font-size: 1.1em;
+    font-size: 1rem;
     line-height: 1.6;
     font-style: italic;
     color: var(--white);
@@ -77,20 +77,20 @@
 }
 
 .lesson-block h2 {
-    font-size: 1.8em;
+    font-size: 2rem;
     border-left: 4px solid var(--purple);
     padding-left: 15px;
     margin-top: 7svh;
 }
 
 .lesson-block h4 {
-    font-size: 1.3em;
+    font-size: 1rem;
     font-style: italic;
     color: white;
 }
 
 .lesson-block p, .lesson-block ul, .lesson-block ol {
-    font-size: 1em;
+    font-size: 1rem;
     line-height: 1.7;
     margin-bottom: 2svh;
 }
@@ -125,7 +125,7 @@ pre {
     overflow-x: auto;
     white-space: pre;
     font-family: 'Courier New', Courier, monospace;
-    font-size: 0.95em;
+    font-size: 1rem;
     box-shadow: inset 0 2px 5px var(--shadow-light);
     margin-bottom: 5svh;
 }
@@ -154,7 +154,7 @@ pre code {
 }
 
 .user-input-example code {
-    font-size: 1.2em;
+    font-size: 1rem;
     font-weight: bold;
 }
 
@@ -187,7 +187,7 @@ pre code {
     background-color: var(--button-bg);
     color: white;
     border-radius: 5px;
-    font-size: 1em;
+    font-size: 1rem;
 }
 
 .fake-form input:focus {
@@ -213,7 +213,7 @@ pre code {
 }
 
 .demo-result code {
-    font-size: 1.1em;
+    font-size: 1rem;
 }
 
 
@@ -250,7 +250,7 @@ pre code {
 
 .feature-list li::marker {
     color: var(--white);
-    font-size: 1.3em;
+    font-size: 1rem;
     font-weight: bold;
 }
 
@@ -289,7 +289,7 @@ pre code {
 
 @media (max-width: 800px) {
     .lesson-container {
-        padding: 2rem; 
+        padding: 1.5rem; 
     }
 
     .lesson-content {
@@ -298,7 +298,7 @@ pre code {
 
     .lesson-header {
         gap: 1rem; 
-        margin-bottom: 2rem; 
+        margin-bottom: 1.5rem; 
     }
     
     .lesson-title-group h1 {
@@ -340,7 +340,7 @@ pre code {
 
     .lesson-navigation {
         margin-top: 4rem; 
-        padding-top: 2rem; 
+        padding-top: 1.5rem; 
         flex-direction: column; 
         align-items: center; 
         gap: 1rem; 

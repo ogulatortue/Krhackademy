@@ -337,7 +337,9 @@
     .intro {
         flex-direction: column-reverse;
         min-height: auto;
-        margin: 10rem 0;
+        gap: 0;
+        margin-bottom: 10rem;
+        margin-top: 5rem;
         padding: 3rem 1rem;
         text-align: center;
     }
@@ -352,10 +354,9 @@
         font-size: 1.5rem;
         margin: 5rem auto 0 auto;
     }
-    .intro .image-intro {
-        width: 60%;
-        max-width: 300px;
-        margin-bottom: 2rem;
+    .intro .image-intro > img {
+        width: 180%;
+        max-width: 800px;
     }
 
     .pres h2 {
@@ -417,5 +418,11 @@
     }
     .news-grid {
         grid-template-columns: 1fr;
+    }
+    .card-title {
+        font-size: 2rem;
+    }
+    .card-subtitle {
+        font-size: 1.5rem;
     }
 }

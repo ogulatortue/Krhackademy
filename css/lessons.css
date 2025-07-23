@@ -19,7 +19,7 @@
 
 .box-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, 350px);
+    grid-template-columns: repeat(auto-fit, 340px);
     justify-content: center;
     gap: 2rem;
 }
@@ -74,13 +74,15 @@
     align-items: flex-start;
     text-align: left;
     gap: 0.5rem;
+    width: 100%;
 }
 
 .lesson-title-wrapper {
     display: flex;
     flex-direction: row;
     align-items: baseline;
-    gap: 0.75rem;
+    justify-content: space-between;
+    width: 100%;
 }
 
 .lesson-text-content h4 {
@@ -142,24 +144,20 @@
 
 @media (max-width: 900px) {
     .main-lessons {
-        padding: 3rem 1rem;
+        padding: 10rem 5rem;
     }
-
     .main-title.category-title {
-        font-size: 1.75rem;
+        font-size: 3.5rem;
         padding-block: 1.5rem;
     }
-
+    .lesson-text-content h4 {
+        font-size: 1.5rem;
+    }
+    .lesson-text-content p {
+        font-size: 1rem;
+    }
     .box-container {
         grid-template-columns: 1fr;
         gap: 1.5rem;
-    }
-
-    .lesson-title-wrapper {
-        flex-wrap: wrap;
-    }
-    
-    .lesson-text-content p {
-        font-size: 0.9rem;
     }
 }

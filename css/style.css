@@ -73,8 +73,9 @@ h2 {
 }
 
 .difficulty-tag {
-    padding: 4px 12px;
-    font-size: 12px;
+    margin-left: 0.5rem;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
     font-weight: 700;
     border-radius: 15px;
     color: var(--white);
@@ -102,17 +103,13 @@ h2 {
     box-shadow: 0 0 8px var(--expert);
 }
 
-@media (max-width: 800px) {
+@media (max-width: 900px) {
     html {
         font-size: 55%;
     }
 
-    h2 {
-        text-align: center;
-        font-size: 40px;
-    }
-
-    h3 {
-        font-size: 20px;
+    .difficulty-tag {
+        padding: 0.25rem 0.75rem;
+        font-size: 1rem;
     }
 }

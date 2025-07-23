@@ -147,17 +147,23 @@
         padding: 10rem 5rem;
     }
     .main-title.category-title {
-        font-size: 3.5rem;
+        font-size: 5rem;
         padding-block: 1.5rem;
     }
     .lesson-text-content h4 {
-        font-size: 1.5rem;
+        font-size: 2rem;
     }
     .lesson-text-content p {
-        font-size: 1rem;
+        font-size: 1.5rem;
     }
     .box-container {
         grid-template-columns: 1fr;
         gap: 1.5rem;
+    }
+    .card-icon {
+        margin-right: 0.5rem;
+    }
+    .lesson-card {
+        min-height: 12rem;
     }
 }

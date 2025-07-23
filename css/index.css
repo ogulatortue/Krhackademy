@@ -35,6 +35,7 @@
 }
 
 .intro .text-intro h3 {
+    font-weight: normal;
     max-width: 55ch;
     margin-top: 1.5rem;
     font-size: 1rem;

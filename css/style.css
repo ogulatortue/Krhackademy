@@ -66,15 +66,9 @@ body {
 
 h2 {
     position: relative;
-    font-size: 50px;
+    font-size: 3rem;
     font-style: italic;
     text-transform: uppercase;
-    color: var(--white);
-}
-
-h3 {
-    font-size: 30px;
-    font-weight: normal;
     color: var(--white);
 }
 

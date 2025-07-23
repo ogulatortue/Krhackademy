@@ -124,8 +124,8 @@
     height: 2rem;
     background-color: var(--completed-color);
     border-radius: 50%;
-    border: 2px solid var(--card-bg, #1a1a2e);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    border: 2px solid var(--card-bg);
+    box-shadow: 0 2px 8px var(--shadow-light);
 }
 
 .lesson-card.completed-lesson .checkbox-icon.not-completed {
@@ -134,7 +134,7 @@
 
 .lesson-card.completed-lesson .checkbox-icon.completed {
     display: block;
-    color: var(--card-bg, #1a1a2e);
+    color: var(--card-bg);
     font-size: 1.5rem;
 }
 

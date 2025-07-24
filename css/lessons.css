@@ -144,10 +144,10 @@
 
 @media (max-width: 900px) {
     .main-lessons {
-        padding: 10rem 5rem;
+        padding: 13rem 0rem;
     }
     .main-title.category-title {
-        font-size: 5rem;
+        font-size: 4.5rem;
         padding-block: 1.5rem;
     }
     .lesson-text-content h4 {

@@ -1,5 +1,5 @@
 .main-lessons {
-    padding: 5rem 2rem;
+    padding: 8rem 2rem;
     color: var(--white);
 }
 
@@ -14,7 +14,7 @@
 .main-title.category-title {
     text-align: center;
     letter-spacing: 2px;
-    padding: 3rem 0;
+    padding-bottom: 1rem;
 }
 
 .box-container {

@@ -12,10 +12,7 @@
     --inline-code-bg: rgba(45, 45, 45, 0.7);
     --dashed-bg: #111;
     --completed-color: #48ff00;
-    --not-completed-color: #9216a8;
     --text-subtle: #c0c0c0;
-    --text-completed-title: #bdc3c7;
-    --text-completed-body: #8c979e;
     --border-color: #333;
     --border-dark: #222;
     --border-medium: #444;
@@ -28,8 +25,6 @@
     --shadow-light: rgba(0, 0, 0, 0.4);
     --shadow-medium: rgba(0, 0, 0, 0.5);
     --shadow-heavy: rgba(0, 0, 0, 0.7);
-    --accent-gradient: linear-gradient(45deg, #9216a8, #c74dff, #9216a8);
-    --overlay-dark: rgba(0, 0, 0, 0.85);
 }
 
 * {

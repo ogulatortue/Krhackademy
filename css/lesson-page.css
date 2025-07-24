@@ -94,6 +94,7 @@
 .lesson-block p, .lesson-block ul, .lesson-block ol {
     font-size: 1.05rem;
     margin-bottom: 0.5rem;
+    color: var(--text-subtle);
 }
 
 .lesson-block ul {

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Kr[HACK]ademy - Analyse des Métadonnées</title>
+    <meta name="description" content="Découvrez comment analyser les métadonnées pour révéler l'histoire cachée des fichiers.">
+    <meta name="keywords" content="Leçon, Métadonnées, Forensique, Analyse de Fichiers, EXIF, MACE, Timestamps, ExifTool, Cybersécurité, Tutoriel">
+    <meta name="author" content="BRUCHON Hugo">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/png" href="../images/logo_krhacken_r.ico" />
+    
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+    
+    <link rel="stylesheet" href="../css/style.css"/>
+    <link rel="stylesheet" href="../css/lesson-page.css"/>
+
+    <link rel="preload" as="image" href="../images/header_background_blured3.webp" type="image/webp" fetchpriority="high">
+    <link rel="preload" as="image" href="../images/back.webp" type="image/webp" fetchpriority="high">
+</head>
+<body>
+
+    <main class="lesson-container" data-lesson-id="forensics-metadata">
+        <article class="lesson-content">
+            
+            <header class="lesson-header">
+                <i class="fas fas fa-fingerprint lesson-icon" aria-hidden="true"></i>
+                <div class="lesson-title-group">
+                    <h1>Analyse des Métadonnées</h1>
+                    <p class="lesson-intro">
+                        Traquez les incohérences entre les métadonnées pour révéler les manipulations.
+                    </p>
+                </div>
+                <span class="difficulty-tag difficulty-medium">Confirmé</span>
+            </header>
+
+            <section class="lesson-block">
+                <h2><i class="fas fa-info-circle" aria-hidden="true"></i>Généralités sur les métadonnées</h2>
+                <p>
+                    Les métadonnées sont des données qui fournissent des informations sur d'autres données. Elles servent à décrire, structurer et gérer des ressources, qu'elles soient numériques ou physiques. Plutôt que de constituer le contenu principal d'un fichier ou d'un document, les métadonnées en précisent le contexte et les caractéristiques. Elles répondent généralement à des questions telles que : qui a créé la donnée, quand a-t-elle été créée, quel est son format, ou encore quels sont les droits qui y sont associés.
+                </p>
+                <p>
+                    Avant de se lancer dans l'analyse, il est impératif de comprendre la nature fondamentale des métadonnées et, surtout, où les chercher. Toute métadonnée appartient à l'une des deux grandes familles, dont la fiabilité et l'origine sont radicalement différentes.
+                </p>
+                 <h3>Métadonnées de Système de Fichiers (Externes)</h3>
+                <p>Gérées par le système d'exploitation (Windows, macOS), elles sont stockées à l'extérieur du fichier, dans la "table des matières" du disque (comme la MFT). Elles décrivent le contenant, sa taille, son emplacement et son interaction avec le système.</p>
+                <h3>Métadonnées Applicatives (Internes)</h3>
+                <p>Créées par le logiciel qui a fabriqué le fichier (Word, Photoshop, Appareil photo), elles sont stockées à l'intérieur du fichier lui-même, selon les spécifications de son format. Elles décrivent le contenu, son auteur, son contexte de création, etc.</p>
+                <p>
+                    Cette distinction est le concept le plus important de l'analyse. Une incohérence entre ces deux familles est souvent le premier signe d'une manipulation ou d'une anomalie. La comparaison de la date de création interne d'un document avec la date de création de son fichier sur le disque peut, par exemple, révéler une copie ou une falsification.
+                </p>
+                <p>
+                    La finalité des métadonnées est donc double. Pour le système, elles sont opérationnelles : elles permettent l'organisation, l'indexation et la gestion des données. Pour un analyste, elles sont historiques et contextuelles : elles fournissent un enregistrement traçable des événements liés à une ressource numérique, ce qui est essentiel en administration système, en sécurité et en analyse forensique.
+                </p>
+            </section>
+            
+            <section class="lesson-block">
+                <h2><i class="fas fa-clock" aria-hidden="true"></i>Les timestamps MACE</h2>
+                <p>
+                    Les métadonnées les plus fondamentales et les plus universelles sont les timestamps (horodatages) gérés par le système de fichiers. Ils constituent le socle de toute analyse chronologique, permettant de placer les événements sur une ligne de temps précise. On les désigne par l'acronyme MACE (ou MACB).
+                </p>
+                <ul>
+                    <li><strong>Modified :</strong> Date et heure de la dernière modification du contenu du fichier.</li>
+                    <li><strong>Accessed :</strong> Date et heure du dernier accès (ouverture). Attention, ce timestamp est souvent désactivé sur les systèmes modernes. En effet, chaque lecture (même par un antivirus ou un indexeur) provoquerait une opération d'écriture sur le disque, dégradant les performances. Sur Windows, ce comportement est géré via la clé de registre <code>NtfsDisableLastAccessUpdate</code>.</li>
+                    <li><strong>Changed (ou MFT Entry Modified) :</strong> Date et heure du dernier changement des métadonnées elles-mêmes (ex: changement de nom, de permissions).</li>
+                    <li><strong>Entry Created (ou Birth) :</strong> Date et heure de la création du fichier sur le volume.</li>
+                </ul>
+                <p>
+                    <strong>Point d'analyse :</strong> Sur un système de fichiers NTFS (Windows), il existe deux jeux de timestamps MACE : $STANDARD_INFORMATION (visibles dans l'explorateur) et $FILE_NAME (stockés dans la MFT). Un outil de timestomping simple modifiera souvent le premier, mais oubliera le second. Une incohérence entre ces deux jeux de dates est un indice de manipulation quasi certain.
+                </p>
+                <h3>Exemple concret : Cycle de vie d'un rapport</h3>
+                <p>Imaginons un fichier Rapport.docx créé sur un ordinateur Windows. Un outil forensique comme MFTECmd révélerait le scénario suivant :</p>
+                <ul>
+                    <li><b>Lundi 10:00 - Création :</b> L'utilisateur crée Rapport.docx. Le timestamp Birth est fixé à Lundi 10:00. Les timestamps Modified, Accessed et Changed sont aussi initialisés à Lundi 10:00.</li>
+                    <li><b>Lundi 10:05 - Rédaction :</b> L'utilisateur écrit dans le rapport et sauvegarde. Le timestamp Modified est mis à jour à Lundi 10:05. Les timestamps Changed et Accessed sont aussi mis à jour.</li>
+                    <li><b>Lundi 11:00 - Renommage :</b> L'utilisateur renomme le fichier en Rapport_Final.docx. Seul le timestamp Changed est mis à jour à Lundi 11:00, car le contenu du fichier n'a pas changé.</li>
+                    <li><b>Mardi 09:00 - Relecture :</b> Un collègue ouvre le fichier pour le lire, sans le modifier. Seul le timestamp Accessed est mis à jour à Mardi 09:00.</li>
+                </ul>
+            </section>
+            
+            <section class="lesson-block">
+                <h2><i class="fas fa-cogs" aria-hidden="true"></i>L'analyse applicative</h2>
+                <p>
+                   Si les timestamps MACE nous donnent le "quand", les métadonnées applicatives nous donnent le "qui", le "comment" et le "où". Pour extraire et interpréter ces informations riches, l'outil ExifTool est la référence mondiale.
+                </p>
+                
+                <h3>1. Les documents Microsoft Office (.docx, .pptx, etc.)</h3>
+                <p>Bien plus que de simples conteneurs de texte, les fichiers Office modernes sont de véritables journaux de bord.
+                <strong>Métadonnées clés :</strong> Creator (auteur initial), Last Modified By (dernier utilisateur à avoir sauvegardé), Total Edit Time (temps total d'édition), Revision Number (nombre de sauvegardes), Company, Manager.
+                <strong>Exemple :</strong> Une entreprise retrouve son plan stratégique Plan_Secret.docx sur internet. L'analyse révèle Creator: "Alice Martin" et Last Modified By: "Bob Durand". L'enquête peut donc se concentrer sur l'activité de Bob.</p>
+
+                <h3>2. Les images (.jpg, .heic, .cr2)</h3>
+                <p>Les métadonnées EXIF (Exchangeable Image File Format) peuvent transformer une simple image en une preuve factuelle irréfutable.
+                <strong>Métadonnées clés :</strong> Make et Model (marque et modèle de l'appareil), DateTimeOriginal (date et heure exactes de la prise de vue), GPSLatitude et GPSLongitude (coordonnées GPS), Software (logiciel de retouche).
+                <strong>Exemple :</strong> La photo d'un suspect, IMG_4587.jpg, prétendument prise chez lui, révèle des coordonnées GPS qui pointent vers le lieu d'un cambriolage à l'heure du crime, contredisant son alibi.</p>
+                
+                <h3>3. Les fichiers Audio et Vidéo (.mp4, .mov, .mp3)</h3>
+                <p>Comme les images, les fichiers multimédias embarquent des informations cruciales sur leur origine.
+                <strong>Métadonnées clés :</strong> Duration, Make et Model (de la caméra ou du micro), CreationDate, Software (logiciel de montage), et parfois des données de géolocalisation.
+                <strong>Exemple :</strong> Une vidéo de revendication est analysée. Les métadonnées montrent qu'elle a été montée avec le logiciel "iMovie" sur un "iPhone 14 Pro", et les coordonnées GPS intégrées pointent vers un quartier précis, réduisant considérablement la zone de recherche des suspects.</p>
+
+                <h3>4. Les archives (.zip, .rar, .7z) 📦</h3>
+                <p>Une archive est un conteneur qui possède ses propres timestamps MACE. Cependant, les fichiers qu'elle contient conservent leurs métadonnées d'origine.
+                <strong>Analyse clé :</strong> Comparer les timestamps MACE de l'archive (ex: documents_secrets.zip créé Mardi à 15:00) avec les timestamps internes des fichiers qu'elle contient.
+                <strong>Exemple :</strong> L'analyse d'un fichier Compta.zip volé montre que l'archive a été créée le 20/07/2024 à 23:55, juste après une intrusion détectée sur le serveur. Les fichiers à l'intérieur ont des dates de modification bien antérieures. Cela indique précisément quels fichiers ont été exfiltrés et quand l'attaquant a finalisé son paquet.</p>
+
+                <h3>5. Les fichiers de raccourcis Windows (.lnk) 🔗</h3>
+                <p>Loin d'être de simples pointeurs, les fichiers .lnk sont des mines d'or forensiques. Ils enregistrent l'état de leur cible au moment de leur création ou de leur dernière utilisation.
+                <strong>Métadonnées clés :</strong> Chemin complet du fichier cible, ses timestamps MACE, la taille du fichier cible, le nom de la machine sur laquelle il était stocké (NetBIOS name), et même l'adresse MAC de cette machine.
+                <strong>Exemple :</strong> Un enquêteur trouve sur une clé USB un raccourci pointant vers C:\Users\Hugo\Desktop\Liste_Clients.xlsx. Le fichier Liste_Clients.xlsx est absent, mais le raccourci prouve à lui seul que ce fichier a existé sur l'ordinateur de Hugo et donne des informations sur la machine d'origine.</p>
+
+                <h3>6. Les fichiers PDF</h3>
+                <p>Souvent perçus comme statiques, les PDF conservent des traces de leur cycle de vie.
+                <strong>Métadonnées clés :</strong> Author, CreatorTool (logiciel ayant produit le contenu, ex: "Microsoft Word 2019"), Producer (logiciel ayant converti en PDF, ex: "Adobe PDF Library"), dates de modification multiples.
+                <strong>Exemple :</strong> Une fausse facture Facture.pdf indique CreatorTool: "Adobe Illustrator 2024". Une facture est normalement générée par un logiciel de comptabilité, pas un logiciel de design graphique. Cet indice suggère une création de toutes pièces.</p>
+            </section>
+
+            <section class="lesson-block">
+                <h2><i class="fas fa-user-secret" aria-hidden="true"></i>Anti-forensique et analyse critique</h2>
+                <p>
+                    Un expert ne se contente pas de lire les métadonnées ; il évalue leur crédibilité. Savoir reconnaître les techniques d'anti-forensique est une compétence essentielle.
+                </p>
+                <h3>Le Timestomping (falsification des horodatages)</h3>
+                <p>C'est l'acte de modifier les timestamps MACE d'un fichier pour dissimuler sa véritable origine, souvent pour cacher un malware.
+                <strong>Exemple :</strong> Un fichier svchost.exe suspect a des timestamps MACE de 2015. Cependant, l'analyse de son en-tête interne (PE Header) révèle une date de compilation de 2024. L'incohérence prouve le timestomping. C'est un malware récent se faisant passer pour un ancien fichier système.</p>
+                <h3>Le Metadata Stripping (nettoyage des métadonnées)</h3>
+                <p>De nombreuses plateformes en ligne (Facebook, Twitter/X, WhatsApp) suppriment la plupart des métadonnées EXIF des images lors du téléversement pour protéger la vie privée et réduire la taille des fichiers.
+                <strong>Implication pour l'enquêteur :</strong> L'analyse d'une photo téléchargée depuis un réseau social est souvent inutile. Il est impératif de travailler sur le fichier original provenant de l'appareil source.</p>
+            </section>
+
+            <section class="lesson-block">
+                <h2><i class="fas fa-flag-checkered" aria-hidden="true"></i>Conclusion</h2>
+                <p>
+                    L'analyse des métadonnées est un art qui se situe à la croisée de la technique et de l'enquête. La compétence clé n'est pas seulement de savoir extraire une information, mais de savoir la corréler. C'est en croisant les données du système avec celles des applications, en comparant les timestamps et en questionnant les incohérences que l'analyste transforme des informations éparses en une chronologie cohérente et défendable.
+                </p>
+            </section>
+
+            <nav class="lesson-navigation">
+                <a href="../lessons.html" class="nav-button prev-button"><i class="fas fa-arrow-left" aria-hidden="true"></i> Retour aux leçons</a>
+                <a href="../lessons.html" class="nav-button next-button">Valider la leçon <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+            </nav>
+        </article>
+    </main>
+    
+    <script src="../js/lessons.js" defer></script>
+
+</body>
+</html>

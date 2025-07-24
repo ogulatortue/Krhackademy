@@ -81,8 +81,7 @@
 }
 
 .lesson-block p,
-.lesson-block ul,
-.lesson-block ol {
+.lesson-block ul {
     padding-bottom: 1rem;
     font-size: 1.05rem;
     color: var(--text-subtle);
@@ -122,128 +121,6 @@
     color: var(--white);
 }
 
-pre {
-    padding: 1.5rem 0 2rem 0;
-    margin: 2rem 0;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 0.95rem;
-    white-space: pre;
-    overflow-x: auto;
-    background-color: var(--code-bg);
-    border: 1px solid var(--border-dark);
-    border-left: 5px solid var(--purple);
-    border-radius: 8px;
-    box-shadow: inset 0 2px 5px var(--shadow-light);
-}
-
-code {
-    padding: 0.2rem 0.4rem;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 0.9em;
-    color: white;
-    background: var(--inline-code-bg);
-    border-radius: 4px;
-}
-
-pre code {
-    padding: 0;
-    font-size: 1em;
-    background: none;
-}
-
-.user-input-example {
-    margin: 2rem 0;
-    padding: 1.25rem;
-    text-align: center;
-    background-color: var(--dashed-bg);
-    border: 1px dashed var(--border-medium);
-    border-radius: 8px;
-}
-
-.user-input-example code {
-    font-size: 1.1rem;
-    font-weight: bold;
-}
-
-.interactive-demo {
-    margin-top: 2rem;
-    padding: 2rem;
-    background: rgba(0, 0, 0, 0.2);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-}
-
-.interactive-demo > p {
-    margin: 0 0 1.5rem;
-    text-align: center;
-    font-style: italic;
-}
-
-.fake-form {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.75rem;
-    margin-bottom: 1.5rem;
-}
-
-.fake-form input,
-.fake-form button {
-    padding: 0.75rem 1.25rem;
-    font-size: 1rem;
-    color: white;
-    border: 1px solid var(--border-medium);
-    border-radius: 5px;
-}
-
-.fake-form input {
-    background-color: var(--button-bg);
-}
-
-.fake-form input:focus {
-    outline: none;
-    border-color: var(--purple);
-    box-shadow: 0 0 8px var(--purple);
-}
-
-.fake-form button {
-    cursor: pointer;
-    background-color: var(--purple);
-    border-color: var(--purple);
-    transition: all 0.2s ease;
-}
-
-.demo-result {
-    min-height: 3rem;
-    margin-top: 1.5rem;
-    padding: 1.25rem;
-    text-align: center;
-    border: 2px dashed var(--border-light-dashed);
-    border-radius: 8px;
-    transition: all 0.3s ease;
-}
-
-.demo-result code {
-    font-size: 1.05rem;
-}
-
-.demo-result.success {
-    border-color: var(--easy);
-}
-
-.demo-result.success p {
-    color: var(--easy);
-    font-weight: bold;
-}
-
-.demo-result.error {
-    border-color: var(--danger);
-}
-
-.demo-result.error p {
-    color: var(--danger);
-}
-
 .lesson-navigation {
     display: flex;
     justify-content: space-between;
@@ -263,34 +140,7 @@ pre code {
     transition: all 0.3s ease;
 }
 
-.nav-button.disabled {
-    opacity: 0.6;
-    filter: grayscale(80%);
-    pointer-events: none;
-}
-
-.feature-list {
-    padding-left: 0;
-    list-style-position: inside;
-}
-
-.feature-list li {
-    padding-bottom: 1rem;
-}
-
-.feature-list li::marker {
-    color: var(--white);
-    font-size: 1.2rem;
-    font-weight: bold;
-}
-
-
 @media (hover: hover) and (pointer: fine) {
-    .fake-form button:hover {
-        filter: brightness(1.2);
-        transform: translateY(-2px);
-    }
-
     .nav-button:hover {
         color: white;
         background-color: var(--purple);
@@ -318,6 +168,7 @@ pre code {
     .lesson-title-group h1 {
         font-size: 3rem;
     }
+
     .lesson-title-group .lesson-intro {
         font-size: 1.8rem;
     }
@@ -334,8 +185,7 @@ pre code {
     }
 
     .lesson-block p,
-    .lesson-block ul,
-    .lesson-block ol {
+    .lesson-block ul {
         font-size: 1.5rem;
         line-height: 1.6;
         padding-bottom: 2rem;

@@ -2,12 +2,12 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Explorez nos leçons de cybersécurité, du hacking web à l'exploitation binaire, conçues par le club Krhacken pour tous les niveaux.">
-    <meta name="keywords" content="Leçons, Web Hacking, OSINT, Pwned, Injection SQL, XSS, Krhacken, Esisar, apprendre, cybersécurité">
+    <meta name="description" content="Explorez nos leçons de cybersécurité pour débutants, conçues par le club Krhacken pour s'initier au hacking éthique.">
+    <meta name="keywords" content="Leçons, Débutant, Web Hacking, OSINT, Pwned, Injection SQL, Krhacken, Esisar, apprendre, cybersécurité, cryptographie, sécurité réseau, forensique, culture sécurité, stéganographie">
     <meta name="author" content="BRUCHON Hugo">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Kr[HACK]ademy - Leçons de Cybersécurité</title>
+    <title>Kr[HACK]ademy - Leçons de Cybersécurité pour Débutants</title>
 
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
@@ -41,42 +41,80 @@
 
     <main class="main-lessons">
         <section class="lesson-category-section">
-            <h2 class="main-title category-title">Web Hacking</h2>
+            <h2 class="main-title category-title">Analyse Forensique</h2>
             <div class="box-container">
-                <a href="lessons/web-sql-easy/web-sql-easy.html" class="lesson-card" data-lesson-id="web-sql-easy">
-                    <i class="fas fa-globe card-icon" aria-hidden="true"></i>
+                <a href="#" class="lesson-card" data-lesson-id="forensics-intro">
+                    <i class="fas fa-fingerprint card-icon" aria-hidden="true"></i>
                     <div class="lesson-text-content">
                         <div class="lesson-title-wrapper">
-                            <h4>Injection SQL Basique</h4>
+                            <h4>Introduction à la Forensique</h4>
                             <span class="difficulty-tag difficulty-easy">Débutant</span>
                         </div>
-                        <p>Découvrez les bases des injections SQL et comment les prévenir.</p>
+                        <p>Apprenez les bases de la collecte de preuves numériques et l'analyse de métadonnées.</p>
                     </div>
                     <div class="check-box">
                         <i class="fas fa-times-circle checkbox-icon not-completed" aria-hidden="true"></i>
                     </div>
                 </a>
-                <a href="#" class="lesson-card" data-lesson-id="web-xss">
-                    <i class="fas fa-globe card-icon" aria-hidden="true"></i>
+            </div>
+        </section>
+
+        <section class="lesson-category-section">
+            <h2 class="main-title category-title">Culture de la Sécurité</h2>
+            <div class="box-container">
+                <a href="#" class="lesson-card" data-lesson-id="security-passwords">
+                    <i class="fas fa-shield-alt card-icon" aria-hidden="true"></i>
                     <div class="lesson-text-content">
                         <div class="lesson-title-wrapper">
-                            <h4>Cross-Site Scripting (XSS)</h4>
-                            <span class="difficulty-tag difficulty-medium">Confirmé</span>
+                            <h4>Gestion des Mots de Passe</h4>
+                            <span class="difficulty-tag difficulty-easy">Débutant</span>
                         </div>
-                        <p>Apprenez à identifier et exploiter les vulnérabilités XSS.</p>
+                        <p>Apprenez à créer et gérer des mots de passe robustes pour sécuriser vos comptes.</p>
                     </div>
                     <div class="check-box">
                         <i class="fas fa-times-circle checkbox-icon not-completed" aria-hidden="true"></i>
                     </div>
                 </a>
-                <a href="#" class="lesson-card" data-lesson-id="web-lfi-rfi">
-                    <i class="fas fa-globe card-icon" aria-hidden="true"></i>
+                 <a href="#" class="lesson-card" data-lesson-id="security-phishing">
+                    <i class="fas fa-shield-alt card-icon" aria-hidden="true"></i>
                     <div class="lesson-text-content">
                         <div class="lesson-title-wrapper">
-                            <h4>Inclusion de Fichiers (LFI/RFI)</h4>
-                            <span class="difficulty-tag difficulty-hard">Avancé</span>
+                            <h4>Reconnaître le Phishing</h4>
+                            <span class="difficulty-tag difficulty-easy">Débutant</span>
                         </div>
-                        <p>Explorez les failles d'inclusion de fichiers locaux et distants.</p>
+                        <p>Identifiez les tentatives d'hameçonnage pour protéger vos informations personnelles.</p>
+                    </div>
+                    <div class="check-box">
+                        <i class="fas fa-times-circle checkbox-icon not-completed" aria-hidden="true"></i>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section class="lesson-category-section">
+            <h2 class="main-title category-title">Cryptographie</h2>
+            <div class="box-container">
+                <a href="#" class="lesson-card" data-lesson-id="crypto-intro">
+                    <i class="fas fa-key card-icon" aria-hidden="true"></i>
+                    <div class="lesson-text-content">
+                        <div class="lesson-title-wrapper">
+                            <h4>Principes de la Cryptographie</h4>
+                            <span class="difficulty-tag difficulty-easy">Débutant</span>
+                        </div>
+                        <p>Comprenez la différence entre chiffrement symétrique, asymétrique et le hachage.</p>
+                    </div>
+                    <div class="check-box">
+                        <i class="fas fa-times-circle checkbox-icon not-completed" aria-hidden="true"></i>
+                    </div>
+                </a>
+                 <a href="#" class="lesson-card" data-lesson-id="crypto-ciphers">
+                    <i class="fas fa-key card-icon" aria-hidden="true"></i>
+                    <div class="lesson-text-content">
+                        <div class="lesson-title-wrapper">
+                            <h4>Les Ciphers Classiques</h4>
+                            <span class="difficulty-tag difficulty-easy">Débutant</span>
+                        </div>
+                        <p>Explorez des méthodes de chiffrement historiques comme le chiffre de César.</p>
                     </div>
                     <div class="check-box">
                         <i class="fas fa-times-circle checkbox-icon not-completed" aria-hidden="true"></i>
@@ -101,14 +139,57 @@
                         <i class="fas fa-times-circle checkbox-icon not-completed" aria-hidden="true"></i>
                     </div>
                 </a>
-                <a href="#" class="lesson-card" data-lesson-id="osint-social">
-                    <i class="fas fa-user-secret card-icon" aria-hidden="true"></i>
+            </div>
+        </section>
+
+        <section class="lesson-category-section">
+            <h2 class="main-title category-title">Pwned (Exploitation Binaire)</h2>
+            <div class="box-container">
+                <a href="#" class="lesson-card" data-lesson-id="pwned-placeholder" style="cursor: not-allowed; opacity: 0.7;">
+                    <i class="fas fa-terminal card-icon" aria-hidden="true"></i>
                     <div class="lesson-text-content">
                         <div class="lesson-title-wrapper">
-                            <h4>Reconnaissance sur les Médias Sociaux</h4>
-                            <span class="difficulty-tag difficulty-medium">Confirmé</span>
+                            <h4>Leçons à venir...</h4>
                         </div>
-                        <p>Techniques avancées pour collecter des informations via les plateformes sociales.</p>
+                        <p>De nouvelles leçons d'exploitation binaire pour débutants seront bientôt disponibles.</p>
+                    </div>
+                    <div class="check-box">
+                        <i class="fas fa-lock checkbox-icon" aria-hidden="true"></i>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section class="lesson-category-section">
+            <h2 class="main-title category-title">Sécurité Réseau</h2>
+            <div class="box-container">
+                <a href="#" class="lesson-card" data-lesson-id="network-basics">
+                    <i class="fas fa-network-wired card-icon" aria-hidden="true"></i>
+                    <div class="lesson-text-content">
+                        <div class="lesson-title-wrapper">
+                            <h4>Fondamentaux des Réseaux</h4>
+                            <span class="difficulty-tag difficulty-easy">Débutant</span>
+                        </div>
+                        <p>Découvrez les bases des ports, des protocoles et le fonctionnement d'un pare-feu.</p>
+                    </div>
+                    <div class="check-box">
+                        <i class="fas fa-times-circle checkbox-icon not-completed" aria-hidden="true"></i>
+                    </div>
+                </a>
+            </div>
+        </section>
+        
+        <section class="lesson-category-section">
+            <h2 class="main-title category-title">Stéganographie</h2>
+            <div class="box-container">
+                <a href="#" class="lesson-card" data-lesson-id="stega-intro">
+                    <i class="fas fa-file-image card-icon" aria-hidden="true"></i>
+                    <div class="lesson-text-content">
+                        <div class="lesson-title-wrapper">
+                            <h4>Introduction à la Stéganographie</h4>
+                            <span class="difficulty-tag difficulty-easy">Débutant</span>
+                        </div>
+                        <p>Découvrez comment dissimuler des messages secrets à l'intérieur d'autres fichiers.</p>
                     </div>
                     <div class="check-box">
                         <i class="fas fa-times-circle checkbox-icon not-completed" aria-hidden="true"></i>
@@ -118,42 +199,29 @@
         </section>
 
         <section class="lesson-category-section">
-            <h2 class="main-title category-title">Pwned (Exploitation Binaire)</h2>
+            <h2 class="main-title category-title">Web Hacking</h2>
             <div class="box-container">
-                <a href="#" class="lesson-card" data-lesson-id="pwned-buffer">
-                    <i class="fas fa-terminal card-icon" aria-hidden="true"></i>
+                <a href="lessons/web-sql-easy/web-sql-easy.html" class="lesson-card" data-lesson-id="web-sql-easy">
+                    <i class="fas fa-globe card-icon" aria-hidden="true"></i>
                     <div class="lesson-text-content">
                         <div class="lesson-title-wrapper">
-                            <h4>Buffer Overflows Basiques</h4>
-                            <span class="difficulty-tag difficulty-medium">Confirmé</span>
+                            <h4>Injection SQL Basique</h4>
+                            <span class="difficulty-tag difficulty-easy">Débutant</span>
                         </div>
-                        <p>Comprenez comment une surcharge de tampon peut mener à l'exécution de code.</p>
+                        <p>Découvrez les bases des injections SQL et comment les prévenir.</p>
                     </div>
                     <div class="check-box">
                         <i class="fas fa-times-circle checkbox-icon not-completed" aria-hidden="true"></i>
                     </div>
                 </a>
-                <a href="#" class="lesson-card" data-lesson-id="pwned-format">
-                    <i class="fas fa-terminal card-icon" aria-hidden="true"></i>
+                <a href="#" class="lesson-card" data-lesson-id="web-cookies">
+                    <i class="fas fa-globe card-icon" aria-hidden="true"></i>
                     <div class="lesson-text-content">
                         <div class="lesson-title-wrapper">
-                            <h4>Vulnérabilités Format String</h4>
-                            <span class="difficulty-tag difficulty-hard">Avancé</span>
+                            <h4>Analyse des Cookies de Session</h4>
+                            <span class="difficulty-tag difficulty-easy">Débutant</span>
                         </div>
-                        <p>Explorez les failles liées aux fonctions de formatage de chaînes.</p>
-                    </div>
-                    <div class="check-box">
-                        <i class="fas fa-times-circle checkbox-icon not-completed" aria-hidden="true"></i>
-                    </div>
-                </a>
-                <a href="#" class="lesson-card" data-lesson-id="pwned-kernel">
-                    <i class="fas fa-terminal card-icon" aria-hidden="true"></i>
-                    <div class="lesson-text-content">
-                        <div class="lesson-title-wrapper">
-                            <h4>Kernel Exploitation</h4>
-                            <span class="difficulty-tag difficulty-expert">Expert</span>
-                        </div>
-                        <p>Plongez au cœur du système et exploitez des vulnérabilités au niveau du noyau.</p>
+                        <p>Comprenez le rôle des cookies et les risques liés à leur mauvaise gestion.</p>
                     </div>
                     <div class="check-box">
                         <i class="fas fa-times-circle checkbox-icon not-completed" aria-hidden="true"></i>
@@ -161,6 +229,7 @@
                 </a>
             </div>
         </section>
+        
     </main>
 
     <footer>

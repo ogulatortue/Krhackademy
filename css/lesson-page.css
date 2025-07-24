@@ -1,14 +1,14 @@
 .lesson-container {
-    padding: 2rem;
-    margin: 0 auto;
     width: 90%;
+    margin: 0 auto;
+    padding: 2rem;
 }
 
 .lesson-content {
     background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
     border-radius: 12px;
     padding: 2rem 3.5rem;
-    border: 1px solid var(--border-color);
     box-shadow: 0 10px 30px var(--shadow-medium);
 }
 
@@ -19,25 +19,14 @@
     gap: 2rem;
     padding: 2rem;
     margin-bottom: 3rem;
-    border-radius: 15px;
-    background-image: url('/images/header_background_blured3.webp');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
     min-height: 5rem;
-}
-
-.lesson-header .fas {
     color: var(--white);
+    background: url('/images/header_background_blured3.webp') center/cover no-repeat;
+    border-radius: 15px;
 }
 
 .lesson-icon {
     font-size: 3.75rem;
-    color: var(--white);
-}
-
-.fas {
-    color: var(--purple);
 }
 
 .lesson-title-group {
@@ -45,122 +34,130 @@
 }
 
 .lesson-title-group h1 {
+    padding-bottom: 0.5rem;
     font-size: 2.5rem;
-    color: var(--white);
     font-weight: bold;
     letter-spacing: 1px;
-    margin: 0 0 0.5rem 0;
+    color: var(--white);
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .lesson-title-group .lesson-intro {
+    margin: 0;
     font-size: 1.15rem;
     font-style: italic;
-    color: var(--white);
     font-weight: bold;
-    margin: 0;
+    color: var(--white);
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
 }
 
 .lesson-block {
-    margin-bottom: 2.5rem;
+    padding-bottom: 2.5rem;
 }
 
 .lesson-block:last-of-type {
-    margin-bottom: 0;
-}
-
-.lesson-block h2, .lesson-block h3 {
-    color: white;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    margin-top: 0;
+    padding-bottom: 0;
 }
 
 .lesson-block h2 {
-    font-size: 1.8rem;
-    border-left: 4px solid var(--purple);
-    padding-left: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
     margin-bottom: 2rem;
+    padding-left: 1.25rem;
+    font-size: 1.8rem;
+    color: white;
+    border-left: 4px solid var(--purple);
 }
 
 .lesson-block h3 {
-    font-size: 1.15rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem;
+    font-size: 1.1rem;
     font-style: italic;
     color: white;
-    margin-bottom: 1rem;
 }
 
-.lesson-block p, .lesson-block ul, .lesson-block ol {
+.lesson-block p,
+.lesson-block ul,
+.lesson-block ol {
+    padding-bottom: 1rem;
     font-size: 1.05rem;
-    margin-bottom: 1rem;
     color: var(--text-subtle);
 }
 
 .lesson-block ul {
-    list-style-type: none;
     padding-left: 1.25rem;
+    list-style-type: none;
 }
 
 .lesson-block ul li {
     position: relative;
+    padding-bottom: 0.75rem;
     padding-left: 1.75rem;
-    margin-bottom: 0.75rem;
-}
-
-.lesson-block ul li b {
-    color: white;
 }
 
 .lesson-block ul li::before {
     content: '\f105';
     font-family: 'Font Awesome 6 Free';
     font-weight: 900;
+    font-size: 1.1em;
     position: absolute;
     left: 0;
     top: 0.125em;
     color: var(--purple);
-    font-size: 1.1em;
+}
+
+.lesson-block ul li b {
+    color: white;
+}
+
+.fas {
+    color: var(--purple);
+}
+
+.lesson-header .fas {
+    color: var(--white);
 }
 
 pre {
+    padding: 1.5rem 0 2rem 0;
+    margin: 2rem 0;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.95rem;
+    white-space: pre;
+    overflow-x: auto;
     background-color: var(--code-bg);
     border: 1px solid var(--border-dark);
     border-left: 5px solid var(--purple);
     border-radius: 8px;
-    padding: 1.5rem;
-    overflow-x: auto;
-    white-space: pre;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 0.95rem;
     box-shadow: inset 0 2px 5px var(--shadow-light);
-    margin: 1.5rem 0 2rem 0;
 }
 
 code {
+    padding: 0.2rem 0.4rem;
     font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9em;
     color: white;
     background: var(--inline-code-bg);
-    padding: 0.2rem 0.4rem;
     border-radius: 4px;
-    font-size: 0.9em;
 }
 
 pre code {
-    background: none;
     padding: 0;
-    color: white;
     font-size: 1em;
+    background: none;
 }
 
 .user-input-example {
-    text-align: center;
+    margin: 2rem 0;
     padding: 1.25rem;
+    text-align: center;
     background-color: var(--dashed-bg);
     border: 1px dashed var(--border-medium);
     border-radius: 8px;
-    margin: 2rem 0;
 }
 
 .user-input-example code {
@@ -169,35 +166,38 @@ pre code {
 }
 
 .interactive-demo {
-    background: rgba(0,0,0,0.2);
+    margin-top: 2rem;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.2);
     border: 1px solid var(--border-color);
     border-radius: 8px;
-    padding: 2rem;
-    margin-top: 2rem;
 }
 
 .interactive-demo > p {
+    margin: 0 0 1.5rem;
     text-align: center;
-    margin-top: 0;
-    margin-bottom: 1.5rem;
     font-style: italic;
 }
 
 .fake-form {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     gap: 0.75rem;
-    flex-wrap: wrap;
     margin-bottom: 1.5rem;
 }
 
-.fake-form input, .fake-form button {
+.fake-form input,
+.fake-form button {
     padding: 0.75rem 1.25rem;
-    border: 1px solid var(--border-medium);
-    background-color: var(--button-bg);
-    color: white;
-    border-radius: 5px;
     font-size: 1rem;
+    color: white;
+    border: 1px solid var(--border-medium);
+    border-radius: 5px;
+}
+
+.fake-form input {
+    background-color: var(--button-bg);
 }
 
 .fake-form input:focus {
@@ -207,78 +207,81 @@ pre code {
 }
 
 .fake-form button {
+    cursor: pointer;
     background-color: var(--purple);
     border-color: var(--purple);
-    cursor: pointer;
     transition: all 0.2s ease;
 }
 
 .demo-result {
+    min-height: 3rem;
     margin-top: 1.5rem;
     padding: 1.25rem;
+    text-align: center;
     border: 2px dashed var(--border-light-dashed);
     border-radius: 8px;
-    text-align: center;
     transition: all 0.3s ease;
-    min-height: 3rem;
 }
 
 .demo-result code {
     font-size: 1.05rem;
 }
 
+.demo-result.success {
+    border-color: var(--easy);
+}
+
+.demo-result.success p {
+    color: var(--easy);
+    font-weight: bold;
+}
+
+.demo-result.error {
+    border-color: var(--danger);
+}
+
+.demo-result.error p {
+    color: var(--danger);
+}
+
 .lesson-navigation {
     display: flex;
     justify-content: space-between;
     margin-top: 4.5rem;
-    border-top: 1px solid var(--border-color);
     padding-top: 2.5rem;
+    border-top: 1px solid var(--border-color);
 }
 
 .nav-button {
-    text-decoration: none;
-    color: white;
-    background-color: var(--button-bg);
     padding: 0.85rem 1.75rem;
-    border-radius: 5px;
-    border: 1px solid var(--border-medium);
-    transition: all 0.3s ease;
     font-weight: bold;
+    color: white;
+    text-decoration: none;
+    background-color: var(--button-bg);
+    border: 1px solid var(--border-medium);
+    border-radius: 5px;
+    transition: all 0.3s ease;
 }
 
 .nav-button.disabled {
+    opacity: 0.6;
     filter: grayscale(80%);
     pointer-events: none;
-    opacity: 0.6;
 }
 
 .feature-list {
-    list-style-position: inside;
     padding-left: 0;
+    list-style-position: inside;
 }
 
 .feature-list li {
-    margin-bottom: 1rem;
+    padding-bottom: 1rem;
 }
 
 .feature-list li::marker {
     color: var(--white);
     font-size: 1.2rem;
     font-weight: bold;
-}
-
-.demo-result.success {
-    border-color: var(--easy);
-}
-.demo-result.success p {
-    color: var(--easy);
-    font-weight: bold;
-}
-.demo-result.error {
-    border-color: var(--danger);
-}
-.demo-result.error p {
-    color: var(--danger);
 }
 
 
@@ -290,8 +293,8 @@ pre code {
 
     .nav-button:hover {
         color: white;
-        border-color: var(--purple);
         background-color: var(--purple);
+        border-color: var(--purple);
     }
 }
 

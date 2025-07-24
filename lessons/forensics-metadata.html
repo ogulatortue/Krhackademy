@@ -62,20 +62,25 @@
                 </p>
                 <ul>
                     <li><strong>Modified :</strong> Date et heure de la dernière modification du contenu du fichier.</li>
-                    <li><strong>Accessed :</strong> Date et heure du dernier accès (ouverture). Attention, ce timestamp est souvent désactivé sur les systèmes modernes. En effet, chaque lecture (même par un antivirus ou un indexeur) provoquerait une opération d'écriture sur le disque, dégradant les performances. Sur Windows, ce comportement est géré via la clé de registre <code>NtfsDisableLastAccessUpdate</code>.</li>
-                    <li><strong>Changed (ou MFT Entry Modified) :</strong> Date et heure du dernier changement des métadonnées elles-mêmes (ex: changement de nom, de permissions).</li>
+                    <li><strong>Accessed :</strong> Date et heure du dernier accès (ouverture). Attention, ce timestamp est souvent désactivé sur les systèmes modernes. En effet, chaque lecture (même par un antivirus ou un indexeur) provoquerait une opération d'écriture sur le disque, dégradant les performances.</li>
+                    <li><strong>Changed :</strong> Date et heure du dernier changement des métadonnées elles-mêmes (ex: changement de nom, de permissions).</li>
                     <li><strong>Entry Created (ou Birth) :</strong> Date et heure de la création du fichier sur le volume.</li>
                 </ul>
                 <p>
-                    <strong>Point d'analyse :</strong> Sur un système de fichiers NTFS (Windows), il existe deux jeux de timestamps MACE : $STANDARD_INFORMATION (visibles dans l'explorateur) et $FILE_NAME (stockés dans la MFT). Un outil de timestomping simple modifiera souvent le premier, mais oubliera le second. Une incohérence entre ces deux jeux de dates est un indice de manipulation quasi certain.
+                    <strong>Point d'analyse :</strong> Sur un système de fichiers NTFS (Windows), il existe deux jeux de timestamps MACE :
                 </p>
+                <ul>
+                    <li><strong>$STANDARD_INFORMATION</strong> (visibles dans l'explorateur)</li>
+                    <li><strong>$FILE_NAME</strong> (stockés dans la MFT)</li>
+                </ul>
+                <p>Un outil de timestomping simple modifiera souvent le premier, mais oubliera le second. Une incohérence entre ces deux jeux de dates est un indice de manipulation quasi certain.</p>
                 <h3>Exemple concret : Cycle de vie d'un rapport</h3>
                 <p>Imaginons un fichier Rapport.docx créé sur un ordinateur Windows. Un outil forensique comme MFTECmd révélerait le scénario suivant :</p>
                 <ul>
-                    <li><b>Lundi 10:00 - Création :</b> L'utilisateur crée Rapport.docx. Le timestamp Birth est fixé à Lundi 10:00. Les timestamps Modified, Accessed et Changed sont aussi initialisés à Lundi 10:00.</li>
-                    <li><b>Lundi 10:05 - Rédaction :</b> L'utilisateur écrit dans le rapport et sauvegarde. Le timestamp Modified est mis à jour à Lundi 10:05. Les timestamps Changed et Accessed sont aussi mis à jour.</li>
-                    <li><b>Lundi 11:00 - Renommage :</b> L'utilisateur renomme le fichier en Rapport_Final.docx. Seul le timestamp Changed est mis à jour à Lundi 11:00, car le contenu du fichier n'a pas changé.</li>
-                    <li><b>Mardi 09:00 - Relecture :</b> Un collègue ouvre le fichier pour le lire, sans le modifier. Seul le timestamp Accessed est mis à jour à Mardi 09:00.</li>
+                    <li><strong>Lundi 10:00 - Création :</strong> L'utilisateur crée Rapport.docx. Le timestamp strongirth est fixé à Lundi 10:00. Les timestamps Modified, Accessed et Changed sont aussi initialisés à Lundi 10:00.</li>
+                    <li><strong>Lundi 10:05 - Rédaction :</strong> L'utilisateur écrit dans le rapport et sauvegarde. Le timestamp Modified est mis à jour à Lundi 10:05. Les timestamps Changed et Accessed sont aussi mis à jour.</li>
+                    <li><strong>Lundi 11:00 - Renommage :</strong> L'utilisateur renomme le fichier en Rapport_Final.docx. Seul le timestamp Changed est mis à jour à Lundi 11:00, car le contenu du fichier n'a pas changé.</li>
+                    <li><strong>Mardi 09:00 - Relecture :</strong> Un collègue ouvre le fichier pour le lire, sans le modifier. Seul le timestamp Accessed est mis à jour à Mardi 09:00.</li>
                 </ul>
             </section>
             
@@ -87,9 +92,15 @@
                 
                 <h3>1. Les documents Microsoft Office (.docx, .pptx, etc.)</h3>
                 <p>Bien plus que de simples conteneurs de texte, les fichiers Office modernes sont de véritables journaux de bord.
-                <strong>Métadonnées clés :</strong> Creator (auteur initial), Last Modified By (dernier utilisateur à avoir sauvegardé), Total Edit Time (temps total d'édition), Revision Number (nombre de sauvegardes), Company, Manager.
-                <strong>Exemple :</strong> Une entreprise retrouve son plan stratégique Plan_Secret.docx sur internet. L'analyse révèle Creator: "Alice Martin" et Last Modified By: "Bob Durand". L'enquête peut donc se concentrer sur l'activité de Bob.</p>
-
+                <br>Métadonnées clés :</br></p>
+                <ul>
+                    <li>Creator (auteur initial)</li>
+                    <li>Last Modified By (dernier utilisateur à avoir sauvegardé)</li>
+                    <li>Total Edit Time (temps total d'édition)</li>
+                    <li>Revision Number (nombre de sauvegardes)</li>
+                    <li>Company, Manager, ...</li>
+                </ul>
+                <p><strong>Exemple :</strong> Une entreprise retrouve son plan stratégique Plan_Secret.docx sur internet. L'analyse révèle Creator: "Hugo" et Last Modified By: "Rob". L'enquête peut donc se concentrer sur l'activité de Rob.</p>
                 <h3>2. Les images (.jpg, .heic, .cr2)</h3>
                 <p>Les métadonnées EXIF (Exchangeable Image File Format) peuvent transformer une simple image en une preuve factuelle irréfutable.
                 <strong>Métadonnées clés :</strong> Make et Model (marque et modèle de l'appareil), DateTimeOriginal (date et heure exactes de la prise de vue), GPSLatitude et GPSLongitude (coordonnées GPS), Software (logiciel de retouche).

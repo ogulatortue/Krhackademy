@@ -2,9 +2,9 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Kr[HACK]ademy - Titre de la Leçon</title>
-    <meta name="description" content="Description générique de la leçon.">
-    <meta name="keywords" content="Leçon, Apprendre, Tutoriel">
+    <title>Kr[HACK]ademy - Introduction à l'analyse forensique</title>
+    <meta name="description" content="Apprenez en quoi consiste l'analyse forensique et ses spécificités.">
+    <meta name="keywords" content="Leçon, Apprendre, Tutoriel, Forensique, Cybersécurité, Analyse">
     <meta name="author" content="BRUCHON Hugo">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -25,74 +25,132 @@
         <article class="lesson-content">
             
             <header class="lesson-header">
-                <i class="fas fa-book lesson-icon" aria-hidden="true"></i>
+                <i class="fas fa-fingerprint lesson-icon" aria-hidden="true"></i>
                 <div class="lesson-title-group">
-                    <h1>Titre de la Leçon</h1>
+                    <h1>Introduction à l'analyse forensique</h1>
                     <p class="lesson-intro">
-                        Ceci est une courte introduction qui décrit le sujet de la leçon.
+                        Découvrez les notions fondamentales de l'analyse forensique.
                     </p>
                 </div>
                 <span class="difficulty-tag difficulty-easy">Débutant</span>
             </header>
 
             <section class="lesson-block">
-                <h2><i class="fas fa-question-circle" aria-hidden="true"></i> Section 1 : Introduction au concept</h2>
+                <h2><i class="fas fa-question-circle" aria-hidden="true"></i>Qu'est-ce que l’analyse forensique ?</h2>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.
+                    L'analyse forensique est la discipline consistant à collecter et analyser les traces numériques laissées par des incidents tels que les cyberattaques, les fuites de données ou les fraudes internes. 
                 </p>
                 <p>
-                    Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat.
-                </p>
-            </section>
-
-            <section class="lesson-block">
-                <h2><i class="fas fa-cogs" aria-hidden="true"></i> Section 2 : Explication détaillée</h2>
-                <p>
-                    Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue. Ut in risus volutpat libero pharetra tempor.
+                    En identifiant, préservant et examinant ces éléments selon une méthodologie stricte, elle vise à reconstituer la chronologie des événements pour déterminer les actions menées et leurs auteurs. L'objectif est de produire des preuves dont la rigueur de collecte garantit la recevabilité devant un tribunal.
                 </p>
             </section>
 
             <section class="lesson-block">
-                <h2><i class="fas fa-code" aria-hidden="true"></i> Section 3 : Exemple concret</h2>
-                <p>Exemple de code :</p>
-                <div class="code-block">
-                    <pre><code class="language-js">
-// Un exemple de code générique
-function helloWorld() {
-    console.log("Hello, World!");
-}
-                    </code></pre>
-                </div>
+                <h2><i class="fas fa-gavel" aria-hidden="true"></i>Le cadre légal et éthique</h2>
                 <p>
-                    Explication de l'exemple de code ci-dessus pour clarifier son fonctionnement et son utilité dans le contexte de la leçon.
+                    Avant toute intervention technique, il est impératif de comprendre que l'analyse forensique est une pratique strictement encadrée par la loi et l'éthique. L'analyste doit opérer en respectant trois piliers fondamentaux :
                 </p>
+                <ol class="feature-list">
+                    <ul><li>
+                        <b>La légitimité de l'accès</b>
+                        <p>Toute investigation nécessite une autorisation formelle (mandat judiciaire, accord contractuel, demande de la direction) pour être légale.</p>
+                    </li></ul>
+                    <ul><li>
+                        <b>Le respect de la vie privée</b>
+                        <p>L'analyste doit se concentrer sur les données pertinentes à l'enquête et garantir la confidentialité des informations personnelles non liées à l'incident, conformément aux réglementations comme le RGPD.</p>
+                    </li></ul>
+                    <ul><li>
+                        <b>L'admissibilité des preuves</b>
+                        <p>Le respect scrupuleux des procédures est ce qui rendra les preuves recevables et crédibles devant la justice.</p>
+                    </li></ul>
+                </ol>
             </section>
             
             <section class="lesson-block">
-                <h2><i class="fas fa-terminal" aria-hidden="true"></i> Section 4 : Démonstration</h2>
-                <div class="interactive-demo">
-                    <p>Ceci est une zone de démonstration interactive.</p>
-                    </div>
+                <h2><i class="fas fa-cogs" aria-hidden="true"></i>Les contextes d'intervention</h2>
+                <p>
+                    L'approche de l'analyste dépend crucialement de l'état du système au moment de l'intervention. On distingue deux contextes majeurs.
+                </p>
+                <h3>L'analyse « à froid » (Dead Forensics)</h3>
+                <p>
+                    C'est l'approche la plus courante. L'intervention se fait sur un système éteint. L'analyse se concentre sur les données "au repos", c'est-à-dire celles qui sont stockées de manière permanente sur les disques durs, les SSD ou autres supports de stockage. C'est le contexte idéal pour réaliser une copie parfaite de la preuve sans risquer de l'altérer.
+                </p>
+                <h3>L'analyse « à chaud » (Live Forensics)</h3>
+                <p>
+                    Cette approche est nécessaire lorsque le système est en cours de fonctionnement, souvent pendant un incident actif. L'objectif est de capturer les données volatiles, c'est-à-dire les informations qui disparaîtraient si la machine était éteinte. Cela inclut la mémoire vive (RAM), les connexions réseau actives et les processus en cours. Cette analyse est plus délicate mais indispensable pour comprendre ce qui se passe sur un système en temps réel.
+                </p>
+                <p>
+                    Souvent, les deux approches sont complémentaires : on peut commencer par une analyse "à chaud" pour capturer l'état actuel, puis éteindre le système pour une analyse "à froid" approfondie.
+                </p>
             </section>
 
             <section class="lesson-block">
-                <h2><i class="fas fa-shield-alt" aria-hidden="true"></i> Section 5 : Points Clés</h2>
-                <p>Voici un résumé des points importants à retenir :</p>
-                
-                <ol class="feature-list">
-                    <li>
-                        <h3>Premier Point Important</h3>
-                        <p>Description du premier point clé. C'est le concept le plus fondamental.</p>
-                    </li>
-                    <li>
-                        <h3>Second Point Important</h3>
-                        <p>Description du second point clé, qui s'appuie sur le premier.</p>
-                    </li>
-                    <li>
-                        <h3>Troisième Point Important</h3>
-                        <p>Description du troisième point clé pour conclure.</p>
-                    </li>
-                </ol>
+                <h2><i class="fas fa-database" aria-hidden="true"></i>La collecte de preuves</h2>
+                <p>
+                    La première responsabilité de l'analyste forensique est de préserver l'intégrité de la scène de crime numérique. Toute action doit être menée avec la garantie que les preuves originales restent intactes et inchangées.
+                </p>
+                <ul>
+                    <li><b>L'intégrité des données</b><p>Le principe fondamental est de ne jamais travailler directement sur les preuves originales. On opère sur une copie conforme et parfaite de la source de données (disque dur, smartphone, etc.).</p></li>
+                </ul>
+                <ul>
+                    <li><b>L'empreinte numérique</b><p>Pour prouver que cette copie est authentique et identique à l'original, on utilise une "empreinte numérique" (ou hash). Cette empreinte unique certifie que pas un seul bit d'information n'a été modifié durant la copie.</p></li>
+                </ul>
+                <ul>
+                    <li><b>La traçabilité</b><p>Chaque manipulation de la preuve, de sa collecte à son analyse, est rigoureusement documentée dans une chaîne de conservation. Cette traçabilité garantit la validité juridique de l'ensemble de la procédure.</p></li>
+                </ul>
+            </section>
+
+            <section class="lesson-block">
+                <h2><i class="fas fa-search" aria-hidden="true"></i>L'analyse</h2>
+                <p>
+                    Une fois les preuves collectées et préservées, l'analyse peut commencer. Elle consiste à examiner les données pour y trouver des indices pertinents. Une grande partie de ce travail se concentre sur les métadonnées.
+                </p>
+                <p>
+                    Les métadonnées sont des informations descriptives cachées dans les fichiers. Elles sont cruciales pour l'enquête, car elles permettent de contextualiser une action. On y trouve trois grandes familles d'informations :
+                </p>
+                <ul>
+                    <li><b>Informations temporelles</b><p>Les dates et heures de création, de dernière modification ou de dernier accès à un fichier.</p></li>
+                    <li><b>Informations d'origine</b><p>Le nom de l'auteur d'un document, le type d'appareil photo utilisé pour une image, ou le logiciel ayant servi à créer un fichier.</p></li>
+                    <li><b>Informations contextuelles</b><p>Des données de géolocalisation (coordonnées GPS), des informations sur les versions ou les imprimantes utilisées.</p></li>
+                </ul>
+                <p>
+                    L'analyse des métadonnées transforme de simples fichiers en pièces à conviction, leur donnant un contexte, une origine et une place dans le fil des événements.
+                </p>
+            </section>
+
+             <section class="lesson-block">
+                <h2><i class="fas fa-file-alt" aria-hidden="true"></i>Le rapport final</h2>
+                <p>
+                    Le travail d'investigation culmine dans la rédaction d'un rapport d'analyse. Ce document est aussi important que l'analyse elle-même, car il formalise les découvertes. Il doit être :
+                </p>
+                 <ul>
+                    <li><b>Factuel et objectif</b><p>Le rapport expose les faits découverts, sans jugement ni interprétation.</p></li>
+                    <li><b>Clair et compréhensible</b><p>Il est souvent destiné à un public non technique (juges, avocats, managers) et doit donc traduire les conclusions techniques en un langage accessible.</p></li>
+                    <li><b>Reproductible</b><p>Il doit décrire la méthodologie utilisée avec assez de précision pour qu'un autre expert puisse, en théorie, aboutir aux mêmes conclusions.</p></li>
+                </ul>
+            </section>
+
+            <section class="lesson-block">
+                <h2><i class="fas fa-sitemap" aria-hidden="true"></i>Les spécialités de la forensique</h2>
+                <p>
+                    Enfin, il faut savoir que "l’analyse forensique" est un domaine vaste avec plusieurs spécialités, notamment :
+                </p>
+                 <ul>
+                    <li><b>La forensique sur poste de travail et serveur :</b> L'analyse "classique" des ordinateurs.</li>
+                    <li><b>La forensique mobile :</b> L'investigation sur les smartphones et les tablettes.</li>
+                    <li><b>La forensique réseau :</b> L'analyse du trafic et des communications pour retracer les actions d'un attaquant.</li>
+                    <li><b>La forensique du cloud :</b> L'enquête sur des données hébergées par des fournisseurs de services en ligne.</li>
+                </ul>
+            </section>
+
+             <section class="lesson-block">
+                <h2><i class="fas fa-flag-checkered" aria-hidden="true"></i>Conclusion</h2>
+                <p>
+                   Le but fondamental de l'analyse forensique est de répondre à une question essentielle : que s'est-il réellement passé ?
+                </p>
+                <p>
+                   À travers une méthodologie stricte de collecte et d'analyse, elle vise à transformer le chaos d'un incident numérique en une chronologie claire et factuelle. En reconstituant la chaîne des événements et en identifiant les actions menées, elle établit la vérité numérique de manière objective. Son objectif final est de matérialiser ces découvertes sous la forme de preuves tangibles et recevables, capables d'éclairer une décision de justice ou une action interne.
+                </p>
             </section>
 
             <nav class="lesson-navigation">

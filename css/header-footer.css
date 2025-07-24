@@ -8,7 +8,7 @@ header {
   align-items: center;
   padding: 7px 25px;
   background-color: var(--purple);
-  background-image: url(../images/header_background_blured3.webp);
+  background-image: url('/images/header_background_blured3.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -141,7 +141,7 @@ footer .footer-legal {
   .nav-bar ul {
     flex-direction: column;
     border-bottom: none;
-    background-image: url(../images/header_background_blured3.webp);
+    background-image: url('/images/header_background_blured3.webp');
     background-size: cover;
     background-position: center;
     border-radius: 20px;

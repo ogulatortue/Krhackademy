@@ -21,7 +21,7 @@
     margin-bottom: 3rem;
     min-height: 5rem;
     color: var(--white);
-    background: url('/images/header_background_blured3.webp') center/cover no-repeat;
+    background: url(../images/header_background_blured3.webp) center/cover no-repeat;
     border-radius: 15px;
 }
 
@@ -316,26 +316,26 @@ pre code {
     }
 
     .lesson-title-group h1 {
-        font-size: 2rem;
+        font-size: 2.2rem;
     }
     .lesson-title-group .lesson-intro {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
     }
 
     .lesson-block h2 {
-        font-size: 1.5rem;
+        font-size: 1.7rem;
         padding-left: 1rem;
         margin-bottom: 1.5rem;
     }
 
     .lesson-block h3 {
-        font-size: 1.2rem;
+        font-size: 1.25rem;
     }
 
     .lesson-block p,
     .lesson-block ul,
     .lesson-block ol {
-        font-size: 1.1rem;
+        font-size: 1.15rem;
         line-height: 1.6;
     }
 

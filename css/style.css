@@ -53,7 +53,7 @@ main.main {
 body {
     min-height: 100vh;
     font-size: 100%;
-    background: var(--grey) url('/images/back.webp') no-repeat center top / cover;
+    background: var(--grey) url('../images/back.webp') no-repeat center top / cover;
     color: var(--white);
     display: flex;
     flex-direction: column;

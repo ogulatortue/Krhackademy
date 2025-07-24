@@ -157,10 +157,10 @@
         font-size: 1.5rem;
     }
     .box-container {
-        grid-template-columns: 1fr;
         gap: 1.5rem;
     }
     .card-icon {
+        font-size: 3rem;
         margin-right: 0.5rem;
     }
     .lesson-card {

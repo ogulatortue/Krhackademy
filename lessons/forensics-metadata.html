@@ -76,12 +76,10 @@
                 <p>Un outil de timestomping simple modifiera souvent le premier, mais oubliera le second. Une incohérence entre ces deux jeux de dates est un indice de manipulation quasi certain.</p>
                 <h3>Exemple concret : Cycle de vie d'un rapport</h3>
                 <p>Imaginons un fichier Rapport.docx créé sur un ordinateur Windows. Un outil forensique comme MFTECmd révélerait le scénario suivant :</p>
-                <ul>
-                    <li><strong>Lundi 10:00 - Création :</strong> L'utilisateur crée Rapport.docx. Le timestamp strongirth est fixé à Lundi 10:00. Les timestamps Modified, Accessed et Changed sont aussi initialisés à Lundi 10:00.</li>
-                    <li><strong>Lundi 10:05 - Rédaction :</strong> L'utilisateur écrit dans le rapport et sauvegarde. Le timestamp Modified est mis à jour à Lundi 10:05. Les timestamps Changed et Accessed sont aussi mis à jour.</li>
-                    <li><strong>Lundi 11:00 - Renommage :</strong> L'utilisateur renomme le fichier en Rapport_Final.docx. Seul le timestamp Changed est mis à jour à Lundi 11:00, car le contenu du fichier n'a pas changé.</li>
-                    <li><strong>Mardi 09:00 - Relecture :</strong> Un collègue ouvre le fichier pour le lire, sans le modifier. Seul le timestamp Accessed est mis à jour à Mardi 09:00.</li>
-                </ul>
+                <p><strong>Lundi 10:00 - Création :</strong> L'utilisateur crée Rapport.docx. Le timestamp Entry Created est fixé à Lundi 10:00. Les timestamps Modified, Accessed et Changed sont aussi initialisés à Lundi 10:00.</p>
+                <p><strong>Lundi 10:05 - Rédaction :</strong> L'utilisateur écrit dans le rapport et sauvegarde. Le timestamp Modified est mis à jour à Lundi 10:05. Les timestamps Changed et Accessed sont aussi mis à jour.</p>
+                <p><strong>Lundi 11:00 - Renommage :</strong> L'utilisateur renomme le fichier en Rapport_Final.docx. Seul le timestamp Changed est mis à jour à Lundi 11:00, car le contenu du fichier n'a pas changé.</p>
+                <p><strong>Mardi 09:00 - Relecture :</strong> Un collègue ouvre le fichier pour le lire, sans le modifier. Seul le timestamp Accessed est mis à jour à Mardi 09:00.</p>
             </section>
             
             <section class="lesson-block">
@@ -103,28 +101,54 @@
                 <p><strong>Exemple :</strong> Une entreprise retrouve son plan stratégique Plan_Secret.docx sur internet. L'analyse révèle Creator: "Hugo" et Last Modified By: "Rob". L'enquête peut donc se concentrer sur l'activité de Rob.</p>
                 <h3>2. Les images (.jpg, .heic, .cr2)</h3>
                 <p>Les métadonnées EXIF (Exchangeable Image File Format) peuvent transformer une simple image en une preuve factuelle irréfutable.
-                <strong>Métadonnées clés :</strong> Make et Model (marque et modèle de l'appareil), DateTimeOriginal (date et heure exactes de la prise de vue), GPSLatitude et GPSLongitude (coordonnées GPS), Software (logiciel de retouche).
-                <strong>Exemple :</strong> La photo d'un suspect, IMG_4587.jpg, prétendument prise chez lui, révèle des coordonnées GPS qui pointent vers le lieu d'un cambriolage à l'heure du crime, contredisant son alibi.</p>
+                <br>Métadonnées clés :</br></p>
+                <ul>
+                    <li>Make et Model (marque et modèle de l'appareil)</li>
+                    <li>DateTimeOriginal (date et heure exactes de la prise de vue)</li>
+                    <li>GPSLatitude et GPSLongitude (coordonnées GPS)</li>
+                    <li>Software (logiciel de retouche)</li>
+                </ul>
+                <p><strong>Exemple :</strong> La photo d'un suspect, IMG_4587.jpg, prétendument prise chez lui, révèle des coordonnées GPS qui pointent vers le lieu d'un cambriolage à l'heure du crime, contredisant son alibi.</p>
                 
                 <h3>3. Les fichiers Audio et Vidéo (.mp4, .mov, .mp3)</h3>
                 <p>Comme les images, les fichiers multimédias embarquent des informations cruciales sur leur origine.
-                <strong>Métadonnées clés :</strong> Duration, Make et Model (de la caméra ou du micro), CreationDate, Software (logiciel de montage), et parfois des données de géolocalisation.
-                <strong>Exemple :</strong> Une vidéo de revendication est analysée. Les métadonnées montrent qu'elle a été montée avec le logiciel "iMovie" sur un "iPhone 14 Pro", et les coordonnées GPS intégrées pointent vers un quartier précis, réduisant considérablement la zone de recherche des suspects.</p>
+                <br>Métadonnées clés :</br> 
+                <ul>
+                    <li>Duration</li>
+                    <li>Make et Model (de la caméra ou du micro)</li>
+                    <li>CreationDate</li>
+                    <li>Software (logiciel de montage)</li>
+                    <li>Parfois des données de géolocalisation</li>
+                </ul>
+                <p><strong>Exemple :</strong> Une vidéo de revendication est analysée. Les métadonnées montrent qu'elle a été montée avec le logiciel "iMovie" sur un "iPhone 14 Pro", et les coordonnées GPS intégrées pointent vers un quartier précis, réduisant considérablement la zone de recherche des suspects.</p>
 
                 <h3>4. Les archives (.zip, .rar, .7z) 📦</h3>
                 <p>Une archive est un conteneur qui possède ses propres timestamps MACE. Cependant, les fichiers qu'elle contient conservent leurs métadonnées d'origine.
-                <strong>Analyse clé :</strong> Comparer les timestamps MACE de l'archive (ex: documents_secrets.zip créé Mardi à 15:00) avec les timestamps internes des fichiers qu'elle contient.
-                <strong>Exemple :</strong> L'analyse d'un fichier Compta.zip volé montre que l'archive a été créée le 20/07/2024 à 23:55, juste après une intrusion détectée sur le serveur. Les fichiers à l'intérieur ont des dates de modification bien antérieures. Cela indique précisément quels fichiers ont été exfiltrés et quand l'attaquant a finalisé son paquet.</p>
+                Il est intéressant de comparer les timestamps MACE de l'archive (ex: documents_secrets.zip créé Mardi à 15:00) avec les timestamps internes des fichiers qu'elle contient.</p>
+                <p><strong>Exemple :</strong> L'analyse d'un fichier Compta.zip volé montre que l'archive a été créée le 20/07/2024 à 23:55, juste après une intrusion détectée sur le serveur. Les fichiers à l'intérieur ont des dates de modification bien antérieures. Cela indique précisément quels fichiers ont été exfiltrés et quand l'attaquant a finalisé son paquet.</p>
 
                 <h3>5. Les fichiers de raccourcis Windows (.lnk) 🔗</h3>
                 <p>Loin d'être de simples pointeurs, les fichiers .lnk sont des mines d'or forensiques. Ils enregistrent l'état de leur cible au moment de leur création ou de leur dernière utilisation.
-                <strong>Métadonnées clés :</strong> Chemin complet du fichier cible, ses timestamps MACE, la taille du fichier cible, le nom de la machine sur laquelle il était stocké (NetBIOS name), et même l'adresse MAC de cette machine.
-                <strong>Exemple :</strong> Un enquêteur trouve sur une clé USB un raccourci pointant vers C:\Users\Hugo\Desktop\Liste_Clients.xlsx. Le fichier Liste_Clients.xlsx est absent, mais le raccourci prouve à lui seul que ce fichier a existé sur l'ordinateur de Hugo et donne des informations sur la machine d'origine.</p>
+                <br>Métadonnées clés :</br>
+                <ul>
+                    <li>Chemin complet du fichier cible</li>
+                    <li>Ses timestamps MACE</li>
+                    <li>La taille du fichier cible</li>
+                    <li>Le nom de la machine sur laquelle il était stocké (NetBIOS name)</li>
+                    <li>L'adresse MAC de cette machine</li>
+                </ul>
+                <p><strong>Exemple :</strong> Un enquêteur trouve sur une clé USB un raccourci pointant vers C:\Users\Hugo\Desktop\Liste_Clients.xlsx. Le fichier Liste_Clients.xlsx est absent, mais le raccourci prouve à lui seul que ce fichier a existé sur l'ordinateur de Hugo et donne des informations sur la machine d'origine.</p>
 
                 <h3>6. Les fichiers PDF</h3>
                 <p>Souvent perçus comme statiques, les PDF conservent des traces de leur cycle de vie.
-                <strong>Métadonnées clés :</strong> Author, CreatorTool (logiciel ayant produit le contenu, ex: "Microsoft Word 2019"), Producer (logiciel ayant converti en PDF, ex: "Adobe PDF Library"), dates de modification multiples.
-                <strong>Exemple :</strong> Une fausse facture Facture.pdf indique CreatorTool: "Adobe Illustrator 2024". Une facture est normalement générée par un logiciel de comptabilité, pas un logiciel de design graphique. Cet indice suggère une création de toutes pièces.</p>
+                <br>Métadonnées clés :</br> 
+                <ul>
+                    <li>Author</li>
+                    <li>CreatorTool (logiciel ayant produit le contenu, ex: "Microsoft Word 2019")</li>
+                    <li>Producer (logiciel ayant converti en PDF, ex: "Adobe PDF Library")</li>
+                    <li>Toutes les dates de modification</li>
+                </ul>
+                <p><strong>Exemple :</strong> Une fausse facture Facture.pdf indique CreatorTool: "Adobe Illustrator 2024". Une facture est normalement générée par un logiciel de comptabilité, pas un logiciel de design graphique. Cet indice suggère une création de toutes pièces.</p>
             </section>
 
             <section class="lesson-block">

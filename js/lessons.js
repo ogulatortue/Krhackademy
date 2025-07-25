@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const initializeLessonListPage = () => {
-        const lessonCards = document.querySelectorAll('.lesson-card');
+        const lessonCards = document.querySelectorAll('.card');
         if (lessonCards.length === 0) {
             return; 
         }
@@ -22,12 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
         lessonCards.forEach(card => {
             const lessonId = card.dataset.lessonId;
             if (lessonId && lessonStates[lessonId]) {
-                const icon = card.querySelector('.checkbox-icon');
-                card.classList.add('completed-lesson');
-                if (icon) {
-                    icon.classList.remove('fa-times-circle', 'not-completed');
-                    icon.classList.add('fa-check-circle', 'completed');
-                }
+                card.classList.add('completed');
             }
         });
     };
@@ -49,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const lessonStates = getLessonStates();
             lessonStates[lessonId] = true;
             saveLessonStates(lessonStates);
-            
+
             window.location.href = nextButton.href;
         });
     };

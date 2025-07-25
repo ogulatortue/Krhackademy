@@ -1,13 +1,13 @@
-.main-lessons {
+.main-container {
     padding: 8rem 2rem;
     color: var(--white);
 }
 
-.lesson-category-section {
+.category-section {
     margin-bottom: 4rem;
 }
 
-.lesson-category-section:last-child {
+.category-section:last-child {
     margin-bottom: 0;
 }
 
@@ -35,7 +35,7 @@
     }
 }
 
-.lesson-card {
+.card {
     position: relative;
     display: flex;
     flex-direction: row;
@@ -55,7 +55,7 @@
 }
 
 @media (hover: hover) and (pointer: fine) {
-    .lesson-card:hover {
+    .card:hover {
         transform: translateY(-8px);
         box-shadow: 0 20px 40px var(--shadow-heavy);
     }
@@ -68,7 +68,7 @@
     flex-shrink: 0;
 }
 
-.lesson-text-content {
+.card-text-content {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -77,7 +77,7 @@
     width: 100%;
 }
 
-.lesson-title-wrapper {
+.card-title-wrapper {
     display: flex;
     flex-direction: row;
     align-items: baseline;
@@ -85,14 +85,14 @@
     width: 100%;
 }
 
-.lesson-text-content h4 {
+.card-text-content h4 {
     margin: 0;
     font-size: 1.1rem;
     font-weight: 700;
     color: var(--white);
 }
 
-.lesson-text-content p {
+.card-text-content p {
     margin: 0;
     font-size: 0.8rem;
     line-height: 1.5;
@@ -112,12 +112,12 @@
     font-size: 1.5rem;
 }
 
-.lesson-card.completed-lesson {
+.card.completed {
     border-color: var(--completed-color);
     border-width: 2px;
 }
 
-.lesson-card.completed-lesson .check-box {
+.card.completed .check-box {
     display: grid;
     place-items: center;
     width: 2rem;
@@ -128,32 +128,32 @@
     box-shadow: 0 2px 8px var(--shadow-light);
 }
 
-.lesson-card.completed-lesson .checkbox-icon.not-completed {
+.card.completed .checkbox-icon.not-completed {
     display: none;
 }
 
-.lesson-card.completed-lesson .checkbox-icon.completed {
+.card.completed .checkbox-icon.completed {
     display: block;
     color: var(--card-bg);
     font-size: 1.5rem;
 }
 
-.lesson-card.completed-lesson .card-icon {
+.card.completed .card-icon {
     color: var(--completed-color);
 }
 
 @media (max-width: 900px) {
-    .main-lessons {
+    .main-container {
         padding: 13rem 0rem;
     }
     .main-title.category-title {
         font-size: 4.5rem;
         padding-block: 1.5rem;
     }
-    .lesson-text-content h4 {
+    .card-text-content h4 {
         font-size: 2rem;
     }
-    .lesson-text-content p {
+    .card-text-content p {
         font-size: 1.5rem;
     }
     .box-container {
@@ -163,13 +163,13 @@
         font-size: 3rem;
         margin-right: 0.5rem;
     }
-    .lesson-card {
+    .card {
         min-height: 12rem;
     }
-    .lesson-card.completed-lesson .checkbox-icon.completed {
+    .card.completed .checkbox-icon.completed {
         font-size: 2rem;
     }
-    .lesson-card.completed-lesson .check-box {
+    .card.completed .check-box {
         width: 3rem;
         height: 3rem;
     }

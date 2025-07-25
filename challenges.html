@@ -2,12 +2,12 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Explorez nos leçons de cybersécurité pour débutants, conçues par le club Krhacken pour s'initier au hacking éthique.">
-    <meta name="keywords" content="Leçons, Débutant, Web Hacking, OSINT, Pwned, Injection SQL, Krhacken, Esisar, apprendre, cybersécurité, cryptographie, sécurité réseau, forensique, culture sécurité, stéganographie">
+    <meta name="description" content="Relevez nos challenges de cybersécurité pour débutants. Mettez vos compétences en hacking éthique à l'épreuve avec le club Krhacken.">
+    <meta name="keywords" content="Challenges, CTF, Débutant, Web Hacking, OSINT, Pwned, Krhacken, Esisar, cybersécurité, cryptographie, forensique, stéganographie">
     <meta name="author" content="BRUCHON Hugo">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Kr[HACK]ademy - Leçons de Cybersécurité pour Débutants</title>
+    <title>Kr[HACK]ademy - Challenges de Cybersécurité pour Débutants</title>
 
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
@@ -32,8 +32,8 @@
         <nav class="nav-bar" aria-label="Navigation principale">
             <ul id="nav-links">
                 <li><a href="./index.html">ACCUEIL</a></li>
-                <li class="active"><a href="/lessons.html">LEÇONS</a></li>
-                <li><a href="./challenges.html">CHALLENGES</a></li>
+                <li><a href="./lessons.html">LEÇONS</a></li>
+                <li class="active"><a href="./challenges.html">CHALLENGES</a></li>
                 <li><a href="./scenarios.html">SCÉNARIOS</a></li>
             </ul>
         </nav>
@@ -41,31 +41,18 @@
     </header>
 
     <main class="main-container">
+
         <section class="category-section">
             <h2 class="main-title category-title">Analyse Forensique</h2>
             <div class="box-container">
-                <a href="./lessons/forensics-intro.html" class="card completed" data-lesson-id="forensics-intro">
-                    <i class="fas fa-fingerprint card-icon" aria-hidden="true"></i>
+                <a href="#" class="card" data-challenge-id="forensics-metadata-hunt">
+                    <i class="fas fa-search card-icon" aria-hidden="true"></i>
                     <div class="card-text-content">
                         <div class="card-title-wrapper">
-                            <h4>Introduction à la Forensique</h4>
-                            <span class="difficulty-tag difficulty-easy">Débutant</span>
+                            <h4>Chasse aux Métadonnées</h4>
+                            <span class="difficulty-tag difficulty-easy">Débutant | 25 pts</span>
                         </div>
-                        <p>Découvrez les notions fondamentales de l'analyse forensique.</p>
-                    </div>
-                    <div class="check-box">
-                        <i class="fas fa-times-circle checkbox-icon not-completed" aria-hidden="true"></i>
-                        <i class="fas fa-check-circle checkbox-icon completed" aria-hidden="true"></i>
-                    </div>
-                </a>
-                <a href="./lessons/forensics-metadata.html" class="card" data-lesson-id="forensics-metadata">
-                    <i class="fas fa-fingerprint card-icon" aria-hidden="true"></i>
-                    <div class="card-text-content">
-                        <div class="card-title-wrapper">
-                            <h4>Analyse des Métadonnées</h4>
-                            <span class="difficulty-tag difficulty-medium">Initié</span>
-                        </div>
-                        <p>Traquez les incohérences entre les métadonnées pour révéler les manipulations.</p>
+                        <p>Une image cache des informations cruciales dans ses métadonnées. Trouvez le flag !</p>
                     </div>
                     <div class="check-box">
                         <i class="fas fa-times-circle checkbox-icon not-completed" aria-hidden="true"></i>
@@ -78,28 +65,14 @@
         <section class="category-section">
             <h2 class="main-title category-title">Culture de la Sécurité</h2>
             <div class="box-container">
-                <a href="#" class="card" data-lesson-id="security-passwords">
-                    <i class="fas fa-shield-alt card-icon" aria-hidden="true"></i>
+                <a href="#" class="card" data-challenge-id="security-phishing-test">
+                    <i class="fas fa-fish card-icon" aria-hidden="true"></i>
                     <div class="card-text-content">
                         <div class="card-title-wrapper">
-                            <h4>Gestion des Mots de Passe</h4>
-                            <span class="difficulty-tag difficulty-easy">Débutant</span>
+                            <h4>Hameçon Furtif</h4>
+                            <span class="difficulty-tag difficulty-easy">Débutant | 25 pts</span>
                         </div>
-                        <p>Apprenez à créer et gérer des mots de passe robustes pour sécuriser vos comptes.</p>
-                    </div>
-                    <div class="check-box">
-                        <i class="fas fa-times-circle checkbox-icon not-completed" aria-hidden="true"></i>
-                        <i class="fas fa-check-circle checkbox-icon completed" aria-hidden="true"></i>
-                    </div>
-                </a>
-                 <a href="#" class="card" data-lesson-id="security-phishing">
-                    <i class="fas fa-shield-alt card-icon" aria-hidden="true"></i>
-                    <div class="card-text-content">
-                        <div class="card-title-wrapper">
-                            <h4>Reconnaître le Phishing</h4>
-                            <span class="difficulty-tag difficulty-easy">Débutant</span>
-                        </div>
-                        <p>Identifiez les tentatives d'hameçonnage pour protéger vos informations personnelles.</p>
+                        <p>Analysez cet email suspect. Contient-il un lien de phishing ? Identifiez l'indice.</p>
                     </div>
                     <div class="check-box">
                         <i class="fas fa-times-circle checkbox-icon not-completed" aria-hidden="true"></i>
@@ -108,32 +81,18 @@
                 </a>
             </div>
         </section>
-
+        
         <section class="category-section">
             <h2 class="main-title category-title">Cryptographie</h2>
             <div class="box-container">
-                <a href="#" class="card" data-lesson-id="crypto-intro">
+                <a href="#" class="card" data-challenge-id="crypto-cesar-salad">
                     <i class="fas fa-key card-icon" aria-hidden="true"></i>
                     <div class="card-text-content">
                         <div class="card-title-wrapper">
-                            <h4>Principes de la Cryptographie</h4>
-                            <span class="difficulty-tag difficulty-easy">Débutant</span>
+                            <h4>Salade César</h4>
+                            <span class="difficulty-tag difficulty-easy">Débutant | 25 pts</span>
                         </div>
-                        <p>Comprenez la différence entre chiffrement symétrique, asymétrique et le hachage.</p>
-                    </div>
-                    <div class="check-box">
-                        <i class="fas fa-times-circle checkbox-icon not-completed" aria-hidden="true"></i>
-                        <i class="fas fa-check-circle checkbox-icon completed" aria-hidden="true"></i>
-                    </div>
-                </a>
-                 <a href="#" class="card" data-lesson-id="crypto-ciphers">
-                    <i class="fas fa-key card-icon" aria-hidden="true"></i>
-                    <div class="card-text-content">
-                        <div class="card-title-wrapper">
-                            <h4>Les Ciphers Classiques</h4>
-                            <span class="difficulty-tag difficulty-easy">Débutant</span>
-                        </div>
-                        <p>Explorez des méthodes de chiffrement historiques comme le chiffre de César.</p>
+                        <p>Un message chiffré a été intercepté. Il semble utiliser une méthode antique...</p>
                     </div>
                     <div class="check-box">
                         <i class="fas fa-times-circle checkbox-icon not-completed" aria-hidden="true"></i>
@@ -146,14 +105,14 @@
         <section class="category-section">
             <h2 class="main-title category-title">OSINT</h2>
             <div class="box-container">
-                <a href="#" class="card" data-lesson-id="osint-intro">
+                <a href="#" class="card" data-challenge-id="osint-find-me">
                     <i class="fas fa-user-secret card-icon" aria-hidden="true"></i>
                     <div class="card-text-content">
                         <div class="card-title-wrapper">
-                            <h4>Introduction à l'OSINT</h4>
-                            <span class="difficulty-tag difficulty-easy">Débutant</span>
+                            <h4>Retrouve-moi</h4>
+                            <span class="difficulty-tag difficulty-easy">Débutant | 50 pts</span>
                         </div>
-                        <p>Découvrez les principes fondamentaux de la recherche d'informations.</p>
+                        <p>À partir d'un simple pseudo, retrouvez le réseau social principal de cette personne.</p>
                     </div>
                     <div class="check-box">
                         <i class="fas fa-times-circle checkbox-icon not-completed" aria-hidden="true"></i>
@@ -166,13 +125,13 @@
         <section class="category-section">
             <h2 class="main-title category-title">Pwned (Exploitation Binaire)</h2>
             <div class="box-container">
-                <a href="#" class="card" data-lesson-id="pwned-placeholder" style="cursor: not-allowed; opacity: 0.7;">
+                <a href="#" class="card" data-challenge-id="pwned-placeholder" style="cursor: not-allowed; opacity: 0.7;">
                     <i class="fas fa-terminal card-icon" aria-hidden="true"></i>
                     <div class="card-text-content">
                         <div class="card-title-wrapper">
-                            <h4>Leçons à venir...</h4>
+                            <h4>Challenges à venir...</h4>
                         </div>
-                        <p>De nouvelles leçons d'exploitation binaire pour débutants seront bientôt disponibles.</p>
+                        <p>De nouveaux challenges d'exploitation binaire seront bientôt disponibles.</p>
                     </div>
                     <div class="check-box">
                         <i class="fas fa-lock checkbox-icon" aria-hidden="true"></i>
@@ -184,14 +143,14 @@
         <section class="category-section">
             <h2 class="main-title category-title">Sécurité Réseau</h2>
             <div class="box-container">
-                <a href="#" class="card" data-lesson-id="network-basics">
+                <a href="#" class="card" data-challenge-id="network-port-scan">
                     <i class="fas fa-network-wired card-icon" aria-hidden="true"></i>
                     <div class="card-text-content">
                         <div class="card-title-wrapper">
-                            <h4>Fondamentaux des Réseaux</h4>
-                            <span class="difficulty-tag difficulty-easy">Débutant</span>
+                            <h4>Port Ouvert</h4>
+                            <span class="difficulty-tag difficulty-easy">Débutant | 50 pts</span>
                         </div>
-                        <p>Découvrez les bases des ports, des protocoles et le fonctionnement d'un pare-feu.</p>
+                        <p>Scannez l'adresse IP fournie et trouvez le port non standard qui est ouvert.</p>
                     </div>
                     <div class="check-box">
                         <i class="fas fa-times-circle checkbox-icon not-completed" aria-hidden="true"></i>
@@ -200,18 +159,18 @@
                 </a>
             </div>
         </section>
-        
+
         <section class="category-section">
             <h2 class="main-title category-title">Stéganographie</h2>
             <div class="box-container">
-                <a href="#" class="card" data-lesson-id="stega-intro">
+                <a href="#" class="card" data-challenge-id="stega-hidden-art">
                     <i class="fas fa-file-image card-icon" aria-hidden="true"></i>
                     <div class="card-text-content">
                         <div class="card-title-wrapper">
-                            <h4>Introduction à la Stéganographie</h4>
-                            <span class="difficulty-tag difficulty-easy">Débutant</span>
+                            <h4>L'Art Caché</h4>
+                            <span class="difficulty-tag difficulty-easy">Débutant | 50 pts</span>
                         </div>
-                        <p>Découvrez comment dissimuler des messages secrets à l'intérieur d'autres fichiers.</p>
+                        <p>Un message est dissimulé dans cette image. Utilisez les bons outils pour l'extraire.</p>
                     </div>
                     <div class="check-box">
                         <i class="fas fa-times-circle checkbox-icon not-completed" aria-hidden="true"></i>
@@ -224,28 +183,14 @@
         <section class="category-section">
             <h2 class="main-title category-title">Web Hacking</h2>
             <div class="box-container">
-                <a href="#" class="card" data-lesson-id="web-sql-easy">
-                    <i class="fas fa-globe card-icon" aria-hidden="true"></i>
+                <a href="#" class="card" data-challenge-id="web-cookie-monster">
+                    <i class="fas fa-cookie-bite card-icon" aria-hidden="true"></i>
                     <div class="card-text-content">
                         <div class="card-title-wrapper">
-                            <h4>Injection SQL Basique</h4>
-                            <span class="difficulty-tag difficulty-easy">Débutant</span>
+                            <h4>Le Monstre des Cookies</h4>
+                            <span class="difficulty-tag difficulty-easy">Débutant | 50 pts</span>
                         </div>
-                        <p>Découvrez les bases des injections SQL et comment les prévenir.</p>
-                    </div>
-                    <div class="check-box">
-                        <i class="fas fa-times-circle checkbox-icon not-completed" aria-hidden="true"></i>
-                        <i class="fas fa-check-circle checkbox-icon completed" aria-hidden="true"></i>
-                    </div>
-                </a>
-                <a href="#" class="card" data-lesson-id="web-cookies">
-                    <i class="fas fa-globe card-icon" aria-hidden="true"></i>
-                    <div class="card-text-content">
-                        <div class="card-title-wrapper">
-                            <h4>Analyse des Cookies de Session</h4>
-                            <span class="difficulty-tag difficulty-easy">Débutant</span>
-                        </div>
-                        <p>Comprenez le rôle des cookies et les risques liés à leur mauvaise gestion.</p>
+                        <p>Ce site utilise des cookies pour gérer les sessions. Pouvez-vous devenir administrateur ?</p>
                     </div>
                     <div class="check-box">
                         <i class="fas fa-times-circle checkbox-icon not-completed" aria-hidden="true"></i>
@@ -254,7 +199,7 @@
                 </a>
             </div>
         </section>
-        
+
     </main>
 
     <footer>
@@ -266,7 +211,7 @@
         </p>
     </footer>
 
-    <script src="./js/lessons.js" defer></script>
+    <script src="./js/challenges.js" defer></script>
     <script src="./js/header.js" defer></script>
 
 </body>

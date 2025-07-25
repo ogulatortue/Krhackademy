@@ -43,7 +43,7 @@
     gap: 1rem;
     padding: 1rem;
     background-color: var(--card-bg);
-    border: 1px solid var(--purple);
+    border: 1px solid var(--lesson-color);
     border-radius: 10px;
     text-decoration: none;
     color: inherit;
@@ -63,7 +63,7 @@
 
 .card-icon {
     font-size: 2.5rem;
-    color: var(--purple);
+    color: var(--lesson-color);
     transition: color 0.3s ease;
     flex-shrink: 0;
 }
@@ -142,35 +142,58 @@
     color: var(--completed-color);
 }
 
+.challenge-card {
+    border-color: var(--challenge-color);
+}
+
+.challenge-card .card-icon {
+    color: var(--challenge-color);
+}
+
+.challenge-card.completed {
+    border-color: var(--challenge-color);
+    border-width: 2px;
+}
+
+.challenge-card.completed .check-box {
+    background-color: var(--challenge-color);
+}
+
+.challenge-card.completed .card-icon {
+    color: var(--challenge-color);
+}
+
 @media (max-width: 900px) {
     .main-container {
-        padding: 13rem 0rem;
+        padding: 13rem 1rem;
     }
     .main-title.category-title {
-        font-size: 4.5rem;
+        font-size: 1.8rem;
         padding-block: 1.5rem;
     }
     .card-text-content h4 {
-        font-size: 2rem;
+        font-size: 1.2rem;
     }
     .card-text-content p {
-        font-size: 1.5rem;
+        font-size: 0.9rem;
     }
     .box-container {
+        grid-template-columns: 1fr;
         gap: 1.5rem;
+        padding: 0 1rem;
     }
     .card-icon {
-        font-size: 3rem;
+        font-size: 2.5rem;
         margin-right: 0.5rem;
     }
     .card {
-        min-height: 12rem;
+        min-height: auto;
     }
     .card.completed .checkbox-icon.completed {
-        font-size: 2rem;
+        font-size: 1.5rem;
     }
     .card.completed .check-box {
-        width: 3rem;
-        height: 3rem;
+        width: 2rem;
+        height: 2rem;
     }
 }

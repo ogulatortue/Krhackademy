@@ -266,7 +266,7 @@
     flex-shrink: 0;
     padding: 0.25rem 0.75rem;
     border-radius: 50px;
-    font-size: 1rem;
+    font-size: 0.75rem;
     font-weight: 700;
     color: var(--white);
     background-color: var(--purple);
@@ -425,5 +425,8 @@
     }
     .card-subtitle {
         font-size: 1.5rem;
+    }
+    .card-tag {
+        font-size: 1rem;
     }
 }

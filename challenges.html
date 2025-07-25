@@ -23,6 +23,7 @@
 
     <link rel="preload" as="image" href="./images/header_background_blured3.webp" type="image/webp" fetchpriority="high">
     <link rel="preload" as="image" href="./images/back.webp" type="image/webp" fetchpriority="high">
+
 </head>
 <body>
 
@@ -42,15 +43,44 @@
 
     <main class="main-container">
 
+        <section class="filter-controls">
+            <div class="search-wrapper">
+                <i class="fas fa-search"></i>
+                <input type="search" id="search-input" placeholder="Rechercher par nom..." aria-label="Rechercher un challenge par nom">
+            </div>
+            <div class="select-wrapper">
+                <select id="category-filter" aria-label="Filtrer par catégorie">
+                    <option value="all">Toutes les catégories</option>
+                    <option value="Analyse Forensique">Analyse Forensique</option>
+                    <option value="Culture de la Sécurité">Culture de la Sécurité</option>
+                    <option value="Cryptographie">Cryptographie</option>
+                    <option value="OSINT">OSINT</option>
+                    <option value="Pwned (Exploitation Binaire)">Pwned</option>
+                    <option value="Sécurité Réseau">Sécurité Réseau</option>
+                    <option value="Stéganographie">Stéganographie</option>
+                    <option value="Web Hacking">Web Hacking</option>
+                </select>
+            </div>
+            <div class="select-wrapper">
+                <select id="difficulty-filter" aria-label="Filtrer par difficulté">
+                    <option value="all">Toutes les difficultés</option>
+                    <option value="debutant">Débutant</option>
+                    <option value="initie">Initié</option>
+                    <option value="avance">Avancé</option>
+                    <option value="expert">Expert</option>
+                </select>
+            </div>
+        </section>
+
         <section class="category-section">
             <h2 class="main-title category-title">Analyse Forensique</h2>
             <div class="box-container">
-                <a href="#" class="card challenge-card" data-challenge-id="forensics-metadata-hunt">
+                <a href="#" class="card challenge-card" data-challenge-id="forensics-metadata-hunt" data-category="Analyse Forensique" data-difficulty="debutant">
                     <i class="fas fa-search card-icon" aria-hidden="true"></i>
                     <div class="card-text-content">
                         <div class="card-title-wrapper">
                             <h4>Chasse aux Métadonnées</h4>
-                            <span class="difficulty-tag difficulty-easy">25 <i class="fa-solid fa-flag"></i></span>
+                            <span class="difficulty-tag difficulty-easy">Débutant</span>
                         </div>
                         <p>Une image cache des informations cruciales dans ses métadonnées. Trouvez le flag !</p>
                     </div>
@@ -65,12 +95,12 @@
         <section class="category-section">
             <h2 class="main-title category-title">Culture de la Sécurité</h2>
             <div class="box-container">
-                <a href="#" class="card challenge-card" data-challenge-id="security-phishing-test">
+                 <a href="#" class="card challenge-card" data-challenge-id="security-phishing-test" data-category="Culture de la Sécurité" data-difficulty="debutant">
                     <i class="fas fa-fish card-icon" aria-hidden="true"></i>
                     <div class="card-text-content">
                         <div class="card-title-wrapper">
                             <h4>Hameçon Furtif</h4>
-                            <span class="difficulty-tag difficulty-easy">25 <i class="fa-solid fa-flag"></i></span>
+                            <span class="difficulty-tag difficulty-easy">Débutant</span>
                         </div>
                         <p>Analysez cet email suspect. Contient-il un lien de phishing ? Identifiez l'indice.</p>
                     </div>
@@ -85,12 +115,12 @@
         <section class="category-section">
             <h2 class="main-title category-title">Cryptographie</h2>
             <div class="box-container">
-                <a href="#" class="card challenge-card" data-challenge-id="crypto-cesar-salad">
+                 <a href="#" class="card challenge-card" data-challenge-id="crypto-cesar-salad" data-category="Cryptographie" data-difficulty="debutant">
                     <i class="fas fa-key card-icon" aria-hidden="true"></i>
                     <div class="card-text-content">
                         <div class="card-title-wrapper">
                             <h4>Salade César</h4>
-                            <span class="difficulty-tag difficulty-easy">25 <i class="fa-solid fa-flag"></i></span>
+                            <span class="difficulty-tag difficulty-easy">Débutant</span>
                         </div>
                         <p>Un message chiffré a été intercepté. Il semble utiliser une méthode antique...</p>
                     </div>
@@ -105,12 +135,12 @@
         <section class="category-section">
             <h2 class="main-title category-title">OSINT</h2>
             <div class="box-container">
-                <a href="#" class="card challenge-card" data-challenge-id="osint-find-me">
+                 <a href="#" class="card challenge-card" data-challenge-id="osint-find-me" data-category="OSINT" data-difficulty="debutant">
                     <i class="fas fa-user-secret card-icon" aria-hidden="true"></i>
                     <div class="card-text-content">
                         <div class="card-title-wrapper">
                             <h4>Retrouve-moi</h4>
-                            <span class="difficulty-tag difficulty-easy">25 <i class="fa-solid fa-flag"></i></span>
+                            <span class="difficulty-tag difficulty-easy">Débutant</span>
                         </div>
                         <p>À partir d'un simple pseudo, retrouvez le réseau social principal de cette personne.</p>
                     </div>
@@ -125,7 +155,7 @@
         <section class="category-section">
             <h2 class="main-title category-title">Pwned (Exploitation Binaire)</h2>
             <div class="box-container">
-                <a href="#" class="card challenge-card" data-challenge-id="pwned-placeholder" style="cursor: not-allowed; opacity: 0.7;">
+                <a href="#" class="card challenge-card" data-challenge-id="pwned-placeholder" data-category="Pwned (Exploitation Binaire)" data-difficulty="none" style="cursor: not-allowed; opacity: 0.7;">
                     <i class="fas fa-terminal card-icon" aria-hidden="true"></i>
                     <div class="card-text-content">
                         <div class="card-title-wrapper">
@@ -143,12 +173,12 @@
         <section class="category-section">
             <h2 class="main-title category-title">Sécurité Réseau</h2>
             <div class="box-container">
-                <a href="#" class="card challenge-card" data-challenge-id="network-port-scan">
+                 <a href="#" class="card challenge-card" data-challenge-id="network-port-scan" data-category="Sécurité Réseau" data-difficulty="debutant">
                     <i class="fas fa-network-wired card-icon" aria-hidden="true"></i>
                     <div class="card-text-content">
                         <div class="card-title-wrapper">
                             <h4>Port Ouvert</h4>
-                            <span class="difficulty-tag difficulty-easy">25 <i class="fa-solid fa-flag"></i></span>
+                            <span class="difficulty-tag difficulty-easy">Débutant</span>
                         </div>
                         <p>Scannez l'adresse IP fournie et trouvez le port non standard qui est ouvert.</p>
                     </div>
@@ -163,12 +193,12 @@
         <section class="category-section">
             <h2 class="main-title category-title">Stéganographie</h2>
             <div class="box-container">
-                <a href="#" class="card challenge-card" data-challenge-id="stega-hidden-art">
+                 <a href="#" class="card challenge-card" data-challenge-id="stega-hidden-art" data-category="Stéganographie" data-difficulty="debutant">
                     <i class="fas fa-file-image card-icon" aria-hidden="true"></i>
                     <div class="card-text-content">
                         <div class="card-title-wrapper">
                             <h4>L'Art Caché</h4>
-                            <span class="difficulty-tag difficulty-easy">25 <i class="fa-solid fa-flag"></i></span>
+                            <span class="difficulty-tag difficulty-easy">Débutant</span>
                         </div>
                         <p>Un message est dissimulé dans cette image. Utilisez les bons outils pour l'extraire.</p>
                     </div>
@@ -183,12 +213,12 @@
         <section class="category-section">
             <h2 class="main-title category-title">Web Hacking</h2>
             <div class="box-container">
-                <a href="#" class="card challenge-card" data-challenge-id="web-cookie-monster">
+                 <a href="#" class="card challenge-card" data-challenge-id="web-cookie-monster" data-category="Web Hacking" data-difficulty="debutant">
                     <i class="fas fa-cookie-bite card-icon" aria-hidden="true"></i>
                     <div class="card-text-content">
                         <div class="card-title-wrapper">
                             <h4>Le Monstre des Cookies</h4>
-                            <span class="difficulty-tag difficulty-easy">25 <i class="fa-solid fa-flag"></i></span>
+                            <span class="difficulty-tag difficulty-easy">Débutant</span>
                         </div>
                         <p>Ce site utilise des cookies pour gérer les sessions. Pouvez-vous devenir administrateur ?</p>
                     </div>
@@ -213,6 +243,7 @@
 
     <script src="./js/progress-tracker.js" defer></script>
     <script src="./js/header.js" defer></script>
+    <script src="./js/search.js" defer></script>
 
 </body>
 </html>

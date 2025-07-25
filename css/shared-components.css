@@ -163,6 +163,67 @@
     color: var(--challenge-color);
 }
 
+
+.filter-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding: 1.25rem;
+    background-color: rgba(44, 44, 56, 0.7);
+    border-radius: 8px;
+    border: 1px solid #444;
+    backdrop-filter: blur(5px);
+}
+
+.search-wrapper, .select-wrapper {
+    display: flex;
+    align-items: center;
+    background-color: #1e1e28;
+    border-radius: 5px;
+    padding: 0.5rem 0.75rem;
+    flex: 1 1 200px;
+    border: 1px solid #555;
+    transition: border-color 0.3s;
+}
+.search-wrapper:focus-within, .select-wrapper:focus-within {
+    border-color: #00aaff;
+}
+
+.search-wrapper i {
+    color: #888;
+    margin-right: 0.75rem;
+}
+#search-input, #category-filter, #difficulty-filter {
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 1rem;
+    outline: none;
+    cursor: pointer;
+}
+#search-input {
+    cursor: text;
+}
+#search-input::placeholder {
+    color: #888;
+}
+#category-filter, #difficulty-filter {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.7em top 50%, 0 0;
+    background-size: 1.2em auto, 100%;
+    padding-right: 2em;
+}
+#category-filter option, #difficulty-filter option {
+    background: #2c2c38;
+    color: #fff;
+}
+
 @media (max-width: 900px) {
     .main-container {
         padding: 13rem 1rem;

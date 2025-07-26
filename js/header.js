@@ -13,14 +13,23 @@ document.addEventListener('DOMContentLoaded', function () {
     const profileMenu = document.getElementById('profile-menu');
     const closeProfileBtn = document.getElementById('close-profile-btn');
 
+    const leaderboardToggleBtn = document.getElementById('leaderboard-toggle-btn');
+    const leaderboardMenu = document.getElementById('leaderboard-menu');
+    const closeLeaderboardBtn = document.getElementById('close-leaderboard-btn');
+
     const INITIAL_PADDING_TOP = 140;
+    
+    const showAllToggleButtons = () => {
+        if(searchToggleBtn) searchToggleBtn.classList.remove('hidden');
+        if(profileToggleBtn) profileToggleBtn.classList.remove('hidden');
+        if(leaderboardToggleBtn) leaderboardToggleBtn.classList.remove('hidden');
+    }
 
     const closeSearchPanel = () => {
         if (filterControls && filterControls.classList.contains('open')) {
             mainContainer.style.paddingTop = `${INITIAL_PADDING_TOP}px`;
             filterControls.classList.remove('open');
-            searchToggleBtn.classList.remove('hidden');
-            profileToggleBtn.classList.remove('hidden');
+            showAllToggleButtons();
             searchToggleBtn.setAttribute('aria-expanded', 'false');
             filterControls.setAttribute('aria-hidden', 'true');
         }
@@ -29,10 +38,18 @@ document.addEventListener('DOMContentLoaded', function () {
     const closeProfileMenu = () => {
         if (profileMenu && profileMenu.classList.contains('open')) {
             profileMenu.classList.remove('open');
-            profileToggleBtn.classList.remove('hidden');
-            searchToggleBtn.classList.remove('hidden');
+            showAllToggleButtons();
             profileToggleBtn.setAttribute('aria-expanded', 'false');
             profileMenu.setAttribute('aria-hidden', 'true');
+        }
+    };
+
+    const closeLeaderboardMenu = () => {
+        if (leaderboardMenu && leaderboardMenu.classList.contains('open')) {
+            leaderboardMenu.classList.remove('open');
+            showAllToggleButtons();
+            leaderboardToggleBtn.setAttribute('aria-expanded', 'false');
+            leaderboardMenu.setAttribute('aria-hidden', 'true');
         }
     };
 
@@ -89,20 +106,35 @@ document.addEventListener('DOMContentLoaded', function () {
                      setTimeout(() => profileMenu.querySelector('a').focus(), 100);
                 },
                 onClose: closeProfileMenu
+            },
+            {
+                btn: leaderboardToggleBtn,
+                panel: leaderboardMenu,
+                closeBtn: closeLeaderboardBtn,
+                onOpen: () => {
+                    setTimeout(() => leaderboardMenu.querySelector('.leaderboard-item').focus(), 100);
+                },
+                onClose: closeLeaderboardMenu
             }
         ];
     
-        panels.forEach((p, index) => {
+        panels.forEach((p, currentIndex) => {
             if (!p.btn || !p.panel || !p.closeBtn) return;
     
             p.btn.addEventListener('click', (event) => {
-                event.stopPropagation(); // Empêche le clic de se propager au document
-                const otherPanelIndex = (index === 0) ? 1 : 0;
-                panels[otherPanelIndex].onClose();
+                event.stopPropagation();
+
+                panels.forEach((otherPanel, otherIndex) => {
+                    if (currentIndex !== otherIndex) {
+                        otherPanel.onClose();
+                    }
+                });
     
                 p.panel.classList.add('open');
-                p.btn.classList.add('hidden');
-                panels[otherPanelIndex].btn.classList.add('hidden');
+                
+                panels.forEach(panelToHide => {
+                    if (panelToHide.btn) panelToHide.btn.classList.add('hidden');
+                });
                 
                 p.btn.setAttribute('aria-expanded', 'true');
                 p.panel.setAttribute('aria-hidden', 'false');
@@ -113,7 +145,6 @@ document.addEventListener('DOMContentLoaded', function () {
             p.closeBtn.addEventListener('click', p.onClose);
         });
     
-        // ✅ **AJOUT : Fermeture des panneaux au clic extérieur**
         document.addEventListener('click', (event) => {
             panels.forEach(p => {
                 if (p.panel && p.panel.classList.contains('open') && !p.panel.contains(event.target)) {

@@ -18,9 +18,9 @@
     <link rel="stylesheet" href="./css/glitch.css"/>
     <link rel="stylesheet" href="./css/header-footer.css"/>
     <link rel="stylesheet" href="./css/index.css"/>
-
+    <link rel="stylesheet" href="./css/shared-components.css"/>
+    
     <link rel="icon" type="image/png" href="./images/logo_krhacken_r.ico" />
-
     <link rel="preload" as="image" href="./images/header_background_blured3.webp" type="image/webp" fetchpriority="high">
     <link rel="preload" as="image" href="./images/back.webp" type="image/webp" fetchpriority="high">
 </head>
@@ -37,11 +37,102 @@
                 <li><a href="./scenarios.html">SCÉNARIOS</a></li>
             </ul>
         </nav>
-        <button class="fas fa-bars" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="nav_links"></button>
+        <button class="fas fa-bars" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="nav-links"></button>
+        <button id="search-toggle-btn" class="fas fa-search" aria-label="Ouvrir la barre de recherche" aria-expanded="false" aria-controls="filter-controls"></button>
+        <button id="leaderboard-toggle-btn" class="fas fa-trophy" aria-label="Ouvrir le classement" aria-expanded="false" aria-controls="leaderboard-menu"></button>
+        <button id="profile-toggle-btn" class="fas fa-user-circle" aria-label="Ouvrir le menu du profil" aria-expanded="false" aria-controls="profile-menu"></button>
     </header>
 
+    <section class="search-panel" id="filter-controls" aria-hidden="true">
+        <i class="fas fa-search panel-icon"></i>
+        <div class="input-wrapper">
+            <input type="search" id="search-input" placeholder="Rechercher par nom" aria-label="Rechercher un objet par nom" autocomplete="off">
+            <button id="clear-search-btn" class="fas fa-times" aria-label="Effacer la recherche"></button>
+        </div>
+        <div class="custom-select-wrapper">
+            <input type="hidden" id="category-filter" value="all">
+            <div class="custom-select" data-select-id="category-filter">
+                <span class="custom-select-trigger">Toutes les catégories</span>
+                <div class="custom-arrow"></div>
+            </div>
+            <div class="custom-options">
+                <div class="custom-option" data-value="all">Toutes les catégories</div>
+            </div>
+        </div>
+        <div class="custom-select-wrapper">
+            <input type="hidden" id="difficulty-filter" value="all">
+            <div class="custom-select" data-select-id="difficulty-filter">
+                <span class="custom-select-trigger">Toutes les difficultés</span>
+                <div class="custom-arrow"></div>
+            </div>
+            <div class="custom-options">
+                <div class="custom-option" data-value="all">Toutes les difficultés</div>
+            </div>
+        </div>
+        <div class="custom-select-wrapper">
+            <input type="hidden" id="completion-filter" value="all">
+            <div class="custom-select" data-select-id="completion-filter">
+                <span class="custom-select-trigger">État de complétion</span>
+                <div class="custom-arrow"></div>
+            </div>
+            <div class="custom-options">
+                <div class="custom-option" data-value="all">Tous</div>
+                <div class="custom-option" data-value="completed">Complété</div>
+                <div class="custom-option" data-value="not-completed">Non complété</div>
+            </div>
+        </div>
+        <button id="close-filter-btn" class="fas fa-times" aria-label="Fermer la barre de recherche"></button>
+    </section>
+
+    <section class="profile-panel" id="profile-menu" aria-hidden="true">
+        <div class="profile-header">
+            <i class="fas fa-user-circle panel-icon"></i>
+            <span class="profile-username">Utilisateur Anonyme</span>
+            <button id="close-profile-btn" class="fas fa-times" aria-label="Fermer le menu du profil"></button>
+        </div>
+        <ul class="profile-options">
+            <li><a href="#"><i class="fas fa-user fa-fw"></i> Mon Profil</a></li>
+            <li><a href="#"><i class="fas fa-cog fa-fw"></i> Paramètres</a></li>
+            <li><a href="#"><i class="fas fa-sign-out-alt fa-fw"></i> Déconnexion</a></li>
+        </ul>
+    </section>
+
+    <section class="profile-panel leaderboard-panel" id="leaderboard-menu" aria-hidden="true">
+        <div class="profile-header">
+            <i class="fas fa-trophy panel-icon"></i>
+            <span class="profile-username">Classement</span>
+            <button id="close-leaderboard-btn" class="fas fa-times" aria-label="Fermer le classement"></button>
+        </div>
+        <ol class="leaderboard-list">
+            <li class="leaderboard-item">
+                <span class="rank">1</span>
+                <span class="name">CyberNinja</span>
+                <span class="flags">10 <i class="fas fa-flag"></i></span>
+            </li>
+            <li class="leaderboard-item">
+                <span class="rank">2</span>
+                <span class="name">CodeCracker</span>
+                <span class="flags">9 <i class="fas fa-flag"></i></span>
+            </li>
+            <li class="leaderboard-item">
+                <span class="rank">3</span>
+                <span class="name">HexHunter</span>
+                <span class="flags">8 <i class="fas fa-flag"></i></span>
+            </li>
+            <li class="leaderboard-item">
+                <span class="rank">4</span>
+                <span class="name">PwnPrincess</span>
+                <span class="flags">8 <i class="fas fa-flag"></i></span>
+            </li>
+            <li class="leaderboard-item">
+                <span class="rank">5</span>
+                <span class="name">DataDaredevil</span>
+                <span class="flags">7 <i class="fas fa-flag"></i></span>
+            </li>
+        </ol>
+    </section>
+
     <main class="main">
-        
         <section class="intro">
             <div class="text-intro">
                 <h2>Apprends la cybersécurité <br><span id="dynamic-text" class="glitch" data-text="en ligne">en ligne</span></br></h2>
@@ -179,6 +270,5 @@
 
     <script src="./js/index.js" defer></script>
     <script src="./js/header.js" defer></script>
-
 </body>
 </html>

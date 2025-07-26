@@ -87,7 +87,6 @@ const textGlitcher = (function() {
     };
 })();
 
-
 document.addEventListener('DOMContentLoaded', function() {
 
     const dynamicTextSpan = document.getElementById('dynamic-text');

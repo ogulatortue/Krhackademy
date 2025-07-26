@@ -3,17 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Relevez nos challenges de cybersécurité pour débutants. Mettez vos compétences en hacking éthique à l'épreuve avec le club Krhacken.">
-    <meta name="keywords" content="Challenges, CTF, Débutant, Web Hacking, OSINT, Pwned, Krhacken, Esisar, cybersécurité, cryptographie, forensique, stéganographie">
+    <meta name="keywords" content="Challenges, CTF, Débutant, Web Hacking, OSINT, Pwned, Krhacken, Esisar, cybersécurité, cryptographie, forensique, stéganographie, classement">
     <meta name="author" content="BRUCHON Hugo">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Kr[HACK]ademy - Challenges de Cybersécurité pour Débutants</title>
+
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
     <link rel="stylesheet" href="./css/style.css"/>
     <link rel="stylesheet" href="./css/header-footer.css"/>
     <link rel="stylesheet" href="./css/shared-components.css"/>
+    
     <link rel="icon" type="image/png" href="./images/logo_krhacken_r.ico" />
     <link rel="preload" as="image" href="./images/header_background_blured3.webp" type="image/webp" fetchpriority="high">
     <link rel="preload" as="image" href="./images/back.webp" type="image/webp" fetchpriority="high">
@@ -33,8 +37,9 @@
         </nav>
         <button class="fas fa-bars" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="nav-links"></button>
         <button id="search-toggle-btn" class="fas fa-search" aria-label="Ouvrir la barre de recherche" aria-expanded="false" aria-controls="filter-controls"></button>
+        <button id="leaderboard-toggle-btn" class="fas fa-trophy" aria-label="Ouvrir le classement" aria-expanded="false" aria-controls="leaderboard-menu"></button>
         <button id="profile-toggle-btn" class="fas fa-user-circle" aria-label="Ouvrir le menu du profil" aria-expanded="false" aria-controls="profile-menu"></button>
-    </header>
+        </header>
 
     <section class="search-panel" id="filter-controls" aria-hidden="true">
         <i class="fas fa-search panel-icon"></i>
@@ -92,6 +97,41 @@
             <li><a href="#"><i class="fas fa-cog fa-fw"></i> Paramètres</a></li>
             <li><a href="#"><i class="fas fa-sign-out-alt fa-fw"></i> Déconnexion</a></li>
         </ul>
+    </section>
+
+    <section class="profile-panel leaderboard-panel" id="leaderboard-menu" aria-hidden="true">
+        <div class="profile-header">
+            <i class="fas fa-trophy panel-icon"></i>
+            <span class="profile-username">Classement</span>
+            <button id="close-leaderboard-btn" class="fas fa-times" aria-label="Fermer le classement"></button>
+        </div>
+        <ol class="leaderboard-list">
+            <li class="leaderboard-item">
+                <span class="rank">1</span>
+                <span class="name">CyberNinja</span>
+                <span class="flags">10 <i class="fas fa-flag"></i></span>
+            </li>
+            <li class="leaderboard-item">
+                <span class="rank">2</span>
+                <span class="name">CodeCracker</span>
+                <span class="flags">9 <i class="fas fa-flag"></i></span>
+            </li>
+            <li class="leaderboard-item">
+                <span class="rank">3</span>
+                <span class="name">HexHunter</span>
+                <span class="flags">8 <i class="fas fa-flag"></i></span>
+            </li>
+            <li class="leaderboard-item">
+                <span class="rank">4</span>
+                <span class="name">PwnPrincess</span>
+                <span class="flags">8 <i class="fas fa-flag"></i></span>
+            </li>
+            <li class="leaderboard-item">
+                <span class="rank">5</span>
+                <span class="name">DataDaredevil</span>
+                <span class="flags">7 <i class="fas fa-flag"></i></span>
+            </li>
+        </ol>
     </section>
 
     <main class="main-container">

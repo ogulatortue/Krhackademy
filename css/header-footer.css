@@ -83,7 +83,8 @@ header .fa-bars.fa-times {
 }
 
 #search-toggle-btn,
-#profile-toggle-btn {
+#profile-toggle-btn,
+#leaderboard-toggle-btn {
     position: absolute;
     bottom: -32px;
     width: 60px;
@@ -108,27 +109,41 @@ header .fa-bars.fa-times {
     transform: translateY(0);
 }
 
+/* ▼▼▼ MODIFICATION START ▼▼▼ */
 #profile-toggle-btn {
     right: 40px;
 }
 
-#search-toggle-btn {
+#leaderboard-toggle-btn {
     right: 110px;
 }
 
+#search-toggle-btn {
+    right: 180px;
+}
+/* ▲▲▲ MODIFICATION END ▲▲▲ */
+
+
 #search-toggle-btn.hidden,
-#profile-toggle-btn.hidden {
+#profile-toggle-btn.hidden,
+#leaderboard-toggle-btn.hidden {
     opacity: 0;
     transform: translateY(50px);
     pointer-events: none;
 }
 
-header.header-active #search-toggle-btn {
-    right: 95px;
-}
+/* ▼▼▼ MODIFICATION START ▼▼▼ */
 header.header-active #profile-toggle-btn {
     right: 25px;
 }
+header.header-active #leaderboard-toggle-btn {
+    right: 95px;
+}
+header.header-active #search-toggle-btn {
+    right: 165px;
+}
+/* ▲▲▲ MODIFICATION END ▲▲▲ */
+
 
 .search-panel,
 .profile-panel {
@@ -331,7 +346,8 @@ header.header-active ~ .search-panel {
     margin-right: auto;
 }
 
-#close-profile-btn {
+#close-profile-btn,
+#close-leaderboard-btn {
     background: transparent;
     border: none;
     color: var(--white);
@@ -354,6 +370,52 @@ header.header-active ~ .search-panel {
     text-decoration: none;
     transition: background-color 0.2s ease;
 }
+
+.leaderboard-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.leaderboard-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 15px;
+    color: var(--white);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.95rem;
+}
+
+.leaderboard-item:last-child {
+    border-bottom: none;
+}
+
+.leaderboard-item .rank {
+    font-weight: bold;
+    font-size: 1.1em;
+    color: var(--light-grey);
+    width: 25px;
+    text-align: right;
+}
+
+.leaderboard-item .name {
+    flex-grow: 1;
+}
+
+.leaderboard-item .flags {
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.leaderboard-item .fa-flag {
+    color: #ffd700; /* gold */
+}
+
 
 main.main-container {
     padding-top: 140px;
@@ -420,13 +482,15 @@ footer .footer-legal a {
     }
     
     #search-toggle-btn:not(.hidden):hover,
-    #profile-toggle-btn:not(.hidden):hover {
+    #profile-toggle-btn:not(.hidden):hover,
+    #leaderboard-toggle-btn:not(.hidden):hover {
         transform: translateY(2px);
         box-shadow: 0 6px 16px rgba(0,0,0,0.3);
     }
     
     .custom-option:hover,
-    .profile-options li a:hover {
+    .profile-options li a:hover,
+    .leaderboard-item:hover {
         background-color: var(--grey);
     }
 }

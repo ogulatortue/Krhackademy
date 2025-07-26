@@ -413,11 +413,11 @@ header.header-active ~ .search-panel {
 }
 
 .leaderboard-item .fa-flag {
-    color: #ffd700; /* gold */
+    color: #ffd700;
 }
 
 
-main.main-container {
+main{
     padding-top: 140px;
     transition: padding-top 0.4s ease-out;
 }

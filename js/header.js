@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
 
     const header = document.querySelector('header');
-    const mainContainer = document.querySelector('.main-container');
+    const main = document.querySelector('.main');
     const menuIcon = document.querySelector('.fa-bars');
     const navBar = document.querySelector('.nav-bar');
     
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const closeSearchPanel = () => {
         if (filterControls && filterControls.classList.contains('open')) {
-            mainContainer.style.paddingTop = `${INITIAL_PADDING_TOP}px`;
+            main.style.paddingTop = `${INITIAL_PADDING_TOP}px`;
             filterControls.classList.remove('open');
             showAllToggleButtons();
             searchToggleBtn.setAttribute('aria-expanded', 'false');
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 closeBtn: closeFilterBtn,
                 onOpen: () => {
                     const filterHeight = filterControls.offsetHeight;
-                    mainContainer.style.paddingTop = `${INITIAL_PADDING_TOP + filterHeight}px`;
+                    main.style.paddingTop = `${INITIAL_PADDING_TOP + filterHeight}px`;
                     setTimeout(() => document.getElementById('search-input').focus(), 100);
                 },
                 onClose: closeSearchPanel

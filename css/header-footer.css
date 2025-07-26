@@ -101,9 +101,17 @@ header .fa-bars.fa-times {
     font-size: 18px;
     cursor: pointer;
     box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    transition: all 0.3s ease-in-out;
+    transition: opacity 0.3s ease-in-out, transform 0.4s ease-out, right 0.3s ease-in-out;
     padding-bottom: 4px;
     box-sizing: content-box;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#search-toggle-btn.hidden {
+    opacity: 0;
+    transform: translateY(50px);
+    pointer-events: none;
 }
 
 header.header-active #search-toggle-btn {
@@ -124,16 +132,17 @@ header.header-active #search-toggle-btn {
     border-radius: 25px;
     padding: 15px 25px;
     opacity: 0;
-    transform: translateY(-50px) scale(0.95);
+    transform: translateY(-100%);
     pointer-events: none;
-    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    transition: transform 0.4s ease-out, opacity 0.3s ease-out, top 0.3s ease-in-out, left 0.3s ease-in-out, right 0.3s ease-in-out, border-radius 0.3s ease-in-out;
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     gap: 1rem;
 }
 
 header.header-active ~ .filter-controls {
-    top: 70px;
+    top: 56px;
     left: 0;
     right: 0;
     border-radius: 0;
@@ -141,34 +150,148 @@ header.header-active ~ .filter-controls {
 
 .filter-controls.open {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateY(0);
     pointer-events: auto;
 }
 
-.search-wrapper, .select-wrapper {
+.filter-icon {
+    color: var(--white);
+    font-size: 24px;
+    align-self: center;
+}
+
+.search-wrapper {
+    position: relative;
     display: flex;
     align-items: center;
-    background-color: #1e1e28;
+    background-color: var(--card-bg);
     border-radius: 5px;
-    padding: 0.5rem 0.75rem;
     flex: 1 1 200px;
     border: 1px solid #555;
     transition: border-color 0.3s;
 }
 
-.search-wrapper i {
-    color: #888;
-    margin-right: 0.75rem;
-}
-
-#search-input, #category-filter, #difficulty-filter {
+#search-input {
     width: 100%;
-    background: transparent;
+    background-color: transparent;
     border: none;
     color: #fff;
     font-size: 1rem;
     outline: none;
+    padding: 0.5rem 2rem 0.5rem 0.75rem;
+}
+
+#search-input::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+#clear-search-btn {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.1rem;
     cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+}
+
+#clear-search-btn.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.custom-select-wrapper {
+    position: relative;
+    flex: 1 1 200px;
+    user-select: none;
+}
+
+.custom-select {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--card-bg);
+    border-radius: 5px;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #555;
+    cursor: pointer;
+    transition: border-color 0.3s;
+}
+
+.custom-select.open {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.custom-select-trigger {
+    color: #fff;
+    font-size: 1rem;
+}
+
+.custom-arrow {
+    width: 10px;
+    height: 10px;
+    border-left: 2px solid white;
+    border-bottom: 2px solid white;
+    transform: rotate(-45deg);
+    transition: transform 0.3s ease;
+}
+
+.custom-select.open .custom-arrow {
+    transform: rotate(135deg);
+}
+
+.custom-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--card-bg);
+    border: 1px solid #555;
+    border-top: none;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    z-index: 10;
+    display: none;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.custom-options.open {
+    display: block;
+}
+
+.custom-option {
+    padding: 0.5rem 0.75rem;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.custom-option:hover {
+    background-color: var(--grey);
+}
+
+#close-filter-btn {
+    background: transparent;
+    border: none;
+    color: var(--white);
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0.5rem;
+    margin-left: auto;
+    align-self: center;
+}
+
+main.main-container {
+    padding-top: 140px;
+    transition: padding-top 0.4s ease-out;
 }
 
 footer {
@@ -203,7 +326,7 @@ footer .footer-legal a {
         background-color: var(--light-grey);
     }
     
-    #search-toggle-btn:hover {
+    #search-toggle-btn:not(.hidden):hover {
         transform: translateY(2px);
         box-shadow: 0 6px 16px rgba(0,0,0,0.3);
     }

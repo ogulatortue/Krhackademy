@@ -36,14 +36,35 @@
     </header>
 
     <section class="filter-controls" id="filter-controls" aria-hidden="true">
+        <i class="fas fa-search filter-icon"></i>
         <div class="search-wrapper">
-            <i class="fas fa-search"></i>
             <input type="search" id="search-input" placeholder="Rechercher par nom..." aria-label="Rechercher un challenge par nom">
+            <button id="clear-search-btn" class="fas fa-times" aria-label="Effacer la recherche"></button>
         </div>
-        <div class="select-wrapper">
+        
+        <div class="custom-select-wrapper">
+            <input type="hidden" id="category-filter" value="all">
+            <div class="custom-select" data-select-id="category-filter">
+                <span class="custom-select-trigger">Toutes les catégories</span>
+                <div class="custom-arrow"></div>
+            </div>
+            <div class="custom-options">
+                <div class="custom-option" data-value="all">Toutes les catégories</div>
+            </div>
         </div>
-        <div class="select-wrapper">
+
+        <div class="custom-select-wrapper">
+            <input type="hidden" id="difficulty-filter" value="all">
+            <div class="custom-select" data-select-id="difficulty-filter">
+                <span class="custom-select-trigger">Toutes les difficultés</span>
+                <div class="custom-arrow"></div>
+            </div>
+            <div class="custom-options">
+                <div class="custom-option" data-value="all">Toutes les difficultés</div>
+            </div>
         </div>
+
+        <button id="close-filter-btn" class="fas fa-times" aria-label="Fermer la barre de recherche"></button>
     </section>
 
     <main class="main-container">

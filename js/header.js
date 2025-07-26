@@ -1,8 +1,11 @@
 document.addEventListener('DOMContentLoaded', function () {
 
+    // Sélecteurs simplifiés
     const header = document.querySelector('header');
     const menuIcon = document.querySelector('.fa-bars');
     const navBar = document.querySelector('.nav-bar');
+    const searchToggleBtn = document.getElementById('search-toggle-btn');
+    const filterControls = document.getElementById('filter-controls');
 
     function setupMobileNavigation() {
         if (!menuIcon || !navBar) return;
@@ -23,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 closeMenu();
             }
         });
-        
+
         window.addEventListener('scroll', closeMenu);
     }
 
@@ -42,6 +45,18 @@ document.addEventListener('DOMContentLoaded', function () {
         window.addEventListener('load', handleHeaderStyle);
     }
 
+    function setupSearchToggle() {
+        if (searchToggleBtn && filterControls) {
+            searchToggleBtn.addEventListener('click', () => {
+                filterControls.classList.toggle('open');
+                const isExpanded = filterControls.classList.contains('open');
+                searchToggleBtn.setAttribute('aria-expanded', isExpanded);
+                filterControls.setAttribute('aria-hidden', !isExpanded);
+            });
+        }
+    }
+
     setupMobileNavigation();
     setupScrollEffects();
+    setupSearchToggle();
 });

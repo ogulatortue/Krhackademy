@@ -6,24 +6,17 @@
     <meta name="keywords" content="Challenges, CTF, Débutant, Web Hacking, OSINT, Pwned, Krhacken, Esisar, cybersécurité, cryptographie, forensique, stéganographie">
     <meta name="author" content="BRUCHON Hugo">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Kr[HACK]ademy - Challenges de Cybersécurité pour Débutants</title>
-
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
-    
     <link rel="stylesheet" href="./css/style.css"/>
     <link rel="stylesheet" href="./css/header-footer.css"/>
     <link rel="stylesheet" href="./css/shared-components.css"/>
-
     <link rel="icon" type="image/png" href="./images/logo_krhacken_r.ico" />
-
     <link rel="preload" as="image" href="./images/header_background_blured3.webp" type="image/webp" fetchpriority="high">
     <link rel="preload" as="image" href="./images/back.webp" type="image/webp" fetchpriority="high">
-
 </head>
 <body>
 
@@ -39,39 +32,21 @@
             </ul>
         </nav>
         <button class="fas fa-bars" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="nav-links"></button>
+        <button id="search-toggle-btn" class="fas fa-search" aria-label="Ouvrir la barre de recherche" aria-expanded="false" aria-controls="filter-controls"></button>
     </header>
 
+    <section class="filter-controls" id="filter-controls" aria-hidden="true">
+        <div class="search-wrapper">
+            <i class="fas fa-search"></i>
+            <input type="search" id="search-input" placeholder="Rechercher par nom..." aria-label="Rechercher un challenge par nom">
+        </div>
+        <div class="select-wrapper">
+        </div>
+        <div class="select-wrapper">
+        </div>
+    </section>
+
     <main class="main-container">
-
-        <section class="filter-controls">
-            <div class="search-wrapper">
-                <i class="fas fa-search"></i>
-                <input type="search" id="search-input" placeholder="Rechercher par nom..." aria-label="Rechercher un challenge par nom">
-            </div>
-            <div class="select-wrapper">
-                <select id="category-filter" aria-label="Filtrer par catégorie">
-                    <option value="all">Toutes les catégories</option>
-                    <option value="Analyse Forensique">Analyse Forensique</option>
-                    <option value="Culture de la Sécurité">Culture de la Sécurité</option>
-                    <option value="Cryptographie">Cryptographie</option>
-                    <option value="OSINT">OSINT</option>
-                    <option value="Pwned (Exploitation Binaire)">Pwned</option>
-                    <option value="Sécurité Réseau">Sécurité Réseau</option>
-                    <option value="Stéganographie">Stéganographie</option>
-                    <option value="Web Hacking">Web Hacking</option>
-                </select>
-            </div>
-            <div class="select-wrapper">
-                <select id="difficulty-filter" aria-label="Filtrer par difficulté">
-                    <option value="all">Toutes les difficultés</option>
-                    <option value="debutant">Débutant</option>
-                    <option value="initie">Initié</option>
-                    <option value="avance">Avancé</option>
-                    <option value="expert">Expert</option>
-                </select>
-            </div>
-        </section>
-
         <section class="category-section">
             <h2 class="main-title category-title">Analyse Forensique</h2>
             <div class="box-container">
@@ -229,7 +204,6 @@
                 </a>
             </div>
         </section>
-
     </main>
 
     <footer>

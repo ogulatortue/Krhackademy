@@ -95,7 +95,8 @@ document.addEventListener('DOMContentLoaded', function () {
         panels.forEach((p, index) => {
             if (!p.btn || !p.panel || !p.closeBtn) return;
     
-            p.btn.addEventListener('click', () => {
+            p.btn.addEventListener('click', (event) => {
+                event.stopPropagation(); // Empêche le clic de se propager au document
                 const otherPanelIndex = (index === 0) ? 1 : 0;
                 panels[otherPanelIndex].onClose();
     
@@ -112,6 +113,15 @@ document.addEventListener('DOMContentLoaded', function () {
             p.closeBtn.addEventListener('click', p.onClose);
         });
     
+        // ✅ **AJOUT : Fermeture des panneaux au clic extérieur**
+        document.addEventListener('click', (event) => {
+            panels.forEach(p => {
+                if (p.panel && p.panel.classList.contains('open') && !p.panel.contains(event.target)) {
+                    p.onClose();
+                }
+            });
+        });
+
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 panels.forEach(p => p.onClose());

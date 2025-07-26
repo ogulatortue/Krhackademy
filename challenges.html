@@ -39,7 +39,7 @@
     <section class="search-panel" id="filter-controls" aria-hidden="true">
         <i class="fas fa-search panel-icon"></i>
         <div class="input-wrapper">
-            <input type="search" id="search-input" placeholder="Rechercher par nom" aria-label="Rechercher un objet par nom">
+            <input type="search" id="search-input" placeholder="Rechercher par nom" aria-label="Rechercher un objet par nom" autocomplete="off">
             <button id="clear-search-btn" class="fas fa-times" aria-label="Effacer la recherche"></button>
         </div>
         
@@ -62,6 +62,19 @@
             </div>
             <div class="custom-options">
                 <div class="custom-option" data-value="all">Toutes les difficultés</div>
+            </div>
+        </div>
+
+        <div class="custom-select-wrapper">
+            <input type="hidden" id="completion-filter" value="all">
+            <div class="custom-select" data-select-id="completion-filter">
+                <span class="custom-select-trigger">État de complétion</span>
+                <div class="custom-arrow"></div>
+            </div>
+            <div class="custom-options">
+                <div class="custom-option" data-value="all">Tous</div>
+                <div class="custom-option" data-value="completed">Complété</div>
+                <div class="custom-option" data-value="not-completed">Non complété</div>
             </div>
         </div>
 
@@ -133,6 +146,20 @@
                             <span class="difficulty-tag difficulty-easy">Débutant</span>
                         </div>
                         <p>Un message chiffré a été intercepté. Il semble utiliser une méthode antique...</p>
+                    </div>
+                    <div class="check-box">
+                        <i class="fas fa-times-circle checkbox-icon not-completed" aria-hidden="true"></i>
+                        <i class="fas fa-check-circle checkbox-icon completed" aria-hidden="true"></i>
+                    </div>
+                </a>
+                <a href="#" class="card challenge-card" data-challenge-id="crypto-vigenere" data-category="Cryptographie" data-difficulty="initie">
+                    <i class="fas fa-unlock-alt card-icon" aria-hidden="true"></i>
+                    <div class="card-text-content">
+                        <div class="card-title-wrapper">
+                            <h4>Carré de Vigenère</h4>
+                            <span class="difficulty-tag difficulty-medium">Initié</span>
+                        </div>
+                        <p>Un chiffrement polyalphabétique. Trouvez la clé pour déchiffrer le message.</p>
                     </div>
                     <div class="check-box">
                         <i class="fas fa-times-circle checkbox-icon not-completed" aria-hidden="true"></i>
@@ -231,6 +258,20 @@
                             <span class="difficulty-tag difficulty-easy">Débutant</span>
                         </div>
                         <p>Ce site utilise des cookies pour gérer les sessions. Pouvez-vous devenir administrateur ?</p>
+                    </div>
+                    <div class="check-box">
+                        <i class="fas fa-times-circle checkbox-icon not-completed" aria-hidden="true"></i>
+                        <i class="fas fa-check-circle checkbox-icon completed" aria-hidden="true"></i>
+                    </div>
+                </a>
+                 <a href="#" class="card challenge-card" data-challenge-id="web-sql-injection" data-category="Web Hacking" data-difficulty="avance">
+                    <i class="fas fa-database card-icon" aria-hidden="true"></i>
+                    <div class="card-text-content">
+                        <div class="card-title-wrapper">
+                            <h4>Injection SQL Basique</h4>
+                            <span class="difficulty-tag difficulty-hard">Avancé</span>
+                        </div>
+                        <p>La base de données semble mal protégée. Extrayez les informations confidentielles.</p>
                     </div>
                     <div class="check-box">
                         <i class="fas fa-times-circle checkbox-icon not-completed" aria-hidden="true"></i>

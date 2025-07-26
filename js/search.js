@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const clearSearchBtn = document.getElementById('clear-search-btn');
     const categoryFilter = document.getElementById('category-filter');
     const difficultyFilter = document.getElementById('difficulty-filter');
+    const completionFilter = document.getElementById('completion-filter');
     const challengeCards = document.querySelectorAll('.challenge-card');
     const categorySections = document.querySelectorAll('.category-section');
     const noResultsMessage = document.getElementById('no-results-message');
@@ -28,18 +29,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const difficulties = {
             'debutant': 'Débutant',
-            'intermediaire': 'Intermédiaire',
-            'avance': 'Avancé'
+            'initie': 'Initié',
+            'avance': 'Avancé',
+            'expert': 'Expert'
         };
 
         for (const [value, text] of Object.entries(difficulties)) {
              const existingCard = document.querySelector(`.challenge-card[data-difficulty='${value}']`);
              if (existingCard) {
-                 const option = document.createElement('div');
-                 option.classList.add('custom-option');
-                 option.dataset.value = value;
-                 option.textContent = text;
-                 difficultyOptionsContainer.appendChild(option);
+                  const option = document.createElement('div');
+                  option.classList.add('custom-option');
+                  option.dataset.value = value;
+                  option.textContent = text;
+                  difficultyOptionsContainer.appendChild(option);
              }
         }
     }
@@ -48,17 +50,22 @@ document.addEventListener('DOMContentLoaded', () => {
         const searchText = searchInput.value.toLowerCase().trim();
         const selectedCategory = categoryFilter.value;
         const selectedDifficulty = difficultyFilter.value;
+        const selectedCompletion = completionFilter.value;
 
         challengeCards.forEach(card => {
             const cardName = card.querySelector('h4').textContent.toLowerCase();
             const cardCategory = card.dataset.category || '';
             const cardDifficulty = card.dataset.difficulty || '';
+            const isCompleted = card.classList.contains('completed-challenge');
 
             const nameMatch = cardName.split(' ').some(word => word.startsWith(searchText));
             const categoryMatch = (selectedCategory === 'all' || cardCategory === selectedCategory);
             const difficultyMatch = (selectedDifficulty === 'all' || cardDifficulty === selectedDifficulty);
+            const completionMatch = (selectedCompletion === 'all') ||
+                                  (selectedCompletion === 'completed' && isCompleted) ||
+                                  (selectedCompletion === 'not-completed' && !isCompleted);
 
-            if (nameMatch && categoryMatch && difficultyMatch) {
+            if (nameMatch && categoryMatch && difficultyMatch && completionMatch) {
                 card.style.display = 'flex';
             } else {
                 card.style.display = 'none';
@@ -101,4 +108,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     categoryFilter.addEventListener('change', filterChallenges);
     difficultyFilter.addEventListener('change', filterChallenges);
+    completionFilter.addEventListener('change', filterChallenges);
 });

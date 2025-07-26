@@ -4,36 +4,59 @@ document.addEventListener('DOMContentLoaded', function () {
     const mainContainer = document.querySelector('.main-container');
     const menuIcon = document.querySelector('.fa-bars');
     const navBar = document.querySelector('.nav-bar');
+    
     const searchToggleBtn = document.getElementById('search-toggle-btn');
     const filterControls = document.getElementById('filter-controls');
     const closeFilterBtn = document.getElementById('close-filter-btn');
 
+    const profileToggleBtn = document.getElementById('profile-toggle-btn');
+    const profileMenu = document.getElementById('profile-menu');
+    const closeProfileBtn = document.getElementById('close-profile-btn');
+
+    const INITIAL_PADDING_TOP = 140;
+
+    const closeSearchPanel = () => {
+        if (filterControls && filterControls.classList.contains('open')) {
+            mainContainer.style.paddingTop = `${INITIAL_PADDING_TOP}px`;
+            filterControls.classList.remove('open');
+            searchToggleBtn.classList.remove('hidden');
+            profileToggleBtn.classList.remove('hidden');
+            searchToggleBtn.setAttribute('aria-expanded', 'false');
+            filterControls.setAttribute('aria-hidden', 'true');
+        }
+    };
+
+    const closeProfileMenu = () => {
+        if (profileMenu && profileMenu.classList.contains('open')) {
+            profileMenu.classList.remove('open');
+            profileToggleBtn.classList.remove('hidden');
+            searchToggleBtn.classList.remove('hidden');
+            profileToggleBtn.setAttribute('aria-expanded', 'false');
+            profileMenu.setAttribute('aria-hidden', 'true');
+        }
+    };
+
     function setupMobileNavigation() {
         if (!menuIcon || !navBar) return;
-
-        const closeMenu = () => {
+        const closeMobileMenu = () => {
             navBar.classList.remove('open');
             menuIcon.classList.remove('fa-times');
         };
-
         menuIcon.addEventListener('click', (event) => {
             event.stopPropagation();
             navBar.classList.toggle('open');
             menuIcon.classList.toggle('fa-times');
         });
-
         document.addEventListener('click', (event) => {
             if (navBar.classList.contains('open') && !navBar.contains(event.target) && !menuIcon.contains(event.target)) {
-                closeMenu();
+                closeMobileMenu();
             }
         });
-
-        window.addEventListener('scroll', closeMenu);
+        window.addEventListener('scroll', closeMobileMenu);
     }
 
     function setupScrollEffects() {
         if (!header) return;
-
         const handleHeaderStyle = () => {
             if (window.scrollY > 20) {
                 header.classList.add('header-active');
@@ -41,35 +64,59 @@ document.addEventListener('DOMContentLoaded', function () {
                 header.classList.remove('header-active');
             }
         };
-
         window.addEventListener('scroll', handleHeaderStyle);
         window.addEventListener('load', handleHeaderStyle);
     }
 
-    function setupSearchToggle() {
-        if (searchToggleBtn && filterControls && closeFilterBtn && mainContainer) {
-            
-            const INITIAL_PADDING_TOP = 140;
-
-            searchToggleBtn.addEventListener('click', () => {
-                const filterHeight = filterControls.offsetHeight;
-                mainContainer.style.paddingTop = `${INITIAL_PADDING_TOP + filterHeight}px`;
-
-                filterControls.classList.add('open');
-                searchToggleBtn.classList.add('hidden');
-                searchToggleBtn.setAttribute('aria-expanded', 'true');
-                filterControls.setAttribute('aria-hidden', 'false');
+    function setupPanelToggles() {
+        const panels = [
+            {
+                btn: searchToggleBtn,
+                panel: filterControls,
+                closeBtn: closeFilterBtn,
+                onOpen: () => {
+                    const filterHeight = filterControls.offsetHeight;
+                    mainContainer.style.paddingTop = `${INITIAL_PADDING_TOP + filterHeight}px`;
+                    setTimeout(() => document.getElementById('search-input').focus(), 100);
+                },
+                onClose: closeSearchPanel
+            },
+            {
+                btn: profileToggleBtn,
+                panel: profileMenu,
+                closeBtn: closeProfileBtn,
+                onOpen: () => {
+                     setTimeout(() => profileMenu.querySelector('a').focus(), 100);
+                },
+                onClose: closeProfileMenu
+            }
+        ];
+    
+        panels.forEach((p, index) => {
+            if (!p.btn || !p.panel || !p.closeBtn) return;
+    
+            p.btn.addEventListener('click', () => {
+                const otherPanelIndex = (index === 0) ? 1 : 0;
+                panels[otherPanelIndex].onClose();
+    
+                p.panel.classList.add('open');
+                p.btn.classList.add('hidden');
+                panels[otherPanelIndex].btn.classList.add('hidden');
+                
+                p.btn.setAttribute('aria-expanded', 'true');
+                p.panel.setAttribute('aria-hidden', 'false');
+    
+                if (p.onOpen) p.onOpen();
             });
-
-            closeFilterBtn.addEventListener('click', () => {
-                mainContainer.style.paddingTop = `${INITIAL_PADDING_TOP}px`;
-
-                filterControls.classList.remove('open');
-                searchToggleBtn.classList.remove('hidden');
-                searchToggleBtn.setAttribute('aria-expanded', 'false');
-                filterControls.setAttribute('aria-hidden', 'true');
-            });
-        }
+    
+            p.closeBtn.addEventListener('click', p.onClose);
+        });
+    
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                panels.forEach(p => p.onClose());
+            }
+        });
     }
 
     function setupCustomSelects() {
@@ -78,33 +125,28 @@ document.addEventListener('DOMContentLoaded', function () {
             const options = select.nextElementSibling;
             const hiddenInputId = select.dataset.selectId;
             const hiddenInput = document.getElementById(hiddenInputId);
-
             select.addEventListener('click', (event) => {
                 event.stopPropagation();
-                
+                const wasOpen = select.classList.contains('open');
                 document.querySelectorAll('.custom-select').forEach(otherSelect => {
-                    if (otherSelect !== select) {
-                        otherSelect.classList.remove('open');
-                        otherSelect.nextElementSibling.classList.remove('open');
-                    }
+                    otherSelect.classList.remove('open');
+                    otherSelect.nextElementSibling.classList.remove('open');
                 });
-                
-                select.classList.toggle('open');
-                options.classList.toggle('open');
+                if (!wasOpen) {
+                    select.classList.add('open');
+                    options.classList.add('open');
+                }
             });
-
             options.addEventListener('click', (event) => {
                 if (event.target.classList.contains('custom-option')) {
                     trigger.textContent = event.target.textContent;
                     hiddenInput.value = event.target.dataset.value;
                     hiddenInput.dispatchEvent(new Event('change'));
-                    
                     select.classList.remove('open');
                     options.classList.remove('open');
                 }
             });
         });
-
         window.addEventListener('click', () => {
             document.querySelectorAll('.custom-select').forEach(select => {
                 select.classList.remove('open');
@@ -115,6 +157,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     setupMobileNavigation();
     setupScrollEffects();
-    setupSearchToggle();
+    setupPanelToggles();
     setupCustomSelects();
 });

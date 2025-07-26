@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const difficultyFilter = document.getElementById('difficulty-filter');
     const challengeCards = document.querySelectorAll('.challenge-card');
     const categorySections = document.querySelectorAll('.category-section');
+    const noResultsMessage = document.getElementById('no-results-message');
 
     function populateCustomFilters() {
         const categoryOptionsContainer = document.querySelector('[data-select-id="category-filter"]').nextElementSibling;
@@ -34,11 +35,11 @@ document.addEventListener('DOMContentLoaded', () => {
         for (const [value, text] of Object.entries(difficulties)) {
              const existingCard = document.querySelector(`.challenge-card[data-difficulty='${value}']`);
              if (existingCard) {
-                const option = document.createElement('div');
-                option.classList.add('custom-option');
-                option.dataset.value = value;
-                option.textContent = text;
-                difficultyOptionsContainer.appendChild(option);
+                 const option = document.createElement('div');
+                 option.classList.add('custom-option');
+                 option.dataset.value = value;
+                 option.textContent = text;
+                 difficultyOptionsContainer.appendChild(option);
              }
         }
     }
@@ -73,6 +74,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 section.style.display = 'none';
             }
         });
+
+        const anyVisibleCards = document.querySelector('.challenge-card[style*="display: flex"]');
+        if (anyVisibleCards) {
+            noResultsMessage.style.display = 'none';
+        } else {
+            noResultsMessage.style.display = 'block';
+        }
     }
     
     populateCustomFilters();

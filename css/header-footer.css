@@ -82,10 +82,10 @@ header .fa-bars.fa-times {
     transform: rotate(180deg);
 }
 
-#search-toggle-btn {
+#search-toggle-btn,
+#profile-toggle-btn {
     position: absolute;
     bottom: -32px;
-    right: 40px;
     width: 60px;
     height: 30px;
     background-image: url('../images/background-button.webp');
@@ -108,59 +108,91 @@ header .fa-bars.fa-times {
     transform: translateY(0);
 }
 
-#search-toggle-btn.hidden {
+#profile-toggle-btn {
+    right: 40px;
+}
+
+#search-toggle-btn {
+    right: 110px;
+}
+
+#search-toggle-btn.hidden,
+#profile-toggle-btn.hidden {
     opacity: 0;
     transform: translateY(50px);
     pointer-events: none;
 }
 
 header.header-active #search-toggle-btn {
+    right: 95px;
+}
+header.header-active #profile-toggle-btn {
     right: 25px;
-    bottom: -32px;
 }
 
-.filter-controls {
+.search-panel,
+.profile-panel {
     position: fixed;
-    top: 95px;
-    left: 20px;
-    right: 20px;
     z-index: 999;
     background-color: var(--purple);
     background-image: url('../images/header_background_blured3.webp');
     background-size: cover;
     background-position: center;
     border-radius: 25px;
-    padding: 15px 25px;
     opacity: 0;
     transform: translateY(-100%);
     pointer-events: none;
     transition: transform 0.4s ease-out, opacity 0.3s ease-out, top 0.3s ease-in-out, left 0.3s ease-in-out, right 0.3s ease-in-out, border-radius 0.3s ease-in-out;
+}
+
+.search-panel {
+    top: 95px;
+    left: 20px;
+    right: 20px;
+    padding: 15px 25px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     gap: 1rem;
 }
 
-header.header-active ~ .filter-controls {
-    top: 56px;
-    left: 0;
-    right: 0;
-    border-radius: 0;
+.profile-panel {
+    top: 95px;
+    right: 20px;
+    left: auto;
+    width: 280px;
+    padding: 0;
+    overflow: hidden;
 }
 
-.filter-controls.open {
+header.header-active ~ .search-panel,
+header.header-active ~ .profile-panel {
+    top: 56px;
+    border-radius: 0;
+}
+header.header-active ~ .profile-panel {
+    right: 0;
+}
+header.header-active ~ .search-panel {
+    left: 0;
+    right: 0;
+}
+
+
+.search-panel.open,
+.profile-panel.open {
     opacity: 1;
     transform: translateY(0);
     pointer-events: auto;
 }
 
-.filter-icon {
+.panel-icon {
     color: var(--white);
     font-size: 24px;
     align-self: center;
 }
 
-.search-wrapper {
+.input-wrapper {
     position: relative;
     display: flex;
     align-items: center;
@@ -274,10 +306,6 @@ header.header-active ~ .filter-controls {
     transition: background-color 0.2s;
 }
 
-.custom-option:hover {
-    background-color: var(--grey);
-}
-
 #close-filter-btn {
     background: transparent;
     border: none;
@@ -289,9 +317,58 @@ header.header-active ~ .filter-controls {
     align-self: center;
 }
 
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.profile-username {
+    color: var(--white);
+    font-weight: bold;
+    margin-right: auto;
+}
+
+#close-profile-btn {
+    background: transparent;
+    border: none;
+    color: var(--white);
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.profile-options {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.profile-options li a {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    color: var(--white);
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+
 main.main-container {
     padding-top: 140px;
     transition: padding-top 0.4s ease-out;
+}
+
+.no-results {
+    text-align: center;
+    color: var(--light-grey);
+    padding: 4rem 1rem;
+}
+
+.no-results p {
+    font-size: 1.5rem;
+    color: white;
 }
 
 footer {
@@ -326,9 +403,15 @@ footer .footer-legal a {
         background-color: var(--light-grey);
     }
     
-    #search-toggle-btn:not(.hidden):hover {
+    #search-toggle-btn:not(.hidden):hover,
+    #profile-toggle-btn:not(.hidden):hover {
         transform: translateY(2px);
         box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+    }
+    
+    .custom-option:hover,
+    .profile-options li a:hover {
+        background-color: var(--grey);
     }
 }
 

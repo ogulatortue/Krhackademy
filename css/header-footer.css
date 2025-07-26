@@ -82,19 +82,19 @@ header .fa-bars.fa-times {
     transform: rotate(180deg);
 }
 
-/* --- DEBUT DES AJOUTS POUR LA RECHERCHE --- */
-
 #search-toggle-btn {
     position: absolute;
     bottom: -32px;
     right: 40px;
     width: 60px;
     height: 30px;
-    background-color: var(--purple);
+    background-image: url('../images/background-button.webp');
+    background-size: cover;
+    background-position: center;
     color: var(--white);
     border: 2px solid var(--white);
     border-top: none;
-    border-radius: 0 0 60px 60px;
+    border-radius: 0 0 50px 50px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -102,7 +102,6 @@ header .fa-bars.fa-times {
     cursor: pointer;
     box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     transition: all 0.3s ease-in-out;
-    z-index: 1001;
     padding-bottom: 4px;
     box-sizing: content-box;
 }
@@ -172,8 +171,6 @@ header.header-active ~ .filter-controls {
     cursor: pointer;
 }
 
-/* --- FIN DES AJOUTS POUR LA RECHERCHE --- */
-
 footer {
     text-align: center;
     padding: 0 50px 20px;
@@ -207,7 +204,7 @@ footer .footer-legal a {
     }
     
     #search-toggle-btn:hover {
-        transform: translateY(2px) scale(1.05);
+        transform: translateY(2px);
         box-shadow: 0 6px 16px rgba(0,0,0,0.3);
     }
 }

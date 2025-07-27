@@ -109,7 +109,6 @@ header .fa-bars.fa-times {
     transform: translateY(0);
 }
 
-/* ▼▼▼ MODIFICATION START ▼▼▼ */
 #profile-toggle-btn {
     right: 40px;
 }
@@ -121,8 +120,6 @@ header .fa-bars.fa-times {
 #search-toggle-btn {
     right: 180px;
 }
-/* ▲▲▲ MODIFICATION END ▲▲▲ */
-
 
 #search-toggle-btn.hidden,
 #profile-toggle-btn.hidden,
@@ -132,7 +129,6 @@ header .fa-bars.fa-times {
     pointer-events: none;
 }
 
-/* ▼▼▼ MODIFICATION START ▼▼▼ */
 header.header-active #profile-toggle-btn {
     right: 25px;
 }
@@ -142,8 +138,6 @@ header.header-active #leaderboard-toggle-btn {
 header.header-active #search-toggle-btn {
     right: 165px;
 }
-/* ▲▲▲ MODIFICATION END ▲▲▲ */
-
 
 .search-panel,
 .profile-panel {
@@ -192,7 +186,6 @@ header.header-active ~ .search-panel {
     left: 0;
     right: 0;
 }
-
 
 .search-panel.open,
 .profile-panel.open {
@@ -416,9 +409,8 @@ header.header-active ~ .search-panel {
     color: #ffd700;
 }
 
-
 main{
-    padding-top: 140px;
+    padding-top: 6rem;
     transition: padding-top 0.4s ease-out;
 }
 

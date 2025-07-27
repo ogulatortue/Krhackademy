@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
-
     const header = document.querySelector('header');
-    const main = document.querySelector('.main');
+    const main = document.querySelector('main');
     const menuIcon = document.querySelector('.fa-bars');
     const navBar = document.querySelector('.nav-bar');
     
@@ -17,7 +16,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const leaderboardMenu = document.getElementById('leaderboard-menu');
     const closeLeaderboardBtn = document.getElementById('close-leaderboard-btn');
 
-    const INITIAL_PADDING_TOP = 140;
+    let initialMainPaddingTop;
+    if (main) {
+        initialMainPaddingTop = getComputedStyle(main).paddingTop;
+    }
     
     const showAllToggleButtons = () => {
         if(searchToggleBtn) searchToggleBtn.classList.remove('hidden');
@@ -27,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const closeSearchPanel = () => {
         if (filterControls && filterControls.classList.contains('open')) {
-            main.style.paddingTop = `${INITIAL_PADDING_TOP}px`;
+            main.style.paddingTop = initialMainPaddingTop;
             filterControls.classList.remove('open');
             showAllToggleButtons();
             searchToggleBtn.setAttribute('aria-expanded', 'false');
@@ -93,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 closeBtn: closeFilterBtn,
                 onOpen: () => {
                     const filterHeight = filterControls.offsetHeight;
-                    main.style.paddingTop = `${INITIAL_PADDING_TOP + filterHeight}px`;
+                    main.style.paddingTop = `calc(${initialMainPaddingTop} + ${filterHeight}px)`;
                     setTimeout(() => document.getElementById('search-input').focus(), 100);
                 },
                 onClose: closeSearchPanel

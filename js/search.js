@@ -11,18 +11,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const categorySections = document.querySelectorAll('.category-section');
     const noResultsMessage = document.getElementById('no-results-message') || document.querySelector('.no-results');
 
-    // Étape 1 : Pré-traiter les cartes pour extraire la difficulté
     cards.forEach(card => {
         const diffTag = card.querySelector('.difficulty-tag');
         if (diffTag) {
-            const valueClass = Array.from(diffTag.classList).find(c => c.startsWith('difficulty-'));
+            // CORRECTION : On s'assure de ne pas sélectionner la classe 'difficulty-tag' elle-même.
+            const valueClass = Array.from(diffTag.classList).find(c => c.startsWith('difficulty-') && c !== 'difficulty-tag');
             if (valueClass) {
                 card.dataset.difficulty = valueClass.replace('difficulty-', '');
             }
         }
     });
     
-    // Étape 2 : Logique pour gérer les menus déroulants personnalisés
     function setupFilterSelects() {
         const customSelects = searchPanel.querySelectorAll('.custom-select');
 
@@ -64,7 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Étape 3 : Remplir les filtres avec les bonnes options
     function populateCustomFilters() {
         const categoryOptionsContainer = document.querySelector('[data-select-id="category-filter"]').nextElementSibling;
         const difficultyOptionsContainer = document.querySelector('[data-select-id="difficulty-filter"]').nextElementSibling;
@@ -88,16 +86,15 @@ document.addEventListener('DOMContentLoaded', () => {
             ['hard', 'Avancé'],
             ['expert', 'Expert']
         ]);
-        allDifficulties.forEach((text, value) => {
+        allDifficulties.forEach((difficultyText, difficultyKey) => {
             const option = document.createElement('div');
             option.classList.add('custom-option');
-            option.dataset.value = value;
-            option.textContent = text;
+            option.dataset.value = difficultyKey;
+            option.textContent = difficultyText;
             difficultyOptionsContainer.appendChild(option);
         });
     }
 
-    // Étape 4 : La fonction de filtrage
     function filterItems() {
         const selectedDifficulty = difficultyFilter.value;
         const selectedCategory = categoryFilter.value;
@@ -137,7 +134,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     
-    // Étape 5 : Initialisation
     if (cards.length > 0) {
         populateCustomFilters();
         setupFilterSelects();
@@ -152,7 +148,6 @@ document.addEventListener('DOMContentLoaded', () => {
             searchInput.dispatchEvent(new Event('input'));
         });
 
-        // MODIFICATION FINALE : Écouteurs d'événements attachés individuellement
         if (categoryFilter) {
             categoryFilter.addEventListener('change', filterItems);
         }

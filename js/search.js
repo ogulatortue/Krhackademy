@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const searchPanel = document.getElementById('filter-controls');
-    if (!searchPanel) return; // S'il n'y a pas de panneau de recherche, on arrête tout.
+    if (!searchPanel) return;
 
     const searchInput = document.getElementById('search-input');
     const clearSearchBtn = document.getElementById('clear-search-btn');
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     
-    // Étape 2 : Logique pour gérer les menus déroulants personnalisés (prise de header.js et adaptée)
+    // Étape 2 : Logique pour gérer les menus déroulants personnalisés
     function setupFilterSelects() {
         const customSelects = searchPanel.querySelectorAll('.custom-select');
 
@@ -34,7 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
             select.addEventListener('click', (event) => {
                 event.stopPropagation();
                 const wasOpen = select.classList.contains('open');
-                // Fermer tous les autres selects
                 customSelects.forEach(s => {
                     s.classList.remove('open');
                     s.nextElementSibling.classList.remove('open');
@@ -50,14 +49,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (targetOption) {
                     trigger.textContent = targetOption.textContent;
                     hiddenInput.value = targetOption.dataset.value;
-                    hiddenInput.dispatchEvent(new Event('change')); // Déclenche le filtrage
+                    hiddenInput.dispatchEvent(new Event('change'));
                     select.classList.remove('open');
                     options.classList.remove('open');
                 }
             });
         });
         
-        // Fermer les menus si on clique ailleurs
         document.addEventListener('click', () => {
             customSelects.forEach(select => {
                 select.classList.remove('open');
@@ -99,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Étape 4 : La fonction de filtrage (inchangée)
+    // Étape 4 : La fonction de filtrage
     function filterItems() {
         const selectedDifficulty = difficultyFilter.value;
         const selectedCategory = categoryFilter.value;
@@ -154,8 +152,15 @@ document.addEventListener('DOMContentLoaded', () => {
             searchInput.dispatchEvent(new Event('input'));
         });
 
-        [categoryFilter, difficultyFilter, completionFilter].forEach(filter => {
-            filter.addEventListener('change', filterItems);
-        });
+        // MODIFICATION FINALE : Écouteurs d'événements attachés individuellement
+        if (categoryFilter) {
+            categoryFilter.addEventListener('change', filterItems);
+        }
+        if (difficultyFilter) {
+            difficultyFilter.addEventListener('change', filterItems);
+        }
+        if (completionFilter) {
+            completionFilter.addEventListener('change', filterItems);
+        }
     }
 });

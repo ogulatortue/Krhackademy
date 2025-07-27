@@ -37,51 +37,9 @@
             </ul>
         </nav>
         <button class="fas fa-bars" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="nav-links"></button>
-        <button id="search-toggle-btn" class="fas fa-search" aria-label="Ouvrir la barre de recherche" aria-expanded="false" aria-controls="filter-controls"></button>
         <button id="leaderboard-toggle-btn" class="fas fa-trophy" aria-label="Ouvrir le classement" aria-expanded="false" aria-controls="leaderboard-menu"></button>
         <button id="profile-toggle-btn" class="fas fa-user-circle" aria-label="Ouvrir le menu du profil" aria-expanded="false" aria-controls="profile-menu"></button>
     </header>
-
-    <section class="search-panel" id="filter-controls" aria-hidden="true">
-        <i class="fas fa-search panel-icon"></i>
-        <div class="input-wrapper">
-            <input type="search" id="search-input" placeholder="Rechercher par nom" aria-label="Rechercher un objet par nom" autocomplete="off">
-            <button id="clear-search-btn" class="fas fa-times" aria-label="Effacer la recherche"></button>
-        </div>
-        <div class="custom-select-wrapper">
-            <input type="hidden" id="category-filter" value="all">
-            <div class="custom-select" data-select-id="category-filter">
-                <span class="custom-select-trigger">Toutes les catégories</span>
-                <div class="custom-arrow"></div>
-            </div>
-            <div class="custom-options">
-                <div class="custom-option" data-value="all">Toutes les catégories</div>
-            </div>
-        </div>
-        <div class="custom-select-wrapper">
-            <input type="hidden" id="difficulty-filter" value="all">
-            <div class="custom-select" data-select-id="difficulty-filter">
-                <span class="custom-select-trigger">Toutes les difficultés</span>
-                <div class="custom-arrow"></div>
-            </div>
-            <div class="custom-options">
-                <div class="custom-option" data-value="all">Toutes les difficultés</div>
-            </div>
-        </div>
-        <div class="custom-select-wrapper">
-            <input type="hidden" id="completion-filter" value="all">
-            <div class="custom-select" data-select-id="completion-filter">
-                <span class="custom-select-trigger">État de complétion</span>
-                <div class="custom-arrow"></div>
-            </div>
-            <div class="custom-options">
-                <div class="custom-option" data-value="all">Tous</div>
-                <div class="custom-option" data-value="completed">Complété</div>
-                <div class="custom-option" data-value="not-completed">Non complété</div>
-            </div>
-        </div>
-        <button id="close-filter-btn" class="fas fa-times" aria-label="Fermer la barre de recherche"></button>
-    </section>
 
     <section class="profile-panel" id="profile-menu" aria-hidden="true">
         <div class="profile-header">

@@ -32,6 +32,8 @@ document.addEventListener('DOMContentLoaded', function () {
             main.style.paddingTop = initialMainPaddingTop;
             filterControls.classList.remove('open');
             showAllToggleButtons();
+            // LIGNE AJOUTÉE : Renvoyer le focus au bouton d'ouverture
+            if (searchToggleBtn) searchToggleBtn.focus(); 
             searchToggleBtn.setAttribute('aria-expanded', 'false');
             filterControls.setAttribute('aria-hidden', 'true');
         }
@@ -41,6 +43,8 @@ document.addEventListener('DOMContentLoaded', function () {
         if (profileMenu && profileMenu.classList.contains('open')) {
             profileMenu.classList.remove('open');
             showAllToggleButtons();
+            // LIGNE AJOUTÉE : Renvoyer le focus au bouton d'ouverture
+            if (profileToggleBtn) profileToggleBtn.focus();
             profileToggleBtn.setAttribute('aria-expanded', 'false');
             profileMenu.setAttribute('aria-hidden', 'true');
         }
@@ -50,6 +54,8 @@ document.addEventListener('DOMContentLoaded', function () {
         if (leaderboardMenu && leaderboardMenu.classList.contains('open')) {
             leaderboardMenu.classList.remove('open');
             showAllToggleButtons();
+            // LIGNE AJOUTÉE : Renvoyer le focus au bouton d'ouverture
+            if (leaderboardToggleBtn) leaderboardToggleBtn.focus();
             leaderboardToggleBtn.setAttribute('aria-expanded', 'false');
             leaderboardMenu.setAttribute('aria-hidden', 'true');
         }
@@ -125,22 +131,17 @@ document.addEventListener('DOMContentLoaded', function () {
     
             p.btn.addEventListener('click', (event) => {
                 event.stopPropagation();
-
                 panels.forEach((otherPanel, otherIndex) => {
                     if (currentIndex !== otherIndex) {
                         otherPanel.onClose();
                     }
                 });
-    
                 p.panel.classList.add('open');
-                
                 panels.forEach(panelToHide => {
                     if (panelToHide.btn) panelToHide.btn.classList.add('hidden');
                 });
-                
                 p.btn.setAttribute('aria-expanded', 'true');
                 p.panel.setAttribute('aria-hidden', 'false');
-    
                 if (p.onOpen) p.onOpen();
             });
     
@@ -162,44 +163,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    function setupCustomSelects() {
-        document.querySelectorAll('.custom-select').forEach(select => {
-            const trigger = select.querySelector('.custom-select-trigger');
-            const options = select.nextElementSibling;
-            const hiddenInputId = select.dataset.selectId;
-            const hiddenInput = document.getElementById(hiddenInputId);
-            select.addEventListener('click', (event) => {
-                event.stopPropagation();
-                const wasOpen = select.classList.contains('open');
-                document.querySelectorAll('.custom-select').forEach(otherSelect => {
-                    otherSelect.classList.remove('open');
-                    otherSelect.nextElementSibling.classList.remove('open');
-                });
-                if (!wasOpen) {
-                    select.classList.add('open');
-                    options.classList.add('open');
-                }
-            });
-            options.addEventListener('click', (event) => {
-                if (event.target.classList.contains('custom-option')) {
-                    trigger.textContent = event.target.textContent;
-                    hiddenInput.value = event.target.dataset.value;
-                    hiddenInput.dispatchEvent(new Event('change'));
-                    select.classList.remove('open');
-                    options.classList.remove('open');
-                }
-            });
-        });
-        window.addEventListener('click', () => {
-            document.querySelectorAll('.custom-select').forEach(select => {
-                select.classList.remove('open');
-                select.nextElementSibling.classList.remove('open');
-            });
-        });
-    }
-
     setupMobileNavigation();
     setupScrollEffects();
     setupPanelToggles();
-    setupCustomSelects();
 });

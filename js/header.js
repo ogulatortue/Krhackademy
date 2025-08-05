@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 panel: profileMenu,
                 closeBtn: closeProfileBtn,
                 onOpen: () => {
-                     setTimeout(() => profileMenu.querySelector('a').focus(), 100);
+                        setTimeout(() => profileMenu.querySelector('a').focus(), 100);
                 },
                 onClose: closeProfileMenu
             },
@@ -140,13 +140,17 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (!wasOpen) {
                     p.panel.classList.add('open');
                     
+                    // On cache tous les boutons
                     panels.forEach(panelToHide => {
                         if (panelToHide.btn) panelToHide.btn.classList.add('hidden');
                     });
                     
-                    if (p.btn === menuIcon) {
-                        p.btn.classList.remove('hidden');
+                    // ----- MODIFICATION -----
+                    // On s'assure que le bouton hamburger reste toujours visible
+                    if (menuIcon) {
+                        menuIcon.classList.remove('hidden');
                     }
+                    // --- FIN MODIFICATION ---
                     
                     p.btn.setAttribute('aria-expanded', 'true');
                     p.panel.setAttribute('aria-hidden', 'false');

@@ -172,9 +172,12 @@ header.header-active #search-toggle-btn {
     right: 20px;
     left: auto;
     width: max-content;
-    min-width: 220px;
     padding: 0;
     overflow: hidden;
+}
+
+.profile-panel {
+    min-width: 220px;
 }
 
 header.header-active ~ .search-panel,
@@ -384,11 +387,12 @@ header.header-active ~ .nav-bar-mobile {
 .nav-bar-mobile li a {
     display: block;
     color: var(--white);
-    padding: 10px;
+    padding: 10px 20px;
     font-size: 18px;
     transition: background-color 0.3s ease;
     text-decoration: none;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
 }
 
 .nav-bar-mobile li:last-child a {

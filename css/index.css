@@ -52,6 +52,7 @@
 .intro .image-intro > img {
     width: 100%;
     max-width: 450px;
+    padding-top: 5rem;
     height: auto;
     object-fit: contain;
 }

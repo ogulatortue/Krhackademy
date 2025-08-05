@@ -168,14 +168,14 @@
         padding: 13rem 1rem;
     }
     .main-title.category-title {
-        font-size: 1.8rem;
+        font-size: 4rem;
         padding-block: 1.5rem;
     }
     .card-text-content h4 {
-        font-size: 1.2rem;
+        font-size: 1.5rem;
     }
     .card-text-content p {
-        font-size: 0.9rem;
+        font-size: 1rem;
     }
     .box-container {
         grid-template-columns: 1fr;

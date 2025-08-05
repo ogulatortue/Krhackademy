@@ -25,9 +25,9 @@
     --shadow-medium: rgba(0, 0, 0, 0.5);
     --shadow-heavy: rgba(0, 0, 0, 0.7);
     --completed-color: #48ff00;
-    --lesson-color: #42a5f5;
-    --challenge-color: #e91e63;
-    --scenario-color: #e0e0e0;
+    --lesson-color: #9216a8;
+    --challenge-color: #9216a8;
+    --scenario-color: #9216a8;
 }
 
 * {

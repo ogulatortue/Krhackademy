@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const header = document.querySelector('header');
     const main = document.querySelector('main');
     const menuIcon = document.querySelector('.fa-bars');
-    const navBar = document.querySelector('.nav-bar');
+    const navBarMobile = document.getElementById('mobile-nav-menu');
     
     const searchToggleBtn = document.getElementById('search-toggle-btn');
     const filterControls = document.getElementById('filter-controls');
@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     
     const showAllToggleButtons = () => {
+        if(menuIcon) menuIcon.classList.remove('hidden');
         if(searchToggleBtn) searchToggleBtn.classList.remove('hidden');
         if(profileToggleBtn) profileToggleBtn.classList.remove('hidden');
         if(leaderboardToggleBtn) leaderboardToggleBtn.classList.remove('hidden');
@@ -32,7 +33,6 @@ document.addEventListener('DOMContentLoaded', function () {
             main.style.paddingTop = initialMainPaddingTop;
             filterControls.classList.remove('open');
             showAllToggleButtons();
-            // LIGNE AJOUTÉE : Renvoyer le focus au bouton d'ouverture
             if (searchToggleBtn) searchToggleBtn.focus(); 
             searchToggleBtn.setAttribute('aria-expanded', 'false');
             filterControls.setAttribute('aria-hidden', 'true');
@@ -43,7 +43,6 @@ document.addEventListener('DOMContentLoaded', function () {
         if (profileMenu && profileMenu.classList.contains('open')) {
             profileMenu.classList.remove('open');
             showAllToggleButtons();
-            // LIGNE AJOUTÉE : Renvoyer le focus au bouton d'ouverture
             if (profileToggleBtn) profileToggleBtn.focus();
             profileToggleBtn.setAttribute('aria-expanded', 'false');
             profileMenu.setAttribute('aria-hidden', 'true');
@@ -54,31 +53,24 @@ document.addEventListener('DOMContentLoaded', function () {
         if (leaderboardMenu && leaderboardMenu.classList.contains('open')) {
             leaderboardMenu.classList.remove('open');
             showAllToggleButtons();
-            // LIGNE AJOUTÉE : Renvoyer le focus au bouton d'ouverture
             if (leaderboardToggleBtn) leaderboardToggleBtn.focus();
             leaderboardToggleBtn.setAttribute('aria-expanded', 'false');
             leaderboardMenu.setAttribute('aria-hidden', 'true');
         }
     };
-
-    function setupMobileNavigation() {
-        if (!menuIcon || !navBar) return;
-        const closeMobileMenu = () => {
-            navBar.classList.remove('open');
-            menuIcon.classList.remove('fa-times');
-        };
-        menuIcon.addEventListener('click', (event) => {
-            event.stopPropagation();
-            navBar.classList.toggle('open');
-            menuIcon.classList.toggle('fa-times');
-        });
-        document.addEventListener('click', (event) => {
-            if (navBar.classList.contains('open') && !navBar.contains(event.target) && !menuIcon.contains(event.target)) {
-                closeMobileMenu();
+    
+    const closeMobileMenu = () => {
+        if (navBarMobile && navBarMobile.classList.contains('open')) {
+            navBarMobile.classList.remove('open');
+            showAllToggleButtons();
+            if(menuIcon) {
+                menuIcon.focus();
+                menuIcon.classList.remove('fa-times');
             }
-        });
-        window.addEventListener('scroll', closeMobileMenu);
-    }
+            menuIcon.setAttribute('aria-expanded', 'false');
+            navBarMobile.setAttribute('aria-hidden', 'true');
+        }
+    };
 
     function setupScrollEffects() {
         if (!header) return;
@@ -95,6 +87,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function setupPanelToggles() {
         const panels = [
+            {
+                btn: menuIcon,
+                panel: navBarMobile,
+                closeBtn: null,
+                onOpen: () => {
+                    if(menuIcon) menuIcon.classList.add('fa-times');
+                    setTimeout(() => navBarMobile.querySelector('a').focus(), 100);
+                },
+                onClose: closeMobileMenu
+            },
             {
                 btn: searchToggleBtn,
                 panel: filterControls,
@@ -126,26 +128,35 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         ];
     
-        panels.forEach((p, currentIndex) => {
-            if (!p.btn || !p.panel || !p.closeBtn) return;
-    
+        panels.forEach((p) => {
+            if (!p.btn || !p.panel) return;
+
             p.btn.addEventListener('click', (event) => {
                 event.stopPropagation();
-                panels.forEach((otherPanel, otherIndex) => {
-                    if (currentIndex !== otherIndex) {
-                        otherPanel.onClose();
+                const wasOpen = p.panel.classList.contains('open');
+
+                panels.forEach(otherPanel => otherPanel.onClose());
+
+                if (!wasOpen) {
+                    p.panel.classList.add('open');
+                    
+                    panels.forEach(panelToHide => {
+                        if (panelToHide.btn) panelToHide.btn.classList.add('hidden');
+                    });
+                    
+                    if (p.btn === menuIcon) {
+                        p.btn.classList.remove('hidden');
                     }
-                });
-                p.panel.classList.add('open');
-                panels.forEach(panelToHide => {
-                    if (panelToHide.btn) panelToHide.btn.classList.add('hidden');
-                });
-                p.btn.setAttribute('aria-expanded', 'true');
-                p.panel.setAttribute('aria-hidden', 'false');
-                if (p.onOpen) p.onOpen();
+                    
+                    p.btn.setAttribute('aria-expanded', 'true');
+                    p.panel.setAttribute('aria-hidden', 'false');
+                    if (p.onOpen) p.onOpen();
+                }
             });
     
-            p.closeBtn.addEventListener('click', p.onClose);
+            if (p.closeBtn) {
+                p.closeBtn.addEventListener('click', p.onClose);
+            }
         });
     
         document.addEventListener('click', (event) => {
@@ -161,9 +172,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 panels.forEach(p => p.onClose());
             }
         });
+        
+        window.addEventListener('scroll', () => {
+            panels.forEach(p => p.onClose());
+        });
     }
 
-    setupMobileNavigation();
     setupScrollEffects();
     setupPanelToggles();
 });

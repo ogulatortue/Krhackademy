@@ -123,7 +123,8 @@ header .fa-bars.fa-times {
 
 #search-toggle-btn.hidden,
 #profile-toggle-btn.hidden,
-#leaderboard-toggle-btn.hidden {
+#leaderboard-toggle-btn.hidden,
+header .fa-bars.hidden {
     opacity: 0;
     transform: translateY(50px);
     pointer-events: none;
@@ -140,7 +141,8 @@ header.header-active #search-toggle-btn {
 }
 
 .search-panel,
-.profile-panel {
+.profile-panel,
+.nav-bar-mobile {
     position: fixed;
     z-index: 999;
     background-color: var(--purple);
@@ -149,7 +151,7 @@ header.header-active #search-toggle-btn {
     background-position: center;
     border-radius: 25px;
     opacity: 0;
-    transform: translateY(-100%);
+    transform: translateY(-120%);
     pointer-events: none;
     transition: transform 0.4s ease-out, opacity 0.3s ease-out, top 0.3s ease-in-out, left 0.3s ease-in-out, right 0.3s ease-in-out, border-radius 0.3s ease-in-out;
 }
@@ -165,7 +167,8 @@ header.header-active #search-toggle-btn {
     gap: 1rem;
 }
 
-.profile-panel {
+.profile-panel,
+.nav-bar-mobile {
     top: 95px;
     right: 20px;
     left: auto;
@@ -174,13 +177,44 @@ header.header-active #search-toggle-btn {
     overflow: hidden;
 }
 
+.nav-bar-mobile ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-bar-mobile li a {
+    display: block;
+    color: var(--white);
+    padding: 10px;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-bar-mobile li:last-child a {
+    border-bottom: none;
+}
+
+.nav-bar-mobile li.active a {
+    background-color: var(--white);
+    color: var(--black);
+}
+
 header.header-active ~ .search-panel,
-header.header-active ~ .profile-panel {
+header.header-active ~ .profile-panel,
+header.header-active ~ .nav-bar-mobile {
     top: 56px;
     border-radius: 0;
 }
-header.header-active ~ .profile-panel {
+
+header.header-active ~ .profile-panel,
+header.header-active ~ .nav-bar-mobile {
     right: 0;
+    left: auto;
 }
 header.header-active ~ .search-panel {
     left: 0;
@@ -188,7 +222,8 @@ header.header-active ~ .search-panel {
 }
 
 .search-panel.open,
-.profile-panel.open {
+.profile-panel.open,
+.nav-bar-mobile.open {
     opacity: 1;
     transform: translateY(0);
     pointer-events: auto;
@@ -469,8 +504,9 @@ footer .footer-legal a {
 }
 
 @media (hover: hover) and (pointer: fine) {
-    .nav-bar li:not(.active):hover a {
-        background-color: var(--light-grey);
+    .nav-bar li:not(.active):hover a,
+    .nav-bar-mobile li:not(.active):hover a {
+        background-color: var(--grey);
     }
     
     #search-toggle-btn:not(.hidden):hover,
@@ -479,7 +515,7 @@ footer .footer-legal a {
         transform: translateY(2px);
         box-shadow: 0 6px 16px rgba(0,0,0,0.3);
     }
-    
+
     .custom-option:hover,
     .profile-options li a:hover,
     .leaderboard-item:hover {
@@ -488,49 +524,12 @@ footer .footer-legal a {
 }
 
 @media (max-width: 800px) {
+    .nav-bar {
+        display: none;
+    }
+    
     header .fa-bars {
         display: block;
-    }
-
-    header .nav-bar {
-        display: block;
-        position: fixed;
-        top: 76px;
-        right: 20px;
-        width: auto;
-        background: var(--purple);
-        border-radius: 20px;
-        transform: translateX(120%);
-        transition: transform 0.3s ease-in-out;
-        box-shadow: 0 5px 15px var(--shadow-xlight);
-        margin-left: 0;
-    }
-
-    header.header-active .nav-bar {
-        top: 56px;
-        right: 0px;
-    }
-
-    header .nav-bar.open {
-        transform: translateX(0);
-    }
-    
-    .nav-bar ul {
-        flex-direction: column;
-        border-bottom: none;
-        background-image: url('../images/header_background_blured3.webp');
-        background-size: cover;
-        background-position: center;
-        border-radius: 20px;
-        overflow: hidden;
-    }
-
-    .nav-bar li a {
-        padding: 7px 15px;
-    }
-    
-    .nav-bar li.active a {
-        border-radius: 0;
     }
 
     footer .footer-legal {

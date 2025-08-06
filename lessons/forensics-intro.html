@@ -81,8 +81,11 @@
                 <p>
                     La première responsabilité de l'analyste est de préserver l'intégrité de la scène de crime numérique. Chaque action doit garantir que les preuves originales demeurent intactes, en suivant plusieurs principes.
                 </p>
+                <p>
+                    Lors d'une intervention, notamment en analyse « à chaud », l'expert suit un principe directeur : l'ordre de volatilité. Il doit collecter en priorité les informations les plus éphémères avant qu'elles ne disparaissent. La collecte se fait donc généralement des données les plus volatiles (mémoire vive, connexions réseau) vers les moins volatiles (données sur disque dur).
+                </p>
                 <h3>Intégrité des données</h3>
-                <p>Le principe cardinal est de ne jamais travailler directement sur les preuves originales. L'analyste opère systématiquement sur une copie conforme et parfaite de la source de données (disque dur, smartphone, etc.).</p>
+                <p>Le principe cardinal est de ne jamais travailler directement sur les preuves originales. Pour cela, l'analyste utilise un appareil spécial appelé bloqueur en écriture (write-blocker) qui empêche toute modification du support durant la copie. Il opère ainsi systématiquement sur une copie conforme et parfaite de la source de données (disque dur, smartphone, etc.).</p>
                 <h3>Empreinte numérique (Hash)</h3>
                 <p>Pour certifier que la copie est authentique et identique à l'original, on calcule son « empreinte numérique » (hash). Cette signature unique garantit que pas un seul bit n'a été modifié durant le processus de copie.</p>
                 <h3>Traçabilité et chaîne de conservation</h3>
@@ -92,7 +95,7 @@
             <section class="lesson-block">
                 <h2><i class="fas fa-search" aria-hidden="true"></i>L'analyse</h2>
                 <p>
-                    Une fois les preuves collectées et leur intégrité assurée, l'analyse peut commencer. Elle consiste à examiner les données pour y déceler des indices pertinents. Une part importante de ce travail se concentre sur les métadonnées.
+                    Une fois les preuves collectées et leur intégrité assurée, l'analyse peut commencer. Elle consiste à examiner les données pour y déceler des artefacts numériques, c'est-à-dire des traces laissées par l'activité d'un système ou d'un utilisateur. Une part importante de ce travail se concentre sur les métadonnées.
                 </p>
                 <p>
                     Cruciales pour l'enquête, les métadonnées sont des informations descriptives associées aux fichiers qui permettent de contextualiser une action. On en distingue trois grandes familles :
@@ -151,7 +154,7 @@
         </article>
     </main>
     
-    <script src="../js/lessons.js" defer></script>
+    <script src="../js/progress-tracker.js" defer></script> 
 
 </body>
 </html>

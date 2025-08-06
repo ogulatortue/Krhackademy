@@ -79,23 +79,23 @@
             <section class="lesson-block">
                 <h2><i class="fas fa-database" aria-hidden="true"></i>La collecte de preuves</h2>
                 <p>
-                    La première responsabilité de l'analyste est de préserver l'intégrité de la scène de crime numérique. Chaque action doit garantir que les preuves originales demeurent intactes, en suivant plusieurs principes.
-                </p>
-                <p>
-                    Lors d'une intervention, notamment en analyse « à chaud », l'expert suit un principe directeur : l'ordre de volatilité. Il doit collecter en priorité les informations les plus éphémères avant qu'elles ne disparaissent. La collecte se fait donc généralement des données les plus volatiles (mémoire vive, connexions réseau) vers les moins volatiles (données sur disque dur).
+                    La première responsabilité de l'analyste est de préserver l'intégrité de la scène de crime numérique. Chaque action doit garantir que les preuves originales demeurent intactes, en suivant plusieurs principes :
                 </p>
                 <h3>Intégrité des données</h3>
-                <p>Le principe cardinal est de ne jamais travailler directement sur les preuves originales. Pour cela, l'analyste utilise un appareil spécial appelé bloqueur en écriture (write-blocker) qui empêche toute modification du support durant la copie. Il opère ainsi systématiquement sur une copie conforme et parfaite de la source de données (disque dur, smartphone, etc.).</p>
+                <p>Le principe fondamental est de ne jamais travailler directement sur les preuves originales. Pour cela, l'analyste utilise un appareil spécial appelé bloqueur en écriture (write-blocker) qui empêche toute modification du support durant la copie. Il opère ainsi systématiquement sur une copie conforme et parfaite de la source de données (disque dur, smartphone, etc.).</p>
                 <h3>Empreinte numérique (Hash)</h3>
                 <p>Pour certifier que la copie est authentique et identique à l'original, on calcule son « empreinte numérique » (hash). Cette signature unique garantit que pas un seul bit n'a été modifié durant le processus de copie.</p>
                 <h3>Traçabilité et chaîne de conservation</h3>
                 <p>Chaque manipulation de la preuve, de sa collecte à son analyse, est rigoureusement documentée dans une « chaîne de conservation ». Cette traçabilité est essentielle pour garantir la validité juridique de la procédure.</p>
+                <p>
+                    Lors d'une intervention, notamment en analyse « à chaud », l'expert suit un principe supplémentaire : l'ordre de volatilité. Il doit collecter en priorité les informations les plus éphémères avant qu'elles ne disparaissent. La collecte se fait donc généralement des données les plus volatiles (mémoire vive, connexions réseau) vers les moins volatiles (données sur disque dur).
+                </p>
             </section>
 
             <section class="lesson-block">
                 <h2><i class="fas fa-search" aria-hidden="true"></i>L'analyse</h2>
                 <p>
-                    Une fois les preuves collectées et leur intégrité assurée, l'analyse peut commencer. Elle consiste à examiner les données pour y déceler des artefacts numériques, c'est-à-dire des traces laissées par l'activité d'un système ou d'un utilisateur. Une part importante de ce travail se concentre sur les métadonnées.
+                    Une fois les preuves collectées et leur intégrité assurée, l'analyse peut commencer. Elle consiste à examiner les données pour y déceler des artefacts numériques, c'est-à-dire des traces laissées par l'activité d'un système ou d'un utilisateur. Une part importante de ces artefacts sont des métadonnées.
                 </p>
                 <p>
                     Cruciales pour l'enquête, les métadonnées sont des informations descriptives associées aux fichiers qui permettent de contextualiser une action. On en distingue trois grandes familles :
@@ -140,7 +140,7 @@
             <section class="lesson-block">
                 <h2><i class="fas fa-flag-checkered" aria-hidden="true"></i>Conclusion</h2>
                 <p>
-                    Le but fondamental de l'analyse forensique est de répondre à une question essentielle : que s'est-il réellement passé ?
+                    Le but fondamental de l'analyse forensique est de répondre à une question essentielle : que s'est-il passé ?
                 </p>
                 <p>
                     Par une méthodologie rigoureuse, elle transforme le chaos d'un incident numérique en une chronologie claire et factuelle. En reconstituant la chaîne des événements et en identifiant les actions menées, l'analyse forensique établit une vérité numérique objective. Son objectif ultime est de matérialiser ces découvertes sous forme de preuves tangibles et recevables, capables d'éclairer une décision de justice ou de motiver une action interne.

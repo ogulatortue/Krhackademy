@@ -25,7 +25,7 @@
         <article class="lesson-content">
             
             <header class="lesson-header">
-                <i class="fas fas fa-fingerprint lesson-icon" aria-hidden="true"></i>
+                <i class="fas fa-fingerprint lesson-icon" aria-hidden="true"></i>
                 <div class="lesson-title-group">
                     <h1>Analyse des Métadonnées</h1>
                     <p class="lesson-intro">
@@ -43,7 +43,7 @@
                 <p>
                     Avant de se lancer dans l'analyse, il est impératif de comprendre la nature fondamentale des métadonnées et, surtout, où les chercher. Toute métadonnée appartient à l'une des deux grandes familles, dont la fiabilité et l'origine sont radicalement différentes.
                 </p>
-                 <h3>Métadonnées de Système de Fichiers (Externes)</h3>
+                <h3>Métadonnées de Système de Fichiers (Externes)</h3>
                 <p>Gérées par le système d'exploitation (Windows, macOS), elles sont stockées à l'extérieur du fichier, dans la "table des matières" du disque (comme la MFT). Elles décrivent le contenant, sa taille, son emplacement et son interaction avec le système.</p>
                 <h3>Métadonnées Applicatives (Internes)</h3>
                 <p>Créées par le logiciel qui a fabriqué le fichier (Word, Photoshop, Appareil photo), elles sont stockées à l'intérieur du fichier lui-même, selon les spécifications de son format. Elles décrivent le contenu, son auteur, son contexte de création, etc.</p>
@@ -85,12 +85,12 @@
             <section class="lesson-block">
                 <h2><i class="fas fa-cogs" aria-hidden="true"></i>L'analyse applicative</h2>
                 <p>
-                   Si les timestamps MACE nous donnent le "quand", les métadonnées applicatives nous donnent le "qui", le "comment" et le "où". Pour extraire et interpréter ces informations riches, l'outil ExifTool est la référence mondiale.
+                    Si les timestamps MACE nous donnent le "quand", les métadonnées applicatives nous donnent le "qui", le "comment" et le "où". Pour extraire et interpréter ces informations riches, l'outil ExifTool est la référence mondiale.
                 </p>
                 
                 <h3>1. Les documents Microsoft Office (.docx, .pptx, etc.)</h3>
-                <p>Bien plus que de simples conteneurs de texte, les fichiers Office modernes sont de véritables journaux de bord.
-                <br>Métadonnées clés :</br></p>
+                <p>Bien plus que de simples conteneurs de texte, les fichiers Office modernes sont de véritables journaux de bord.</p>
+                <p>Métadonnées clés :</p>
                 <ul>
                     <li>Creator (auteur initial)</li>
                     <li>Last Modified By (dernier utilisateur à avoir sauvegardé)</li>
@@ -100,8 +100,8 @@
                 </ul>
                 <p><strong>Exemple :</strong> Une entreprise retrouve son plan stratégique Plan_Secret.docx sur internet. L'analyse révèle Creator: "Hugo" et Last Modified By: "Rob". L'enquête peut donc se concentrer sur l'activité de Rob.</p>
                 <h3>2. Les images (.jpg, .heic, .cr2)</h3>
-                <p>Les métadonnées EXIF (Exchangeable Image File Format) peuvent transformer une simple image en une preuve factuelle irréfutable.
-                <br>Métadonnées clés :</br></p>
+                <p>Les métadonnées EXIF (Exchangeable Image File Format) peuvent transformer une simple image en une preuve factuelle irréfutable.</p>
+                <p>Métadonnées clés :</p>
                 <ul>
                     <li>Make et Model (marque et modèle de l'appareil)</li>
                     <li>DateTimeOriginal (date et heure exactes de la prise de vue)</li>
@@ -111,8 +111,8 @@
                 <p><strong>Exemple :</strong> La photo d'un suspect, IMG_4587.jpg, prétendument prise chez lui, révèle des coordonnées GPS qui pointent vers le lieu d'un cambriolage à l'heure du crime, contredisant son alibi.</p>
                 
                 <h3>3. Les fichiers Audio et Vidéo (.mp4, .mov, .mp3)</h3>
-                <p>Comme les images, les fichiers multimédias embarquent des informations cruciales sur leur origine.
-                <br>Métadonnées clés :</br> 
+                <p>Comme les images, les fichiers multimédias embarquent des informations cruciales sur leur origine.</p>
+                <p>Métadonnées clés :</p> 
                 <ul>
                     <li>Duration</li>
                     <li>Make et Model (de la caméra ou du micro)</li>
@@ -122,14 +122,14 @@
                 </ul>
                 <p><strong>Exemple :</strong> Une vidéo de revendication est analysée. Les métadonnées montrent qu'elle a été montée avec le logiciel "iMovie" sur un "iPhone 14 Pro", et les coordonnées GPS intégrées pointent vers un quartier précis, réduisant considérablement la zone de recherche des suspects.</p>
 
-                <h3>4. Les archives (.zip, .rar, .7z) 📦</h3>
+                <h3>4. Les archives (.zip, .rar, .7z)</h3>
                 <p>Une archive est un conteneur qui possède ses propres timestamps MACE. Cependant, les fichiers qu'elle contient conservent leurs métadonnées d'origine.
                 Il est intéressant de comparer les timestamps MACE de l'archive (ex: documents_secrets.zip créé Mardi à 15:00) avec les timestamps internes des fichiers qu'elle contient.</p>
                 <p><strong>Exemple :</strong> L'analyse d'un fichier Compta.zip volé montre que l'archive a été créée le 20/07/2024 à 23:55, juste après une intrusion détectée sur le serveur. Les fichiers à l'intérieur ont des dates de modification bien antérieures. Cela indique précisément quels fichiers ont été exfiltrés et quand l'attaquant a finalisé son paquet.</p>
 
-                <h3>5. Les fichiers de raccourcis Windows (.lnk) 🔗</h3>
-                <p>Loin d'être de simples pointeurs, les fichiers .lnk sont des mines d'or forensiques. Ils enregistrent l'état de leur cible au moment de leur création ou de leur dernière utilisation.
-                <br>Métadonnées clés :</br>
+                <h3>5. Les fichiers de raccourcis Windows (.lnk)</h3>
+                <p>Loin d'être de simples pointeurs, les fichiers .lnk sont des mines d'or forensiques. Ils enregistrent l'état de leur cible au moment de leur création ou de leur dernière utilisation.</p>
+                <p>Métadonnées clés :</p>
                 <ul>
                     <li>Chemin complet du fichier cible</li>
                     <li>Ses timestamps MACE</li>
@@ -140,8 +140,8 @@
                 <p><strong>Exemple :</strong> Un enquêteur trouve sur une clé USB un raccourci pointant vers C:\Users\Hugo\Desktop\Liste_Clients.xlsx. Le fichier Liste_Clients.xlsx est absent, mais le raccourci prouve à lui seul que ce fichier a existé sur l'ordinateur de Hugo et donne des informations sur la machine d'origine.</p>
 
                 <h3>6. Les fichiers PDF</h3>
-                <p>Souvent perçus comme statiques, les PDF conservent des traces de leur cycle de vie.
-                <br>Métadonnées clés :</br> 
+                <p>Souvent perçus comme statiques, les PDF conservent des traces de leur cycle de vie.</p>
+                <p>Métadonnées clés :</p> 
                 <ul>
                     <li>Author</li>
                     <li>CreatorTool (logiciel ayant produit le contenu, ex: "Microsoft Word 2019")</li>
@@ -157,11 +157,11 @@
                     Un expert ne se contente pas de lire les métadonnées ; il évalue leur crédibilité. Savoir reconnaître les techniques d'anti-forensique est une compétence essentielle.
                 </p>
                 <h3>Le Timestomping (falsification des horodatages)</h3>
-                <p>C'est l'acte de modifier les timestamps MACE d'un fichier pour dissimuler sa véritable origine, souvent pour cacher un malware.
-                <strong>Exemple :</strong> Un fichier svchost.exe suspect a des timestamps MACE de 2015. Cependant, l'analyse de son en-tête interne (PE Header) révèle une date de compilation de 2024. L'incohérence prouve le timestomping. C'est un malware récent se faisant passer pour un ancien fichier système.</p>
+                <p>C'est l'acte de modifier les timestamps MACE d'un fichier pour dissimuler sa véritable origine, souvent pour cacher un malware.</p>
+                <p><strong>Exemple :</strong> Un fichier svchost.exe suspect a des timestamps MACE de 2015. Cependant, l'analyse de son en-tête interne (PE Header) révèle une date de compilation de 2024. L'incohérence prouve le timestomping. C'est un malware récent se faisant passer pour un ancien fichier système.</p>
                 <h3>Le Metadata Stripping (nettoyage des métadonnées)</h3>
-                <p>De nombreuses plateformes en ligne (Facebook, Twitter/X, WhatsApp) suppriment la plupart des métadonnées EXIF des images lors du téléversement pour protéger la vie privée et réduire la taille des fichiers.
-                <strong>Implication pour l'enquêteur :</strong> L'analyse d'une photo téléchargée depuis un réseau social est souvent inutile. Il est impératif de travailler sur le fichier original provenant de l'appareil source.</p>
+                <p>De nombreuses plateformes en ligne (Facebook, Twitter/X, WhatsApp) suppriment la plupart des métadonnées EXIF des images lors du téléversement pour protéger la vie privée et réduire la taille des fichiers.</p>
+                <p><strong>Implication pour l'enquêteur :</strong> L'analyse d'une photo téléchargée depuis un réseau social est souvent inutile. Il est impératif de travailler sur le fichier original provenant de l'appareil source.</p>
             </section>
 
             <section class="lesson-block">

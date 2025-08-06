@@ -511,7 +511,7 @@ footer .footer-legal a {
 @media (hover: hover) and (pointer: fine) {
     .nav-bar li:not(.active):hover a,
     .nav-bar-mobile li:not(.active):hover a {
-        background-color: var(--grey);
+        background-color: var(--light-grey);
     }
     
     #search-toggle-btn:not(.hidden):hover,

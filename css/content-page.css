@@ -140,9 +140,121 @@
     transition: all 0.3s ease;
 }
 
+.difficulty-challenge {
+    background-color: var(--challenge-color);
+    color: var(--white);
+    font-weight: 700;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.challenge-files {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+    padding-left: 1.25rem;
+}
+
+.file-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.25rem;
+    background-color: var(--code-bg);
+    border-radius: 8px;
+    border-left: 4px solid var(--challenge-color);
+}
+
+.file-info h4 {
+    margin: 0 0 0.25rem 0;
+    color: var(--white);
+    font-size: 1.1rem;
+}
+
+.file-info p {
+    margin: 0;
+    color: var(--text-subtle);
+    font-size: 0.9rem;
+    padding-bottom: 0;
+}
+
+.btn-download {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--challenge-color);
+    color: var(--white);
+    padding: 0.7rem 1.2rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.flag-form {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+    align-items: stretch;
+    padding-left: 1.25rem;
+}
+
+.flag-input-wrapper {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    background-color: var(--code-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    padding: 0 1rem;
+}
+
+.flag-prefix {
+    font-family: 'Courier New', Courier, monospace;
+    color: var(--text-subtle);
+    font-size: 1rem;
+    margin-right: 0.5rem;
+}
+
+.flag-input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--white);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+
+.btn-submit {
+    background-color: var(--button-bg);
+    color: var(--white);
+    border: 1px solid var(--border-medium);
+    padding: 0.8rem 1.5rem;
+    font-weight: 700;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
 @media (hover: hover) and (pointer: fine) {
     .nav-button:hover {
         color: white;
+        background-color: var(--purple);
+        border-color: var(--purple);
+    }
+    .btn-download:hover {
+        background-color: var(--purple);
+        transform: scale(1.05);
+    }
+    .btn-submit:hover {
         background-color: var(--purple);
         border-color: var(--purple);
     }
@@ -202,5 +314,13 @@
         text-align: center;
         padding: 1rem 1.5rem;
         font-size: 1.5rem;
+    }
+    .file-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    .flag-form {
+        flex-direction: column;
     }
 }

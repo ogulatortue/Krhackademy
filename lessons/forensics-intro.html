@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="icon" type="image/png" href="../images/logo_krhacken_r.ico" />
-    
+
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
     
@@ -20,22 +20,19 @@
     <link rel="preload" as="image" href="../images/back.webp" type="image/webp" fetchpriority="high">
 </head>
 <body>
-
-    <main class="lesson-container" data-lesson-id="forensics-intro">
-        <article class="lesson-content">
-            
-            <header class="lesson-header">
-                <i class="fas fa-fingerprint lesson-icon" aria-hidden="true"></i>
-                <div class="lesson-title-group">
+    <main class="content-container page-lesson" data-content-id="forensics-intro">
+        <article class="content-wrapper">
+            <header class="content-header">
+                <i class="fas fa-fingerprint content-icon" aria-hidden="true"></i>
+                <div class="content-title-group">
                     <h1>Introduction à l'analyse forensique</h1>
-                    <p class="lesson-intro">
+                    <p class="content-intro">
                         Découvrez les notions fondamentales de l'analyse forensique.
                     </p>
                 </div>
                 <span class="difficulty-tag difficulty-easy">Débutant</span>
             </header>
-
-            <section class="lesson-block">
+            <section class="content-block">
                 <h2><i class="fas fa-question-circle" aria-hidden="true"></i>Qu'est-ce que l’analyse forensique ?</h2>
                 <p>
                     L'analyse forensique, aussi connue sous le nom de « criminalistique numérique », est la discipline qui consiste à collecter et à analyser les traces numériques laissées par des incidents tels que des cyberattaques, des fuites de données ou des fraudes internes.
@@ -44,8 +41,7 @@
                     Son but est de reconstituer la chronologie des événements afin de déterminer la nature des actions menées et d'identifier leurs auteurs. Pour ce faire, elle s'appuie sur une méthodologie stricte d'identification, de préservation et d'examen des éléments. L'objectif final est de produire des preuves dont la rigueur de collecte garantit la recevabilité devant un tribunal.
                 </p>
             </section>
-
-            <section class="lesson-block">
+            <section class="content-block">
                 <h2><i class="fas fa-gavel" aria-hidden="true"></i>Le cadre légal et éthique</h2>
                 <p>
                     Avant d'entreprendre toute intervention technique, il est impératif de comprendre que l'analyse forensique est une pratique strictement encadrée par la loi et l'éthique. L'analyste doit opérer en respectant trois piliers fondamentaux :
@@ -57,8 +53,7 @@
                 <h3>L'admissibilité des preuves</h3>
                 <p>C'est le respect scrupuleux des procédures qui assure la crédibilité et la recevabilité des preuves présentées devant la justice.</p>
             </section>
-            
-            <section class="lesson-block">
+            <section class="content-block">
                 <h2><i class="fas fa-cogs" aria-hidden="true"></i>Les contextes d'intervention</h2>
                 <p>
                     L'approche de l'analyste dépend de manière cruciale de l'état du système au moment de l'intervention. On distingue deux contextes majeurs.
@@ -75,8 +70,7 @@
                     Ces deux approches sont souvent complémentaires : une analyse « à chaud » peut être menée pour capturer l'état instantané, avant d'éteindre le système pour procéder à une analyse « à froid » plus approfondie.
                 </p>
             </section>
-
-            <section class="lesson-block">
+            <section class="content-block">
                 <h2><i class="fas fa-database" aria-hidden="true"></i>La collecte de preuves</h2>
                 <p>
                     La première responsabilité de l'analyste est de préserver l'intégrité de la scène de crime numérique. Chaque action doit garantir que les preuves originales demeurent intactes, en suivant plusieurs principes :
@@ -91,8 +85,7 @@
                     Lors d'une intervention, notamment en analyse « à chaud », l'expert suit un principe supplémentaire : l'ordre de volatilité. Il doit collecter en priorité les informations les plus éphémères avant qu'elles ne disparaissent. La collecte se fait donc généralement des données les plus volatiles (mémoire vive, connexions réseau) vers les moins volatiles (données sur disque dur).
                 </p>
             </section>
-
-            <section class="lesson-block">
+            <section class="content-block">
                 <h2><i class="fas fa-search" aria-hidden="true"></i>L'analyse</h2>
                 <p>
                     Une fois les preuves collectées et leur intégrité assurée, l'analyse peut commencer. Elle consiste à examiner les données pour y déceler des artefacts numériques, c'est-à-dire des traces laissées par l'activité d'un système ou d'un utilisateur. Une part importante de ces artefacts sont des métadonnées.
@@ -110,8 +103,7 @@
                     L'analyse des métadonnées transforme ainsi de simples fichiers en véritables pièces à conviction, en leur attribuant un contexte, une origine et une place dans la chronologie des événements.
                 </p>
             </section>
-
-            <section class="lesson-block">
+            <section class="content-block">
                 <h2><i class="fas fa-file-alt" aria-hidden="true"></i>Le rapport final</h2>
                 <p>
                     L'investigation s'achève par la rédaction d'un rapport d'analyse. Ce document, aussi important que l'analyse elle-même, formalise les découvertes et doit posséder plusieurs qualités essentielles.
@@ -123,21 +115,19 @@
                 <h3>Reproductible</h3>
                 <p>Il doit décrire la méthodologie avec une précision suffisante pour qu'un autre expert puisse, en théorie, suivre les mêmes étapes et parvenir aux mêmes conclusions.</p>
             </section>
-
-            <section class="lesson-block">
+            <section class="content-block">
                 <h2><i class="fas fa-sitemap" aria-hidden="true"></i>Les spécialités de la forensique</h2>
                 <p>
                     L'analyse forensique est un domaine vaste qui se décline en plusieurs spécialités, dont les principales sont :
                 </p>
-                 <ul>
+                <ul>
                     <li><b>La forensique sur poste de travail et serveur :</b> L'analyse "classique" d'ordinateurs.</li>
                     <li><b>La forensique mobile :</b> L'investigation sur les smartphones et les tablettes.</li>
                     <li><b>La forensique réseau :</b> L'analyse du trafic et des communications pour retracer les actions d'un attaquant.</li>
                     <li><b>La forensique du cloud :</b> L'enquête sur des données hébergées chez des fournisseurs de services en ligne.</li>
-                 </ul>
+                </ul>
             </section>
-
-            <section class="lesson-block">
+            <section class="content-block">
                 <h2><i class="fas fa-flag-checkered" aria-hidden="true"></i>Conclusion</h2>
                 <p>
                     Le but fondamental de l'analyse forensique est de répondre à une question essentielle : que s'est-il passé ?
@@ -146,15 +136,12 @@
                     Par une méthodologie rigoureuse, elle transforme le chaos d'un incident numérique en une chronologie claire et factuelle. En reconstituant la chaîne des événements et en identifiant les actions menées, l'analyse forensique établit une vérité numérique objective. Son objectif ultime est de matérialiser ces découvertes sous forme de preuves tangibles et recevables, capables d'éclairer une décision de justice ou de motiver une action interne.
                 </p>
             </section>
-
-            <nav class="lesson-navigation">
+            <nav class="content-navigation">
                 <a href="../lessons.html" class="nav-button prev-button"><i class="fas fa-arrow-left" aria-hidden="true"></i> Retour aux leçons</a>
                 <a href="../lessons.html" class="nav-button next-button">Valider la leçon <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
             </nav>
         </article>
     </main>
-    
     <script src="../js/progress-tracker.js" defer></script> 
-
 </body>
 </html>

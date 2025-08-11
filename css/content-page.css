@@ -1,10 +1,10 @@
-.lesson-container {
+.content-container {
     width: 90%;
     margin: 0 auto;
     padding: 2rem;
 }
 
-.lesson-content {
+.content-wrapper {
     background-color: var(--card-bg);
     border: 1px solid var(--border-color);
     border-radius: 12px;
@@ -12,7 +12,7 @@
     box-shadow: 0 10px 30px var(--shadow-medium);
 }
 
-.lesson-header {
+.content-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -25,15 +25,15 @@
     border-radius: 15px;
 }
 
-.lesson-icon {
+.content-icon {
     font-size: 3.75rem;
 }
 
-.lesson-title-group {
+.content-title-group {
     flex-grow: 1;
 }
 
-.lesson-title-group h1 {
+.content-title-group h1 {
     padding-bottom: 0.5rem;
     font-size: 2.5rem;
     font-weight: bold;
@@ -42,7 +42,7 @@
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
-.lesson-title-group .lesson-intro {
+.content-title-group .content-intro {
     margin: 0;
     font-size: 1.15rem;
     font-style: italic;
@@ -51,15 +51,15 @@
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
 }
 
-.lesson-block {
+.content-block {
     padding-bottom: 2.5rem;
 }
 
-.lesson-block:last-of-type {
+.content-block:last-of-type {
     padding-bottom: 0;
 }
 
-.lesson-block h2 {
+.content-block h2 {
     display: flex;
     align-items: center;
     gap: 0.75rem;
@@ -70,7 +70,7 @@
     border-left: 4px solid var(--purple);
 }
 
-.lesson-block h3 {
+.content-block h3 {
     display: flex;
     align-items: center;
     gap: 0.75rem;
@@ -80,25 +80,25 @@
     color: white;
 }
 
-.lesson-block p,
-.lesson-block ul {
+.content-block p,
+.content-block ul {
     padding-bottom: 1rem;
     font-size: 1.05rem;
     color: var(--text-subtle);
 }
 
-.lesson-block ul {
+.content-block ul {
     padding-left: 1.25rem;
     list-style-type: none;
 }
 
-.lesson-block ul li {
+.content-block ul li {
     position: relative;
     padding-bottom: 0.75rem;
     padding-left: 1.75rem;
 }
 
-.lesson-block ul li::before {
+.content-block ul li::before {
     content: '\f105';
     font-family: 'Font Awesome 6 Free';
     font-weight: 900;
@@ -109,7 +109,7 @@
     color: var(--purple);
 }
 
-.lesson-block ul li b {
+.content-block ul li b {
     color: white;
 }
 
@@ -117,11 +117,11 @@
     color: var(--purple);
 }
 
-.lesson-header .fas {
+.content-header .fas {
     color: var(--white);
 }
 
-.lesson-navigation {
+.content-navigation {
     display: flex;
     justify-content: space-between;
     margin-top: 4.5rem;
@@ -261,55 +261,46 @@
 }
 
 @media (max-width: 900px) {
-    .lesson-container {
+    .content-container {
         width: 100%;
         padding: 1rem;
     }
-
-    .lesson-content {
+    .content-wrapper {
         padding: 2rem 1.5rem;
     }
-
-    .lesson-header {
+    .content-header {
         flex-direction: column;
         text-align: center;
         gap: 1.5rem;
         padding: 2.5rem 1.5rem;
     }
-
-    .lesson-title-group h1 {
+    .content-title-group h1 {
         font-size: 3rem;
     }
-
-    .lesson-title-group .lesson-intro {
+    .content-title-group .content-intro {
         font-size: 1.8rem;
     }
-
-    .lesson-block h2 {
+    .content-block h2 {
         font-size: 2.2rem;
         padding-left: 1rem;
         margin-bottom: 3rem;
     }
-
-    .lesson-block h3 {
+    .content-block h3 {
         font-size: 1.7rem;
         padding: 1rem;
     }
-
-    .lesson-block p,
-    .lesson-block ul {
+    .content-block p,
+    .content-block ul {
         font-size: 1.5rem;
         line-height: 1.6;
         padding-bottom: 2rem;
     }
-
-    .lesson-navigation {
+    .content-navigation {
         flex-direction: column;
         gap: 1rem;
         margin-top: 3rem;
         padding-top: 2rem;
     }
-
     .nav-button {
         text-align: center;
         padding: 1rem 1.5rem;
@@ -323,4 +314,30 @@
     .flag-form {
         flex-direction: column;
     }
+}
+
+.page-lesson .content-block h2 {
+    border-left-color: var(--purple);
+}
+.page-lesson .fas {
+    color: var(--purple);
+}
+.page-lesson .content-header .fas {
+    color: var(--white);
+}
+
+.page-challenge .content-block h2 {
+    border-left-color: var(--challenge-color);
+}
+.page-challenge .difficulty-tag {
+    background-color: var(--challenge-color);
+}
+.page-challenge .file-item {
+    border-left-color: var(--challenge-color);
+}
+.page-challenge .btn-download {
+    background-color: var(--challenge-color);
+}
+.page-challenge .btn-download:hover {
+    background-color: var(--purple);
 }

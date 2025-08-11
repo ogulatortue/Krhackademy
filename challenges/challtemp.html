@@ -7,34 +7,29 @@
     <meta name="keywords" content="CTF, Challenge, Forensique, Hash, Intégrité, SHA-256, Cybersécurité">
     <meta name="author" content="BRUCHON Hugo">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <link rel="icon" type="image/png" href="../images/logo_krhacken_r.ico" />
-    
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
-    
     <link rel="stylesheet" href="../css/style.css"/>
     <link rel="stylesheet" href="../css/content-page.css"/>
-    <link rel="stylesheet" href="../css/shared-components.css"/> <link rel="preload" as="image" href="../images/header_background_blured3.webp" type="image/webp" fetchpriority="high">
+    <link rel="stylesheet" href="../css/shared-components.css"/>
+    <link rel="preload" as="image" href="../images/header_background_blured3.webp" type="image/webp" fetchpriority="high">
     <link rel="preload" as="image" href="../images/back.webp" type="image/webp" fetchpriority="high">
 </head>
 <body>
-
-    <main class="lesson-container" data-lesson-id="challenge-integrity-key">
-        <article class="lesson-content">
-            
-            <header class="lesson-header">
-                <i class="fas fa-trophy lesson-icon" aria-hidden="true"></i>
-                <div class="lesson-title-group">
+    <main class="content-container page-challenge" data-challenge-id="integrity_key">
+        <article class="content-wrapper">
+            <header class="content-header">
+                <i class="fas fa-trophy content-icon" aria-hidden="true"></i>
+                <div class="content-title-group">
                     <h1>Challenge : La Clé de l'Intégrité</h1>
-                    <p class="lesson-intro">
+                    <p class="content-intro">
                         Vérifiez l'intégrité d'une preuve numérique pour découvrir la vérité.
                     </p>
                 </div>
                 <span class="difficulty-tag difficulty-easy">25 <i class="fas fa-flag"></i></span>
             </header>
-
-            <section class="lesson-block">          
+            <section class="content-block">
                 <h2><i class="fas fa-scroll"></i>Contexte de la mission</h2>
                 <p>
                     Bonjour, jeune analyste. Nous avons un cas simple pour votre première mission. Un de nos employés, "Bob", est suspecté d'avoir copié des documents confidentiels sur sa clé USB personnelle juste avant de démissionner. Nous l'avons confronté, et il nous a remis une clé USB en prétendant qu'elle ne contient que ses photos de vacances et qu'elle n'a pas été modifiée depuis des mois.
@@ -43,8 +38,7 @@
                     Heureusement, notre service informatique avait réalisé une copie parfaite (une image disque) de cette même clé USB il y a 6 mois lors d'un inventaire de routine. Nous avons donc l'empreinte numérique (le hash) de l'image disque originale.
                 </p>
             </section>
-            
-            <section class="lesson-block">
+            <section class="content-block">
                 <h2><i class="fas fa-download"></i>Pièces à conviction</h2>
                 <p>
                     Le service informatique vous fournit l'image disque de la clé que Bob vient de rendre ainsi que le hash de référence de l'image originale.
@@ -66,8 +60,7 @@
                     </div>
                 </div>
             </section>
-
-            <section class="lesson-block">
+            <section class="content-block">
                 <h2><i class="fas fa-bullseye"></i>Votre objectif</h2>
                 <p>Votre mission consiste à déterminer si la clé de Bob a été altérée. Voici les étapes à suivre :</p>
                 <ul>
@@ -79,13 +72,13 @@
                     <i class="fas fa-lightbulb"></i> <b>Astuce :</b> Vous pouvez utiliser des outils intégrés à votre système (PowerShell sur Windows, sha256sum sur Linux) ou des logiciels graphiques comme 7-Zip.
                 </p>
             </section>
-
-            <section class="lesson-block">
+            <section class="content-block">
                 <h2><i class="fas fa-flag"></i>Soumettre le Flag</h2>
                 <p>
                     Pour valider ce challenge, le flag est le hash SHA-256 que vous avez <b>vous-même calculé</b> pour le fichier <code>cle_usb_bob.img</code>.
                 </p>
-                <form class="flag-form" action="#" method="POST">
+                <form class="flag-form" action="verifier.php" method="POST">
+                    <input type="hidden" name="challenge_id" value="integrity_key">
                     <div class="flag-input-wrapper">
                         <span class="flag-prefix">KRHACK{</span>
                         <input type="text" class="flag-input" name="flag" placeholder="collez_le_hash_ici..." required>
@@ -94,12 +87,10 @@
                     <button type="submit" class="btn-submit">Valider</button>
                 </form>
             </section>
-
-            <nav class="lesson-navigation">
+            <nav class="content-navigation">
                 <a href="../lessons.html" class="nav-button prev-button"><i class="fas fa-arrow-left" aria-hidden="true"></i> Retour aux leçons</a>
             </nav>
         </article>
     </main>
-
 </body>
 </html>

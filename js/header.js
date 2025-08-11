@@ -1,9 +1,9 @@
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
     const header = document.querySelector('header');
     const main = document.querySelector('main');
     const menuIcon = document.querySelector('.fa-bars');
     const navBarMobile = document.getElementById('mobile-nav-menu');
-    
+
     const searchToggleBtn = document.getElementById('search-toggle-btn');
     const filterControls = document.getElementById('filter-controls');
     const closeFilterBtn = document.getElementById('close-filter-btn');
@@ -20,12 +20,12 @@ document.addEventListener('DOMContentLoaded', function () {
     if (main) {
         initialMainPaddingTop = getComputedStyle(main).paddingTop;
     }
-    
+
     const showAllToggleButtons = () => {
-        if(menuIcon) menuIcon.classList.remove('hidden');
-        if(searchToggleBtn) searchToggleBtn.classList.remove('hidden');
-        if(profileToggleBtn) profileToggleBtn.classList.remove('hidden');
-        if(leaderboardToggleBtn) leaderboardToggleBtn.classList.remove('hidden');
+        if (menuIcon) menuIcon.classList.remove('hidden');
+        if (searchToggleBtn) searchToggleBtn.classList.remove('hidden');
+        if (profileToggleBtn) profileToggleBtn.classList.remove('hidden');
+        if (leaderboardToggleBtn) leaderboardToggleBtn.classList.remove('hidden');
     }
 
     const closeSearchPanel = () => {
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
             main.style.paddingTop = initialMainPaddingTop;
             filterControls.classList.remove('open');
             showAllToggleButtons();
-            if (searchToggleBtn) searchToggleBtn.focus(); 
+            if (searchToggleBtn) searchToggleBtn.focus();
             searchToggleBtn.setAttribute('aria-expanded', 'false');
             filterControls.setAttribute('aria-hidden', 'true');
         }
@@ -58,12 +58,12 @@ document.addEventListener('DOMContentLoaded', function () {
             leaderboardMenu.setAttribute('aria-hidden', 'true');
         }
     };
-    
+
     const closeMobileMenu = () => {
         if (navBarMobile && navBarMobile.classList.contains('open')) {
             navBarMobile.classList.remove('open');
             showAllToggleButtons();
-            if(menuIcon) {
+            if (menuIcon) {
                 menuIcon.focus();
                 menuIcon.classList.remove('fa-times');
             }
@@ -86,48 +86,43 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function setupPanelToggles() {
-        const panels = [
-            {
-                btn: menuIcon,
-                panel: navBarMobile,
-                closeBtn: null,
-                onOpen: () => {
-                    if(menuIcon) menuIcon.classList.add('fa-times');
-                    setTimeout(() => navBarMobile.querySelector('a').focus(), 100);
-                },
-                onClose: closeMobileMenu
+        const panels = [{
+            btn: menuIcon,
+            panel: navBarMobile,
+            closeBtn: null,
+            onOpen: () => {
+                if (menuIcon) menuIcon.classList.add('fa-times');
+                setTimeout(() => navBarMobile.querySelector('a').focus(), 100);
             },
-            {
-                btn: searchToggleBtn,
-                panel: filterControls,
-                closeBtn: closeFilterBtn,
-                onOpen: () => {
-                    const filterHeight = filterControls.offsetHeight;
-                    main.style.paddingTop = `calc(${initialMainPaddingTop} + ${filterHeight}px)`;
-                    setTimeout(() => document.getElementById('search-input').focus(), 100);
-                },
-                onClose: closeSearchPanel
+            onClose: closeMobileMenu
+        }, {
+            btn: searchToggleBtn,
+            panel: filterControls,
+            closeBtn: closeFilterBtn,
+            onOpen: () => {
+                const filterHeight = filterControls.offsetHeight;
+                main.style.paddingTop = `calc(${initialMainPaddingTop} + ${filterHeight}px)`;
+                setTimeout(() => document.getElementById('search-input').focus(), 100);
             },
-            {
-                btn: profileToggleBtn,
-                panel: profileMenu,
-                closeBtn: closeProfileBtn,
-                onOpen: () => {
-                        setTimeout(() => profileMenu.querySelector('a').focus(), 100);
-                },
-                onClose: closeProfileMenu
+            onClose: closeSearchPanel
+        }, {
+            btn: profileToggleBtn,
+            panel: profileMenu,
+            closeBtn: closeProfileBtn,
+            onOpen: () => {
+                setTimeout(() => profileMenu.querySelector('a').focus(), 100);
             },
-            {
-                btn: leaderboardToggleBtn,
-                panel: leaderboardMenu,
-                closeBtn: closeLeaderboardBtn,
-                onOpen: () => {
-                    setTimeout(() => leaderboardMenu.querySelector('.leaderboard-item').focus(), 100);
-                },
-                onClose: closeLeaderboardMenu
-            }
-        ];
-    
+            onClose: closeProfileMenu
+        }, {
+            btn: leaderboardToggleBtn,
+            panel: leaderboardMenu,
+            closeBtn: closeLeaderboardBtn,
+            onOpen: () => {
+                setTimeout(() => leaderboardMenu.querySelector('.leaderboard-item').focus(), 100);
+            },
+            onClose: closeLeaderboardMenu
+        }];
+
         panels.forEach((p) => {
             if (!p.btn || !p.panel) return;
 
@@ -139,30 +134,26 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 if (!wasOpen) {
                     p.panel.classList.add('open');
-                    
-                    // On cache tous les boutons
+
                     panels.forEach(panelToHide => {
                         if (panelToHide.btn) panelToHide.btn.classList.add('hidden');
                     });
-                    
-                    // ----- MODIFICATION -----
-                    // On s'assure que le bouton hamburger reste toujours visible
+
                     if (menuIcon) {
                         menuIcon.classList.remove('hidden');
                     }
-                    // --- FIN MODIFICATION ---
-                    
+
                     p.btn.setAttribute('aria-expanded', 'true');
                     p.panel.setAttribute('aria-hidden', 'false');
                     if (p.onOpen) p.onOpen();
                 }
             });
-    
+
             if (p.closeBtn) {
                 p.closeBtn.addEventListener('click', p.onClose);
             }
         });
-    
+
         document.addEventListener('click', (event) => {
             panels.forEach(p => {
                 if (p.panel && p.panel.classList.contains('open') && !p.panel.contains(event.target)) {
@@ -176,9 +167,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 panels.forEach(p => p.onClose());
             }
         });
-        
+
         window.addEventListener('scroll', () => {
-            panels.forEach(p => p.onClose());
+            panels.forEach(p => {
+                if (p.panel !== filterControls) {
+                    p.onClose();
+                }
+            });
         });
     }
 

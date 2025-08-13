@@ -3,7 +3,7 @@
 $host = '127.0.0.1'; // or 'localhost'
 $db_name = 'krhackademy';
 $username = 'root';
-$password = '';
+$password = 'WEyP3-6jnAEU/aqz';
 $charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;dbname=$db_name;charset=$charset";

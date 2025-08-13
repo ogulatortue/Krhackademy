@@ -1,3 +1,7 @@
+<?php
+// index.php
+$currentPage = 'index'; // Variable pour le style du lien actif
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -6,12 +10,7 @@
     <meta name="keywords" content="cybersécurité, apprendre, hacking éthique, leçons, challenges, scénarios, Krhacken, Esisar">
     <meta name="author" content="BRUCHON Hugo">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Kr[HACK]ademy - Apprenez la cybersécurité en ligne</title>
-
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
     <link rel="stylesheet" href="./css/style.css"/>
@@ -20,83 +19,10 @@
     <link rel="stylesheet" href="./css/index.css"/>
 
     <link rel="icon" type="image/png" href="./images/logo_krhacken_r.ico" />
-    <link rel="preload" as="image" href="./images/header_background_blured3.webp" type="image/webp" fetchpriority="high">
-    <link rel="preload" as="image" href="./images/back.webp" type="image/webp" fetchpriority="high">
 </head>
 <body>
 
-    <header>
-        <a href="./index.html"><img src="./images/logo_krhacken_invert2.webp" alt="Logo Krhackademy" width="40" height="40"/></a>
-        <h1 class="title"> <a href="./index.html">Kr[HACK]ademy</a> </h1>
-        <nav class="nav-bar" aria-label="Navigation principale">
-            <ul id="nav-links-desktop">
-                <li class="active"><a href="./index.html">ACCUEIL</a></li>
-                <li><a href="./lessons.html">LEÇONS</a></li>
-                <li><a href="./challenges.html">CHALLENGES</a></li>
-                <li><a href="./scenarios.html">SCÉNARIOS</a></li>
-            </ul>
-        </nav>
-        <button class="fas fa-bars" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="mobile-nav-menu"></button>
-        <button id="leaderboard-toggle-btn" class="fas fa-trophy" aria-label="Ouvrir le classement" aria-expanded="false" aria-controls="leaderboard-menu"></button>
-        <button id="profile-toggle-btn" class="fas fa-user-circle" aria-label="Ouvrir le menu du profil" aria-expanded="false" aria-controls="profile-menu"></button>
-    </header>
-
-    <nav class="nav-bar-mobile" id="mobile-nav-menu" aria-hidden="true">
-        <ul id="nav-links-mobile">
-            <li class="active"><a href="./index.html">ACCUEIL</a></li>
-            <li><a href="./lessons.html">LEÇONS</a></li>
-            <li><a href="./challenges.html">CHALLENGES</a></li>
-            <li><a href="./scenarios.html">SCÉNARIOS</a></li>
-        </ul>
-    </nav>
-
-    <section class="profile-panel" id="profile-menu" aria-hidden="true">
-        <div class="profile-header">
-            <i class="fas fa-user-circle panel-icon"></i>
-            <span class="profile-username">Utilisateur Anonyme</span>
-            <button id="close-profile-btn" class="fas fa-times" aria-label="Fermer le menu du profil"></button>
-        </div>
-        <ul class="profile-options">
-            <li><a href="#"><i class="fas fa-user fa-fw"></i> Mon Profil</a></li>
-            <li><a href="#"><i class="fas fa-cog fa-fw"></i> Paramètres</a></li>
-            <li><a href="#"><i class="fas fa-sign-out-alt fa-fw"></i> Déconnexion</a></li>
-        </ul>
-    </section>
-
-    <section class="profile-panel leaderboard-panel" id="leaderboard-menu" aria-hidden="true">
-        <div class="profile-header">
-            <i class="fas fa-trophy panel-icon"></i>
-            <span class="profile-username">Classement</span>
-            <button id="close-leaderboard-btn" class="fas fa-times" aria-label="Fermer le classement"></button>
-        </div>
-        <ol class="leaderboard-list">
-            <li class="leaderboard-item">
-                <span class="rank">1</span>
-                <span class="name">CyberNinja</span>
-                <span class="flags">10 <i class="fas fa-flag"></i></span>
-            </li>
-            <li class="leaderboard-item">
-                <span class="rank">2</span>
-                <span class="name">CodeCracker</span>
-                <span class="flags">9 <i class="fas fa-flag"></i></span>
-            </li>
-            <li class="leaderboard-item">
-                <span class="rank">3</span>
-                <span class="name">HexHunter</span>
-                <span class="flags">8 <i class="fas fa-flag"></i></span>
-            </li>
-            <li class="leaderboard-item">
-                <span class="rank">4</span>
-                <span class="name">PwnPrincess</span>
-                <span class="flags">8 <i class="fas fa-flag"></i></span>
-            </li>
-            <li class="leaderboard-item">
-                <span class="rank">5</span>
-                <span class="name">DataDaredevil</span>
-                <span class="flags">7 <i class="fas fa-flag"></i></span>
-            </li>
-        </ol>
-    </section>
+    <?php require 'header.php'; // Inclusion du bloc header ?>
 
     <main class="main">
         <section class="intro">
@@ -112,13 +38,11 @@
         <section class="pres">
             <h2>Apprendre <span class="hyphen">&mdash;</span> Pratiquer <span class="hyphen">&mdash;</span> Réussir</h2>
             <div class="box-container">
-                <a href="./lessons.html" class="box-link">
+                <a href="./lessons.php" class="box-link">
                     <div class="box-pres">
                         <div class="box-content-inner">
                             <div class="box-header">
-                                <div class="box-icon-wrapper">
-                                    <i class="fas fa-book-open box-icon"></i>
-                                </div>
+                                <div class="box-icon-wrapper"><i class="fas fa-book-open box-icon"></i></div>
                                 <h4>Leçons</h4>
                             </div>
                             <div class="box-info">
@@ -132,13 +56,11 @@
                         </div>
                     </div>
                 </a>
-                <a href="./challenges.html" class="box-link">
+                <a href="./challenges.php" class="box-link">
                     <div class="box-pres">
                         <div class="box-content-inner">
                             <div class="box-header">
-                                <div class="box-icon-wrapper">
-                                    <i class="fas fa-flag box-icon"></i>
-                                </div>
+                                <div class="box-icon-wrapper"><i class="fas fa-flag box-icon"></i></div>
                                 <h4>Challenges</h4>
                             </div>
                             <div class="box-info">
@@ -152,13 +74,11 @@
                         </div>
                     </div>
                 </a>
-                <a href="./scenarios.html" class="box-link">
+                <a href="./scenarios.php" class="box-link">
                     <div class="box-pres">
                         <div class="box-content-inner">
                             <div class="box-header">
-                                <div class="box-icon-wrapper">
-                                    <i class="fas fa-cogs box-icon"></i>
-                                </div>
+                                <div class="box-icon-wrapper"><i class="fas fa-cogs box-icon"></i></div>
                                 <h4>Scénarios</h4>
                             </div>
                             <div class="box-info">
@@ -189,7 +109,6 @@
                     </div>
                 </a>
             </div>
-        
             <div class="news-grid">
                 <a href="#" class="news-card">
                     <img src="./images/tmp1.png" alt="Nouveauté sur les Cyber-attaques" onerror="this.style.display='none';">
@@ -225,14 +144,7 @@
         </section>
     </main>
 
-    <footer>
-        <a href="https://krhacken.org" target="_blank" rel="noopener noreferrer"> <img src="./images/logo.webp" alt="Logo du club Krhacken"> </a>
-        <a href="https://esisar.grenoble-inp.fr" target="_blank" rel="noopener noreferrer"> <img src="./images/logo_esisar.webp" alt="Logo de Grenoble-INP Esisar"> </a>
-        <p class="footer-legal">
-            L'ENSEMBLE DE CE SITE RELÈVE DE LA LÉGISLATION FRANÇAISE ET INTERNATIONALE SUR LE DROIT D'AUTEUR ET LA PROPRIÉTÉ INTELLECTUELLE. TOUS LES DROITS DE REPRODUCTION SONT RÉSERVÉS, Y COMPRIS POUR LES DOCUMENTS TÉLÉCHARGEABLES ET LES REPRÉSENTATIONS ICONOGRAPHIQUES ET PHOTOGRAPHIQUES. LA REPRODUCTION DE TOUT OU PARTIE DE CE SITE SUR UN SUPPORT ÉLECTRONIQUE QUEL QU'IL SOIT EST FORMELLEMENT INTERDITE SAUF AUTORISATION EXPRESSE DU DIRECTEUR DE LA PUBLICATION. CE SITE EST ÉDITÉ PAR Le club kr[HACK]en, Grenoble INP Esisar, 50 Rue Barthélémy de Laffemas, 26000 Valence, France.<br>
-            EMAIL : <a href="mailto:contact@krhacken.org">contact@krhacken.org</a>
-        </p>
-    </footer>
+    <?php require 'footer.php'; // Inclusion du bloc footer ?>
 
     <script src="./js/index.js" defer></script>
     <script src="./js/header.js" defer></script>

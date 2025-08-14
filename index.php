@@ -1,6 +1,5 @@
 <?php
-// index.php
-$currentPage = 'index'; // Variable pour le style du lien actif
+$currentPage = 'index';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -22,7 +21,7 @@ $currentPage = 'index'; // Variable pour le style du lien actif
 </head>
 <body>
 
-    <?php require 'header.php'; // Inclusion du bloc header ?>
+    <?php require 'header.php';?>
 
     <main class="main">
         <section class="intro">
@@ -144,7 +143,7 @@ $currentPage = 'index'; // Variable pour le style du lien actif
         </section>
     </main>
 
-    <?php require 'footer.php'; // Inclusion du bloc footer ?>
+    <?php require 'footer.php';?>
 
     <script src="./js/index.js" defer></script>
     <script src="./js/header.js" defer></script>

@@ -1,5 +1,4 @@
 <?php
-// header.php (Logique de menu profil mise à jour)
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -18,8 +17,14 @@ if (session_status() === PHP_SESSION_NONE) {
     </nav>
     <button class="fas fa-bars" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="mobile-nav-menu"></button>
     
-    <button id="search-toggle-btn" class="fas fa-search" aria-label="Ouvrir la barre de recherche" aria-expanded="false" aria-controls="filter-controls"></button>
-    <button id="leaderboard-toggle-btn" class="fas fa-trophy" aria-label="Ouvrir le classement" aria-expanded="false" aria-controls="leaderboard-menu"></button>
+    <?php if ($currentPage !== 'index'): ?>
+        <button id="search-toggle-btn" class="fas fa-search" aria-label="Ouvrir la barre de recherche" aria-expanded="false" aria-controls="filter-controls"></button>
+    <?php endif; ?>
+    
+    <?php if (isset($_SESSION['user_id'])): ?>
+        <button id="leaderboard-toggle-btn" class="fas fa-trophy" aria-label="Ouvrir le classement" aria-expanded="false" aria-controls="leaderboard-menu"></button>
+    <?php endif; ?>
+    
     <button id="profile-toggle-btn" class="fas fa-user-circle" aria-label="Ouvrir le menu du profil"></button>
     
 </header>

@@ -524,7 +524,7 @@ footer .footer-legal a {
     .custom-option:hover,
     .profile-options li a:hover,
     .leaderboard-item:hover {
-        background-color: var(--grey);
+        background-color: var(--light-grey);
     }
 }
 

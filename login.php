@@ -44,6 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <title>Connexion - Kr[HACK]ademy</title>
+    <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/auth.css">
 </head>
 <body class="auth-page">

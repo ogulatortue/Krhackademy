@@ -1,6 +1,6 @@
 <?php
-require 'back-end/session_check.php'; // LE VIDEUR EST À L'ENTRÉE !
-$currentPage = 'challenges'; // Variable pour le style du lien actif
+require 'back-end/session_check.php';
+$currentPage = 'challenges';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -24,12 +24,11 @@ $currentPage = 'challenges'; // Variable pour le style du lien actif
 
     <main class="main">
         <?php
-        // Connexion à la BDD pour récupérer les challenges
         require 'back-end/db_connect.php';
 
         $challengesByCategory = [];
         try {
-            $stmt = $pdo->query("SELECT * FROM challenges ORDER BY category, points"); 
+            $stmt = $pdo->query("SELECT * FROM challenges ORDER BY category, points");
             while ($row = $stmt->fetch()) {
                 $challengesByCategory[$row['category']][] = $row;
             }
@@ -37,7 +36,6 @@ $currentPage = 'challenges'; // Variable pour le style du lien actif
             echo "<p style='text-align: center; color: red;'>Erreur : Impossible de charger les challenges depuis la base de données.</p>";
         }
 
-        // Boucle sur les catégories et les challenges pour générer le HTML
         if (!empty($challengesByCategory)) {
             foreach ($challengesByCategory as $category => $challenges) {
                 echo '<section class="category-section">';
@@ -50,12 +48,13 @@ $currentPage = 'challenges'; // Variable pour le style du lien actif
                     $challengePoints = htmlspecialchars($challenge['points']);
                     $challengeIcon = htmlspecialchars($challenge['icon_class'] ?? 'fa-flag');
                     
-                    // Déterminer la classe de difficulté en fonction des points
                     $difficultyClass = 'difficulty-easy';
                     if ($challengePoints >= 50 && $challengePoints < 100) {
                         $difficultyClass = 'difficulty-medium';
-                    } elseif ($challengePoints >= 100) {
+                    } elseif ($challengePoints >= 100 && $challengePoints < 250) {
                         $difficultyClass = 'difficulty-hard';
+                    } elseif ($challengePoints >= 250 && $challengePoints < 500) {
+                        $difficultyClass = 'difficulty-expert';
                     }
 
                     echo <<<HTML

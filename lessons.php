@@ -25,7 +25,7 @@ $currentPage = 'lessons';
 
         $lessonsByCategory = [];
         try {
-            $stmt = $pdo->query("SELECT * FROM lessons ORDER BY category, title"); 
+            $stmt = $pdo->query("SELECT * FROM lessons ORDER BY category, title");
             while ($row = $stmt->fetch()) {
                 $lessonsByCategory[$row['category']][] = $row;
             }
@@ -46,13 +46,26 @@ $currentPage = 'lessons';
                     $lessonDescription = htmlspecialchars($lesson['description'] ?? 'Description à venir.');
                     $lessonIcon = htmlspecialchars($lesson['icon_class'] ?? 'fa-book');
 
+                    $difficultyClass = 'difficulty-easy';
+                    switch ($lesson['difficulty']) {
+                        case 'Initié':
+                            $difficultyClass = 'difficulty-medium';
+                            break;
+                        case 'Confirmé':
+                            $difficultyClass = 'difficulty-hard';
+                            break;
+                        case 'Expert':
+                            $difficultyClass = 'difficulty-expert';
+                            break;
+                    }
+
                     echo <<<HTML
-                    <a href="./lessons/{$lessonId}.html" class="card" data-lesson-id="{$lessonId}">
+                    <a href="./lesson-page.php?id={$lessonId}" class="card" data-lesson-id="{$lessonId}">
                         <i class="fas {$lessonIcon} card-icon" aria-hidden="true"></i>
                         <div class="card-text-content">
                             <div class="card-title-wrapper">
                                 <h4>{$lessonTitle}</h4>
-                                <span class="difficulty-tag difficulty-easy">{$lessonDifficulty}</span>
+                                <span class="difficulty-tag {$difficultyClass}">{$lessonDifficulty}</span>
                             </div>
                             <p>{$lessonDescription}</p>
                         </div>
@@ -61,7 +74,7 @@ $currentPage = 'lessons';
                             <i class="fas fa-check-circle checkbox-icon completed" aria-hidden="true"></i>
                         </div>
                     </a>
-HTML;
+                    HTML;
                 }
                 
                 echo '    </div>';

@@ -1,6 +1,6 @@
 <?php
-require 'back-end/session_check.php'; // LE VIDEUR EST À L'ENTRÉE !
-$currentPage = 'lessons'; // Variable pour le style du lien actif
+require 'back-end/session_check.php';
+$currentPage = 'lessons';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -21,7 +21,6 @@ $currentPage = 'lessons'; // Variable pour le style du lien actif
 
     <main class="main">
         <?php
-        // Connexion à la BDD pour récupérer le contenu
         require 'back-end/db_connect.php';
 
         $lessonsByCategory = [];
@@ -34,7 +33,6 @@ $currentPage = 'lessons'; // Variable pour le style du lien actif
             echo "<p style='text-align: center; color: red;'>Erreur : Impossible de charger les leçons depuis la base de données.</p>";
         }
 
-        // Boucle sur les catégories et les leçons pour générer le HTML
         if (!empty($lessonsByCategory)) {
             foreach ($lessonsByCategory as $category => $lessons) {
                 echo '<section class="category-section">';

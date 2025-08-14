@@ -21,21 +21,21 @@
 </head>
 <body>
 
-    <main class="lesson-container" data-lesson-id="forensics-metadata">
-        <article class="lesson-content">
+    <main class="content-container page-lesson" data-lesson-id="forensics-metadata">
+        <article class="content-wrapper">
             
-            <header class="lesson-header">
-                <i class="fas fa-fingerprint lesson-icon" aria-hidden="true"></i>
-                <div class="lesson-title-group">
+            <header class="content-header">
+                <i class="fas fa-fingerprint content-icon" aria-hidden="true"></i>
+                <div class="content-title-group">
                     <h1>Analyse des Métadonnées</h1>
-                    <p class="lesson-intro">
+                    <p class="content-intro">
                         Traquez les incohérences entre les métadonnées pour révéler les manipulations.
                     </p>
                 </div>
                 <span class="difficulty-tag difficulty-medium">Initié</span>
             </header>
 
-            <section class="lesson-block">
+            <section class="content-block">
                 <h2><i class="fas fa-info-circle" aria-hidden="true"></i>Généralités sur les métadonnées</h2>
                 <p>
                     Les métadonnées sont des données qui fournissent des informations sur d'autres données. Elles servent à décrire, structurer et gérer des ressources, qu'elles soient numériques ou physiques. Plutôt que de constituer le contenu principal d'un fichier ou d'un document, les métadonnées en précisent le contexte et les caractéristiques. Elles répondent généralement à des questions telles que : qui a créé la donnée, quand a-t-elle été créée, quel est son format, ou encore quels sont les droits qui y sont associés.
@@ -55,7 +55,7 @@
                 </p>
             </section>
             
-            <section class="lesson-block">
+            <section class="content-block">
                 <h2><i class="fas fa-clock" aria-hidden="true"></i>Les timestamps MACE</h2>
                 <p>
                     Les métadonnées les plus fondamentales et les plus universelles sont les timestamps (horodatages) gérés par le système de fichiers. Ils constituent le socle de toute analyse chronologique, permettant de placer les événements sur une ligne de temps précise. On les désigne par l'acronyme MACE (ou MACB).
@@ -82,7 +82,7 @@
                 <p><strong>Mardi 09:00 - Relecture :</strong> Un collègue ouvre le fichier pour le lire, sans le modifier. Seul le timestamp Accessed est mis à jour à Mardi 09:00.</p>
             </section>
             
-            <section class="lesson-block">
+            <section class="content-block">
                 <h2><i class="fas fa-cogs" aria-hidden="true"></i>L'analyse applicative</h2>
                 <p>
                     Si les timestamps MACE nous donnent le "quand", les métadonnées applicatives nous donnent le "qui", le "comment" et le "où". Pour extraire et interpréter ces informations riches, l'outil ExifTool est la référence mondiale.
@@ -151,7 +151,7 @@
                 <p><strong>Exemple :</strong> Une fausse facture Facture.pdf indique CreatorTool: "Adobe Illustrator 2024". Une facture est normalement générée par un logiciel de comptabilité, pas un logiciel de design graphique. Cet indice suggère une création de toutes pièces.</p>
             </section>
 
-            <section class="lesson-block">
+            <section class="content-block">
                 <h2><i class="fas fa-user-secret" aria-hidden="true"></i>Anti-forensique et analyse critique</h2>
                 <p>
                     Un expert ne se contente pas de lire les métadonnées ; il évalue leur crédibilité. Savoir reconnaître les techniques d'anti-forensique est une compétence essentielle.
@@ -164,14 +164,14 @@
                 <p><strong>Implication pour l'enquêteur :</strong> L'analyse d'une photo téléchargée depuis un réseau social est souvent inutile. Il est impératif de travailler sur le fichier original provenant de l'appareil source.</p>
             </section>
 
-            <section class="lesson-block">
+            <section class="content-block">
                 <h2><i class="fas fa-flag-checkered" aria-hidden="true"></i>Conclusion</h2>
                 <p>
                     L'analyse des métadonnées est un art qui se situe à la croisée de la technique et de l'enquête. La compétence clé n'est pas seulement de savoir extraire une information, mais de savoir la corréler. C'est en croisant les données du système avec celles des applications, en comparant les timestamps et en questionnant les incohérences que l'analyste transforme des informations éparses en une chronologie cohérente et défendable.
                 </p>
             </section>
 
-            <nav class="lesson-navigation">
+            <nav class="content-navigation">
                 <a href="../lessons.html" class="nav-button prev-button"><i class="fas fa-arrow-left" aria-hidden="true"></i> Retour aux leçons</a>
                 <a href="../lessons.html" class="nav-button next-button">Valider la leçon <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
             </nav>

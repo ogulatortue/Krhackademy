@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Nos Challenges - Kr[HACK]ademy</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/header-footer.css"/>
+    <link rel="stylesheet" href="/css/shared-components.css"/>
+
+    <link rel="icon" type="image/png" href="/images/logo_krhacken_r.ico" />
+</head>
+<body>
+
+    <?php require __DIR__ . '/partials/header.php'; ?>
+
+    <main class="main">
+        <?php
+        $currentCategory = null; 
+        ?>
+
+        <?php foreach ($challenges as $challenge): ?>
+            
+            <?php 
+            if ($challenge['category'] !== $currentCategory): 
+                $currentCategory = $challenge['category'];
+            ?>
+                <section class="category-section">
+                    <h2 class="main-title category-title"><?= htmlspecialchars($currentCategory) ?></h2>
+                    <div class="box-container">
+            <?php endif; ?>
+            
+            <?php
+            $points = $challenge['points'];
+            $difficulty_class = '';
+            if ($points >= 250) { $difficulty_class = 'difficulty-expert'; } 
+            elseif ($points >= 100) { $difficulty_class = 'difficulty-hard'; } 
+            elseif ($points >= 50) { $difficulty_class = 'difficulty-medium'; } 
+            else { $difficulty_class = 'difficulty-easy'; }
+            ?>
+
+            <a href="/challenge/<?= htmlspecialchars($challenge['id']) ?>" class="card challenge-card" data-challenge-id="<?= htmlspecialchars($challenge['id']) ?>">
+                <i class="card-icon fas <?= htmlspecialchars($challenge['icon_class'] ?? 'fa-flag') ?>"></i>
+                <div class="card-text-content">
+                    <div class="card-title-wrapper">
+                        <h4><?= htmlspecialchars($challenge['title']) ?></h4>
+                        <span class="difficulty-tag <?= $difficulty_class ?>">
+                            <?= htmlspecialchars($challenge['points']) ?> pts
+                        </span>
+                    </div>
+                </div>
+                <div class="check-box">
+                    <i class="checkbox-icon completed fas fa-check"></i>
+                </div>
+            </a>
+
+            <?php
+            $nextChallengeIndex = array_search($challenge, $challenges) + 1;
+            if ($nextChallengeIndex >= count($challenges) || $challenges[$nextChallengeIndex]['category'] !== $currentCategory):
+            ?>
+                    </div>
+                </section>
+            <?php endif; ?>
+
+        <?php endforeach; ?>
+    </main>
+
+    <?php require __DIR__ . '/partials/footer.php'; ?>
+    
+    <script src="/js/header.js" defer></script>
+    <script src="/js/progress-tracker.js" defer></script>
+
+</body>
+</html>

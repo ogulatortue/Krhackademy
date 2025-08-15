@@ -1,0 +1,60 @@
+<section class="content-block">
+    <h2><i class="fas fa-scroll"></i>Contexte de la mission</h2>
+    <p>
+        Bonjour, jeune analyste. Nous avons un cas simple pour votre première mission. Un de nos employés, "Bob", est suspecté d'avoir copié des documents confidentiels sur sa clé USB personnelle juste avant de démissionner. Nous l'avons confronté, et il nous a remis une clé USB en prétendant qu'elle ne contient que ses photos de vacances et qu'elle n'a pas été modifiée depuis des mois.
+    </p>
+    <p>
+        Heureusement, notre service informatique avait réalisé une copie parfaite (une image disque) de cette même clé USB il y a 6 mois lors d'un inventaire de routine. Nous avons donc l'empreinte numérique (le hash) de l'image disque originale.
+    </p>
+</section>
+<section class="content-block">
+    <h2><i class="fas fa-download"></i>Pièces à conviction</h2>
+    <p>
+        Le service informatique vous fournit l'image disque de la clé que Bob vient de rendre ainsi que le hash de référence de l'image originale.
+    </p>
+    <div class="challenge-files">
+        <div class="file-item">
+            <div class="file-info">
+                <h4>cle_usb_bob.img</h4>
+                <p>Image disque de la clé USB remise par Bob.</p>
+            </div>
+            <a href="./ressources-challenges/integrity_key/cle_usb_bob.img" download class="btn-download"><i class="fas fa-download"></i> Télécharger</a>
+        </div>
+        <div class="file-item">
+            <div class="file-info">
+                <h4>integrite.txt</h4>
+                <p>Fichier contenant le hash SHA-256 de l'image originale.</p>
+            </div>
+            <a href="./ressources-challenges/integrity_key/integrite.txt" download class="btn-download"><i class="fas fa-download"></i> Télécharger</a>
+        </div>
+    </div>
+</section>
+<section class="content-block">
+    <h2><i class="fas fa-bullseye"></i>Votre objectif</h2>
+    <p>Votre mission consiste à déterminer si la clé de Bob a été altérée. Voici les étapes à suivre :</p>
+    <ul>
+        <li>Calculez l'empreinte numérique (hash) en utilisant l'algorithme <b>SHA-256</b> pour le fichier <code>cle_usb_bob.img</code>.</li>
+        <li>Comparez le hash que vous venez de calculer avec celui contenu dans le fichier <code>integrite.txt</code>.</li>
+        <li>Sur la base de cette comparaison, concluez si Bob a dit la vérité ou non.</li>
+    </ul>
+     <p>
+        <i class="fas fa-lightbulb"></i> <b>Astuce :</b> Vous pouvez utiliser des outils intégrés à votre système (PowerShell sur Windows, sha256sum sur Linux) ou des logiciels graphiques comme 7-Zip.
+    </p>
+</section>
+<section class="content-block">
+    <h2><i class="fas fa-flag"></i>Soumettre le Flag</h2>
+    <p>
+        Pour valider ce challenge, le flag est le hash SHA-256 que vous avez <b>vous-même calculé</b> pour le fichier <code>cle_usb_bob.img</code>.
+    </p>
+    
+    <form class="flag-form" id="flag-form" action="/api/verify-flag" method="POST">
+        <input type="hidden" name="challenge_id" value="integrity_key">
+        <div class="flag-input-wrapper">
+            <span class="flag-prefix">KRHACK{</span>
+            <input type="text" class="flag-input" name="flag" placeholder="collez_le_hash_ici..." required>
+            <span class="flag-prefix">}</span>
+        </div>
+        <button type="submit" class="btn-submit">Valider</button>
+    </form>
+    <div id="form-message" class="form-message"></div>
+</section>

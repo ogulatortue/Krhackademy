@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Nos Leçons - Kr[HACK]ademy</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/header-footer.css"/>
+    <link rel="stylesheet" href="/css/shared-components.css"/>
+
+    <link rel="icon" type="image/png" href="/images/logo_krhacken_r.ico" />
+</head>
+<body>
+
+    <?php require __DIR__ . '/partials/header.php'; ?>
+
+    <main class="main">
+        <?php
+        $currentCategory = null; 
+        ?>
+
+        <?php foreach ($lessons as $lesson): ?>
+            
+            <?php 
+            if ($lesson['category'] !== $currentCategory): 
+                $currentCategory = $lesson['category'];
+            ?>
+                <section class="category-section">
+                    <h2 class="main-title category-title"><?= htmlspecialchars($currentCategory) ?></h2>
+                    <div class="box-container">
+            <?php endif; ?>
+            
+            <?php
+            $difficulty_class = '';
+            switch (strtolower($lesson['difficulty'])) {
+                case 'débutant': $difficulty_class = 'difficulty-easy'; break;
+                case 'initié':   $difficulty_class = 'difficulty-medium'; break;
+                case 'avancé':   $difficulty_class = 'difficulty-hard'; break;
+                case 'expert':   $difficulty_class = 'difficulty-expert'; break;
+            }
+            ?>
+
+            <a href="/lesson/<?= htmlspecialchars($lesson['id']) ?>" class="card" data-lesson-id="<?= htmlspecialchars($lesson['id']) ?>">
+                <i class="card-icon fas <?= htmlspecialchars($lesson['icon_class'] ?? 'fa-book-open') ?>"></i>
+                <div class="card-text-content">
+                    <div class="card-title-wrapper">
+                        <h4><?= htmlspecialchars($lesson['title']) ?></h4>
+                        <span class="difficulty-tag <?= $difficulty_class ?>">
+                            <?= htmlspecialchars($lesson['difficulty']) ?>
+                        </span>
+                    </div>
+                    <p><?= htmlspecialchars(mb_substr($lesson['description'], 0, 100)) ?>...</p>
+                </div>
+                <div class="check-box">
+                    <i class="checkbox-icon completed fas fa-check"></i>
+                </div>
+            </a>
+
+            <?php
+            $nextLessonIndex = array_search($lesson, $lessons) + 1;
+            if ($nextLessonIndex >= count($lessons) || $lessons[$nextLessonIndex]['category'] !== $currentCategory):
+            ?>
+                    </div>
+                </section>
+            <?php endif; ?>
+
+        <?php endforeach; ?>
+    </main>
+
+    <?php require __DIR__ . '/partials/footer.php'; ?>
+    
+    <script src="/js/header.js" defer></script>
+    <script src="/js/progress-tracker.js" defer></script>
+
+</body>
+</html>

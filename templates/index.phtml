@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Rejoignez la Kr[HACK]ademy pour apprendre la cybersécurité avec des leçons, challenges et scénarios, créés par le club Krhacken de l'Esisar.">
+    <meta name="keywords" content="cybersécurité, apprendre, hacking éthique, leçons, challenges, scénarios, Krhacken, Esisar">
+    <meta name="author" content="BRUCHON Hugo">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kr[HACK]ademy - Apprenez la cybersécurité en ligne</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/glitch.css"/>
+    <link rel="stylesheet" href="/css/header-footer.css"/>
+    <link rel="stylesheet" href="/css/index.css"/>
+
+    <link rel="icon" type="image/png" href="/images/logo_krhacken_r.ico" />
+</head>
+<body>
+
+    <?php require __DIR__ . '/partials/header.php';?>
+
+    <main class="main">
+        <section class="intro">
+            <div class="text-intro">
+                <h2>Apprends la cybersécurité <br><span id="dynamic-text" class="glitch" data-text="en ligne">en ligne</span></br></h2>
+                <h3>Créé par le <em>Kr[HACK]en</em> (club de cybersécurité de l'ESISAR) pour accompagner les étudiants dans leur apprentissage de débutant à expert</h3>
+            </div>
+            <div class="image-intro">
+                <img src="/images/krhacken_laurier.webp" alt="Logo du club Krhacken avec des lauriers"/>
+            </div>
+        </section>
+
+        <section class="pres">
+            <h2>Apprendre <span class="hyphen">&mdash;</span> Pratiquer <span class="hyphen">&mdash;</span> Réussir</h2>
+            <div class="box-container">
+                <a href="/lessons" class="box-link">
+                    <div class="box-pres">
+                        <div class="box-content-inner">
+                            <div class="box-header">
+                                <div class="box-icon-wrapper"><i class="fas fa-book-open box-icon"></i></div>
+                                <h4>Leçons</h4>
+                            </div>
+                            <div class="box-info">
+                                <p>Découvrez les fondamentaux de la cyber et maîtrisez les concepts clés avec une approche structurée et complète.</p>
+                                <ul>
+                                    <li><i class="far fa-check-square checkbox-icon" aria-hidden="true"></i>Théorie solide</li>
+                                    <li><i class="far fa-check-square checkbox-icon" aria-hidden="true"></i>Apprentissage progressif</li>
+                                    <li><i class="far fa-check-square checkbox-icon" aria-hidden="true"></i>Ressources claires</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="/challenges" class="box-link">
+                    <div class="box-pres">
+                        <div class="box-content-inner">
+                            <div class="box-header">
+                                <div class="box-icon-wrapper"><i class="fas fa-flag box-icon"></i></div>
+                                <h4>Challenges</h4>
+                            </div>
+                            <div class="box-info">
+                                <p>Testez vos competences en resolvant des challenges de type CTF (Capture The Flag) dans divers domaines.</p>
+                                <ul>
+                                    <li><i class="far fa-check-square checkbox-icon" aria-hidden="true"></i>Mise en pratique</li>
+                                    <li><i class="far fa-check-square checkbox-icon" aria-hidden="true"></i>Développement de compétences</li>
+                                    <li><i class="far fa-check-square checkbox-icon" aria-hidden="true"></i>Compétition amicale</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="/scenarios" class="box-link">
+                    <div class="box-pres">
+                        <div class="box-content-inner">
+                            <div class="box-header">
+                                <div class="box-icon-wrapper"><i class="fas fa-cogs box-icon"></i></div>
+                                <h4>Scénarios</h4>
+                            </div>
+                            <div class="box-info">
+                                <p>Immergez vous dans des simulations d'attaques pour apprendre à utiliser des outils et comprendre les chaînes d'exploitation.</p>
+                                <ul>
+                                    <li><i class="far fa-check-square checkbox-icon" aria-hidden="true"></i>Cyber-attaques guidées</li>
+                                    <li><i class="far fa-check-square checkbox-icon" aria-hidden="true"></i>Découverte d'outils</li>
+                                    <li><i class="far fa-check-square checkbox-icon" aria-hidden="true"></i>Situations réelles</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+        
+        <section class="news">
+            <div class="news-header">
+                <h2>Nouveautés et Évènements</h2>
+                <a href="#" class="news-card featured">
+                    <img src="/images/tmp4.jpg" alt="Affiche de l'évènement Session 0" onerror="this.style.display='none';">
+                    <div class="card-content">
+                        <div class="card-top-line">
+                            <h4 class="card-title">Session 0</h4>
+                            <span class="card-tag">Évènement</span>
+                        </div>
+                        <p class="card-subtitle">Rejoignez-nous le 1 septembre à 5h30 en B652.</p>
+                    </div>
+                </a>
+            </div>
+            <div class="news-grid">
+                <a href="#" class="news-card">
+                    <img src="/images/tmp1.png" alt="Nouveauté sur les Cyber-attaques" onerror="this.style.display='none';">
+                    <div class="card-content">
+                        <div class="card-top-line">
+                            <h4 class="card-title">Cyber-attaques</h4>
+                            <span class="card-tag">Nouveauté</span>
+                        </div>
+                        <p class="card-subtitle">Découvrez les techniques courantes et comment les contrer.</p>
+                    </div>
+                </a>
+                <a href="#" class="news-card">
+                    <img src="/images/tmp2.png" alt="Nouveauté sur la Forensics" onerror="this.style.display='none';">
+                    <div class="card-content">
+                        <div class="card-top-line">
+                            <h4 class="card-title">Forensics</h4>
+                            <span class="card-tag">Nouveauté</span>
+                        </div>
+                        <p class="card-subtitle">Mettez vos compétences d'analyse forensique à l'épreuve.</p>
+                    </div>
+                </a>
+                <a href="#" class="news-card">
+                    <img src="/images/tmp3.png" alt="Nouveauté sur la Sécurité Web" onerror="this.style.display='none';">
+                    <div class="card-content">
+                        <div class="card-top-line">
+                            <h4 class="card-title">Sécurité Web</h4>
+                            <span class="card-tag">Nouveauté</span>
+                        </div>
+                        <p class="card-subtitle">Construisez une application web sécurisée de A à Z.</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <?php require __DIR__ . '/partials/footer.php';?>
+
+    <script src="/js/index.js" defer></script>
+    <script src="/js/header.js" defer></script>
+</body>
+</html>

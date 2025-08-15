@@ -1,0 +1,49 @@
+#dynamic-text .el-sp {
+    transition: all 0.1s;
+    position: relative;
+    will-change: transform, opacity;
+}
+
+#dynamic-text .el-sp.is-changing {
+    animation: changing 0.1s infinite;
+}
+
+#dynamic-text .el-sp:after {
+    content: attr(data-txt);
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    will-change: transform, opacity;
+}
+
+#dynamic-text .el-sp.is-changing:after {
+    animation: changingAfter 0.4s infinite alternate;
+}
+
+@keyframes changing {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes changingAfter {
+    0% {
+        opacity: 0.3;
+        transform: translateX(10px) scaleX(2);
+    }
+    50% {
+        opacity: 0;
+        transform: translateX(0) scaleX(2);
+    }
+    100% {
+        opacity: 0.3;
+        transform: translateX(-10px) scaleX(2);
+    }
+}

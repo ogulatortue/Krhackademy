@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title><?= htmlspecialchars($challenge['title']) ?> - Kr[HACK]ademy</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/content-page.css"/>
+
+    <link rel="icon" type="image/png" href="/images/logo_krhacken_r.ico" />
+</head>
+<body class="page-challenge">
+
+    <?php
+    // Cette logique reste pour déterminer la COULEUR
+    $points = $challenge['points'];
+    $difficulty_class = '';
+    if ($points >= 250) { $difficulty_class = 'difficulty-expert'; }
+    elseif ($points >= 100) { $difficulty_class = 'difficulty-hard'; }
+    elseif ($points >= 50) { $difficulty_class = 'difficulty-medium'; }
+    else { $difficulty_class = 'difficulty-easy'; }
+    ?>
+
+    <main class="content-container">
+        <div class="content-wrapper">
+            <header class="content-header">
+                <i class="content-icon fas <?= htmlspecialchars($challenge['icon_class'] ?? 'fa-flag') ?>"></i>
+                <div class="content-title-group">
+                    <h1><?= htmlspecialchars($challenge['title']) ?></h1>
+                </div>
+                <span class="difficulty-tag <?= $difficulty_class ?>">
+                    <?= htmlspecialchars($challenge['points']) ?> pts
+                </span>
+            </header>
+            
+            <?php
+            $challengeContentPath = ROOT_PATH . '/public/challenges-content/' . $challenge['challenge_id_str'] . '.html';
+            if (file_exists($challengeContentPath)) {
+                include($challengeContentPath);
+            } else {
+                echo '<section class="content-block"><p>Le contenu de ce challenge est actuellement indisponible.</p></section>';
+            }
+            ?>
+            
+            <nav class="content-navigation">
+                <a href="/challenges" class="nav-button">&larr; Retour à la liste des challenges</a>
+            </nav>
+
+        </div>
+    </main>
+    
+    <script src="/js/challenge.js" defer></script>
+</body>
+</html>

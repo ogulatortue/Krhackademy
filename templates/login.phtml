@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Connexion - Kr[HACK]ademy</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/auth.css">
+</head>
+<body class="auth-page">
+
+    <div class="auth-container">
+        <h1 class="site-title">Kr[HACK]ademy</h1>
+        <h2 class="page-title">Connexion</h2>
+        
+        <form action="/login" method="post" class="auth-form">
+            <input type="hidden" name="redirect_to" value="<?= htmlspecialchars($_GET['redirect_to'] ?? '') ?>">
+            
+            <input type="text" name="username" placeholder="Nom d'utilisateur" required>
+            <input type="password" name="password" placeholder="Mot de passe" required>
+            <button type="submit">Se connecter</button>
+        </form>
+
+        <?php if (!empty($error_message)): ?>
+            <p class="error-message"><?= htmlspecialchars($error_message) ?></p>
+        <?php endif; ?>
+
+        <p class="auth-link">
+            Pas encore de compte ? <a href="/register">Inscrivez-vous</a>
+        </p>
+    </div>
+
+</body>
+</html>

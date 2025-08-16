@@ -130,16 +130,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 event.stopPropagation();
                 const wasOpen = p.panel.classList.contains('open');
 
+                // Ferme tous les panneaux existants
                 panels.forEach(otherPanel => otherPanel.onClose());
 
                 if (!wasOpen) {
                     p.panel.classList.add('open');
-
+                    
+                    // Masque tous les boutons de bascule, y compris celui qui a été cliqué
                     panels.forEach(panelToHide => {
                         if (panelToHide.btn) panelToHide.btn.classList.add('hidden');
                     });
-
-                    if (menuIcon) {
+                    
+                    // Une exception pour le menu hamburger qui change d'icône, si vous voulez le conserver
+                    if (p.btn === menuIcon) {
                         menuIcon.classList.remove('hidden');
                     }
 
@@ -156,7 +159,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         document.addEventListener('click', (event) => {
             panels.forEach(p => {
-                if (p.panel && p.panel.classList.contains('open') && !p.panel.contains(event.target)) {
+                if (p.panel && p.panel.classList.contains('open') && !p.panel.contains(event.target) && !p.btn.contains(event.target)) {
                     p.onClose();
                 }
             });

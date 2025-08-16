@@ -140,9 +140,11 @@ header.header-active #search-toggle-btn {
     right: 165px;
 }
 
+/* MODIFICATION APPLIQUÉE ICI : Ajout de .leaderboard-panel */
 .search-panel,
 .profile-panel,
-.nav-bar-mobile {
+.nav-bar-mobile,
+.leaderboard-panel {
     position: fixed;
     top: 95px;
     z-index: 999;
@@ -180,9 +182,11 @@ header.header-active #search-toggle-btn {
     min-width: 220px;
 }
 
+/* MODIFICATION APPLIQUÉE ICI : Ajout de .leaderboard-panel */
 header.header-active ~ .search-panel,
 header.header-active ~ .profile-panel,
-header.header-active ~ .nav-bar-mobile {
+header.header-active ~ .nav-bar-mobile,
+header.header-active ~ .leaderboard-panel {
     top: 56px;
     border-radius: 0;
 }
@@ -193,14 +197,17 @@ header.header-active ~ .search-panel {
 }
 
 header.header-active ~ .profile-panel,
-header.header-active ~ .nav-bar-mobile {
+header.header-active ~ .nav-bar-mobile,
+header.header-active ~ .leaderboard-panel { /* Ajout de .leaderboard-panel ici pour le positionnement */
     right: 0;
     left: auto;
 }
 
+/* MODIFICATION APPLIQUÉE ICI : Ajout de .leaderboard-panel.open */
 .search-panel.open,
 .profile-panel.open,
-.nav-bar-mobile.open {
+.nav-bar-mobile.open,
+.leaderboard-panel.open {
     opacity: 1;
     transform: translateY(0);
     pointer-events: auto;
@@ -449,7 +456,42 @@ header.header-active ~ .nav-bar-mobile {
     color: #ffd700;
 }
 
-main{
+.leaderboard-panel {
+    /* Ajout du style pour le panneau de classement */
+    position: fixed;
+    top: 95px;
+    right: 20px;
+    left: auto;
+    z-index: 999;
+    width: max-content;
+    padding: 0;
+    overflow: hidden;
+    background-color: var(--purple);
+    background-image: url('../images/header_background_blured3.webp');
+    background-size: cover;
+    background-position: center;
+    border-radius: 25px;
+    opacity: 0;
+    transform: translateY(-120%);
+    pointer-events: none;
+    transition: transform 0.4s ease-out, opacity 0.3s ease-out, top 0.3s ease-in-out, right 0.3s ease-in-out, border-radius 0.3s ease-in-out;
+}
+
+.leaderboard-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.leaderboard-header span {
+    color: var(--white);
+    font-weight: bold;
+    margin-right: auto;
+}
+
+main {
     padding-top: 6rem;
     transition: padding-top 0.4s ease-out;
 }

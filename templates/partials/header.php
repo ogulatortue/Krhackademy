@@ -21,7 +21,7 @@
         <button id="leaderboard-toggle-btn" class="fas fa-trophy" aria-label="Ouvrir le classement" aria-expanded="false" aria-controls="leaderboard-menu"></button>
     <?php endif; ?>
     
-    <button id="profile-toggle-btn" class="fas fa-user-circle" aria-label="Ouvrir le menu du profil"></button>
+    <button id="profile-toggle-btn" class="fas fa-user-circle" aria-label="Ouvrir le menu du profil" aria-controls="profile-menu"></button>
 </header>
 
 <section class="profile-panel" id="profile-menu" aria-hidden="true">
@@ -47,6 +47,28 @@
             <li><a href="/register"><i class="fas fa-user-plus fa-fw"></i> S'inscrire</a></li>
         </ul>
     <?php endif; ?>
+</section>
+
+<section class="search-panel" id="filter-controls" aria-hidden="true">
+    <div class="search-header">
+        <input type="text" id="search-input" placeholder="Rechercher...">
+        <button id="close-filter-btn" class="fas fa-times" aria-label="Fermer la barre de recherche"></button>
+    </div>
+    <div class="filter-options">
+        <p>Options de filtrage</p>
+    </div>
+</section>
+
+<section class="leaderboard-panel" id="leaderboard-menu" aria-hidden="true">
+    <div class="leaderboard-header">
+        <i class="fas fa-trophy panel-icon"></i>
+        <span>Classement</span>
+        <button id="close-leaderboard-btn" class="fas fa-times" aria-label="Fermer le classement"></button>
+    </div>
+    <ul class="leaderboard-list">
+        <li class="leaderboard-item">1. Utilisateur 1 - 1500 points</li>
+        <li class="leaderboard-item">2. Utilisateur 2 - 1200 points</li>
+    </ul>
 </section>
 
 <nav class="nav-bar-mobile" id="mobile-nav-menu" aria-hidden="true">

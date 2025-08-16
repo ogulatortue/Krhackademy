@@ -51,11 +51,52 @@
 
 <section class="search-panel" id="filter-controls" aria-hidden="true">
     <div class="search-header">
-        <input type="text" id="search-input" placeholder="Rechercher...">
+        <i class="fas fa-search panel-icon" aria-hidden="true"></i>
+
+        <div class="input-wrapper">
+            <input type="search" id="search-input" placeholder="Rechercher...">
+            <button id="clear-search-btn" class="fas fa-times" aria-label="Effacer la recherche"></button>
+        </div>
+
+        <div class="custom-select-wrapper">
+            <div class="custom-select" data-select-id="category-filter">
+                <span class="custom-select-trigger">Catégorie</span>
+                <i class="fas fa-chevron-down"></i>
+
+            </div>
+            <div class="custom-options">
+                <div class="custom-option" data-value="all">Toutes</div>
+            </div>
+            <input type="hidden" id="category-filter" name="category-filter" value="all">
+        </div>
+
+        <div class="custom-select-wrapper">
+            <div class="custom-select" data-select-id="difficulty-filter">
+                <span class="custom-select-trigger">Difficulté</span>
+                <i class="fas fa-chevron-down"></i>
+
+            </div>
+            <div class="custom-options">
+                <div class="custom-option" data-value="all">Toutes</div>
+            </div>
+            <input type="hidden" id="difficulty-filter" name="difficulty-filter" value="all">
+        </div>
+
+        <div class="custom-select-wrapper">
+            <div class="custom-select" data-select-id="completion-filter">
+                <span class="custom-select-trigger">Statut</span>
+                <i class="fas fa-chevron-down"></i>
+
+            </div>
+            <div class="custom-options">
+                <div class="custom-option" data-value="all">Tout</div>
+                <div class="custom-option" data-value="completed">Complété</div>
+                <div class="custom-option" data-value="not-completed">Non-complété</div>
+            </div>
+            <input type="hidden" id="completion-filter" name="completion-filter" value="all">
+        </div>
+
         <button id="close-filter-btn" class="fas fa-times" aria-label="Fermer la barre de recherche"></button>
-    </div>
-    <div class="filter-options">
-        <p>Options de filtrage</p>
     </div>
 </section>
 
@@ -79,3 +120,7 @@
         <li><a href="/scenarios">SCÉNARIOS</a></li>
     </ul>
 </nav>
+
+<div class="no-results" id="no-results-message" style="display:none;">
+    <p>Aucun résultat trouvé pour cette recherche.</p>
+</div>

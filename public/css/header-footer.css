@@ -140,7 +140,7 @@ header.header-active #search-toggle-btn {
     right: 165px;
 }
 
-/* MODIFICATION APPLIQUÉE ICI : Ajout de .leaderboard-panel */
+/* MODIFICATIONS APPLIQUÉES ICI pour les panneaux */
 .search-panel,
 .profile-panel,
 .nav-bar-mobile,
@@ -152,6 +152,7 @@ header.header-active #search-toggle-btn {
     background-image: url('../images/header_background_blured3.webp');
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
     border-radius: 25px;
     opacity: 0;
     transform: translateY(-120%);
@@ -163,14 +164,19 @@ header.header-active #search-toggle-btn {
     left: 20px;
     right: 20px;
     padding: 15px 25px;
+}
+
+/* NOUVELLE RÈGLE pour organiser le contenu de la barre de recherche */
+.search-header {
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
     gap: 1rem;
+    width: 100%;
 }
 
 .profile-panel,
-.nav-bar-mobile {
+.nav-bar-mobile,
+.leaderboard-panel {
     right: 20px;
     left: auto;
     width: max-content;
@@ -182,7 +188,6 @@ header.header-active #search-toggle-btn {
     min-width: 220px;
 }
 
-/* MODIFICATION APPLIQUÉE ICI : Ajout de .leaderboard-panel */
 header.header-active ~ .search-panel,
 header.header-active ~ .profile-panel,
 header.header-active ~ .nav-bar-mobile,
@@ -198,12 +203,11 @@ header.header-active ~ .search-panel {
 
 header.header-active ~ .profile-panel,
 header.header-active ~ .nav-bar-mobile,
-header.header-active ~ .leaderboard-panel { /* Ajout de .leaderboard-panel ici pour le positionnement */
+header.header-active ~ .leaderboard-panel {
     right: 0;
     left: auto;
 }
 
-/* MODIFICATION APPLIQUÉE ICI : Ajout de .leaderboard-panel.open */
 .search-panel.open,
 .profile-panel.open,
 .nav-bar-mobile.open,
@@ -219,13 +223,14 @@ header.header-active ~ .leaderboard-panel { /* Ajout de .leaderboard-panel ici p
     align-self: center;
 }
 
+/* MODIFICATIONS APPLIQUÉES ICI pour la barre de recherche et les filtres */
 .input-wrapper {
     position: relative;
     display: flex;
     align-items: center;
     background-color: var(--card-bg);
     border-radius: 5px;
-    flex: 1 1 200px;
+    flex-grow: 0.7;
     border: 1px solid #555;
     transition: border-color 0.3s;
 }
@@ -267,8 +272,9 @@ header.header-active ~ .leaderboard-panel { /* Ajout de .leaderboard-panel ici p
 
 .custom-select-wrapper {
     position: relative;
-    flex: 1 1 200px;
     user-select: none;
+    flex-shrink: 0;
+    flex-grow: 0.1;
 }
 
 .custom-select {
@@ -293,18 +299,6 @@ header.header-active ~ .leaderboard-panel { /* Ajout de .leaderboard-panel ici p
     font-size: 1rem;
 }
 
-.custom-arrow {
-    width: 10px;
-    height: 10px;
-    border-left: 2px solid white;
-    border-bottom: 2px solid white;
-    transform: rotate(-45deg);
-    transition: transform 0.3s ease;
-}
-
-.custom-select.open .custom-arrow {
-    transform: rotate(135deg);
-}
 
 .custom-options {
     position: absolute;
@@ -457,7 +451,6 @@ header.header-active ~ .leaderboard-panel { /* Ajout de .leaderboard-panel ici p
 }
 
 .leaderboard-panel {
-    /* Ajout du style pour le panneau de classement */
     position: fixed;
     top: 95px;
     right: 20px;

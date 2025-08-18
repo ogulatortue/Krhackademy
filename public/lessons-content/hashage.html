@@ -1,93 +1,202 @@
-    <section class="content-block">
-        <h2>Introduction et Avertissement</h2>
-        <p>
-            [cite_start]Ce document a pour but d'expliquer la base des hashs et des méthodes permettant de les craquer ou de les contourner. [cite: 7]
-        </p>
-        <p>
-            [cite_start]<strong>Disclaimer :</strong> Ce document a pour but d'être éducatif et de fournir des bases. [cite: 8] [cite_start]Ce n'est pas une documentation complète, il existe des attaques qui ne sont pas présentées ici et vous êtes invités à faire vos propres recherches. [cite: 9] [cite_start]Le piratage est un délit au regard de la loi et ce document n'est pas un encouragement à la pratique d'activités illégales. [cite: 10]
-        </p>
-    </section>
+<section class="content-block">
+    <p>
+        Introduction : Ce document a pour but d’expliquer la base des hashs et des méthodes permettant de les craquer ou de les contourner.
+    </p>
+    <p>
+        Disclaimer : Ce document a pour but d’être éducatif et de fournir des bases. Ce n’est pas une documentation complète, il existe des attaques qui ne sont pas présentées ici et vous êtes invités à faire vos propres recherches. Le piratage est un délit au regard de la loi et ce document n’est pas un encouragement à la pratique d’activités illégales.
+    </p>
+</section>
 
-    <section class="content-block">
-        <h2>Qu'est-ce qu'un hash ?</h2>
-        <h3>Mise en contexte</h3>
-        <p>
-            [cite_start]Lorsque qu'un client souhaite s'authentifier auprès d'un serveur, il lui transmet un mot de passe. [cite: 14] [cite_start]Ce mot de passe, associé à son identifiant, permet de l'identifier et de l'authentifier. [cite: 15] [cite_start]Cependant face à des acteurs malveillants capables d'intercepter les paquets passant sur le réseau, transmettre ce mot de passe sans cryptage représente le risque de voir le mot de passe intercepté et réutilisé à des fins malveillantes. [cite: 16] [cite_start]Mais pour la même raison que transmettre le mot de passe sans cryptage représente un risque, transmettre une clé de chiffrement n'est pas une option puisque celle-ci aussi pourra être interceptée. [cite: 17]
-        </p>
-        <h3>Les fonctions de hachage cryptographique</h3>
-        <p>
-            [cite_start]La situation est cependant particulière : le mot de passe est connu du client ET du serveur. [cite: 19] [cite_start]Donc supposons que l'on crypte une donnée, si le serveur et le client cryptent tous les deux, et que le serveur compare les deux données cryptées, le résultat devrait être identique. [cite: 20] [cite_start]C'est pour cela que les fonctions de hachage cryptographique ont été conçues. [cite: 21] [cite_start]Le résultat d'une fonction de hachage peut être appelée empreinte, condensé ou bien hash. [cite: 22] [cite_start]Pour que l'une de ces fonctions soit utilisée elle doit satisfaire quelques propriétés : [cite: 23]
-        </p>
-        <ul>
-            [cite_start]<li><strong>Déterminisme :</strong> f(x)=y pour un x et une fonction donnée (pour la comparaison). [cite: 24]</li>
-            [cite_start]<li><strong>Rapide à calculer :</strong> l'exécution de la fonction doit être rapide car elle est souvent utilisée. [cite: 25]</li>
-            [cite_start]<li><strong>Non bijective :</strong> On ne doit pas pouvoir trouver x en inversant la fonction à partir de y. [cite: 26]</li>
-            [cite_start]<li><strong>Résistant à la falsification/pré-image :</strong> Les mots de passes doivent avoir une empreinte de hash qui change fortement à la plus petite modification. [cite: 27]</li>
-            [cite_start]<li><strong>Résistant aux collisions :</strong> Il doit être globalement impossible de trouver deux messages qui produisent le même hash. [cite: 29]</li>
-        </ul>
-        <h3>Différentes fonctions</h3>
-        <p>Il existe différentes fonctions de hachage, cryptographique ou non. [cite_start]Pour les fonctions cryptographiques on pourra par exemple citer : [cite: 32]</p>
-         <ul>
-            <li><strong>Message Digest 5 (MD5) :</strong> Très utilisé pendant longtemps. [cite_start]Il n'est plus considéré comme sûr suite à la découverte d'une méthode d'attaque par collisions. [cite: 33]</li>
-            [cite_start]<li><strong>Secure Hash Algorithm (SHA) :</strong> Il existe beaucoup de variantes utilisées de celui-ci. [cite: 34] [cite_start]Une attaque par collision a été effectuée contre SHA-1. [cite: 35] [cite_start]Un format courant est SHA2-256. [cite: 35]</li>
-            [cite_start]<li><strong>Whirlpool :</strong> Ce format a été conçu de façon similaire à AES, ce qui garantit une haute fiabilité et une grande robustesse. [cite: 36] [cite_start]Il génère des empreintes de 512 bits, ce qui est pour le moment assez rare. [cite: 37]</li>
-            [cite_start]<li><strong>Construction de Merkle Damgård :</strong> Cette construction utilise des méthodes de compression et de division par blocs pour permettre de créer une sortie de taille fixe avec une entrée de taille quelconque. [cite: 38] [cite_start]Les formats MD5 et SHA-1 entre autre reposent sur cette construction. [cite: 39] [cite_start]Cependant cette construction présente d'importants problèmes. [cite: 40]</li>
-        </ul>
-    </section>
+<section class="content-block">
+    <h2><i class="fas fa-question-circle" aria-hidden="true"></i>Qu’est ce qu’un hash ?</h2>
 
-    <section class="content-block">
-        <h2>Les attaques</h2>
-        <h3>Pass the Hash</h3>
-        <p>
-            [cite_start]Cette attaque repose sur une question : Qu'est ce qui prouve que le client a bien calculé le hash ? [cite: 45] Qu'est ce qui prouve que le "client" n'est pas un acteur malveillant qui a intercepté le hash et l'envoie sans rien avoir calculé ? [cite_start]La réponse est rien. [cite: 46, 47] [cite_start]Si des sécurités comme la concaténation d'une donnée aléatoire au mot de passe ou l'authentification à deux facteurs ne sont pas mises en place, il est possible d'utiliser l'empreinte en tant que mot de passe. [cite: 47, 48]
-        </p>
-        <h3>Bruteforce</h3>
-        <p>
-            [cite_start]Les attaques par force brute consistent à essayer chaque entrée possible jusqu'à trouver la bonne. [cite: 50] [cite_start]Pour rendre cette attaque réaliste, il faut utiliser des masques, qui peuvent être vus comme le "modèle" du mot de passe. [cite: 52, 53] [cite_start]Ils permettent d'indiquer des types de caractères et leur emplacement afin de restreindre l'étendue des recherches. [cite: 53, 54]
-        </p>
-        <h3>Wordlist</h3>
-        <p>
-            [cite_start]Les attaques par dictionnaires reposent principalement sur des brèches de données où les mots de passe des utilisateurs ont fuité. [cite: 58] [cite_start]À partir de ces listes, on peut constituer des dictionnaires de mots de passe à essayer les uns après les autres. [cite: 59] [cite_start]Cette attaque est extrêmement efficace car beaucoup de mots de passes sont courants et réutilisés. [cite: 60]
-        </p>
-        <h3>Rules</h3>
-        <p>
-            [cite_start]Les "rules" sont un complément des attaques par dictionnaires. [cite: 67] [cite_start]Elles agissent comme un "langage de programmation" qui permet de générer des candidats supplémentaires à partir des mots d'un dictionnaire. [cite: 67] [cite_start]Par exemple, pour un mot de passe comme <code>xXCoucou_26Xx</code> qui ne peut pas être facilement craqué avec une attaque par dictionnaire classique, les rules permettent de générer des variations en ajoutant des préfixes, des suffixes ou en remplaçant des caractères. [cite: 69, 71]
-        </p>
-         <h3>Collisions</h3>
-        <p>
-            [cite_start]Une collision désigne une situation dans laquelle deux données différentes ont un résultat identique avec la même fonction de hachage. [cite: 77] [cite_start]Les attaques par collisions consistent à essayer de trouver deux messages M1 et M2 qui possèdent la même valeur de hachage. [cite: 82] [cite_start]Cette méthode a entre autre permis de forger des certificats de signatures permettant d'usurper des autorités de certification de site. [cite: 86]
-        </p>
-        <h3>Extension de longueur</h3>
-        <p>
-           [cite_start]Cette attaque est spécifique et ne fonctionne que si une fonction de hachage suivant la construction de Merkle-Damgård est utilisée comme code d'authentification, et que le message haché est de la forme (salt + message). [cite: 89, 90, 91] [cite_start]Si toutes ces conditions sont réunies, il est possible d'étendre le contenu du message sans connaître le "salt" (un ensemble de bytes aléatoires ajoutés au message avant le hachage). [cite: 92, 94]
-        </p>
-        <h3>Outils</h3>
-        <p>
-            Il existe plusieurs logiciels permettant de craquer des hashs :
-        </p>
-        <ul>
-            [cite_start]<li><strong>Hashcat :</strong> Connu pour son optimisation et sa capacité à utiliser le GPU pour accélérer la vitesse des essais. [cite: 99] [cite_start]Il supporte tous les types d'attaques mentionnés dans ce document. [cite: 100]</li>
-            [cite_start]<li><strong>John the Ripper :</strong> Dans sa version standard, il identifie seul les hashs et les craque efficacement. [cite: 103] [cite_start]Une version communautaire "Jumbo" supporte beaucoup plus de formats de hashs. [cite: 107]</li>
-            [cite_start]<li><strong>Hashid :</strong> Cet outil ne permet pas de craquer des hashs, mais seulement d'identifier le type de hash. [cite: 110]</li>
-        </ul>
-    </section>
+    <h3>Mise en contexte</h3>
+    <p>
+        Lorsque qu’un client souhaite s’authentifier auprès d’un serveur, il lui transmet un mot de passe. Ce mot de passe, associé à son identifiant, permet de l’identifier et de l’authentifier.
+    </p>
+    <p>
+        Cependant face à des acteurs malveillants capables d’intercepter les paquets passant sur le réseau, transmettre ce mot de passe sans cryptage représente le risque de voir le mot de passe intercepté et réutilisé à des fins malveillantes.
+    </p>
+    <p>
+        Mais pour la même raison que transmettre le mot de passe sans cryptage représente un risque, transmettre une clé de chiffrement n’est pas une option puisque celle-ci aussi pourra être interceptée.
+    </p>
 
-    <section class="content-block">
-        <h2>Les parades</h2>
-        <h3>Sécurité des mots de passes</h3>
-        <p>
-            [cite_start]Certaines de ces attaques reposent sur l'exploitation de failles connues, ce qui nécessite de se maintenir au courant de l'actualité de la cybersécurité. [cite: 127] [cite_start]Les autres attaques exploitent la faiblesse des mots de passes utilisateurs. [cite: 128]
-        </p>
-        <h3>Recommandations</h3>
-        <p>
-            [cite_start]Pour la sécurité des mots de passes, les recommandations générales sont des mots de passes complexes, utilisant des chiffres, minuscules, majuscules et caractères spéciaux, d'une longueur d'au moins 12 caractères. [cite: 131] [cite_start]Ceci doit être accompagné de système de blocage strict (par exemple, 10 essais avant un blocage nécessitant une intervention de l'utilisateur). [cite: 131, 133] [cite_start]Pour se prémunir de l'attaque par extension de longueur, il suffit d'utiliser des fonctions dites "HMAC", ne suivant pas la construction de Merkle-Damgård, comme HMAC-SHA-256. [cite: 129, 130]
-        </p>
-        <p>
-            [cite_start]Pour plus d'informations, vous pouvez consulter la page de la CNIL : <a href="https://www.cnil.fr/fr/mots-de-passe-une-nouvelle-recommandation-pour-maitriser-sa-securite" target="_blank">https://www.cnil.fr/fr/mots-de-passe-une-nouvelle-recommandation-pour-maitriser-sa-securite</a> [cite: 135]
-        </p>
-    </section>
+    <h3>Les fonctions de hachage cryptographique</h3>
+    <p>
+        La situation est cependant particulière : le mot de passe est connu du client ET du serveur. Donc supposons que l’on crypte une donnée, si le serveur et le client cryptent tous les deux, et que le serveur compare les deux données cryptées, le résultat devrait être identique.
+    </p>
+    <p>
+        C’est pour cela que les fonctions de hachage cryptographique ont été conçues. Le résultat d’une fonction de hachage peut être appelée empreinte, condensé ou bien hash. Pour que l’une de ces fonctions soit utilisée elle doit satisfaire quelques propriétés :
+    </p>
+    <ul>
+        <li><b>Déterminisme :</b> f(x)=y pour un x et une fonction donnée (pour la comparaison).</li>
+        <li><b>Rapide à calculer :</b> l’exécution de la fonction doit être rapide car elle est souvent utilisée.</li>
+        <li><b>Non bijective :</b> On ne doit pas pouvoir trouver x en inversant la fonction à partir de y.</li>
+        <li><b>Résistant à la falsification/pré-image :</b> Les mots de passes doivent avoir une empreinte de hash qui change fortement à la plus petite modification. Il n’est donc pas possible de construire un mot de passe grâce à la concaténation de paires donnée/empreinte connues.</li>
+        <li><b>Résistant aux collisions :</b> Il doit être globalement impossible de trouver deux messages qui produisent le même hash.</li>
+    </ul>
+    <p>
+        Remarque : Il existe des fonctions de hachage qui ne sont pas à vocation cryptographique (ex : compression avec perte, index de fichiers)
+    </p>
 
-    <nav class="content-navigation">
-        <a href="#" class="nav-button">Retour aux leçons</a>
-        <a href="#" class="nav-button">Valider la leçon</a>
-    </nav>
+    <h3>Différentes fonctions</h3>
+    <p>
+        Il existe différentes fonctions de hachage, cryptographique ou non. Pour les fonctions cryptographiques on pourra par exemple citer :
+    </p>
+    <ul>
+        <li><b>Message Digest 5 (MD5) :</b> Très utilisé pendant longtemps. Il n’est plus considéré comme sûr suite à la découverte d’une méthode d’attaque par collisions</li>
+        <li><b>Secure Hash Algorithm (SHA) :</b> Il existe beaucoup de variantes utilisées de celui-ci. Une attaque par collision a été effectuée contre SHA-1. Un format courant est SHA2-256.</li>
+        <li><b>Whirlpool :</b> Ce format a été conçu de façon similaire à AES, ce qui garantit une haute fiabilité et une grand robustesse. Il génère des empreintes de 512 bits, ce qui est pour le moment assez rare.</li>
+    </ul>
+    <p>
+        <b>Construction de Merkle Damgård :</b> Cette construction utilise des méthodes de compression et de division par blocs pour permettre de créer une sortie de taille fixe avec une entrée de taille quelconque. Les formats MD5 et SHA-1 entre autre reposent sur cette construction, que l’on pourrait voir comme l’algorithme qui permet de former le hash. Cependant cette construction présente d’importants problèmes : pour deux chaines a et b, si hachage(a)=hachage(b) alors sous certaines conditions on a hachage(ax) = hachage(bx), et ce quelque soit x. De plus les empreintes produites contiennent toutes les informations nécessaire pour continuer à hasher, et donc potentiellement ajouter des données à la chaîne.
+    </p>
+</section>
+
+<section class="content-block">
+    <h2><i class="fas fa-user-secret" aria-hidden="true"></i>Les attaques</h2>
+
+    <h3>Pass the Hash</h3>
+    <p>
+        Cette attaque repose sur une question : Qu’est ce qui prouve que le client a bien calculé le hash ? Qu’est ce qui prouve que le "client" n’est pas un acteur malveillant qui a intercepté le hash et l’envoie sans rien avoir calculé ?
+    </p>
+    <p>
+        La réponse est rien. On peut mettre en place des sécurités, tel que demander au client de hacher une donnée concaténée au mot de passe (un nombre aléatoire par exemple) ou une authentification à deux facteurs. Cependant si ces sécurités ne sont pas mises en place, il est possible d’utiliser l’empreinte en tant que mot de passe.
+    </p>
+
+    <h3>Bruteforce</h3>
+    <p>
+        Les attaques par force brute consistent à essayer chaque entrée possible jusqu’à trouver la bonne. Évidemment une attaque par force brute bête et méchante sur tout le codec Unicode prendrait un temps irréaliste et une attaque sur le codec ASCII resterait inutilement longue.
+    </p>
+    <p>
+        Pour rendre cette attaque plus réaliste il faut utiliser des masques. Un masque peut être vu comme le "modèle" du mot de passe, il permet d’indiquer des types de caractères et leur emplacements. Il permet de restreindre l’étendue des recherches.
+    </p>
+    <p>
+        Par exemple si l’on sait que la donnée hachée est un code PIN de 6 chiffres -> Il suffit d’indiquer un masque de 6 caractères qui sont des chiffres (0-9).
+    </p>
+    <p>
+        C’est à dire que l’on va indiquer un masque tel que xxxxxx où x est un caractère représentant un chiffre entre 0 et 9.
+    </p>
+
+    <h3>Wordlist</h3>
+    <p>
+        Les attaques par dictionnaires reposent principalement sur des brèches de données : Régulièrement au cours de ces brèches on voit fuiter les données utilisateurs ainsi que leur mot de passe. Ce sont ces derniers qui nous intéressent, car à partir de ces listes qui contiennent nombres de mots de passes courants, on peut constituer des dictionnaires de mots de passe à essayer les uns après les autres.
+    </p>
+    <p>
+        Cette attaque est extrêmement efficace car elle repose sur le fait que beaucoup de mots de passes sont courants, réutilisés voire utilisés par plusieurs personnes. On peut ainsi craquer massivement des mots de passes si l’on attaque des listes de mots de passes (au lieu d’un mot de passe particulier). Ce type d’attaque peut aussi être employé en aveugle directement sur un système d’authentification peu sécurisé (sans authentification à 2 facteurs par exemple).
+    </p>
+    <p>
+        Bien évidemment il n’est pas nécessaire pour vous d’aller chercher sur le darknet des fichiers de fuites de données, d’autres s’en sont chargés et ont créé les wordlists. La wordlist la plus courante pour les CTFs et autres challenges est "rockyou" qui est une petite wordlist d’environ 1,5 million d’entrées. Pour un environnement réel des wordlists plus large peuvent être intéressante comme par exemple celle de Crackstation.
+    </p>
+
+    <h3>Rules</h3>
+    <p>
+        Les rules sont un complément des attaques par dictionnaires. On peut considérer les rules comme étant un "langage de programmation" qui permet de générer des candidats supplémentaires.
+    </p>
+    <p>
+        Prenons le mot de passe "Coucou" : Ce mot de passe peut aisément être craqué avec une attaque par dictionnaire Prenons le mot de passe : "xXCouc0u_26Xx" Ce mot de passe ne peut pas aisément être craqué avec une attaque par dictionnaire.
+    </p>
+    <p>
+        Les rules sont un palliatif à cela, car elles permettent de générer des candidats selon des règles spécifiques pour, par exemple, ajouter des préfixes et suffixes courant ou bien tester des remplacements de caractères.
+    </p>
+    <p>
+        Sauf pour un besoin spécifique, vous pouvez utiliser des rules pré-faites comme OneRuleToRuleThemAll. Vous pouvez trouver davantage d’informations quand à l’écriture de rules ici : https://hashcat.net/ wiki/doku.php?id=rule_based_attack
+    </p>
+
+    <h3>Collisions</h3>
+    <p>
+        Avant de parler de l’attaque parlons du concept : "En informatique, une collision désigne une situation dans laquelle deux données ont un résultat identique avec la même fonction de hachage." -Wikipédia
+    </p>
+    <p>
+        Autrement dit, une collision constitue le cas où pour une empreinte y, il existe plusieurs données x capable de l’engendrer. Cet effet est inévitable dès lors que l’ensemble des données x est d’un cardinal plus grand que l’ensemble des empreintes possibles y. Ce qui est le cas puisqu’avec le hachage on cherche à obtenir des empreintes de tailles fixes.
+    </p>
+    <p>
+        Les attaques par collisions consistent à essayer de trouver deux messages M1 et M2 qui possèdent la même valeur de hachage, c’est à dire tel que hachage(M1)=hachage(M2).
+    </p>
+    <p>
+        Il existe une variante de cette attaque : par préfixe choisis. Ce format d’attaque ne fonctionne que sur les fonctions de hachage de Merkle-Damgård. Pour deux documents, que l’on nommera D1 et D2, l’objectif est de trouver 2 suffixes S1 et S2 tel que fonction(P1|S1) = fonction(P2|S2) où " | " représente la concaténation. Cette méthode a entre autre permis de forger des certificats de signatures permettant d’usurper des autorités de certification de site.
+    </p>
+
+    <h3>Extension de longueur</h3>
+    <p>
+        Cette attaque est assez spécifique et ne marche que dans le cas où :
+    </p>
+    <ul>
+        <li>une fonction de hachage est utilisée en tant que code d’authentification</li>
+        <li>la fonction utilisée suit la construction de Merkle-Damgård</li>
+        <li>le message haché est de la forme (salt|message)</li>
+    </ul>
+    <p>
+        Le salt constitue un ensemble relativement long de bytes aléatoires que l’on ajoute à un message avant le hachage. Cet ensemble de bytes le rendant résistant plus résistant aux attaques par dictionnaire et force brute (uniquement si le salt n’est pas connu de l’attaquant).
+    </p>
+    <p>
+        Si toute ces conditions sont réunies, il est alors possible de réaliser une attaque par extension de hash afin d’étendre le contenu du message sans connaître le salt.
+    </p>
+    <p>
+        Cette attaque est possible car les empreintes produites par ces fonctions contiennent l’ensemble des informations nécessaires pour continuer à hacher des données, il suffit alors de placer une fonction de hachage dans le bon état pour continuer et le tour est joué.
+    </p>
+
+    <h3>Outils</h3>
+    <p>
+        Bien que vous puissiez réaliser vous même des programmes permettant de craquer des hashs, au vu de l’optimisation et des performances de ceux disponibles gratuitement ce n’est pas recommandé. Nous pourrons citer principalement 2,5 + 0,5 logiciels permettant cela :
+    </p>
+    <ul>
+        <li><b>Hashcat :</b> Hashcat est connu pour son optimisation et sa capacité à utiliser le GPU pour accélérer la vitesse des essais. Il supporte tous les types d’attaques mentionnés dans ce document, possède des arguments supplémentaires pour les rules et peut être installé très facilement sous linux (sudo apt install hashcat). Il n’identifie pas le type de hash seul mais possède une très large liste de types supportés. La documentation peut être trouvée ici : https://hashcat.net/hashcat/</li>
+        <li><b>John the ripper :</b> Développé par OpenWall, ce logiciel dans sa version standard identifie seul les hashs et les craque efficacement. Il vient avec une suite d’outils utiles permettant entre autre d’extraire les hashs et de les formater. La version standard peut être installé aisément (sudo apt install john), cependant cette versions ne supporte que peu de types de hashs. Une version payante est disponible. La documentation est trouvable dans les fichiers de l’application.</li>
+        <li><b>John the ripper "Jumbo" :</b> Cette version conçue par la communauté possède beaucoup plus de formats de hashs, dont certains sont indisponible sous hashcat. Cependant cette version nécessite d’être installée en compilant la source depuis ce repository : https://github.com/openwall/john</li>
+        <li><b>Hashid :</b> Contrairement aux deux précédents, cet outil ne permet pas de craquer des hashs, seulement d’identifier le type de hash dont il s’agit (Il propose plusieurs possibilités de la plus à la moins probable). Il est installable avec "sudo apt install hashid"</li>
+        <li><b>Extension de longueur :</b> Les outils hash extender et hlextend permettent de réaliser ce type d’attaques, nous ne rentrerons cependant pas plus dans les détails ici.</li>
+    </ul>
+
+    <h3>Exemples</h3>
+    <p>
+        Ces exemples sont tirés de la présentation et se concentre uniquement sur Hashcat et Hashid :
+    </p>
+    <p>
+        Pour réaliser une attaque par dictionnaires et rules :<br>
+        hashcat -a 0(=code des wordlists) -m [codeduhash] [fichier.txt] [wordlist] (-r [fichier.rules])
+    </p>
+    <p>
+        Remarque : Le code du hash est trouvé dans la documentation de hashcat dans hash example, le fichier de hash est un fichier texte que vous créez et qui contient les hashs que vous voulez craquer. La partie entre parenthèses est optionnelle et permet d’indiquer un fichier de rules.
+    </p>
+    <p>
+        Exemple :<br>
+        hashcat -a 0 -m 0 hash.txt rockyou.txt -r OneRuleToRuleThemAll.rules<br>
+        le code du type de hash 0 (-m 0) correspond à la fonction MD5
+    </p>
+    <p>
+        Pour réaliser une attaque par force brute :<br>
+        hashcat -a 3(=code du bruteforce) -m [codeduhash] [fichier.txt] [masque]
+    </p>
+    <p>
+        Remarque : Les codes de remplacement pour les masques peuvent être trouvés dans la documentation hashcat du mode bruteforce.
+    </p>
+    <p>
+        Exemple pour PIN 6 commençant par 4 :<br>
+        hashcat -a 3 -m 0 hash.txt 4?d?d?d?d?d
+    </p>
+</section>
+
+<section class="content-block">
+    <h2><i class="fas fa-shield-alt" aria-hidden="true"></i>Les parades</h2>
+    <p>
+        Version très courte : Sécurité des mots de passes
+    </p>
+    <p>
+        Version moins courte : Certaines de ces attaques reposent sur l’exploitation de failles connues, tel que des méthodes de collisions, ce qui nécessite de se maintenir au courant de l’actualité de la cybersécurité. Les autres attaques exploitent la faiblesse des mots de passes utilisateurs. Dans le cas de l’attaque par extension de longueur, il suffit d’utiliser des fonctions dites "HMAC", ne suivant pas la construction de Merkle-Damgråd et donc invulnérables à ce type d’attaques. On pourra citer HMAC-SHA-256 par exemple, qui est fonction composée à partir de la fonction SHA2-256.
+    </p>
+    <p>
+        Pour la sécurité des mots de passes, les recommandations générales sont des mots de passes complexes, utilisant des chiffres, minuscules, majuscules et caractères spéciaux, d’une longueur d’au moins 12 caractères (pour un mot de passe utilisateur de basse sécurité) et accompagné de système de blocage strict (10 essais avant blocage). Précisons que les chiffres, les majuscules et les caractères spéciaux ne doivent pas être seulement au début et à la fin des mots de passes.
+    </p>
+    <p>
+        Note : On ne parle pas d’un blocage de 10 minutes, plutôt d’un mail demandant à l’utilisateur de débloquer son compte
+    </p>
+    <p>
+        Pour plus d’informations : https://www.cnil.fr/fr/mots-de-passe-une-nouvelle-recommandation-pour-maitriser-sa-securite
+    </p>
+</section>
+
+<nav class="content-navigation">
+    <a href="./lessons.php" class="nav-button prev-button"><i class="fas fa-arrow-left" aria-hidden="true"></i> Retour aux leçons</a>
+    <a href="./lessons.php" class="nav-button next-button">Valider la leçon <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+</nav>

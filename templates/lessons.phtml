@@ -24,6 +24,12 @@
             
             <?php 
             if ($lesson['category'] !== $currentCategory): 
+                // Si on a déjà une catégorie ouverte, on la ferme d'abord
+                if ($currentCategory !== null): ?>
+                        </div>
+                    </section>
+                <?php endif;
+
                 $currentCategory = $lesson['category'];
             ?>
                 <section class="category-section">
@@ -32,6 +38,7 @@
             <?php endif; ?>
             
             <?php
+            // Logique pour la classe de difficulté (inchangée)
             $difficulty_class = '';
             switch (strtolower($lesson['difficulty'])) {
                 case 'débutant': $difficulty_class = 'difficulty-easy'; break;
@@ -39,9 +46,16 @@
                 case 'avancé':   $difficulty_class = 'difficulty-hard'; break;
                 case 'expert':   $difficulty_class = 'difficulty-expert'; break;
             }
+
+            // ========================================================================
+            // MODIFICATION 1 : Préparer la classe 'completed'
+            // On vérifie si la clé 'is_completed' existe et est vraie.
+            // Votre contrôleur DOIT fournir cette information dans le tableau $lesson.
+            // ========================================================================
+            $completed_class = !empty($lesson['is_completed']) ? 'completed' : '';
             ?>
 
-            <a href="/lesson/<?= htmlspecialchars($lesson['id']) ?>" class="card" data-lesson-id="<?= htmlspecialchars($lesson['id']) ?>">
+            <a href="/lesson/<?= htmlspecialchars($lesson['id']) ?>" class="card <?= $completed_class ?>" data-lesson-id="<?= htmlspecialchars($lesson['id']) ?>">
                 <i class="card-icon fas <?= htmlspecialchars($lesson['icon_class'] ?? 'fa-book-open') ?>"></i>
                 <div class="card-text-content">
                     <div class="card-title-wrapper">
@@ -54,23 +68,24 @@
                 </div>
                 <div class="check-box">
                     <i class="checkbox-icon completed fas fa-check"></i>
+                    <i class="checkbox-icon not-completed far fa-circle"></i>
                 </div>
             </a>
 
-            <?php
-            $nextLessonIndex = array_search($lesson, $lessons) + 1;
-            if ($nextLessonIndex >= count($lessons) || $lessons[$nextLessonIndex]['category'] !== $currentCategory):
-            ?>
-                    </div>
-                </section>
-            <?php endif; ?>
-
         <?php endforeach; ?>
+
+        <?php
+        // S'il y avait au moins une leçon, il faut fermer la dernière balise de section
+        if (!empty($lessons)): ?>
+                </div>
+            </section>
+        <?php endif; ?>
     </main>
 
     <?php require __DIR__ . '/partials/footer.php'; ?>
     
     <script src="/js/header.js" defer></script>
+    <script src="/js/search.js" defer></script> 
     <script src="/js/progress-tracker.js" defer></script>
 
 </body>

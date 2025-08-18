@@ -54,7 +54,7 @@
         <i class="fas fa-search panel-icon" aria-hidden="true"></i>
 
         <div class="input-wrapper">
-            <input type="search" id="search-input" placeholder="Rechercher...">
+            <input type="search" id="search-input" placeholder="Rechercher">
             <button id="clear-search-btn" class="fas fa-times" aria-label="Effacer la recherche"></button>
         </div>
 

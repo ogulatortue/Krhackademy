@@ -270,11 +270,14 @@ header.header-active ~ .leaderboard-panel {
     pointer-events: auto;
 }
 
+/* ----- DÉBUT DES MODIFICATIONS POUR LA TAILLE FIXE ----- */
+
+/* MODIFIÉ : Conteneur de filtre pour une largeur fixe */
 .custom-select-wrapper {
     position: relative;
     user-select: none;
-    flex-shrink: 0;
-    flex-grow: 0.1;
+    /* Empêche le bouton de grandir ou rétrécir et lui donne une largeur fixe */
+    flex: 0 0 180px; 
 }
 
 .custom-select {
@@ -294,11 +297,18 @@ header.header-active ~ .leaderboard-panel {
     border-bottom-right-radius: 0;
 }
 
+/* MODIFIÉ : Texte du filtre pour qu'il soit tronqué avec "..." */
 .custom-select-trigger {
     color: #fff;
     font-size: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    width: 100%;
 }
 
+/* ----- FIN DES MODIFICATIONS ----- */
 
 .custom-options {
     position: absolute;

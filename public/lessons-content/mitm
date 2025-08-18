@@ -148,7 +148,7 @@ sslstrip -l 8080
     <h2><i class="fas fa-info-circle" aria-hidden="true"></i>Informations sur le document original</h2>
     <p>
         <b>Titre :</b> Attaques réseaux Man in the Middle (MitM)<br>
-        <b>Auteurs :</b> Anthony Magniat<br>
+        <b>Auteur :</b> Anthony Magniat<br>
         <b>Date de publication :</b> 26 mai 2023
     </p>
 </section>

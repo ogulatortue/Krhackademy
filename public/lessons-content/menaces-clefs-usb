@@ -58,11 +58,100 @@
 </section>
 
 <section class="content-block">
+    <h2><i class="fas fa-laptop-code" aria-hidden="true"></i>Exercices</h2>
+
+    <h3>Exercice 1 : Identifier les périphériques USB</h3>
+    <p>
+        Comment identifier les périphériques USB de sa machine? Quels sont les périphériques connectés?
+    </p>
+    <p><strong>Solution :</strong></p>
+    <pre style="background-color:#eee; border-radius:5px; padding:10px; font-family:monospace;"><code>lsusb
+sudo apt update
+sudo apt install xinput
+xinput list</code></pre>
+
+    <hr style="margin: 20px 0;">
+
+    <h3>Exercice 2 : Le langage « Ducky Script » - Premier script</h3>
+    <p>
+        Ecrire et exécuter son premier script Ducky (fichier ducky001.txt à créer).
+        <br>• Ouvrir un terminal Shell et lancer une commande basique à l’aide d’un script Ducky.
+    </p>
+    <p><strong>Prérequis :</strong></p>
+    <pre style="background-color:#eee; border-radius:5px; padding:10px; font-family:monospace;"><code>cd
+python3 -m venv venvducky
+venvducky/bin/pip install pyautogui
+git clone https://github.com/0ent/ducky2python
+vi ducky001.txt
+venvducky/bin/python ducky2python/ducky2python.py ducky001.txt</code></pre>
+    <p><strong>Solution (contenu de ducky001.txt) :</strong></p>
+    <pre style="background-color:#eee; border-radius:5px; padding:10px; font-family:monospace;"><code>DELAY 1000
+ALT F2
+DELAY 3000
+STRING qterminal
+DELAY 300
+ENTER
+DELAY 1000
+STRING ls
+DELAY 100
+ENTER</code></pre>
+    <p><em>Note : Utilisez GUI r au lieu de ALT F2 en fonction de votre distribution.</em></p>
+
+    <hr style="margin: 20px 0;">
+
+    <h3>Exercice 3 : Protéger l’exécution du script Ducky</h3>
+    <p>
+        Bloquer temporairement le clavier et la souris de l’utilisateur.
+    </p>
+    <p><strong>Solution :</strong></p>
+    <p><em>Les identifiants du clavier (ex: 10) et de la souris (ex: 8) s’obtiennent grâce à une phase de reconnaissance préalable (cf. exercice 1).</em></p>
+    <pre style="background-color:#eee; border-radius:5px; padding:10px; font-family:monospace;"><code>DELAY 4000
+ALT F2
+DELAY 300
+STRING qterminal
+DELAY 100
+ENTER
+DELAY 1000
+STRING xinput set-int-prop 10 "Device Enabled" 8 0
+DELAY 100
+ENTER
+DELAY 200
+STRING xinput set-int-prop 8 "Device Enabled" 8 0
+DELAY 100
+ENTER</code></pre>
+
+    <hr style="margin: 20px 0;">
+
+    <h3>Exercice 4 : USBGuard</h3>
+    <p>
+        Installer et configurer USBGuard.
+    </p>
+    <p><strong>Solution :</strong></p>
+    <pre style="background-color:#eee; border-radius:5px; padding:10px; font-family:monospace;"><code>sudo apt install usbguard
+sudo usbguard generate-policy > /etc/usbguard/rules.conf
+sudo systemctl enable --now usbguard
+sudo usbguard list-devices
+sudo usbguard allow-device xxx</code></pre>
+    
+    <hr style="margin: 20px 0;">
+
+    <h3>Références</h3>
+    <ul>
+        <li><a href="https://shop.hak5.org/products/usb-rubber-ducky" target="_blank">https://shop.hak5.org/products/usb-rubber-ducky</a></li>
+        <li><a href="https://payloadstudio.hak5.org/community/" target="_blank">https://payloadstudio.hak5.org/community/</a></li>
+        <li><a href="https://github.com/taibhse-designs/DuckyEmulator" target="_blank">https://github.com/taibhse-designs/DuckyEmulator</a></li>
+        <li><a href="https://fr.wikipedia.org/wiki/Fichier_de_test_Eicar" target="_blank">https://fr.wikipedia.org/wiki/Fichier_de_test_Eicar</a></li>
+    </ul>
+</section>
+
+
+<section class="content-block">
     <h2><i class="fas fa-info-circle" aria-hidden="true"></i>Informations sur le document original</h2>
     <p>
         <b>Titre :</b> L'énergie face aux risques de cybersécurité<br>
         <b>Auteurs :</b> Eduardo Navarro Tarján, Sébastien Blanc, EVIDEN<br>
-        <b>Date de publication :</b> 11/04/2024
+        <b>Date de publication :<br> 11/04/2024
+        <b>Contact :</b> eduardo.navarrotarjan@eviden.com / sebastien.blanc@eviden.com<br>
     </p>
 </section>
 

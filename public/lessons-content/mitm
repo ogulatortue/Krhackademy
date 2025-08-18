@@ -1,1 +1,159 @@
+<section class="content-block">
+    <h2><i class="fas fa-exclamation-triangle" aria-hidden="true"></i> Avertissement</h2>
+    <p>
+        Les informations et techniques décrites dans ce document sont présentées à des fins éducatives uniquement. L'utilisation de ces techniques sur des réseaux ou des systèmes sans autorisation explicite est illégale. "Un grand pouvoir implique de grandes responsabilités".
+    </p>
+</section>
 
+<section class="content-block">
+    <h2><i class="fas fa-comments" aria-hidden="true"></i> Le Concept de l'Attaque MitM</h2>
+    <p>
+        Une attaque de l'Homme du Milieu (Man-in-the-Middle ou MitM) est une forme d'interception des communications. L'attaquant, que nous appellerons Charlie, s'insère secrètement entre deux interlocuteurs, Alice et Bob, pour écouter, modifier ou relayer leurs échanges sans qu'ils ne s'en aperçoivent.
+    </p>
+    <h3>Scénario classique</h3>
+    <p>
+        Alice et Bob communiquent directement. Alice connaît le numéro de Bob, et Bob connaît celui d'Alice. Leur conversation est privée.
+    </p>
+    <h3>Mise en place de l'attaque</h3>
+    <p>
+        Charlie parvient à tromper Alice et Bob. Il donne son propre numéro à Alice en prétendant que c'est celui de Bob. Il fait de même avec Bob en se faisant passer pour Alice. C'est l'<strong>empoisonnement</strong> des carnets de contact.
+    </p>
+    <h3>Interception</h3>
+    <p>
+        Désormais, quand Alice pense appeler Bob, elle appelle en réalité Charlie. Charlie reçoit le message, peut le lire ou le modifier, puis le relaie à Bob. Il fait de même pour la réponse de Bob à Alice. Alice et Bob ont l'illusion de communiquer directement, alors que Charlie est au centre de leur conversation, avec un contrôle total sur celle-ci.
+    </p>
+</section>
+
+<section class="content-block">
+    <h2><i class="fas fa-history" aria-hidden="true"></i> Quelques Exemples Historiques</h2>
+    <ul>
+        <li><strong>Belkin (2003) :</strong> Des routeurs de la marque interceptaient périodiquement les requêtes web des utilisateurs pour y injecter une publicité pour Belkin, se plaçant en Man-in-the-Middle entre l'utilisateur et le site web demandé.</li>
+        <li><strong>Nokia (2013) :</strong> Le navigateur "Nokia Xpress Browser" sur les téléphones Lumia envoyait toutes les requêtes, y compris HTTPS, vers les serveurs de Nokia avant de les relayer. Cela a soulevé des soupçons de déchiffrement du trafic à des fins commerciales.</li>
+        <li><strong>NSA (2013) :</strong> Dans le cadre de son programme de surveillance, la NSA a été accusée de se faire passer pour des serveurs Google afin d'intercepter et de collecter les données des utilisateurs, comme l'a révélé Edward Snowden.</li>
+    </ul>
+</section>
+
+<section class="content-block">
+    <h2><i class="fas fa-shield-alt" aria-hidden="true"></i> Contremesures</h2>
+    <p>
+        La principale défense contre les attaques MitM est le <strong>chiffrement des communications</strong>.
+    </p>
+    <ul>
+        <li><strong>Protocoles sécurisés :</strong> Utiliser systématiquement des protocoles qui chiffrent les données, comme HTTPS (basé sur TLS, idéalement v1.3), SSH, etc.</li>
+        <li><strong>Certificats de confiance :</strong> Le chiffrement ne suffit pas si l'on ne peut pas garantir l'identité de son interlocuteur. Les certificats numériques, signés par des Autorités de Certification (CA) reconnues, permettent de vérifier que l'on communique bien avec le serveur légitime et non avec un imposteur.</li>
+        <li><strong>Politiques de sécurité avancées (HSTS) :</strong> Le "HTTP Strict Transport Security" est un mécanisme qui force un navigateur à n'utiliser que des connexions HTTPS avec un site, empêchant ainsi les attaques de type "SSL Stripping" qui tentent de forcer une connexion non chiffrée.</li>
+    </ul>
+</section>
+
+<section class="content-block">
+    <h2><i class="fas fa-laptop-code" aria-hidden="true"></i> Exercices Pratiques</h2>
+    <p>
+        Pour ces exercices, nous allons simuler une attaque sur un réseau local. Vous aurez besoin d'un environnement de virtualisation (comme VirtualBox) avec une machine attaquante (Kali Linux) et deux machines victimes (Debian).
+    </p>
+
+    <h3>Exercice 1 : Détournement de Ping avec Ettercap (ARP Spoofing)</h3>
+    <p>
+        <strong>Objectif :</strong> Comprendre la base d'une attaque MitM en réseau local : l'ARP Spoofing. Nous allons utiliser l'outil Ettercap pour nous placer entre un client et un serveur et intercepter leur trafic, en commençant par de simples pings.
+    </p>
+    <p>
+        L'ARP Spoofing consiste à envoyer de fausses réponses ARP sur le réseau pour lier l'adresse IP d'une victime à l'adresse MAC de l'attaquant. Ainsi, tout le trafic de la victime destiné à une autre machine passera d'abord par l'attaquant.
+    </p>
+    <details>
+        <summary>Afficher / Masquer la Solution</summary>
+        <div class="solution-content">
+            <p><strong>Étapes de l'attaque :</strong></p>
+            <pre><code># 1. Lancer Ettercap en mode graphique
+sudo ettercap -G
+
+# 2. Scanner le réseau pour trouver les machines
+# Dans le menu "Scan" -> "Scan for hosts"
+
+# 3. Afficher la liste des machines trouvées
+# Dans le menu "Hosts" -> "Host list"
+
+# 4. Définir les cibles
+# Cliquez sur l'IP du client, puis "Add to Target 1"
+# Cliquez sur l'IP du serveur, puis "Add to Target 2"
+
+# 5. Lancer l'attaque ARP Spoofing
+# Dans le menu "Mitm" -> "ARP poisoning..."
+# Cochez "Sniff remote connections" et cliquez sur "OK"
+
+# 6. Démarrer l'écoute
+# Dans le menu "Start" -> "Start sniffing"
+
+# 7. Sur la machine client, envoyez un ping au serveur
+ping [IP_DU_SERVEUR]
+
+# 8. Observez la fenêtre d'Ettercap sur la machine attaquante.
+# Vous devriez voir les paquets ICMP (ping) passer.</code></pre>
+        </div>
+    </details>
+
+    <hr style="margin: 30px 0;">
+
+    <h3>Exercice 2 : Capture d'identifiants en HTTP</h3>
+    <p>
+        <strong>Objectif :</strong> Démontrer la dangerosité de l'absence de chiffrement. Une fois l'attaque ARP Spoofing en place (exercice 1), nous allons intercepter un nom d'utilisateur et un mot de passe envoyés via un formulaire de connexion HTTP non sécurisé.
+    </p>
+    <details>
+        <summary>Afficher / Masquer la Solution</summary>
+        <div class="solution-content">
+            <p><strong>Déroulement :</strong></p>
+            <p>
+                L'attaque ARP Spoofing de l'exercice 1 doit être active.
+            </p>
+            <ol>
+                <li>Sur la machine **client**, ouvrez un navigateur web et accédez à une page de connexion simple hébergée sur le serveur (ex: `http://[IP_DU_SERVEUR]/login.html`).</li>
+                <li>Entrez un nom d'utilisateur et un mot de passe factices (ex: admin / password123) et validez.</li>
+                <li>Sur la machine **attaquante**, observez la fenêtre d'Ettercap. Vous verrez apparaître en clair les informations de connexion capturées, car elles ont transité sans aucun chiffrement.</li>
+            </ol>
+            <p><strong>Exemple de ce que vous verriez dans Ettercap :</strong></p>
+            <pre><code>HTTP: [IP_CLIENT]:... -> [IP_SERVEUR]:80
+USER: admin PASS: password123 INFO: /login.php
+CONTENT: username=admin&password=password123</code></pre>
+        </div>
+    </details>
+
+    <hr style="margin: 30px 0;">
+
+    <h3>Exercice 3 : Contournement de HTTPS avec SSLStrip</h3>
+    <p>
+        <strong>Objectif :</strong> Simuler une attaque plus avancée où l'on contourne la sécurité apportée par HTTPS. Souvent, un site redirige un utilisateur d'une page HTTP vers une page de connexion HTTPS. L'attaque SSLStrip consiste à intercepter cette redirection et à maintenir l'utilisateur sur une connexion HTTP, tout en communiquant de manière chiffrée avec le serveur. L'utilisateur pense être en sécurité, mais son trafic est en clair pour l'attaquant.
+    </p>
+    <details>
+        <summary>Afficher / Masquer la Solution</summary>
+        <div class="solution-content">
+            <p><strong>Mise en place :</strong></p>
+            <p>Cette attaque nécessite une configuration supplémentaire sur la machine attaquante pour rediriger le trafic.</p>
+            <pre><code># 1. Activer la redirection de port sur la machine Kali
+echo 1 > /proc/sys/net/ipv4/ip_forward
+
+# 2. Configurer iptables pour rediriger le trafic HTTP (port 80) vers un port d'écoute local (ex: 8080)
+iptables -t nat -A PREROUTING -p tcp --destination-port 80 -j REDIRECT --to-port 8080
+
+# 3. Lancer sslstrip pour écouter sur ce port
+sslstrip -l 8080
+
+# 4. Dans un autre terminal, lancer l'attaque ARP Spoofing avec Ettercap (comme dans l'exercice 1).
+
+# 5. Sur la machine client, essayez d'accéder à un site qui utilise HTTPS (ex: https://example.com).
+# L'attaque va forcer la connexion à rester en HTTP.
+# Les identifiants saisis seront visibles dans la sortie de la console sslstrip.</code></pre>
+        </div>
+    </details>
+</section>
+
+<section class="content-block">
+    <h2><i class="fas fa-info-circle" aria-hidden="true"></i>Informations sur le document original</h2>
+    <p>
+        <b>Titre :</b> Attaques réseaux Man in the Middle (MitM)<br>
+        <b>Auteurs :</b> Anthony Magniat (Club Kr[Hack]en)<br>
+        <b>Date de publication :</b> Non spécifiée
+    </p>
+</section>
+
+<nav class="content-navigation">
+    <a href="./lessons.php" class="nav-button prev-button"><i class="fas fa-arrow-left" aria-hidden="true"></i> Retour aux leçons</a>
+    <a href="./lessons.php" class="nav-button next-button">Valider la leçon <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+</nav>

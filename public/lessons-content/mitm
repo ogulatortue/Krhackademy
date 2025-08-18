@@ -59,7 +59,7 @@
         L'ARP Spoofing consiste à envoyer de fausses réponses ARP sur le réseau pour lier l'adresse IP d'une victime à l'adresse MAC de l'attaquant. Ainsi, tout le trafic de la victime destiné à une autre machine passera d'abord par l'attaquant.
     </p>
     <details>
-        <summary>Afficher / Masquer la Solution</summary>
+        <summary style="cursor: pointer;">Afficher / Masquer la Solution</summary>
         <div class="solution-content">
             <p><strong>Étapes de l'attaque :</strong></p>
             <pre style="background-color:#000; border-radius:5px; padding:10px; font-family:monospace;"><code># 1. Lancer Ettercap en mode graphique
@@ -97,7 +97,7 @@ ping [IP_DU_SERVEUR]
         <strong>Objectif :</strong> Démontrer la dangerosité de l'absence de chiffrement. Une fois l'attaque ARP Spoofing en place (exercice 1), nous allons intercepter un nom d'utilisateur et un mot de passe envoyés via un formulaire de connexion HTTP non sécurisé.
     </p>
     <details>
-        <summary>Afficher / Masquer la Solution</summary>
+        <summary style="cursor: pointer;">Afficher / Masquer la Solution</summary>
         <div class="solution-content">
             <p><strong>Déroulement :</strong></p>
             <p>
@@ -122,7 +122,7 @@ CONTENT: username=admin&password=password123</code></pre>
         <strong>Objectif :</strong> Simuler une attaque plus avancée où l'on contourne la sécurité apportée par HTTPS. Souvent, un site redirige un utilisateur d'une page HTTP vers une page de connexion HTTPS. L'attaque SSLStrip consiste à intercepter cette redirection et à maintenir l'utilisateur sur une connexion HTTP, tout en communiquant de manière chiffrée avec le serveur. L'utilisateur pense être en sécurité, mais son trafic est en clair pour l'attaquant.
     </p>
     <details>
-        <summary>Afficher / Masquer la Solution</summary>
+        <summary style="cursor: pointer;">Afficher / Masquer la Solution</summary>
         <div class="solution-content">
             <p><strong>Mise en place :</strong></p>
             <p>Cette attaque nécessite une configuration supplémentaire sur la machine attaquante pour rediriger le trafic.</p>

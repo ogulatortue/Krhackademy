@@ -1,1 +1,146 @@
+<section class="content-block">
+    <h2><i class="fas fa-history" aria-hidden="true"></i> Un peu d'histoire...</h2>
+    <p>
+        L'histoire d'Android est celle d'une ascension fulgurante qui a redéfini le monde de la téléphonie mobile.
+    </p>
+    <ul>
+        <li><strong>Octobre 2003 :</strong> Fondation de la société <strong>Android Inc.</strong> par Andy Rubin, Rich Miner, Nick Sears et Chris White. L'objectif initial était de développer un système d'exploitation avancé pour les appareils photo numériques.</li>
+        <li><strong>Août 2005 :</strong> Conscient du potentiel du projet, <strong>Google rachète Android Inc.</strong> et réoriente le développement vers un système d'exploitation pour smartphones, destiné à concurrencer Symbian et Windows Mobile.</li>
+        <li><strong>Novembre 2007 :</strong> Création de l'<strong>Open Handset Alliance (OHA)</strong>, un consortium de 84 entreprises (dont Google, HTC, Samsung, Motorola, etc.) dont le but est de développer des standards ouverts pour la téléphonie mobile. C'est à ce moment qu'Android est officiellement dévoilé.</li>
+        <li><strong>Septembre 2008 :</strong> Lancement du premier smartphone commercialisé sous Android, le <strong>HTC Dream (ou T-Mobile G1)</strong>, marquant le début de l'ère Android pour le grand public.</li>
+    </ul>
+</section>
 
+<section class="content-block">
+    <h2><i class="fas fa-birthday-cake" aria-hidden="true"></i> Les Versions d'Android</h2>
+    <p>
+        Une des particularités d'Android est sa tradition de nommer ses versions majeures d'après des desserts ou des sucreries, par ordre alphabétique. Avant les versions publiques, les premières versions de développement portaient des noms de robots célèbres comme "Astro Boy" ou "Bender".
+    </p>
+    <p>
+        Chaque version apporte son lot de nouveautés, d'améliorations de sécurité et de nouvelles API pour les développeurs. Vous pouvez généralement trouver la version de votre système dans <strong>Réglages > À propos du téléphone > Version d'Android</strong>.
+    </p>
+</section>
+
+<section class="content-block">
+    <h2><i class="fas fa-cogs" aria-hidden="true"></i> Architecture du Système</h2>
+    <p>
+        Android est construit sur une pile logicielle complexe, composée de plusieurs couches qui interagissent entre elles.
+    </p>
+    <ul>
+        <li><strong>Noyau Linux (Linux Kernel) :</strong> C'est la base du système. Le noyau gère les processus fondamentaux comme la gestion de la mémoire, des processus, de la sécurité et surtout, les pilotes matériels (pour l'écran, le Wi-Fi, l'appareil photo, etc.).</li>
+        <li><strong>Couche d'abstraction matérielle (HAL) :</strong> Elle fait le pont entre le noyau Linux et les bibliothèques de plus haut niveau, en fournissant une interface standardisée pour le matériel.</li>
+        <li><strong>Bibliothèques natives et Android Runtime :</strong> Cette couche contient des bibliothèques C/C++ essentielles (comme WebKit pour le rendu web, OpenGL pour les graphismes, SQLite pour les bases de données). À côté se trouve l'<strong>Android Runtime (ART)</strong>, qui a remplacé l'ancienne machine virtuelle <strong>Dalvik</strong>. Son rôle est d'exécuter le code des applications, compilé au format DEX (Dalvik Executable).</li>
+        <li><strong>Framework d'application :</strong> C'est la boîte à outils que les développeurs utilisent pour créer leurs applications. Elle contient des gestionnaires de haut niveau comme l'Activity Manager (gère le cycle de vie des écrans), le Package Manager (gère l'installation des apps), etc.</li>
+        <li><strong>Applications :</strong> La couche supérieure, celle que l'utilisateur voit. Elle inclut les applications système (Téléphone, Contacts, Navigateur) et toutes les applications installées depuis le Play Store ou d'autres sources.</li>
+    </ul>
+</section>
+
+<section class="content-block">
+    <h2><i class="fas fa-file-archive" aria-hidden="true"></i> Structure d'une Application (APK)</h2>
+    <p>
+        Une application Android est distribuée sous la forme d'un fichier avec l'extension <strong>.apk</strong> (Android Package Kit). Il s'agit en réalité d'un fichier d'archive ZIP qui contient tous les éléments nécessaires au fonctionnement de l'application.
+    </p>
+    <ul>
+        <li><strong><code>AndroidManifest.xml</code> :</strong> C'est le fichier le plus important. Il agit comme la carte d'identité de l'application. Il déclare ses composants (les différents écrans ou "Activities"), les permissions dont elle a besoin (accès à internet, aux contacts, etc.), sa version, et bien plus encore.</li>
+        <li><strong><code>classes.dex</code> :</strong> C'est le code source de l'application, compilé dans un format exécutable par la machine virtuelle ART/Dalvik.</li>
+        <li><strong><code>res/</code> :</strong> Un dossier contenant toutes les ressources de l'application qui ne sont pas du code : images, agencement des écrans (layouts), textes, etc.</li>
+    </ul>
+</section>
+
+<section class="content-block">
+    <h2><i class="fas fa-terminal" aria-hidden="true"></i> Interagir avec Android : ADB</h2>
+    <p>
+        L'<strong>Android Debug Bridge (ADB)</strong> est un outil en ligne de commande indispensable pour les développeurs et les utilisateurs avancés. Il permet de communiquer avec un appareil Android depuis un ordinateur pour effectuer une grande variété d'actions.
+    </p>
+    <p>
+        Pour l'utiliser, il faut d'abord activer le "Débogage USB" dans les options pour les développeurs du téléphone. Une fois l'outil installé sur l'ordinateur et le téléphone branché, on peut lancer des commandes comme <code>adb devices</code> pour vérifier la connexion, <code>adb shell</code> pour ouvrir un terminal directement sur le téléphone, ou <code>adb logcat</code> pour voir les journaux système en temps réel.
+    </p>
+</section>
+
+<section class="content-block">
+    <h2><i class="fas fa-user-secret" aria-hidden="true"></i> Personnalisation et Root</h2>
+    <p>
+        L'un des grands avantages d'Android est sa flexibilité. Les utilisateurs avancés peuvent aller jusqu'à "rooter" leur téléphone. Le <strong>root</strong> est le processus qui consiste à obtenir un accès total au système (équivalent des droits d'administrateur), permettant de modifier des fichiers système normalement protégés.
+    </p>
+    <p>
+        Une fois rooté, il devient possible d'installer des <strong>ROM Customs</strong>. Une ROM est une version modifiée du système d'exploitation Android (comme Dirty Unicorns, LineageOS, etc.). Elles peuvent offrir de meilleures performances, des fonctionnalités exclusives ou simplement une interface différente de celle proposée par le fabricant.
+    </p>
+</section>
+
+<section class="content-block">
+    <h2><i class="fas fa-laptop-code" aria-hidden="true"></i> Exercices Pratiques</h2>
+
+    <h3>Exercice 1 : Connexion et Exploration avec ADB</h3>
+    <p>
+        <strong>Objectif :</strong> Établir une première connexion entre votre ordinateur et votre téléphone Android en utilisant ADB et explorer le système de fichiers de base.
+    </p>
+    <details>
+        <summary style="cursor: pointer;">Afficher / Masquer la Solution</summary>
+        <div class="solution-content">
+            <ol>
+                <li><strong>Activer le débogage USB sur votre téléphone :</strong> Allez dans Paramètres > À propos du téléphone, puis tapotez 7 fois sur "Numéro de build" pour activer les "Options pour les développeurs". Dans ce nouveau menu, activez "Débogage USB".</li>
+                <li><strong>Installer ADB sur votre ordinateur (Debian/Ubuntu) :</strong></li>
+            </ol>
+            <pre style="background-color:#000; border-radius:5px; padding:10px; font-family:monospace;"><code>sudo apt update && sudo apt install adb</code></pre>
+            <ol start="3">
+                <li><strong>Connecter le téléphone et vérifier la connexion :</strong> Branchez votre téléphone à l'ordinateur via USB. Sur votre téléphone, une fenêtre vous demandera d'autoriser la connexion. Acceptez. Puis, dans un terminal sur votre ordinateur :</li>
+            </ol>
+            <pre style="background-color:#000; border-radius:5px; padding:10px; font-family:monospace;"><code>adb devices</code></pre>
+            <p>Si tout va bien, vous devriez voir l'identifiant de votre appareil.</p>
+            <ol start="4">
+                <li><strong>Ouvrir un shell sur le téléphone :</strong></li>
+            </ol>
+            <pre style="background-color:#000; border-radius:5px; padding:10px; font-family:monospace;"><code>adb shell
+ls -l /system/</code></pre>
+            <p>Vous êtes maintenant dans un terminal à l'intérieur de votre téléphone et pouvez explorer les dossiers (avec des droits limités si non rooté).</p>
+        </div>
+    </details>
+
+    <hr style="margin: 30px 0;">
+
+    <h3>Exercice 2 : Analyser la "Carte d'Identité" d'une Application</h3>
+    <p>
+        <strong>Objectif :</strong> Apprendre à extraire et à lire le fichier `AndroidManifest.xml` d'une application pour comprendre les permissions qu'elle demande et les composants qu'elle déclare.
+    </p>
+    <details>
+        <summary style="cursor: pointer;">Afficher / Masquer la Solution</summary>
+        <div class="solution-content">
+            <ol>
+                <li><strong>Trouver le chemin d'une application installée :</strong></li>
+            </ol>
+            <pre style="background-color:#000; border-radius:5px; padding:10px; font-family:monospace;"><code># Ouvrir un shell ADB
+adb shell
+# Lister tous les paquets installés et chercher une app (ex: l'horloge)
+pm list packages | grep clock</code></pre>
+            <p>Vous obtiendrez un nom de package, par exemple `com.google.android.deskclock`.</p>
+            <ol start="2">
+                <li><strong>Trouver l'emplacement de son fichier APK :</strong></li>
+            </ol>
+            <pre style="background-color:#000; border-radius:5px; padding:10px; font-family:monospace;"><code># Toujours dans le shell ADB
+pm path com.google.android.deskclock</code></pre>
+            <p>Cela vous donnera un chemin comme `/system/app/DeskClock/DeskClock.apk`.</p>
+            <ol start="3">
+                <li><strong>Copier l'APK sur votre ordinateur :</strong></li>
+            </ol>
+            <pre style="background-color:#000; border-radius:5px; padding:10px; font-family:monospace;"><code># Quitter le shell ADB (ctrl+d) et revenir au terminal normal
+adb pull /system/app/DeskClock/DeskClock.apk .</code></pre>
+            <ol start="4">
+                <li><strong>Analyser le manifeste :</strong> Vous ne pouvez pas lire le `AndroidManifest.xml` directement. Utilisez un outil en ligne comme <a href="http://www.javadecompilers.com/apk" target="_blank">Java Decompilers</a> ou un outil local comme `apktool` pour le décoder et voir son contenu en clair.</li>
+            </ol>
+        </div>
+    </details>
+</section>
+
+<section class="content-block">
+    <h2><i class="fas fa-info-circle" aria-hidden="true"></i>Informations sur le document original</h2>
+    <p>
+        <b>Titre :</b> Android - Introduction<br>
+        <b>Auteurs :</b> Franswag<br>
+        <b>Date de publication :</b> 25/05/2023
+    </p>
+</section>
+
+<nav class="content-navigation">
+    <a href="./lessons.php" class="nav-button prev-button"><i class="fas fa-arrow-left" aria-hidden="true"></i> Retour aux leçons</a>
+    <a href="./lessons.php" class="nav-button next-button">Valider la leçon <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+</nav>

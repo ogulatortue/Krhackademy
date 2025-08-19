@@ -1,0 +1,88 @@
+<section class="content-block">
+    <h2><i class="fas fa-shield-alt" aria-hidden="true"></i> Qu'est-ce que Burp Suite ?</h2>
+    <p>
+        <strong>Burp Suite</strong> est une plateforme intégrée pour effectuer des tests de sécurité sur les applications web. Développée par PortSwigger, elle est considérée comme l'outil de référence par les professionnels de la cybersécurité pour l'audit et le pentesting web.
+    </p>
+    <p>
+        Son rôle principal est d'agir comme un <strong>proxy d'interception</strong>, se plaçant entre le navigateur de l'utilisateur et le serveur web. Cela permet à l'auditeur de voir, de manipuler et d'analyser en détail tout le trafic HTTP/HTTPS échangé. Il existe en plusieurs éditions, dont une version <strong>Community</strong> gratuite et une version <strong>Professional</strong> payante offrant des fonctionnalités avancées et une automatisation accrue.
+    </p>
+</section>
+
+<section class="content-block">
+    <h2><i class="fas fa-cogs" aria-hidden="true"></i> Installation et Configuration Initiale</h2>
+    <p>
+        L'installation se fait simplement en téléchargeant la version souhaitée depuis le site officiel de PortSwigger. Au premier démarrage, vous pouvez créer un projet temporaire pour commencer rapidement.
+    </p>
+    <h3>Configuration du Proxy</h3>
+    <p>
+        Pour que Burp puisse intercepter le trafic, il faut configurer votre navigateur pour qu'il l'utilise comme proxy. Deux méthodes principales :
+    </p>
+    <ul>
+        <li><strong>Navigateur intégré :</strong> La solution la plus simple. Dans l'onglet "Proxy" de Burp, cliquez sur "Open Browser". Un navigateur Chromium préconfiguré se lancera, et tout son trafic passera automatiquement par Burp.</li>
+        <li><strong>Configuration manuelle :</strong> Configurez les paramètres réseau de votre navigateur (Firefox, Chrome, etc.) pour utiliser un proxy manuel à l'adresse <code>127.0.0.1</code> sur le port <code>8080</code>.</li>
+    </ul>
+    <p><strong>Important pour le HTTPS :</strong> Pour intercepter le trafic chiffré (HTTPS) sans erreurs de certificat, vous devez installer le certificat CA de Burp dans votre navigateur. Pour cela, avec le proxy activé, visitez l'adresse <code>http://burpsuite</code> et suivez les instructions.</p>
+</section>
+
+<section class="content-block">
+    <h2><i class="fas fa-tools" aria-hidden="true"></i> Tour d'horizon des Outils Principaux</h2>
+    <p>Burp Suite est une collection d'outils interconnectés, chacun ayant un rôle spécifique.</p>
+    <ul>
+        <li><strong>Dashboard :</strong> Le tableau de bord central qui affiche l'état des scans automatiques en cours, un journal des événements et un résumé des vulnérabilités découvertes.</li>
+        <li><strong>Target :</strong> Cartographie l'application cible. L'onglet "Site map" construit une arborescence de toutes les pages et ressources découvertes. C'est ici que l'on définit le "scope" (périmètre) pour concentrer les tests sur une cible précise.</li>
+        <li><strong>Proxy :</strong> Le cœur de Burp. L'onglet "Intercept" permet de bloquer les requêtes et les réponses à la volée pour les modifier avant qu'elles n'atteignent leur destination. "HTTP history" conserve un journal complet de tout le trafic.</li>
+        <li><strong>Intruder :</strong> Un outil d'attaque automatisé et hautement configurable. Il permet de lancer des attaques de type brute-force, fuzzing ou énumération sur des parties spécifiques d'une requête. La version Community est fortement limitée en vitesse.</li>
+        <li><strong>Repeater :</strong> Permet de prendre une requête de l'historique, de la modifier manuellement à l'infini et de la renvoyer pour observer la réponse du serveur. C'est l'outil idéal pour tester manuellement une vulnérabilité.</li>
+        <li><strong>Sequencer :</strong> Analyse la qualité de l'aléa des tokens générés par une application (tokens de session, de réinitialisation de mot de passe, etc.) pour détecter s'ils sont prévisibles.</li>
+        <li><strong>Decoder :</strong> Un utilitaire pratique pour encoder et décoder des données dans divers formats (URL, Base64, HTML, etc.) et pour calculer des hashs (MD5, SHA-256...).</li>
+        <li><strong>Comparer :</strong> Un outil de comparaison visuelle (diff) pour mettre en évidence les différences entre deux requêtes ou deux réponses.</li>
+        <li><strong>Logger :</strong> Un journal centralisé qui enregistre absolument toutes les requêtes émises par tous les outils de Burp.</li>
+        <li><strong>Extender :</strong> Permet d'étendre les fonctionnalités de Burp en ajoutant des extensions (BApps) développées par la communauté, disponibles sur le "BApp Store".</li>
+    </ul>
+</section>
+
+<section class="content-block">
+    <h2><i class="fas fa-satellite-dish" aria-hidden="true"></i> Burp Collaborator Client</h2>
+    <p>
+        Le Collaborator est un service externe fourni par PortSwigger qui permet de détecter les vulnérabilités "out-of-band" (OAST). Il fournit des adresses uniques que l'on peut injecter dans les requêtes. Si l'application cible effectue une interaction (DNS, HTTP) avec cette adresse, le Collaborator le signale, révélant des failles comme les injections de commandes aveugles ou les SSRF (Server-Side Request Forgery). C'est un outil très puissant pour trouver des vulnérabilités invisibles autrement.
+    </p>
+</section>
+
+<section class="content-block">
+    <h2><i class="fas fa-laptop-code" aria-hidden="true"></i> Exercices Pratiques</h2>
+
+    <h3>Exercice 1 : Intercepter et modifier une requête HTTP</h3>
+    <p>
+        <strong>Objectif :</strong> Maîtriser la fonction de base de Burp : intercepter une requête, la modifier, puis l'envoyer au serveur.
+    </p>
+    <details>
+        <summary style="cursor: pointer;">Afficher / Masquer la Solution</summary><br>
+        <div class="solution-content">
+            <p><strong>Étapes :</strong></p>
+            <ol>
+                <li>Lancez Burp Suite et ouvrez le navigateur intégré via l'onglet <strong>Proxy > Open Browser</strong>.</li>
+                <li>Dans l'onglet <strong>Proxy > Intercept</strong>, assurez-vous que le bouton "Intercept is on" est activé.</li>
+                <li>Dans le navigateur, visitez n'importe quel site HTTP (par exemple, <code>http://testphp.vulnweb.com</code>).</li>
+                <li>La requête est immédiatement interceptée et affichée dans Burp. Vous pouvez voir les en-têtes, les cookies, etc.</li>
+                <li>Modifiez une valeur, par exemple l'en-tête `User-Agent` pour y mettre "Mon Navigateur Personnalisé".</li>
+                <li>Cliquez sur le bouton <strong>Forward</strong> pour laisser la requête modifiée partir vers le serveur. Continuez à cliquer sur Forward jusqu'à ce que la page se charge dans le navigateur.</li>
+                <li>Allez dans l'onglet <strong>Proxy > HTTP history</strong> pour voir la requête que vous avez envoyée et la réponse du serveur.</li>
+            </ol>
+        </div>
+    </details>
+
+</section>
+
+<section class="content-block">
+    <h2><i class="fas fa-info-circle" aria-hidden="true"></i>Informations sur le document original</h2>
+    <p>
+        <b>Titre :</b> INTRODUCTION À BURPSUITE<br>
+        <b>Auteur :</b> CÉLIAN G.<br>
+        <b>Date de publication :</b> 2023
+    </p>
+</section>
+
+<nav class="content-navigation">
+    <a href="./lessons.php" class="nav-button prev-button"><i class="fas fa-arrow-left" aria-hidden="true"></i> Retour aux leçons</a>
+    <a href="./lessons.php" class="nav-button next-button">Valider la leçon <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+</nav>

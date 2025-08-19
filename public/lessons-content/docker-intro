@@ -79,21 +79,20 @@
         <strong>Objectif :</strong> Se familiariser avec la commande `docker run` et comprendre comment un conteneur interagit avec son hôte sur le réseau.
     </p>
     <details>
-        <summary style="cursor: pointer;">Afficher / Masquer la Solution</summary>
+        <summary style="cursor: pointer;">Afficher / Masquer la Solution</summary><br>
         <div class="solution-content">
-            <p><strong>Étapes :</strong></p>
             <ol>
                 <li><strong>Installer Docker sur votre machine (Debian/Ubuntu) :</strong></li>
             </ol>
             <pre style="background-color:#000; border-radius:5px; padding:10px; font-family:monospace;"><code>sudo apt update
 sudo apt install docker.io docker-compose -y
 sudo systemctl start docker
-sudo systemctl enable docker</code></pre>
+sudo systemctl enable docker</code></pre><br>
             <ol start="2">
                 <li><strong>Lancer un conteneur Alpine en mode interactif :</strong></li>
             </ol>
             <pre style="background-color:#000; border-radius:5px; padding:10px; font-family:monospace;"><code>docker run -it alpine sh</code></pre>
-            <p>Vous êtes maintenant dans un terminal à l'intérieur du conteneur.</p>
+            <p>Vous êtes maintenant dans un terminal à l'intérieur du conteneur.</p><br>
             <ol start="3">
                 <li><strong>Pinger une adresse externe pour vérifier la connectivité :</strong></li>
             </ol>
@@ -110,10 +109,9 @@ ping -c 4 google.com</code></pre>
         <strong>Objectif :</strong> Lancer un service en arrière-plan et exposer un port du conteneur sur le réseau de l'hôte pour y accéder depuis un navigateur.
     </p>
     <details>
-        <summary style="cursor: pointer;">Afficher / Masquer la Solution</summary>
+        <summary style="cursor: pointer;">Afficher / Masquer la Solution</summary><br>
         <div class="solution-content">
-            <p><strong>Commande à exécuter :</strong></p>
-            <pre style="background-color:#000; border-radius:5px; padding:10px; font-family:monospace;"><code>docker run --name mon-serveur-web -p 8080:80 -d nginx</code></pre>
+            <pre style="background-color:#000; border-radius:5px; padding:10px; font-family:monospace;"><code>docker run --name mon-serveur-web -p 8080:80 -d nginx</code></pre><br>
             <p><strong>Explication des options :</strong></p>
             <ul>
                 <li><code>--name mon-serveur-web</code> : Donne un nom facile à retenir à notre conteneur.</li>
@@ -132,11 +130,10 @@ ping -c 4 google.com</code></pre>
         <strong>Objectif :</strong> Créer une image Docker personnalisée à l'aide d'un `Dockerfile` pour une simple application web Python.
     </p>
     <details>
-        <summary style="cursor: pointer;">Afficher / Masquer la Solution</summary>
+        <summary style="cursor: pointer;">Afficher / Masquer la Solution</summary><br>
         <div class="solution-content">
-            <p><strong>Étapes :</strong></p>
             <ol>
-                <li><strong>Créez un dossier pour votre projet et placez-y deux fichiers :</strong></li>
+                <li><strong>Créez un dossier pour votre projet et placez-y deux fichiers :</strong></li><br>
                 <p>Fichier 1 : <code>app.py</code></p>
                 <pre style="background-color:#000; border-radius:5px; padding:10px; font-family:monospace;"><code>from flask import Flask
 app = Flask(__name__)
@@ -146,7 +143,7 @@ def hello():
     return "Bonjour le monde depuis mon conteneur Docker !"
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)</code></pre>
+    app.run(host='0.0.0.0', port=5000)</code></pre><br>
                 <p>Fichier 2 : <code>Dockerfile</code></p>
                 <pre style="background-color:#000; border-radius:5px; padding:10px; font-family:monospace;"><code># Utiliser une image Python officielle comme base
 FROM python:3.8-slim
@@ -162,11 +159,11 @@ RUN pip install Flask
 
 # Commande à exécuter au démarrage du conteneur
 CMD ["python", "app.py"]</code></pre>
-            </ol>
+            </ol><br>
             <ol start="2">
                 <li><strong>Construire l'image :</strong> Dans votre terminal, à la racine de votre projet :</li>
             </ol>
-            <pre style="background-color:#000; border-radius:5px; padding:10px; font-family:monospace;"><code>docker build -t mon-app-python .</code></pre>
+            <pre style="background-color:#000; border-radius:5px; padding:10px; font-family:monospace;"><code>docker build -t mon-app-python .</code></pre><br>
             <ol start="3">
                 <li><strong>Lancer un conteneur à partir de votre nouvelle image :</strong></li>
             </ol>
@@ -180,7 +177,7 @@ CMD ["python", "app.py"]</code></pre>
     <h2><i class="fas fa-info-circle" aria-hidden="true"></i>Informations sur le document original</h2>
     <p>
         <b>Titre :</b> Workshop Docker<br>
-        <b>Auteurs :</b> Alexandre Legendre<br>
+        <b>Auteur :</b> Alexandre Legendre<br>
         <b>Date de publication :</b> 25 mai 2023
     </p>
 </section>

@@ -506,6 +506,8 @@ main {
 }
 
 .no-results p {
+    position: relative;
+    top: 15rem;
     font-size: 1.5rem;
     color: white;
 }

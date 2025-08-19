@@ -115,12 +115,12 @@
 .card.completed {
     border-color: var(--completed-color);
     border-width: 2px;
-    box-shadow: 0 0 5px var(--completed-color);
+    box-shadow: 0 4px 15px var(--shadow-medium);
 }
 
 .card.completed:hover {
     transform: translateY(-8px);
-    box-shadow: 0 0 20px var(--completed-color);
+    box-shadow: 0 20px 40px var(--shadow-heavy);
 }
 
 .card.completed .check-box {

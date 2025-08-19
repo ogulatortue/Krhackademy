@@ -1,0 +1,88 @@
+<section class="content-block">
+    <h2><i class="fas fa-database" aria-hidden="true"></i> C'est quoi une base de données ?</h2>
+    <p>
+        Lorsque vous vous inscrivez sur un site web, les informations que vous fournissez (nom, email, mot de passe, etc.) doivent être stockées quelque part pour que vous puissiez vous reconnecter plus tard. C'est le rôle d'une <strong>base de données</strong> : c'est un système de stockage organisé qui permet de conserver, de gérer et de retrouver facilement de grandes quantités d'informations.
+    </p>
+    <p>
+        Imaginez un grand tableau. Les colonnes représentent les catégories d'informations (Nom, Prénom, Email, Adresse Postale) et chaque ligne correspond à un utilisateur unique.
+    </p>
+    <h3>Et les mots de passe ?</h3>
+    <p>
+        Heureusement, les mots de passe ne sont quasiment jamais stockés en clair. Ils sont transformés via un processus appelé <strong>hachage</strong>. Un hash est une sorte d'empreinte numérique unique du mot de passe. C'est une opération à sens unique : il est très facile de calculer le hash d'un mot de passe, mais quasiment impossible de retrouver le mot de passe à partir du hash. Lors de la connexion, le site hache le mot de passe que vous entrez et le compare au hash stocké dans sa base.
+    </p>
+</section>
+
+<section class="content-block">
+    <h2><i class="fas fa-exclamation-triangle" aria-hidden="true"></i> Qu'est-ce qu'un "Data Breach" ?</h2>
+    <p>
+        Un "Data Breach" (ou fuite de données) se produit lorsque des personnes non autorisées parviennent à accéder et à extraire des données confidentielles d'une base de données. Ces données volées, souvent appelées "leaks", se retrouvent ensuite vendues ou partagées sur des forums de hackers et sur le dark web.
+    </p>
+    <p>
+        Ces fuites peuvent contenir des millions, voire des milliards d'entrées, incluant souvent des paires d'emails et de mots de passe (ou leurs hashs). C'est le cas par exemple de la fuite massive de MyFitnessPal, où des dizaines de millions de comptes ont été exposés.
+    </p>
+</section>
+
+<section class="content-block">
+    <h2><i class="fas fa-user-secret" aria-hidden="true"></i> Comment les données sont-elles volées ?</h2>
+    <p>
+        Les sites web n'ont aucun intérêt à laisser leurs bases de données accessibles. Cependant, les hackers exploitent diverses failles pour y parvenir :
+    </p>
+    <ul>
+        <li><strong>Failles de sécurité applicatives :</strong> Des vulnérabilités dans le code du site web, comme les injections SQL, peuvent permettre à un attaquant de tromper la base de données pour qu'elle lui renvoie tout son contenu.</li>
+        <li><strong>Identifiants faibles :</strong> Des comptes administrateurs avec des mots de passe triviaux (comme "admin", "password123") sont une porte d'entrée royale pour les attaquants.</li>
+        <li><strong>Ingénierie sociale et phishing :</strong> Des employés ayant des accès privilégiés peuvent se faire voler leurs identifiants via des campagnes de phishing ciblées.</li>
+        <li><strong>Mauvaises configurations :</strong> Il arrive que des bases de données soient laissées accessibles sur Internet sans aucune protection par mot de passe par erreur.</li>
+    </ul>
+</section>
+
+<section class="content-block">
+    <h2><i class="fas fa-shield-alt" aria-hidden="true"></i> Comment s'en protéger ?</h2>
+    <p>
+        La mauvaise nouvelle, c'est que vous ne pouvez pas empêcher un site sur lequel vous êtes inscrit de se faire pirater. La bonne nouvelle, c'est que vous pouvez grandement limiter l'impact d'une fuite sur votre sécurité personnelle.
+    </p>
+    <ul>
+        <li><strong>Utilisez des mots de passe uniques et complexes :</strong> C'est la règle d'or. N'utilisez JAMAIS le même mot de passe sur plusieurs sites. Si un site se fait pirater, les attaquants essaieront immédiatement votre email et ce mot de passe sur tous les autres grands services (Gmail, Amazon, Facebook...).</li>
+        <li><strong>Utilisez un gestionnaire de mots de passe :</strong> C'est la meilleure façon d'appliquer la règle précédente. Des outils comme Bitwarden (gratuit) ou 1Password génèrent et stockent des mots de passe longs et uniques pour chaque site. Vous n'avez qu'à retenir un seul mot de passe maître.</li>
+        <li><strong>Activez l'authentification à deux facteurs (A2F) :</strong> C'est une couche de sécurité essentielle. Même si un attaquant vole votre mot de passe, il ne pourra pas se connecter sans un deuxième code, généralement généré par une application sur votre téléphone (comme Google Authenticator ou Authy).</li>
+        <li><strong>Limitez les informations partagées :</strong> Ne donnez que les informations strictement nécessaires lors d'une inscription. Utilisez des adresses email "poubelle" pour les services peu importants.</li>
+    </ul>
+</section>
+
+<section class="content-block">
+    <h2><i class="fas fa-laptop-code" aria-hidden="true"></i> Exercice Pratique : Vérifiez votre exposition</h2>
+    <p>
+        <strong>Objectif :</strong> Utiliser des outils en ligne réputés pour vérifier si vos adresses email et mots de passe ont été compromis dans des fuites de données connues.
+    </p>
+    <details>
+        <summary style="cursor: pointer;">Afficher / Masquer la Solution</summary><br>
+        <div class="solution-content">
+            <p><strong>Outil principal : Have I Been Pwned?</strong></p>
+            <p>Ce site, créé par l'expert en sécurité Troy Hunt, est la référence mondiale pour vérifier son exposition aux fuites de données.</p>
+            <ol>
+                <li>Rendez-vous sur le site <a href="https://haveibeenpwned.com/" target="_blank">https://haveibeenpwned.com/</a>.</li>
+                <li>Entrez une de vos adresses email dans le champ de recherche et cliquez sur "pwned?".</li>
+                <li><strong>Analysez les résultats :</strong>
+                    <ul>
+                        <li><strong>"Good news — no pwnage found!"</strong> : Aucune fuite contenant cette adresse email n'est répertoriée dans leur (immense) base de données.</li>
+                        <li><strong>"Oh no — pwned!"</strong> : Votre adresse email a été trouvée dans une ou plusieurs fuites. Le site listera les services concernés.</li>
+                    </ul>
+                </li>
+                <li><strong>Action immédiate :</strong> Si vous apparaissez dans une fuite, changez immédiatement le mot de passe du site concerné, et surtout, de <strong>tous les autres sites où vous auriez pu réutiliser ce même mot de passe</strong>.</li>
+            </ol>
+        </div>
+    </details>
+</section>
+
+<section class="content-block">
+    <h2><i class="fas fa-info-circle" aria-hidden="true"></i>Informations sur le document original</h2>
+    <p>
+        <b>Titre :</b> Data Breach - Vos données ne vous appartiennent plus<br>
+        <b>Auteur :</b> Robbie<br>
+        <b>Date de publication :</b> 12 septembre 2024
+    </p>
+</section>
+
+<nav class="content-navigation">
+    <a href="./lessons.php" class="nav-button prev-button"><i class="fas fa-arrow-left" aria-hidden="true"></i> Retour aux leçons</a>
+    <a href="./lessons.php" class="nav-button next-button">Valider la leçon <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+</nav>

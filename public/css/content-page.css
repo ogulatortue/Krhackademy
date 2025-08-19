@@ -130,7 +130,7 @@
 }
 
 .nav-button {
-    padding: 0.85rem 1.75rem;
+    padding: 0.85rem 1.25rem;
     font-weight: bold;
     color: white;
     text-decoration: none;
@@ -143,22 +143,66 @@
     font-size: inherit;
 }
 
+.completion-button {
+    padding: 0.85rem 1.25rem;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background-color: rgba(35, 38, 49, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.completion-button .fas {
+    color: var(--purple);
+    transition: color 0.3s ease;
+}
+
+.completion-button.validated {
+    background-color: #17b32c;
+    border: 1px solid #17b32c;
+    border-radius: 5px;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    cursor: default;
+}
+
+.completion-button.validated .fas {
+    color: white;
+    margin-left: 0.5em;
+}
+
 .back-to-lessons-fixed {
     position: fixed;
     top: 20px;
     right: 20px;
     z-index: 1000;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background-color: rgba(35, 38, 49, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
 }
 
-.nav-button.validated {
-    background-color: #28a745;
-    border-color: #218838;
-    cursor: not-allowed;
-    opacity: 0.8;
-}
-
-.nav-button.validated .fas {
-    color: white;
+.back-to-lessons-fixed .fas {
+    color: var(--purple);
+    transition: color 0.3s ease;
 }
 
 .difficulty-challenge {
@@ -271,10 +315,29 @@
         background-color: var(--purple);
         border-color: var(--purple);
     }
-    .nav-button.validated:hover {
-        background-color: #28a745;
-        border-color: #218838;
+    .completion-button:not(.validated):hover {
+        background-color: rgba(146, 22, 168, 0.8);
+        border-color: rgba(255, 255, 255, 0.2);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(146, 22, 168, 0.4);
+    }
+    .completion-button:not(.validated):hover .fas {
+        color: white;
+    }
+    .completion-button.validated:hover {
+        background-color: #17b32c;
+        border-color: #17b32c;
         transform: none;
+        box-shadow: none;
+    }
+    .back-to-lessons-fixed:hover {
+        background-color: rgba(146, 22, 168, 0.8);
+        border-color: rgba(255, 255, 255, 0.2);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(146, 22, 168, 0.4);
+    }
+    .back-to-lessons-fixed:hover .fas {
+        color: white;
     }
     .btn-download:hover {
         background-color: var(--purple);
@@ -327,10 +390,11 @@
         margin-top: 3rem;
         padding-top: 2rem;
     }
-    .nav-button {
+    .nav-button, .completion-button {
         text-align: center;
         padding: 1rem 1.5rem;
         font-size: 1.5rem;
+        justify-content: center;
     }
     .file-item {
         flex-direction: column;

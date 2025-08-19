@@ -51,11 +51,11 @@
             $is_completed = !empty($lesson['is_completed']);
 
             if ($is_completed) {
-                $button_text = '<i class="fas fa-check"></i> Terminé';
+                $button_text = 'Validé <i class="fas fa-check"></i>';
                 $button_class = 'validated';
                 $button_disabled_attribute = 'disabled';
             } else {
-                $button_text = 'Valider la leçon <i class="fas fa-arrow-right" aria-hidden="true"></i>';
+                $button_text = 'Valider la leçon <i class="fas fa-check" aria-hidden="true"></i>';
                 $button_class = '';
                 $button_disabled_attribute = '';
             }
@@ -63,11 +63,11 @@
 
             <nav class="content-navigation">
                 <form class="completion-form">
-                     <input type="hidden" name="lesson_id" value="<?= htmlspecialchars($lesson['id']) ?>">
-                     
-                     <button type="submit" class="nav-button <?= $button_class ?>" <?= $button_disabled_attribute ?>>
+                    <input type="hidden" name="lesson_id" value="<?= htmlspecialchars($lesson['id']) ?>">
+                    
+                    <button type="submit" class="completion-button <?= $button_class ?>" <?= $button_disabled_attribute ?>>
                         <?= $button_text ?>
-                     </button>
+                    </button>
                 </form>
             </nav>
 

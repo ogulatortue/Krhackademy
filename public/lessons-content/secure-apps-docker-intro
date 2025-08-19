@@ -182,7 +182,4 @@ CMD ["python", "app.py"]</code></pre>
     </p>
 </section>
 
-<nav class="content-navigation">
-    <a href="./lessons.php" class="nav-button prev-button"><i class="fas fa-arrow-left" aria-hidden="true"></i> Retour aux leçons</a>
-    <a href="./lessons.php" class="nav-button next-button">Valider la leçon <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-</nav>
+

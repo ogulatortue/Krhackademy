@@ -12,22 +12,15 @@
 </head>
 <body class="page-lesson">
 
+    <a href="/lessons" class="nav-button back-to-lessons-fixed"><i class="fas fa-arrow-left" aria-hidden="true"></i> Retour aux leçons</a>
+
     <?php
-    // On détermine la classe CSS pour la couleur du tag de difficulté
     $difficulty_class = '';
     switch (strtolower($lesson['difficulty'])) {
-        case 'débutant':
-            $difficulty_class = 'difficulty-easy';
-            break;
-        case 'initié':
-            $difficulty_class = 'difficulty-medium';
-            break;
-        case 'avancé':
-            $difficulty_class = 'difficulty-hard';
-            break;
-        case 'expert':
-            $difficulty_class = 'difficulty-expert';
-            break;
+        case 'débutant': $difficulty_class = 'difficulty-easy'; break;
+        case 'initié': $difficulty_class = 'difficulty-medium'; break;
+        case 'avancé': $difficulty_class = 'difficulty-hard'; break;
+        case 'expert': $difficulty_class = 'difficulty-expert'; break;
     }
     ?>
 
@@ -45,7 +38,6 @@
             </header>
 
             <?php
-            // On charge le contenu détaillé depuis le fichier HTML
             $lessonContentPath = ROOT_PATH . '/public/lessons-content/' . $lesson['lesson_id_str'] . '.html';
 
             if (file_exists($lessonContentPath)) {
@@ -55,11 +47,27 @@
             }
             ?>
             
+            <?php
+            $is_completed = !empty($lesson['is_completed']);
+
+            if ($is_completed) {
+                $button_text = '<i class="fas fa-check"></i> Terminé';
+                $button_class = 'validated';
+                $button_disabled_attribute = 'disabled';
+            } else {
+                $button_text = 'Valider la leçon <i class="fas fa-arrow-right" aria-hidden="true"></i>';
+                $button_class = '';
+                $button_disabled_attribute = '';
+            }
+            ?>
+
             <nav class="content-navigation">
-                <a href="/lessons" class="nav-button">&larr; Retour à la liste des leçons</a>
                 <form class="completion-form">
                      <input type="hidden" name="lesson_id" value="<?= htmlspecialchars($lesson['id']) ?>">
-                     <button type="submit" class="nav-button">Marquer comme terminée</button>
+                     
+                     <button type="submit" class="nav-button <?= $button_class ?>" <?= $button_disabled_attribute ?>>
+                        <?= $button_text ?>
+                     </button>
                 </form>
             </nav>
 

@@ -1,6 +1,4 @@
 <?php
-// public/index.php
-
 require_once __DIR__ . '/../src/bootstrap.php';
 
 $request_uri = strtok($_SERVER['REQUEST_URI'], '?');
@@ -25,13 +23,11 @@ if (preg_match('/^\/challenge\/(\d+)$/', $request_uri, $matches)) {
             require __DIR__ . '/../templates/index.phtml';
             break;
         case '/lessons':
-            require_page_login();
             $currentPage = 'lessons';
             require __DIR__ . '/../src/lessons_logic.php';
             require __DIR__ . '/../templates/lessons.phtml';
             break;
         case '/challenges':
-            require_page_login();
             $currentPage = 'challenges';
             require __DIR__ . '/../src/challenges_logic.php';
             require __DIR__ . '/../templates/challenges.phtml';

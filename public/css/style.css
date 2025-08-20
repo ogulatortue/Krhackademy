@@ -25,6 +25,9 @@
     --shadow-medium: rgba(0, 0, 0, 0.5);
     --shadow-heavy: rgba(0, 0, 0, 0.7);
     --completed-color: #48ff00;
+    --subtle-green: rgba(23, 179, 44, 0.2);
+    --dark-green-bg: rgba(10, 80, 20, 0.8);
+    --darkest-green-bg: rgba(10, 30, 15, 0.95);
 }
 
 * {
@@ -45,7 +48,7 @@ html {
     font-size: 100%;
 }
 
-main{
+main {
     flex-grow: 1;
     background-color: transparent;
 }
@@ -96,6 +99,107 @@ h2 {
 .difficulty-expert {
     background-color: var(--expert);
     box-shadow: 0 0 8px var(--expert);
+}
+
+.modal-container {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1001;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    background-color: transparent;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-container.is-visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background-color: var(--darkest-green-bg);
+    border: 1px solid var(--easy);
+    border-radius: 12px;
+    padding: 0.5rem;
+    width: 90%;
+    max-width: 300px;
+    position: relative;
+    box-shadow: 0 10px 30px var(--shadow-heavy);
+    text-align: center;
+    transform: scale(0.85);
+    margin-bottom: 20px;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.modal-container.is-visible .modal-content {
+    transform: scale(1);
+}
+
+.close-button {
+    position: absolute;
+    top: 5px;
+    right: 8px;
+    color: var(--easy);
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.close-button:hover {
+    color: var(--white);
+}
+
+.modal-body {
+    padding-bottom: 0;
+}
+
+#modal-title {
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--easy);
+    margin-bottom: 0.5rem;
+}
+
+#modal-message {
+    font-size: 0.75rem;
+    color: var(--easy);
+    padding-bottom: 0;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.85);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.modal-success #modal-title {
+    color: var(--easy);
+}
+
+.modal-success .modal-content {
+    border-color: var(--easy);
+}
+
+.modal-error #modal-title {
+    color: var(--expert);
+}
+
+.modal-error .modal-content {
+    border-color: var(--expert);
 }
 
 @media (max-width: 900px) {

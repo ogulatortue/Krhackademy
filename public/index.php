@@ -33,7 +33,6 @@ if (preg_match('/^\/challenge\/(\d+)$/', $request_uri, $matches)) {
             require __DIR__ . '/../templates/challenges.phtml';
             break;
         case '/scenarios':
-            require_page_login();
             $currentPage = 'scenarios';
             echo "Page des scénarios en construction.";
             break;

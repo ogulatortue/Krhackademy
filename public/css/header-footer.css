@@ -113,11 +113,11 @@ header .fa-bars.fa-times {
     right: 40px;
 }
 
-#leaderboard-toggle-btn {
+#search-toggle-btn {
     right: 110px;
 }
 
-#search-toggle-btn {
+#leaderboard-toggle-btn {
     right: 180px;
 }
 
@@ -133,14 +133,13 @@ header .fa-bars.hidden {
 header.header-active #profile-toggle-btn {
     right: 25px;
 }
-header.header-active #leaderboard-toggle-btn {
+header.header-active #search-toggle-btn {
     right: 95px;
 }
-header.header-active #search-toggle-btn {
+header.header-active #leaderboard-toggle-btn {
     right: 165px;
 }
 
-/* MODIFICATIONS APPLIQUÉES ICI pour les panneaux */
 .search-panel,
 .profile-panel,
 .nav-bar-mobile,
@@ -166,7 +165,6 @@ header.header-active #search-toggle-btn {
     padding: 15px 25px;
 }
 
-/* NOUVELLE RÈGLE pour organiser le contenu de la barre de recherche */
 .search-header {
     display: flex;
     align-items: center;
@@ -223,7 +221,6 @@ header.header-active ~ .leaderboard-panel {
     align-self: center;
 }
 
-/* MODIFICATIONS APPLIQUÉES ICI pour la barre de recherche et les filtres */
 .input-wrapper {
     position: relative;
     display: flex;
@@ -270,14 +267,10 @@ header.header-active ~ .leaderboard-panel {
     pointer-events: auto;
 }
 
-/* ----- DÉBUT DES MODIFICATIONS POUR LA TAILLE FIXE ----- */
-
-/* MODIFIÉ : Conteneur de filtre pour une largeur fixe */
 .custom-select-wrapper {
     position: relative;
     user-select: none;
-    /* Empêche le bouton de grandir ou rétrécir et lui donne une largeur fixe */
-    flex: 0 0 180px; 
+    flex: 0 0 180px;
 }
 
 .custom-select {
@@ -297,7 +290,6 @@ header.header-active ~ .leaderboard-panel {
     border-bottom-right-radius: 0;
 }
 
-/* MODIFIÉ : Texte du filtre pour qu'il soit tronqué avec "..." */
 .custom-select-trigger {
     color: #fff;
     font-size: 1rem;
@@ -307,8 +299,6 @@ header.header-active ~ .leaderboard-panel {
     display: block;
     width: 100%;
 }
-
-/* ----- FIN DES MODIFICATIONS ----- */
 
 .custom-options {
     position: absolute;
@@ -606,21 +596,21 @@ footer .footer-legal a {
         right: 15px;
     }
 
-    #leaderboard-toggle-btn {
+    #search-toggle-btn {
         right: 68px; 
     }
 
-    #search-toggle-btn {
+    #leaderboard-toggle-btn {
         right: 121px; 
     }
 
     header.header-active #profile-toggle-btn {
         right: 10px;
     }
-    header.header-active #leaderboard-toggle-btn {
+    header.header-active #search-toggle-btn {
         right: 63px;
     }
-    header.header-active #search-toggle-btn {
+    header.header-active #leaderboard-toggle-btn {
         right: 116px;
     }
 }

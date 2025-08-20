@@ -3,13 +3,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (completionForm) {
         completionForm.addEventListener('submit', async (event) => {
-            // On empêche le formulaire de recharger la page
             event.preventDefault();
 
             const button = event.target.querySelector('button');
             const lessonId = event.target.querySelector('input[name="lesson_id"]').value;
 
-            // On désactive le bouton pour éviter les double-clics
             button.disabled = true;
             button.textContent = 'Sauvegarde...';
 
@@ -23,8 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 const result = await response.json();
 
                 if (result.status === 'success') {
-                    button.textContent = 'Terminée !';
-                    button.classList.add('completed'); // Pour un style visuel de succès
+                    button.innerHTML = 'Validée <i class="fas fa-check"></i>';
+                    button.classList.add('validated');
                 } else {
                     button.textContent = 'Erreur';
                     alert(result.message || 'Une erreur est survenue.');

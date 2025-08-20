@@ -2,8 +2,7 @@
         <a href="https://krhacken.org" target="_blank" rel="noopener noreferrer"> <img src="./images/logo.webp" alt="Logo du club Krhacken"> </a>
         <a href="https://esisar.grenoble-inp.fr" target="_blank" rel="noopener noreferrer"> <img src="./images/logo_esisar.webp" alt="Logo de Grenoble-INP Esisar"> </a>
         <p class="footer-legal">
-            L'ENSEMBLE DE CE SITE RELÈVE DE LA LÉGISLATION FRANÇAISE ET INTERNATIONALE SUR LE DROIT D'AUTEUR ET LA PROPRIÉTÉ INTELLECTUELLE. TOUS LES DROITS DE REPRODUCTION SONT RÉSERVÉS, Y COMPRIS POUR LES DOCUMENTS TÉLÉCHARGEABLES ET LES REPRÉSENTATIONS ICONOGRAPHIQUES ET PHOTOGRAPHIQUES. LA REPRODUCTION DE TOUT OU PARTIE DE CE SITE SUR UN SUPPORT ÉLECTRONIQUE QUEL QU'IL SOIT EST FORMELLEMENT INTERDITE SAUF AUTORISATION EXPRESSE DU DIRECTEUR DE LA PUBLICATION. CE SITE EST ÉDITÉ PAR Le club kr[HACK]en, Grenoble INP Esisar, 50 Rue Barthélémy de Laffemas, 26000 Valence, France.<br>
-            Créé par Hugo BRUCHON <br>
+            Ce site a été conçu et développé par Hugo BRUCHON. Le club Kr[HACK]en est autorisé à utiliser et à publier ce site à des fins non commerciales. Tous les droits d'auteur, de reproduction et de propriété intellectuelle du code, du design et des contenus originaux restent la propriété exclusive d'Hugo BRUCHON. Toute reproduction totale ou partielle sans autorisation expresse est formellement interdite.
         </p>
     </footer>
 

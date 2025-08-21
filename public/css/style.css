@@ -192,6 +192,11 @@ h2 {
 
 .modal-success .modal-content {
     border-color: var(--easy);
+    background-color: var(--darkest-green-bg);
+}
+
+.modal-success .close-button, .modal-success #modal-message {
+    color: var(--easy);
 }
 
 .modal-error #modal-title {
@@ -200,6 +205,11 @@ h2 {
 
 .modal-error .modal-content {
     border-color: var(--expert);
+    background-color: rgba(30, 0, 0, 0.95);
+}
+
+.modal-error .close-button, .modal-error #modal-message {
+    color: var(--expert);
 }
 
 @media (max-width: 900px) {

@@ -1,26 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
     const flagForm = document.querySelector('#flag-form');
-    const flagInput = document.querySelector('.flag-input');
-    const submitButton = document.querySelector('#flag-form button');
-    
-    const handleSuccess = () => {
-        if (flagForm) {
-            flagInput.disabled = true;
-            submitButton.disabled = true;
-            submitButton.innerHTML = 'Challenge validé <i class="fas fa-check"></i>';
-            submitButton.classList.add('validated');
-        }
-    };
-    
-    if (submitButton.disabled) {
-        submitButton.innerHTML = 'Challenge validé <i class="fas fa-check"></i>';
-        submitButton.classList.add('validated');
-        flagInput.disabled = true;
-    }
 
     if (flagForm) {
         flagForm.addEventListener('submit', async (event) => {
             event.preventDefault();
+
+            const flagInput = flagForm.querySelector('.flag-input');
+            const submitButton = flagForm.querySelector('button[type="submit"]');
             
             submitButton.disabled = true;
 
@@ -38,13 +24,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 const result = await response.json();
 
                 if (result.status === 'success') {
-                    handleSuccess();
+                    flagInput.disabled = true;
+                    submitButton.innerHTML = 'Challenge validé <i class="fas fa-check"></i>';
+                    submitButton.classList.add('btn-glass', 'validated');
                     modal.showModal('success', 'Challenge validé !', result.message);
                 } else {
                     submitButton.disabled = false;
                     modal.showModal('error', 'Flag incorrect', result.message || 'Le flag soumis est incorrect. Veuillez vérifier et réessayer.');
                 }
-
             } catch (error) {
                 console.error("Erreur lors de la soumission du flag:", error);
                 submitButton.disabled = false;

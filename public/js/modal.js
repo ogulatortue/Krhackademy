@@ -4,29 +4,52 @@ const setupModal = () => {
     const modalMessage = document.getElementById('modal-message');
     const modalCloseIcon = document.querySelector('.close-button');
 
+    let modalTimeoutId;
+    let initialScrollY = 0;
+    const SCROLL_THRESHOLD = 50;
+
     const showModal = (type, title, message) => {
         modalContainer.classList.remove('modal-success', 'modal-error');
         modalTitle.textContent = title;
         modalMessage.textContent = message;
         modalContainer.classList.add(`modal-${type}`, 'is-visible');
-
-        setTimeout(hideModal, 3000);
+        initialScrollY = window.scrollY;
+        modalTimeoutId = setTimeout(hideModal, 2500);
     };
 
     const hideModal = () => {
         modalContainer.classList.remove('is-visible');
+        clearTimeout(modalTimeoutId);
     };
 
-    if (modalCloseIcon) modalCloseIcon.addEventListener('click', hideModal);
+    if (modalCloseIcon) {
+        modalCloseIcon.addEventListener('click', hideModal);
+    }
 
-    window.addEventListener('click', (event) => {
-        if (event.target === modalContainer) {
+    modalContainer.addEventListener('click', (event) => {
+        if (event.target !== modalContainer) {
+            return;
+        }
+
+        const clickX = event.clientX;
+        const clickY = event.clientY;
+
+        hideModal();
+
+        // On attend que le navigateur ait bien masqué la modale
+        setTimeout(() => {
+            const underlyingElement = document.elementFromPoint(clickX, clickY);
+            if (underlyingElement) {
+                underlyingElement.click();
+            }
+        }, 0); // Le délai de 0ms suffit à décaler l'exécution après le rendu
+    });
+
+    window.addEventListener('scroll', () => {
+        if (Math.abs(window.scrollY - initialScrollY) > SCROLL_THRESHOLD) {
             hideModal();
         }
     });
-
-    // Nouvel événement pour masquer la pop-up lors du défilement
-    window.addEventListener('scroll', hideModal);
 
     return { showModal, hideModal };
 };

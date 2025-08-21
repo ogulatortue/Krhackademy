@@ -143,7 +143,8 @@
     font-size: inherit;
 }
 
-.completion-button {
+.completion-button,
+.btn-submit {
     padding: 0.85rem 1.25rem;
     font-weight: bold;
     color: white;
@@ -163,12 +164,14 @@
     transition: all 0.3s ease;
 }
 
-.completion-button .fas {
+.completion-button .fas,
+.btn-submit .fas {
     color: var(--purple);
     transition: color 0.3s ease;
 }
 
-.completion-button.validated {
+.completion-button.validated,
+.btn-submit.validated {
     background-color: #17b32c;
     border: 1px solid #17b32c;
     border-radius: 5px;
@@ -178,7 +181,8 @@
     cursor: default;
 }
 
-.completion-button.validated .fas {
+.completion-button.validated .fas,
+.btn-submit.validated .fas {
     color: white;
     margin-left: 0.5em;
 }
@@ -315,16 +319,19 @@
         background-color: var(--purple);
         border-color: var(--purple);
     }
-    .completion-button:not(.validated):hover {
+    .completion-button:not(.validated):hover,
+    .btn-submit:not(.validated):hover {
         background-color: rgba(146, 22, 168, 0.8);
         border-color: rgba(255, 255, 255, 0.2);
         transform: translateY(-3px);
         box-shadow: 0 8px 25px rgba(146, 22, 168, 0.4);
     }
-    .completion-button:not(.validated):hover .fas {
+    .completion-button:not(.validated):hover .fas,
+    .btn-submit:not(.validated):hover .fas {
         color: white;
     }
-    .completion-button.validated:hover {
+    .completion-button.validated:hover,
+    .btn-submit.validated:hover {
         background-color: #17b32c;
         border-color: #17b32c;
         transform: none;
@@ -344,8 +351,8 @@
         transform: scale(1.05);
     }
     .btn-submit:hover {
-        background-color: var(--purple);
-        border-color: var(--purple);
+        background-color: rgba(146, 22, 168, 0.8);
+        border-color: rgba(255, 255, 255, 0.2);
     }
 }
 

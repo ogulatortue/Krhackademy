@@ -41,20 +41,3 @@
         <i class="fas fa-lightbulb"></i> <b>Astuce :</b> Vous pouvez utiliser des outils intégrés à votre système (PowerShell sur Windows, sha256sum sur Linux) ou des logiciels graphiques comme 7-Zip.
     </p>
 </section>
-<section class="content-block">
-    <h2><i class="fas fa-flag"></i>Soumettre le Flag</h2>
-    <p>
-        Pour valider ce challenge, le flag est le hash SHA-256 que vous avez <b>vous-même calculé</b> pour le fichier <code>cle_usb_hugo.vhd</code>.
-    </p>
-    
-    <form class="flag-form" id="flag-form" action="/api/verify-flag" method="POST">
-        <input type="hidden" name="challenge_id" value="forensics-integrity-key">
-        <div class="flag-input-wrapper">
-            <span class="flag-prefix">KRHACK{</span>
-            <input type="text" class="flag-input" name="flag" placeholder="collez_le_hash_ici..." required>
-            <span class="flag-prefix">}</span>
-        </div>
-        <button type="submit" class="btn-submit">Valider</button>
-    </form>
-    <div id="form-message" class="form-message"></div>
-</section>

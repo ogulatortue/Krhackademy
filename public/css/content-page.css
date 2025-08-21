@@ -141,10 +141,12 @@
     cursor: pointer;
     font-family: inherit;
     font-size: inherit;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
 }
 
-.completion-button,
-.btn-submit {
+.btn-glass {
     padding: 0.85rem 1.25rem;
     font-weight: bold;
     color: white;
@@ -164,14 +166,12 @@
     transition: all 0.3s ease;
 }
 
-.completion-button .fas,
-.btn-submit .fas {
+.btn-glass .fas {
     color: var(--purple);
     transition: color 0.3s ease;
 }
 
-.completion-button.validated,
-.btn-submit.validated {
+.btn-glass.validated {
     background-color: #17b32c;
     border: 1px solid #17b32c;
     border-radius: 5px;
@@ -181,8 +181,7 @@
     cursor: default;
 }
 
-.completion-button.validated .fas,
-.btn-submit.validated .fas {
+.btn-glass.validated .fas {
     color: white;
     margin-left: 0.5em;
 }
@@ -192,21 +191,6 @@
     top: 20px;
     right: 20px;
     z-index: 1000;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-    background-color: rgba(35, 38, 49, 0.6);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
-}
-
-.back-to-lessons-fixed .fas {
-    color: var(--purple);
-    transition: color 0.3s ease;
 }
 
 .difficulty-challenge {
@@ -302,57 +286,30 @@
     letter-spacing: 1px;
 }
 
-.btn-submit {
-    background-color: var(--button-bg);
-    color: var(--white);
-    border: 1px solid var(--border-medium);
-    padding: 0.8rem 1.5rem;
-    font-weight: 700;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
 @media (hover: hover) and (pointer: fine) {
     .nav-button:hover {
         color: white;
         background-color: var(--purple);
         border-color: var(--purple);
     }
-    .completion-button:not(.validated):hover,
-    .btn-submit:not(.validated):hover {
+    .btn-glass:not(.validated):hover {
         background-color: rgba(146, 22, 168, 0.8);
         border-color: rgba(255, 255, 255, 0.2);
         transform: translateY(-3px);
         box-shadow: 0 8px 25px rgba(146, 22, 168, 0.4);
     }
-    .completion-button:not(.validated):hover .fas,
-    .btn-submit:not(.validated):hover .fas {
+    .btn-glass:not(.validated):hover .fas {
         color: white;
     }
-    .completion-button.validated:hover,
-    .btn-submit.validated:hover {
+    .btn-glass.validated:hover {
         background-color: #17b32c;
         border-color: #17b32c;
         transform: none;
         box-shadow: none;
     }
-    .back-to-lessons-fixed:hover {
-        background-color: rgba(146, 22, 168, 0.8);
-        border-color: rgba(255, 255, 255, 0.2);
-        transform: translateY(-3px);
-        box-shadow: 0 8px 25px rgba(146, 22, 168, 0.4);
-    }
-    .back-to-lessons-fixed:hover .fas {
-        color: white;
-    }
     .btn-download:hover {
         background-color: var(--purple);
         transform: scale(1.05);
-    }
-    .btn-submit:hover {
-        background-color: rgba(146, 22, 168, 0.8);
-        border-color: rgba(255, 255, 255, 0.2);
     }
 }
 
@@ -397,7 +354,7 @@
         margin-top: 3rem;
         padding-top: 2rem;
     }
-    .nav-button, .completion-button {
+    .nav-button, .btn-glass {
         text-align: center;
         padding: 1rem 1.5rem;
         font-size: 1.5rem;
@@ -413,25 +370,6 @@
     }
 }
 
-.page-lesson .content-block h2 {
-    border-left-color: var(--purple);
-}
-.page-lesson .fas {
-    color: var(--purple);
-}
-.page-lesson .content-header .fas {
-    color: var(--white);
-}
-
-.page-challenge .content-block h2 {
-    border-left-color: var(--purple);
-}
 .page-challenge .file-item {
     border-left-color: var(--purple);
-}
-.page-challenge .btn-download {
-    background-color: var(--purple);
-}
-.page-challenge .btn-download:hover {
-    background-color: var(--purple);
 }

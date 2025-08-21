@@ -21,7 +21,7 @@
     else { $difficulty_class = 'difficulty-easy'; }
     ?>
 
-    <a href="/challenges" class="nav-button back-to-lessons-fixed"><i class="fas fa-arrow-left" aria-hidden="true"></i> Retour aux challenges</a>
+    <a href="/challenges" class="btn-glass back-to-lessons-fixed"><i class="fas fa-arrow-left" aria-hidden="true"></i> Retour aux challenges</a>
 
     <main class="content-container">
         <div class="content-wrapper">
@@ -57,11 +57,11 @@
                     $is_completed = !empty($challenge['is_completed']);
                     if ($is_completed) {
                         $button_text = 'Validé <i class="fas fa-check"></i>';
-                        $button_class = 'btn-submit validated';
+                        $button_class = 'btn-glass validated';
                         $button_disabled = 'disabled';
                     } else {
                         $button_text = 'Valider';
-                        $button_class = 'btn-submit';
+                        $button_class = 'btn-glass';
                         $button_disabled = '';
                     }
                     ?>

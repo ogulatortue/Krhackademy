@@ -12,7 +12,7 @@
 </head>
 <body class="page-lesson">
 
-    <a href="/lessons" class="nav-button back-to-lessons-fixed"><i class="fas fa-arrow-left" aria-hidden="true"></i> Retour aux leçons</a>
+    <a href="/lessons" class="btn-glass back-to-lessons-fixed"><i class="fas fa-arrow-left" aria-hidden="true"></i> Retour aux leçons</a>
 
     <?php
     $difficulty_class = '';
@@ -65,7 +65,7 @@
                 <form class="completion-form">
                     <input type="hidden" name="lesson_id" value="<?= htmlspecialchars($lesson['id']) ?>">
                     
-                    <button type="submit" class="completion-button <?= $button_class ?>" <?= $button_disabled_attribute ?>>
+                    <button type="submit" class="btn-glass <?= $button_class ?>" <?= $button_disabled_attribute ?>>
                         <?= $button_text ?>
                     </button>
                 </form>

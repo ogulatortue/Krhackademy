@@ -1,19 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
     const flagForm = document.querySelector('#flag-form');
     const flagInput = document.querySelector('.flag-input');
-    const submitButton = document.querySelector('.btn-submit');
+    const submitButton = document.querySelector('.btn-glass');
     
     const handleSuccess = () => {
         if (flagForm) {
             flagInput.disabled = true;
             submitButton.disabled = true;
-            submitButton.innerHTML = 'Validé <i class="fas fa-check"></i>';
+            submitButton.innerHTML = 'Challenge validé <i class="fas fa-check"></i>';
             submitButton.classList.add('validated');
         }
     };
     
     if (submitButton.disabled) {
-        submitButton.innerHTML = 'Validé <i class="fas fa-check"></i>';
+        submitButton.innerHTML = 'Challenge validé <i class="fas fa-check"></i>';
         submitButton.classList.add('validated');
         flagInput.disabled = true;
     }

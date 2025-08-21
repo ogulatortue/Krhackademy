@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const flagForm = document.querySelector('#flag-form');
     const flagInput = document.querySelector('.flag-input');
-    const submitButton = document.querySelector('.btn-glass');
+    const submitButton = document.querySelector('#flag-form button');
     
     const handleSuccess = () => {
         if (flagForm) {

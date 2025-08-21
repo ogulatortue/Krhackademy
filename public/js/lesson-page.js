@@ -1,4 +1,3 @@
-// Fichier : public/js/lesson-page.js
 document.addEventListener('DOMContentLoaded', () => {
     const completionForm = document.querySelector('.completion-form');
 

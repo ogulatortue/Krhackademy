@@ -1,3 +1,4 @@
+<?php require_once ROOT_PATH . '/src/helpers.php'; ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -32,15 +33,11 @@
             <?php endif; ?>
             
             <?php
-            $points = $challenge['points'];
-            $difficulty_class = '';
-            if ($points >= 250) { $difficulty_class = 'difficulty-expert'; } 
-            elseif ($points >= 100) { $difficulty_class = 'difficulty-hard'; } 
-            elseif ($points >= 50) { $difficulty_class = 'difficulty-medium'; } 
-            else { $difficulty_class = 'difficulty-easy'; }
+            $difficulty_class = getDifficultyClass($challenge['points']);
+            $completed_class = !empty($challenge['is_completed']) ? 'completed' : '';
             ?>
 
-            <a href="/challenge/<?= htmlspecialchars($challenge['id']) ?>" class="card challenge-card" data-challenge-id="<?= htmlspecialchars($challenge['id']) ?>">
+            <a href="/challenge/<?= htmlspecialchars($challenge['id']) ?>" class="card challenge-card <?= $completed_class ?>" data-challenge-id="<?= htmlspecialchars($challenge['id']) ?>">
                 <i class="card-icon fas <?= htmlspecialchars($challenge['icon_class'] ?? 'fa-flag') ?>"></i>
                 <div class="card-text-content">
                     <div class="card-title-wrapper">

@@ -1,6 +1,8 @@
 <?php
 // src/bootstrap.php
-define('ROOT_PATH', dirname(__DIR__));
+if (!defined('ROOT_PATH')) {
+    define('ROOT_PATH', dirname(__DIR__));
+}
 // Démarrer la session au tout début
 if (session_status() === PHP_SESSION_NONE) {
     session_start();

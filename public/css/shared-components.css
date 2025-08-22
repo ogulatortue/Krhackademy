@@ -156,19 +156,6 @@
     color: var(--purple);
 }
 
-.challenge-card.completed {
-    border-color: var(--purple);
-    border-width: 2px;
-}
-
-.challenge-card.completed .check-box {
-    background-color: var(--purple);
-}
-
-.challenge-card.completed .card-icon {
-    color: var(--purple);
-}
-
 @media (max-width: 900px) {
     .main {
         padding: 13rem 1rem;

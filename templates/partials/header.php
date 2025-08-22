@@ -13,15 +13,17 @@
 
     <button class="fas fa-bars" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="mobile-nav-menu"></button>
     
-    <?php if ($currentPage !== 'index'): ?>
-        <button id="search-toggle-btn" class="fas fa-search" aria-label="Ouvrir la barre de recherche" aria-expanded="false" aria-controls="filter-controls"></button>
-    <?php endif; ?>
-    
-    <?php if (isset($_SESSION['user_id'])): ?>
-        <button id="leaderboard-toggle-btn" class="fas fa-trophy" aria-label="Ouvrir le classement" aria-expanded="false" aria-controls="leaderboard-menu"></button>
-    <?php endif; ?>
-    
-    <button id="profile-toggle-btn" class="fas fa-user-circle" aria-label="Ouvrir le menu du profil" aria-controls="profile-menu"></button>
+    <div class="header-actions">
+        <?php if ($currentPage !== 'index'): ?>
+            <button id="search-toggle-btn" class="fas fa-search" aria-label="Ouvrir la barre de recherche" aria-expanded="false" aria-controls="filter-controls"></button>
+        <?php endif; ?>
+        
+        <?php if (isset($_SESSION['user_id'])): ?>
+            <button id="leaderboard-toggle-btn" class="fas fa-trophy" aria-label="Ouvrir le classement" aria-expanded="false" aria-controls="leaderboard-menu"></button>
+        <?php endif; ?>
+        
+        <button id="profile-toggle-btn" class="fas fa-user-circle" aria-label="Ouvrir le menu du profil" aria-controls="profile-menu"></button>
+    </div>
 </header>
 
 <section class="profile-panel" id="profile-menu" aria-hidden="true">

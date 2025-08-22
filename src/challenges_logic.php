@@ -20,7 +20,7 @@ $stmt = $pdo->query("
             WHEN points >= 250 THEN 4
             ELSE 5
         END ASC,
-        points ASC
+        points ASC,
         id ASC
 ");
 

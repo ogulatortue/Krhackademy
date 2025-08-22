@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     flagInput.disabled = true;
                     submitButton.innerHTML = 'Challenge validé <i class="fas fa-check"></i>';
                     submitButton.classList.add('btn-glass', 'validated');
-                    modal.showModal('success', 'Challenge validé !', result.message);
+                    modal.showModal('success', 'Challenge validé !', 'Félicitations! Vous avez validé ce challenge.');
                 } else {
                     submitButton.disabled = false;
                     modal.showModal('error', 'Flag incorrect', result.message || 'Le flag soumis est incorrect. Veuillez vérifier et réessayer.');

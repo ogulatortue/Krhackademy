@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     button.innerHTML = 'Leçon validée <i class="fas fa-check"></i>';
                     button.classList.add('validated');
                     
-                    modal.showModal('success', 'Leçon validée !', 'Félicitations, vous avez terminé cette leçon.');
+                    modal.showModal('success', 'Leçon validée !', 'Félicitations! Vous avez validé cette leçon.');
                 } else {
                     button.textContent = 'Erreur';
                     button.disabled = false;

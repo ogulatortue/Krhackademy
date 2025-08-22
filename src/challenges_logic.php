@@ -21,6 +21,7 @@ $stmt = $pdo->query("
             ELSE 5
         END ASC,
         points ASC
+        id ASC
 ");
 
 $challenges = $stmt->fetchAll();

@@ -8,7 +8,7 @@ $request_uri = strtok($_SERVER['REQUEST_URI'], '?');
 $currentPage = '';
 
 $routes = [
-    '/' => ['view' => 'index.phtml'],
+    '/' => ['view' => 'index.phtml', 'currentPage' => 'index'],
     '/lessons' => ['logic' => 'lessons_logic.php', 'view' => 'lessons.phtml', 'currentPage' => 'lessons'],
     '/challenges' => ['logic' => 'challenges_logic.php', 'view' => 'challenges.phtml', 'currentPage' => 'challenges'],
     '/login' => ['logic' => 'login_logic.php', 'view' => 'login.phtml', 'currentPage' => 'login'],

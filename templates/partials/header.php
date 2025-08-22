@@ -4,10 +4,10 @@
     
     <nav class="nav-bar" aria-label="Navigation principale">
         <ul id="nav-links-desktop">
-            <li class="<?= ($currentPage === 'index') ? 'active' : '' ?>"><a href="/">ACCUEIL</a></li>
-            <li class="<?= ($currentPage === 'lessons') ? 'active' : '' ?>"><a href="/lessons">LEÇONS</a></li>
-            <li class="<?= ($currentPage === 'challenges') ? 'active' : '' ?>"><a href="/challenges">CHALLENGES</a></li>
-            <li class="<?= ($currentPage === 'scenarios') ? 'active' : '' ?>"><a href="/scenarios">SCÉNARIOS</a></li>
+            <li class="<?php echo ($currentPage === 'index') ? 'active' : ''; ?>"><a href="/">ACCUEIL</a></li>
+            <li class="<?php echo ($currentPage === 'lessons') ? 'active' : ''; ?>"><a href="/lessons">LEÇONS</a></li>
+            <li class="<?php echo ($currentPage === 'challenges') ? 'active' : ''; ?>"><a href="/challenges">CHALLENGES</a></li>
+            <li class="<?php echo ($currentPage === 'scenarios') ? 'active' : ''; ?>"><a href="/scenarios">SCÉNARIOS</a></li>
         </ul>
     </nav>
 
@@ -30,7 +30,7 @@
     <?php if (isset($_SESSION['user_id'])): ?>
         <div class="profile-header">
             <i class="fas fa-user-circle panel-icon"></i>
-            <span class="profile-username"><?= htmlspecialchars($_SESSION['username'] ?? 'Utilisateur') ?></span>
+            <span class="profile-username"><?php echo htmlspecialchars($_SESSION['username'] ?? 'Utilisateur'); ?></span>
             <button id="close-profile-btn" class="fas fa-times" aria-label="Fermer le menu du profil"></button>
         </div>
         <ul class="profile-options">

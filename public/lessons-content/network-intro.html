@@ -35,7 +35,7 @@
         Pour maintenir l'ordre et l'interopérabilité, l'IANA (Internet Assigned Numbers Authority) a classifié les ports en trois plages :
     </p>
 
-    <h3>Ports Bien Connus (0-1023)</h3>
+    <h3>Ports bien connus (0-1023)</h3>
     <p>Ils sont réservés aux services et protocoles les plus courants. Une application doit généralement disposer de privilèges administrateur pour s'associer à l'un de ces ports.</p>
     <ul>
         <li><strong>Port 21 :</strong> FTP (Transfert de fichiers)</li>
@@ -46,13 +46,13 @@
         <li><strong>Port 443 :</strong> HTTPS (Web sécurisé)</li>
     </ul>
 
-    <h3>Ports Enregistrés (1024-49151)</h3>
+    <h3>Ports enregistrés (1024-49151)</h3>
     <p>Ils sont utilisés par des applications et services spécifiques (par exemple, des bases de données comme MySQL sur le port 3306). Les entreprises peuvent enregistrer un port pour leur logiciel.</p>
     
-    <h3>Ports Dynamiques ou Privés (49152-65535)</h3>
+    <h3>Ports dynamiques ou privés (49152-65535)</h3>
     <p>ls sont utilisés comme ports sources temporaires par les machines clientes lorsqu'elles initient une connexion.</p>
 
-    <h3>Ports et Sécurité</h3>
+    <h3>Ports et sécurité</h3>
     <p>
         Du point de vue de la sécurité, un port "ouvert" signifie qu'un service est activement en écoute et prêt à accepter des connexions, ce qui représente une surface d'attaque potentielle. Chaque service en écoute peut contenir des vulnérabilités exploitables. Les attaquants utilisent des outils de scan de ports pour identifier les ports ouverts sur une machine cible et ainsi découvrir les services en cours d'exécution et leurs versions, à la recherche de failles connues.
     </p>
@@ -109,7 +109,7 @@
     <p>
         Un pare-feu est un système de sécurité réseau, qu'il soit matériel ou logiciel, dont la fonction principale est de surveiller et de contrôler le trafic réseau entrant et sortant. Il agit comme une barrière de protection entre un réseau de confiance (ex: réseau local) et un réseau non fiable (ex: Internet).
     </p>
-    <h3>Le Filtrage de Paquets et les Règles</h3>
+    <h3>Le filtrage de paquets et les règles</h3>
     <p>
         Le mécanisme le plus courant est le filtrage de paquets. Le pare-feu examine les en-têtes de chaque paquet et analyse des informations :
     </p>
@@ -127,7 +127,7 @@
         <li><code>ALLOW TCP from 192.168.0.0/24 to ANY port 80</code> (Autoriser tout le réseau local à naviguer sur le web non sécurisé).</li>
     </ul>
 
-    <h3>Les Différents Types de Pare-feux</h3>
+    <h3>Les différents types de pare-feux</h3>
     <p>
         Les pare-feux ont évolué pour offrir une protection de plus en plus sophistiquée :
     </p>

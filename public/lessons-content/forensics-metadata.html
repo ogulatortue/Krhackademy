@@ -6,9 +6,9 @@
     <p>
         Avant de se lancer dans l'analyse, il est impératif de comprendre la nature fondamentale des métadonnées et, surtout, où les chercher. Toute métadonnée appartient à l'une des deux grandes familles, dont la fiabilité et l'origine sont radicalement différentes.
     </p>
-    <h3>Métadonnées de Système de Fichiers (Externes)</h3>
+    <h3>Métadonnées de système de fichiers (externes)</h3>
     <p>Gérées par le système d'exploitation (Windows, macOS), elles sont stockées à l'extérieur du fichier, dans la "table des matières" du disque (comme la MFT). Elles décrivent le contenant, sa taille, son emplacement et son interaction avec le système.</p>
-    <h3>Métadonnées Applicatives (Internes)</h3>
+    <h3>Métadonnées applicatives (internes)</h3>
     <p>Créées par le logiciel qui a fabriqué le fichier (Word, Photoshop, Appareil photo), elles sont stockées à l'intérieur du fichier lui-même, selon les spécifications de son format. Elles décrivent le contenu, son auteur, son contexte de création, etc.</p>
     <p>
         Cette distinction est le concept le plus important de l'analyse. Une incohérence entre ces deux familles est souvent le premier signe d'une manipulation ou d'une anomalie. La comparaison de la date de création interne d'un document avec la date de création de son fichier sur le disque peut, par exemple, révéler une copie ou une falsification.
@@ -27,7 +27,7 @@
         <li><strong>Modified :</strong> Date et heure de la dernière modification du contenu du fichier.</li>
         <li><strong>Accessed :</strong> Date et heure du dernier accès (ouverture). Attention, ce timestamp est souvent désactivé sur les systèmes modernes. En effet, chaque lecture (même par un antivirus ou un indexeur) provoquerait une opération d'écriture sur le disque, dégradant les performances.</li>
         <li><strong>Changed :</strong> Date et heure du dernier changement des métadonnées elles-mêmes (ex: changement de nom, de permissions).</li>
-        <li><strong>Entry Created (ou Birth) :</strong> Date et heure de la création du fichier sur le volume.</li>
+        <li><strong>Entry created (ou Birth) :</strong> Date et heure de la création du fichier sur le volume.</li>
     </ul>
     <p>
         <strong>Point d'analyse :</strong> Sur un système de fichiers NTFS (Windows), il existe deux jeux de timestamps MACE :
@@ -37,7 +37,7 @@
         <li><strong>$FILE_NAME</strong> (stockés dans la MFT)</li>
     </ul>
     <p>Un outil de timestomping simple modifiera souvent le premier, mais oubliera le second. Une incohérence entre ces deux jeux de dates est un indice de manipulation quasi certain.</p>
-    <h3>Exemple concret : Cycle de vie d'un rapport</h3>
+    <h3>Exemple concret</h3>
     <p>Imaginons un fichier Rapport.docx créé sur un ordinateur Windows. Un outil forensique comme MFTECmd révélerait le scénario suivant :</p>
     <p><strong>Lundi 10:00 - Création :</strong> L'utilisateur crée Rapport.docx. Le timestamp Entry Created est fixé à Lundi 10:00. Les timestamps Modified, Accessed et Changed sont aussi initialisés à Lundi 10:00.</p>
     <p><strong>Lundi 10:05 - Rédaction :</strong> L'utilisateur écrit dans le rapport et sauvegarde. Le timestamp Modified est mis à jour à Lundi 10:05. Les timestamps Changed et Accessed sont aussi mis à jour.</p>
@@ -51,7 +51,7 @@
         Si les timestamps MACE nous donnent le "quand", les métadonnées applicatives nous donnent le "qui", le "comment" et le "où". Pour extraire et interpréter ces informations riches, l'outil ExifTool est la référence mondiale.
     </p>
     
-    <h3>1. Les documents Microsoft Office (.docx, .pptx, etc.)</h3>
+    <h3>1. Les documents Microsoft office (.docx, .pptx, etc.)</h3>
     <p>Bien plus que de simples conteneurs de texte, les fichiers Office modernes sont de véritables journaux de bord.</p>
     <p>Métadonnées clés :</p>
     <ul>
@@ -73,7 +73,7 @@
     </ul>
     <p><strong>Exemple :</strong> La photo d'un suspect, IMG_4587.jpg, prétendument prise chez lui, révèle des coordonnées GPS qui pointent vers le lieu d'un cambriolage à l'heure du crime, contredisant son alibi.</p>
     
-    <h3>3. Les fichiers Audio et Vidéo (.mp4, .mov, .mp3)</h3>
+    <h3>3. Les fichiers audio et vidéo (.mp4, .mov, .mp3)</h3>
     <p>Comme les images, les fichiers multimédias embarquent des informations cruciales sur leur origine.</p>
     <p>Métadonnées clés :</p> 
     <ul>
@@ -115,10 +115,10 @@
     <p>
         Un expert ne se contente pas de lire les métadonnées ; il évalue leur crédibilité. Savoir reconnaître les techniques d'anti-forensique est une compétence essentielle.
     </p>
-    <h3>Le Timestomping (falsification des horodatages)</h3>
+    <h3>Le timestomping (falsification des horodatages)</h3>
     <p>C'est l'acte de modifier les timestamps MACE d'un fichier pour dissimuler sa véritable origine, souvent pour cacher un malware.</p>
     <p><strong>Exemple :</strong> Un fichier svchost.exe suspect a des timestamps MACE de 2015. Cependant, l'analyse de son en-tête interne (PE Header) révèle une date de compilation de 2024. L'incohérence prouve le timestomping. C'est un malware récent se faisant passer pour un ancien fichier système.</p>
-    <h3>Le Metadata Stripping (nettoyage des métadonnées)</h3>
+    <h3>Le metadata stripping (nettoyage des métadonnées)</h3>
     <p>De nombreuses plateformes en ligne (Facebook, Twitter/X, WhatsApp) suppriment la plupart des métadonnées EXIF des images lors du téléversement pour protéger la vie privée et réduire la taille des fichiers.</p>
     <p><strong>Implication pour l'enquêteur :</strong> L'analyse d'une photo téléchargée depuis un réseau social est souvent inutile. Il est impératif de travailler sur le fichier original provenant de l'appareil source.</p>
 </section>

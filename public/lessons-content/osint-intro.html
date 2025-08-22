@@ -1,0 +1,119 @@
+<section class="content-block">
+    <h2><i class="fas fa-info-circle" aria-hidden="true"></i>Les Fondamentaux de l'OSINT</h2>
+    <p>
+        L'OSINT, ou Open Source Intelligence, est un terme qui peut sembler complexe, mais son concept est très simple :
+    </p>
+    <ul>
+        <li><strong>Définition :</strong> En français, on parle de Renseignement d'Origine Source Ouverte (ROSO). Il s'agit de toute information qui peut être légalement et publiquement collectée à partir de sources libres d'accès.</li>
+        <li><strong>L'information "ouverte" :</strong> Cela inclut une quantité massive de données : les sites web, les articles de presse, les publications sur les réseaux sociaux, les registres publics (entreprises, cadastre), les forums, les vidéos, les cartes, etc. Si vous n'avez pas besoin de mot de passe, de pirater un système ou de voler un accès pour y accéder, c'est probably une source ouverte.</li>
+        <li><strong>Différence entre information et renseignement :</strong> Une information est une donnée brute (ex: "une entreprise a posté 10 messages sur Twitter aujourd'hui"). Le renseignement est le résultat de l'analyse de ces informations, leur donnant un contexte et une signification (ex: "l'analyse des 10 tweets de l'entreprise révèle une nouvelle stratégie marketing ciblant les jeunes de 18-25 ans"). L'OSINT est le processus qui transforme l'information en renseignement.</li>
+    </ul>
+    <p>Ses usages sont vastes. Les journalistes l'utilisent pour vérifier des faits et mener des enquêtes, les recruteurs vérifient les antécédents des candidats, les entreprises analysent leurs concurrents. En cybersécurité, c'est la première étape (la reconnaissance) pour comprendre les vulnérabilités d'une cible.</p>
+    <p><strong>Exemple concret :</strong> L'organisation de journalisme d'investigation Bellingcat est un exemple célèbre. En utilisant uniquement des sources ouvertes (images satellites, publications sur les réseaux sociaux, vidéos YouTube), ils ont réussi à enquêter sur des conflits armés, des crashs d'avions et des attaques chimiques, prouvant ainsi la puissance de l'OSINT.</p>
+</section>
+
+<section class="content-block">
+    <h2><i class="fas fa-gavel" aria-hidden="true"></i>Le cadre légal et éthique</h2>
+    <p>Ce point est fondamental. La pratique de l'OSINT confère un accès significatif à l'information, ce qui impose une responsabilité et une rigueur exemplaires.</p>
+    <h3>Ce qui est permis et ce qui ne l'est pas</h3>
+    <ul>
+        <li><strong>Ne jamais franchir la ligne de l'illégalité</strong>. Consulter un profil public sur Facebook est légal. Essayer de deviner son mot de passe ou de le tromper pour qu'il vous donne accès à son compte privé (phishing) est illégal.</li>
+        <li>En Europe, le <strong>RGPD</strong> (Règlement Général sur la Protection des Données) encadre strictement la collecte et le traitement des données personnelles. Même si une information est publique, son utilisation est réglementée.</li>
+    </ul>
+    <h3>Considérations éthiques</h3>
+    <ul>
+        <li><strong>Respect de la vie privée :</strong> Ce n'est pas parce que vous <em>pouvez</em> trouver l'adresse personnelle de quelqu'un que vous <em>devez</em> le faire ou la partager. Demandez-vous toujours : "Quelle est l'intention derrière ma recherche ? Est-ce que je risque de causer du tort ?".</li>
+        <li><strong>Utilisation responsable :</strong> Les informations collectées ne doivent jamais être utilisées pour le harcèlement, l'intimidation ou la désinformation.</li>
+        <li><strong>Fixez-vous des limites :</strong> Avant de commencer une enquête, même pour vous entraîner, définissez ce que vous cherchez et pourquoi, et arrêtez-vous lorsque vous avez atteint votre objectif.</li>
+    </ul>
+</section>
+
+<section class="content-block">
+    <h2><i class="fas fa-sync" aria-hidden="true"></i>Le Cycle du Renseignement</h2>
+    <p>Toute enquête OSINT professionnelle suit un processus structuré pour être efficace.</p>
+    <ul>
+        <li><strong>Définition des besoins :</strong> Quelle est la question exacte à laquelle je dois répondre ? (ex: "Quelles sont les technologies utilisées par notre concurrent principal ?"). Un objectif clair évite de se perdre dans la masse d'informations.</li>
+        <li><strong>Collecte :</strong> C'est la phase de recherche active où l'on rassemble toutes les données brutes pertinentes à partir de différentes sources.</li>
+        <li><strong>Traitement :</strong> Les données collectées sont souvent désordonnées. Cette étape consiste à les organiser : les trier, les filtrer, les mettre dans un tableau, etc.</li>
+        <li><strong>Analyse :</strong> C'est le cœur du processus. On examine les données traitées pour y trouver des liens, des modèles, des contradictions. C'est ici que l'information devient renseignement.</li>
+        <li><strong>Diffusion :</strong> Le renseignement est mis en forme dans un rapport clair et concis pour être présenté à la personne ou à l'équipe qui en a besoin.</li>
+    </ul>
+</section>
+
+<section class="content-block">
+    <h2><i class="fas fa-sitemap" aria-hidden="true"></i>Les Grandes Disciplines de l'OSINT</h2>
+    <p>L'OSINT n'est pas une seule technique, mais un ensemble de disciplines spécialisées. En voici les principales :</p>
+    <h3>SOCMINT (Social Media Intelligence)</h3>
+    <p>Le SOCMINT est une branche de l'OSINT spécialisée dans l'exploitation des informations issues des réseaux sociaux (Facebook, X/Twitter, Instagram, LinkedIn, TikTok, etc.).</p>
+    <ul>
+        <li><strong>Principe :</strong> Analyser les profils, les publications, les relations et les interactions pour construire une image complète d'une personne, d'un groupe ou d'un événement.</li>
+        <li><strong>Informations typiques :</strong> Listes d'amis/relations, photos, lieux visités (géolocalisation), centres d'intérêt, opinions politiques, dates d'événements, habitudes de vie.</li>
+        <li><strong>Outils clés :</strong>
+            <ul>
+                <li><strong>Recherche avancée des plateformes :</strong> Le formulaire de recherche avancée de X (Twitter) est très puissant pour trouver des tweets par date, lieu, utilisateur, ou mot-clé.</li>
+                <li><strong>Vérification de pseudonymes :</strong> Des outils comme WhatsMyName.app ou Sherlock permettent d'entrer un nom d'utilisateur et de vérifier sur des centaines de sites si un compte avec ce pseudo existe, révélant l'empreinte numérique d'une cible.</li>
+            </ul>
+        </li>
+    </ul>
+    <h3>IMINT (Image Intelligence)</h3>
+    <p>L'IMINT se concentre sur l'analyse d'images et de vidéos. Une simple image peut contenir une mine d'informations.</p>
+    <ul>
+        <li><strong>Recherche d'image inversée :</strong>
+            <ul>
+                <li><strong>Principe :</strong> Fournir une image à un moteur de recherche (au lieu de mots) pour qu'il trouve où cette image ou des images similaires apparaissent sur le web. C'est crucial pour vérifier l'authenticité d'une photo et trouver son contexte original.</li>
+                <li><strong>Outils :</strong> Google Images, TinEye, et Yandex (souvent plus performant pour la reconnaissance faciale).</li>
+            </ul>
+        </li>
+        <li><strong>Analyse des métadonnées (EXIF) :</strong>
+            <ul>
+                <li><strong>Principe :</strong> Les données EXIF sont des informations techniques enregistrées dans le fichier d'une image (type d'appareil, date/heure, et parfois coordonnées GPS). La plupart des réseaux sociaux les suppriment, mais ce n'est pas toujours le cas pour les images trouvées sur des blogs personnels, des forums ou des serveurs non protégés.</li>
+                <li><strong>Outils :</strong> Visionneuses EXIF en ligne (comme "EXIF Viewer") ou logiciels spécialisés.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>GEOINT (Geospatial Intelligence)</h3>
+    <p>Le GEOINT consiste à exploiter des données géographiques et des images satellites pour en tirer des renseignements.</p>
+    <ul>
+        <li><strong>Principe :</strong> Utiliser des outils de cartographie pour localiser un lieu, analyser un environnement, ou suivre des déplacements. C'est le complément naturel de l'IMINT.</li>
+        <li><strong>Informations typiques :</strong> Identification d'un lieu à partir d'une photo, analyse de la sécurité d'un bâtiment, estimation de la date d'une image satellite, suivi de la déforestation ou de mouvements de navires.</li>
+        <li><strong>Outils :</strong> Google Maps (avec Street View et les photos des utilisateurs), Géoportail (le portail officiel du gouvernement français offrant des vues aériennes haute résolution et des cartes historiques), Sentinel Hub (pour des images satellites plus techniques et récentes).</li>
+    </ul>
+    
+    <h3>SIGINT (Signals Intelligence)</h3>
+    <p>Dans le contexte de l'OSINT, le SIGINT ne concerne pas l'interception illégale, mais l'analyse des "signaux" techniques publiquement accessibles sur Internet. On le divise souvent en sous-catégories comme la Network Intelligence (NETINT).</p>
+    <ul>
+        <li><strong>Principe :</strong> Enquêter sur l'infrastructure technique d'un site web ou d'une organisation.</li>
+        <li><strong>Informations typiques :</strong> Qui est le propriétaire d'un nom de domaine (WHOIS), quels autres sites sont hébergés sur le même serveur (Reverse IP), quelles technologies sont utilisées par un site web, quels ports sont ouverts sur un serveur.</li>
+        <li><strong>Outils :</strong>
+            <ul>
+                <li><strong>WHOIS Lookup :</strong> Pour obtenir des informations sur l'enregistrement d'un nom de domaine.</li>
+                <li><strong>Shodan.io :</strong> Un moteur de recherche pour les objets connectés à Internet (serveurs, webcams, etc.).</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>FININT (Financial Intelligence)</h3>
+    <p>Le FININT open-source se concentre sur la collecte d'informations financières à partir de sources publiques.</p>
+    <ul>
+        <li><strong>Principe :</strong> Analyser des données économiques pour comprendre la santé financière, la structure ou les activités d'une entreprise ou d'un individu.</li>
+        <li><strong>Informations typiques :</strong> Rapports annuels d'entreprises cotées, registres des entreprises (pour connaître les directeurs et les actionnaires), registres de propriété foncière, transactions publiques de cryptomonnaies.</li>
+        <li><strong>Outils :</strong> Registres de commerce nationaux (ex: Infogreffe en France), bases de données boursières (ex: Yahoo Finance), explorateurs de blockchain (ex: Etherscan pour Ethereum).</li>
+    </ul>
+</section>
+
+<section class="content-block">
+    <h2 class="flex items-center"><i class="fas fa-flag-checkered" aria-hidden="true"></i>Conclusion</h2>
+    <h3>Récapitulatif des points clés :</h3>
+    <ul>
+        <li>L'OSINT est une discipline puissante et accessible qui consiste à transformer l'information publique en renseignement.</li>
+        <li>Le respect du cadre légal et éthique est non négociable.</li>
+        <li>La curiosité, la patience et la méthode sont vos meilleurs atouts.</li>
+    </ul>
+    <h3>Pistes pour aller plus loin :</h3>
+    <ul>
+        <li><strong>Ressources recommandées :</strong> Explorez les sites de Bellingcat, OSINT Curious et les vidéos de The OSINT Curious Project sur YouTube pour voir des enquêtes réelles.</li>
+        <li><strong>Outils :</strong> Le site OSINT Framework est une carte mentale interactive qui référence des centaines d'outils OSINT classés par catégorie. C'est une ressource incontournable pour découvrir de nouvelles techniques.</li>
+    </ul>
+    <p>La pratique est la clé. Continuez à explorer, à tester ces techniques sur des sujets qui vous intéressent (de manière éthique !), et vous serez surpris de tout ce que l'on peut apprendre à partir des sources ouvertes.</p>
+</section>

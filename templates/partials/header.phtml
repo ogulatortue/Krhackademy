@@ -1,0 +1,120 @@
+<header>
+    <a href="/"><img src="/images/logo_krhacken_invert2.webp" alt="Logo Krhackademy" width="40" height="40"/></a>
+    <h1 class="title"> <a href="/">Kr[HACK]ademy</a> </h1>
+    
+    <nav class="nav-bar" aria-label="Navigation principale">
+        <ul id="nav-links-desktop">
+            <li class="<?php echo ($currentPage === 'index') ? 'active' : ''; ?>"><a href="/">ACCUEIL</a></li>
+            <li class="<?php echo ($currentPage === 'lessons') ? 'active' : ''; ?>"><a href="/lessons">LEÇONS</a></li>
+            <li class="<?php echo ($currentPage === 'challenges') ? 'active' : ''; ?>"><a href="/challenges">CHALLENGES</a></li>
+            <li class="<?php echo ($currentPage === 'scenarios') ? 'active' : ''; ?>"><a href="/scenarios">SCÉNARIOS</a></li>
+        </ul>
+    </nav>
+
+    <button class="fas fa-bars" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="mobile-nav-menu"></button>
+    
+    <div class="header-actions">
+        <?php if ($currentPage !== 'index'): ?>
+            <button id="search-toggle-btn" class="fas fa-search" aria-label="Ouvrir la barre de recherche" aria-expanded="false" aria-controls="filter-controls"></button>
+        <?php endif; ?>
+        
+        <?php if (isset($_SESSION['user_id'])): ?>
+            <button id="leaderboard-toggle-btn" class="fas fa-trophy" aria-label="Ouvrir le classement" aria-expanded="false" aria-controls="leaderboard-menu"></button>
+        <?php endif; ?>
+        
+        <button id="profile-toggle-btn" class="fas fa-user-circle" aria-label="Ouvrir le menu du profil" aria-controls="profile-menu"></button>
+    </div>
+
+    <section class="profile-panel" id="profile-menu" aria-hidden="true">
+        <?php if (isset($_SESSION['user_id'])): ?>
+            <div class="profile-header">
+                <i class="fas fa-user-circle panel-icon"></i>
+                <span class="profile-username"><?php echo htmlspecialchars($_SESSION['username'] ?? 'Utilisateur'); ?></span>
+                <button id="close-profile-btn" class="fas fa-times" aria-label="Fermer le menu du profil"></button>
+            </div>
+            <ul class="profile-options">
+                <li><a href="#"><i class="fas fa-user fa-fw"></i> Mon Profil</a></li>
+                <li><a href="#"><i class="fas fa-cog fa-fw"></i> Paramètres</a></li>
+                <li><a href="/logout"><i class="fas fa-sign-out-alt fa-fw"></i> Déconnexion</a></li>
+            </ul>
+        <?php else: ?>
+            <div class="profile-header">
+                <i class="fas fa-user-circle panel-icon"></i>
+                <span class="profile-username">Visiteur</span>
+                <button id="close-profile-btn" class="fas fa-times" aria-label="Fermer le menu du profil"></button>
+            </div>
+            <ul class="profile-options">
+                <li><a href="/login"><i class="fas fa-sign-in-alt fa-fw"></i> Se connecter</a></li>
+                <li><a href="/register"><i class="fas fa-user-plus fa-fw"></i> S'inscrire</a></li>
+            </ul>
+        <?php endif; ?>
+    </section>
+
+    <section class="search-panel" id="filter-controls" aria-hidden="true">
+        <div class="search-header">
+            <i class="fas fa-search panel-icon" aria-hidden="true"></i>
+            <div class="input-wrapper">
+                <input type="search" id="search-input" placeholder="Rechercher">
+                <button id="clear-search-btn" class="fas fa-times" aria-label="Effacer la recherche"></button>
+            </div>
+            <div class="custom-select-wrapper">
+                <div class="custom-select" data-select-id="category-filter">
+                    <span class="custom-select-trigger">Catégorie</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="custom-options">
+                    <div class="custom-option" data-value="all">Toutes</div>
+                </div>
+                <input type="hidden" id="category-filter" name="category-filter" value="all">
+            </div>
+            <div class="custom-select-wrapper">
+                <div class="custom-select" data-select-id="difficulty-filter">
+                    <span class="custom-select-trigger">Difficulté</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="custom-options">
+                    <div class="custom-option" data-value="all">Toutes</div>
+                </div>
+                <input type="hidden" id="difficulty-filter" name="difficulty-filter" value="all">
+            </div>
+            <div class="custom-select-wrapper">
+                <div class="custom-select" data-select-id="completion-filter">
+                    <span class="custom-select-trigger">Statut</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="custom-options">
+                    <div class="custom-option" data-value="all">Tout</div>
+                    <div class="custom-option" data-value="completed">Complété</div>
+                    <div class="custom-option" data-value="not-completed">Non-complété</div>
+                </div>
+                <input type="hidden" id="completion-filter" name="completion-filter" value="all">
+            </div>
+            <button id="close-filter-btn" class="fas fa-times" aria-label="Fermer la barre de recherche"></button>
+        </div>
+    </section>
+
+    <section class="leaderboard-panel" id="leaderboard-menu" aria-hidden="true">
+        <div class="leaderboard-header">
+            <i class="fas fa-trophy panel-icon"></i>
+            <span>Classement</span>
+            <button id="close-leaderboard-btn" class="fas fa-times" aria-label="Fermer le classement"></button>
+        </div>
+        <ul class="leaderboard-list">
+            <li class="leaderboard-item">1. Utilisateur 1 - 1500 points</li>
+            <li class="leaderboard-item">2. Utilisateur 2 - 1200 points</li>
+        </ul>
+    </section>
+
+    <nav class="nav-bar-mobile" id="mobile-nav-menu" aria-hidden="true">
+        <ul>
+            <li><a href="/">ACCUEIL</a></li>
+            <li><a href="/lessons">LEÇONS</a></li>
+            <li><a href="/challenges">CHALLENGES</a></li>
+            <li><a href="/scenarios">SCÉNARIOS</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="no-results" id="no-results-message" style="display:none;">
+    <p>Aucun résultat trouvé pour cette recherche.</p>
+</div>

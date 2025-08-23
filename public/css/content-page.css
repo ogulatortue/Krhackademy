@@ -375,32 +375,32 @@
 }
 
 pre {
-  background-color: var(--code-bg);      /* Utilise la variable existante ou un fallback sombre. */
+  background-color: var(--code-bg);      
   border: 1px solid var(--border-color);
-  border-left: 4px solid var(--purple);  /* Bordure gauche accentuée, rappelant les titres de section. */
-  border-radius: 8px;                             /* Bords arrondis cohérents avec le reste du design. */
-  padding: 1.25rem;                               /* Espace intérieur généreux. */
-  margin: 1.5rem 0;                               /* Espace vertical avant et après le bloc. */
-  overflow-x: auto;                               /* Indispensable pour les longues lignes de code. */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);      /* Ombre subtile pour donner du relief. */
-  position: relative;                             /* Utile pour d'éventuels ajouts (ex: bouton "copier"). */
+  border-left: 4px solid var(--purple);
+  border-radius: 8px;    
+  padding: 1.25rem; 
+  margin: 1.5rem 0;       
+  overflow-x: auto;                            
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);   
+  position: relative;                             
 }
 code {
-  background-color: rgba(146, 22, 168, 0.15); /* Un fond violet très subtil et transparent. */
-  color: #d1aaff;                             /* Une teinte de violet clair, plus lisible et thématique que le rouge. */
-  padding: 0.1rem 0.2rem;                        /* Un peu plus d'espace intérieur. */
-  border-radius: 6px;                          /* Des bords plus arrondis pour un look moderne. */
-  font-family: 'Fira Code', monospace; /* Une police claire et mono-espacée. */
-  font-size: 0.9rem;                            /* Légèrement plus petit que le texte environnant. */
-  border: 1px solid rgba(146, 22, 168, 0.2);   /* Une bordure discrète pour mieux délimiter. */
-  vertical-align: middle;                      /* Améliore l'alignement avec le texte. */
+  background-color: rgba(146, 22, 168, 0.15);
+  color: #d1aaff;                             
+  padding: 0.1rem 0.2rem;                      
+  border-radius: 6px;                          
+  font-family: 'Fira Code', monospace; 
+  font-size: 0.9rem;                            
+  border: 1px solid rgba(146, 22, 168, 0.2);  
+  vertical-align: middle;                      
 }
 pre code {
-  background-color: transparent;                  /* Annule le fond violet. */
-  color: #c9d1d9;                                 /* Une couleur claire et neutre, reposante pour les yeux. */
+  background-color: transparent;                 
+  color: #c9d1d9;                                 
   padding: 0;
-  border: none;                                   /* Annule la bordure. */
-  font-family: 'Fira Code', monospace; /* Police optimisée pour le code. */
-  font-size: 0.9rem;                             /* Taille légèrement plus grande pour une meilleure lisibilité. */
-  line-height: 1.6;                               /* Espacement des lignes amélioré. */
+  border: none;                                  
+  font-family: 'Fira Code', monospace;
+  font-size: 0.9rem;                        
+  line-height: 1.6;                      
 }

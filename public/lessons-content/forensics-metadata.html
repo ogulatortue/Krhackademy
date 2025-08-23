@@ -1,130 +1,126 @@
 <section class="content-block">
-    <h2><i class="fas fa-info-circle" aria-hidden="true"></i>Généralités sur les métadonnées</h2>
-    <p>
-        Les métadonnées sont des données qui fournissent des informations sur d'autres données. Elles servent à décrire, structurer et gérer des ressources, qu'elles soient numériques ou physiques. Plutôt que de constituer le contenu principal d'un fichier ou d'un document, les métadonnées en précisent le contexte et les caractéristiques. Elles répondent généralement à des questions telles que : qui a créé la donnée, quand a-t-elle été créée, quel est son format, ou encore quels sont les droits qui y sont associés.
-    </p>
-    <p>
-        Avant de se lancer dans l'analyse, il est impératif de comprendre la nature fondamentale des métadonnées et, surtout, où les chercher. Toute métadonnée appartient à l'une des deux grandes familles, dont la fiabilité et l'origine sont radicalement différentes.
-    </p>
-    <h3>Métadonnées de système de fichiers (externes)</h3>
-    <p>Gérées par le système d'exploitation (Windows, macOS), elles sont stockées à l'extérieur du fichier, dans la "table des matières" du disque (comme la MFT). Elles décrivent le contenant, sa taille, son emplacement et son interaction avec le système.</p>
-    <h3>Métadonnées applicatives (internes)</h3>
-    <p>Créées par le logiciel qui a fabriqué le fichier (Word, Photoshop, Appareil photo), elles sont stockées à l'intérieur du fichier lui-même, selon les spécifications de son format. Elles décrivent le contenu, son auteur, son contexte de création, etc.</p>
-    <p>
-        Cette distinction est le concept le plus important de l'analyse. Une incohérence entre ces deux familles est souvent le premier signe d'une manipulation ou d'une anomalie. La comparaison de la date de création interne d'un document avec la date de création de son fichier sur le disque peut, par exemple, révéler une copie ou une falsification.
-    </p>
-    <p>
-        La finalité des métadonnées est donc double. Pour le système, elles sont opérationnelles : elles permettent l'organisation, l'indexation et la gestion des données. Pour un analyste, elles sont historiques et contextuelles : elles fournissent un enregistrement traçable des événements liés à une ressource numérique, ce qui est essentiel en administration système, en sécurité et en analyse forensique.
-    </p>
-</section>
-
-<section class="content-block">
-    <h2><i class="fas fa-clock" aria-hidden="true"></i>Les timestamps MACE</h2>
-    <p>
-        Les métadonnées les plus fondamentales et les plus universelles sont les timestamps (horodatages) gérés par le système de fichiers. Ils constituent le socle de toute analyse chronologique, permettant de placer les événements sur une ligne de temps précise. On les désigne par l'acronyme MACE (ou MACB).
-    </p>
-    <ul>
-        <li><strong>Modified :</strong> Date et heure de la dernière modification du contenu du fichier.</li>
-        <li><strong>Accessed :</strong> Date et heure du dernier accès (ouverture). Attention, ce timestamp est souvent désactivé sur les systèmes modernes. En effet, chaque lecture (même par un antivirus ou un indexeur) provoquerait une opération d'écriture sur le disque, dégradant les performances.</li>
-        <li><strong>Changed :</strong> Date et heure du dernier changement des métadonnées elles-mêmes (ex: changement de nom, de permissions).</li>
-        <li><strong>Entry created (ou Birth) :</strong> Date et heure de la création du fichier sur le volume.</li>
-    </ul>
-    <p>
-        <strong>Point d'analyse :</strong> Sur un système de fichiers NTFS (Windows), il existe deux jeux de timestamps MACE :
-    </p>
-    <ul>
-        <li><strong>$STANDARD_INFORMATION</strong> (visibles dans l'explorateur)</li>
-        <li><strong>$FILE_NAME</strong> (stockés dans la MFT)</li>
-    </ul>
-    <p>Un outil de timestomping simple modifiera souvent le premier, mais oubliera le second. Une incohérence entre ces deux jeux de dates est un indice de manipulation quasi certain.</p>
-    <h3>Exemple concret</h3>
-    <p>Imaginons un fichier Rapport.docx créé sur un ordinateur Windows. Un outil forensique comme MFTECmd révélerait le scénario suivant :</p>
-    <p><strong>Lundi 10:00 - Création :</strong> L'utilisateur crée Rapport.docx. Le timestamp Entry Created est fixé à Lundi 10:00. Les timestamps Modified, Accessed et Changed sont aussi initialisés à Lundi 10:00.</p>
-    <p><strong>Lundi 10:05 - Rédaction :</strong> L'utilisateur écrit dans le rapport et sauvegarde. Le timestamp Modified est mis à jour à Lundi 10:05. Les timestamps Changed et Accessed sont aussi mis à jour.</p>
-    <p><strong>Lundi 11:00 - Renommage :</strong> L'utilisateur renomme le fichier en Rapport_Final.docx. Seul le timestamp Changed est mis à jour à Lundi 11:00, car le contenu du fichier n'a pas changé.</p>
-    <p><strong>Mardi 09:00 - Relecture :</strong> Un collègue ouvre le fichier pour le lire, sans le modifier. Seul le timestamp Accessed est mis à jour à Mardi 09:00.</p>
-</section>
-
-<section class="content-block">
-    <h2><i class="fas fa-cogs" aria-hidden="true"></i>L'analyse applicative</h2>
-    <p>
-        Si les timestamps MACE nous donnent le "quand", les métadonnées applicatives nous donnent le "qui", le "comment" et le "où". Pour extraire et interpréter ces informations riches, l'outil ExifTool est la référence mondiale.
-    </p>
-    
-    <h3>1. Les documents Microsoft office (.docx, .pptx, etc.)</h3>
-    <p>Bien plus que de simples conteneurs de texte, les fichiers Office modernes sont de véritables journaux de bord.</p>
-    <p>Métadonnées clés :</p>
-    <ul>
-        <li>Creator (auteur initial)</li>
-        <li>Last Modified By (dernier utilisateur à avoir sauvegardé)</li>
-        <li>Total Edit Time (temps total d'édition)</li>
-        <li>Revision Number (nombre de sauvegardes)</li>
-        <li>Company, Manager, ...</li>
-    </ul>
-    <p><strong>Exemple :</strong> Une entreprise retrouve son plan stratégique Plan_Secret.docx sur internet. L'analyse révèle Creator: "Hugo" et Last Modified By: "Bob". L'enquête peut donc se concentrer sur l'activité de Bob.</p>
-    <h3>2. Les images (.jpg, .heic, .cr2)</h3>
-    <p>Les métadonnées EXIF (Exchangeable Image File Format) peuvent transformer une simple image en une preuve factuelle irréfutable.</p>
-    <p>Métadonnées clés :</p>
-    <ul>
-        <li>Make et Model (marque et modèle de l'appareil)</li>
-        <li>DateTimeOriginal (date et heure exactes de la prise de vue)</li>
-        <li>GPSLatitude et GPSLongitude (coordonnées GPS)</li>
-        <li>Software (logiciel de retouche)</li>
-    </ul>
-    <p><strong>Exemple :</strong> La photo d'un suspect, IMG_4587.jpg, prétendument prise chez lui, révèle des coordonnées GPS qui pointent vers le lieu d'un cambriolage à l'heure du crime, contredisant son alibi.</p>
-    
-    <h3>3. Les fichiers audio et vidéo (.mp4, .mov, .mp3)</h3>
-    <p>Comme les images, les fichiers multimédias embarquent des informations cruciales sur leur origine.</p>
-    <p>Métadonnées clés :</p> 
-    <ul>
-        <li>Duration</li>
-        <li>Make et Model (de la caméra ou du micro)</li>
-        <li>CreationDate</li>
-        <li>Software (logiciel de montage)</li>
-        <li>Parfois des données de géolocalisation</li>
-    </ul>
-    <p><strong>Exemple :</strong> Une vidéo de revendication est analysée. Les métadonnées montrent qu'elle a été montée avec le logiciel "iMovie" sur un "iPhone 14 Pro", et les coordonnées GPS intégrées pointent vers un quartier précis, réduisant considérablement la zone de recherche des suspects.</p>
-    <h3>4. Les archives (.zip, .rar, .7z)</h3>
-    <p>Une archive est un conteneur qui possède ses propres timestamps MACE. Cependant, les fichiers qu'elle contient conservent leurs métadonnées d'origine.
-    Il est intéressant de comparer les timestamps MACE de l'archive (ex: documents_secrets.zip créé Mardi à 15:00) avec les timestamps internes des fichiers qu'elle contient.</p>
-    <p><strong>Exemple :</strong> L'analyse d'un fichier Compta.zip volé montre que l'archive a été créée le 20/07/2024 à 23:55, juste après une intrusion détectée sur le serveur. Les fichiers à l'intérieur ont des dates de modification bien antérieures. Cela indique précisément quels fichiers ont été exfiltrés et quand l'attaquant a finalisé son paquet.</p>
-    <h3>5. Les fichiers de raccourcis Windows (.lnk)</h3>
-    <p>Loin d'être de simples pointeurs, les fichiers .lnk sont des mines d'or forensiques. Ils enregistrent l'état de leur cible au moment de leur création ou de leur dernière utilisation.</p>
-    <p>Métadonnées clés :</p>
-    <ul>
-        <li>Chemin complet du fichier cible</li>
-        <li>Ses timestamps MACE</li>
-        <li>La taille du fichier cible</li>
-        <li>Le nom de la machine sur laquelle il était stocké (NetBIOS name)</li>
-        <li>L'adresse MAC de cette machine</li>
-    </ul>
-    <p><strong>Exemple :</strong> Un enquêteur trouve sur une clé USB un raccourci pointant vers C:\Users\Hugo\Desktop\Liste_Clients.xlsx. Le fichier Liste_Clients.xlsx est absent, mais le raccourci prouve à lui seul que ce fichier a existé sur l'ordinateur de Hugo et donne des informations sur la machine d'origine.</p>
-    <h3>6. Les fichiers PDF</h3>
-    <p>Souvent perçus comme statiques, les PDF conservent des traces de leur cycle de vie.</p>
-    <p>Métadonnées clés :</p> 
-    <ul>
-        <li>Author</li>
-        <li>CreatorTool (logiciel ayant produit le contenu, ex: "Microsoft Word 2019")</li>
-        <li>Producer (logiciel ayant converti en PDF, ex: "Adobe PDF Library")</li>
-        <li>Toutes les dates de modification</li>
-    </ul>
-    <p><strong>Exemple :</strong> Une fausse facture Facture.pdf indique CreatorTool: "Adobe Illustrator 2024". Une facture est normalement générée par un logiciel de comptabilité, pas un logiciel de design graphique. Cet indice suggère une création de toutes pièces.</p>
+	<h2><i class="fas fa-info-circle" aria-hidden="true"></i>Généralités sur les métadonnées</h2>
+	<p>
+		Les métadonnées sont des données qui fournissent des informations sur d'autres données. Elles servent à décrire, structurer et gérer des ressources, qu'elles soient numériques ou physiques. Plutôt que de constituer le contenu principal d'un fichier ou d'un document, les métadonnées en précisent le contexte et les caractéristiques. Elles répondent généralement à des questions telles que : qui a créé la donnée, quand a-t-elle été créée, quel est son format, ou encore quels sont les droits qui y sont associés.
+	</p>
+	<p>
+		Avant de se lancer dans l'analyse, il est impératif de comprendre la nature fondamentale des métadonnées et, surtout, où les chercher. Toute métadonnée appartient à l'une des deux grandes familles, dont la fiabilité et l'origine sont radicalement différentes.
+	</p>
+	<h3>Métadonnées de système de fichiers (externes)</h3>
+	<p>Gérées par le système d'exploitation (Windows, macOS), elles sont stockées à l'extérieur du fichier, dans la "table des matières" du disque (comme la <code>MFT</code>). Elles décrivent le contenant, sa taille, son emplacement et son interaction avec le système.</p>
+	<h3>Métadonnées applicatives (internes)</h3>
+	<p>Créées par le logiciel qui a fabriqué le fichier (Word, Photoshop, Appareil photo), elles sont stockées à l'intérieur du fichier lui-même, selon les spécifications de son format. Elles décrivent le contenu, son auteur, son contexte de création, etc.</p>
+	<p>
+		Cette distinction est le concept le plus important de l'analyse. Une incohérence entre ces deux familles est souvent le premier signe d'une manipulation ou d'une anomalie. La comparaison de la date de création interne d'un document avec la date de création de son fichier sur le disque peut, par exemple, révéler une copie ou une falsification.
+	</p>
+	<p>
+		La finalité des métadonnées est donc double. Pour le système, elles sont opérationnelles : elles permettent l'organisation, l'indexation et la gestion des données. Pour un analyste, elles sont historiques et contextuelles : elles fournissent un enregistrement traçable des événements liés à une ressource numérique, ce qui est essentiel en administration système, en sécurité et en analyse forensique.
+	</p>
 </section>
 <section class="content-block">
-    <h2><i class="fas fa-user-secret" aria-hidden="true"></i>Anti-forensique et analyse critique</h2>
-    <p>
-        Un expert ne se contente pas de lire les métadonnées ; il évalue leur crédibilité. Savoir reconnaître les techniques d'anti-forensique est une compétence essentielle.
-    </p>
-    <h3>Le timestomping (falsification des horodatages)</h3>
-    <p>C'est l'acte de modifier les timestamps MACE d'un fichier pour dissimuler sa véritable origine, souvent pour cacher un malware.</p>
-    <p><strong>Exemple :</strong> Un fichier svchost.exe suspect a des timestamps MACE de 2015. Cependant, l'analyse de son en-tête interne (PE Header) révèle une date de compilation de 2024. L'incohérence prouve le timestomping. C'est un malware récent se faisant passer pour un ancien fichier système.</p>
-    <h3>Le metadata stripping (nettoyage des métadonnées)</h3>
-    <p>De nombreuses plateformes en ligne (Facebook, Twitter/X, WhatsApp) suppriment la plupart des métadonnées EXIF des images lors du téléversement pour protéger la vie privée et réduire la taille des fichiers.</p>
-    <p><strong>Implication pour l'enquêteur :</strong> L'analyse d'une photo téléchargée depuis un réseau social est souvent inutile. Il est impératif de travailler sur le fichier original provenant de l'appareil source.</p>
+	<h2><i class="fas fa-clock" aria-hidden="true"></i>Les timestamps MACE</h2>
+	<p>
+		Les métadonnées les plus fondamentales et les plus universelles sont les timestamps (horodatages) gérés par le système de fichiers. Ils constituent le socle de toute analyse chronologique, permettant de placer les événements sur une ligne de temps précise. On les désigne par l'acronyme <code>MACE</code> (ou <code>MACB</code>).
+	</p>
+	<ul>
+		<li><strong><code>Modified</code> :</strong> Date et heure de la dernière modification du contenu du fichier.</li>
+		<li><strong><code>Accessed</code> :</strong> Date et heure du dernier accès (ouverture). Attention, ce timestamp est souvent désactivé sur les systèmes modernes. En effet, chaque lecture (même par un antivirus ou un indexeur) provoquerait une opération d'écriture sur le disque, dégradant les performances.</li>
+		<li><strong><code>Changed</code> :</strong> Date et heure du dernier changement des métadonnées elles-mêmes (ex: changement de nom, de permissions).</li>
+		<li><strong><code>Entry created</code> (ou <code>Birth</code>) :</strong> Date et heure de la création du fichier sur le volume.</li>
+	</ul>
+	<p>
+		<strong>Point d'analyse :</strong> Sur un système de fichiers NTFS (Windows), il existe deux jeux de timestamps MACE :
+	</p>
+	<ul>
+		<li><strong><code>$STANDARD_INFORMATION</code></strong> (visibles dans l'explorateur)</li>
+		<li><strong><code>$FILE_NAME</code></strong> (stockés dans la MFT)</li>
+	</ul>
+	<p>Un outil de timestomping simple modifiera souvent le premier, mais oubliera le second. Une incohérence entre ces deux jeux de dates est un indice de manipulation quasi certain.</p>
+	<h3>Exemple concret</h3>
+	<p>Imaginons un fichier <code>Rapport.docx</code> créé sur un ordinateur Windows. Un outil forensique comme <code>MFTECmd</code> révélerait le scénario suivant :</p>
+	<p><strong>Lundi 10:00 - Création :</strong> L'utilisateur crée <code>Rapport.docx</code>. Le timestamp <code>Entry Created</code> est fixé à Lundi 10:00. Les timestamps <code>Modified</code>, <code>Accessed</code> et <code>Changed</code> sont aussi initialisés à Lundi 10:00.</p>
+	<p><strong>Lundi 10:05 - Rédaction :</strong> L'utilisateur écrit dans le rapport et sauvegarde. Le timestamp <code>Modified</code> est mis à jour à Lundi 10:05. Les timestamps <code>Changed</code> et <code>Accessed</code> sont aussi mis à jour.</p>
+	<p><strong>Lundi 11:00 - Renommage :</strong> L'utilisateur renomme le fichier en <code>Rapport_Final.docx</code>. Seul le timestamp <code>Changed</code> est mis à jour à Lundi 11:00, car le contenu du fichier n'a pas changé.</p>
+	<p><strong>Mardi 09:00 - Relecture :</strong> Un collègue ouvre le fichier pour le lire, sans le modifier. Seul le timestamp <code>Accessed</code> est mis à jour à Mardi 09:00.</p>
 </section>
 <section class="content-block">
-    <h2><i class="fas fa-flag-checkered" aria-hidden="true"></i>Conclusion</h2>
-    <p>
-        L'analyse des métadonnées est un art qui se situe à la croisée de la technique et de l'enquête. La compétence clé n'est pas seulement de savoir extraire une information, mais de savoir la corréler. C'est en croisant les données du système avec celles des applications, en comparant les timestamps et en questionnant les incohérences que l'analyste transforme des informations éparses en une chronologie cohérente et défendable.
-    </p>
+	<h2><i class="fas fa-cogs" aria-hidden="true"></i>L'analyse applicative</h2>
+	<p>
+		Si les timestamps <code>MACE</code> nous donnent le "quand", les métadonnées applicatives nous donnent le "qui", le "comment" et le "où". Pour extraire et interpréter ces informations riches, l'outil <code>ExifTool</code> est la référence mondiale.
+	</p>
+	<h3>1. Les documents Microsoft office (<code>.docx</code>, <code>.pptx</code>, etc.)</h3>
+	<p>Bien plus que de simples conteneurs de texte, les fichiers Office modernes sont de véritables journaux de bord.</p>
+	<p>Métadonnées clés :</p>
+	<ul>
+		<li><code>Creator</code> (auteur initial)</li>
+		<li><code>Last Modified By</code> (dernier utilisateur à avoir sauvegardé)</li>
+		<li><code>Total Edit Time</code> (temps total d'édition)</li>
+		<li><code>Revision Number</code> (nombre de sauvegardes)</li>
+		<li><code>Company</code>, <code>Manager</code>, ...</li>
+	</ul>
+	<p><strong>Exemple :</strong> Une entreprise retrouve son plan stratégique <code>Plan_Secret.docx</code> sur internet. L'analyse révèle <code>Creator: "Hugo"</code> et <code>Last Modified By: "Bob"</code>. L'enquête peut donc se concentrer sur l'activité de Bob.</p>
+	<h3>2. Les images (<code>.jpg</code>, <code>.heic</code>, <code>.cr2</code>)</h3>
+	<p>Les métadonnées <code>EXIF</code> (Exchangeable Image File Format) peuvent transformer une simple image en une preuve factuelle irréfutable.</p>
+	<p>Métadonnées clés :</p>
+	<ul>
+		<li><code>Make</code> et <code>Model</code> (marque et modèle de l'appareil)</li>
+		<li><code>DateTimeOriginal</code> (date et heure exactes de la prise de vue)</li>
+		<li><code>GPSLatitude</code> et <code>GPSLongitude</code> (coordonnées GPS)</li>
+		<li><code>Software</code> (logiciel de retouche)</li>
+	</ul>
+	<p><strong>Exemple :</strong> La photo d'un suspect, <code>IMG_4587.jpg</code>, prétendument prise chez lui, révèle des coordonnées GPS qui pointent vers le lieu d'un cambriolage à l'heure du crime, contredisant son alibi.</p>
+	<h3>3. Les fichiers audio et vidéo (<code>.mp4</code>, <code>.mov</code>, <code>.mp3</code>)</h3>
+	<p>Comme les images, les fichiers multimédias embarquent des informations cruciales sur leur origine.</p>
+	<p>Métadonnées clés :</p>
+	<ul>
+		<li><code>Duration</code></li>
+		<li><code>Make</code> et <code>Model</code> (de la caméra ou du micro)</li>
+		<li><code>CreationDate</code></li>
+		<li><code>Software</code> (logiciel de montage)</li>
+		<li>Parfois des données de géolocalisation</li>
+	</ul>
+	<p><strong>Exemple :</strong> Une vidéo de revendication est analysée. Les métadonnées montrent qu'elle a été montée avec le logiciel "iMovie" sur un "iPhone 14 Pro", et les coordonnées GPS intégrées pointent vers un quartier précis, réduisant considérablement la zone de recherche des suspects.</p>
+	<h3>4. Les archives (<code>.zip</code>, <code>.rar</code>, <code>.7z</code>)</h3>
+	<p>Une archive est un conteneur qui possède ses propres timestamps <code>MACE</code>. Cependant, les fichiers qu'elle contient conservent leurs métadonnées d'origine.
+		Il est intéressant de comparer les timestamps <code>MACE</code> de l'archive (ex: <code>documents_secrets.zip</code> créé Mardi à 15:00) avec les timestamps internes des fichiers qu'elle contient.</p>
+	<p><strong>Exemple :</strong> L'analyse d'un fichier <code>Compta.zip</code> volé montre que l'archive a été créée le 20/07/2024 à 23:55, juste après une intrusion détectée sur le serveur. Les fichiers à l'intérieur ont des dates de modification bien antérieures. Cela indique précisément quels fichiers ont été exfiltrés et quand l'attaquant a finalisé son paquet.</p>
+	<h3>5. Les fichiers de raccourcis Windows (<code>.lnk</code>)</h3>
+	<p>Loin d'être de simples pointeurs, les fichiers <code>.lnk</code> sont des mines d'or forensiques. Ils enregistrent l'état de leur cible au moment de leur création ou de leur dernière utilisation.</p>
+	<p>Métadonnées clés :</p>
+	<ul>
+		<li>Chemin complet du fichier cible</li>
+		<li>Ses timestamps <code>MACE</code></li>
+		<li>La taille du fichier cible</li>
+		<li>Le nom de la machine sur laquelle il était stocké (NetBIOS name)</li>
+		<li>L'adresse MAC de cette machine</li>
+	</ul>
+	<p><strong>Exemple :</strong> Un enquêteur trouve sur une clé USB un raccourci pointant vers <code>C:\Users\Hugo\Desktop\Liste_Clients.xlsx</code>. Le fichier <code>Liste_Clients.xlsx</code> est absent, mais le raccourci prouve à lui seul que ce fichier a existé sur l'ordinateur de Hugo et donne des informations sur la machine d'origine.</p>
+	<h3>6. Les fichiers PDF</h3>
+	<p>Souvent perçus comme statiques, les PDF conservent des traces de leur cycle de vie.</p>
+	<p>Métadonnées clés :</p>
+	<ul>
+		<li><code>Author</code></li>
+		<li><code>CreatorTool</code> (logiciel ayant produit le contenu, ex: "Microsoft Word 2019")</li>
+		<li><code>Producer</code> (logiciel ayant converti en PDF, ex: "Adobe PDF Library")</li>
+		<li>Toutes les dates de modification</li>
+	</ul>
+	<p><strong>Exemple :</strong> Une fausse facture <code>Facture.pdf</code> indique <code>CreatorTool: "Adobe Illustrator 2024"</code>. Une facture est normalement générée par un logiciel de comptabilité, pas un logiciel de design graphique. Cet indice suggère une création de toutes pièces.</p>
+</section>
+<section class="content-block">
+	<h2><i class="fas fa-user-secret" aria-hidden="true"></i>Anti-forensique et analyse critique</h2>
+	<p>
+		Un expert ne se contente pas de lire les métadonnées ; il évalue leur crédibilité. Savoir reconnaître les techniques d'anti-forensique est une compétence essentielle.
+	</p>
+	<h3>Le timestomping (falsification des horodatages)</h3>
+	<p>C'est l'acte de modifier les timestamps <code>MACE</code> d'un fichier pour dissimuler sa véritable origine, souvent pour cacher un malware.</p>
+	<p><strong>Exemple :</strong> Un fichier <code>svchost.exe</code> suspect a des timestamps <code>MACE</code> de 2015. Cependant, l'analyse de son en-tête interne (<code>PE Header</code>) révèle une date de compilation de 2024. L'incohérence prouve le timestomping. C'est un malware récent se faisant passer pour un ancien fichier système.</p>
+	<h3>Le metadata stripping (nettoyage des métadonnées)</h3>
+	<p>De nombreuses plateformes en ligne (Facebook, Twitter/X, WhatsApp) suppriment la plupart des métadonnées <code>EXIF</code> des images lors du téléversement pour protéger la vie privée et réduire la taille des fichiers.</p>
+	<p><strong>Implication pour l'enquêteur :</strong> L'analyse d'une photo téléchargée depuis un réseau social est souvent inutile. Il est impératif de travailler sur le fichier original provenant de l'appareil source.</p>
+</section>
+<section class="content-block">
+	<h2><i class="fas fa-flag-checkered" aria-hidden="true"></i>Conclusion</h2>
+	<p>
+		L'analyse des métadonnées est un art qui se situe à la croisée de la technique et de l'enquête. La compétence clé n'est pas seulement de savoir extraire une information, mais de savoir la corréler. C'est en croisant les données du système avec celles des applications, en comparant les timestamps et en questionnant les incohérences que l'analyste transforme des informations éparses en une chronologie cohérente et défendable.
+	</p>
 </section>

@@ -1,154 +1,147 @@
 <section class="content-block">
-    <h2><i class="fas fa-info-circle" aria-hidden="true"></i>Généralités sur la Cryptographie</h2>
-    <p>
-        La cryptographie est la science qui vise à sécuriser les communications et les données en les rendant inintelligibles à des personnes non autorisés. Elle fournit les mécanismes qui soutiennent la confiance dans le monde numérique, en poursuivant quatre objectifs essentiels :
-    </p>
-    <ul>
-        <li><strong>Confidentialité</strong> : Assurer que seule la personne destinataire puisse lire le contenu d'un message. C'est ce qui protège vos emails ou vos conversations privées, même si les données sont interceptées.</li>
-        <li><strong>Intégrité</strong> : Garantir que les données n'ont pas été modifiées ou corrompues entre leur envoi et leur réception. Cela vous assure que le logiciel que vous téléchargez est bien celui fourni par l'éditeur.</li>
-        <li><strong>Authenticité</strong> : Permettre d'identifier de manière certaine l'origine des données. C'est ce qui vous confirme que vous êtes bien connecté au site de votre banque et non à un site frauduleux.</li>
-        <li><strong>Non-répudiation</strong> : Empêcher qu'un expéditeur puisse nier avoir envoyé un message. Cela a une valeur légale, par exemple dans le cadre d'une signature de contrat électronique.</li>
-    </ul>
-     <p>
-        Pour atteindre ces objectifs, la cryptographie s'appuie sur trois concepts fondamentaux et complémentaires : le chiffrement symétrique, le chiffrement asymétrique et le hachage.
-    </p>
+	<h2><i class="fas fa-info-circle" aria-hidden="true"></i>Généralités sur la Cryptographie</h2>
+	<p>
+		La cryptographie est la science qui vise à sécuriser les communications et les données en les rendant inintelligibles à des personnes non autorisés. Elle fournit les mécanismes qui soutiennent la confiance dans le monde numérique, en poursuivant quatre objectifs essentiels :
+	</p>
+	<ul>
+		<li><strong>Confidentialité</strong> : Assurer que seule la personne destinataire puisse lire le contenu d'un message. C'est ce qui protège vos emails ou vos conversations privées, même si les données sont interceptées.</li>
+		<li><strong>Intégrité</strong> : Garantir que les données n'ont pas été modifiées ou corrompues entre leur envoi et leur réception. Cela vous assure que le logiciel que vous téléchargez est bien celui fourni par l'éditeur.</li>
+		<li><strong>Authenticité</strong> : Permettre d'identifier de manière certaine l'origine des données. C'est ce qui vous confirme que vous êtes bien connecté au site de votre banque et non à un site frauduleux.</li>
+		<li><strong>Non-répudiation</strong> : Empêcher qu'un expéditeur puisse nier avoir envoyé un message. Cela a une valeur légale, par exemple dans le cadre d'une signature de contrat électronique.</li>
+	</ul>
+	<p>
+		Pour atteindre ces objectifs, la cryptographie s'appuie sur trois concepts fondamentaux et complémentaires : le chiffrement symétrique, le chiffrement asymétrique et le hachage.
+	</p>
 </section>
-
 <section class="content-block">
-    <h2><i class="fas fa-exchange-alt" aria-hidden="true"></i> Le Chiffrement Symétrique</h2>
-    <p>
-        Le chiffrement symétrique est la méthode la plus ancienne et la plus intuitive. Son principe est simple : une seule et même clé secrète est utilisée à la fois pour chiffrer (transformer un message lisible en code secret) et pour déchiffrer (l'opération inverse). L'expéditeur et le destinataire doivent donc impérativement connaître cette clé unique et la conserver en lieu sûr.
-    </p>
-    <h3>Avantage : la vitesse</h3>
-    <p>
-        La grande force de cette approche est sa rapidité d'exécution. Les opérations mathématiques qu'elle emploie (substitutions de bits, permutations...) sont relativement simples pour un processeur. Cela la rend idéale pour chiffrer de grandes quantités de données rapidement, comme un disque dur entier, un flux vidéo en direct ou des archives de fichiers volumineux.
-    </p>
-    <h3>Inconvénient : la distribution de la clé</h3>
-    <p>
-        L'inconvénient principal est le problème de la distribution des clés. Comment l'expéditeur et le destinataire peuvent-ils s'échanger la clé secrète en toute sécurité ? Si la clé est envoyée sur un canal non sécurisé, un pirate peut l'intercepter et compromettre toutes les communications futures. C'est un dilemme : pour sécuriser un canal, il faut une clé, mais pour envoyer la clé, il faut un canal sécurisé.
-    </p>
-    <h3>Exemples d'algorithmes</h3>
-    <ul>
-        <li><strong>AES (Advanced Encryption Standard)</strong> : C'est la norme mondiale actuelle, utilisée par les gouvernements et les entreprises pour protéger les données les plus sensibles.</li>
-        <li><strong>ChaCha20</strong> : Un autre algorithme très performant, souvent utilisé dans les communications web modernes (HTTPS).</li>
-    </ul>
+	<h2><i class="fas fa-exchange-alt" aria-hidden="true"></i> Le Chiffrement Symétrique</h2>
+	<p>
+		Le chiffrement symétrique est la méthode la plus ancienne et la plus intuitive. Son principe est simple : une seule et même clé secrète est utilisée à la fois pour chiffrer (transformer un message lisible en code secret) et pour déchiffrer (l'opération inverse). L'expéditeur et le destinataire doivent donc impérativement connaître cette clé unique et la conserver en lieu sûr.
+	</p>
+	<h3>Avantage : la vitesse</h3>
+	<p>
+		La grande force de cette approche est sa rapidité d'exécution. Les opérations mathématiques qu'elle emploie (substitutions de bits, permutations...) sont relativement simples pour un processeur. Cela la rend idéale pour chiffrer de grandes quantités de données rapidement, comme un disque dur entier, un flux vidéo en direct ou des archives de fichiers volumineux.
+	</p>
+	<h3>Inconvénient : la distribution de la clé</h3>
+	<p>
+		L'inconvénient principal est le problème de la distribution des clés. Comment l'expéditeur et le destinataire peuvent-ils s'échanger la clé secrète en toute sécurité ? Si la clé est envoyée sur un canal non sécurisé, un pirate peut l'intercepter et compromettre toutes les communications futures. C'est un dilemme : pour sécuriser un canal, il faut une clé, mais pour envoyer la clé, il faut un canal sécurisé.
+	</p>
+	<h3>Exemples d'algorithmes</h3>
+	<ul>
+		<li><strong><code>AES</code> (Advanced Encryption Standard)</strong> : C'est la norme mondiale actuelle, utilisée par les gouvernements et les entreprises pour protéger les données les plus sensibles.</li>
+		<li><strong><code>ChaCha20</code></strong> : Un autre algorithme très performant, souvent utilisé dans les communications web modernes (HTTPS).</li>
+	</ul>
 </section>
-
 <section class="content-block">
-    <h2><i class="fas fa-user-lock" aria-hidden="true"></i> Le Chiffrement Asymétrique</h2>
-    <p>
-        Introduit dans les années 1970, le chiffrement asymétrique a été conçu pour résoudre le problème de la distribution des clés. Son fonctionnement repose sur une paire de clés distinctes mais liées mathématiquement pour chaque utilisateur :
-    </p>
-    <ul>
-        <li><strong>Une clé publique</strong> : C'est comme l'adresse de votre boîte aux lettres. Elle peut et doit être partagée largement, sans aucun risque.</li>
-        <li><strong>Une clé privée</strong> : C'est la clé de votre boîte aux lettres. Elle vous est exclusive et ne doit jamais être divulguée.</li>
-    </ul>
-    <h3>Avantage : la sécurité</h3>
-    <p>
-        La relation entre ces deux clés est le cœur de la sécurité : <strong>tout message chiffré avec la clé publique ne peut être déchiffré qu'avec la clé privée correspondante</strong>. Il est impossible de deviner la clé privée à partir de la clé publique.
-    </p>
-    <p>
-        Cette sécurité repose sur des problèmes mathématiques très difficiles à résoudre. Par exemple, pour l'algorithme RSA, il est facile de multiplier deux très grands nombres premiers, mais il est quasi impossible de faire l'opération inverse (retrouver les deux nombres d'origine à partir du résultat).
-    </p>
-    <h3>Inconvénient : la lenteur</h3>
-    <p>
-        À cause de la complexité de ces calculs, cette méthode est beaucoup plus lente que le chiffrement symétrique. On ne l'utilise donc pas pour chiffrer de gros volumes de données, mais plutôt pour des opérations courtes et critiques, comme l'échange sécurisé d'une clé de chiffrement symétrique au début d'une communication.
-    </p>
-    <h3>Exemples d'algorithmes</h3>
-    <ul>
-        <li><strong>RSA (Rivest-Shamir-Adleman)</strong> : L'algorithme le plus connu et historiquement le plus utilisé.</li>
-        <li><strong>ECC (Elliptic Curve Cryptography)</strong> : Plus récent, il offre le même niveau de sécurité que RSA mais avec des clés beaucoup plus courtes. C'est idéal pour les appareils avec une puissance de calcul limitée, comme les téléphones et les objets connectés.</li>
-    </ul>
+	<h2><i class="fas fa-user-lock" aria-hidden="true"></i> Le Chiffrement Asymétrique</h2>
+	<p>
+		Introduit dans les années 1970, le chiffrement asymétrique a été conçu pour résoudre le problème de la distribution des clés. Son fonctionnement repose sur une paire de clés distinctes mais liées mathématiquement pour chaque utilisateur :
+	</p>
+	<ul>
+		<li><strong>Une clé publique</strong> : C'est comme l'adresse de votre boîte aux lettres. Elle peut et doit être partagée largement, sans aucun risque.</li>
+		<li><strong>Une clé privée</strong> : C'est la clé de votre boîte aux lettres. Elle vous est exclusive et ne doit jamais être divulguée.</li>
+	</ul>
+	<h3>Avantage : la sécurité</h3>
+	<p>
+		La relation entre ces deux clés est le cœur de la sécurité : <strong>tout message chiffré avec la clé publique ne peut être déchiffré qu'avec la clé privée correspondante</strong>. Il est impossible de deviner la clé privée à partir de la clé publique.
+	</p>
+	<p>
+		Cette sécurité repose sur des problèmes mathématiques très difficiles à résoudre. Par exemple, pour l'algorithme RSA, il est facile de multiplier deux très grands nombres premiers, mais il est quasi impossible de faire l'opération inverse (retrouver les deux nombres d'origine à partir du résultat).
+	</p>
+	<h3>Inconvénient : la lenteur</h3>
+	<p>
+		À cause de la complexité de ces calculs, cette méthode est beaucoup plus lente que le chiffrement symétrique. On ne l'utilise donc pas pour chiffrer de gros volumes de données, mais plutôt pour des opérations courtes et critiques, comme l'échange sécurisé d'une clé de chiffrement symétrique au début d'une communication.
+	</p>
+	<h3>Exemples d'algorithmes</h3>
+	<ul>
+		<li><strong><code>RSA</code> (Rivest-Shamir-Adleman)</strong> : L'algorithme le plus connu et historiquement le plus utilisé.</li>
+		<li><strong><code>ECC</code> (Elliptic Curve Cryptography)</strong> : Plus récent, il offre le même niveau de sécurité que RSA mais avec des clés beaucoup plus courtes. C'est idéal pour les appareils avec une puissance de calcul limitée, comme les téléphones et les objets connectés.</li>
+	</ul>
 </section>
-
 <section class="content-block">
-    <h2><i class="fas fa-fingerprint" aria-hidden="true"></i> Le Hachage</h2>
-    <p>
-        Contrairement au chiffrement, le hachage n'est pas réversible. C'est une fonction mathématique à sens unique qui transforme n'importe quelle donnée en entrée (un mot de passe, un fichier, etc.) en une chaîne de caractères de taille fixe, appelée empreinte ou hash. Son but principal est de garantir l'intégrité des données : si l'empreinte change, c'est que la donnée a été modifiée.
-    </p>
-    <p>
-        Pour être considérée comme sécurisée, une fonction de hachage doit respecter plusieurs règles critiques :
-    </p>
-    <ul>
-        <li><strong>Irréversibilité</strong> : Il doit être impossible de retrouver la donnée d'origine à partir de son empreinte.</li>
-        <li><strong>Déterminisme</strong> : Une même donnée doit toujours produire la même empreinte.</li>
-        <li><strong>Effet d'avalanche</strong> : Le moindre changement dans la donnée d'entrée (même un seul bit) doit changer radicalement l'empreinte de sortie.</li>
-        <li><strong>Résistance aux collisions</strong> : Il doit être extrêmement difficile de trouver deux données différentes qui donneraient la même empreinte.</li>
-    </ul>
-    <h3>Le cas d'usage parfait</h3>
-    <p>
-        Le hachage est essentiel pour stocker les mots de passe en sécurité. Un site web ne conserve jamais votre mot de passe en clair, mais seulement son empreinte. Lorsque vous vous connectez, le site hache le mot de passe que vous saisissez et compare le résultat à l'empreinte enregistrée.
-    </p>
-    <p>
-        Pour une sécurité maximale, on ajoute un "sel" (salt) : une chaîne de caractères aléatoire et unique à chaque utilisateur, qui est combinée au mot de passe avant le hachage. Cela empêche les attaques par "rainbow tables" (tables de hashs pré-calculés) et garantit que même deux utilisateurs avec le même mot de passe auront des empreintes stockées totalement différentes.
-    </p>
-    <h3>Exemples d'algorithmes</h3>
-    <ul>
-        <li><strong>SHA-2 (Secure Hash Algorithm 2)</strong> : C'est la famille d'algorithmes considérée comme la norme actuelle, notamment sa variante <strong>SHA-256</strong>.</li>
-        <li><strong>MD5</strong> : Un ancien algorithme qui n'est plus considéré comme sécurisé car il est trop vulnérable aux collisions.</li>
-    </ul>
+	<h2><i class="fas fa-fingerprint" aria-hidden="true"></i> Le Hachage</h2>
+	<p>
+		Contrairement au chiffrement, le hachage n'est pas réversible. C'est une fonction mathématique à sens unique qui transforme n'importe quelle donnée en entrée (un mot de passe, un fichier, etc.) en une chaîne de caractères de taille fixe, appelée empreinte ou <code>hash</code>. Son but principal est de garantir l'intégrité des données : si l'empreinte change, c'est que la donnée a été modifiée.
+	</p>
+	<p>
+		Pour être considérée comme sécurisée, une fonction de hachage doit respecter plusieurs règles critiques :
+	</p>
+	<ul>
+		<li><strong>Irréversibilité</strong> : Il doit être impossible de retrouver la donnée d'origine à partir de son empreinte.</li>
+		<li><strong>Déterminisme</strong> : Une même donnée doit toujours produire la même empreinte.</li>
+		<li><strong>Effet d'avalanche</strong> : Le moindre changement dans la donnée d'entrée (même un seul bit) doit changer radicalement l'empreinte de sortie.</li>
+		<li><strong>Résistance aux collisions</strong> : Il doit être extrêmement difficile de trouver deux données différentes qui donneraient la même empreinte.</li>
+	</ul>
+	<h3>Le cas d'usage parfait</h3>
+	<p>
+		Le hachage est essentiel pour stocker les mots de passe en sécurité. Un site web ne conserve jamais votre mot de passe en clair, mais seulement son empreinte. Lorsque vous vous connectez, le site hache le mot de passe que vous saisissez et compare le résultat à l'empreinte enregistrée.
+	</p>
+	<p>
+		Pour une sécurité maximale, on ajoute un "sel" (<code>salt</code>) : une chaîne de caractères aléatoire et unique à chaque utilisateur, qui est combinée au mot de passe avant le hachage. Cela empêche les attaques par <code>rainbow tables</code> (tables de hashs pré-calculés) et garantit que même deux utilisateurs avec le même mot de passe auront des empreintes stockées totalement différentes.
+	</p>
+	<h3>Exemples d'algorithmes</h3>
+	<ul>
+		<li><strong><code>SHA-2</code> (Secure Hash Algorithm 2)</strong> : C'est la famille d'algorithmes considérée comme la norme actuelle, notamment sa variante <strong><code>SHA-256</code></strong>.</li>
+		<li><strong><code>MD5</code></strong> : Un ancien algorithme qui n'est plus considéré comme sécurisé car il est trop vulnérable aux collisions.</li>
+	</ul>
 </section>
-
 <section class="content-block">
-    <h2><i class="fas fa-signature" aria-hidden="true"></i>La Signature Numérique</h2>
-    <p>
-        La signature numérique est une application directe du chiffrement asymétrique qui permet de garantir l'authenticité, l'intégrité et la non-répudiation d'un document. Le processus est l'inverse d'un chiffrement confidentiel : l'expéditeur utilise sa clé privée pour signer, et le monde entier peut vérifier avec sa clé publique.
-    </p>
-    <p>
-        Plutôt que de signer le document entier (ce qui serait trop lent), on signe son empreinte (hash).
-    </p>
-    <ul>
-        <li>L'expéditeur calcule le hash du document à envoyer.</li>
-        <li>Il chiffre ensuite ce hash avec sa propre clé privée. Le résultat de cette opération est la signature numérique.</li>
-        <li>Le destinataire reçoit le document original, la signature, et la clé publique de l'expéditeur.</li>
-        <li>Il déchiffre la signature avec la clé publique pour retrouver le hash original. En parallèle, il calcule lui-même le hash du document reçu.</li>
-        <li>Si les deux hashs sont identiques, le destinataire a une double certitude : que le message provient bien de l'expéditeur (seul détenteur de la clé privée) et qu'il n'a pas été altéré en chemin.</li>
-    </ul>
+	<h2><i class="fas fa-signature" aria-hidden="true"></i>La Signature Numérique</h2>
+	<p>
+		La signature numérique est une application directe du chiffrement asymétrique qui permet de garantir l'authenticité, l'intégrité et la non-répudiation d'un document. Le processus est l'inverse d'un chiffrement confidentiel : l'expéditeur utilise sa clé privée pour signer, et le monde entier peut vérifier avec sa clé publique.
+	</p>
+	<p>
+		Plutôt que de signer le document entier (ce qui serait trop lent), on signe son empreinte (<code>hash</code>).
+	</p>
+	<ul>
+		<li>L'expéditeur calcule le <code>hash</code> du document à envoyer.</li>
+		<li>Il chiffre ensuite ce <code>hash</code> avec sa propre clé privée. Le résultat de cette opération est la signature numérique.</li>
+		<li>Le destinataire reçoit le document original, la signature, et la clé publique de l'expéditeur.</li>
+		<li>Il déchiffre la signature avec la clé publique pour retrouver le <code>hash</code> original. En parallèle, il calcule lui-même le <code>hash</code> du document reçu.</li>
+		<li>Si les deux <code>hashs</code> sont identiques, le destinataire a une double certitude : que le message provient bien de l'expéditeur (seul détenteur de la clé privée) et qu'il n'a pas été altéré en chemin.</li>
+	</ul>
 </section>
-
 <section class="content-block">
-    <h2><i class="fas fa-id-card" aria-hidden="true"></i> Les Certificats Numériques</h2>
-    <p>
-        La cryptographie asymétrique est puissante, mais elle soulève une question cruciale : comment être certain que la clé publique de votre banque appartient bien à votre banque, et non à un pirate qui a monté un site frauduleux ? C'est précisément le problème que les certificats numériques (SSL/TLS) viennent résoudre.
-    </p>
-    <p>
-        Un certificat est une carte d'identité numérique qui lie une identité (par exemple, le nom de domaine <code>www.mabanque.fr</code>) à une clé publique. Pour être valide, ce document doit être signé numériquement par un tiers de confiance : une Autorité de Certification (CA).
-    </p>
-    <p>
-        Le rôle de ces autorités (comme Let's Encrypt, GlobalSign, etc.) est de vérifier que le demandeur du certificat est bien le propriétaire légitime du nom de domaine. Votre navigateur web possède une liste de ces autorités de confiance et, lorsque vous visitez un site en HTTPS, il vérifie la signature du certificat pour s'assurer qu'il dialogue avec le bon serveur.
-    </p>
+	<h2><i class="fas fa-id-card" aria-hidden="true"></i> Les Certificats Numériques</h2>
+	<p>
+		La cryptographie asymétrique est puissante, mais elle soulève une question cruciale : comment être certain que la clé publique de votre banque appartient bien à votre banque, et non à un pirate qui a monté un site frauduleux ? C'est précisément le problème que les certificats numériques (<code>SSL/TLS</code>) viennent résoudre.
+	</p>
+	<p>
+		Un certificat est une carte d'identité numérique qui lie une identité (par exemple, le nom de domaine <code>www.mabanque.fr</code>) à une clé publique. Pour être valide, ce document doit être signé numériquement par un tiers de confiance : une Autorité de Certification (CA).
+	</p>
+	<p>
+		Le rôle de ces autorités (comme Let's Encrypt, GlobalSign, etc.) est de vérifier que le demandeur du certificat est bien le propriétaire légitime du nom de domaine. Votre navigateur web possède une liste de ces autorités de confiance et, lorsque vous visitez un site en <code>HTTPS</code>, il vérifie la signature du certificat pour s'assurer qu'il dialogue avec le bon serveur.
+	</p>
 </section>
-
 <section class="content-block">
-    <h2><i class="fas fa-lock" aria-hidden="true"></i>Le Cadenas HTTPS</h2>
-    <p>
-        La connexion sécurisée à un site web (le cadenas HTTPS) est l'illustration parfaite de la collaboration des trois piliers de la cryptographie. Le processus, appelé "handshake TLS", les combine intelligemment :
-    </p>
-    <ul>
-        <li><strong>Authentification du serveur</strong> : Votre navigateur demande au serveur son certificat numérique. Il vérifie la signature du certificat auprès d'une Autorité de Certification connue pour authentifier le serveur et récupérer sa clé publique en toute confiance. (Usage : Asymétrique + Certificats).</li>
-        <li><strong>Échange de clé confidentiel</strong> : Le navigateur et le serveur utilisent ensuite le chiffrement asymétrique pour négocier de manière sécurisée une clé de session unique. Cette clé sera utilisée pour le reste de la communication. L'asymétrie est utilisée ici uniquement pour cet échange initial critique. (Usage : Asymétrique).</li>
-        <li><strong>Communication rapide et chiffrée</strong> : Toute la suite des échanges (le contenu de la page, les données que vous envoyez) est chiffrée avec la clé de session via un algorithme symétrique (comme AES), qui est bien plus rapide et efficace pour de gros volumes de données. (Usage : Symétrique).</li>
-        <li><strong>Garantie d'intégrité</strong> : Chaque message échangé est accompagné d'une empreinte (hash) pour s'assurer qu'aucune donnée n'est altérée durant le transport. (Usage : Hachage).</li>
-    </ul>
-        <h3>Attention au phishing !</h3>
-    <p>
-        Il est essentiel de comprendre ce que le cadenas HTTPS garantit et ne garantit pas :
-    </p>
-    <ul>
-        <li><strong>Ce qu'il garantit :</strong> Que votre connexion avec le serveur est chiffrée et que le serveur est bien celui qui correspond au nom de domaine affiché dans la barre d'adresse.</li>
-        <li><strong>Ce qu'il ne garantit PAS :</strong> Que le propriétaire du site est légitime ou digne de confiance.</li>
-    </ul>
-    <p>
-        Un pirate peut tout à fait acheter un nom de domaine comme <code>mabanque-connexion-securisee.com</code> et obtenir un certificat valide pour celui-ci. Le site affichera un cadenas, mais il s'agira d'un site de phishing destiné à voler vos identifiants.
-    </p>
-    <p>
-        <strong>La règle d'or :</strong> Le cadenas vous protège des écoutes, mais c'est à vous de vérifier que le nom de domaine est bien celui que vous voulez visiter.
-    </p>
+	<h2><i class="fas fa-lock" aria-hidden="true"></i>Le Cadenas HTTPS</h2>
+	<p>
+		La connexion sécurisée à un site web (le cadenas <code>HTTPS</code>) est l'illustration parfaite de la collaboration des trois piliers de la cryptographie. Le processus, appelé "<code>handshake TLS</code>", les combine intelligemment :
+	</p>
+	<ul>
+		<li><strong>Authentification du serveur</strong> : Votre navigateur demande au serveur son certificat numérique. Il vérifie la signature du certificat auprès d'une Autorité de Certification connue pour authentifier le serveur et récupérer sa clé publique en toute confiance. (Usage : Asymétrique + Certificats).</li>
+		<li><strong>Échange de clé confidentiel</strong> : Le navigateur et le serveur utilisent ensuite le chiffrement asymétrique pour négocier de manière sécurisée une clé de session unique. Cette clé sera utilisée pour le reste de la communication. L'asymétrie est utilisée ici uniquement pour cet échange initial critique. (Usage : Asymétrique).</li>
+		<li><strong>Communication rapide et chiffrée</strong> : Toute la suite des échanges (le contenu de la page, les données que vous envoyez) est chiffrée avec la clé de session via un algorithme symétrique (comme AES), qui est bien plus rapide et efficace pour de gros volumes de données. (Usage : Symétrique).</li>
+		<li><strong>Garantie d'intégrité</strong> : Chaque message échangé est accompagné d'une empreinte (<code>hash</code>) pour s'assurer qu'aucune donnée n'est altérée durant le transport. (Usage : Hachage).</li>
+	</ul>
+	<h3>Attention au phishing !</h3>
+	<p>
+		Il est essentiel de comprendre ce que le cadenas <code>HTTPS</code> garantit et ne garantit pas :
+	</p>
+	<ul>
+		<li><strong>Ce qu'il garantit :</strong> Que votre connexion avec le serveur est chiffrée et que le serveur est bien celui qui correspond au nom de domaine affiché dans la barre d'adresse.</li>
+		<li><strong>Ce qu'il ne garantit PAS :</strong> Que le propriétaire du site est légitime ou digne de confiance.</li>
+	</ul>
+	<p>
+		Un pirate peut tout à fait acheter un nom de domaine comme <code>mabanque-connexion-securisee.com</code> et obtenir un certificat valide pour celui-ci. Le site affichera un cadenas, mais il s'agira d'un site de phishing destiné à voler vos identifiants.
+	</p>
+	<p>
+		<strong>La règle d'or :</strong> Le cadenas vous protège des écoutes, mais c'est à vous de vérifier que le nom de domaine est bien celui que vous voulez visiter.
+	</p>
 </section>
-
 <section class="content-block">
-    <h2><i class="fas fa-flag-checkered" aria-hidden="true"></i>Conclusion</h2>
-    <p>
-        La sécurité de notre monde numérique ne repose pas sur une seule technologie miraculeuse, mais sur une orchestration précise de ces trois piliers fondamentaux. Le chiffrement symétrique pour la vitesse, le chiffrement asymétrique pour l'échange de secrets et l'authentification, et le hachage pour l'intégrité, forment ensemble un système de confiance robuste. C’est cette combinaison qui assure la confidentialité, l'intégrité et l'authenticité de la quasi-totalité de nos échanges sur le web moderne, du simple email à la transaction bancaire la plus sensible.
-    </p>
+	<h2><i class="fas fa-flag-checkered" aria-hidden="true"></i>Conclusion</h2>
+	<p>
+		La sécurité de notre monde numérique ne repose pas sur une seule technologie miraculeuse, mais sur une orchestration précise de ces trois piliers fondamentaux. Le chiffrement symétrique pour la vitesse, le chiffrement asymétrique pour l'échange de secrets et l'authentification, et le hachage pour l'intégrité, forment ensemble un système de confiance robuste. C’est cette combinaison qui assure la confidentialité, l'intégrité et l'authenticité de la quasi-totalité de nos échanges sur le web moderne, du simple email à la transaction bancaire la plus sensible.
+	</p>
 </section>

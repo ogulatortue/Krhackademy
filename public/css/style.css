@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap');
 
 :root {
     --purple: #9216a8;
@@ -223,4 +224,15 @@ h2 {
         padding: 0.25rem 0.75rem;
         font-size: 1.25rem;
     }
+}
+
+
+pre::-webkit-scrollbar {
+  height: 8px;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+pre::-webkit-scrollbar-thumb {
+  background-color: var(--purple, #9216a8);
+  border-radius: 10px;
+  border: 2px solid var(--code-bg, #1e1e2e);
 }

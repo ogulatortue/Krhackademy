@@ -1,3 +1,8 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -15,17 +20,13 @@
         <div class="auth-content">
             <h1 class="site-title">Kr[HACK]ademy</h1>
             <h2 class="page-title">Connexion</h2>
-            
+
             <form action="/login" method="post" class="auth-form">
                 <input type="hidden" name="redirect_to" value="<?= htmlspecialchars($_GET['redirect_to'] ?? '') ?>">
                 <input type="text" name="username" placeholder="Nom d'utilisateur ou E-mail" required>
                 <input type="password" name="password" placeholder="Mot de passe" required>
                 <button type="submit" class="btn-glass">Se connecter <i class="fas fa-arrow-right" aria-hidden="true"></i></button>
             </form>
-
-            <?php if (!empty($error_message)): ?>
-                <p class="error-message"><?= htmlspecialchars($error_message) ?></p>
-            <?php endif; ?>
 
             <div class="auth-links-container">
                 <p class="auth-link">
@@ -38,5 +39,26 @@
         </div>
     </div>
 
+    <script src="/js/modal.js"></script>
+    <?php include __DIR__ . '/partials/modal.phtml'; ?>
+    <?php
+    $flash_message = null;
+    if (isset($_SESSION['flash_message'])) {
+        $flash_message = $_SESSION['flash_message'];
+        unset($_SESSION['flash_message']);
+    }
+
+    if ($flash_message):
+    ?>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            modal.showModal(
+                '<?= htmlspecialchars($flash_message['type']) ?>',
+                '<?= htmlspecialchars($flash_message['title']) ?>',
+                '<?= htmlspecialchars($flash_message['message']) ?>'
+            );
+        });
+    </script>
+    <?php endif; ?>
 </body>
 </html>

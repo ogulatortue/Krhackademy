@@ -11,7 +11,6 @@ Le contenu créé par d'autres contributeurs et publié sur ce site reste la pro
     </footer>
 
     <?php
-    // Chargeur de scripts intelligent
     if (isset($scriptsToLoad) && is_array($scriptsToLoad)) {
         foreach ($scriptsToLoad as $script) {
             echo '<script src="' . htmlspecialchars($script) . '" defer></script>' . "\n";

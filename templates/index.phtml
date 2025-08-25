@@ -145,8 +145,8 @@
     <script src="/js/index.js" defer></script>
     <script src="/js/header.js" defer></script>
 
-    <script src="/js/modal.js"></script>
-    <?php include 'templates/partials/modal.phtml'; ?>
+    <?php require __DIR__ . '/partials/modal.phtml';?>
+    <script src="/js/modal.js" defer></script>
 
     <?php
     if (session_status() === PHP_SESSION_NONE) {

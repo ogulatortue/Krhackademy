@@ -70,8 +70,8 @@
     <script src="/js/search.js" defer></script> 
     <script src="/js/progress-tracker.js" defer></script>
     
-    <script src="/js/modal.js"></script>
-    <?php include 'templates/partials/modal.phtml'; ?>
+    <?php require __DIR__ . '/partials/modal.phtml';?>
+    <script src="/js/modal.js" defer></script>
 
     <?php
     if (session_status() === PHP_SESSION_NONE) {

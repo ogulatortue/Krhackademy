@@ -1,5 +1,4 @@
 <?php
-// src/challenges_logic.php
 
 $stmt = $pdo->query("
     SELECT 

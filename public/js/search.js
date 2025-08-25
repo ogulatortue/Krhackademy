@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
     cards.forEach(card => {
         const diffTag = card.querySelector('.difficulty-tag');
         if (diffTag) {
-            // CORRECTION : On s'assure de ne pas sélectionner la classe 'difficulty-tag' elle-même.
             const valueClass = Array.from(diffTag.classList).find(c => c.startsWith('difficulty-') && c !== 'difficulty-tag');
             if (valueClass) {
                 card.dataset.difficulty = valueClass.replace('difficulty-', '');

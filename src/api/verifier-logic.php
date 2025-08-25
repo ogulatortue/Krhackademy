@@ -16,8 +16,6 @@ $submitted_flag = $input['flag'] ?? '';
 header('Content-Type: application/json');
 $response = [];
 
-// 1. Récupérer le vrai flag depuis la base de données
-// Note : La requête est déjà correcte, on récupère le flag par ID numérique
 $stmt = $pdo->prepare("SELECT id, flag FROM challenges WHERE id = ?");
 $stmt->execute([$challenge_id]);
 $challenge = $stmt->fetch();
@@ -27,7 +25,6 @@ if (!$challenge) {
     exit();
 }
 
-// 2. Vérifier si le challenge est déjà validé par l'utilisateur
 $stmt = $pdo->prepare("SELECT COUNT(*) FROM user_challenges_progress WHERE user_id = ? AND challenge_id = ?");
 $stmt->execute([$_SESSION['user_id'], $challenge_id]);
 $is_completed = $stmt->fetchColumn() > 0;
@@ -37,13 +34,10 @@ if ($is_completed) {
     exit();
 }
 
-// 3. Comparer le flag soumis avec le flag de la base de données
-// Utilisation de la fonction hash_equals pour une comparaison sécurisée
 if (hash_equals($challenge['flag'], $submitted_flag)) {
     
     $response = ['status' => 'success', 'message' => 'Flag correct ! Bien joué !'];
 
-    // Insertion de la progression
     $stmt_solve = $pdo->prepare(
         "INSERT IGNORE INTO user_challenges_progress (user_id, challenge_id, completed_at) VALUES (?, ?, NOW())"
     );

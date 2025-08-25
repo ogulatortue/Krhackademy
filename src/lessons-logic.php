@@ -1,5 +1,4 @@
 <?php
-// src/lessons_logic.php
 
 $stmt = $pdo->query("
     SELECT 

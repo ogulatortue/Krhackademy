@@ -36,13 +36,12 @@ const setupModal = () => {
 
         hideModal();
 
-        // On attend que le navigateur ait bien masqué la modale
         setTimeout(() => {
             const underlyingElement = document.elementFromPoint(clickX, clickY);
             if (underlyingElement) {
                 underlyingElement.click();
             }
-        }, 0); // Le délai de 0ms suffit à décaler l'exécution après le rendu
+        }, 0);
     });
 
     window.addEventListener('scroll', () => {

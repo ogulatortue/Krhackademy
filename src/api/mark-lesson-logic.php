@@ -1,5 +1,4 @@
 <?php
-// src/api/mark_lesson_logic.php
 
 require_once __DIR__ . '/../bootstrap.php';
 
@@ -24,7 +23,6 @@ try {
         exit();
     }
 
-    // On utilise "user_lessons_progress" (pluriel) et on ne met plus à jour la colonne "status".
     $sql = "INSERT INTO user_lessons_progress (user_id, lesson_id, completed_at) VALUES (?, ?, NOW())
             ON DUPLICATE KEY UPDATE completed_at = NOW()";
     

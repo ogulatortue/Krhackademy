@@ -1,5 +1,4 @@
 <?php
-// src/forgot-password_logic.php
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -26,7 +25,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $mail = new PHPMailer(true);
             try {
-                // --- CONFIGURATION MODIFIÉE POUR UTILISER LES VARIABLES D'ENVIRONNEMENT ---
                 $mail->isSMTP();
                 $mail->Host       = $_ENV['MAIL_HOST'];
                 $mail->SMTPAuth   = true;
@@ -49,8 +47,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $success_message = 'Un e-mail de réinitialisation a été envoyé à votre adresse.';
 
             } catch (Exception $e) {
-                // Pour le débogage, vous pouvez logger l'erreur. Pour l'utilisateur, un message générique est mieux.
-                // error_log("PHPMailer Error: " . $mail->ErrorInfo);
                 $error_message = "L'e-mail n'a pas pu être envoyé. Veuillez réessayer plus tard.";
             }
         } else {

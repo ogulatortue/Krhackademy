@@ -36,7 +36,9 @@
             </header>
             
             <?php
-            $challengeContentPath = ROOT_PATH . '/public/challenges-content/' . $challenge['challenge_id_str'] . '.html';
+            $filename = basename($challenge['challenge_id_str']) . '.html';
+            $challengeContentPath = ROOT_PATH . '/public/challenges-content/' . $filename;
+
             if (file_exists($challengeContentPath)) {
                 include($challengeContentPath);
             } else {

@@ -9,32 +9,32 @@ $currentPage = '';
 
 $routes = [
     '/' => ['view' => 'index.phtml', 'currentPage' => 'index'],
-    '/lessons' => ['logic' => 'lessons_logic.php', 'view' => 'lessons.phtml', 'currentPage' => 'lessons'],
-    '/challenges' => ['logic' => 'challenges_logic.php', 'view' => 'challenges.phtml', 'currentPage' => 'challenges'],
-    '/login' => ['logic' => 'login_logic.php', 'view' => 'login.phtml', 'currentPage' => 'login'],
-    '/register' => ['logic' => 'register_logic.php', 'view' => 'register.phtml', 'currentPage' => 'register'],
-    '/forgot-password' => ['logic' => 'forgot-password_logic.php', 'view' => 'forgot-password.phtml', 'currentPage' => 'forgot-password'],
-    '/reset-password' => ['logic' => 'reset-password_logic.php', 'view' => 'reset-password.phtml', 'currentPage' => 'reset-password'],
-    '/logout' => ['logic' => 'logout.php'],
+    '/lessons' => ['logic' => 'lessons-logic.php', 'view' => 'lessons.phtml', 'currentPage' => 'lessons'],
+    '/challenges' => ['logic' => 'challenges-logic.php', 'view' => 'challenges.phtml', 'currentPage' => 'challenges'],
+    '/login' => ['logic' => 'login-logic.php', 'view' => 'login.phtml', 'currentPage' => 'login'],
+    '/register' => ['logic' => 'register-logic.php', 'view' => 'register.phtml', 'currentPage' => 'register'],
+    '/forgot-password' => ['logic' => 'forgot-password-logic.php', 'view' => 'forgot-password.phtml', 'currentPage' => 'forgot-password'],
+    '/reset-password' => ['logic' => 'reset-password-logic.php', 'view' => 'reset-password.phtml', 'currentPage' => 'reset-password'],
+    '/logout' => ['logic' => 'logout-logic.php'],
     '/scenarios' => ['currentPage' => 'scenarios', 'content' => 'Page des scénarios en construction.'],
-    '/api/verify-flag' => ['logic' => 'api/verifier_logic.php'],
-    '/api/mark-lesson-complete' => ['logic' => 'api/mark_lesson_logic.php'],
-    '/api/mark-challenge-complete' => ['logic' => 'api/mark_challenge_logic.php'],
-    '/api/get-progress' => ['logic' => 'api/get_progress_logic.php']
+    '/api/verify-flag' => ['logic' => 'api/verifier-logic.php'],
+    '/api/mark-lesson-complete' => ['logic' => 'api/mark-lesson-logic.php'],
+    '/api/mark-challenge-complete' => ['logic' => 'api/mark-challenge-logic.php'],
+    '/api/get-progress' => ['logic' => 'api/get-progress-logic.php']
 ];
 
 if (preg_match('/^\/challenge\/(\d+)$/', $request_uri, $matches)) {
     require_page_login();
     $_GET['id'] = $matches[1];
     $currentPage = 'challenges';
-    require ROOT_PATH . '/src/challenge_page_logic.php';
+    require ROOT_PATH . '/src/challenge-page-logic.php';
     require ROOT_PATH . '/templates/challenge-page.phtml';
 
 } elseif (preg_match('/^\/lesson\/(\d+)$/', $request_uri, $matches)) {
     require_page_login();
     $_GET['id'] = $matches[1];
     $currentPage = 'lessons';
-    require ROOT_PATH . '/src/lesson_page_logic.php';
+    require ROOT_PATH . '/src/lesson-page-logic.php';
     require ROOT_PATH . '/templates/lesson-page.phtml';
 
 } elseif (isset($routes[$request_uri])) {

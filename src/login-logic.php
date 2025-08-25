@@ -1,5 +1,4 @@
 <?php
-// src/login_logic.php
 
 $error_message = '';
 
@@ -23,17 +22,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['username'] = $user['username'];
 
-            // MODIFICATION ICI : Gestion de la redirection
-            $redirectTo = $_POST['redirect_to'] ?? '/lessons'; // Par défaut, on va vers /lessons
+            $redirectTo = $_POST['redirect_to'] ?? '/lessons';
 
-            // Petite sécurité : on s'assure que la redirection reste sur notre site
             if (empty($redirectTo) || parse_url($redirectTo, PHP_URL_HOST) !== null) {
-                $redirectTo = '/lessons'; // Si vide ou lien externe, on force la redirection vers /lessons
+                $redirectTo = '/lessons';
             }
             
             header('Location: ' . $redirectTo);
             exit();
-            // FIN DE LA MODIFICATION
             
         } else {
             $error_message = "Nom d'utilisateur ou mot de passe incorrect.";

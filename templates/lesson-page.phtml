@@ -38,7 +38,8 @@
             </header>
 
             <?php
-            $lessonContentPath = ROOT_PATH . '/public/lessons-content/' . $lesson['lesson_id_str'] . '.html';
+            $filename = basename($lesson['lesson_id_str']) . '.html';
+            $lessonContentPath = ROOT_PATH . '/public/lessons-content/' . $filename;
 
             if (file_exists($lessonContentPath)) {
                 include($lessonContentPath);

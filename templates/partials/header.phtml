@@ -44,7 +44,7 @@
                 <button id="close-profile-btn" class="fas fa-times" aria-label="Fermer le menu du profil"></button>
             </div>
             <ul class="profile-options">
-                <li><a href="/login"><i class="fas fa-sign-in-alt fa-fw"></i> Se connecter</a></li>
+                <li><a href="/login?redirect_to=<?= urlencode($_SERVER['REQUEST_URI']) ?>"><i class="fas fa-sign-in-alt fa-fw"></i>Se connecter</a></li>
                 <li><a href="/register"><i class="fas fa-user-plus fa-fw"></i> S'inscrire</a></li>
             </ul>
         <?php endif; ?>

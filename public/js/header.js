@@ -36,6 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (searchToggleBtn) searchToggleBtn.focus();
             searchToggleBtn.setAttribute('aria-expanded', 'false');
             filterControls.setAttribute('aria-hidden', 'true');
+            document.dispatchEvent(new CustomEvent('closeSearchPanel'));
         }
     };
 
@@ -130,18 +131,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 event.stopPropagation();
                 const wasOpen = p.panel.classList.contains('open');
 
-                // Ferme tous les panneaux existants
                 panels.forEach(otherPanel => otherPanel.onClose());
 
                 if (!wasOpen) {
                     p.panel.classList.add('open');
                     
-                    // Masque tous les boutons de bascule, y compris celui qui a été cliqué
                     panels.forEach(panelToHide => {
                         if (panelToHide.btn) panelToHide.btn.classList.add('hidden');
                     });
                     
-                    // Une exception pour le menu hamburger qui change d'icône, si vous voulez le conserver
                     if (p.btn === menuIcon) {
                         menuIcon.classList.remove('hidden');
                     }

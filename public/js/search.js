@@ -112,8 +112,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const categoryMatch = (selectedCategory === 'all' || cardCategory === selectedCategory);
             const nameMatch = cardName.includes(searchText);
             const completionMatch = (selectedCompletion === 'all') ||
-                                  (selectedCompletion === 'completed' && isCompleted) ||
-                                  (selectedCompletion === 'not-completed' && !isCompleted);
+                                    (selectedCompletion === 'completed' && isCompleted) ||
+                                    (selectedCompletion === 'not-completed' && !isCompleted);
 
             if (nameMatch && categoryMatch && difficultyMatch && completionMatch) {
                 card.style.display = 'flex';
@@ -131,6 +131,26 @@ document.addEventListener('DOMContentLoaded', () => {
         if (noResultsMessage) {
             noResultsMessage.style.display = hasVisibleCards ? 'none' : 'block';
         }
+    }
+
+    function resetSearchAndFilters() {
+        searchInput.value = '';
+        clearSearchBtn.classList.remove('visible');
+
+        if (categoryFilter) categoryFilter.value = 'all';
+        if (difficultyFilter) difficultyFilter.value = 'all';
+        if (completionFilter) completionFilter.value = 'all';
+
+        const categoryTrigger = document.querySelector('[data-select-id="category-filter"] .custom-select-trigger');
+        if (categoryTrigger) categoryTrigger.textContent = 'Toutes les catégories';
+        
+        const difficultyTrigger = document.querySelector('[data-select-id="difficulty-filter"] .custom-select-trigger');
+        if (difficultyTrigger) difficultyTrigger.textContent = 'Toutes les difficultés';
+
+        const completionTrigger = document.querySelector('[data-select-id="completion-filter"] .custom-select-trigger');
+        if (completionTrigger) completionTrigger.textContent = 'Tous les statuts';
+
+        filterItems();
     }
     
     if (cards.length > 0) {
@@ -156,5 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (completionFilter) {
             completionFilter.addEventListener('change', filterItems);
         }
+
+        document.addEventListener('closeSearchPanel', resetSearchAndFilters);
     }
 });

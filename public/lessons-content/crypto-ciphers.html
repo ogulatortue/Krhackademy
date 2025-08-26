@@ -1,133 +1,143 @@
 <section class="content-block">
-	<h2><i class="fas fa-info-circle" aria-hidden="true"></i> Introduction aux Chiffres Classiques</h2>
-	<p>
-		Avant l'ère numérique, la cryptographie s'appuyait sur des méthodes manuelles. Ces techniques, bien que rudimentaires, ont posé les fondations de la science moderne de la sécurité de l'information. Elles se classent en deux familles distinctes :
-	</p>
-	<h3>La substitution</h3>
-	<p>
-		La substitution consiste à remplacer chaque caractère d'un message par un autre. C'est une méthode de chiffrement où les lettres du texte original, ou texte clair, sont systématiquement échangées contre d'autres lettres, des chiffres ou des symboles pour créer un message illisible, le texte chiffré.
-	</p>
-	<h3>La transposition</h3>
-	<p>
-		À l'inverse de la substitution, la transposition ne modifie pas les lettres elles-mêmes, mais change leur ordre au sein du message. Les lettres sont déplacées selon une règle ou une grille prédéfinie, créant ainsi un message chiffré qui conserve les mêmes lettres que l'original, mais dans un ordre inintelligible. Par exemple, un message comme <code>HELLO</code> pourrait être réordonné en <code>HLELO</code>.
-	</p>
-	<p>
-		Ces méthodes sont désignées sous le terme de "chiffres classiques" car elles ont été développées et utilisées bien avant l'avènement des algorithmes informatiques. Elles sont aujourd'hui considérées comme obsolètes en raison de leur vulnérabilité, mais leur étude reste essentielle pour comprendre l'évolution et les principes fondamentaux de la cryptographie moderne.
-	</p>
+    <h2><i class="fas fa-info-circle" aria-hidden="true"></i> Introduction aux Chiffres Classiques</h2>
+    <p>
+        Avant l'ère numérique, la cryptographie s'appuyait sur des méthodes manuelles. Ces techniques, bien que rudimentaires, ont posé les fondations de la science moderne de la sécurité de l'information. Elles se classent en deux familles distinctes :
+    </p>
+    <h3>La substitution</h3>
+    <p>
+        La substitution consiste à remplacer chaque caractère d'un message par un autre. C'est une méthode de chiffrement où les lettres du texte original, ou texte clair, sont systématiquement échangées contre d'autres lettres, des chiffres ou des symboles pour créer un message illisible, le texte chiffré.
+    </p>
+    <h3>La transposition</h3>
+    <p>
+        À l'inverse de la substitution, la transposition ne modifie pas les lettres elles-mêmes, mais change leur ordre au sein du message. Les lettres sont déplacées selon une règle ou une grille prédéfinie, créant ainsi un message chiffré qui conserve les mêmes lettres que l'original, mais dans un ordre inintelligible. Par exemple, un message comme <code>HELLO</code> pourrait être réordonné en <code>HLELO</code>.
+    </p>
+    <p>
+        Ces méthodes sont désignées sous le terme de "chiffres classiques" car elles ont été développées et utilisées bien avant l'avènement des algorithmes informatiques. Elles sont aujourd'hui considérées comme obsolètes en raison de leur vulnérabilité, mais leur étude reste essentielle pour comprendre l'évolution et les principes fondamentaux de la cryptographie moderne.
+    </p>
 </section>
 <section class="content-block">
-	<h2><i class="fas fa-exchange-alt" aria-hidden="true"></i> Le Code César</h2>
-	<p>
-		Le code César est l'une des méthodes de chiffrement les plus anciennes et les plus simples, attribuée à Jules César lui-même. C'est un chiffrement par substitution mono-alphabétique où chaque lettre du message est remplacée par une autre, située un nombre fixe de positions plus loin dans l'alphabet.
-	</p>
-	<h3>Principe : le décalage fixe</h3>
-	<p>
-		Le principe est basé sur une clé simple : un nombre qui représente un décalage. Pour chiffrer, on décale chaque lettre du texte clair vers l'avant dans l'alphabet du nombre de positions indiqué par la clé. Par exemple, si la clé est 3, le 'A' devient 'D', le 'B' devient 'E', et ainsi de suite. L'opération est modulaire, ce qui signifie qu'une fois arrivé à la fin de l'alphabet (le 'Z'), on revient au début. Le déchiffrement s'effectue en appliquant le décalage inverse.
-	</p>
-	<h3>Vulnérabilité : la force brute</h3>
-	<p>
-		La principale faiblesse de ce code réside dans sa simplicité. Avec seulement 25 clés possibles pour l'alphabet latin (un décalage de 0 ne chiffrant rien), il est extrêmement vulnérable à une attaque par force brute. Un attaquant peut simplement essayer toutes les combinaisons possibles jusqu'à trouver le bon décalage. Les ordinateurs modernes peuvent casser ce type de chiffrement en une fraction de seconde, le rendant totalement inefficace pour toute communication nécessitant une confidentialité.
-	</p>
+    <h2><i class="fas fa-exchange-alt" aria-hidden="true"></i> Le Code César</h2>
+    <p>
+        Le code César est l'une des méthodes de chiffrement les plus anciennes et les plus simples, attribuée à Jules César lui-même. C'est un chiffrement par substitution mono-alphabétique où chaque lettre du message est remplacée par une autre, située un nombre fixe de positions plus loin dans l'alphabet.
+    </p>
+    <h3>Principe : le décalage fixe</h3>
+    <p>
+        Le principe est basé sur une clé simple : un nombre qui représente un décalage. Pour chiffrer, on décale chaque lettre du texte clair vers l'avant dans l'alphabet du nombre de positions indiqué par la clé. L'opération est modulaire, ce qui signifie qu'une fois arrivé à la fin de l'alphabet, on revient au début.
+    </p>
+<pre><code># Exemple avec une clé de 3 (Décalage de +3)
+
+Alphabet clair : A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+Alphabet chiffré: D E F G H I J K L M N O P Q R S T U V W X Y Z A B C
+
+Texte clair : ATTAQUE
+Texte chiffré: DWWDTXH</code></pre>
+    <h3>Vulnérabilité : la force brute</h3>
+    <p>
+        La principale faiblesse de ce code réside dans sa simplicité. Avec seulement 25 clés possibles pour l'alphabet latin (un décalage de 0 ne chiffrant rien), il est extrêmement vulnérable à une attaque par force brute. Un attaquant peut simplement essayer toutes les combinaisons possibles jusqu'à trouver le bon décalage. Les ordinateurs modernes peuvent casser ce type de chiffrement en une fraction de seconde.
+    </p>
 </section>
 <section class="content-block">
-	<h2><i class="fas fa-list-ol" aria-hidden="true"></i> Le Chiffre de Vigenère</h2>
-	<p>
-		Pour pallier la faiblesse du chiffre de César, le Chiffre de Vigenère a introduit une complexité supérieure. Il s'agit d'un chiffrement par substitution poly-alphabétique qui utilise une clé plus longue, permettant des décalages variables. Il a longtemps été considéré comme incassable et a été surnommé le "chiffre indéchiffrable" avant que ses faiblesses ne soient découvertes.
-	</p>
-	<h3>Principe : la clé variable</h3>
-	<p>
-		Contrairement au Code César qui utilise une clé numérique unique, Vigenère utilise une clé qui est un mot ou une phrase (par exemple, <code>SECRET</code>). Chaque lettre du message est chiffrée en utilisant une lettre correspondante de la clé. Si la clé est plus courte que le message, elle est répétée en boucle. La substitution varie donc d'une lettre à l'autre, ce qui rend l'analyse de fréquence classique inopérante au premier abord.
-	</p>
-	<h3>Exemple de chiffrement :</h3>
-	<ul>
-		<li><strong>Message :</strong> <code>BONJOUR</code></li>
-		<li><strong>Clé :</strong> <code>SECRET</code></li>
-	</ul>
-	<p>
-		Pour chiffrer, on répète la clé sous le message :
-	</p>
-	<pre><code>Message : B O N J O U R
-Clé :     S E C R E T S</code></pre>
-	<p>
-		On effectue ensuite une substitution pour chaque lettre, en utilisant le décalage correspondant à la lettre de la clé. La lettre 'A' correspond au décalage 0, 'B' au décalage 1, etc. Le chiffrement se fait en ajoutant le décalage de la clé à celui de la lettre du message.
-	</p>
-	<p>
-		Voici le calcul pour la première lettre :
-	</p>
-	<ul>
-		<li>B (message) correspond à 1.</li>
-		<li>S (clé) correspond à 18.</li>
-		<li>1 + 18 = 19, ce qui correspond à la lettre T.</li>
-	</ul>
-	<p>
-		En répétant ce processus, on obtient le message chiffré :
-	</p>
-	<pre><code>Message :   B(1)    O(14)   N(13)   J(9)    O(14)   U(20)   R(17)
-Clé :       S(18)   E(4)    C(2)    R(17)   E(4)    T(19)   S(18)
-Chiffré :   T(19)   S(18)   P(15)   Z(25)   S(18)   N(13)   J(9)</code></pre>
-	<p>
-		Le message chiffré devient ainsi <strong><code>TSPSZNJ</code></strong>.
-	</p>
-	<h3>Vulnérabilité : l'indice de coïncidence</h3>
-	<p>
-		Malgré sa robustesse apparente, le chiffre de Vigenère reste vulnérable. Le problème est qu'il introduit une structure répétitive liée à la longueur de la clé. La méthode de l'indice de coïncidence, inventée par Charles Babbage, permet de déterminer la longueur de la clé en analysant la fréquence des lettres chiffrées. Une fois la longueur de la clé connue, le problème se réduit à une série de chiffres de César, beaucoup plus faciles à déchiffrer.
-	</p>
+    <h2><i class="fas fa-list-ol" aria-hidden="true"></i> Le Chiffre de Vigenère</h2>
+    <p>
+        Pour pallier la faiblesse du chiffre de César, le Chiffre de Vigenère a introduit une complexité supérieure. Il s'agit d'un chiffrement par substitution poly-alphabétique qui utilise une clé plus longue, permettant des décalages variables. Il a longtemps été considéré comme incassable et a été surnommé le "chiffre indéchiffrable".
+    </p>
+    <h3>Principe : la clé variable</h3>
+    <p>
+        Contrairement au Code César qui utilise une clé numérique unique, Vigenère utilise une clé qui est un mot ou une phrase (par exemple, <code>SECRET</code>). Chaque lettre du message est chiffrée en utilisant une lettre correspondante de la clé. Si la clé est plus courte que le message, elle est répétée en boucle. La substitution varie donc d'une lettre à l'autre, ce qui rend l'analyse de fréquence classique inopérante au premier abord.
+    </p>
+    <h3>Exemple de chiffrement</h3>
+    <ul>
+        <li><strong>Message :</strong> BONJOUR</li>
+        <li><strong>Clé :</strong> SECRET</li>
+    </ul>
+    <p>
+        Pour chiffrer, on répète la clé sous le message :
+    </p>
+<pre><code>Message : B O N J O U R
+Clé     : S E C R E T S</code></pre>
+    <p>
+        On effectue ensuite une substitution pour chaque lettre, en utilisant le décalage correspondant à la lettre de la clé ('A' = décalage 0, 'B' = 1, ...).
+    </p>
+    <p>
+        Voici le calcul pour la première lettre : B (1) + S (18) = 19, ce qui correspond à la lettre T. En répétant ce processus, on obtient :
+    </p>
+<pre><code>Message :  B(1)  O(14)  N(13)  J(9)  O(14)  U(20)  R(17)
+Clé     : +S(18) +E(4)  +C(2)  +R(17) +E(4)  +T(19) +S(18)
+          ----------------------------------------------
+Chiffré :  T(19)  S(18)  P(15)  A(0)   S(18)  N(13)  J(9)</code></pre>
+    <p>
+        Le message chiffré devient ainsi <code>TSPASNJ</code>.
+    </p>
+    <h3>Vulnérabilité : l'indice de coïncidence</h3>
+    <p>
+        Malgré sa robustesse apparente, le chiffre de Vigenère reste vulnérable. Le problème est qu'il introduit une structure répétitive liée à la longueur de la clé. La méthode de l'indice de coïncidence, inventée par Charles Babbage, permet de déterminer la longueur de la clé. Une fois cette longueur connue, le problème se réduit à une série de chiffres de César, beaucoup plus faciles à déchiffrer.
+    </p>
 </section>
 <section class="content-block">
-	<h2><i class="fas fa-fingerprint" aria-hidden="true"></i> La Cryptanalyse Classique</h2>
-	<p>
-		La cryptanalyse est la discipline qui consiste à analyser et à casser les codes pour découvrir des messages cachés. Pour les chiffres classiques, l'outil principal des cryptanalystes était l'analyse de fréquence.
-	</p>
-	<h3>Principe : la distribution des lettres</h3>
-	<p>
-		Cette méthode repose sur une observation simple mais puissante : la fréquence d'apparition des lettres n'est pas uniforme dans une langue donnée. Par exemple, en français, la lettre 'e' est de loin la plus fréquente, suivie par 'a' et 'i'. À l'inverse, des lettres comme 'k', 'w' ou 'x' sont très rares. Cette régularité est une empreinte digitale statistique de la langue.
-	</p>
-	<h3>Application : casser un code</h3>
-	<p>
-		Un cryptanalyste pouvait compter la fréquence des lettres dans un texte chiffré. Si une lettre (par exemple, 'X') apparaissait beaucoup plus souvent que les autres, il pouvait en déduire avec une forte probabilité qu'elle correspondait à la lettre la plus courante en français, le 'e'. Une fois quelques correspondances trouvées, le reste du message pouvait être déchiffré par déduction. Cette technique a rendu la plupart des codes de substitution simple complètement inefficaces.
-	</p>
+    <h2><i class="fas fa-fingerprint" aria-hidden="true"></i> La Cryptanalyse Classique</h2>
+    <p>
+        La cryptanalyse est la discipline qui consiste à analyser et à casser les codes pour découvrir des messages cachés. Pour les chiffres classiques, l'outil principal des cryptanalystes était l'analyse de fréquence.
+    </p>
+    <h3>Principe : la distribution des lettres</h3>
+    <p>
+        Cette méthode repose sur une observation simple mais puissante : la fréquence d'apparition des lettres n'est pas uniforme dans une langue donnée. Par exemple, en français, la lettre 'e' est de loin la plus fréquente. Cette régularité est une empreinte digitale statistique de la langue.
+    </p>
+<pre><code># Distribution approximative des lettres en français
+
+E : ~15%
+A : ~8%
+S : ~8%
+I : ~7%
+T : ~7%
+N : ~7%
+...
+K, W, X, Y, Z : < 1%</code></pre>
+    <h3>Application : casser un code</h3>
+    <p>
+        Un cryptanalyste pouvait compter la fréquence des lettres dans un texte chiffré. Si une lettre (par exemple, 'X') apparaissait beaucoup plus souvent que les autres, il pouvait en déduire avec une forte probabilité qu'elle correspondait à la lettre la plus courante en français, le 'e'. Une fois quelques correspondances trouvées, le reste du message pouvait être déchiffré par déduction.
+    </p>
 </section>
 <section class="content-block">
-	<h2><i class="fas fa-cogs" aria-hidden="true"></i> La Révolution des Machines de Chiffrement</h2>
-	<p>
-		Face à l'efficacité grandissante de la cryptanalyse manuelle, la cryptographie a évolué en s'appuyant sur des systèmes mécaniques. Ces machines ont rendu le chiffrement beaucoup plus complexe, enchaînant des substitutions et des transposition pour générer un code quasi-indéchiffrable pour l'époque.
-	</p>
-	<h3>La machine Enigma</h3>
-	<p>
-		L'exemple le plus célèbre est la machine Enigma, utilisée par l'Allemagne nazie pendant la Seconde Guerre mondiale. Son système de rotors et de connecteurs changeait la clé de chiffrement à chaque frappe d'une lettre, créant un chiffrement poly-alphabétique d'une complexité sans précédent. La relation entre le texte clair et le texte chiffré n'était plus fixe, ce qui rendait l'analyse de fréquence traditionnelle impossible.
-	</p>
+    <h2><i class="fas fa-cogs" aria-hidden="true"></i> La Révolution des Machines de Chiffrement</h2>
+    <p>
+        Face à l'efficacité grandissante de la cryptanalyse manuelle, la cryptographie a évolué en s'appuyant sur des systèmes mécaniques. Ces machines ont rendu le chiffrement beaucoup plus complexe, enchaînant des substitutions et des transpositions pour générer un code quasi-indéchiffrable pour l'époque.
+    </p>
+    <h3>La machine Enigma</h3>
+    <p>
+        L'exemple le plus célèbre est la machine Enigma, utilisée par l'Allemagne nazie pendant la Seconde Guerre mondiale. Son système de rotors et de connecteurs changeait la clé de chiffrement à chaque frappe d'une lettre, créant un chiffrement poly-alphabétique d'une complexité sans précédent. La relation entre le texte clair et le texte chiffré n'était plus fixe, ce qui rendait l'analyse de fréquence traditionnelle impossible.
+    </p>
 </section>
 <section class="content-block">
-	<h2><i class="fas fa-lock-open" aria-hidden="true"></i> Pourquoi les Chiffres Classiques sont Obsolets</h2>
-	<p>
-		Bien que fascinants d'un point de vue historique, les chiffres classiques sont aujourd'hui totalement inutilisables. La principale raison est la puissance de calcul phénoménale des ordinateurs, qui a anéanti leur faible sécurité.
-	</p>
-	<h3>L'attaque par la force brute</h3>
-	<p>
-		Une attaque par force brute qui aurait demandé des mois de travail à une équipe de cryptologues à l'époque de César peut être réalisée en une fraction de seconde par un ordinateur moderne. Pour un chiffre de Vigenère, les algorithmes informatiques peuvent déterminer la longueur de la clé et la clé elle-même en quelques minutes seulement.
-	</p>
-	<h3>L'analyse de fréquence automatisée</h3>
-	<p>
-		De même, les logiciels peuvent analyser les fréquences de lettres et tester toutes les substitutions possibles en un temps record. Ces méthodes de chiffrement sont donc totalement inefficaces face aux outils informatiques d'aujourd'hui, qui peuvent exploiter leurs faiblesses structurelles en un clin d'œil.
-	</p>
+    <h2><i class="fas fa-lock-open" aria-hidden="true"></i> Pourquoi les Chiffres Classiques sont Obsolets</h2>
+    <p>
+        Bien que fascinants d'un point de vue historique, les chiffres classiques sont aujourd'hui totalement inutilisables. La principale raison est la puissance de calcul phénoménale des ordinateurs, qui a anéanti leur faible sécurité.
+    </p>
+    <h3>L'attaque par la force brute</h3>
+    <p>
+        Une attaque par force brute qui aurait demandé des mois de travail à une équipe de cryptologues à l'époque de César peut être réalisée en une fraction de seconde par un ordinateur moderne. Pour un chiffre de Vigenère, les algorithmes informatiques peuvent déterminer la longueur de la clé et la clé elle-même en quelques minutes seulement.
+    </p>
+    <h3>L'analyse de fréquence automatisée</h3>
+    <p>
+        De même, les logiciels peuvent analyser les fréquences de lettres et tester toutes les substitutions possibles en un temps record. Ces méthodes de chiffrement sont donc totalement inefficaces face aux outils informatiques d'aujourd'hui, qui peuvent exploiter leurs faiblesses structurelles en un clin d'œil.
+    </p>
 </section>
 <section class="content-block">
-	<h2><i class="fas fa-chart-line" aria-hidden="true"></i> Transition vers la Cryptographie Moderne</h2>
-	<p>
-		Les concepts fondamentaux de la cryptographie classique sont les ancêtres des principes que nous utilisons quotidiennement dans le monde numérique.
-	</p>
-	<h3>Substitution et transposition</h3>
-	<p>
-		Les opérations de substitution et de transposition sont toujours au cœur des algorithmes modernes, mais elles sont appliquées de manière bien plus sophistiquée et rapide. Des algorithmes comme l'<code>AES</code> (Advanced Encryption Standard) appliquent des milliers de "rondes" de substitution et de transposition sur des blocs de données, rendant le résultat indéchiffrable sans la clé.
-	</p>
-	<h3>Clés secrètes et clés publiques</h3>
-	<p>
-		Le chiffre de Vigenère nécessitait déjà une clé secrète partagée, un concept que l'on retrouve dans le chiffrement symétrique. Les machines comme Enigma ont introduit l'idée d'une complexité de clé sans précédent, menant au chiffrement asymétrique qui utilise des paires de clés publiques et privées. La cryptographie moderne est une combinaison de ces concepts pour garantir la sécurité de nos données à une échelle qui n'aurait jamais pu être imaginée par les créateurs des chiffres classiques.
-	</p>
+    <h2><i class="fas fa-chart-line" aria-hidden="true"></i> Transition vers la Cryptographie Moderne</h2>
+    <p>
+        Les concepts fondamentaux de la cryptographie classique sont les ancêtres des principes que nous utilisons quotidiennement dans le monde numérique.
+    </p>
+    <h3>Substitution et transposition</h3>
+    <p>
+        Les opérations de substitution et de transposition sont toujours au cœur des algorithmes modernes, mais elles sont appliquées de manière bien plus sophistiquée et rapide. Des algorithmes comme l'<code>AES</code> (Advanced Encryption Standard) appliquent des milliers de "rondes" de substitution et de transposition sur des blocs de données, rendant le résultat indéchiffrable sans la clé.
+    </p>
+    <h3>Clés secrètes et clés publiques</h3>
+    <p>
+        Le chiffre de Vigenère nécessitait déjà une clé secrète partagée, un concept que l'on retrouve dans le chiffrement symétrique. Les machines comme Enigma ont introduit l'idée d'une complexité de clé sans précédent, menant au chiffrement asymétrique qui utilise des paires de clés publiques et privées. La cryptographie moderne est une combinaison de ces concepts pour garantir la sécurité de nos données à une échelle qui n'aurait jamais pu être imaginée par les créateurs des chiffres classiques.
+    </p>
 </section>
 <section class="content-block">
-	<h2><i class="fas fa-flag-checkered" aria-hidden="true"></i> Conclusion</h2>
-	<p>
-		L'étude de la cryptographie classique, bien qu'obsolète en pratique, offre un aperçu fondamental des défis et des solutions historiques de la sécurité de l'information. Le passage des méthodes manuelles simples à des systèmes mécaniques complexes a ouvert la voie aux algorithmes mathématiques robustes qui protègent aujourd'hui nos données. C'est le cheminement de la simple substitution de lettres à l'utilisation de fonctions mathématiques sophistiquées, qui forme la fondation de notre monde numérique sécurisé.
-	</p>
+    <h2><i class="fas fa-flag-checkered" aria-hidden="true"></i> Conclusion</h2>
+    <p>
+        L'étude de la cryptographie classique, bien qu'obsolète en pratique, offre un aperçu fondamental des défis et des solutions historiques de la sécurité de l'information. Le passage des méthodes manuelles simples à des systèmes mécaniques complexes a ouvert la voie aux algorithmes mathématiques robustes qui protègent aujourd'hui nos données. C'est le cheminement de la simple substitution de lettres à l'utilisation de fonctions mathématiques sophistiquées, qui forme la fondation de notre monde numérique sécurisé.
+    </p>
 </section>

@@ -3,27 +3,28 @@
     
     <h3>Qu'est-ce qu'une base de données relationnelle ?</h3>
     <p>
-        Une base de données est avant tout un système organisé et structuré, conçu pour stocker, gérer et récupérer de grandes quantités de données de manière efficace et sécurisée. Dans le contexte du web, les bases de données relationnelles (SGBDR) sont les plus couramment utilisées.
+        Une base de données est un système organisé pour stocker, gérer et récupérer des données. Les bases de données relationnelles (SGBDR) organisent ces données en tables (similaires à des feuilles de calcul) avec des lignes (enregistrements) et des colonnes (attributs). Par exemple, une table <code>utilisateurs</code> pourrait avoir des colonnes comme <code>id</code>, <code>nom_utilisateur</code>, et <code>mot_de_passe_hashé</code>.
     </p>
     <p>
-        La structure de ces systèmes repose sur l'organisation des données en tables, qui s'apparentent à des feuilles de calcul. Ces tables contiennent des lignes (aussi appelées enregistrements) et des colonnes (les attributs). À titre d'exemple, une table nommée <code>utilisateurs</code> pourrait avoir des colonnes comme <code>id</code>, <code>nom_utilisateur</code>, <code>email</code>, et <code>mot_de_passe_hashé</code>.
-    </p>
-    <p>
-        Elle joue le rôle de mémoire persistante pour une application. Sans elle, aucune information, qu'il s'agisse de comptes utilisateurs, d'articles de blog ou de produits d'un site e-commerce, ne pourrait être sauvegardée durablement. Parmi les systèmes populaires, on compte notamment MySQL, PostgreSQL et Microsoft SQL Server.
+        Elle joue le rôle de mémoire persistante pour une application. Parmi les systèmes populaires, on compte <code>MySQL</code>, <code>PostgreSQL</code> et <code>Microsoft SQL Server</code>.
     </p>
 
     <h3>Le langage SQL</h3>
-    <p>SQL (Structured Query Language) est le langage de programmation standardisé utilisé pour dialoguer avec une base de données relationnelle. Il permet de formuler des "questions" (requêtes) et des "ordres" (commandes) que la base de données peut comprendre et exécuter.</p>
+    <p>SQL (Structured Query Language) est le langage standardisé utilisé pour dialoguer avec une base de données relationnelle. Il permet de formuler des requêtes et des commandes.</p>
     <ul>
-        <li><strong>Fonctions principales :</strong> <code>SELECT</code>, <code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>. La commande <code>SELECT</code> est la plus utilisée et la cible principale des injections.</li>
-        <li><strong>Exemple d'une requête simple :</strong> La commande <code>SELECT * FROM utilisateurs WHERE nom = 'admin';</code> signifie : "Sélectionne toutes les colonnes de la table 'utilisateurs' pour les lignes où la colonne 'nom' a la valeur exacte 'admin'."</li>
+        <li><strong>Fonctions principales :</strong> <code>SELECT</code>, <code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>.</li>
+        <li><strong>Exemple de requête simple :</strong></li>
     </ul>
-    <h3>Interaction entre l'application web et la base de données</h3>
-    <p>Ce processus implique trois acteurs : le client (navigateur), le serveur d'application (code du site) et le serveur de base de données. La vulnérabilité naît lorsque le serveur d'application construit une requête SQL en utilisant directement les données de l'utilisateur, sans les valider ou les traiter.</p>
+<pre><code>-- Langage humain :
+-- "Sélectionne toutes les colonnes de la table 'utilisateurs'
+--  pour les lignes où la colonne 'nom' a la valeur 'admin'."
+
+-- Traduction en SQL :
+SELECT * FROM utilisateurs WHERE nom = 'admin';</code></pre>
     <h3>Les injections SQL (SQLi)</h3>
     <ul>
-        <li><strong>Concept :</strong> C'est une attaque qui exploite une vulnérabilité dans la couche applicative. L'attaquant trompe l'application pour qu'elle construise et exécute des requêtes SQL non prévues.</li>
-        <li><strong>Objectifs variés :</strong> Voler des données, modifier/supprimer des données, rendre le service indisponible, ou contourner une connexion.</li>
+        <li><strong>Concept :</strong> Une injection SQL (<code>SQLi</code>) est une attaque qui exploite une vulnérabilité dans l'application web. L'attaquant trompe l'application pour qu'elle exécute des requêtes SQL non prévues en injectant du code SQL via les entrées utilisateur.</li>
+        <li><strong>Objectifs :</strong> Voler, modifier ou supprimer des données, ou contourner une authentification.</li>
     </ul>
 </section>
 
@@ -31,56 +32,48 @@
     <h2><i class="fas fa-gears" aria-hidden="true"></i>Mécanisme d'une injection SQL basique</h2>
     
     <h3>Analyse de la vulnérabilité</h3>
-    <p>La vulnérabilité se situe précisément dans la manière dont la variable issue de l'utilisateur est directement insérée (concaténée) dans la chaîne de caractères de la requête SQL.</p>
-    <p>Le serveur ne fait aucune distinction entre le code SQL que vous avez écrit et les données fournies par l'utilisateur. Il voit une seule et unique chaîne de caractères à exécuter. Un utilisateur malveillant peut donc fournir des données qui ne sont pas un simple nom d'utilisateur, mais qui contiennent des morceaux de code SQL.</p>
+    <p>La faille se situe dans la manière dont l'entrée de l'utilisateur est directement "collée" (concaténée) dans la requête SQL. Le serveur ne fait aucune distinction entre le code SQL et les données fournies par l'utilisateur.</p>
 
     <h3>Exemples de codes</h3>
     <p>Code vulnérable en PHP (avec concaténation)</p>
-    <pre><code>// On récupère l'entrée de l'utilisateur SANS la vérifier
+<pre><code>// On récupère l'entrée de l'utilisateur SANS la vérifier
 $username = $_POST['username']; 
 
-// On construit la requête en collant directement l'entrée.
-// C'est ici que se trouve la faille !
+// On construit la requête en collant directement l'entrée. C'EST LA FAILLE !
 $query = "SELECT * FROM utilisateurs WHERE username = '" . $username . "';";
 
-// La base de données exécute la chaîne de caractères fusionnée.
-$result = $db->query($query);
-</code></pre>
+// La base de données exécute la chaîne fusionnée.
+$result = $db->query($query);</code></pre>
 
-    <p class="code-title secure">Code SÉCURISÉ en PHP (avec requêtes préparées via PDO)</p>
-    <pre><code>// On récupère l'entrée de l'utilisateur
+    <p class="code-title secure">Code SÉCURISÉ en PHP (avec requêtes préparées)</p>
+<pre><code>// On récupère l'entrée de l'utilisateur
 $username = $_POST['username'];
 
-// 1. On prépare la requête avec un marqueur (?) ou un placeholder (:username)
+// 1. On prépare la requête avec un marqueur (?)
 $stmt = $pdo->prepare("SELECT * FROM utilisateurs WHERE username = ?");
 
-// 2. On exécute la requête en liant la variable au marqueur.
-// La base de données traite TOUJOURS $username comme une simple donnée, jamais comme du code.
+// 2. On exécute en liant la variable au marqueur.
+// La base de données traite TOUJOURS $username comme une simple donnée.
 $stmt->execute([$username]);
 
-// La requête est exécutée en toute sécurité
-$user = $stmt->fetch();
-</code></pre>
+$user = $stmt->fetch();</code></pre>
     <h3>Exemple d'attaque</h3>
-    <p>Imaginons qu'un attaquant saisisse le texte suivant dans le champ du nom d'utilisateur : <code>' OR '1'='1' --</code>.
-    En remplaçant l'entrée utilisateur par cette valeur dans le code vulnérable, la requête SQL qui sera réellement exécutée par la base de données devient : <br>
-    <code>SELECT * FROM utilisateurs WHERE username = '' OR '1'='1' --';</code></p>
+    <p>Imaginons qu'un attaquant saisisse la charge utile (payload) <code>' OR '1'='1' -- </code> dans le champ du nom d'utilisateur. Le code vulnérable va construire la requête suivante :</p>
+<pre><code># Requête attendue avec une entrée normale (ex: "Alice")
+SELECT * FROM utilisateurs WHERE username = 'Alice';
+
+# Requête générée avec l'entrée malveillante
+SELECT * FROM utilisateurs WHERE username = '' OR '1'='1' -- ';</code></pre>
     
     <h3>L'anatomie de l'attaque</h3>
     <ul>
-        <li><strong><code>'</code></strong> : La première apostrophe ferme la chaîne de caractères attendue pour le username.</li>
-        <li><strong><code>OR '1'='1'</code></strong> : L'attaquant ajoute une nouvelle condition `OR`. Comme `1=1` est toujours vrai, la condition globale <code>WHERE</code> deviendra vraie pour toutes les lignes de la table.</li>
-        <li><strong><code>--</code></strong> : Ceci est un commentaire en SQL. Tout ce qui suit sur la ligne est ignoré par la base de données. Cela permet de neutraliser l'apostrophe finale du code original, évitant ainsi une erreur de syntaxe.</li>
+        <li><strong><code>'</code></strong> : La première apostrophe ferme la chaîne de caractères attendue pour le nom d'utilisateur.</li>
+        <li><strong><code>OR '1'='1'</code></strong> : L'attaquant ajoute une nouvelle condition `OR`. Comme `1=1` est toujours vrai, la condition globale devient vraie pour <strong>toutes les lignes</strong> de la table.</li>
+        <li><strong><code>-- </code></strong> : Ceci est un commentaire en SQL. Tout ce qui suit est ignoré, ce qui neutralise l'apostrophe finale du code original et évite une erreur de syntaxe.</li>
     </ul>
 
     <h3>Résultat :</h3> 
-    <p>Au lieu de chercher un utilisateur spécifique, la requête demande à la base de données de renvoyer tous les utilisateurs de la table, car la condition '1'='1' est toujours vraie. L'attaquant peut ainsi contourner une authentification ou lister l'ensemble des utilisateurs de votre application.</p>
-    <p>La vulnérabilité existe car la frontière entre les instructions (le code SQL) et les données (l'input utilisateur) est rompue. Pour se protéger, il faut utiliser des requêtes préparées avec des paramètres, qui garantissent que les données fournies par l'utilisateur sont toujours traitées comme des données et jamais comme du code exécutable.</p>
-
-    <h3>Autre exemple d'attaque</h3>
-    <p>Pour se connecter en tant qu'administrateur sans mot de passe, un attaquant peut entrer <code>admin' -- </code> dans le champ du nom d'utilisateur. La requête finale devient :</p>
-    <p><code>SELECT * FROM utilisateurs WHERE username = 'admin' -- ' AND password = '...';</code></p>
-    <p>La base de données exécute seulement <code>SELECT * FROM utilisateurs WHERE username = 'admin'</code>, car le reste est un commentaire. La connexion est alors autorisée.</p>
+    <p>Au lieu de chercher un utilisateur, la requête demande à la base de données de renvoyer tous les utilisateurs de la table. L'attaquant contourne ainsi l'authentification.</p>
 </section>
 
 <section class="content-block">
@@ -88,43 +81,39 @@ $user = $stmt->fetch();
     <h3>Injection SQL in-band (classique)</h3>
     <p>L'attaquant utilise le même canal pour attaquer et recevoir les résultats.</p>
     <ul>
-        <li><strong>Basée sur les erreurs (error-based) :</strong> Provoque des erreurs de la base de données qui affichent des informations utiles (noms de tables, versions, etc.).</li>
-        <li><strong>Basée sur l'UNION (UNION-based) :</strong> Utilise l'opérateur <code>UNION</code> pour combiner le résultat d'une requête légitime avec celui d'une requête malveillante, permettant d'extraire des données d'autres tables.
-        <br><em>Ex. de payload :</em> <code>' UNION SELECT nom, mot_de_passe, null FROM utilisateurs -- </code>
-        </li>
+        <li><strong>Basée sur les erreurs :</strong> Provoque des erreurs de la base de données qui affichent des informations utiles.</li>
+        <li><strong>Basée sur l'UNION :</strong> Utilise l'opérateur <code>UNION</code> pour combiner le résultat d'une requête légitime avec celui d'une requête malveillante.</li>
     </ul>
+<pre><code># Payload d'exemple pour extraire noms et mots de passe
+' UNION SELECT nom, mot_de_passe FROM utilisateurs -- </code></pre>
     <h3>Injection SQL inférentielle (aveugle - blind SQLi)</h3>
-    <p>Utilisée lorsque l'application ne renvoie aucune donnée ou erreur. L'attaquant est "aveugle" et doit déduire les informations en posant une série de questions "vrai/faux".</p>
+    <p>Utilisée lorsque l'application ne renvoie aucune donnée. L'attaquant est "aveugle" et doit déduire les informations en posant une série de questions "vrai/faux".</p>
     <ul>
-        <li><strong>Basée sur les booléens (boolean-based) :</strong> L'attaquant observe si la page change en réponse à des conditions vraies ou fausses pour deviner les données, caractère par caractère.</li>
-        <li><strong>Basée sur le temps (time-based) :</strong> L'attaquant injecte une commande qui force la base de données à attendre (ex: <code>SLEEP(5)</code>). Si le site met 5 secondes à répondre, la condition posée était vraie.
-        <br><em>Ex. de payload :</em> <code>' AND IF(SUBSTRING(user(),1,1) = 'r', SLEEP(5), 0) -- </code>
-        </li>
+        <li><strong>Basée sur les booléens :</strong> L'attaquant observe si la page change en réponse à des conditions vraies ou fausses.</li>
+        <li><strong>Basée sur le temps :</strong> L'attaquant injecte une commande qui force la base de données à attendre (ex: <code>SLEEP(5)</code>). Si le site met 5 secondes à répondre, la condition était vraie.</li>
     </ul>
+<pre><code># Payload d'exemple : "Si la première lettre de l'utilisateur est 'r', attends 5s"
+' AND IF(SUBSTRING(user(),1,1) = 'r', SLEEP(5), 0) -- </code></pre>
 </section>
 
 <section class="content-block">
     <h2><i class="fas fa-shield-alt" aria-hidden="true"></i>Méthodes de Prévention</h2>
     
     <h3>Les requêtes préparées (parameterized queries)</h3>
-    <p>C'est la défense la plus efficace car elle sépare strictement le code SQL des données. Le code est envoyé et compilé d'abord, puis les données sont envoyées séparément et ne sont jamais interprétées comme du code.</p>
+    <p>C'est la défense la plus efficace car elle sépare strictement le code SQL des données. Le code est envoyé d'abord, puis les données sont envoyées séparément et ne sont jamais interprétées comme du code.</p>
     
     <h3>Utilisation d'un ORM (Object-Relational Mapping)</h3>
-    <p>Les frameworks web modernes (Symfony, Laravel, Django, Ruby on Rails...) incluent souvent un ORM. Un ORM est une couche d'abstraction qui convertit les objets de votre code en requêtes SQL. Utilisés correctement, les ORM génèrent des requêtes préparées par défaut, offrant une protection robuste et transparente contre les injections SQL.</p>
+    <p>Les frameworks web modernes (<code>Symfony</code>, <code>Laravel</code>, <code>Django</code>...) incluent souvent un <code>ORM</code>. C'est une couche d'abstraction qui convertit les objets de votre code en requêtes SQL, en utilisant des requêtes préparées par défaut.</p>
+
     <h3>Validation des entrées (input validation)</h3>
-    <p>Appliquer une politique de "confiance zéro" envers toute donnée utilisateur.</p>
-    <ul>
-        <li><strong>Listes blanches (whitelisting) :</strong> L'approche la plus sûre. Définir un ensemble strict de valeurs ou de formats autorisés (ex: un ID ne doit contenir que des chiffres) et rejeter tout le reste.</li>
-        <li><strong>Listes noires (blacklisting) :</strong> Tenter de bloquer les caractères dangereux connus. Fortement déconseillée car facile à contourner.</li>
-    </ul>
-    <h3>Échappement des caractères (escaping)</h3>
-    <p>Préfixer les caractères spéciaux (comme <code>'</code>) avec un caractère d'échappement (<code>\</code>) pour qu'ils soient traités comme du texte simple. Moins sécurisé que les requêtes préparées.</p>
-    <h3>Principe du moindre privilège (principle of least privilege)</h3>
+    <p>Appliquer une politique de "confiance zéro" envers toute donnée utilisateur. L'approche la plus sûre est celle des <strong>listes blanches (whitelisting)</strong> : définir un ensemble strict de formats autorisés (ex: un ID ne doit contenir que des chiffres) et rejeter tout le reste.</p>
+
+    <h3>Principe du moindre privilège</h3>
     <p>Le compte de la base de données utilisé par l'application web ne doit avoir que les permissions strictement nécessaires à son fonctionnement. En cas d'injection réussie, les dégâts sont ainsi limités.</p>
 </section>
 
 <section class="content-block">
     <h2><i class="fas fa-flag-checkered" aria-hidden="true"></i>Conclusion</h2>
     <p>L'injection SQL est une vulnérabilité critique qui découle du mélange du code et des données de l'utilisateur. La construction de requêtes par concaténation est une pratique dangereuse et obsolète.</p>
-    <p>La prévention efficace et moderne repose sur l'adoption systématique des <strong>requêtes préparées</strong> (souvent gérées via un ORM), complétée par une validation rigoureuse des entrées et le principe du moindre privilège.</p>
+    <p>La prévention efficace et moderne repose sur l'adoption systématique des <strong>requêtes préparées</strong> (souvent via un ORM), complétée par une validation rigoureuse des entrées et le principe du moindre privilège.</p>
 </section>

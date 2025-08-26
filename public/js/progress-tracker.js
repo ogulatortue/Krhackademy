@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const lessonId = card.dataset.lessonId;
             const challengeId = card.dataset.challengeId;
 
-            if ((lessonId && completedLessons.includes(parseInt(lessonId, 10))) || 
+            if ((lessonId && completedLessons.includes(parseInt(lessonId, 10))) ||
                 (challengeId && completedChallenges.includes(parseInt(challengeId, 10)))) {
                 card.classList.add('completed');
             }
@@ -28,14 +28,20 @@ document.addEventListener('DOMContentLoaded', () => {
                     applyProgressToUI(result);
                 }
             } else {
-
+                console.error(`Erreur HTTP inattendue: ${response.status} ${response.statusText}`);
             }
         } catch (error) {
-            console.error('Erreur de chargement de la progression:', error);
+            console.error('Erreur de chargement de la progression (erreur réseau):', error);
         }
     };
-    
+
     if (document.querySelector('.box-container')) {
-        loadUserProgress();
+        const isLoggedIn = document.body.dataset.userLoggedIn === 'true';
+
+        if (isLoggedIn) {
+            loadUserProgress();
+        } else {
+            console.log("Utilisateur non connecté, la récupération de la progression est ignorée.");
+        }
     }
 });

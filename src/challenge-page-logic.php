@@ -11,7 +11,7 @@ if (!$challenge_id) {
     exit();
 }
 
-$stmt = $pdo->prepare("
+$stmt = $pdo->prepare(" 
     SELECT 
         id, challenge_id_str, title, category, points, icon_class 
     FROM 

@@ -12,7 +12,7 @@
 
     <link rel="icon" type="image/png" href="/images/logo_krhacken_r.ico" />
 </head>
-<body>
+<body data-user-logged-in="<?php echo isset($_SESSION['user_id']) ? 'true' : 'false'; ?>">
 
     <?php require __DIR__ . '/partials/header.phtml'; ?>
 

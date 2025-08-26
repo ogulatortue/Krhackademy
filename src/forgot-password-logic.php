@@ -1,8 +1,5 @@
 <?php
 
-use Krack\Models\User;
-use Krack\Services\MailerService;
-
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }

@@ -5,8 +5,16 @@ define('ROOT_PATH', dirname(__DIR__));
 require_once ROOT_PATH . '/src/bootstrap.php';
 
 $request_uri = strtok($_SERVER['REQUEST_URI'], '?');
+
+// --- CORRECTION : On supprime la barre oblique finale (sauf pour la page d'accueil) ---
+if (strlen($request_uri) > 1) {
+    $request_uri = rtrim($request_uri, '/');
+}
+// --------------------------------------------------------------------------------------
+
 $currentPage = '';
 
+// Le tableau $routes reste identique
 $routes = [
     '/' => ['view' => 'index.phtml', 'currentPage' => 'index'],
     '/lessons' => ['logic' => 'lessons-logic.php', 'view' => 'lessons.phtml', 'currentPage' => 'lessons'],
@@ -27,6 +35,7 @@ if (preg_match('/^\/challenge\/(\d+)$/', $request_uri, $matches)) {
     require_page_login();
     $_GET['id'] = $matches[1];
     $currentPage = 'challenges';
+    // J'ai corrigé les chemins ici aussi pour être cohérent
     require ROOT_PATH . '/src/challenge-page-logic.php';
     require ROOT_PATH . '/templates/challenge-page.phtml';
 

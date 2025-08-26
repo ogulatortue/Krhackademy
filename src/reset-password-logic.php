@@ -1,8 +1,14 @@
 <?php
+
+// --- CORRECTION DU CHEMIN ---
+require_once __DIR__ . '/services/User.php';
+// ---------------------------
+
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
+$userModel = new User($pdo);
 $token = $_GET['token'] ?? $_POST['token'] ?? null;
 
 if (!$token) {
@@ -10,18 +16,12 @@ if (!$token) {
     exit();
 }
 
-$stmt = $pdo->prepare("SELECT id, reset_token_expiry FROM users WHERE reset_token = ?");
-$stmt->execute([$token]);
-$user = $stmt->fetch();
+$user = $userModel->findUserByResetToken($token);
 
-if (!$user || new DateTime() > new DateTime($user['reset_token_expiry'])) {
+if (!$user) {
     $_SESSION['flash_message'] = ['type' => 'error', 'title' => 'Lien invalide', 'message' => 'Ce lien de réinitialisation est invalide ou a expiré.'];
-    if ($user) {
-        $stmt = $pdo->prepare("UPDATE users SET reset_token = NULL, reset_token_expiry = NULL WHERE id = ?");
-        $stmt->execute([$user['id']]);
-    }
-    header('Location: /forgot-password');
-    exit();
+    // On laisse le routeur afficher la vue reset-password.phtml avec le message
+    return; 
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -35,14 +35,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif ($password !== $password_confirm) {
         $_SESSION['flash_message'] = ['type' => 'error', 'title' => 'Erreur', 'message' => 'Les mots de passe ne correspondent pas.'];
     } else {
-        $password_hash = password_hash($password, PASSWORD_ARGON2ID);
-        $stmt = $pdo->prepare("UPDATE users SET password_hash = ?, reset_token = NULL, reset_token_expiry = NULL WHERE id = ?");
-        $stmt->execute([$password_hash, $user['id']]);
-        
-        $_SESSION['flash_message'] = ['type' => 'success', 'title' => 'Succès !', 'message' => 'Votre mot de passe a été réinitialisé.'];
-        header('Location: /login');
-        exit();
+        if ($userModel->updatePassword($user['id'], $password)) {
+            $_SESSION['flash_message'] = ['type' => 'success', 'title' => 'Succès !', 'message' => 'Votre mot de passe a été réinitialisé.'];
+            header('Location: /login');
+            exit();
+        } else {
+             $_SESSION['flash_message'] = ['type' => 'error', 'title' => 'Erreur', 'message' => 'Une erreur de base de données est survenue.'];
+        }
     }
-    header('Location: /reset-password?token=' . $token);
+    
+    header('Location: /reset-password?token=' . urlencode($token));
     exit();
 }

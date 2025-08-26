@@ -330,3 +330,9 @@ pre::-webkit-scrollbar-thumb {
         border-color: var(--purple);
     }
 }
+
+
+.construction {
+    top: 5rem;
+    text-align: center;
+}

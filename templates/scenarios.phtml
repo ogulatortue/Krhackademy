@@ -1,0 +1,59 @@
+<?php require_once ROOT_PATH . '/src/helpers.php'; ?>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Scénarios - Kr[HACK]ademy</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/header-footer.css"/>
+    <link rel="stylesheet" href="/css/shared-components.css"/>
+
+    <link rel="icon" type="image/png" href="/images/logo_krhacken_r.ico" />
+</head>
+<body data-user-logged-in="<?php echo isset($_SESSION['user_id']) ? 'true' : 'false'; ?>">
+
+    <?php require __DIR__ . '/partials/header.phtml'; ?>
+
+    <main class="main">
+        <?php
+        $currentCategory = null; 
+        ?>
+
+        <h2 class="construction">page en construction</h2>
+    </main>
+
+    <?php require __DIR__ . '/partials/footer.phtml'; ?>
+    
+    <script src="/js/header.js" defer></script>
+    <script src="/js/search.js" defer></script> 
+    <script src="/js/progress-tracker.js" defer></script>
+
+    <?php require __DIR__ . '/partials/modal.phtml';?>
+    <script src="/js/modal.js" defer></script>
+    <?php
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+
+    $flash_message = null;
+    if (isset($_SESSION['flash_message'])) {
+        $flash_message = $_SESSION['flash_message'];
+        unset($_SESSION['flash_message']);
+    }
+
+    if ($flash_message):
+    ?>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            modal.showModal(
+                '<?= htmlspecialchars($flash_message['type']) ?>',
+                '<?= htmlspecialchars($flash_message['title']) ?>',
+                '<?= htmlspecialchars($flash_message['message']) ?>'
+            );
+        });
+    </script>
+    <?php endif; ?>
+</body>
+</html>

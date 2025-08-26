@@ -3,6 +3,8 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
+require_once __DIR__ . '/services/MailerService.php';
+
 if (isset($_SESSION['user_id'])) {
     header('Location: /');
     exit();
@@ -33,6 +35,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt = $pdo->prepare("INSERT INTO users (username, email, password_hash) VALUES (?, ?, ?)");
 
             if ($stmt->execute([$username, $email, $password_hash])) {
+                $mailer = new MailerService();
+                $mailer->sendWelcomeEmail($email, $username);
+                
                 $_SESSION['flash_message'] = ['type' => 'success', 'title' => 'Inscription réussie !', 'message' => 'Vous pouvez maintenant vous connecter.'];
                 header('Location: /login');
                 exit();

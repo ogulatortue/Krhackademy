@@ -1,8 +1,6 @@
 <?php
 
-// --- CORRECTION DU CHEMIN ---
 require_once __DIR__ . '/services/User.php';
-// ---------------------------
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -20,7 +18,6 @@ $user = $userModel->findUserByResetToken($token);
 
 if (!$user) {
     $_SESSION['flash_message'] = ['type' => 'error', 'title' => 'Lien invalide', 'message' => 'Ce lien de réinitialisation est invalide ou a expiré.'];
-    // On laisse le routeur afficher la vue reset-password.phtml avec le message
     return; 
 }
 

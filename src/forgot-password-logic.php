@@ -1,9 +1,7 @@
 <?php
 
-// --- CORRECTION DES CHEMINS ---
 require_once __DIR__ . '/services/User.php';
 require_once __DIR__ . '/services/MailerService.php';
-// ------------------------------
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -25,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($userModel->setResetToken($user['id'], $token)) {
                 $mailer = new MailerService();
                 
-                if ($mailer->sendPasswordResetEmail($email, $token)) {
+                if ($mailer->sendPasswordResetEmail($email, $user['username'], $token)) {
                     $_SESSION['flash_message'] = ['type' => 'success', 'title' => 'Email envoyé', 'message' => 'Un e-mail de réinitialisation vous a été envoyé.'];
                 } else {
                     $_SESSION['flash_message'] = ['type' => 'error', 'title' => 'Erreur', 'message' => 'L\'e-mail n\'a pas pu être envoyé.'];

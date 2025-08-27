@@ -1,0 +1,47 @@
+<?php
+// --- LOGIQUE PHP EN HAUT DU FICHIER ---
+// Simule la récupération des données pour l'exemple
+$topUsers = [
+    ['username' => 'CyberStallion', 'score' => 1500],
+    ['username' => 'GlitchQueen', 'score' => 1200],
+    ['username' => 'RootAdmin92', 'score' => 1150]
+];
+$currentUserRank = 42;
+$currentUserScore = 450;
+?>
+
+<link rel="stylesheet" href="/css/leaderboard.css"/>
+
+<section class="leaderboard-panel" id="leaderboard-menu" aria-hidden="true">
+    <div class="leaderboard-header">
+        <i class="fas fa-trophy panel-icon"></i>
+        <span>Classement Rapide</span>
+        <button id="close-leaderboard-btn" class="fas fa-times" aria-label="Fermer le classement"></button>
+    </div>
+
+    <div class="leaderboard-content">
+        <ul class="leaderboard-list">
+            <?php foreach ($topUsers as $index => $user): ?>
+                <li class="leaderboard-item podium-<?php echo $index + 1; ?>">
+                    <span class="rank"><?php echo $index + 1; ?> <i class="fas fa-medal"></i></span>
+                    <span class="username"><?php echo htmlspecialchars($user['username']); ?></span>
+                    <span class="score"><?php echo $user['score']; ?> <i class="fas fa-flag"></i></span>
+                </li>
+            <?php endforeach; ?>
+
+            <li class="leaderboard-separator"></li>
+            
+            <li class="leaderboard-item current-user">
+                <span class="rank"><?php echo $currentUserRank; ?></span>
+                <span class="username"><?php echo htmlspecialchars($_SESSION['username'] ?? 'Kolonel_07'); ?></span>
+                <span class="score"><?php echo $currentUserScore; ?> <i class="fas fa-flag"></i></span>
+            </li>
+        </ul>
+    </div>
+
+    <div class="leaderboard-footer">
+        <a href="/leaderboard" class="view-full-leaderboard btn-glass">
+            Classement complet <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+</section>

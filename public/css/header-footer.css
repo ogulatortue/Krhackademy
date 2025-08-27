@@ -127,13 +127,8 @@ header.header-active .header-actions {
     right: 110px;
 }
 
-#leaderboard-toggle-btn {
-    right: 180px;
-}
-
 #search-toggle-btn.hidden,
 #profile-toggle-btn.hidden,
-#leaderboard-toggle-btn.hidden,
 header .fa-bars.hidden {
     opacity: 0;
     transform: translateY(50px);
@@ -146,14 +141,10 @@ header.header-active #profile-toggle-btn {
 header.header-active #search-toggle-btn {
     right: 95px;
 }
-header.header-active #leaderboard-toggle-btn {
-    right: 165px;
-}
 
 .search-panel,
 .profile-panel,
-.nav-bar-mobile,
-.leaderboard-panel {
+.nav-bar-mobile {
     position: fixed;
     top: 95px;
     z-index: 999;
@@ -183,8 +174,7 @@ header.header-active #leaderboard-toggle-btn {
 }
 
 .profile-panel,
-.nav-bar-mobile,
-.leaderboard-panel {
+.nav-bar-mobile {
     right: 20px;
     left: auto;
     width: max-content;
@@ -198,8 +188,7 @@ header.header-active #leaderboard-toggle-btn {
 
 header.header-active ~ .search-panel,
 header.header-active ~ .profile-panel,
-header.header-active ~ .nav-bar-mobile,
-header.header-active ~ .leaderboard-panel {
+header.header-active ~ .nav-bar-mobile {
     top: 56px;
     border-radius: 0;
 }
@@ -210,16 +199,14 @@ header.header-active ~ .search-panel {
 }
 
 header.header-active ~ .profile-panel,
-header.header-active ~ .nav-bar-mobile,
-header.header-active ~ .leaderboard-panel {
+header.header-active ~ .nav-bar-mobile {
     right: 0;
     left: auto;
 }
 
 .search-panel.open,
 .profile-panel.open,
-.nav-bar-mobile.open,
-.leaderboard-panel.open {
+.nav-bar-mobile.open {
     opacity: 1;
     transform: translateY(0);
     pointer-events: auto;
@@ -362,8 +349,7 @@ header.header-active ~ .leaderboard-panel {
     margin-right: auto;
 }
 
-#close-profile-btn,
-#close-leaderboard-btn {
+#close-profile-btn {
     background: transparent;
     border: none;
     color: var(--white);
@@ -413,85 +399,6 @@ header.header-active ~ .leaderboard-panel {
 .nav-bar-mobile li.active a {
     background-color: var(--white);
     color: var(--black);
-}
-
-.leaderboard-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    max-height: 300px;
-    overflow-y: auto;
-}
-
-.leaderboard-item {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding: 12px 15px;
-    color: var(--white);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    font-size: 0.95rem;
-}
-
-.leaderboard-item:last-child {
-    border-bottom: none;
-}
-
-.leaderboard-item .rank {
-    font-weight: bold;
-    font-size: 1.1em;
-    color: var(--light-grey);
-    width: 25px;
-    text-align: right;
-}
-
-.leaderboard-item .name {
-    flex-grow: 1;
-}
-
-.leaderboard-item .flags {
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.leaderboard-item .fa-flag {
-    color: #ffd700;
-}
-
-.leaderboard-panel {
-    position: fixed;
-    top: 95px;
-    right: 20px;
-    left: auto;
-    z-index: 999;
-    width: max-content;
-    padding: 0;
-    overflow: hidden;
-    background-color: var(--purple);
-    background-image: url('../images/header_background_blured3.webp');
-    background-size: cover;
-    background-position: center;
-    border-radius: 25px;
-    opacity: 0;
-    transform: translateY(-120%);
-    pointer-events: none;
-    transition: transform 0.4s ease-out, opacity 0.3s ease-out, top 0.3s ease-in-out, right 0.3s ease-in-out, border-radius 0.3s ease-in-out;
-}
-
-.leaderboard-header {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 15px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.leaderboard-header span {
-    color: var(--white);
-    font-weight: bold;
-    margin-right: auto;
 }
 
 main {
@@ -562,15 +469,13 @@ footer .footer-legal a {
     }
     
     #search-toggle-btn:not(.hidden):hover,
-    #profile-toggle-btn:not(.hidden):hover,
-    #leaderboard-toggle-btn:not(.hidden):hover {
+    #profile-toggle-btn:not(.hidden):hover {
         transform: translateY(2px);
         box-shadow: 0 6px 16px rgba(0,0,0,0.3);
     }
 
     .custom-option:hover,
-    .profile-options li a:hover,
-    .leaderboard-item:hover {
+    .profile-options li a:hover {
         background-color: var(--light-grey);
     }
 }

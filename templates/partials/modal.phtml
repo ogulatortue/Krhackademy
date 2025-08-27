@@ -7,3 +7,29 @@
         </div>
     </div>
 </div>
+
+<script src="/js/modal.js" defer></script>
+
+<?php
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+
+    $flash_message = null;
+    if (isset($_SESSION['flash_message'])) {
+        $flash_message = $_SESSION['flash_message'];
+        unset($_SESSION['flash_message']);
+    }
+
+    if ($flash_message):
+    ?>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            modal.showModal(
+                '<?= htmlspecialchars($flash_message['type']) ?>',
+                '<?= htmlspecialchars($flash_message['title']) ?>',
+                '<?= htmlspecialchars($flash_message['message']) ?>'
+            );
+        });
+    </script>
+<?php endif; ?>

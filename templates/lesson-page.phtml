@@ -48,28 +48,23 @@
             }
             ?>
             
-            <?php
-            $is_completed = !empty($lesson['is_completed']);
-
-            if ($is_completed) {
-                $button_text = 'Leçon validée <i class="fas fa-check"></i>';
-                $button_class = 'validated';
-                $button_disabled_attribute = 'disabled';
-            } else {
-                $button_text = 'Valider la leçon <i class="fas fa-arrow-right" aria-hidden="true"></i>';
-                $button_class = '';
-                $button_disabled_attribute = '';
-            }
-            ?>
-
             <nav class="content-navigation">
-                <form class="completion-form">
-                    <input type="hidden" name="lesson_id" value="<?= htmlspecialchars($lesson['id']) ?>">
-                    
-                    <button type="submit" class="btn-glass <?= $button_class ?>" <?= $button_disabled_attribute ?>>
-                        <?= $button_text ?>
-                    </button>
-                </form>
+                <?php if (!empty($lesson['is_completed'])): ?>
+                    <span class="btn-glass validated">Leçon validée <i class="fas fa-check"></i></span>
+                    <form class="invalidation-form" style="margin: 0;">
+                        <input type="hidden" name="lesson_id" value="<?= htmlspecialchars($lesson['id']) ?>">
+                        <button type="submit" class="btn-glass" title="Recommencer la leçon">
+                            <i class="fas fa-arrow-rotate-left"></i>
+                        </button>
+                    </form>
+                <?php else: ?>
+                    <form class="completion-form">
+                        <input type="hidden" name="lesson_id" value="<?= htmlspecialchars($lesson['id']) ?>">
+                        <button type="submit" class="btn-glass">
+                            Valider la leçon <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                        </button>
+                    </form>
+                <?php endif; ?>
             </nav>
 
         </div>

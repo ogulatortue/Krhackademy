@@ -48,29 +48,28 @@
 
             <section class="content-block flag-submission">
                 <h2><i class="fas fa-flag"></i> Soumettre le Flag</h2>
-                <form class="flag-form" id="flag-form" action="/api/verify-flag" method="POST">
+                <form class="flag-form" id="flag-form">
                     <input type="hidden" name="challenge_id" value="<?= htmlspecialchars($challenge['id']) ?>">
                     <div class="flag-input-wrapper">
                         <span class="flag-prefix">KRHACK{</span>
-                        <input type="text" class="flag-input" name="flag" placeholder="collez_le_hash_ici..." required>
+                        <input type="text" class="flag-input" name="flag" placeholder="collez_le_hash_ici..." required <?= !empty($challenge['is_completed']) ? 'disabled' : '' ?>>
                         <span class="flag-prefix">}</span>
                     </div>
-                    <?php
-                    $is_completed = !empty($challenge['is_completed']);
-                    if ($is_completed) {
-                        $button_text = 'Challenge validé <i class="fas fa-check"></i>';
-                        $button_class = 'btn-glass validated';
-                        $button_disabled = 'disabled';
-                    } else {
-                        $button_text = 'Soumettre le flag <i class="fas fa-arrow-right"></i>';
-                        $button_class = 'btn-glass';
-                        $button_disabled = '';
-                    }
-                    ?>
-                    <button type="submit" class="<?= $button_class ?>" <?= $button_disabled ?>>
-                        <?= $button_text ?>
-                    </button>
                 </form>
+
+                <div class="submission-controls">
+                <?php if (!empty($challenge['is_completed'])): ?>
+                    <span class="btn-glass validated">Challenge validé <i class="fas fa-check"></i></span>
+                    <form class="invalidation-form" style="margin: 0;">
+                        <input type="hidden" name="challenge_id" value="<?= htmlspecialchars($challenge['id']) ?>">
+                        <button type="submit" class="btn-glass" title="Réinitialiser le challenge">
+                            <i class="fas fa-arrow-rotate-left"></i>
+                        </button>
+                    </form>
+                <?php else: ?>
+                    <button type="submit" form="flag-form" class="btn-glass">Soumettre le flag <i class="fas fa-arrow-right"></i></button>
+                <?php endif; ?>
+                </div>
             </section>
             
         </div>

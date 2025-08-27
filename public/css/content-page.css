@@ -124,6 +124,8 @@
 .content-navigation {
     display: flex;
     justify-content: center;
+    align-items: center;
+    gap: 1rem;
     margin-top: 4.5rem;
     padding-top: 2.5rem;
     border-top: 1px solid var(--border-color);
@@ -201,7 +203,7 @@
     background-color: var(--code-bg);
     border: 1px solid var(--border-color);
     border-radius: 5px;
-    padding: 0 1rem;
+    padding: 1rem 1rem;
 }
 
 .flag-prefix {
@@ -220,6 +222,14 @@
     font-family: 'Courier New', Courier, monospace;
     font-size: 1rem;
     letter-spacing: 1px;
+}
+
+.submission-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -285,32 +295,32 @@
 }
 
 pre {
-  background-color: var(--code-bg);      
+  background-color: var(--code-bg);     
   border: 1px solid var(--border-color);
   border-left: 4px solid var(--purple);
-  border-radius: 8px;    
+  border-radius: 8px;   
   padding: 1.25rem; 
-  margin: 1.5rem 0;       
-  overflow-x: auto;                            
+  margin: 1.5rem 0;     
+  overflow-x: auto;                     
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);   
-  position: relative;                             
+  position: relative;                       
 }
 code {
   background-color: rgba(146, 22, 168, 0.15);
-  color: #d1aaff;                             
-  padding: 1px 0.2rem;                      
-  border-radius: 6px;                          
+  color: #d1aaff;                     
+  padding: 1px 0.2rem;                 
+  border-radius: 6px;                       
   font-family: 'Fira Code', monospace; 
-  font-size: 0.9rem;                            
+  font-size: 0.9rem;                      
   border: 1px solid rgba(146, 22, 168, 0.2);  
-  vertical-align: middle;                      
+  vertical-align: middle;                 
 }
 pre code {
-  background-color: transparent;                 
-  color: #c9d1d9;                                 
+  background-color: transparent;            
+  color: #c9d1d9;                          
   padding: 0;
-  border: none;                                  
+  border: none;                             
   font-family: 'Fira Code', monospace;
-  font-size: 0.9rem;                        
-  line-height: 1.6;                      
+  font-size: 0.9rem;                
+  line-height: 1.6;               
 }

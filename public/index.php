@@ -27,7 +27,9 @@ $routes = [
     '/logout' => ['logic' => 'logout-logic.php'],
     '/api/verify-flag' => ['logic' => 'api/verifier-logic.php'],
     '/api/mark-lesson-complete' => ['logic' => 'api/mark-lesson-logic.php'],
+    '/api/mark-lesson-incomplete' => ['logic' => 'api/mark-lesson-incomplete-logic.php'],
     '/api/mark-challenge-complete' => ['logic' => 'api/mark-challenge-logic.php'],
+    '/api/mark-challenge-incomplete' => ['logic' => 'api/mark-challenge-incomplete-logic.php'],
     '/api/get-progress' => ['logic' => 'api/get-progress-logic.php']
 ];
 

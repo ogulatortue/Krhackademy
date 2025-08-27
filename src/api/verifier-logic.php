@@ -34,7 +34,7 @@ if ($is_completed) {
     exit();
 }
 
-if (hash_equals($challenge['flag'], $submitted_flag)) {
+if (strtolower($challenge['flag']) === strtolower($submitted_flag)) {
     
     $response = ['status' => 'success', 'message' => 'Flag correct ! Bien joué !'];
 

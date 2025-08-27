@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const header = document.querySelector('header');
+    const mainContent = document.querySelector('main');
     const mobileMenuBtn = document.querySelector('header .fa-bars');
     const searchBtn = document.getElementById('search-toggle-btn');
     const profileBtn = document.getElementById('profile-toggle-btn');
@@ -11,93 +12,150 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeProfileBtn = document.getElementById('close-profile-btn');
     const closeSearchBtn = document.getElementById('close-filter-btn');
     const closeLeaderboardBtn = document.getElementById('close-leaderboard-btn');
-    
+    const searchInput = document.getElementById('search-input');
+
     const allPanels = [mobileNavPanel, searchPanel, profilePanel, leaderboardPanel];
     const actionButtons = [searchBtn, profileBtn, leaderboardBtn];
+    const baseMainPaddingInRem = 6;
+    let lastFocusedElement = null;
+
+    const initializeMainPadding = () => {
+        if (mainContent) {
+            const rootFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
+            const basePaddingPx = baseMainPaddingInRem * rootFontSize;
+            mainContent.style.paddingTop = `${basePaddingPx}px`;
+        }
+    };
+
+    const resetSearch = () => {
+        if (searchInput) {
+            searchInput.value = '';
+        }
+        document.querySelectorAll('.custom-select-wrapper').forEach(wrapper => {
+            const trigger = wrapper.querySelector('.custom-select-trigger');
+            const hiddenInput = wrapper.querySelector('input[type="hidden"]');
+            const firstOption = wrapper.querySelector('.custom-option');
+            if (trigger && hiddenInput && firstOption) {
+                trigger.textContent = firstOption.textContent;
+                hiddenInput.value = firstOption.dataset.value;
+            }
+        });
+        if (searchInput) {
+            searchInput.dispatchEvent(new Event('input', { bubbles: true }));
+        }
+    };
+
+    const adjustMainPaddingForSearch = () => {
+        if (searchPanel && searchPanel.classList.contains('open')) {
+            const rootFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
+            const basePaddingPx = baseMainPaddingInRem * rootFontSize;
+            const panelHeight = searchPanel.offsetHeight;
+            mainContent.style.paddingTop = `${basePaddingPx + panelHeight + 10}px`;
+        } else {
+            initializeMainPadding();
+        }
+    };
 
     const updateActionButtonsVisibility = () => {
         const isAnyPanelOpen = allPanels.some(p => p && p.classList.contains('open'));
         actionButtons.forEach(btn => {
             if (btn) {
-                if (isAnyPanelOpen) {
-                    btn.classList.add('hidden');
-                } else {
-                    btn.classList.remove('hidden');
-                }
+                btn.classList.toggle('hidden', isAnyPanelOpen);
             }
         });
+    };
+
+    const closeAllPanels = () => {
+        const searchWasOpen = searchPanel && searchPanel.classList.contains('open');
+        if (lastFocusedElement) {
+            lastFocusedElement.focus();
+        }
+        allPanels.forEach(p => p && p.classList.remove('open'));
+        updateActionButtonsVisibility();
+        
+        if (searchWasOpen) {
+            setTimeout(adjustMainPaddingForSearch, 50);
+            resetSearch();
+        }
+        
+        if (mobileMenuBtn) {
+            mobileMenuBtn.classList.remove('fa-times');
+        }
     };
 
     const togglePanel = (panelToOpen) => {
+        const wasOpen = panelToOpen && panelToOpen.classList.contains('open');
+        const searchWasOpen = searchPanel && searchPanel.classList.contains('open');
+
+        if (!wasOpen) {
+            lastFocusedElement = document.activeElement;
+        }
+
         allPanels.forEach(panel => {
-            if (panel && panel !== panelToOpen) {
+            if (panel !== panelToOpen) {
                 panel.classList.remove('open');
             }
         });
+
         if (panelToOpen) {
             panelToOpen.classList.toggle('open');
         }
+
         mobileMenuBtn.classList.toggle('fa-times', mobileNavPanel && mobileNavPanel.classList.contains('open'));
         updateActionButtonsVisibility();
+        
+        if (panelToOpen === searchPanel) {
+            setTimeout(adjustMainPaddingForSearch, 50);
+        }
+
+        if (searchWasOpen && panelToOpen !== searchPanel) {
+            resetSearch();
+        }
+        
+        if (wasOpen && panelToOpen === searchPanel) {
+            resetSearch();
+        }
     };
 
-    if (mobileMenuBtn) {
-        mobileMenuBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            togglePanel(mobileNavPanel);
-        });
-    }
-
-    if (searchBtn) {
-        searchBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            togglePanel(searchPanel);
-        });
-    }
-
-    if (profileBtn) {
-        profileBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            togglePanel(profilePanel);
-        });
-    }
-
-    if (leaderboardBtn) {
-        leaderboardBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            togglePanel(leaderboardPanel);
-        });
-    }
+    if (mobileMenuBtn) { mobileMenuBtn.addEventListener('click', (e) => { e.stopPropagation(); togglePanel(mobileNavPanel); }); }
+    if (searchBtn) { searchBtn.addEventListener('click', (e) => { e.stopPropagation(); togglePanel(searchPanel); }); }
+    if (profileBtn) { profileBtn.addEventListener('click', (e) => { e.stopPropagation(); togglePanel(profilePanel); }); }
+    if (leaderboardBtn) { leaderboardBtn.addEventListener('click', (e) => { e.stopPropagation(); togglePanel(leaderboardPanel); }); }
 
     if (closeProfileBtn) {
-        closeProfileBtn.addEventListener('click', () => togglePanel(null));
+        closeProfileBtn.addEventListener('click', () => {
+            closeProfileBtn.blur();
+            closeAllPanels();
+        });
     }
-    
     if (closeSearchBtn) {
-        closeSearchBtn.addEventListener('click', () => togglePanel(null));
+        closeSearchBtn.addEventListener('click', () => {
+            closeSearchBtn.blur();
+            closeAllPanels();
+        });
     }
-
     if (closeLeaderboardBtn) {
-        closeLeaderboardBtn.addEventListener('click', () => togglePanel(null));
+        closeLeaderboardBtn.addEventListener('click', () => {
+            closeLeaderboardBtn.blur();
+            closeAllPanels();
+        });
     }
 
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 20) {
-            header.classList.add('header-active');
-        } else {
-            header.classList.remove('header-active');
-        }
+        header.classList.toggle('header-active', window.scrollY > 20);
     });
 
     document.addEventListener('click', (e) => {
         const isClickInsideHeader = header.contains(e.target);
         const isClickInsidePanel = allPanels.some(p => p && p.contains(e.target));
         if (!isClickInsideHeader && !isClickInsidePanel) {
-            allPanels.forEach(p => p && p.classList.remove('open'));
-            if (mobileMenuBtn) {
-                mobileMenuBtn.classList.remove('fa-times');
+            const searchWasOpen = searchPanel && searchPanel.classList.contains('open');
+            closeAllPanels();
+            if (searchWasOpen) {
+                adjustMainPaddingForSearch();
             }
-            updateActionButtonsVisibility();
         }
     });
+
+    initializeMainPadding();
 });

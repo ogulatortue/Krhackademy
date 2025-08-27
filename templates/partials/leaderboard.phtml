@@ -86,10 +86,14 @@ foreach ($topUsers as $topUser) {
             <?php endif; ?>
         </ul>
     </div>
-
-    <div class="leaderboard-footer">
-        <a href="/leaderboard" class="view-full-leaderboard btn-glass">
-            Classement complet <i class="fas fa-arrow-right"></i>
-        </a>
-    </div>
+    
+    <ul class="leaderboard-options">
+        <li>
+            <a href="/leaderboard">
+                <i class="fas fa-globe"></i> Classement complet
+            </a>
+        </li>
+    </ul>
 </section>
+
+<link rel="stylesheet" href="/css/widget.css"/>

@@ -30,14 +30,14 @@ $routes = [
     '/api/mark-lesson-incomplete' => ['logic' => 'api/mark-lesson-incomplete-logic.php'],
     '/api/mark-challenge-complete' => ['logic' => 'api/mark-challenge-logic.php'],
     '/api/mark-challenge-incomplete' => ['logic' => 'api/mark-challenge-incomplete-logic.php'],
-    '/api/get-progress' => ['logic' => 'api/get-progress-logic.php']
+    '/api/get-progress' => ['logic' => 'api/get-progress-logic.php'],
+    '/leaderboard' => ['logic' => 'leaderboard-logic.php', 'view' => 'leaderboard-total.phtml', 'currentPage' => 'leaderboard'],
 ];
 
 if (preg_match('/^\/challenge\/(\d+)$/', $request_uri, $matches)) {
     require_page_login();
     $_GET['id'] = $matches[1];
     $currentPage = 'challenges';
-    // J'ai corrigé les chemins ici aussi pour être cohérent
     require ROOT_PATH . '/src/challenge-page-logic.php';
     require ROOT_PATH . '/templates/challenge-page.phtml';
 

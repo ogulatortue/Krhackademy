@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classement - Kr[HACK]ademy</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/leaderboard.css">
+    <link rel="stylesheet" href="/css/content-page.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+</head>
+<body>
+
+    <main class="content-container">
+        <div class="content-wrapper">
+            <div class="content-header">
+                <i class="content-icon fas fa-trophy"></i>
+                <div class="content-title-group">
+                    <h1>Classement Complet</h1>
+                    <p class="content-intro">Mesurez-vous à la communauté. Chaque drapeau capturé vous rapproche du sommet !</p>
+                </div>
+            </div>
+
+            <div class="content-block">
+                <div class="leaderboard-container">
+                    <div class="leaderboard__header">
+                        <span>Rang</span>
+                        <span>Utilisateur</span>
+                        <span>Score</span>
+                    </div>
+    
+                    <ol class="leaderboard__list">
+                        <?php foreach ($leaderboardData as $index => $user): ?>
+                            <?php
+                                $rank = $index + 1;
+                                $isCurrentUser = ($user['id'] == $currentUserId);
+                                $podiumClass = '';
+                                if ($rank >= 1 && $rank <= 3) {
+                                    $podiumClass = 'leaderboard__row--podium-' . $rank;
+                                }
+                            ?>
+                            <li class="leaderboard__row <?php echo $podiumClass; ?> <?php echo $isCurrentUser ? 'leaderboard__row--current-user' : ''; ?>">
+                            
+                                <span class="leaderboard__cell leaderboard__cell--rank">
+                                    <span class="rank-number"><?php echo $rank; ?></span>
+                                </span>
+                            
+                                <span class="leaderboard__cell leaderboard__cell--user">
+                                    <?php if ($rank <= 3): ?>
+                                        <i class="fas fa-medal"></i>
+                                    <?php endif; ?>
+                                    <?php echo htmlspecialchars($user['username']); ?>
+                                </span>
+                                    
+                                <span class="leaderboard__cell leaderboard__cell--score">
+                                    <?php echo $user['score']; ?> pts
+                                </span>
+                            </li>
+                        <?php endforeach; ?>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>

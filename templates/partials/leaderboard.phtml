@@ -1,41 +1,90 @@
 <?php
-// --- LOGIQUE PHP EN HAUT DU FICHIER ---
-// Simule la récupération des données pour l'exemple
-$topUsers = [
-    ['username' => 'CyberStallion', 'score' => 1500],
-    ['username' => 'GlitchQueen', 'score' => 1200],
-    ['username' => 'RootAdmin92', 'score' => 1150]
-];
-$currentUserRank = 42;
-$currentUserScore = 450;
-?>
 
+$currentUserId = $_SESSION['user_id'] ?? null;
+
+$sql = "
+    SELECT
+        u.id,
+        u.username,
+        COALESCE(SUM(c.points), 0) AS score
+    FROM
+        users u
+    LEFT JOIN
+        user_challenges_progress ucp ON u.id = ucp.user_id
+    LEFT JOIN
+        challenges c ON ucp.challenge_id = c.id
+    GROUP BY
+        u.id, u.username
+    ORDER BY
+        score DESC, MAX(ucp.completed_at) ASC;
+";
+
+$stmt = $pdo->query($sql);
+$fullLeaderboard = $stmt->fetchAll();
+
+$topUsers = array_slice($fullLeaderboard, 0, 3);
+
+$currentUserRank = 'N/A';
+$currentUserScore = 0;
+foreach ($fullLeaderboard as $index => $user) {
+    if ($currentUserId !== null && $user['id'] == $currentUserId) {
+        $currentUserRank = $index + 1;
+        $currentUserScore = $user['score'];
+        break;
+    }
+}
+
+$isCurrentUserInTop3 = false;
+foreach ($topUsers as $topUser) {
+    if ($topUser['id'] == $currentUserId) {
+        $isCurrentUserInTop3 = true;
+        break;
+    }
+}
+?>
 <link rel="stylesheet" href="/css/leaderboard.css"/>
 
 <section class="leaderboard-panel" id="leaderboard-menu" aria-hidden="true">
     <div class="leaderboard-header">
         <i class="fas fa-trophy panel-icon"></i>
-        <span>Classement Rapide</span>
+        <span>Classement</span>
         <button id="close-leaderboard-btn" class="fas fa-times" aria-label="Fermer le classement"></button>
     </div>
 
     <div class="leaderboard-content">
         <ul class="leaderboard-list">
             <?php foreach ($topUsers as $index => $user): ?>
-                <li class="leaderboard-item podium-<?php echo $index + 1; ?>">
+                <?php
+                    $highlightClass = '';
+                    if ($user['id'] == $currentUserId) {
+                        switch ($index) {
+                            case 0:
+                                $highlightClass = 'highlight-gold';
+                                break;
+                            case 1:
+                                $highlightClass = 'highlight-silver';
+                                break;
+                            case 2:
+                                $highlightClass = 'highlight-bronze';
+                                break;
+                        }
+                    }
+                ?>
+                <li class="leaderboard-item podium-<?php echo $index + 1; ?> <?php echo $highlightClass; ?>">
                     <span class="rank"><?php echo $index + 1; ?> <i class="fas fa-medal"></i></span>
                     <span class="username"><?php echo htmlspecialchars($user['username']); ?></span>
                     <span class="score"><?php echo $user['score']; ?> <i class="fas fa-flag"></i></span>
                 </li>
             <?php endforeach; ?>
 
-            <li class="leaderboard-separator"></li>
-            
-            <li class="leaderboard-item current-user">
-                <span class="rank"><?php echo $currentUserRank; ?></span>
-                <span class="username"><?php echo htmlspecialchars($_SESSION['username'] ?? 'Kolonel_07'); ?></span>
-                <span class="score"><?php echo $currentUserScore; ?> <i class="fas fa-flag"></i></span>
-            </li>
+            <?php if (!$isCurrentUserInTop3 && $currentUserId !== null): ?>
+                <li class="leaderboard-separator"></li>
+                <li class="leaderboard-item current-user">
+                    <span class="rank"><?php echo $currentUserRank; ?></span>
+                    <span class="username"><?php echo htmlspecialchars($_SESSION['username'] ?? ''); ?></span>
+                    <span class="score"><?php echo $currentUserScore; ?> <i class="fas fa-flag"></i></span>
+                </li>
+            <?php endif; ?>
         </ul>
     </div>
 

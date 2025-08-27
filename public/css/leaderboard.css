@@ -132,9 +132,31 @@ header.header-active ~ .leaderboard-panel {
     color: white;
 }
 .leaderboard-footer {
-    padding: 12px;
+    padding: 5px;
     text-align: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+.leaderboard-item.highlight-gold,
+.leaderboard-item.highlight-silver,
+.leaderboard-item.highlight-bronze {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 8px;
+}
+
+.leaderboard-item.highlight-gold {
+    border-color: #D4AF37;
+    color: #D4AF37;
+}
+
+.leaderboard-item.highlight-silver {
+    border-color: #C0C0C0;
+    color: #C0C0C0;
+}
+
+.leaderboard-item.highlight-bronze {
+    border-color: #CD7F32;
+    color: #CD7F32;
 }
 @media (hover: hover) and (pointer: fine) {
     #leaderboard-toggle-btn:not(.hidden):hover {

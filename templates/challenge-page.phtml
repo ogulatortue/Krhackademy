@@ -51,8 +51,8 @@
                 <form class="flag-form" id="flag-form">
                     <input type="hidden" name="challenge_id" value="<?= htmlspecialchars($challenge['id']) ?>">
                     <div class="flag-input-wrapper">
-                        <span class="flag-prefix">KRHACK{</span>
-                        <input type="text" class="flag-input" name="flag" placeholder="collez_le_hash_ici..." required <?= !empty($challenge['is_completed']) ? 'disabled' : '' ?>>
+                        <span class="flag-prefix">KRK{</span>
+                        <input type="text" class="flag-input" name="flag" placeholder="collez_le_flag_ici" required <?= !empty($challenge['is_completed']) ? 'disabled' : '' ?>>
                         <span class="flag-prefix">}</span>
                     </div>
                 </form>

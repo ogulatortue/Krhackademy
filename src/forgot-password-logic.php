@@ -16,25 +16,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['flash_message'] = ['type' => 'error', 'title' => 'Erreur', 'message' => 'Veuillez fournir une adresse e-mail valide.'];
     } else {
         $user = $userModel->findByUsernameOrEmail($email);
-
         if ($user) {
             $token = bin2hex(random_bytes(32));
-            
             if ($userModel->setResetToken($user['id'], $token)) {
                 $mailer = new MailerService();
-                
-                if ($mailer->sendPasswordResetEmail($email, $user['username'], $token)) {
-                    $_SESSION['flash_message'] = ['type' => 'success', 'title' => 'Email envoyé', 'message' => 'Un e-mail de réinitialisation vous a été envoyé.'];
-                } else {
-                    $_SESSION['flash_message'] = ['type' => 'error', 'title' => 'Erreur', 'message' => 'L\'e-mail n\'a pas pu être envoyé.'];
-                }
-            } else {
-                $_SESSION['flash_message'] = ['type' => 'error', 'title' => 'Erreur', 'message' => 'Erreur lors de la génération du lien.'];
+                $mailer->sendPasswordResetEmail($email, $user['username'], $token);
             }
-        } else {
-            $_SESSION['flash_message'] = ['type' => 'success', 'title' => 'Email envoyé', 'message' => 'Si un compte existe, un e-mail a été envoyé.'];
         }
+        $_SESSION['flash_message'] = [
+            'type' => 'success', 
+            'title' => 'Demande envoyée', 
+            'message' => 'Si un compte est associé à cette adresse e-mail, vous recevrez un lien pour réinitialiser votre mot de passe.'
+        ];
     }
+
     header('Location: /forgot-password');
     exit();
 }

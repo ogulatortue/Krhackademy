@@ -1,23 +1,10 @@
-:root {
-    --podium-gold: #FFD700;
-    --podium-silver: #C0C0C0;
-    --podium-bronze: #CD7F32;
-    --podium-bg-dark: #1a1a2e;
-    --podium-bg-light: #2a2a3e;
-    --podium-glow-strength: 15px;
-}
-
-.content-header {
-    margin-bottom: 0;
-}
-
 .podium-container {
     display: flex;
     justify-content: center;
     align-items: flex-end;
     gap: 0;
-    padding: 3rem 1rem;
-    min-height: 350px;
+    padding: 0rem 1rem 1rem;
+    min-height: 320px;
 }
 
 .podium-card {
@@ -79,6 +66,8 @@
 .podium-rank-badge {
     position: absolute;
     bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -165,31 +154,138 @@
     border: 1px solid transparent;
 }
 
-.leaderboard-row--current-user {
+.leaderboard-row--current-user,
+.podium-card--current-user .podium-content {
     background-color: rgba(146, 22, 168, 0.2);
     border: 1px solid var(--purple);
     font-weight: bold;
 }
 
-.leaderboard-cell {
-    color: var(--text-subtle);
+.leaderboard-cell { color: var(--text-subtle); }
+.leaderboard-cell--rank { font-weight: bold; color: var(--white); font-size: 1.1rem; }
+.leaderboard-cell--user { color: var(--white); }
+.leaderboard-cell--score { font-weight: 600; color: var(--white); }
+
+.content-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
 }
 
-.leaderboard-cell--rank {
+.content-wrapper {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2rem 3.5rem;
+    box-shadow: 0 10px 30px var(--shadow-medium);
+}
+
+.content-header {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+    margin-bottom: 1rem;
+    color: var(--white);
+    background: url('../images/header_background_blured3.webp') center/cover no-repeat;
+    border-radius: 15px;
+}
+
+.content-icon {
+    font-size: 3.75rem;
+    color: var(--white);
+}
+
+.content-title-group {
+    flex-grow: 1;
+}
+
+.content-title-group h1 {
+    padding-bottom: 0.5rem;
+    font-size: 2.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: var(--white);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    font-style: normal;
+    text-transform: none;
+}
+
+.content-title-group .content-intro {
+    margin: 0;
+    font-size: 1.15rem;
+    font-style: italic;
     font-weight: bold;
     color: var(--white);
-    font-size: 1.1rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
 }
 
-.leaderboard-cell--user {
-    color: var(--white);
+.content-block {
+    padding-bottom: 2.5rem;
 }
 
-.leaderboard-cell--score {
-    font-weight: 600;
-    color: var(--white);
+.content-block:last-of-type {
+    padding-bottom: 0;
 }
 
-h2 {
-    text-align: center;
+.content-block .block {
+    padding: 0;
+}
+
+.content-block h2 {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    padding-left: 1.25rem;
+    font-size: 1.8rem;
+    color: white;
+    border-left: 4px solid var(--purple);
+    text-align: left;
+    font-style: normal;
+    text-transform: none;
+}
+
+.content-block h2 .fas {
+    color: var(--purple);
+}
+
+@media (max-width: 900px) {
+    .content-container {
+        width: 100%;
+        padding: 1rem;
+    }
+    .content-wrapper {
+        padding: 2rem 1.5rem;
+    }
+    .content-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+        padding: 2.5rem 1.5rem;
+    }
+    .content-title-group h1 {
+        font-size: 2rem;
+    }
+    .content-title-group .content-intro {
+        font-size: 1.2rem;
+    }
+    .content-block h2 {
+        font-size: 1.5rem;
+    }
+    .podium-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 4rem;
+        min-height: auto;
+    }
+    .podium-card--2, .podium-card--3 {
+        margin: 0;
+    }
+     .leaderboard-row, .leaderboard-header {
+        grid-template-columns: 60px 1fr 80px;
+        gap: 1rem;
+        padding: 0.75rem 1rem;
+    }
 }

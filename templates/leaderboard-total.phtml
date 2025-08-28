@@ -5,79 +5,90 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Classement - Kr[HACK]ademy</title>
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/menu.css">
+    <link rel="stylesheet" href="/css/menus.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
 </head>
 <body>
 
     <main class="container">
-        <div class="wrapper">
-
-            <h2>Classement Général</h2>
-            <div class="block">
-
-                <?php 
-                    $podiumUsers = array_slice($leaderboardData, 0, 3);
-                    $otherUsers = array_slice($leaderboardData, 3);
-                ?>
-
-                <div class="podium-container">
-                    <?php 
-                    $podiumOrder = [1, 0, 2];
-                    ?>
-
-                    <?php foreach ($podiumOrder as $index): ?>
-                        <?php if (isset($podiumUsers[$index])): 
-                            $user = $podiumUsers[$index];
-                            $rank = $index + 1;
-                            $isCurrentUser = ($user['id'] == $currentUserId);
-                        ?>
-                            <div class="podium-card podium-card--<?php echo $rank; ?> <?php echo $isCurrentUser ? 'podium-card--current-user' : ''; ?>">
-                                <div class="podium-content">
-                                    
-                                    <?php if ($rank == 1): ?>
-                                        <i class="podium-crown fas fa-crown"></i>
-                                    <?php endif; ?>
-
-                                    <img src="<?php echo htmlspecialchars($user['avatar_url'] ?? 'images/default-avatar.webp'); ?>" alt="Avatar de <?php echo htmlspecialchars($user['username']); ?>" class="podium-avatar">
-                                    
-                                    <div class="podium-user"><?php echo htmlspecialchars($user['username']); ?></div>
-                                    <div class="podium-score"><?php echo $user['score']; ?> <i class="fas fa-flag podium-score"></i></div>
-                                    
-                                    <div class="podium-rank-badge">
-                                        <span><?php echo $rank; ?></span>
-                                    </div>
-
-                                </div>
-                            </div>
-                        <?php endif; ?>
-                    <?php endforeach; ?>
-                </div>
-            </div>
-
-            <div class="block">
-                <div class="leaderboard-table">
-                    <div class="leaderboard-header">
-                        <span class="leaderboard-cell">Rang</span>
-                        <span class="leaderboard-cell">Utilisateur</span>
-                        <span class="leaderboard-cell">Score</span>
+        <div class="content-container">
+            <div class="content-wrapper">
+                <header class="content-header">
+                    <i class="fas fa-trophy content-icon"></i>
+                    <div class="content-title-group">
+                        <h1>Classement général</h1>
+                        <p class="content-intro">Tableau d'honneur de la Kr[HACK]ademy</p>
                     </div>
-
-                    <?php foreach ($otherUsers as $index => $user): ?>
-                        <?php
-                            $rank = $index + 4;
-                            $isCurrentUser = ($user['id'] == $currentUserId);
+                </header>
+                <div class="content-block">
+                    <div class="block">
+                        <?php 
+                            $leaderboardData = isset($leaderboardData) ? $leaderboardData : []; // Pour éviter les erreurs si la variable n'est pas définie
+                            $currentUserId = isset($currentUserId) ? $currentUserId : null; // Pour éviter les erreurs
+                            $podiumUsers = array_slice($leaderboardData, 0, 3);
+                            $otherUsers = array_slice($leaderboardData, 3);
                         ?>
-                        <div class="leaderboard-row <?php echo $isCurrentUser ? 'leaderboard-row--current-user' : ''; ?>">
-                            <span class="leaderboard-cell leaderboard-cell--rank">#<?php echo $rank; ?></span>
-                            <span class="leaderboard-cell leaderboard-cell--user"><?php echo htmlspecialchars($user['username']); ?></span>
-                            <span class="leaderboard-cell leaderboard-cell--score"><?php echo $user['score']; ?> <i class="fas fa-flag leaderboard-cell--score"></i></span>
+
+                        <div class="podium-container">
+                            <?php 
+                            $podiumOrder = [1, 0, 2];
+                            ?>
+
+                            <?php foreach ($podiumOrder as $index): ?>
+                                <?php if (isset($podiumUsers[$index])): 
+                                    $user = $podiumUsers[$index];
+                                    $rank = $index + 1;
+                                    $isCurrentUser = ($user['id'] == $currentUserId);
+                                ?>
+                                    <div class="podium-card podium-card--<?php echo $rank; ?> <?php echo $isCurrentUser ? 'podium-card--current-user' : ''; ?>">
+                                        <div class="podium-content">
+                                            
+                                            <?php if ($rank == 1): ?>
+                                                <i class="podium-crown fas fa-crown"></i>
+                                            <?php endif; ?>
+
+                                            <img src="<?php echo htmlspecialchars($user['avatar_url'] ?? 'images/default-avatar.webp'); ?>" alt="Avatar de <?php echo htmlspecialchars($user['username']); ?>" class="podium-avatar">
+                                            
+                                            <div class="podium-user"><?php echo htmlspecialchars($user['username']); ?></div>
+                                            <div class="podium-score"><?php echo $user['score']; ?> <i class="fas fa-flag podium-score"></i></div>
+                                            
+                                            <div class="podium-rank-badge">
+                                                <span><?php echo $rank; ?></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
                         </div>
-                    <?php endforeach; ?>
+                    </div>
                 </div>
 
+                <div class="content-block">
+                    <div class="block">
+                        <div class="leaderboard-table">
+                            <div class="leaderboard-header">
+                                <span class="leaderboard-cell">Rang</span>
+                                <span class="leaderboard-cell">Utilisateur</span>
+                                <span class="leaderboard-cell">Score</span>
+                            </div>
+
+                            <?php foreach ($otherUsers as $index => $user): ?>
+                                <?php
+                                    $rank = $index + 4;
+                                    $isCurrentUser = ($user['id'] == $currentUserId);
+                                ?>
+                                <div class="leaderboard-row <?php echo $isCurrentUser ? 'leaderboard-row--current-user' : ''; ?>">
+                                    <span class="leaderboard-cell leaderboard-cell--rank">#<?php echo $rank; ?></span>
+                                    <span class="leaderboard-cell leaderboard-cell--user"><?php echo htmlspecialchars($user['username']); ?></span>
+                                    <span class="leaderboard-cell leaderboard-cell--score"><?php echo $user['score']; ?> <i class="fas fa-flag leaderboard-cell--score"></i></span>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
+
 </body>
 </html>

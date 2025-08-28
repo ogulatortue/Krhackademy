@@ -29,6 +29,12 @@
     --subtle-green: rgba(23, 179, 44, 0.2);
     --dark-green-bg: rgba(10, 80, 20, 0.8);
     --darkest-green-bg: rgba(10, 30, 15, 0.95);
+    --podium-gold: #FFD700;
+    --podium-silver: #C0C0C0;
+    --podium-bronze: #CD7F32;
+    --podium-bg-dark: #1a1a2e;
+    --podium-bg-light: #2a2a3e;
+    --podium-glow-strength: 15px;
 }
 
 * {

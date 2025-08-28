@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Classement - Kr[HACK]ademy</title>
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/menus.css">
+    <link rel="stylesheet" href="/css/leaderboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
 </head>
 <body>
+    <a href="/lessons" class="btn-glass back-button"><i class="fas fa-arrow-left" aria-hidden="true"></i> Retour</a>
 
     <main class="container">
         <div class="content-container">
@@ -23,8 +24,8 @@
                 <div class="content-block">
                     <div class="block">
                         <?php 
-                            $leaderboardData = isset($leaderboardData) ? $leaderboardData : []; // Pour éviter les erreurs si la variable n'est pas définie
-                            $currentUserId = isset($currentUserId) ? $currentUserId : null; // Pour éviter les erreurs
+                            $leaderboardData = isset($leaderboardData) ? $leaderboardData : [];
+                            $currentUserId = isset($currentUserId) ? $currentUserId : null;
                             $podiumUsers = array_slice($leaderboardData, 0, 3);
                             $otherUsers = array_slice($leaderboardData, 3);
                         ?>

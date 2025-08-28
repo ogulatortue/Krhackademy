@@ -1,3 +1,4 @@
+<?php require_once ROOT_PATH . '/src/helpers.php'; ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -17,13 +18,7 @@
     </a>
 
     <?php
-    $difficulty_class = '';
-    switch (strtolower($lesson['difficulty'])) {
-        case 'débutant': $difficulty_class = 'difficulty-easy'; break;
-        case 'initié': $difficulty_class = 'difficulty-medium'; break;
-        case 'avancé': $difficulty_class = 'difficulty-hard'; break;
-        case 'expert': $difficulty_class = 'difficulty-expert'; break;
-    }
+        $difficulty_class = getDifficultyClass($lesson['difficulty']);
     ?>
 
     <main class="content-container">

@@ -14,8 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeLeaderboardBtn = document.getElementById('close-leaderboard-btn');
     const searchInput = document.getElementById('search-input');
 
-    const allPanels = [mobileNavPanel, searchPanel, profilePanel, leaderboardPanel];
-    const actionButtons = [searchBtn, profileBtn, leaderboardBtn];
+    const allPanels = [mobileNavPanel, searchPanel, profilePanel, leaderboardPanel].filter(Boolean);
+    const actionButtons = [searchBtn, profileBtn, leaderboardBtn].filter(Boolean);
     const baseMainPaddingInRem = 6;
     let lastFocusedElement = null;
 
@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         allPanels.forEach(panel => {
-            if (panel !== panelToOpen) {
+            if (panel && panel !== panelToOpen) {
                 panel.classList.remove('open');
             }
         });

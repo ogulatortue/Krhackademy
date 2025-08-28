@@ -4,11 +4,11 @@
 }
 
 .category-section {
-    margin-bottom: 4rem;
+    margin-top: 3rem;
 }
 
-.category-section:last-child {
-    margin-bottom: 0;
+.category-section:first-child {
+    margin-top: 2rem;
 }
 
 .main-title.category-title {

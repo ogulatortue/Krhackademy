@@ -1,14 +1,17 @@
 #leaderboard-toggle-btn {
     right: 180px;
 }
+
 #leaderboard-toggle-btn.hidden {
     opacity: 0;
     transform: translateY(50px);
     pointer-events: none;
 }
+
 header.header-active #leaderboard-toggle-btn {
     right: 165px;
 }
+
 .leaderboard-panel {
     position: fixed;
     top: 95px;
@@ -33,17 +36,20 @@ header.header-active #leaderboard-toggle-btn {
     transition: transform 0.4s ease-out, opacity 0.3s ease-out, top 0.3s ease-in-out, right 0.3s ease-in-out, border-radius 0.3s ease-in-out;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
 }
+
 .leaderboard-panel.open {
     opacity: 1;
     transform: translateY(0);
     pointer-events: auto;
 }
+
 header.header-active ~ .leaderboard-panel {
     top: 56px;
     right: 0;
     left: auto;
     border-radius: 0;
 }
+
 .leaderboard-header {
     display: flex;
     align-items: center;
@@ -51,9 +57,11 @@ header.header-active ~ .leaderboard-panel {
     padding: 12px 15px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
+
 .leaderboard-header .panel-icon {
     font-size: 1.5rem;
 }
+
 .leaderboard-header span {
     color: var(--white);
     font-weight: bold;
@@ -62,6 +70,7 @@ header.header-active ~ .leaderboard-panel {
     margin-left: 0.8rem;
     font-size: 1.1rem;
 }
+
 #close-leaderboard-btn {
     background: transparent;
     border: none;
@@ -69,15 +78,18 @@ header.header-active ~ .leaderboard-panel {
     font-size: 20px;
     cursor: pointer;
 }
+
 .leaderboard-content {
     overflow-y: auto;
     padding: 3px 0;
 }
+
 .leaderboard-list {
     list-style: none;
     padding: 0;
     margin: 0;
 }
+
 .leaderboard-item {
     display: flex;
     align-items: center;
@@ -88,19 +100,22 @@ header.header-active ~ .leaderboard-panel {
     border-radius: 8px;
     transition: none;
 }
+
 .leaderboard-item .rank {
     flex-basis: 35px;
     flex-shrink: 0;
     font-weight: bold;
     font-size: 0.95rem;
 }
+
 .leaderboard-avatar {
     width: 32px;
     height: 32px;
     border-radius: 50%;
     margin-right: 10px;
-    border: 2px solid transparent;
+    border: none;
 }
+
 .leaderboard-item .username {
     flex-grow: 1;
     text-align: left;
@@ -110,6 +125,7 @@ header.header-active ~ .leaderboard-panel {
     white-space: nowrap;
     font-size: 0.95rem;
 }
+
 .leaderboard-item .score {
     font-weight: bold;
     color: var(--white);
@@ -119,55 +135,58 @@ header.header-active ~ .leaderboard-panel {
     margin-left: 8px;
     font-size: 0.95rem;
 }
+
 .leaderboard-item .score .fa-flag {
     font-size: 0.9rem;
 }
+
 .leaderboard-item.podium-1 .rank,
 .leaderboard-item.podium-1 .score {
     color: var(--podium-gold);
 }
-.leaderboard-item.podium-1 .leaderboard-avatar {
-    border-color: var(--podium-gold);
-}
+
 .leaderboard-item.podium-2 .rank,
 .leaderboard-item.podium-2 .score {
     color: var(--podium-silver);
 }
-.leaderboard-item.podium-2 .leaderboard-avatar {
-    border-color: var(--podium-silver);
-}
+
 .leaderboard-item.podium-3 .rank,
 .leaderboard-item.podium-3 .score {
     color: var(--podium-bronze);
 }
-.leaderboard-item.podium-3 .leaderboard-avatar {
-    border-color: var(--podium-bronze);
-}
+
 .leaderboard-item.current-user-podium-border {
-    border: 2px solid;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+    border: 1px solid;
+    box-shadow: 0 0 6px 2px rgba(255, 255, 255, 0.7); /* Ombre blanche générique restaurée */
 }
+
 .leaderboard-item.podium-1.current-user-podium-border {
     border-color: var(--podium-gold);
-    box-shadow: 0 2px 8px var(--podium-gold);
+    box-shadow: 0 0 5px 2px var(--podium-gold); /* Ombre dorée sur le bloc restaurée */
 }
+
 .leaderboard-item.podium-2.current-user-podium-border {
     border-color: var(--podium-silver);
-    box-shadow: 0 2px 8px var(--podium-silver);
+    box-shadow: 0 0 5px 2px var(--podium-silver); /* Ombre argentée sur le bloc restaurée */
 }
+
 .leaderboard-item.podium-3.current-user-podium-border {
     border-color: var(--podium-bronze);
-    box-shadow: 0 2px 8px var(--podium-bronze);
+    box-shadow: 0 0 5px 2px var(--podium-bronze); /* Ombre bronze sur le bloc restaurée */
 }
+
 .leaderboard-item.podium-1.current-user-podium-border .leaderboard-avatar {
-    border-color: var(--podium-gold);
+    box-shadow: 0 0 5px 2px var(--podium-gold);
 }
+
 .leaderboard-item.podium-2.current-user-podium-border .leaderboard-avatar {
-    border-color: var(--podium-silver);
+    box-shadow: 0 0 5px 2px var(--podium-silver);
 }
+
 .leaderboard-item.podium-3.current-user-podium-border .leaderboard-avatar {
-    border-color: var(--podium-bronze);
+    box-shadow: 0 0 5px 2px var(--podium-bronze);
 }
+
 .leaderboard-separator {
     height: 1px;
     background-color: rgba(255, 255, 255, 0.2);
@@ -175,15 +194,18 @@ header.header-active ~ .leaderboard-panel {
     border: none;
     box-shadow: none;
 }
+
 .leaderboard-item.current-user {
     background-color: rgba(146, 22, 168, 0.2);
 }
+
 .leaderboard-options {
     list-style: none;
     padding: 0;
     margin: 0;
     border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
+
 .leaderboard-options li a {
     display: flex;
     align-items: center;
@@ -197,6 +219,7 @@ header.header-active ~ .leaderboard-panel {
     border-bottom-right-radius: 25px;
     font-size: 0.95rem;
 }
+
 @media (hover: hover) and (pointer: fine) {
     #leaderboard-toggle-btn:not(.hidden):hover {
         transform: translateY(2px);

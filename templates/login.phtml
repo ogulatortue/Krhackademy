@@ -15,7 +15,9 @@ if (session_status() === PHP_SESSION_NONE) {
 </head>
 <body class="auth-page">
 
-    <a href="/" class="btn-glass back-button"><i class="fas fa-arrow-left" aria-hidden="true"></i>Retour à l'accueil</a>
+    <a href="/lessons" onclick="history.back(); return false;" class="btn-glass back-button">
+        <i class="fas fa-arrow-left" aria-hidden="true"></i> Retour
+    </a>
 
     <div class="auth-container">
         <div class="auth-content">

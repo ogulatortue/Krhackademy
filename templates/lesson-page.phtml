@@ -12,7 +12,9 @@
 </head>
 <body class="page-lesson">
 
-    <a href="/lessons" class="btn-glass back-button"><i class="fas fa-arrow-left" aria-hidden="true"></i> Retour aux leçons</a>
+    <a href="/lessons" onclick="history.back(); return false;" class="btn-glass back-button">
+        <i class="fas fa-arrow-left" aria-hidden="true"></i> Retour aux leçons
+    </a>
 
     <?php
     $difficulty_class = '';

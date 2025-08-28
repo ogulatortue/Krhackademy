@@ -1,4 +1,15 @@
+window.addEventListener('pageshow', function(event) {
+    if (event.persisted) {
+        window.scrollTo(0, 0);
+    }
+});
+
 document.addEventListener('DOMContentLoaded', () => {
+    if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+
     const header = document.querySelector('header');
     const mainContent = document.querySelector('main');
     const mobileMenuBtn = document.querySelector('header .fa-bars');

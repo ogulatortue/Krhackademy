@@ -31,7 +31,7 @@ $routes = [
     '/api/mark-challenge-complete' => ['logic' => 'api/mark-challenge-logic.php'],
     '/api/mark-challenge-incomplete' => ['logic' => 'api/mark-challenge-incomplete-logic.php'],
     '/api/get-progress' => ['logic' => 'api/get-progress-logic.php'],
-    '/leaderboard' => ['logic' => 'leaderboard-logic.php', 'view' => 'leaderboard-total.phtml', 'currentPage' => 'leaderboard'],
+    '/leaderboard' => ['logic' => 'leaderboard-logic.php', 'view' => 'leaderboard.phtml', 'currentPage' => 'leaderboard'],
 ];
 
 if (preg_match('/^\/challenge\/(\d+)$/', $request_uri, $matches)) {

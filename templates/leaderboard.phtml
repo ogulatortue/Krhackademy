@@ -9,7 +9,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
 </head>
 <body>
-    <a href="/lessons" class="btn-glass back-button"><i class="fas fa-arrow-left" aria-hidden="true"></i> Retour</a>
+    <a href="/lessons" onclick="history.back(); return false;" class="btn-glass back-button">
+        <i class="fas fa-arrow-left" aria-hidden="true"></i> Retour
+    </a>
 
     <main class="container">
         <div class="content-container">
@@ -90,6 +92,8 @@
             </div>
         </div>
     </main>
+
+    <?php require __DIR__ . '/partials/modal.phtml';?>
 
 </body>
 </html>

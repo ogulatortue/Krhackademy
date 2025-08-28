@@ -43,7 +43,7 @@
                                     <img src="<?php echo htmlspecialchars($user['avatar_url'] ?? 'images/default-avatar.webp'); ?>" alt="Avatar de <?php echo htmlspecialchars($user['username']); ?>" class="podium-avatar">
                                     
                                     <div class="podium-user"><?php echo htmlspecialchars($user['username']); ?></div>
-                                    <div class="podium-score"><?php echo $user['score']; ?> pts</div>
+                                    <div class="podium-score"><?php echo $user['score']; ?> <i class="fas fa-flag podium-score"></i></div>
                                     
                                     <div class="podium-rank-badge">
                                         <span><?php echo $rank; ?></span>
@@ -72,7 +72,7 @@
                         <div class="leaderboard-row <?php echo $isCurrentUser ? 'leaderboard-row--current-user' : ''; ?>">
                             <span class="leaderboard-cell leaderboard-cell--rank">#<?php echo $rank; ?></span>
                             <span class="leaderboard-cell leaderboard-cell--user"><?php echo htmlspecialchars($user['username']); ?></span>
-                            <span class="leaderboard-cell leaderboard-cell--score"><?php echo $user['score']; ?> pts</span>
+                            <span class="leaderboard-cell leaderboard-cell--score"><?php echo $user['score']; ?> <i class="fas fa-flag leaderboard-cell--score"></i></span>
                         </div>
                     <?php endforeach; ?>
                 </div>

@@ -8,6 +8,7 @@ $sql = "
     SELECT
         u.id,
         u.username,
+        u.avatar_url,
         COALESCE(SUM(c.points), 0) AS score,
         MAX(ucp.completed_at) as last_completion_date
     FROM
@@ -17,7 +18,7 @@ $sql = "
     LEFT JOIN
         challenges c ON ucp.challenge_id = c.id
     GROUP BY
-        u.id, u.username
+        u.id, u.username, u.avatar_url
     ORDER BY
         score DESC, last_completion_date ASC;
 ";

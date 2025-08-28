@@ -60,7 +60,6 @@ foreach ($topUsers as $topUser) {
                     $podiumClass = 'podium-' . ($index + 1);
                     $currentUserHighlightClass = '';
                     if ($currentUserId !== null && $user['id'] == $currentUserId) {
-                        // Apply a specific class for the current user in the top 3
                         $currentUserHighlightClass = ' current-user-podium-border'; 
                     }
                 ?>

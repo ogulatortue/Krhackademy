@@ -5,17 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Classement - Kr[HACK]ademy</title>
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/content-page.css">
-    <link rel="stylesheet" href="/css/leaderboard.css">
+    <link rel="stylesheet" href="/css/menu.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
 </head>
 <body>
 
-    <main class="content-container">
-        <div class="content-wrapper">
+    <main class="container">
+        <div class="wrapper">
 
             <h2>Classement Général</h2>
-            <div class="content-block">
+            <div class="block">
 
                 <?php 
                     $podiumUsers = array_slice($leaderboardData, 0, 3);
@@ -56,7 +55,7 @@
                 </div>
             </div>
 
-            <div class="content-block">
+            <div class="block">
                 <div class="leaderboard-table">
                     <div class="leaderboard-header">
                         <span class="leaderboard-cell">Rang</span>

@@ -30,32 +30,38 @@
                 ?>
 
                 <div class="podium-container">
-                    <?php if (isset($podiumUsers[1])): $user = $podiumUsers[1]; ?>
-                        <div class="podium-card podium-card--2 <?php echo ($user['id'] == $currentUserId) ? 'podium-card--current-user' : ''; ?>">
-                            <div class="podium-rank">2</div>
-                            <i class="podium-icon fas fa-medal"></i>
-                            <div class="podium-user"><?php echo htmlspecialchars($user['username']); ?></div>
-                            <div class="podium-score"><?php echo $user['score']; ?> pts</div>
-                        </div>
-                    <?php endif; ?>
+                    <?php 
+                    $podiumOrder = [1, 0, 2];
+                    ?>
 
-                    <?php if (isset($podiumUsers[0])): $user = $podiumUsers[0]; ?>
-                        <div class="podium-card podium-card--1 <?php echo ($user['id'] == $currentUserId) ? 'podium-card--current-user' : ''; ?>">
-                            <div class="podium-rank">1</div>
-                            <i class="podium-icon fas fa-trophy"></i>
-                            <div class="podium-user"><?php echo htmlspecialchars($user['username']); ?></div>
-                            <div class="podium-score"><?php echo $user['score']; ?> pts</div>
-                        </div>
-                    <?php endif; ?>
+                    <?php foreach ($podiumOrder as $index): ?>
+                        <?php if (isset($podiumUsers[$index])): 
+                            $user = $podiumUsers[$index];
+                            $rank = $index + 1;
+                            $isCurrentUser = ($user['id'] == $currentUserId);
+                        ?>
+                            <div class="podium-card podium-card--<?php echo $rank; ?> <?php echo $isCurrentUser ? 'podium-card--current-user' : ''; ?>">
+                                <div class="podium-content">
+                                    
+                                    <?php if ($rank == 1): ?>
+                                        <i class="podium-crown fas fa-crown"></i>
+                                    <?php endif; ?>
 
-                    <?php if (isset($podiumUsers[2])): $user = $podiumUsers[2]; ?>
-                        <div class="podium-card podium-card--3 <?php echo ($user['id'] == $currentUserId) ? 'podium-card--current-user' : ''; ?>">
-                            <div class="podium-rank">3</div>
-                            <i class="podium-icon fas fa-medal"></i>
-                            <div class="podium-user"><?php echo htmlspecialchars($user['username']); ?></div>
-                            <div class="podium-score"><?php echo $user['score']; ?> pts</div>
-                        </div>
-                    <?php endif; ?>
+                                    <div class="podium-trophy">
+                                        <i class="fas fa-trophy"></i>
+                                    </div>
+
+                                    <div class="podium-user"><?php echo htmlspecialchars($user['username']); ?></div>
+                                    <div class="podium-score"><?php echo $user['score']; ?> pts</div>
+                                    
+                                    <div class="podium-rank-badge">
+                                        <span><?php echo $rank; ?></span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
                 </div>
             </div>
 
@@ -69,7 +75,6 @@
 
                     <?php foreach ($otherUsers as $index => $user): ?>
                         <?php
-                            // Le rang réel est l'index dans cette nouvelle boucle + 4 (car on a retiré les 3 premiers)
                             $rank = $index + 4;
                             $isCurrentUser = ($user['id'] == $currentUserId);
                         ?>

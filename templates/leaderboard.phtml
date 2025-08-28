@@ -71,7 +71,8 @@
                         <div class="leaderboard-table">
                             <div class="leaderboard-header">
                                 <span class="leaderboard-cell">Rang</span>
-                                <span class="leaderboard-cell">Utilisateur</span>
+                                <span class="leaderboard-cell"></span>
+                                <span class="leaderboard-cell">Pseudo</span>
                                 <span class="leaderboard-cell">Score</span>
                             </div>
 
@@ -82,6 +83,9 @@
                                 ?>
                                 <div class="leaderboard-row <?php echo $isCurrentUser ? 'leaderboard-row--current-user' : ''; ?>">
                                     <span class="leaderboard-cell leaderboard-cell--rank">#<?php echo $rank; ?></span>
+                                    <span class="leaderboard-cell leaderboard-cell--avatar">
+                                        <img src="<?php echo htmlspecialchars($user['avatar_url'] ?? 'images/default-avatar.webp'); ?>" alt="Avatar de <?php echo htmlspecialchars($user['username']); ?>" class="leaderboard-avatar-small">
+                                    </span>
                                     <span class="leaderboard-cell leaderboard-cell--user"><?php echo htmlspecialchars($user['username']); ?></span>
                                     <span class="leaderboard-cell leaderboard-cell--score"><?php echo $user['score']; ?> <i class="fas fa-flag leaderboard-cell--score"></i></span>
                                 </div>

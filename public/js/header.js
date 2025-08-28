@@ -81,7 +81,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (lastFocusedElement) {
             lastFocusedElement.focus();
         }
-        allPanels.forEach(p => p && p.classList.remove('open'));
+        allPanels.forEach(p => {
+            if (p) {
+                p.classList.remove('open');
+                p.setAttribute('aria-hidden', 'true');
+            }
+        });
         updateActionButtonsVisibility();
         
         if (searchWasOpen) {
@@ -105,11 +110,19 @@ document.addEventListener('DOMContentLoaded', () => {
         allPanels.forEach(panel => {
             if (panel && panel !== panelToOpen) {
                 panel.classList.remove('open');
+                panel.setAttribute('aria-hidden', 'true');
             }
         });
 
         if (panelToOpen) {
-            panelToOpen.classList.toggle('open');
+            const isOpen = panelToOpen.classList.toggle('open');
+            panelToOpen.setAttribute('aria-hidden', !isOpen);
+
+            if (isOpen && panelToOpen === searchPanel && searchInput) {
+                setTimeout(() => {
+                    searchInput.focus();
+                }, 100); 
+            }
         }
 
         mobileMenuBtn.classList.toggle('fa-times', mobileNavPanel && mobileNavPanel.classList.contains('open'));
@@ -135,19 +148,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (closeProfileBtn) {
         closeProfileBtn.addEventListener('click', () => {
-            closeProfileBtn.blur();
             closeAllPanels();
         });
     }
     if (closeSearchBtn) {
         closeSearchBtn.addEventListener('click', () => {
-            closeSearchBtn.blur();
             closeAllPanels();
         });
     }
     if (closeLeaderboardBtn) {
         closeLeaderboardBtn.addEventListener('click', () => {
-            closeLeaderboardBtn.blur();
             closeAllPanels();
         });
     }

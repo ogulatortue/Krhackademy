@@ -1,0 +1,164 @@
+/* ============================================= */
+/* ============= STYLES DU PODIUM ============== */
+/* ============================================= */
+
+.podium-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; /* Aligne les cartes sur leur base */
+    gap: 1.5rem;
+    margin: 3rem 0;
+    min-height: 320px;
+}
+
+.podium-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 220px;
+    padding: 1.5rem;
+    background-color: var(--code-bg); /* Un fond légèrement différent */
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 10px 30px var(--shadow-medium);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.podium-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px var(--shadow-heavy);
+}
+
+/* Style des éléments internes de la carte */
+.podium-rank {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-subtle);
+    margin-bottom: 0.5rem;
+}
+
+.podium-icon {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+
+.podium-user {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+    word-break: break-all; /* Pour les noms d'utilisateurs longs */
+}
+
+.podium-score {
+    font-size: 1.1rem;
+    color: var(--purple);
+    font-weight: 600;
+}
+
+/* Variations pour chaque place */
+.podium-card--1 {
+    height: 280px;
+    order: 2; /* Ordre visuel: 2ème, 1er, 3ème */
+    border-color: #FFD700; /* Or */
+    transform: scale(1.05); /* Le premier est un peu plus gros */
+}
+.podium-card--1 .podium-icon { color: #FFD700; }
+.podium-card--1 .podium-score { color: #FFD700; }
+
+.podium-card--2 {
+    height: 240px;
+    order: 1;
+    border-color: #C0C0C0; /* Argent */
+}
+.podium-card--2 .podium-icon { color: #C0C0C0; }
+.podium-card--2 .podium-score { color: #C0C0C0; }
+
+.podium-card--3 {
+    height: 220px;
+    order: 3;
+    border-color: #CD7F32; /* Bronze */
+}
+.podium-card--3 .podium-icon { color: #CD7F32; }
+.podium-card--3 .podium-score { color: #CD7F32; }
+
+/* Highlight pour l'utilisateur courant sur le podium */
+.podium-card--current-user {
+    box-shadow: 0 0 25px var(--purple), 0 10px 30px var(--shadow-medium);
+}
+
+
+/* ============================================= */
+/* ======== STYLES DU CLASSEMENT GENERAL ======= */
+/* ============================================= */
+
+.leaderboard-table {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem; /* Espace entre les lignes */
+}
+
+/* Utilisation de Grid pour un alignement parfait des colonnes */
+.leaderboard-header,
+.leaderboard-row {
+    display: grid;
+    grid-template-columns: 80px 1fr 120px;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 0.75rem 1.5rem;
+}
+
+.leaderboard-header {
+    color: var(--text-subtle);
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.leaderboard-row {
+    background-color: var(--code-bg);
+    border-radius: 8px;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    border: 1px solid transparent; /* Pour éviter un saut au survol/selection */
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .leaderboard-row:hover {
+        transform: scale(1.02);
+        background-color: rgba(146, 22, 168, 0.1);
+    }
+}
+
+.leaderboard-row--current-user {
+    background-color: rgba(146, 22, 168, 0.2);
+    border: 1px solid var(--purple);
+    font-weight: bold;
+}
+
+.leaderboard-cell {
+    color: var(--text-subtle);
+}
+
+.leaderboard-cell--rank {
+    font-weight: bold;
+    color: var(--white);
+    font-size: 1.1rem;
+}
+
+.leaderboard-cell--user {
+    color: var(--white);
+}
+
+.leaderboard-cell--score {
+    text-align: right;
+    font-weight: 600;
+    color: var(--purple);
+}
+
+.leaderboard-row--current-user .leaderboard-cell--score {
+    color: var(--white);
+}

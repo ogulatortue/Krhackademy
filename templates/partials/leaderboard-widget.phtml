@@ -6,6 +6,7 @@ $sql = "
     SELECT
         u.id,
         u.username,
+        u.avatar_url,
         COALESCE(SUM(c.points), 0) AS score
     FROM
         users u
@@ -14,7 +15,7 @@ $sql = "
     LEFT JOIN
         challenges c ON ucp.challenge_id = c.id
     GROUP BY
-        u.id, u.username
+        u.id, u.username, u.avatar_url
     ORDER BY
         score DESC, MAX(ucp.completed_at) ASC;
 ";
@@ -26,10 +27,12 @@ $topUsers = array_slice($fullLeaderboard, 0, 3);
 
 $currentUserRank = 'N/A';
 $currentUserScore = 0;
+$currentUserAvatar = 'images/default-avatar.webp';
 foreach ($fullLeaderboard as $index => $user) {
     if ($currentUserId !== null && $user['id'] == $currentUserId) {
         $currentUserRank = $index + 1;
         $currentUserScore = $user['score'];
+        $currentUserAvatar = $user['avatar_url'];
         break;
     }
 }
@@ -54,23 +57,16 @@ foreach ($topUsers as $topUser) {
         <ul class="leaderboard-list">
             <?php foreach ($topUsers as $index => $user): ?>
                 <?php
-                    $highlightClass = '';
-                    if ($user['id'] == $currentUserId) {
-                        switch ($index) {
-                            case 0:
-                                $highlightClass = 'highlight-gold';
-                                break;
-                            case 1:
-                                $highlightClass = 'highlight-silver';
-                                break;
-                            case 2:
-                                $highlightClass = 'highlight-bronze';
-                                break;
-                        }
+                    $podiumClass = 'podium-' . ($index + 1);
+                    $currentUserHighlightClass = '';
+                    if ($currentUserId !== null && $user['id'] == $currentUserId) {
+                        // Apply a specific class for the current user in the top 3
+                        $currentUserHighlightClass = ' current-user-podium-border'; 
                     }
                 ?>
-                <li class="leaderboard-item podium-<?php echo $index + 1; ?> <?php echo $highlightClass; ?>">
-                    <span class="rank"><?php echo $index + 1; ?> <i class="fas fa-medal"></i></span>
+                <li class="leaderboard-item <?php echo $podiumClass; ?><?php echo $currentUserHighlightClass; ?>">
+                    <span class="rank">#<?php echo $index + 1; ?></span>
+                    <img src="<?php echo htmlspecialchars($user['avatar_url'] ?? 'images/default-avatar.webp'); ?>" alt="Avatar de <?php echo htmlspecialchars($user['username']); ?>" class="leaderboard-avatar">
                     <span class="username"><?php echo htmlspecialchars($user['username']); ?></span>
                     <span class="score"><?php echo $user['score']; ?> <i class="fas fa-flag"></i></span>
                 </li>
@@ -79,7 +75,8 @@ foreach ($topUsers as $topUser) {
             <?php if (!$isCurrentUserInTop3 && $currentUserId !== null): ?>
                 <li class="leaderboard-separator"></li>
                 <li class="leaderboard-item current-user">
-                    <span class="rank"><?php echo $currentUserRank; ?></span>
+                    <span class="rank">#<?php echo $currentUserRank; ?></span>
+                    <img src="<?php echo htmlspecialchars($currentUserAvatar ?? 'images/default-avatar.webp'); ?>" alt="Votre avatar" class="leaderboard-avatar">
                     <span class="username"><?php echo htmlspecialchars($_SESSION['username'] ?? ''); ?></span>
                     <span class="score"><?php echo $currentUserScore; ?> <i class="fas fa-flag"></i></span>
                 </li>

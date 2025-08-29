@@ -119,45 +119,67 @@ h2 {
 .modal-content {
     border: 1px solid var(--easy);
     border-radius: 12px;
-    padding: 1.5rem;
+    padding: 0.5rem;
     width: 90%;
-    max-width: 400px;
+    max-width: 300px;
     position: relative;
     box-shadow: 0 10px 30px var(--shadow-heavy);
     text-align: center;
-    transform: translateY(20px);
+    transform: scale(0.85);
     margin-bottom: 20px;
     transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
 }
 .modal-container.is-visible .modal-content {
-    transform: translateY(0);
+    transform: scale(1);
 }
 .close-button {
     position: absolute;
-    top: 8px;
-    right: 12px;
+    top: 5px;
+    right: 8px;
+    color: var(--easy);
     font-size: 1.5rem;
+    font-weight: bold;
     cursor: pointer;
     transition: color 0.2s ease;
 }
 .close-button:hover {
     color: var(--white);
 }
+.modal-body {
+    padding-bottom: 0;
+}
 #modal-title {
-    font-size: 1.25rem;
+    font-size: 1rem;
     font-weight: bold;
+    color: var(--easy);
     margin-bottom: 0.5rem;
 }
 #modal-message {
-    font-size: 1rem;
-    line-height: 1.5;
+    font-size: 0.75rem;
+    color: var(--easy);
+    padding-bottom: 0;
+    line-height: 1.4;
 }
-.modal-success .modal-content { border-color: var(--easy); background-color: var(--darkest-green-bg); }
-.modal-success #modal-title, .modal-success .close-button, .modal-success #modal-message { color: var(--easy); }
-.modal-error .modal-content { border-color: var(--expert); background-color: rgba(30, 0, 0, 0.95); }
-.modal-error #modal-title, .modal-error .close-button, .modal-error #modal-message { color: var(--expert); }
+.modal-success .modal-content { 
+    border-color: var(--easy); 
+    background-color: var(--darkest-green-bg); 
+}
+.modal-success #modal-title, 
+.modal-success .close-button, 
+.modal-success #modal-message { 
+    color: var(--easy); 
+}
+.modal-error .modal-content { 
+    border-color: var(--expert); 
+    background-color: rgba(30, 0, 0, 0.95); 
+}
+.modal-error #modal-title, 
+.modal-error .close-button, 
+.modal-error #modal-message { 
+    color: var(--expert); 
+}
 
 pre::-webkit-scrollbar {
     height: 8px;

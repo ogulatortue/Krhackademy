@@ -26,9 +26,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['flash_message'] = ['type' => 'error', 'title' => 'Erreur', 'message' => 'Ce nom d\'utilisateur ou cet e-mail est déjà utilisé.'];
     } else {
         if ($userModel->createUser($data['username'], $data['email'], $data['password'])) {
-            $mailer = new MailerService();
-            $mailer->sendWelcomeEmail($data['email'], $data['username']);
             
+            $tempMailer = new MailerService();
+            // On utilise la nouvelle méthode qui ne fait que préparer l'e-mail
+            $tempMailer->prepareWelcomeEmail($data['email'], $data['username']);
+
+            $subject = $tempMailer->getSubject();
+            $body = $tempMailer->getBody();
+            
+            $stmt = $pdo->prepare("INSERT INTO email_queue (recipient, subject, body) VALUES (?, ?, ?)");
+            $stmt->execute([$data['email'], $subject, $body]);
+
             $_SESSION['flash_message'] = ['type' => 'success', 'title' => 'Inscription réussie !', 'message' => 'Votre compte a été créé. Vous pouvez maintenant vous connecter.'];
             header('Location: /login');
             exit();

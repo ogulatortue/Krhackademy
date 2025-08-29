@@ -1,9 +1,5 @@
 <?php
 
-/**
- * @return string
- */
-
 function csrf_token(): string
 {
     if (empty($_SESSION['csrf_token'])) {
@@ -14,7 +10,20 @@ function csrf_token(): string
 
 function verify_csrf_token(): void
 {
-    if (!isset($_POST['csrf_token']) || !hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {
+    if (empty($_SESSION['csrf_token'])) {
+        http_response_code(403);
+        die('Erreur : Jeton CSRF non trouvé en session.');
+    }
+
+    $token = $_SERVER['HTTP_X_CSRF_TOKEN'] ?? $_POST['csrf_token'] ?? null;
+
+    if ($token === null) {
+        http_response_code(403);
+        die('Erreur : Jeton CSRF manquant dans la requête.');
+    }
+
+    if (!hash_equals($_SESSION['csrf_token'], $token)) {
+        http_response_code(403);
         die('Erreur : Jeton CSRF invalide.');
     }
 }

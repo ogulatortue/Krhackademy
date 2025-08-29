@@ -1,95 +1,36 @@
-<?php
-
-$currentUserId = $_SESSION['user_id'] ?? null;
-
-$sql = "
-    SELECT
-        u.id,
-        u.username,
-        u.avatar_url,
-        COALESCE(SUM(c.points), 0) AS score
-    FROM
-        users u
-    LEFT JOIN
-        user_challenges_progress ucp ON u.id = ucp.user_id
-    LEFT JOIN
-        challenges c ON ucp.challenge_id = c.id
-    GROUP BY
-        u.id, u.username, u.avatar_url
-    ORDER BY
-        score DESC, MAX(ucp.completed_at) ASC;
-";
-
-$stmt = $pdo->query($sql);
-$fullLeaderboard = $stmt->fetchAll();
-
-$topUsers = array_slice($fullLeaderboard, 0, 3);
-
-$currentUserRank = 'N/A';
-$currentUserScore = 0;
-$currentUserAvatar = 'images/default-avatar.webp';
-foreach ($fullLeaderboard as $index => $user) {
-    if ($currentUserId !== null && $user['id'] == $currentUserId) {
-        $currentUserRank = $index + 1;
-        $currentUserScore = $user['score'];
-        $currentUserAvatar = $user['avatar_url'];
-        break;
-    }
-}
-
-$isCurrentUserInTop3 = false;
-foreach ($topUsers as $topUser) {
-    if ($topUser['id'] == $currentUserId) {
-        $isCurrentUserInTop3 = true;
-        break;
-    }
-}
-?>
-
-<section class="leaderboard-panel" id="leaderboard-menu" aria-hidden="true">
+<section class="widget-panel leaderboard-panel" id="leaderboard-menu" aria-hidden="true">
     <div class="leaderboard-header">
         <i class="fas fa-trophy panel-icon"></i>
         <span>Classement</span>
         <button id="close-leaderboard-btn" class="fas fa-times" aria-label="Fermer le classement"></button>
     </div>
-
     <div class="leaderboard-content">
         <ul class="leaderboard-list">
-            <?php foreach ($topUsers as $index => $user): ?>
+            <?php foreach ($leaderboardWidgetData['topUsers'] as $index => $user): ?>
                 <?php
                     $podiumClass = 'podium-' . ($index + 1);
-                    $currentUserHighlightClass = '';
-                    if ($currentUserId !== null && $user['id'] == $currentUserId) {
-                        $currentUserHighlightClass = ' current-user-podium-border'; 
-                    }
+                    $isCurrentUser = ($_SESSION['user_id'] ?? null) == $user['id'];
+                    $highlightClass = $isCurrentUser ? ' current-user-podium-border' : '';
                 ?>
-                <li class="leaderboard-item <?php echo $podiumClass; ?><?php echo $currentUserHighlightClass; ?>">
-                    <span class="rank">#<?php echo $index + 1; ?></span>
-                    <img src="<?php echo htmlspecialchars($user['avatar_url'] ?? 'images/default-avatar.webp'); ?>" alt="Avatar de <?php echo htmlspecialchars($user['username']); ?>" class="leaderboard-avatar">
-                    <span class="username"><?php echo htmlspecialchars($user['username']); ?></span>
-                    <span class="score"><?php echo $user['score']; ?> <i class="fas fa-flag"></i></span>
+                <li class="leaderboard-item <?= $podiumClass . $highlightClass ?>">
+                    <span class="rank">#<?= $index + 1 ?></span>
+                    <img src="<?= htmlspecialchars($user['avatar_url'] ?? '/images/default-avatar.webp') ?>" alt="Avatar" class="leaderboard-avatar">
+                    <span class="username"><?= htmlspecialchars($user['username']) ?></span>
+                    <span class="score"><?= $user['score'] ?> <i class="fas fa-flag"></i></span>
                 </li>
             <?php endforeach; ?>
-
-            <?php if (!$isCurrentUserInTop3 && $currentUserId !== null): ?>
+            <?php if ($leaderboardWidgetData['currentUser'] && !$leaderboardWidgetData['isCurrentUserInTop3']): ?>
                 <li class="leaderboard-separator"></li>
                 <li class="leaderboard-item current-user">
-                    <span class="rank">#<?php echo $currentUserRank; ?></span>
-                    <img src="<?php echo htmlspecialchars($currentUserAvatar ?? 'images/default-avatar.webp'); ?>" alt="Votre avatar" class="leaderboard-avatar">
-                    <span class="username"><?php echo htmlspecialchars($_SESSION['username'] ?? ''); ?></span>
-                    <span class="score"><?php echo $currentUserScore; ?> <i class="fas fa-flag"></i></span>
+                    <span class="rank">#<?= $leaderboardWidgetData['currentUser']['rank'] ?></span>
+                    <img src="<?= htmlspecialchars($leaderboardWidgetData['currentUser']['avatar_url'] ?? '/images/default-avatar.webp') ?>" alt="Votre avatar" class="leaderboard-avatar">
+                    <span class="username"><?= htmlspecialchars($leaderboardWidgetData['currentUser']['username']) ?></span>
+                    <span class="score"><?= $leaderboardWidgetData['currentUser']['score'] ?> <i class="fas fa-flag"></i></span>
                 </li>
             <?php endif; ?>
         </ul>
     </div>
-    
     <ul class="leaderboard-options">
-        <li>
-            <a href="/leaderboard">
-                <i class="fas fa-arrow-right"></i> Classement complet
-            </a>
-        </li>
+        <li><a href="/leaderboard"><i class="fas fa-arrow-right"></i> Classement complet</a></li>
     </ul>
 </section>
-
-<link rel="stylesheet" href="/css/widget.css"/>

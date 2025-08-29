@@ -1,34 +1,26 @@
-<section class="profile-panel" id="profile-menu" aria-hidden="true">
-    <?php if (isset($_SESSION['user_id'])): ?>
-        <div class="profile-header">
-            <img 
-                src="<?php echo htmlspecialchars($_SESSION['avatar_url'] ?? '/images/default-avatar.webp'); ?>" 
-                alt="Votre avatar" 
-                class="profile-avatar"
-            >
-            <span class="profile-username"><?php echo htmlspecialchars($_SESSION['username'] ?? 'Utilisateur'); ?></span>
-            <button id="close-profile-btn" class="fas fa-times" aria-label="Fermer le menu du profil"></button>
-        </div>
-        <ul class="profile-options">
+<?php
+if (isset($_SESSION['user_id'])) {
+    $avatar = $_SESSION['avatar_url'] ?? '/images/default-avatar.webp';
+    $username = $_SESSION['username'] ?? 'Utilisateur';
+} else {
+    $avatar = '/images/default-avatar.webp';
+    $username = 'Visiteur';
+}
+?>
+<section class="widget-panel profile-panel" id="profile-menu" aria-hidden="true">
+    <div class="profile-header">
+        <img src="<?= htmlspecialchars($avatar) ?>" alt="Avatar" class="profile-avatar">
+        <span class="profile-username"><?= htmlspecialchars($username) ?></span>
+        <button id="close-profile-btn" class="fas fa-times" aria-label="Fermer le menu du profil"></button>
+    </div>
+    <ul class="profile-options">
+        <?php if (isset($_SESSION['user_id'])): ?>
             <li><a href="/profile"><i class="fas fa-user fa-fw"></i> Mon Profil</a></li>
             <li><a href="/settings"><i class="fas fa-cog fa-fw"></i> Paramètres</a></li>
             <li><a href="/logout"><i class="fas fa-sign-out-alt fa-fw"></i> Déconnexion</a></li>
-        </ul>
-    <?php else: ?>
-        <div class="profile-header">
-            <img 
-                src="/images/default-avatar.webp" 
-                alt="Avatar par défaut" 
-                class="profile-avatar"
-            >
-            <span class="profile-username">Visiteur</span>
-            <button id="close-profile-btn" class="fas fa-times" aria-label="Fermer le menu du profil"></button>
-        </div>
-        <ul class="profile-options">
+        <?php else: ?>
             <li><a href="/login?redirect_to=<?= urlencode($_SERVER['REQUEST_URI']) ?>"><i class="fas fa-sign-in-alt fa-fw"></i> Se connecter</a></li>
             <li><a href="/register"><i class="fas fa-user-plus fa-fw"></i> S'inscrire</a></li>
-        </ul>
-    <?php endif; ?>
+        <?php endif; ?>
+    </ul>
 </section>
-
-<link rel="stylesheet" href="/css/widget.css"/>

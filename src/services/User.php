@@ -10,9 +10,13 @@ class User {
     // --- Méthodes de recherche ---
 
     public function findByUsernameOrEmail(string $identifier) {
-        $sql = "SELECT * FROM users WHERE email = :identifier OR username = :identifier LIMIT 1";
+        // CORRECTION APPLIQUÉE ICI
+        $sql = "SELECT * FROM users WHERE email = :email OR username = :username LIMIT 1";
         $stmt = $this->db->prepare($sql);
-        $stmt->execute(['identifier' => $identifier]);
+        $stmt->execute([
+            'email' => $identifier, 
+            'username' => $identifier
+        ]);
         return $stmt->fetch();
     }
 
@@ -45,13 +49,10 @@ class User {
     }
 
     public function setResetToken(int $userId, string $token): bool {
-        $expiry = date('Y-m-d H:i:s', strtotime('+15 minutes')); // Durée de vie plus courte est souvent mieux
+        $expiry = date('Y-m-d H:i:s', strtotime('+15 minutes'));
         $tokenHash = hash('sha256', $token);
-
         $sql = "UPDATE users SET reset_token = :token, reset_token_expiry = :expires WHERE id = :id";
         $stmt = $this->db->prepare($sql);
-        
-        // CORRECTION DU BUG ICI
         return $stmt->execute([
             'token' => $tokenHash,
             'expires' => $expiry, 

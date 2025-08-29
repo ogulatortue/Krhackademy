@@ -1,18 +1,26 @@
 <section class="profile-panel" id="profile-menu" aria-hidden="true">
     <?php if (isset($_SESSION['user_id'])): ?>
         <div class="profile-header">
-            <i class="fas fa-user-circle panel-icon"></i>
+            <img 
+                src="<?php echo htmlspecialchars($_SESSION['avatar_url'] ?? '/images/default-avatar.webp'); ?>" 
+                alt="Votre avatar" 
+                class="profile-avatar"
+            >
             <span class="profile-username"><?php echo htmlspecialchars($_SESSION['username'] ?? 'Utilisateur'); ?></span>
             <button id="close-profile-btn" class="fas fa-times" aria-label="Fermer le menu du profil"></button>
         </div>
         <ul class="profile-options">
-            <li><a href="#"><i class="fas fa-user fa-fw"></i> Mon Profil</a></li>
-            <li><a href="#"><i class="fas fa-cog fa-fw"></i> Paramètres</a></li>
+            <li><a href="/profile"><i class="fas fa-user fa-fw"></i> Mon Profil</a></li>
+            <li><a href="/settings"><i class="fas fa-cog fa-fw"></i> Paramètres</a></li>
             <li><a href="/logout"><i class="fas fa-sign-out-alt fa-fw"></i> Déconnexion</a></li>
         </ul>
     <?php else: ?>
         <div class="profile-header">
-            <i class="fas fa-user-circle panel-icon"></i>
+            <img 
+                src="/images/default-avatar.webp" 
+                alt="Avatar par défaut" 
+                class="profile-avatar"
+            >
             <span class="profile-username">Visiteur</span>
             <button id="close-profile-btn" class="fas fa-times" aria-label="Fermer le menu du profil"></button>
         </div>

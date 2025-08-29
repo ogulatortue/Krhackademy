@@ -14,8 +14,8 @@ header("X-Frame-Options: DENY");
 header("Referrer-Policy: strict-origin-when-cross-origin");
 
 require_once __DIR__ . '/../vendor/autoload.php';
-require_once __DIR__ . '/helpers/auth_helpers.php';
-require_once __DIR__ . '/helpers/view_helpers.php';
+require_once __DIR__ . '/helpers/auth-helpers.php';
+require_once __DIR__ . '/helpers/view-helpers.php';
 
 require_once __DIR__ . '/services/LessonService.php';
 require_once __DIR__ . '/services/ChallengeService.php';

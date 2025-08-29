@@ -38,24 +38,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    const resetSearch = () => {
-        if (searchInput) {
-            searchInput.value = '';
-        }
-        document.querySelectorAll('.custom-select-wrapper').forEach(wrapper => {
-            const trigger = wrapper.querySelector('.custom-select-trigger');
-            const hiddenInput = wrapper.querySelector('input[type="hidden"]');
-            const firstOption = wrapper.querySelector('.custom-option');
-            if (trigger && hiddenInput && firstOption) {
-                trigger.textContent = firstOption.textContent;
-                hiddenInput.value = firstOption.dataset.value;
-            }
-        });
-        if (searchInput) {
-            searchInput.dispatchEvent(new Event('input', { bubbles: true }));
-        }
-    };
-
     const adjustMainPaddingForSearch = () => {
         if (searchPanel && searchPanel.classList.contains('open')) {
             const rootFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
@@ -91,7 +73,8 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if (searchWasOpen) {
             setTimeout(adjustMainPaddingForSearch, 50);
-            resetSearch();
+            // On envoie le signal à search.js
+            document.dispatchEvent(new CustomEvent('closeSearchPanel'));
         }
         
         if (mobileMenuBtn) {
@@ -128,16 +111,13 @@ document.addEventListener('DOMContentLoaded', () => {
         mobileMenuBtn.classList.toggle('fa-times', mobileNavPanel && mobileNavPanel.classList.contains('open'));
         updateActionButtonsVisibility();
         
-        if (panelToOpen === searchPanel) {
-            setTimeout(adjustMainPaddingForSearch, 50);
+        if (panelToOpen === searchPanel || searchWasOpen) {
+             setTimeout(adjustMainPaddingForSearch, 50);
         }
 
-        if (searchWasOpen && panelToOpen !== searchPanel) {
-            resetSearch();
-        }
-        
-        if (wasOpen && panelToOpen === searchPanel) {
-            resetSearch();
+        if ((searchWasOpen && panelToOpen !== searchPanel) || (wasOpen && panelToOpen === searchPanel)) {
+            // On envoie le signal à search.js
+            document.dispatchEvent(new CustomEvent('closeSearchPanel'));
         }
     };
 

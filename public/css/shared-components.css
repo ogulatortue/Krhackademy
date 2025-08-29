@@ -2,28 +2,23 @@
     padding: 8rem 2rem;
     color: var(--white);
 }
-
 .category-section {
     margin-top: 3rem;
 }
-
 .category-section:first-child {
     margin-top: 2rem;
 }
-
 .main-title.category-title {
     text-align: center;
     letter-spacing: 2px;
     padding-bottom: 1rem;
 }
-
 .box-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, 340px);
     justify-content: center;
     gap: 2rem;
 }
-
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -34,7 +29,6 @@
         transform: translateY(0);
     }
 }
-
 .card {
     position: relative;
     display: flex;
@@ -53,21 +47,18 @@
     animation: fadeInUp 0.5s ease-out;
     overflow: visible;
 }
-
 @media (hover: hover) and (pointer: fine) {
     .card:hover {
         transform: translateY(-8px);
         box-shadow: 0 20px 40px var(--shadow-heavy);
     }
 }
-
 .card-icon {
     font-size: 2.5rem;
     color: var(--purple);
     transition: color 0.3s ease;
     flex-shrink: 0;
 }
-
 .card-text-content {
     display: flex;
     flex-direction: column;
@@ -76,7 +67,6 @@
     gap: 0.5rem;
     width: 100%;
 }
-
 .card-title-wrapper {
     display: flex;
     flex-direction: row;
@@ -84,14 +74,12 @@
     justify-content: space-between;
     width: 100%;
 }
-
 .card-text-content h4 {
     margin: 0;
     font-size: 1.1rem;
     font-weight: 700;
     color: var(--white);
 }
-
 .card-text-content p {
     margin: 0;
     font-size: 0.8rem;
@@ -99,7 +87,6 @@
     color: var(--text-subtle);
     max-width: 40ch;
 }
-
 .check-box {
     position: absolute;
     top: 0;
@@ -107,22 +94,13 @@
     transform: translate(40%, -40%);
     display: none;
 }
-
 .checkbox-icon {
     font-size: 1.5rem;
 }
-
 .card.completed {
     border-color: var(--completed-color);
     border-width: 2px;
-    box-shadow: 0 4px 15px var(--shadow-medium);
 }
-
-.card.completed:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px var(--shadow-heavy);
-}
-
 .card.completed .check-box {
     display: grid;
     place-items: center;
@@ -133,60 +111,21 @@
     border: 2px solid var(--completed-color);
     box-shadow: 0 0 5px var(--completed-color);
 }
-
-.card.completed .checkbox-icon.not-completed {
-    display: none;
-}
-
 .card.completed .checkbox-icon.completed {
     display: block;
     color: var(--completed-color);
     font-size: 1rem;
 }
-
 .card.completed .card-icon {
     color: var(--completed-color);
 }
-
-.challenge-card {
-    border-color: var(--purple);
-}
-
-.challenge-card .card-icon {
-    color: var(--purple);
-}
-
 @media (max-width: 900px) {
     .main {
-        padding: 13rem 1rem;
-    }
-    .main-title.category-title {
-        font-size: 4rem;
-        padding-block: 1.5rem;
-    }
-    .card-text-content h4 {
-        font-size: 1.5rem;
-    }
-    .card-text-content p {
-        font-size: 1rem;
+        padding: 8rem 1rem;
     }
     .box-container {
         grid-template-columns: 1fr;
         gap: 1.5rem;
         padding: 0 1rem;
-    }
-    .card-icon {
-        font-size: 2.5rem;
-        margin-right: 0.5rem;
-    }
-    .card {
-        min-height: auto;
-    }
-    .card.completed .checkbox-icon.completed {
-        font-size: 1.5rem;
-    }
-    .card.completed .check-box {
-        width: 2rem;
-        height: 2rem;
     }
 }

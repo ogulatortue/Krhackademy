@@ -1,74 +1,51 @@
-<?php require_once ROOT_PATH . '/src/helpers.php'; ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <title><?= htmlspecialchars($lesson['title']) ?> - Kr[HACK]ademy</title>
-    
     <link rel="stylesheet" href="/css/style.css"/>
     <link rel="stylesheet" href="/css/content-page.css"/>
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
     <link rel="icon" type="image/png" href="/images/logo_krhacken_r.ico" />
 </head>
 <body class="page-lesson">
-
-    <a href="/lessons" onclick="history.back(); return false;" class="btn-glass back-button">
-        <i class="fas fa-arrow-left" aria-hidden="true"></i> Retour aux leçons
-    </a>
-
-    <?php
-        $difficulty_class = getDifficultyClass($lesson['difficulty']);
-    ?>
-
+    <a href="/lessons" class="btn-glass back-button"><i class="fas fa-arrow-left"></i> Retour aux leçons</a>
     <main class="content-container">
         <div class="content-wrapper">
-            <header class="content-header">
-                <i class="content-icon fas <?= htmlspecialchars($lesson['icon_class'] ?? 'fa-book-open') ?>"></i>
-                <div class="content-title-group">
-                    <h1><?= htmlspecialchars($lesson['title']) ?></h1>
-                    <p class="content-intro"><?= htmlspecialchars($lesson['description']) ?></p>
-                </div>
-                <span class="difficulty-tag <?= $difficulty_class ?>">
-                    <?= htmlspecialchars($lesson['difficulty']) ?>
-                </span>
-            </header>
-
             <?php
-            $filename = basename($lesson['lesson_id_str']) . '.html';
-            $lessonContentPath = ROOT_PATH . '/public/lessons-content/' . $filename;
+            $item = $lesson;
+            $type = 'lesson';
+            require __DIR__ . '/partials/content-page-header.phtml';
 
-            if (file_exists($lessonContentPath)) {
-                include($lessonContentPath);
+            $filename = basename($lesson['lesson_id_str']) . '.html';
+            if (strpos($filename, '/') !== false || strpos($filename, '\\') !== false) {
+                echo '<section class="content-block"><p>Erreur: Chemin de fichier invalide.</p></section>';
             } else {
-                echo '<section class="content-block"><p>Le contenu de cette leçon est actuellement indisponible.</p></section>';
+                $lessonContentPath = ROOT_PATH . '/public/lessons-content/' . $filename;
+                if (file_exists($lessonContentPath)) {
+                    include($lessonContentPath);
+                } else {
+                    echo '<section class="content-block"><p>Le contenu de cette leçon est actuellement indisponible.</p></section>';
+                }
             }
             ?>
-            
             <nav class="content-navigation">
-                <?php if (!empty($lesson['is_completed'])): ?>
-                    <span class="btn-glass validated">Leçon validée <i class="fas fa-check"></i></span>
-                    <form class="invalidation-form" style="margin: 0;">
-                        <input type="hidden" name="lesson_id" value="<?= htmlspecialchars($lesson['id']) ?>">
-                        <button type="submit" class="btn-glass" title="Recommencer la leçon">
-                            <i class="fas fa-arrow-rotate-left"></i>
-                        </button>
-                    </form>
-                <?php else: ?>
-                    <form class="completion-form">
-                        <input type="hidden" name="lesson_id" value="<?= htmlspecialchars($lesson['id']) ?>">
-                        <button type="submit" class="btn-glass">
-                            Valider la leçon <i class="fas fa-arrow-right" aria-hidden="true"></i>
-                        </button>
-                    </form>
-                <?php endif; ?>
+            <?php if (!empty($lesson['is_completed'])): ?>
+                <span class="btn-glass validated">Leçon validée <i class="fas fa-check"></i></span>
+                <form class="invalidation-form" style="margin: 0;">
+                    <input type="hidden" name="lesson_id" value="<?= htmlspecialchars($lesson['id']) ?>">
+                    <button type="submit" class="btn-glass" title="Recommencer la leçon"><i class="fas fa-arrow-rotate-left"></i></button>
+                </form>
+            <?php else: ?>
+                <form class="completion-form">
+                    <input type="hidden" name="lesson_id" value="<?= htmlspecialchars($lesson['id']) ?>">
+                    <button type="submit" class="btn-glass">Valider la leçon <i class="fas fa-arrow-right"></i></button>
+                </form>
+            <?php endif; ?>
             </nav>
-
         </div>
     </main>
-
-    <script src="/js/lesson-page.js" defer></script>
-
+    <script src="/js/completion-handler.js" defer></script>
     <?php require __DIR__ . '/partials/modal.phtml';?>
 </body>
 </html>

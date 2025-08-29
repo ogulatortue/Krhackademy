@@ -1,68 +1,53 @@
 <?php
-
 define('ROOT_PATH', dirname(__DIR__));
-
 require_once ROOT_PATH . '/src/bootstrap.php';
 
 $request_uri = strtok($_SERVER['REQUEST_URI'], '?');
-
-// --- CORRECTION : On supprime la barre oblique finale (sauf pour la page d'accueil) ---
 if (strlen($request_uri) > 1) {
     $request_uri = rtrim($request_uri, '/');
 }
-// --------------------------------------------------------------------------------------
-
 $currentPage = '';
-
-// Le tableau $routes reste identique
 $routes = [
     '/' => ['view' => 'index.phtml', 'currentPage' => 'index'],
     '/lessons' => ['logic' => 'lessons-logic.php', 'view' => 'lessons.phtml', 'currentPage' => 'lessons'],
+    '/lesson/{id}' => ['logic' => 'lesson-page-logic.php', 'view' => 'lesson-page.phtml', 'currentPage' => 'lessons', 'auth' => true],
     '/challenges' => ['logic' => 'challenges-logic.php', 'view' => 'challenges.phtml', 'currentPage' => 'challenges'],
+    '/challenge/{id}' => ['logic' => 'challenge-page-logic.php', 'view' => 'challenge-page.phtml', 'currentPage' => 'challenges', 'auth' => true],
     '/scenarios' => ['logic' => 'scenarios-logic.php', 'view' => 'scenarios.phtml', 'currentPage' => 'scenarios'],
-    '/login' => ['logic' => 'login-logic.php', 'view' => 'login.phtml', 'currentPage' => 'login'],
-    '/register' => ['logic' => 'register-logic.php', 'view' => 'register.phtml', 'currentPage' => 'register'],
-    '/forgot-password' => ['logic' => 'forgot-password-logic.php', 'view' => 'forgot-password.phtml', 'currentPage' => 'forgot-password'],
-    '/reset-password' => ['logic' => 'reset-password-logic.php', 'view' => 'reset-password.phtml', 'currentPage' => 'reset-password'],
+    '/leaderboard' => ['logic' => 'leaderboard-logic.php', 'view' => 'leaderboard.phtml', 'currentPage' => 'leaderboard'],
+    '/login' => ['logic' => 'login-logic.php', 'view' => 'login.phtml'],
+    '/register' => ['logic' => 'register-logic.php', 'view' => 'register.phtml'],
+    '/forgot-password' => ['logic' => 'forgot-password-logic.php', 'view' => 'forgot-password.phtml'],
+    '/reset-password' => ['logic' => 'reset-password-logic.php', 'view' => 'reset-password.phtml'],
     '/logout' => ['logic' => 'logout-logic.php'],
     '/api/verify-flag' => ['logic' => 'api/verifier-logic.php'],
     '/api/mark-lesson-complete' => ['logic' => 'api/mark-lesson-logic.php'],
     '/api/mark-lesson-incomplete' => ['logic' => 'api/mark-lesson-incomplete-logic.php'],
-    '/api/mark-challenge-complete' => ['logic' => 'api/mark-challenge-logic.php'],
     '/api/mark-challenge-incomplete' => ['logic' => 'api/mark-challenge-incomplete-logic.php'],
     '/api/get-progress' => ['logic' => 'api/get-progress-logic.php'],
-    '/leaderboard' => ['logic' => 'leaderboard-logic.php', 'view' => 'leaderboard.phtml', 'currentPage' => 'leaderboard'],
 ];
-
-if (preg_match('/^\/challenge\/(\d+)$/', $request_uri, $matches)) {
-    require_page_login();
-    $_GET['id'] = $matches[1];
-    $currentPage = 'challenges';
-    require ROOT_PATH . '/src/challenge-page-logic.php';
-    require ROOT_PATH . '/templates/challenge-page.phtml';
-
-} elseif (preg_match('/^\/lesson\/(\d+)$/', $request_uri, $matches)) {
-    require_page_login();
-    $_GET['id'] = $matches[1];
-    $currentPage = 'lessons';
-    require ROOT_PATH . '/src/lesson-page-logic.php';
-    require ROOT_PATH . '/templates/lesson-page.phtml';
-
-} elseif (isset($routes[$request_uri])) {
-    $route = $routes[$request_uri];
-    $currentPage = $route['currentPage'] ?? '';
-
-    if (isset($route['logic'])) {
-        require ROOT_PATH . '/src/' . $route['logic'];
+$routeFound = false;
+foreach ($routes as $route => $config) {
+    $pattern = preg_replace('/\{id\}/', '(\d+)', $route);
+    if (preg_match('#^' . $pattern . '$#', $request_uri, $matches)) {
+        if (!empty($config['auth'])) {
+            require_page_login();
+        }
+        if (isset($matches[1])) {
+            $_GET['id'] = $matches[1];
+        }
+        $currentPage = $config['currentPage'] ?? '';
+        if (isset($config['logic'])) {
+            require ROOT_PATH . '/src/' . $config['logic'];
+        }
+        if (isset($config['view'])) {
+            require ROOT_PATH . '/templates/' . $config['view'];
+        }
+        $routeFound = true;
+        break;
     }
-    if (isset($route['view'])) {
-        require ROOT_PATH . '/templates/' . $route['view'];
-    }
-    if (isset($route['content'])) {
-        echo $route['content'];
-    }
-
-} else {
+}
+if (!$routeFound) {
     http_response_code(404);
     echo "<h1>404 - Page non trouvée</h1>";
 }

@@ -9,11 +9,15 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 require_once __DIR__ . '/../vendor/autoload.php';
+
 require_once __DIR__ . '/helpers/auth-helpers.php';
 require_once __DIR__ . '/helpers/view-helpers.php';
+
 require_once __DIR__ . '/services/User.php';
 require_once __DIR__ . '/services/MailerService.php';
 require_once __DIR__ . '/services/ValidationService.php';
+require_once __DIR__ . '/services/LessonService.php';
+require_once __DIR__ . '/services/ChallengeService.php';
 
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
 $dotenv->load();

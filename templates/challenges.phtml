@@ -1,72 +1,23 @@
-<?php require_once ROOT_PATH . '/src/helpers.php'; ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <title>Challenges - Kr[HACK]ademy</title>
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
     <link rel="stylesheet" href="/css/style.css"/>
-    
     <link rel="stylesheet" href="/css/shared-components.css"/>
-
     <link rel="icon" type="image/png" href="/images/logo_krhacken_r.ico" />
 </head>
-<body data-user-logged-in="<?php echo isset($_SESSION['user_id']) ? 'true' : 'false'; ?>">
-
+<body>
     <?php require __DIR__ . '/partials/header.phtml'; ?>
-
     <main class="main">
         <?php
-        $currentCategory = null; 
+        $items = $challenges;
+        $type = 'challenge';
+        require __DIR__ . '/partials/content-grid.phtml';
         ?>
-
-        <?php foreach ($challenges as $challenge): ?>
-            
-            <?php 
-            if ($challenge['category'] !== $currentCategory): 
-                $currentCategory = $challenge['category'];
-            ?>
-                <section class="category-section">
-                    <h2 class="main-title category-title"><?= htmlspecialchars($currentCategory) ?></h2>
-                    <div class="box-container">
-            <?php endif; ?>
-            
-            <?php
-            $difficulty_class = getDifficultyClass($challenge['points']);
-            $completed_class = !empty($challenge['is_completed']) ? 'completed' : '';
-            ?>
-
-            <a href="/challenge/<?= htmlspecialchars($challenge['id']) ?>" class="card challenge-card <?= $completed_class ?>" data-challenge-id="<?= htmlspecialchars($challenge['id']) ?>">
-                <i class="card-icon fas <?= htmlspecialchars($challenge['icon_class'] ?? 'fa-flag') ?>"></i>
-                <div class="card-text-content">
-                    <div class="card-title-wrapper">
-                        <h4><?= htmlspecialchars($challenge['title']) ?></h4>
-                        <span class="difficulty-tag <?= $difficulty_class ?>">
-                            <?= htmlspecialchars($challenge['points']) ?> <i class="fas fa-flag"></i>
-                        </span>
-                    </div>
-                </div>
-                <div class="check-box">
-                    <i class="checkbox-icon completed fas fa-check"></i>
-                </div>
-            </a>
-
-            <?php
-            $nextChallengeIndex = array_search($challenge, $challenges) + 1;
-            if ($nextChallengeIndex >= count($challenges) || $challenges[$nextChallengeIndex]['category'] !== $currentCategory):
-            ?>
-                    </div>
-                </section>
-            <?php endif; ?>
-
-        <?php endforeach; ?>
     </main>
-
     <?php require __DIR__ . '/partials/footer.phtml'; ?>
-    
-    <script src="/js/progress-tracker.js" defer></script>
-
     <?php require __DIR__ . '/partials/modal.phtml';?>
 </body>
 </html>

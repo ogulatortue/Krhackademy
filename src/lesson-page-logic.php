@@ -1,48 +1,13 @@
 <?php
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
-
-$lesson_id = $_GET['id'] ?? null;
-
-if (!$lesson_id) {
+$lesson_id = (int)($_GET['id'] ?? 0);
+if ($lesson_id <= 0) {
     http_response_code(400);
-    echo "ID de leçon manquant.";
-    exit();
+    exit("ID de leçon invalide.");
 }
-
-$stmt = $pdo->prepare("
-    SELECT 
-        id, lesson_id_str, title, category, description, difficulty, icon_class 
-    FROM 
-        lessons 
-    WHERE 
-        id = ?
-");
-$stmt->execute([$lesson_id]);
-$lesson = $stmt->fetch();
-
+$lessonService = new LessonService($pdo);
+$userId = $_SESSION['user_id'] ?? null;
+$lesson = $lessonService->findById($lesson_id, $userId);
 if (!$lesson) {
     http_response_code(404);
-    echo "Leçon non trouvée.";
-    exit();
-}
-
-$lesson['is_completed'] = false;
-
-if (isset($_SESSION['user_id'])) {
-    $user_id = $_SESSION['user_id'];
-
-    $completion_stmt = $pdo->prepare("
-    SELECT COUNT(*) 
-    FROM user_lessons_progress 
-    WHERE user_id = ? AND lesson_id = ?
-    ");
-    $completion_stmt->execute([$user_id, $lesson_id]);
-    
-    $count = $completion_stmt->fetchColumn();
-
-    if ($count > 0) {
-        $lesson['is_completed'] = true;
-    }
+    exit("Leçon non trouvée.");
 }

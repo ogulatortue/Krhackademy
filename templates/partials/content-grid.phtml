@@ -1,0 +1,43 @@
+<?php
+$currentCategory = null;
+foreach ($items as $item):
+    if ($item['category'] !== $currentCategory):
+        if ($currentCategory !== null) { echo '</div></section>'; }
+        $currentCategory = $item['category'];
+?>
+        <section class="category-section">
+            <h2 class="main-title category-title"><?= htmlspecialchars($currentCategory) ?></h2>
+            <div class="box-container">
+<?php
+    endif;
+    if ($type === 'lesson') {
+        $difficulty = $item['difficulty'];
+        $icon = $item['icon_class'] ?? 'fa-book-open';
+        $description = '<p>' . htmlspecialchars($item['description']) . '</p>';
+        $pointsDisplay = '';
+    } else {
+        $difficulty = $item['points'];
+        $icon = $item['icon_class'] ?? 'fa-flag';
+        $description = '';
+        $pointsDisplay = htmlspecialchars($item['points']) . ' <i class="fas fa-flag"></i>';
+    }
+    $difficulty_class = getDifficultyClass($difficulty);
+    $completed_class = !empty($item['is_completed']) ? 'completed' : '';
+?>
+    <a href="/<?= htmlspecialchars($type) ?>/<?= htmlspecialchars($item['id']) ?>" class="card <?= $completed_class ?>">
+        <i class="card-icon fas <?= htmlspecialchars($icon) ?>"></i>
+        <div class="card-text-content">
+            <div class="card-title-wrapper">
+                <h4><?= htmlspecialchars($item['title']) ?></h4>
+                <span class="difficulty-tag <?= $difficulty_class ?>">
+                    <?= $type === 'lesson' ? htmlspecialchars($difficulty) : $pointsDisplay ?>
+                </span>
+            </div>
+            <?= $description ?>
+        </div>
+        <div class="check-box"><i class="checkbox-icon completed fas fa-check"></i></div>
+    </a>
+<?php
+endforeach;
+if ($currentCategory !== null) { echo '</div></section>'; }
+?>

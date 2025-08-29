@@ -236,5 +236,256 @@ header.header-active ~ .leaderboard-panel {
     height: 36px;
     border-radius: 50%;
     object-fit: cover; /* Assure que l'image remplit le cercle sans être déformée */
-    border: 2px solid rgba(255, 255, 255, 0.5);
+}
+/* Styles for the profile panel and its contents */
+
+.profile-panel {
+    position: fixed;
+    top: 95px;
+    z-index: 999;
+    background-color: var(--purple);
+    background-image: url('../images/header_background_blured3.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 25px;
+    opacity: 0;
+    transform: translateY(-120%);
+    pointer-events: none;
+    transition: transform 0.4s ease-out, opacity 0.3s ease-out, top 0.3s ease-in-out, left 0.3s ease-in-out, right 0.3s ease-in-out, border-radius 0.3s ease-in-out;
+    right: 20px;
+    left: auto;
+    width: max-content;
+    padding: 0;
+    overflow: hidden;
+    min-width: 220px;
+}
+
+header.header-active ~ .profile-panel {
+    top: 56px;
+    border-radius: 0;
+    right: 0;
+    left: auto;
+}
+
+.profile-panel.open {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.profile-username {
+    color: var(--white);
+    font-weight: bold;
+    margin-right: auto;
+}
+
+#close-profile-btn {
+    background: transparent;
+    border: none;
+    color: var(--white);
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.profile-options {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.profile-options li a {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    color: var(--white);
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .profile-options li a:hover {
+        background-color: var(--light-grey);
+    }
+}
+
+
+/* Styles for the search panel and its components */
+
+.search-panel {
+    position: fixed;
+    top: 95px;
+    z-index: 999;
+    background-color: var(--purple);
+    background-image: url('../images/header_background_blured3.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 25px;
+    opacity: 0;
+    transform: translateY(-120%);
+    pointer-events: none;
+    transition: transform 0.4s ease-out, opacity 0.3s ease-out, top 0.3s ease-in-out, left 0.3s ease-in-out, right 0.3s ease-in-out, border-radius 0.3s ease-in-out;
+    left: 20px;
+    right: 20px;
+    padding: 15px 25px;
+}
+
+header.header-active ~ .search-panel {
+    top: 56px;
+    border-radius: 0;
+    left: 0;
+    right: 0;
+}
+
+.search-panel.open {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.search-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+.panel-icon {
+    color: var(--white);
+    font-size: 24px;
+    align-self: center;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color: var(--card-bg);
+    border-radius: 5px;
+    flex-grow: 0.7;
+    border: 1px solid #555;
+    transition: border-color 0.3s;
+}
+
+#search-input {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 1rem;
+    outline: none;
+    padding: 0.5rem 2rem 0.5rem 0.75rem;
+}
+
+#search-input::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+#clear-search-btn {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+}
+
+#clear-search-btn.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.custom-select-wrapper {
+    position: relative;
+    user-select: none;
+    flex: 0 0 180px;
+}
+
+.custom-select {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--card-bg);
+    border-radius: 5px;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #555;
+    cursor: pointer;
+    transition: border-color 0.3s;
+}
+
+.custom-select.open {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.custom-select-trigger {
+    color: #fff;
+    font-size: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    width: 100%;
+}
+
+.custom-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--card-bg);
+    border: 1px solid #555;
+    border-top: none;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    z-index: 10;
+    display: none;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.custom-options.open {
+    display: block;
+}
+
+.custom-option {
+    padding: 0.5rem 0.75rem;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#close-filter-btn {
+    background: transparent;
+    border: none;
+    color: var(--white);
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0.5rem;
+    margin-left: auto;
+    align-self: center;
+}
+
+/* Hover effects for devices that support it */
+@media (hover: hover) and (pointer: fine) {
+    .custom-option:hover {
+        background-color: var(--light-grey);
+    }
 }

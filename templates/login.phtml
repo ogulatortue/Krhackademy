@@ -1,47 +1,20 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+$pageTitle = 'Connexion';
+require __DIR__ . '/partials/auth-header.phtml';
 ?>
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Connexion - Kr[HACK]ademy</title>
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/auth.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
-    <link rel="icon" type="image/png" href="/images/logo_krhacken_r.ico" />
-</head>
-<body class="auth-page">
 
-    <a href="/lessons" onclick="history.back(); return false;" class="btn-glass back-button">
-        <i class="fas fa-arrow-left" aria-hidden="true"></i> Retour
-    </a>
+<h2 class="page-title"><?= htmlspecialchars($pageTitle) ?></h2>
 
-    <div class="auth-container">
-        <div class="auth-content">
-            <h1 class="site-title">Kr[HACK]ademy</h1>
-            <h2 class="page-title">Connexion</h2>
+<form action="/login" method="post" class="auth-form">
+    <input type="hidden" name="redirect_to" value="<?= htmlspecialchars($_GET['redirect_to'] ?? '/') ?>">
+    <input type="text" name="username" placeholder="Nom d'utilisateur ou E-mail" required>
+    <input type="password" name="password" placeholder="Mot de passe" required>
+    <button type="submit" class="btn-glass">Se connecter <i class="fas fa-arrow-right"></i></button>
+</form>
 
-            <form action="/login" method="post" class="auth-form">
-                <input type="hidden" name="redirect_to" value="<?= htmlspecialchars($_GET['redirect_to'] ?? '/') ?>">
-                <input type="text" name="username" placeholder="Nom d'utilisateur ou E-mail" required>
-                <input type="password" name="password" placeholder="Mot de passe" required>
-                <button type="submit" class="btn-glass">Se connecter <i class="fas fa-arrow-right" aria-hidden="true"></i></button>
-            </form>
+<div class="auth-links-container">
+    <p class="auth-link">Pas encore de compte ? <a href="/register">Inscrivez-vous</a></p>
+    <p class="auth-link"><a href="/forgot-password">Mot de passe oublié ?</a></p>
+</div>
 
-            <div class="auth-links-container">
-                <p class="auth-link">
-                    Pas encore de compte ? <a href="/register">Inscrivez-vous</a>
-                </p>
-                <p class="auth-link">
-                    <a href="/forgot-password">Mot de passe oublié ?</a>
-                </p>
-            </div>
-        </div>
-    </div>
-
-    <?php require __DIR__ . '/partials/modal.phtml';?>
-</body>
-</html>
+<?php require __DIR__ . '/partials/auth-footer.phtml'; ?>

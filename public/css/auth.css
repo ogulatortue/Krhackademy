@@ -1,3 +1,7 @@
+/* auth.css (Optimisé) */
+
+/* --- 1. Conteneurs principaux --- */
+/* Pas de changement ici, c'est déjà très bien. */
 .auth-page {
     display: flex;
     justify-content: center;
@@ -10,7 +14,6 @@
 .auth-container {
     width: 100%;
     max-width: 420px;
-    padding: 0;
     background-color: var(--card-bg);
     border: 1px solid var(--border-color);
     border-radius: 12px;
@@ -21,6 +24,8 @@
     overflow: hidden;
 }
 
+/* --- 2. Éléments décoratifs --- */
+/* Pas de changement, c'est bien isolé. */
 .auth-container::before {
     content: '';
     position: absolute;
@@ -34,11 +39,11 @@
     z-index: 1;
 }
 
+/* --- 3. Contenu et Typographie --- */
 .auth-content {
     position: relative;
     z-index: 2;
     padding: 2rem;
-    padding-bottom: 0;
 }
 
 .site-title {
@@ -56,24 +61,29 @@
     font-weight: normal;
     margin-top: 0;
     margin-bottom: 2.5rem;
-    position: relative;
 }
 
+/* NOUVEAU : Classe spécifique pour le texte d'introduction */
+/* Remplace le sélecteur trop spécifique '.auth-container > .auth-content > p' */
+.auth-prompt {
+    color: var(--text-subtle);
+    margin: -1rem auto 1.5rem; /* Ajustement des marges */
+    max-width: 320px;
+    line-height: 1.5;
+}
+
+
+/* --- 4. Formulaire --- */
 .auth-form {
     display: flex;
     flex-direction: column;
-    margin-bottom: 1rem;
-    width: 100%;
     gap: 1rem;
+    margin-bottom: 1.5rem;
 }
 
-.auth-form button[type="submit"] {
-    align-self: center;
-}
-
-.auth-form input[type="text"],
-.auth-form input[type="email"],
-.auth-form input[type="password"] {
+/* OPTIMISATION : Regroupement de tous les inputs du formulaire */
+/* On cible les inputs par leur type pour éviter de styliser les 'hidden' ou 'submit'. */
+.auth-form input:is([type="text"], [type="email"], [type="password"]) {
     width: 100%;
     padding: 0.85rem 1rem;
     background-color: var(--code-bg);
@@ -90,14 +100,18 @@
     opacity: 0.8;
 }
 
-.auth-form input:focus {
+.auth-form input:is([type="text"], [type="email"], [type="password"]):focus {
     outline: none;
     border-color: var(--purple);
     box-shadow: 0 0 0 3px rgba(146, 22, 168, 0.25);
 }
 
-.error-message,
-.success-message {
+/* On centre le bouton via la classe du formulaire parent, plus besoin d'un sélecteur dédié */
+.auth-form button[type="submit"] {
+    margin-top: 0.5rem;
+}
+
+.message {
     width: 100%;
     padding: 0.8rem 1rem;
     margin-top: 1.5rem;
@@ -106,28 +120,27 @@
     font-weight: 500;
 }
 
-.error-message {
+.message--error {
     background-color: rgba(255, 82, 82, 0.1);
     color: #ff8a8a;
     border: 1px solid rgba(255, 82, 82, 0.2);
 }
 
-.success-message {
+.message--success {
     background-color: rgba(80, 200, 120, 0.1);
     color: #a4ffc5;
     border: 1px solid rgba(80, 200, 120, 0.2);
 }
 
 .auth-links-container {
-    margin-bottom: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.75rem;
 }
 
 .auth-link {
-    margin: 0;
-    padding: 0;
     font-size: 0.9rem;
     color: var(--text-subtle);
 }
@@ -136,16 +149,7 @@
     color: var(--purple);
     font-weight: 600;
     text-decoration: none;
-    transition: color 0.3s ease, text-decoration 0.3s ease;
-}
-
-.auth-container > .auth-content > p {
-    color: var(--text-subtle);
-    margin-bottom: 1.5rem;
-    max-width: 300px;
-    line-height: 1.5;
-    margin-left: auto;
-    margin-right: auto;
+    transition: color 0.3s ease;
 }
 
 @media (hover: hover) and (pointer: fine) {

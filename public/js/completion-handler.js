@@ -6,8 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
         lesson: {
             containerSelector: '.content-navigation',
             idInputName: 'lesson_id',
-            apiComplete: '/api/mark-lesson-complete',
-            apiIncomplete: '/api/mark-lesson-incomplete',
+            apiProgress: '/api/progress',
             singular: 'leçon',
             completeButtonHTML: `
                 <form class="completion-form">
@@ -24,8 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
         challenge: {
             containerSelector: '.submission-controls',
             idInputName: 'challenge_id',
-            apiComplete: '/api/verify-flag',
-            apiIncomplete: '/api/mark-challenge-incomplete',
+            apiVerify: '/api/verify-flag',
+            apiProgress: '/api/progress',
             singular: 'challenge',
             completeButtonHTML: `<button type="submit" form="flag-form" class="btn-glass">Soumettre le flag <i class="fas fa-arrow-right"></i></button>`,
             incompleteButtonHTML: `
@@ -50,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
             const response = await fetch(url, {
                 method: 'POST',
-                headers: { 
+                headers: {
                     'Content-Type': 'application/json',
                     'X-CSRF-TOKEN': csrfToken
                 },
@@ -60,8 +59,10 @@ document.addEventListener('DOMContentLoaded', () => {
         } catch (error) {
             return { status: 'error', message: 'Impossible de joindre le serveur.' };
         } finally {
-            button.disabled = false;
-            button.innerHTML = originalButtonHTML;
+            if(button) {
+                button.disabled = false;
+                button.innerHTML = originalButtonHTML;
+            }
         }
     };
 
@@ -83,19 +84,26 @@ document.addEventListener('DOMContentLoaded', () => {
         
         const formData = new FormData(form);
         const id = formData.get(settings.idInputName);
-        const flag = formData.get('flag');
-        const body = { [settings.idInputName]: id };
-        if (type === 'challenge') body.flag = flag;
-
-        // ## CORRECTION ICI ##
-        // On utilise event.submitter pour obtenir le bouton qui a déclenché l'événement.
         const submitButton = event.submitter;
-        const result = await handleApiRequest(settings.apiComplete, body, submitButton);
+
+        let body;
+        let url;
+
+        if (type === 'challenge') {
+            const flag = formData.get('flag');
+            body = { challenge_id: id, flag: flag };
+            url = settings.apiVerify;
+        } else {
+            body = { id: id, type: 'lesson', status: 'complete' };
+            url = settings.apiProgress;
+        }
+
+        const result = await handleApiRequest(url, body, submitButton);
 
         if (result.status === 'success') {
             container.innerHTML = settings.incompleteButtonHTML.replaceAll('{id}', id);
             if (type === 'challenge') form.querySelector('.flag-input').disabled = true;
-            modal.showModal('success', `Challenge validé !`, 'Félicitations! Vous avez validé ce challenge.');
+            modal.showModal('success', `Validé !`, result.message);
             setupListeners();
         } else {
             modal.showModal('error', 'Erreur', result.message || 'Une erreur est survenue.');
@@ -106,7 +114,9 @@ document.addEventListener('DOMContentLoaded', () => {
         event.preventDefault();
         const form = event.currentTarget;
         const id = new FormData(form).get(settings.idInputName);
-        const result = await handleApiRequest(settings.apiIncomplete, { [settings.idInputName]: id }, event.submitter);
+        const body = { id: id, type: type, status: 'incomplete' };
+        
+        const result = await handleApiRequest(settings.apiProgress, body, event.submitter);
 
         if (result.status === 'success') {
             container.innerHTML = settings.completeButtonHTML.replaceAll('{id}', id);

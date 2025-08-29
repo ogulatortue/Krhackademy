@@ -30,4 +30,24 @@ class ChallengeService {
         }
         return $challenge;
     }
+    public function getFlag(int $challengeId): ?string {
+        $stmt = $this->pdo->prepare("SELECT flag FROM challenges WHERE id = ?");
+        $stmt->execute([$challengeId]);
+        return $stmt->fetchColumn();
+    }
+    public function markAsComplete(int $userId, int $challengeId): bool {
+        $sql = "INSERT INTO user_challenges_progress (user_id, challenge_id, completed_at) VALUES (?, ?, NOW()) ON DUPLICATE KEY UPDATE completed_at = NOW()";
+        $stmt = $this->pdo->prepare($sql);
+        return $stmt->execute([$userId, $challengeId]);
+    }
+    public function markAsIncomplete(int $userId, int $challengeId): bool {
+        $sql = "DELETE FROM user_challenges_progress WHERE user_id = ? AND challenge_id = ?";
+        $stmt = $this->pdo->prepare($sql);
+        return $stmt->execute([$userId, $challengeId]);
+    }
+    public function findCompletedIdsForUser(int $userId): array {
+        $stmt = $this->pdo->prepare("SELECT challenge_id FROM user_challenges_progress WHERE user_id = ?");
+        $stmt->execute([$userId]);
+        return $stmt->fetchAll(PDO::FETCH_COLUMN);
+    }
 }

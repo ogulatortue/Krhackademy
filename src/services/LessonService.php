@@ -30,4 +30,19 @@ class LessonService {
         }
         return $lesson;
     }
+    public function markAsComplete(int $userId, int $lessonId): bool {
+        $sql = "INSERT INTO user_lessons_progress (user_id, lesson_id, completed_at) VALUES (?, ?, NOW()) ON DUPLICATE KEY UPDATE completed_at = NOW()";
+        $stmt = $this->pdo->prepare($sql);
+        return $stmt->execute([$userId, $lessonId]);
+    }
+    public function markAsIncomplete(int $userId, int $lessonId): bool {
+        $sql = "DELETE FROM user_lessons_progress WHERE user_id = ? AND lesson_id = ?";
+        $stmt = $this->pdo->prepare($sql);
+        return $stmt->execute([$userId, $lessonId]);
+    }
+    public function findCompletedIdsForUser(int $userId): array {
+        $stmt = $this->pdo->prepare("SELECT lesson_id FROM user_lessons_progress WHERE user_id = ?");
+        $stmt->execute([$userId]);
+        return $stmt->fetchAll(PDO::FETCH_COLUMN);
+    }
 }

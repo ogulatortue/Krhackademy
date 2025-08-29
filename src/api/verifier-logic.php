@@ -1,50 +1,41 @@
 <?php
-
 require_once __DIR__ . '/../bootstrap.php';
-
+header('Content-Type: application/json');
 require_login();
+verify_csrf_token();
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
-    exit('Méthode non autorisée.');
+    exit(json_encode(['status' => 'error', 'message' => 'Méthode non autorisée.']));
 }
 
 $input = json_decode(file_get_contents('php://input'), true);
-$challenge_id = $input['challenge_id'] ?? null;
-$submitted_flag = $input['flag'] ?? '';
+$challengeId = $input['challenge_id'] ?? null;
+$submittedFlag = $input['flag'] ?? '';
+$userId = $_SESSION['user_id'];
 
-header('Content-Type: application/json');
-$response = [];
+if (!$challengeId) {
+    http_response_code(400);
+    exit(json_encode(['status' => 'error', 'message' => 'ID de challenge manquant.']));
+}
 
-$stmt = $pdo->prepare("SELECT id, flag FROM challenges WHERE id = ?");
-$stmt->execute([$challenge_id]);
-$challenge = $stmt->fetch();
+$challengeService = new ChallengeService($pdo);
+$challenge = $challengeService->findById($challengeId, $userId);
 
 if (!$challenge) {
-    echo json_encode(['status' => 'error', 'message' => 'Challenge non trouvé.']);
-    exit();
+    http_response_code(404);
+    exit(json_encode(['status' => 'error', 'message' => 'Challenge non trouvé.']));
 }
 
-$stmt = $pdo->prepare("SELECT COUNT(*) FROM user_challenges_progress WHERE user_id = ? AND challenge_id = ?");
-$stmt->execute([$_SESSION['user_id'], $challenge_id]);
-$is_completed = $stmt->fetchColumn() > 0;
-
-if ($is_completed) {
-    echo json_encode(['status' => 'success', 'message' => 'Ce challenge est déjà validé !']);
-    exit();
+if ($challenge['is_completed']) {
+    exit(json_encode(['status' => 'success', 'message' => 'Ce challenge est déjà validé !']));
 }
 
-if (strtolower($challenge['flag']) === strtolower($submitted_flag)) {
-    
-    $response = ['status' => 'success', 'message' => 'Flag correct ! Bien joué !'];
+$correctFlag = $challengeService->getFlag($challengeId);
 
-    $stmt_solve = $pdo->prepare(
-        "INSERT IGNORE INTO user_challenges_progress (user_id, challenge_id, completed_at) VALUES (?, ?, NOW())"
-    );
-    $stmt_solve->execute([$_SESSION['user_id'], $challenge_id]);
-
+if (strtolower($correctFlag) === strtolower($submittedFlag)) {
+    $challengeService->markAsComplete($userId, $challengeId);
+    echo json_encode(['status' => 'success', 'message' => 'Flag correct ! Bien joué !']);
 } else {
-    $response = ['status' => 'error', 'message' => 'Flag incorrect. Essayez encore.'];
+    echo json_encode(['status' => 'error', 'message' => 'Flag incorrect. Essayez encore.']);
 }
-
-echo json_encode($response);

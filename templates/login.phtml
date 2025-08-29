@@ -6,6 +6,7 @@ require __DIR__ . '/partials/auth-header.phtml';
 <h2 class="page-title"><?= htmlspecialchars($pageTitle) ?></h2>
 
 <form action="/login" method="post" class="auth-form">
+    <input type="hidden" name="csrf_token" value="<?= csrf_token(); ?>">
     <input type="hidden" name="redirect_to" value="<?= htmlspecialchars($_GET['redirect_to'] ?? '/') ?>">
     <input type="text" name="username" placeholder="Nom d'utilisateur ou E-mail" required>
     <input type="password" name="password" placeholder="Mot de passe" required>

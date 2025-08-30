@@ -1,19 +1,14 @@
+<?php
+$pageTitle = 'Classement - Kr[HACK]ademy';
+$specific_css = ['/css/menus.css'];
+?>
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Classement - Kr[HACK]ademy</title>
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/leaderboard.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
-    <link rel="icon" type="image/png" href="/images/logo_krhacken_r.ico" />
-</head>
-<body>
-    <a href="/lessons" onclick="history.back(); return false;" class="btn-glass back-button">
-        <i class="fas fa-arrow-left" aria-hidden="true"></i> Retour
+<?php require __DIR__ . '/partials/head.phtml';?>
+<body class="page-leaderboard">
+    <a id="go-back-button" href="/" class="btn-glass back-button">
+        <i class="fas fa-arrow-left"></i> Retour
     </a>
-
     <main class="container">
         <div class="content-container">
             <div class="content-wrapper">

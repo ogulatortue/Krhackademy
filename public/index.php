@@ -15,6 +15,8 @@ $routes = [
     '/challenge/{id}' => ['logic' => 'controllers/challenge-page-logic.php', 'view' => 'challenge-page.phtml', 'currentPage' => 'challenges', 'auth' => true],
     '/scenarios' => ['logic' => 'controllers/scenarios-logic.php', 'view' => 'scenarios.phtml', 'currentPage' => 'scenarios'],
     '/leaderboard' => ['logic' => 'controllers/leaderboard-logic.php', 'view' => 'leaderboard.phtml', 'currentPage' => 'leaderboard'],
+    '/profile' => ['logic' => 'controllers/profile-logic.php', 'view' => 'profile.phtml', 'currentPage' => 'profile'],
+    '/settings' => ['logic' => 'controllers/settings-logic.php', 'view' => 'settings.phtml', 'currentPage' => 'settings'],
     '/login' => ['logic' => 'controllers/login-logic.php', 'view' => 'login.phtml'],
     '/register' => ['logic' => 'controllers/register-logic.php', 'view' => 'register.phtml'],
     '/forgot-password' => ['logic' => 'controllers/forgot-password-logic.php', 'view' => 'forgot-password.phtml'],

@@ -1,0 +1,69 @@
+<?php
+$pageTitle = 'Mon Profil - Kr[HACK]ademy';
+$specific_css = ['/css/menus.css'];
+
+$userProfile = [
+    'username' => 'Kolonel_07',
+    'bio' => 'Explorateur de la matrice numérique et passionné de cybersécurité.',
+    'avatar_url' => 'images/default-avatar.webp',
+    'banner_url' => 'images/default-banner.webp',
+    'registration_date' => '2024-05-15',
+    'total_score' => 1337,
+    'challenges_completed' => 42
+];
+?>
+<!DOCTYPE html>
+<html lang="fr">
+<?php require __DIR__ . '/partials/head.phtml';?>
+<body class="page-profile">
+    <a id="go-back-button" href="/" class="btn-glass back-button">
+        <i class="fas fa-arrow-left"></i> Retour
+    </a>
+    <main class="container">
+        <div class="content-container">
+            <div class="content-wrapper">
+                <header class="content-header">
+                    <i class="fas fa-user-circle content-icon"></i>
+                    <div class="content-title-group">
+                        <h1>Mon Profil</h1>
+                        <p class="content-intro">Votre vitrine sur Kr[HACK]ademy</p>
+                    </div>
+                </header>
+
+                <div class="content-block">
+                    <div class="profile-header-card">
+                        <div class="profile-banner">
+                            <img src="<?php echo htmlspecialchars($userProfile['banner_url']); ?>" alt="Bannière de profil">
+                        </div>
+                        <div class="profile-avatar-wrapper">
+                            <img class="profile-avatar" src="<?php echo htmlspecialchars($userProfile['avatar_url']); ?>" alt="Avatar de <?php echo htmlspecialchars($userProfile['username']); ?>">
+                        </div>
+                    </div>
+                    
+                    <div class="profile-main-content">
+                        <h2 class="profile-username"><?php echo htmlspecialchars($userProfile['username']); ?></h2>
+                        <p class="profile-bio"><?php echo htmlspecialchars($userProfile['bio']); ?></p>
+                    </div>
+                </div>
+
+                <div class="content-block">
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-value"><?php echo $userProfile['total_score']; ?></span>
+                            <span class="stat-label">Score Total</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value"><?php echo $userProfile['challenges_completed']; ?></span>
+                            <span class="stat-label">Challenges Réussis</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value"><?php echo (new DateTime($userProfile['registration_date']))->format('d/m/Y'); ?></span>
+                            <span class="stat-label">Membre depuis</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

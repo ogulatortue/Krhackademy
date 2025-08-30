@@ -10,18 +10,15 @@ if (!$token) {
     exit();
 }
 
-// L'utilisateur est recherché une seule fois au chargement de la page
 $user = $userModel->findUserByResetToken($token);
 
 if (!$user && $_SERVER['REQUEST_METHOD'] !== 'POST') {
     $_SESSION['flash_message'] = ['type' => 'error', 'title' => 'Lien invalide', 'message' => 'Ce lien de réinitialisation est invalide ou a expiré.'];
-    // On peut rediriger ici ou laisser le template afficher le message
     header('Location: /login');
     exit();
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // On revérifie l'utilisateur en cas de soumission de formulaire, pour s'assurer qu'il n'a pas expiré entre temps
     if (!$user) {
         $_SESSION['flash_message'] = ['type' => 'error', 'title' => 'Lien invalide', 'message' => 'Ce lien de réinitialisation est invalide ou a expiré.'];
         header('Location: /login');

@@ -23,7 +23,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user = $userModel->findByUsernameOrEmail($identifier);
 
     if ($user && password_verify($password, $user['password_hash'])) {
-        // Régénère l'ID de session pour prévenir la fixation de session
         session_regenerate_id(true);
 
         $_SESSION['user_id'] = $user['id'];
@@ -31,7 +30,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['flash_message'] = ['type' => 'success', 'title' => 'Connexion réussie', 'message' => 'Bienvenue, ' . htmlspecialchars($user['username']) . ' !'];
 
         $redirectTo = $_POST['redirect_to'] ?? '/';
-        // Sécurité : empêche les redirections vers des sites externes
         if (empty($redirectTo) || parse_url($redirectTo, PHP_URL_HOST) !== null) {
             $redirectTo = '/';
         }

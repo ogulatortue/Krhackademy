@@ -14,7 +14,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         $user = $userModel->findByUsernameOrEmail($email);
         
-        // On exécute la logique même si l'utilisateur n'existe pas pour ne pas révéler d'informations
         if ($user) {
             $token = bin2hex(random_bytes(32));
             if ($userModel->setResetToken($user['id'], $token)) {
@@ -22,8 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $mailer->sendPasswordResetEmail($user['email'], $user['username'], $token);
             }
         }
-
-        // Message générique pour empêcher l'énumération d'utilisateurs
+        
         $_SESSION['flash_message'] = [
             'type' => 'success', 
             'title' => 'Demande envoyée', 

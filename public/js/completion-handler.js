@@ -103,10 +103,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (result.status === 'success') {
             container.innerHTML = settings.incompleteButtonHTML.replaceAll('{id}', id);
             if (type === 'challenge') form.querySelector('.flag-input').disabled = true;
-            modal.showModal('success', `Validé !`, result.message);
+            const validationMessage = type === 'lesson' ? 'Bravo ! Vous avez validé cette leçon' : 'Bravo ! Vous avez validé ce challenge';
+            modal.showModal('success', 'Validé', validationMessage);
             setupListeners();
         } else {
-            modal.showModal('error', 'Erreur', result.message || 'Une erreur est survenue.');
+            const fallbackMessage = type === 'challenge' ? 'Flag incorrect, essayez encore !' : 'Une erreur est survenue.';
+            modal.showModal('error', 'Erreur', result.message || fallbackMessage);
         }
     };
 
@@ -127,7 +129,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     flagInput.value = '';
                 }
             }
-            modal.showModal('success', 'Réinitialisation réussie !', `Vous pouvez maintenant refaire ce ${settings.singular}.`);
+            const invalidationMessage = type === 'lesson' ? 'Vous pouvez maintenant refaire cette leçon' : 'Vous pouvez maintenant refaire ce challenge';
+            modal.showModal('success', 'Réinitialisé', invalidationMessage);
             setupListeners();
         } else {
             modal.showModal('error', 'Erreur', result.message || 'Une erreur est survenue.');

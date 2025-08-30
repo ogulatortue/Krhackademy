@@ -28,7 +28,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($userModel->createUser($data['username'], $data['email'], $data['password'])) {
             
             $tempMailer = new MailerService();
-            // On utilise la nouvelle méthode qui ne fait que préparer l'e-mail
             $tempMailer->prepareWelcomeEmail($data['email'], $data['username']);
 
             $subject = $tempMailer->getSubject();

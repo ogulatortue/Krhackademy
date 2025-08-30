@@ -35,7 +35,7 @@ $correctFlag = $challengeService->getFlag($challengeId);
 
 if (strtolower($correctFlag) === strtolower($submittedFlag)) {
     $challengeService->markAsComplete($userId, $challengeId);
-    echo json_encode(['status' => 'success', 'message' => 'Flag correct ! Bien joué !']);
+    echo json_encode(['status' => 'success', 'message' => 'Bravo ! Vous avez validé ce challenge']);
 } else {
-    echo json_encode(['status' => 'error', 'message' => 'Flag incorrect. Essayez encore.']);
+    echo json_encode(['status' => 'error', 'message' => 'Flag incorrect, essayez encore !']);
 }

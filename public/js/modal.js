@@ -58,4 +58,11 @@ document.addEventListener('DOMContentLoaded', () => {
         delete modalContainer.dataset.flashTitle;
         delete modalContainer.dataset.flashMessage;
     }
+    const backButton = document.getElementById('go-back-button');
+    if (backButton) {
+        backButton.addEventListener('click', function(event) {
+            event.preventDefault();
+            history.back();
+        });
+    }
 });

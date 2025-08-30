@@ -188,7 +188,12 @@ footer .footer-legal a {
 @media (hover: hover) and (pointer: fine) {
     .nav-bar li:not(.active):hover a,
     .nav-bar-mobile li:not(.active):hover a {
-        background-color: rgba(255,255,255,0.1);
+        background-color: var(--light-grey);
+    }
+    .profile-options li:last-child a:hover,
+    .leaderboard-options li:last-child a:hover {
+        border-bottom-left-radius: 25px;
+        border-bottom-right-radius: 25px;
     }
     .header-actions button:hover {
         transform: translateY(2px);
@@ -291,7 +296,7 @@ header.header-active ~ .search-panel {
     padding: 15px;
     color: var(--white);
     text-decoration: none;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.2s ease, border-radius 0.2s ease;
 }
 .leaderboard-header {
     display: flex;
@@ -377,7 +382,7 @@ header.header-active ~ .search-panel {
     padding: 15px;
     color: var(--white);
     text-decoration: none;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.2s ease, border-radius 0.2s ease;
 }
 #search-input::-webkit-search-cancel-button {
     -webkit-appearance: none;
@@ -488,7 +493,7 @@ header.header-active ~ .search-panel {
 @media (hover: hover) and (pointer: fine) {
     .profile-options li a:hover,
     .leaderboard-options li a:hover {
-        background-color: rgba(255, 255, 255, 0.1);
+        background-color: var(--light-grey);
     }
     .custom-option:hover {
         background-color: var(--light-grey);

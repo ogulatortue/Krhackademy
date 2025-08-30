@@ -1,4 +1,4 @@
-<?php // src/services/User.php
+<?php
 
 class User {
     private $db;
@@ -7,10 +7,14 @@ class User {
         $this->db = $pdo;
     }
 
-    // --- Méthodes de recherche ---
-
+    public function findById(int $id) {
+        $sql = "SELECT * FROM users WHERE id = :id LIMIT 1";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute(['id' => $id]);
+        return $stmt->fetch();
+    }
+    
     public function findByUsernameOrEmail(string $identifier) {
-        // CORRECTION APPLIQUÉE ICI
         $sql = "SELECT * FROM users WHERE email = :email OR username = :username LIMIT 1";
         $stmt = $this->db->prepare($sql);
         $stmt->execute([
@@ -28,8 +32,6 @@ class User {
         return $stmt->fetch();
     }
 
-    // --- Méthodes de modification ---
-
     public function createUser(string $username, string $email, string $password): bool {
         $passwordHash = password_hash($password, PASSWORD_ARGON2ID);
         $sql = "INSERT INTO users (username, email, password_hash) VALUES (:username, :email, :password_hash)";
@@ -41,11 +43,27 @@ class User {
         ]);
     }
 
+    public function updateAccountInfo(int $userId, string $username, string $email): bool {
+        $sql = "UPDATE users SET username = :username, email = :email WHERE id = :id";
+        $stmt = $this->db->prepare($sql);
+        return $stmt->execute([
+            'username' => $username,
+            'email' => $email,
+            'id' => $userId
+        ]);
+    }
+
     public function updatePassword(int $userId, string $newPassword): bool {
         $passwordHash = password_hash($newPassword, PASSWORD_ARGON2ID);
         $sql = "UPDATE users SET password_hash = :password_hash WHERE id = :id";
         $stmt = $this->db->prepare($sql);
         return $stmt->execute(['password_hash' => $passwordHash, 'id' => $userId]);
+    }
+
+    public function deleteUser(int $userId): bool {
+        $sql = "DELETE FROM users WHERE id = :id";
+        $stmt = $this->db->prepare($sql);
+        return $stmt->execute(['id' => $userId]);
     }
 
     public function setResetToken(int $userId, string $token): bool {

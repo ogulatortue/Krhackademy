@@ -29,6 +29,74 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
+    if (isset($_POST['action']) && $_POST['action'] === 'update_profile') {
+        $bio = $_POST['bio'] ?? null;
+        $bannerUrl = null;
+        $avatarUrl = null;
+        
+        $uploadOk = true;
+        $allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+        $maxSize = 2 * 1024 * 1024;
+
+        if (isset($_FILES['avatar_image']) && $_FILES['avatar_image']['error'] === UPLOAD_ERR_OK) {
+            $uploadDirAvatar = ROOT_PATH . '/public/uploads/avatars/';
+            $fileType = mime_content_type($_FILES['avatar_image']['tmp_name']);
+            $fileSize = $_FILES['avatar_image']['size'];
+
+            if (!in_array($fileType, $allowedTypes)) {
+                $errors[] = "Avatar : Format de fichier non autorisé (JPG, PNG, GIF).";
+                $uploadOk = false;
+            } elseif ($fileSize > $maxSize) {
+                $errors[] = "Avatar : Le fichier est trop volumineux (Max 2Mo).";
+                $uploadOk = false;
+            }
+
+            if ($uploadOk) {
+                $extension = pathinfo($_FILES['avatar_image']['name'], PATHINFO_EXTENSION);
+                $newFilename = uniqid('avatar_', true) . '.' . $extension;
+                $destination = $uploadDirAvatar . $newFilename;
+                if (move_uploaded_file($_FILES['avatar_image']['tmp_name'], $destination)) {
+                    $avatarUrl = '/uploads/avatars/' . $newFilename;
+                } else {
+                    $errors[] = "Erreur lors de l'upload de l'avatar.";
+                }
+            }
+        }
+
+        if (isset($_FILES['banner_image']) && $_FILES['banner_image']['error'] === UPLOAD_ERR_OK) {
+            $uploadDirBanner = ROOT_PATH . '/public/uploads/banners/';
+            $fileType = mime_content_type($_FILES['banner_image']['tmp_name']);
+            $fileSize = $_FILES['banner_image']['size'];
+
+            if (!in_array($fileType, $allowedTypes)) {
+                $errors[] = "Bannière : Format de fichier non autorisé (JPG, PNG, GIF).";
+                $uploadOk = false;
+            } elseif ($fileSize > $maxSize) {
+                $errors[] = "Bannière : Le fichier est trop volumineux (Max 2Mo).";
+                $uploadOk = false;
+            }
+
+            if ($uploadOk) {
+                $extension = pathinfo($_FILES['banner_image']['name'], PATHINFO_EXTENSION);
+                $newFilename = uniqid('banner_', true) . '.' . $extension;
+                $destination = $uploadDirBanner . $newFilename;
+                if (move_uploaded_file($_FILES['banner_image']['tmp_name'], $destination)) {
+                    $bannerUrl = '/uploads/banners/' . $newFilename;
+                } else {
+                    $errors[] = "Erreur lors de l'upload de la bannière.";
+                }
+            }
+        }
+        
+        if (empty($errors)) {
+            if ($userService->updateProfileCustomization($currentUserId, $bio, $bannerUrl, $avatarUrl)) {
+                $success = "Votre profil a été mis à jour avec succès.";
+            } else {
+                $errors[] = "Une erreur est survenue lors de la mise à jour du profil.";
+            }
+        }
+    }
+
     if (isset($_POST['action']) && $_POST['action'] === 'change_password') {
         $currentPassword = $_POST['current_password'] ?? '';
         $newPassword = $_POST['new_password'] ?? '';

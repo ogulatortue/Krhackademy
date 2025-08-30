@@ -83,4 +83,60 @@ class User {
         $stmt = $this->db->prepare($sql);
         return $stmt->execute(['id' => $userId]);
     }
+
+    public function getFullProfileData(int $userId) {
+        $sql = "
+            SELECT
+                u.username,
+                u.avatar_url,
+                u.banner_url,
+                u.bio,
+                u.created_at AS registration_date,
+                COALESCE(SUM(c.points), 0) AS total_score,
+                (SELECT COUNT(*) FROM user_challenges_progress WHERE user_id = u.id) AS challenges_completed,
+                (SELECT COUNT(*) FROM user_lessons_progress WHERE user_id = u.id) AS lessons_completed
+            FROM
+                users u
+            LEFT JOIN
+                user_challenges_progress ucp ON u.id = ucp.user_id
+            LEFT JOIN
+                challenges c ON ucp.challenge_id = c.id
+            WHERE
+                u.id = :user_id
+            GROUP BY
+                u.id;
+        ";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute(['user_id' => $userId]);
+        return $stmt->fetch();
+    }
+    public function updateProfileCustomization(int $userId, ?string $bio, ?string $bannerUrl, ?string $avatarUrl): bool {
+        if ($bio === null && $bannerUrl === null && $avatarUrl === null) {
+            return true;
+        }
+
+        $fields = [];
+        $params = [];
+
+        if ($bio !== null) {
+            $fields[] = "bio = :bio";
+            $params[':bio'] = $bio;
+        }
+
+        if ($bannerUrl !== null) {
+            $fields[] = "banner_url = :banner_url";
+            $params[':banner_url'] = $bannerUrl;
+        }
+        
+        if ($avatarUrl !== null) {
+            $fields[] = "avatar_url = :avatar_url";
+            $params[':avatar_url'] = $avatarUrl;
+        }
+
+        $sql = "UPDATE users SET " . implode(', ', $fields) . " WHERE id = :id";
+        $params[':id'] = $userId;
+
+        $stmt = $this->db->prepare($sql);
+        return $stmt->execute($params);
+    }
 }

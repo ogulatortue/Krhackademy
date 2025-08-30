@@ -74,6 +74,33 @@ $specific_css = ['/css/content-page.css'];
                 </div>
 
                 <div class="content-block">
+                    <div class="settings-section">
+                        <h2>Personnalisation du Profil</h2>
+                        <form action="/settings" method="POST" enctype="multipart/form-data">
+                            <input type="hidden" name="csrf_token" value="<?php echo csrf_token(); ?>">
+                            <input type="hidden" name="action" value="update_profile">
+
+                            <div class="form-group">
+                                <label for="bio">Biographie</label>
+                                <textarea id="bio" name="bio" class="form-control" rows="3"><?php echo htmlspecialchars($currentUser['bio'] ?? ''); ?></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="avatar_image">Avatar (JPG, PNG, GIF - Max 2Mo)</label>
+                                <input type="file" id="avatar_image" name="avatar_image" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="banner_image">Bannière de profil (JPG, PNG, GIF - Max 2Mo)</label>
+                                <input type="file" id="banner_image" name="banner_image" class="form-control">
+                            </div>
+
+                            <button type="submit" class="btn-primary">Mettre à jour le profil</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="content-block">
                     <div class="settings-section danger-zone">
                         <h2>Zone de Danger</h2>
                         <p>Cette action est irréversible. Toutes vos données seront définitivement supprimées.</p>

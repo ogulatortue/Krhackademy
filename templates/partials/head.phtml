@@ -1,10 +1,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <meta name="csrf-token" content="<?= csrf_token(); ?>">
 
     <title><?= htmlspecialchars($pageTitle ?? 'Kr[HACK]ademy') ?></title>
+    <meta name="author" content="Hugo BRUCHON">
+    <meta name="description" content="Kr[HACK]ademy : la plateforme du club Kr[HACK]en pour apprendre la cybersécurité en ligne, de débutant à expert, via des leçons, challenges CTF et scénarios pratiques.">
+    <meta name="keywords" content="cybersécurité, hacking, sécurité informatique, Kr[HACK]en, ESISAR, CTF, forensics, OSINT, cryptographie, web hacking, injection SQL">
+    <link rel="canonical" href="https://academy.krhacken.org/"> <meta property="og:title" content="<?= htmlspecialchars($pageTitle ?? 'Kr[HACK]ademy') ?>">
+    <meta property="og:description" content="Apprenez la cybersécurité en ligne avec les leçons et challenges de la plateforme Kr[HACK]ademy.">
+    <meta property="og:image" content="https://academy.krhacken.org/images/krhacken_laurier.webp"> <meta property="og:url" content="https://academy.krhacken.org/"> <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Kr[HACK]ademy">
+
+    <meta name="csrf-token" content="<?= csrf_token(); ?>">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
     <link rel="stylesheet" href="/css/style.css"/>

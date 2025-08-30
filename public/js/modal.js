@@ -1,7 +1,6 @@
 const setupModal = () => {
     const modalContainer = document.getElementById('modal-container');
     if (!modalContainer) {
-        console.error('Modal container element not found.');
         return { showModal: () => {}, hideModal: () => {} };
     }
 
@@ -28,11 +27,11 @@ const setupModal = () => {
         modalCloseIcon.addEventListener('click', hideModal);
     }
     
-    modalContainer.addEventListener('click', (event) => {
-        if (event.target === modalContainer) {
+    window.addEventListener('click', (event) => {
+        if (modalContainer.classList.contains('is-visible') && !event.target.closest('.modal-content')) {
             hideModal();
         }
-    });
+    }, true);
 
     window.addEventListener('keydown', (event) => {
         if (event.key === 'Escape' && modalContainer.classList.contains('is-visible')) {

@@ -114,9 +114,9 @@ h2 {
 .modal-container.is-visible {
     opacity: 1;
     visibility: visible;
-    pointer-events: auto;
 }
 .modal-content {
+    pointer-events: auto;
     border: 1px solid var(--easy);
     border-radius: 12px;
     padding: 0.5rem;

@@ -190,8 +190,8 @@ footer .footer-legal a {
     .nav-bar-mobile li:not(.active):hover a {
         background-color: var(--light-grey);
     }
-    .profile-options li:last-child a:hover,
-    .leaderboard-options li:last-child a:hover {
+    header:not(.header-active) ~ .widget-panel .profile-options li:last-child a,
+    header:not(.header-active) ~ .widget-panel .leaderboard-options li:last-child a {
         border-bottom-left-radius: 25px;
         border-bottom-right-radius: 25px;
     }
@@ -296,7 +296,7 @@ header.header-active ~ .search-panel {
     padding: 15px;
     color: var(--white);
     text-decoration: none;
-    transition: background-color 0.2s ease, border-radius 0.2s ease;
+    transition: background-color 0.2s ease;
 }
 .leaderboard-header {
     display: flex;
@@ -382,7 +382,7 @@ header.header-active ~ .search-panel {
     padding: 15px;
     color: var(--white);
     text-decoration: none;
-    transition: background-color 0.2s ease, border-radius 0.2s ease;
+    transition: background-color 0.2s ease;
 }
 #search-input::-webkit-search-cancel-button {
     -webkit-appearance: none;

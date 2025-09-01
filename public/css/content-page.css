@@ -472,18 +472,6 @@ pre code {
     font-size: 0.9rem;
     padding-bottom: 0;
 }
-.btn-download {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background-color: var(--purple);
-    color: var(--white);
-    padding: 0.7rem 1.2rem;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
 .flag-form {
     margin-top: 2rem;
     display: flex;

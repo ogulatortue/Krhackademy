@@ -144,7 +144,7 @@ pre {
 code {
     background-color: rgba(146, 22, 168, 0.15);
     color: #d1aaff;
-    padding: 2px 0.4rem;
+    padding: 1px 2px;
     border-radius: 6px;
     font-family: 'Fira Code', monospace;
     font-size: 0.9rem;

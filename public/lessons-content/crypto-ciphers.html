@@ -1,7 +1,7 @@
 <section class="content-block">
     <h2><i class="fas fa-info-circle" aria-hidden="true"></i> Introduction aux Chiffres Classiques</h2>
     <p>
-        Avant l'ère numérique, la cryptographie s'appuyait sur des méthodes manuelles. Ces techniques, bien que rudimentaires, ont posé les fondations de la science moderne de la sécurité de l'information. Elles se classent en deux familles distinctes :
+        Avant l'ère numérique, la cryptographie s'appuyait sur des méthodes manuelles. Ces techniques, bien que rudimentaires, ont posé les fondations de la <strong>cryptographie moderne</strong>. Elles se classent en deux familles distinctes :
     </p>
     <h3>La substitution</h3>
     <p>
@@ -9,16 +9,22 @@
     </p>
     <h3>La transposition</h3>
     <p>
-        À l'inverse de la substitution, la transposition ne modifie pas les lettres elles-mêmes, mais change leur ordre au sein du message. Les lettres sont déplacées selon une règle ou une grille prédéfinie, créant ainsi un message chiffré qui conserve les mêmes lettres que l'original, mais dans un ordre inintelligible. Par exemple, un message comme <code>HELLO</code> pourrait être réordonné en <code>HLELO</code>.
+        À l'inverse de la substitution, la transposition ne modifie pas les lettres elles-mêmes, mais change leur ordre au sein du message. Les lettres sont déplacées selon une règle ou une grille prédéfinie, créant ainsi un message chiffré qui conserve les mêmes lettres que l'original, mais dans un ordre inintelligible. Par exemple, avec une simple transposition en "clôture" sur 2 niveaux, le message <code>BONJOUR</code> est écrit en zigzag :
+    </p>
+<pre><code>B   N   O   R
+  O   J   U
+</code></pre>
+    <p>
+        Puis lu ligne par ligne pour donner le chiffré : <code>BNOR OJU</code>.
     </p>
     <p>
-        Ces méthodes sont désignées sous le terme de "chiffres classiques" car elles ont été développées et utilisées bien avant l'avènement des algorithmes informatiques. Elles sont aujourd'hui considérées comme obsolètes en raison de leur vulnérabilité, mais leur étude reste essentielle pour comprendre l'évolution et les principes fondamentaux de la cryptographie moderne.
+        Ces méthodes sont désignées sous le terme de "chiffres classiques" car <strong>ils</strong> ont été développés et utilisés bien avant l'avènement des algorithmes informatiques. Elles sont aujourd'hui considérées comme obsolètes en raison de leur vulnérabilité, mais leur étude reste essentielle pour comprendre l'évolution et les principes fondamentaux de la cryptographie moderne.
     </p>
 </section>
 <section class="content-block">
-    <h2><i class="fas fa-exchange-alt" aria-hidden="true"></i> Le Code César</h2>
+    <h2><i class="fas fa-exchange-alt" aria-hidden="true"></i> Le Chiffre de César</h2>
     <p>
-        Le code César est l'une des méthodes de chiffrement les plus anciennes et les plus simples, attribuée à Jules César lui-même. C'est un chiffrement par substitution mono-alphabétique où chaque lettre du message est remplacée par une autre, située un nombre fixe de positions plus loin dans l'alphabet.
+        Le chiffre de César est l'une des méthodes de chiffrement les plus anciennes et les plus simples, attribuée à Jules César lui-même. C'est un chiffrement par substitution mono-alphabétique où chaque lettre du message est remplacée par une autre, située un nombre fixe de positions plus loin dans l'alphabet.
     </p>
     <h3>Principe : le décalage fixe</h3>
     <p>
@@ -43,7 +49,7 @@ Texte chiffré: DWWDTXH</code></pre>
     </p>
     <h3>Principe : la clé variable</h3>
     <p>
-        Contrairement au Code César qui utilise une clé numérique unique, Vigenère utilise une clé qui est un mot ou une phrase (par exemple, <code>SECRET</code>). Chaque lettre du message est chiffrée en utilisant une lettre correspondante de la clé. Si la clé est plus courte que le message, elle est répétée en boucle. La substitution varie donc d'une lettre à l'autre, ce qui rend l'analyse de fréquence classique inopérante au premier abord.
+        Contrairement au Chiffre de César qui utilise une clé numérique unique, Vigenère utilise une clé qui est un mot ou une phrase (par exemple, <code>SECRET</code>). Chaque lettre du message est chiffrée en utilisant une lettre correspondante de la clé. Si la clé est plus courte que le message, elle est répétée en boucle. La substitution varie donc d'une lettre à l'autre, ce qui rend l'analyse de fréquence classique inopérante au premier abord.
     </p>
     <h3>Exemple de chiffrement</h3>
     <ul>
@@ -54,17 +60,17 @@ Texte chiffré: DWWDTXH</code></pre>
         Pour chiffrer, on répète la clé sous le message :
     </p>
 <pre><code>Message : B O N J O U R
-Clé     : S E C R E T S</code></pre>
+Clé     : S E C R E T S</code></pre>
     <p>
         On effectue ensuite une substitution pour chaque lettre, en utilisant le décalage correspondant à la lettre de la clé ('A' = décalage 0, 'B' = 1, ...).
     </p>
     <p>
         Voici le calcul pour la première lettre : B (1) + S (18) = 19, ce qui correspond à la lettre T. En répétant ce processus, on obtient :
     </p>
-<pre><code>Message :  B(1)  O(14)  N(13)  J(9)  O(14)  U(20)  R(17)
-Clé     : +S(18) +E(4)  +C(2)  +R(17) +E(4)  +T(19) +S(18)
-          ----------------------------------------------
-Chiffré :  T(19)  S(18)  P(15)  A(0)   S(18)  N(13)  J(9)</code></pre>
+<pre><code>Message :  B(1)  O(14)  N(13)  J(9)  O(14)  U(20)  R(17)
+Clé     : +S(18) +E(4)  +C(2)  +R(17) +E(4)  +T(19) +S(18)
+          ----------------------------------------------
+Chiffré :  T(19)  S(18)  P(15)  A(0)   S(18)  N(13)  J(9)</code></pre>
     <p>
         Le message chiffré devient ainsi <code>TSPASNJ</code>.
     </p>
@@ -138,7 +144,7 @@ K, W, X, Y, Z : < 1%</code></pre>
 <section class="content-block">
     <h2><i class="fas fa-flag-checkered" aria-hidden="true"></i> Conclusion</h2>
     <p>
-        L'étude de la cryptographie classique, bien qu'obsolète en pratique, offre un aperçu fondamental des défis et des solutions historiques de la sécurité de l'information. Le passage des méthodes manuelles simples à des systèmes mécaniques complexes a ouvert la voie aux algorithmes mathématiques robustes qui protègent aujourd'hui nos données. C'est le cheminement de la simple substitution de lettres à l'utilisation de fonctions mathématiques sophistiquées, qui forme la fondation de notre monde numérique sécurisé.
+        L'étude de la cryptographie classique, bien qu'obsolète en pratique, offre un aperçu fondamental des défis et des solutions historiques de la sécurité de l'information. Le passage des méthodes manuelles simples à des systèmes mécaniques complexes a ouvert la voie aux algorithmes mathématiques robustes qui protègent aujourd'hui nos données. Ce cheminement, de la simple substitution de lettres à l'utilisation de fonctions mathématiques sophistiquées, forme la fondation de notre monde numérique sécurisé.
     </p>
     <p>
         Leçon créée par Hugo Bruchon.

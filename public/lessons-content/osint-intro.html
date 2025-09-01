@@ -1,87 +1,91 @@
 <section class="content-block">
-    <h2><i class="fas fa-info-circle" aria-hidden="true"></i>Les Fondamentaux de l'OSINT</h2>
+    <h2><i class="fas fa-info-circle" aria-hidden="true"></i> Les Fondamentaux de l'OSINT</h2>
     <p>
         L'OSINT, ou Open Source Intelligence, est un terme qui peut sembler complexe, mais son concept est très simple :
     </p>
     <ul>
-        <li><strong>Définition :</strong> En français, on parle de Renseignement d'Origine Source Ouverte (ROSO). Il s'agit de toute information qui peut être légalement et publiquement collectée à partir de sources libres d'accès.</li>
-        <li><strong>L'information "ouverte" :</strong> Cela inclut une quantité massive de données : les sites web, les articles de presse, les publications sur les réseaux sociaux, les registres publics, les forums, etc. Si vous n'avez pas besoin de mot de passe ou de pirater un système pour y accéder, c'est une source ouverte.</li>
-        <li><strong>Différence entre information et renseignement :</strong> L'OSINT est le processus qui transforme l'information brute en renseignement exploitable.</li>
+        <li><strong>Définition :</strong> En français, on parle de Renseignement d'Origine Source Ouverte (<strong>ROSO</strong>). Il s'agit de <strong>la discipline de collecte et d'analyse</strong> d'informations issues de sources publiques et librement accessibles pour produire du renseignement.</li>
+        <li><strong>L'information "ouverte" :</strong> Cela inclut une quantité massive de données : sites web, articles de presse, publications sur les réseaux sociaux, registres publics, forums, etc. Si vous n'avez pas besoin de mot de passe ou de pirater un système pour y accéder, c'est une source ouverte.</li>
+        <li><strong>Différence entre information et renseignement :</strong> L'OSINT est le processus qui transforme l'<strong>information brute</strong> (une donnée isolée) en <strong>renseignement exploitable</strong> (une donnée contextualisée et vérifiée répondant à un besoin).</li>
     </ul>
 <pre><code>[Information brute] Une photo est postée sur Instagram.
 + [Analyse] La photo montre un bâtiment. Les métadonnées indiquent une date. La légende mentionne un "nouveau projet".
 = [Renseignement] L'entreprise X a commencé la construction de son nouveau siège le 15 août à Lyon.</code></pre>
-    <p>Ses usages sont vastes. Les journalistes l'utilisent pour mener des enquêtes, les recruteurs vérifient les antécédents des candidats et les entreprises analysent leurs concurrents. En cybersécurité, c'est la première étape (la reconnaissance) pour comprendre les vulnérabilités d'une cible.</p>
+    <p>Ses usages sont vastes. Les journalistes l'utilisent pour mener des enquêtes, les recruteurs vérifient les antécédents des candidats et les entreprises analysent leurs concurrents. En cybersécurité, c'est la première étape (la <strong>reconnaissance</strong>) pour comprendre la surface d'attaque d'une cible.</p>
 </section>
+
 <section class="content-block">
-    <h2><i class="fas fa-gavel" aria-hidden="true"></i>Le cadre légal et éthique</h2>
-    <p>Ce point est fondamental. La pratique de l'OSINT impose une responsabilité et une rigueur exemplaires.</p>
+    <h2><i class="fas fa-gavel" aria-hidden="true"></i> Le cadre légal et éthique</h2>
+    <p>Ce point est <strong>fondamental et non négociable</strong>. La pratique de l'OSINT impose une responsabilité et une rigueur exemplaires.</p>
     <h3>Ce qui est permis et ce qui ne l'est pas</h3>
-    <p>La règle d'or est de ne jamais franchir la ligne de l'illégalité. Consulter un profil public est légal, mais essayer de deviner son mot de passe ou de le tromper pour obtenir un accès (<code>phishing</code>) est illégal. En Europe, le <code>RGPD</code> (Règlement Général sur la Protection des Données) encadre strictement la collecte et le traitement des données personnelles.</p>
+    <p>La règle d'or est de ne jamais franchir la ligne de l'illégalité. Consulter un profil public est légal ; essayer de deviner son mot de passe ou de le tromper pour obtenir un accès (<code>phishing</code>) est <strong>strictement illégal</strong>. En Europe, le <code>RGPD</code> (Règlement Général sur la Protection des Données) encadre la collecte et le traitement des données personnelles, même si elles sont publiquement accessibles.</p>
     <h3>Considérations éthiques</h3>
     <ul>
-        <li><strong>Respect de la vie privée :</strong> Ce n'est pas parce que vous <em>pouvez</em> trouver une information que vous <em>devez</em> le faire ou la partager.</li>
-        <li><strong>Utilisation responsable :</strong> Les informations collectées ne doivent jamais être utilisées pour le harcèlement, l'intimidation ou la désinformation.</li>
-        <li><strong>Fixez-vous des limites :</strong> Avant de commencer une enquête, définissez un objectif clair et arrêtez-vous lorsque vous l'avez atteint.</li>
+        <li><strong>Respect de la vie privée :</strong> Ce n'est pas parce que vous <em>pouvez</em> trouver une information que vous <em>devez</em> le faire ou la partager. Évaluez toujours l'impact de vos recherches sur la vie des personnes.</li>
+        <li><strong>Utilisation responsable :</strong> Les informations collectées ne doivent jamais être utilisées pour le harcèlement, l'intimidation, la désinformation ou toute autre action malveillante.</li>
+        <li><strong>Fixez-vous des limites :</strong> Avant de commencer une enquête, définissez un objectif clair et arrêtez-vous lorsque vous l'avez atteint pour éviter la collecte excessive de données ("data hoarding").</li>
     </ul>
 </section>
+
 <section class="content-block">
-    <h2><i class="fas fa-sync" aria-hidden="true"></i>Le Cycle du Renseignement</h2>
-    <p>Toute enquête OSINT professionnelle suit un processus structuré pour être efficace.</p>
+    <h2><i class="fas fa-sync" aria-hidden="true"></i> Le Cycle du Renseignement</h2>
+    <p>Toute enquête OSINT professionnelle suit un processus structuré, le cycle du renseignement, pour garantir son efficacité et sa rigueur.</p>
     <ul>
-        <li><strong>Définition des besoins :</strong> Quelle est la question exacte à laquelle je dois répondre ? (ex: "Quelles sont les technologies utilisées par notre concurrent ?").</li>
-        <li><strong>Collecte :</strong> C'est la phase de recherche active où l'on rassemble toutes les données brutes.</li>
-        <li><strong>Traitement :</strong> Cette étape consiste à organiser les données collectées : les trier, les filtrer, etc.</li>
-        <li><strong>Analyse :</strong> C'est le cœur du processus. On examine les données pour y trouver des liens et des modèles. C'est ici que l'information devient renseignement.</li>
-        <li><strong>Diffusion :</strong> Le renseignement est mis en forme dans un rapport clair et concis.</li>
+        <li><strong>1. Définition des besoins :</strong> Quelle est la question exacte à laquelle je dois répondre ? (ex: "Quelles sont les technologies web utilisées par notre concurrent ?"). Un objectif clair évite de se disperser.</li>
+        <li><strong>2. Collecte :</strong> C'est la phase de recherche active où l'on rassemble toutes les données brutes à partir de multiples sources.</li>
+        <li><strong>3. Traitement :</strong> Cette étape consiste à organiser les données collectées : les trier, les filtrer, les dédoublonner et les formater pour les rendre exploitables.</li>
+        <li><strong>4. Analyse :</strong> C'est le cœur du processus. On examine les données traitées pour y trouver des liens, des modèles et des incohérences. C'est ici que l'information devient renseignement.</li>
+        <li><strong>5. Diffusion :</strong> Le renseignement est mis en forme dans un rapport clair, concis et adapté à son destinataire.</li>
     </ul>
 </section>
+
 <section class="content-block">
-    <h2><i class="fas fa-sitemap" aria-hidden="true"></i>Les Grandes Disciplines de l'OSINT</h2>
+    <h2><i class="fas fa-sitemap" aria-hidden="true"></i> Les Grandes Disciplines de l'OSINT</h2>
     <p>L'OSINT n'est pas une seule technique, mais un ensemble de disciplines spécialisées.</p>
-    <h3>SOCMINT (social media intelligence)</h3>
-    <p>Le SOCMINT est spécialisé dans l'exploitation des informations issues des réseaux sociaux (Facebook, X/Twitter, Instagram, LinkedIn, etc.). La recherche avancée des plateformes est très puissante.</p>
+    <h3>SOCMINT (Social Media Intelligence)</h3>
+    <p>Le SOCMINT est spécialisé dans l'exploitation des informations issues des réseaux sociaux (Facebook, X/Twitter, Instagram, LinkedIn, etc.). La recherche avancée native des plateformes est souvent sous-estimée mais très puissante.</p>
 <pre><code># Exemple de recherche avancée sur X (Twitter)
 # Trouve les tweets du compte "LeMonde" parlant de "cybersécurité"
 # envoyés après le 1er janvier 2024.
 
 from:LeMonde "cybersécurité" since:2024-01-01</code></pre>
     <p>
-        Des outils comme <code>WhatsMyName.app</code> ou <code>Sherlock</code> permettent d'entrer un nom d'utilisateur et de vérifier sur des centaines de sites si un compte avec ce pseudo existe.
+        Des outils comme <code>WhatsMyName.app</code> ou <code>Sherlock</code> permettent de trouver des profils à partir d'un pseudonyme sur des centaines de sites simultanément (<strong>recherche de nom d'utilisateur</strong>).
     </p>
-    <h3>IMINT (image intelligence)</h3>
-    <p>L'IMINT se concentre sur l'analyse d'images et de vidéos. La recherche d'image inversée (avec des outils comme <code>Google Images</code>, <code>TinEye</code>, ou <code>Yandex</code>) permet de trouver l'origine et le contexte d'une photo. L'analyse des métadonnées (<code>EXIF</code>) peut révéler des informations techniques cruciales.</p>
+    <h3>IMINT (Image Intelligence)</h3>
+    <p>L'IMINT se concentre sur l'analyse d'images et de vidéos. La <strong>recherche d'image inversée</strong> (avec <code>Google Images</code>, <code>TinEye</code>, ou <code>Yandex</code>) permet de trouver l'origine et le contexte d'une photo. L'analyse des <strong>métadonnées</strong> (données <code>EXIF</code>) peut révéler des informations techniques cruciales.</p>
 <pre><code># Extrait de données EXIF d'une photo
-Make: Apple
-Model: iPhone XR
-Date/Time Original : 26/08/2025 11:00:15
-GPS Latitude : 44 deg 54' 58.819" N
-GPS Longitude : 4 deg 54' 46.82" E</code></pre>
-    <p>Pour visualiser ces données, on peut utiliser des outils en ligne comme "<code>EXIF Viewer</code>".</p>
-    <h3>GEOINT (geospatial intelligence)</h3>
-    <p>Le GEOINT consiste à exploiter des données géographiques, souvent en complément de l'IMINT. Les outils principaux sont <code>Google Maps</code> (avec Street View), <code>Géoportail</code> (pour des vues aériennes haute résolution en France) ou <code>Sentinel Hub</code> (pour des images satellites techniques).</p>
-    <h3>SIGINT (signals intelligence)</h3>
-    <p>Dans le contexte de l'OSINT, il s'agit d'analyser les "signaux" techniques publiquement accessibles, comme les informations sur un nom de domaine (<code>WHOIS</code>) ou les autres sites hébergés sur un même serveur (<code>Reverse IP</code>).</p>
+Make                 : Apple
+Model                : iPhone XR
+Date/Time Original   : 26/08/2024 11:00:15
+GPS Latitude         : 44 deg 54' 58.819" N
+GPS Longitude        : 4 deg 54' 46.82" E</code></pre>
+    <p>Pour visualiser ces données, on peut utiliser des outils en ligne comme "<code>EXIF Viewer</code>" ou des logiciels spécialisés.</p>
+    <h3>GEOINT (Geospatial Intelligence)</h3>
+    <p>Le GEOINT consiste à exploiter des données géographiques, souvent en complément de l'IMINT pour valider la localisation d'une photo. Les outils principaux sont <code>Google Maps</code> (avec Street View), <code>Géoportail</code> ou <code>Sentinel Hub</code>.</p>
+    <h3>SIGINT (Signals Intelligence)</h3>
+    <p>Dans le contexte de l'OSINT, il s'agit d'analyser les "signaux" techniques publiquement accessibles. <strong>Cela diffère du SIGINT militaire qui intercepte des communications privées.</strong> Ici, on analyse des informations publiques comme les enregistrements d'un nom de domaine (<code>WHOIS</code>) ou les autres sites hébergés sur un même serveur (<code>Reverse IP</code>).</p>
 <pre><code># Résultat simplifié d'une recherche WHOIS
-Domain Name: exemple.fr
-Registrar: OVH SAS
-Creation Date: 2005-07-20
+Domain Name      : exemple.fr
+Registrar        : OVH SAS
+Creation Date    : 2005-07-20
 Registrant Country: FR</code></pre>
-    <p>Un outil comme <code>Shodan.io</code> fonctionne comme un moteur de recherche pour les objets connectés à Internet (serveurs, webcams, etc.).</p>
-    <h3>FININT (financial intelligence)</h3>
+    <p>Un outil comme <code>Shodan.io</code> fonctionne comme un moteur de recherche pour les objets connectés à Internet (serveurs, webcams, systèmes industriels, etc.).</p>
+    <h3>FININT (Financial Intelligence)</h3>
     <p>Le FININT open-source se concentre sur la collecte d'informations financières à partir de sources publiques, comme les registres des entreprises (<code>Infogreffe</code> en France), les bases de données boursières (<code>Yahoo Finance</code>) ou les explorateurs de blockchain (<code>Etherscan</code> pour Ethereum).</p>
 </section>
+
 <section class="content-block">
-    <h2 class="flex items-center"><i class="fas fa-flag-checkered" aria-hidden="true"></i>Conclusion</h2>
+    <h2 class="flex items-center"><i class="fas fa-flag-checkered" aria-hidden="true"></i> Conclusion</h2>
     <h3>Récapitulatif des points clés :</h3>
     <ul>
-        <li>L'OSINT est une discipline puissante qui consiste à transformer l'information publique en renseignement.</li>
-        <li>Le respect du cadre légal et éthique est non négociable.</li>
-        <li>La curiosité, la patience et la méthode sont vos meilleurs atouts.</li>
+        <li>L'OSINT est une discipline puissante et légale qui transforme l'information publique en renseignement exploitable.</li>
+        <li>Le respect scrupuleux du cadre légal (RGPD) et éthique (vie privée) est non négociable.</li>
+        <li>La curiosité, la patience et une méthode structurée (le cycle du renseignement) sont vos meilleurs atouts.</li>
     </ul>
     <h3>Pistes pour aller plus loin :</h3>
-    <p>Pour approfondir, explorez les sites de Bellingcat et OSINT Curious. Concernant les outils, le site OSINT Framework est une ressource incontournable : il s'agit d'une carte mentale interactive qui référence des centaines d'outils OSINT classés par catégorie.</p>
-	<p>
+    <p>Pour approfondir, explorez les enquêtes publiées par <strong>Bellingcat</strong> et les articles de <strong>OSINT Curious</strong>. Concernant les outils, le site <strong>OSINT Framework</strong> est une ressource incontournable : il s'agit d'une carte mentale interactive qui référence des centaines d'outils OSINT classés par catégorie.</p>
+    <p>
         Leçon créée par Hugo Bruchon.
     </p>
 </section>

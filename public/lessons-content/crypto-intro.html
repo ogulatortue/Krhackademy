@@ -1,7 +1,7 @@
 <section class="content-block">
     <h2><i class="fas fa-info-circle" aria-hidden="true"></i>Généralités sur la Cryptographie</h2>
     <p>
-        La cryptographie est la science qui vise à sécuriser les communications et les données en les rendant inintelligibles à des personnes non autorisés. Elle fournit les mécanismes qui soutiennent la confiance dans le monde numérique, en poursuivant quatre objectifs essentiels :
+        La cryptographie est la science qui vise à sécuriser les communications et les données en les rendant inintelligibles à des personnes non <strong>autorisées</strong>. Elle fournit les mécanismes qui soutiennent la confiance dans le monde numérique, en poursuivant quatre objectifs essentiels :
     </p>
     <ul>
         <li><strong>Confidentialité</strong> : Assurer que seule la personne destinataire puisse lire le contenu d'un message. C'est ce qui protège vos emails ou vos conversations privées, même si les données sont interceptées.</li>
@@ -77,16 +77,16 @@
 # ...provoque une sortie totalement différente.
 
 Donnée 1: "Bonjour le monde"
-Hash 1  : f47394518023e04a0e461e13303666b6e5e8c115757279313b68e950892c9049
+Hash 1  : f47394518023e04a0e461e13303666b6e5e8c115757279313b68e950892c9049
 
 Donnée 2: "bonjour le monde"
-Hash 2  : 0725458c037835f8f67645bea651e45722df43c2c1c1f2b545f201046e757f12</code></pre>
+Hash 2  : 0725458c037835f8f67645bea651e45722df43c2c1c1f2b545f201046e757f12</code></pre>
     <h3>Le cas d'usage parfait</h3>
     <p>
         Le hachage est essentiel pour stocker les mots de passe en sécurité. Un site web ne conserve jamais votre mot de passe en clair, mais seulement son empreinte. Lorsque vous vous connectez, le site hache le mot de passe que vous saisissez et compare le résultat à l'empreinte enregistrée.
     </p>
     <p>
-        Pour une sécurité maximale, on ajoute un "sel" (<code>salt</code>) : une chaîne de caractères aléatoire et unique à chaque utilisateur, qui est combinée au mot de passe avant le hachage. Cela empêche les attaques par <code>rainbow tables</code> (tables de hashs pré-calculés) et garantit que même deux utilisateurs avec le même mot de passe auront des empreintes stockées totalement différentes.
+        Pour une sécurité maximale, on ajoute un "sel" (<code>salt</code>) : une chaîne de caractères aléatoire et unique à chaque utilisateur, qui est combinée au mot de passe avant le hachage. Cela empêche les attaques par <code>rainbow tables</code> (tables de hashs pré-calculés) et garantit que les mots de passe identiques de deux utilisateurs différents produiront des empreintes stockées distinctes.
     </p>
     <h3>Exemples d'algorithmes</h3>
     <ul>
@@ -97,7 +97,7 @@ Hash 2  : 0725458c037835f8f67645bea651e45722df43c2c1c1f2b545f201046e757f12</code
 <section class="content-block">
     <h2><i class="fas fa-signature" aria-hidden="true"></i>La Signature Numérique</h2>
     <p>
-        La signature numérique est une application directe du chiffrement asymétrique qui permet de garantir l'authenticité, l'intégrité et la non-répudiation d'un document. Le processus est l'inverse d'un chiffrement confidentiel : l'expéditeur utilise sa clé privée pour signer, et le monde entier peut vérifier avec sa clé publique.
+        La signature numérique est une application directe du chiffrement asymétrique qui permet de garantir l'authenticité, l'intégrité et la non-répudiation d'un document. Le processus est l'inverse d'un chiffrement confidentiel : l'expéditeur utilise sa clé privée pour signer, et n'importe qui peut vérifier avec la clé publique correspondante.
     </p>
     <p>
         Plutôt que de signer le document entier (ce qui serait trop lent), on signe son empreinte (hash).
@@ -107,7 +107,7 @@ Hash 2  : 0725458c037835f8f67645bea651e45722df43c2c1c1f2b545f201046e757f12</code
         <li>Il chiffre ensuite ce hash avec sa propre clé privée. Le résultat de cette opération est la signature numérique.</li>
         <li>Le destinataire reçoit le document original, la signature, et la clé publique de l'expéditeur.</li>
         <li>Il déchiffre la signature avec la clé publique pour retrouver le hash original. En parallèle, il calcule lui-même le hash du document reçu.</li>
-        <li>Si les deux hashs sont identiques, le destinataire a une double certitude : que le message provient bien de l'expéditeur (seul détenteur de la clé privée) et qu'il n'a pas été altéré en chemin.</li>
+        <li>Si les deux hashs correspondent, le destinataire a la double certitude que le message provient bien de l'expéditeur (<strong>authenticité</strong>) et qu'il n'a pas été altéré (<strong>intégrité</strong>).</li>
     </ul>
 </section>
 <section class="content-block">

@@ -46,25 +46,25 @@
     <h3>Empreinte numérique (Hash)</h3>
     <p>Pour certifier que la copie est authentique et identique à l'original, on calcule son « empreinte numérique » (<code>hash</code>). Cette signature unique, souvent générée par des algorithmes comme <code>SHA-256</code>, garantit que pas un seul bit n'a été modifié durant le processus de copie.</p>
 <pre><code># Exemple d'une empreinte SHA-256 pour une image disque
-a8479a099233b2ae3b213b48995a51a83f88321cf7282855a4f4510084353426  copie_integrale.img</code></pre>
+a8479a099233b2ae3b213b48995a51a83f88321cf7282855a4f4510084353426  copie_integrale.img</code></pre>
     <h3>Traçabilité et chaîne de conservation</h3>
     <p>Chaque manipulation de la preuve, de sa collecte à son analyse, est rigoureusement documentée dans une « chaîne de conservation ». Cette traçabilité est essentielle pour garantir la validité juridique de la procédure.</p>
     <p>
-        Lors d'une intervention, notamment en analyse « à chaud », l'expert suit un principe supplémentaire : l'ordre de volatilité. Il doit collecter en priorité les informations les plus éphémères avant qu'elles ne disparaissent. La collecte se fait donc généralement des données les plus volatiles (mémoire vive, connexions réseau) vers les moins volatiles (données sur disque dur).
+        Lors d'une intervention, notamment en analyse « à chaud », l'expert suit un principe <strong>critique</strong> : l'ordre de volatilité. Il doit collecter en priorité les informations les plus éphémères avant qu'elles ne disparaissent. La collecte se fait donc généralement des données les plus volatiles (mémoire vive, connexions réseau) vers les moins volatiles (données sur disque dur).
     </p>
 </section>
 <section class="content-block">
     <h2><i class="fas fa-search" aria-hidden="true"></i>L'analyse</h2>
     <p>
-        Une fois les preuves collectées et leur intégrité assurée, l'analyse peut commencer. Elle consiste à examiner les données pour y déceler des artefacts numériques, c'est-à-dire des traces laissées par l'activité d'un système ou d'un utilisateur. Une part importante de ces artefacts sont des métadonnées.
+        Une fois les preuves collectées et leur intégrité assurée, l'analyse peut commencer. Elle consiste à examiner les données pour y déceler des artefacts numériques, c'est-à-dire des traces laissées par l'activité d'un système ou d'un utilisateur. Une part importante de ces artefacts <strong>est constituée de</strong> métadonnées.
     </p>
     <p>
         Cruciales pour l'enquête, les métadonnées sont des informations descriptives associées aux fichiers qui permettent de contextualiser une action. Par exemple, l'analyse des métadonnées <code>EXIF</code> d'une photo peut révéler des informations précieuses :
     </p>
-<pre><code>Nom du fichier      : IMG_2025.JPG
-Date de création    : 26/08/2025 10:30:00
-Modèle d'appareil   : Samsung S20
-Coordonnées GPS     : 44°54'58.819"N 4°54'46.82"E</code></pre>
+<pre><code>Nom du fichier      : IMG_2025.JPG
+Date de création    : 26/08/2025 10:30:00
+Modèle d'appareil   : Samsung S20
+Coordonnées GPS     : 44°54'58.819"N 4°54'46.82"E</code></pre>
     <p>
         On distingue trois grandes familles de métadonnées :
     </p>
@@ -99,7 +99,7 @@ Coordonnées GPS     : 44°54'58.819"N 4°54'46.82"E</code></pre>
         <li><strong>La forensique sur poste de travail et serveur :</strong> L'analyse "classique" d'ordinateurs.</li>
         <li><strong>La forensique mobile :</strong> L'investigation sur les smartphones et les tablettes.</li>
         <li><strong>La forensique réseau :</strong> L'analyse du trafic et des communications pour retracer les actions d'un attaquant.</li>
-        <li><strong>La forensique du cloud :</strong> L'enquête sur des données hébergées chez des fournisseurs de services en ligne.</li>
+        <li><strong>La forensique du cloud :</strong> L'enquête sur des données hébergées <strong>par</strong> des fournisseurs de services en ligne.</li>
     </ul>
 </section>
 <section class="content-block">

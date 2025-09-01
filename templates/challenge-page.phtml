@@ -1,5 +1,5 @@
 <?php
-$pageTitle = htmlspecialchars($challenge['title']) . ' - Kr[HACK]ademy';
+$pageTitle = html_entity_decode($challenge['title']) . ' - Kr[HACK]ademy';
 $specific_css = ['/css/content-page.css'];
 ?>
 <!DOCTYPE html>

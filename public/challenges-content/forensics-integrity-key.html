@@ -1,43 +1,43 @@
 <section class="content-block">
-    <h2><i class="fas fa-user-secret"></i>Le cas de la clé USB d'Hugo</h2>
+    <h2><i class="fas fa-book"></i>Contexte de l'Investigation</h2>
     <p>
-        Un de nos employés, "Hugo", est suspecté d'avoir copié des documents confidentiels sur sa clé USB personnelle juste avant de démissionner. Nous l'avons confronté, et il nous a remis une clé USB en prétendant qu'elle ne contient que ses photos de vacances et qu'elle n'a pas été modifiée depuis des mois.
+        Le départ récent de l'ingénieur R&D, Hugo, a déclenché une procédure de sécurité interne. Cette procédure est d'autant plus critique que l'ingénieur avait accès à des brevets et des données de recherche confidentielles sur des projets à venir. Des activités réseau inhabituelles, détectées sur son poste de travail juste avant l'annonce de sa démission, laissent suspecter une tentative d'exfiltration de données.
     </p>
     <p>
-        Heureusement, notre service informatique avait réalisé une copie parfaite (une image disque) de cette même clé USB il y a 6 mois lors d'un inventaire de routine. Nous avons donc l'empreinte numérique (le hash) de l'image disque originale.
+        Lors de son entretien de départ, Hugo a été interrogé sur l'utilisation de supports de stockage personnels. Il a remis une clé USB en affirmant qu'elle ne contenait que des fichiers personnels datant de plusieurs mois. En tant qu'analyste forensique, votre mission est de vérifier la véracité de cette affirmation. Heureusement, une image disque de référence de ce même support avait été créée il y a six mois lors d'un audit de sécurité. L'empreinte SHA-256 de cette image de référence constitue notre scellé numérique.
     </p>
 </section>
 <section class="content-block">
-    <h2><i class="fas fa-download"></i>Pièces à conviction</h2>
+    <h2><i class="fas fa-download"></i>Artefacts Numériques Fournis</h2>
     <p>
-        Le service informatique vous fournit l'image disque de la clé que Hugo vient de rendre ainsi que le hash de référence de l'image originale.
+        Les éléments suivants sont mis à votre disposition pour l'analyse :
     </p>
     <div class="challenge-files">
         <div class="file-item">
             <div class="file-info">
                 <h4>cle_usb_hugo.vhd</h4>
-                <p>Image disque de la clé USB remise par Hugo.</p>
+                <p>Image disque du support de stockage amovible à expertiser.</p>
             </div>
             <a href="/ressources-challenges/forensics-integrity-key/cle_usb_hugo.vhd" download class="btn-glass"><i class="fas fa-download"></i> Télécharger</a>
         </div>
         <div class="file-item">
             <div class="file-info">
                 <h4>integrite.txt</h4>
-                <p>Fichier contenant le hash SHA-256 de l'image originale.</p>
+                <p>Fichier contenant la valeur de hachage SHA-256 de l'image disque de référence.</p>
             </div>
             <a href="/ressources-challenges/forensics-integrity-key/integrite.txt" download class="btn-glass"><i class="fas fa-download"></i> Télécharger</a>
         </div>
     </div>
 </section>
 <section class="content-block">
-    <h2><i class="fas fa-bullseye"></i>Votre objectif</h2>
-    <p>Votre mission consiste à déterminer si la clé d'Hugo a été altérée. Voici les étapes à suivre :</p>
+    <h2><i class="fas fa-bullseye"></i>Objectif et Procédure</h2>
+    <p>Votre mission est de réaliser une analyse comparative afin de déterminer si l'intégrité de l'image disque a été compromise. La procédure à suivre est la suivante :</p>
     <ul>
-        <li>Calculez l'empreinte numérique (hash) en utilisant l'algorithme <code>SHA-256</code> pour le fichier <code>cle_usb_hugo.vhd</code>.</li>
-        <li>Comparez le hash que vous venez de calculer avec celui contenu dans le fichier <code>integrite.txt</code>.</li>
-        <li>Sur la base de cette comparaison, concluez si Hugo a dit la vérité ou non.</li>
+        <li>Calculez l'empreinte numérique de l'artefact <code>cle_usb_hugo.vhd</code> en utilisant l'algorithme de hachage cryptographique <code>SHA-256</code>.</li>
+        <li>Comparez la valeur de hachage obtenue avec celle consignée dans le fichier de référence <code>integrite.txt</code>.</li>
+        <li>Établissez une conclusion formelle quant à l'altération ou non du support de stockage depuis la date de création de l'image de référence.</li>
     </ul>
      <p>
-        <i class="fas fa-lightbulb"></i> <b>Astuce :</b> Vous pouvez utiliser des outils intégrés à votre système (PowerShell sur Windows, sha256sum sur Linux) ou des logiciels graphiques comme 7-Zip.
+        <strong>Flag :</strong> Pour valider ce challenge, le flag à soumettre est l'empreinte SHA-256 que vous avez calculée pour le fichier cle_usb_hugo.vhd. Le format attendu est la chaîne de 64 caractères hexadécimaux.
     </p>
 </section>

@@ -1,5 +1,5 @@
 <section class="content-block">
-    <h2><i class="fas fa-info-circle" aria-hidden="true"></i>Fondamentaux et histoire</h2>
+    <h2><i class="fas fa-info-circle" aria-hidden="true"></i> Fondamentaux et histoire</h2>
     <p>
         Imaginez que vous deviez envoyer un message vital à un allié, mais que tous vos courriers sont interceptés. Comment faire ? Vous pourriez le chiffrer, mais la présence d'un message codé attirerait la suspicion. Et si vous pouviez faire en sorte que l'ennemi ne sache même pas qu'un message a été envoyé ? C'est là l'essence de la stéganographie : l'art de la dissimulation.
     </p>
@@ -27,9 +27,9 @@
 </section>
 
 <section class="content-block">
-    <h2><i class="fas fa-desktop" aria-hidden="true"></i>La stéganographie numérique</h2>
+    <h2><i class="fas fa-desktop" aria-hidden="true"></i> La stéganographie numérique</h2>
     <p>
-        Avec l'avènement du numérique, le principe reste le même : cacher des données (le message) dans d'autres données (le "conteneur" numérique). Un bon conteneur est un fichier qui contient beaucoup d'informations redondantes ou imperceptibles par les sens humains.
+        Avec l'avènement du numérique, le principe reste le même : cacher des données (le message) dans d'autres données (le "conteneur" numérique). Un bon conteneur est un fichier qui contient beaucoup d'informations redondantes ou imperceptibles pour les sens humains.
     </p>
 
     <h3>Les "conteneurs" numériques les plus courants</h3>
@@ -55,20 +55,20 @@
     <p>En répétant cette opération sur des milliers de pixels, on peut cacher un texte entier. D'autres techniques plus robustes existent, comme le masquage dans les zones de "bruit" visuel de l'image ou la modification du domaine fréquentiel (<code>DCT</code> - Discrete Cosine Transform) lors de la compression JPEG.</p>
 
     <h3>Stéganographie audio et vidéo</h3>
-    <p>Pour l'audio, des méthodes fines basées sur la psychoacoustique sont utilisées, comme l'étalement de spectre (Spread Spectrum) où le message secret est littéralement "noyé" dans le signal audio principal.</p>
+    <p>Pour l'audio, des méthodes subtiles basées sur la psychoacoustique sont utilisées, comme l'étalement de spectre (Spread Spectrum) où le message secret est littéralement "noyé" dans le signal audio principal.</p>
 <pre><code># Analogie du "Spread Spectrum"
 
 Signal Audio Original (fort) : BRUIT D'UN STADE EN PLEIN MATCH
-Signal Secret (faible)      : ...un simple murmure...
+Signal Secret (faible)       : ...un simple murmure...
 ------------------------------------------------------------------
-Signal Combiné              : BRUIT D'UN STADE (le murmure est caché dedans)</code></pre>
+Signal Combiné               : BRUIT D'UN STADE (le murmure est caché dedans)</code></pre>
 </section>
 
 <section class="content-block">
-    <h2><i class="fas fa-search" aria-hidden="true"></i>Détection, Enjeux et Avenir</h2>
+    <h2><i class="fas fa-search" aria-hidden="true"></i> Détection, Enjeux et Avenir</h2>
 
     <h3>La stéganalyse</h3>
-    <p>Pour chaque technique de dissimulation, il existe une contre-technique de détection. C'est la stéganalyse. L'arme principale du stéganalyste est l'analyse statistique. La méthode LSB, par exemple, bien qu'invisible, perturbe la distribution statistique naturelle des bits d'un fichier, ce qui peut être détecté par des tests comme le test du <code>chi-carré (χ²)</code>.</p>
+    <p>Pour chaque technique de dissimulation, il existe une contre-technique de détection : la stéganalyse. L'arme principale du stéganalyste est l'analyse statistique. La méthode LSB, par exemple, bien qu'invisible, perturbe la distribution statistique naturelle des bits d'un fichier, ce qui peut être détecté par des tests comme le test du <code>chi-carré (χ²)</code>.</p>
 <pre><code># Analyse statistique simplifiée des LSB d'une image
 
 # Image Originale (distribution naturelle et aléatoire)
@@ -97,11 +97,11 @@ Fréquence du bit 1 : 24.7%</code></pre>
 </section>
 
 <section class="content-block">
-    <h2><i class="fas fa-flag-checkered" aria-hidden="true"></i>Conclusion</h2>
+    <h2><i class="fas fa-flag-checkered" aria-hidden="true"></i> Conclusion</h2>
     <p>
       La stéganographie est un fascinant jeu du chat et de la souris. D'un côté, on invente des manières toujours plus subtiles de cacher des informations. De l'autre, des stéganalystes développent des algorithmes, souvent basés sur l'IA, toujours plus fins pour les détecter. Cette lutte nous rappelle que la menace ou le secret ne se trouve pas toujours dans ce qui est visiblement suspect, mais parfois, dans ce qui se cache à la vue de tous.
     </p>
     <p>
-      Leçon créée par Hugo Bruchon.
+        Leçon créée par Hugo Bruchon.
     </p>
 </section>

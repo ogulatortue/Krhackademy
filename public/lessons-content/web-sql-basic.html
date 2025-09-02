@@ -1,5 +1,5 @@
 <section class="content-block">
-    <h2><i class="fas fa-info-circle" aria-hidden="true"></i>Concepts Fondamentaux</h2>
+    <h2><i class="fas fa-info-circle" aria-hidden="true"></i> Concepts Fondamentaux</h2>
     
     <h3>Qu'est-ce qu'une base de données relationnelle ?</h3>
     <p>
@@ -29,7 +29,7 @@ SELECT * FROM utilisateurs WHERE nom = 'admin';</code></pre>
 </section>
 
 <section class="content-block">
-    <h2><i class="fas fa-gears" aria-hidden="true"></i>Mécanisme d'une injection SQL basique</h2>
+    <h2><i class="fas fa-gears" aria-hidden="true"></i> Mécanisme d'une injection SQL basique</h2>
     
     <h3>Analyse de la vulnérabilité</h3>
     <p>La faille se situe dans la manière dont l'entrée de l'utilisateur est directement "collée" (concaténée) dans la requête SQL. Le serveur ne fait aucune distinction entre le code SQL et les données fournies par l'utilisateur.</p>
@@ -77,7 +77,7 @@ SELECT * FROM utilisateurs WHERE username = '' OR '1'='1' -- ';</code></pre>
 </section>
 
 <section class="content-block">
-    <h2><i class="fas fa-sitemap" aria-hidden="true"></i>Typologies des Injections SQL</h2>
+    <h2><i class="fas fa-sitemap" aria-hidden="true"></i> Typologies des Injections SQL</h2>
     <h3>Injection SQL in-band (classique)</h3>
     <p>L'attaquant utilise le même canal pour attaquer et recevoir les résultats.</p>
     <ul>
@@ -97,7 +97,7 @@ SELECT * FROM utilisateurs WHERE username = '' OR '1'='1' -- ';</code></pre>
 </section>
 
 <section class="content-block">
-    <h2><i class="fas fa-shield-alt" aria-hidden="true"></i>Méthodes de Prévention</h2>
+    <h2><i class="fas fa-shield-alt" aria-hidden="true"></i> Méthodes de Prévention</h2>
     
     <h3>Les requêtes préparées (parameterized queries)</h3>
     <p>C'est la défense la plus efficace car elle sépare strictement le code SQL des données. Le code est envoyé d'abord, puis les données sont envoyées séparément et ne sont jamais interprétées comme du code.</p>
@@ -113,7 +113,7 @@ SELECT * FROM utilisateurs WHERE username = '' OR '1'='1' -- ';</code></pre>
 </section>
 
 <section class="content-block">
-    <h2><i class="fas fa-flag-checkered" aria-hidden="true"></i>Conclusion</h2>
+    <h2><i class="fas fa-flag-checkered" aria-hidden="true"></i> Conclusion</h2>
     <p>L'injection SQL est une vulnérabilité critique qui découle du mélange du code et des données de l'utilisateur. La construction de requêtes par concaténation est une pratique dangereuse et obsolète.</p>
     <p>La prévention efficace et moderne repose sur l'adoption systématique des <strong>requêtes préparées</strong> (souvent via un ORM), complétée par une validation rigoureuse des entrées et le principe du moindre privilège.</p>
     <p>

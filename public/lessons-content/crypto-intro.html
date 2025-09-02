@@ -1,7 +1,7 @@
 <section class="content-block">
     <h2><i class="fas fa-info-circle" aria-hidden="true"></i>Généralités sur la Cryptographie</h2>
     <p>
-        La cryptographie est la science qui vise à sécuriser les communications et les données en les rendant inintelligibles à des personnes non <strong>autorisées</strong>. Elle fournit les mécanismes qui soutiennent la confiance dans le monde numérique, en poursuivant quatre objectifs essentiels :
+        La cryptographie est la science qui vise à sécuriser les communications et les données en les rendant inintelligibles à des personnes non autorisées. Elle fournit les mécanismes qui soutiennent la confiance dans le monde numérique, en poursuivant quatre objectifs essentiels :
     </p>
     <ul>
         <li><strong>Confidentialité</strong> : Assurer que seule la personne destinataire puisse lire le contenu d'un message. C'est ce qui protège vos emails ou vos conversations privées, même si les données sont interceptées.</li>
@@ -43,7 +43,7 @@
     </ul>
     <h3>Avantage : la sécurité</h3>
     <p>
-        La relation entre ces deux clés est le cœur de la sécurité : <strong>tout message chiffré avec la clé publique ne peut être déchiffré qu'avec la clé privée correspondante</strong>. Il est impossible de deviner la clé privée à partir de la clé publique.
+        La relation entre ces deux clés est le cœur de la sécurité : tout message chiffré avec la clé publique ne peut être déchiffré qu'avec la clé privée correspondante. Il est impossible de deviner la clé privée à partir de la clé publique.
     </p>
     <p>
         Cette sécurité repose sur des problèmes mathématiques très difficiles à résoudre. Par exemple, pour l'algorithme RSA, il est facile de multiplier deux très grands nombres premiers, mais il est quasi impossible de faire l'opération inverse (retrouver les deux nombres d'origine à partir du résultat).
@@ -107,7 +107,7 @@ Hash 2  : 0725458c037835f8f67645bea651e45722df43c2c1c1f2b545f201046e757f12</cod
         <li>Il chiffre ensuite ce hash avec sa propre clé privée. Le résultat de cette opération est la signature numérique.</li>
         <li>Le destinataire reçoit le document original, la signature, et la clé publique de l'expéditeur.</li>
         <li>Il déchiffre la signature avec la clé publique pour retrouver le hash original. En parallèle, il calcule lui-même le hash du document reçu.</li>
-        <li>Si les deux hashs correspondent, le destinataire a la double certitude que le message provient bien de l'expéditeur (<strong>authenticité</strong>) et qu'il n'a pas été altéré (<strong>intégrité</strong>).</li>
+        <li>Si les deux hashs correspondent, le destinataire a la double certitude que le message provient bien de l'expéditeur (authenticité) et qu'il n'a pas été altéré (intégrité).</li>
     </ul>
 </section>
 <section class="content-block">

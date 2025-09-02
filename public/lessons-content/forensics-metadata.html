@@ -29,7 +29,7 @@
         <li><strong>Entry created (ou Birth) :</strong> Date et heure de la création du fichier sur le volume.</li>
     </ul>
     <p>
-        <strong>Point d'analyse :</strong> Sur un système de fichiers <code>NTFS</code> (Windows), il existe deux jeux de timestamps MACE :
+        <strong>Point d'analyse :</strong> Sur un système de fichiers NTFS (Windows), il existe deux jeux de timestamps MACE :
     </p>
     <ul>
         <li><code>$STANDARD_INFORMATION</code> (visibles dans l'explorateur)</li>
@@ -82,16 +82,16 @@ GPS Longitude                   : 4 deg 54' 46.82" E</code></pre>
     <p>Loin d'être de simples pointeurs, les fichiers .lnk sont des mines d'or forensiques. Ils enregistrent l'état de leur cible au moment de leur création.</p>
     <p>Métadonnées clés :</p>
     <ul>
-        <li>Chemin complet du fichier cible (ex: <code>C:\Users\Hugo\Desktop\Liste_Clients.xlsx</code>)</li>
-        <li>Ses timestamps MACE d'origine</li>
-        <li>Le nom de la machine sur laquelle il était stocké (<code>NetBIOS name</code>)</li>
-        <li>L'adresse MAC de la carte réseau de cette machine</li>
+        <li><strong>Chemin complet du fichier cible </strong>(ex: C:\Users\Hugo\Desktop\Liste_Clients.xlsx)</li>
+        <li><strong>Ses timestamps MACE d'origine</strong></li>
+        <li><strong>Le nom de la machine sur laquelle il était stocké </strong>(NetBIOS name)</li>
+        <li><strong>L'adresse MAC de la carte réseau de cette machine</strong></li>
     </ul>
 </section>
 <section class="content-block">
     <h2><i class="fas fa-user-secret" aria-hidden="true"></i>Anti-forensique et analyse critique</h2>
     <p>
-        Un expert ne se contente pas de lire les métadonnées ; il évalue leur crédibilité. Savoir reconnaître les techniques d'anti-forensique est une compétence essentielle.
+        Un expert ne se contente pas de lire les métadonnées, il évalue leur crédibilité. Savoir reconnaître les techniques d'anti-forensique est une compétence essentielle.
     </p>
     <h3>Le timestomping (falsification des horodatages)</h3>
     <p>C'est l'acte de modifier les timestamps MACE d'un fichier pour dissimuler sa véritable origine, souvent pour cacher un malware en lui donnant l'apparence d'un vieux fichier système légitime.</p>

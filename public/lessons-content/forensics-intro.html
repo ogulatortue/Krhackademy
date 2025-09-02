@@ -22,7 +22,7 @@
 <section class="content-block">
     <h2><i class="fas fa-cogs" aria-hidden="true"></i>Les contextes d'intervention</h2>
     <p>
-        L'approche de l'analyste dépend de manière cruciale de l'état du système au moment de l'intervention. On distingue deux contextes majeurs.
+        L'approche de l'analyste dépend de l'état du système au moment de l'intervention. On distingue deux contextes majeurs.
     </p>
     <h3>L'analyse « à froid » (Dead Forensics)</h3>
     <p>
@@ -50,13 +50,13 @@ a8479a099233b2ae3b213b48995a51a83f88321cf7282855a4f4510084353426  copie_integra
     <h3>Traçabilité et chaîne de conservation</h3>
     <p>Chaque manipulation de la preuve, de sa collecte à son analyse, est rigoureusement documentée dans une « chaîne de conservation ». Cette traçabilité est essentielle pour garantir la validité juridique de la procédure.</p>
     <p>
-        Lors d'une intervention, notamment en analyse « à chaud », l'expert suit un principe <strong>critique</strong> : l'ordre de volatilité. Il doit collecter en priorité les informations les plus éphémères avant qu'elles ne disparaissent. La collecte se fait donc généralement des données les plus volatiles (mémoire vive, connexions réseau) vers les moins volatiles (données sur disque dur).
+        Lors d'une intervention, notamment en analyse « à chaud », l'expert suit un principe critique : l'ordre de volatilité. Il doit collecter en priorité les informations les plus éphémères avant qu'elles ne disparaissent. La collecte se fait donc généralement des données les plus volatiles (mémoire vive, connexions réseau) vers les moins volatiles (données sur disque dur).
     </p>
 </section>
 <section class="content-block">
     <h2><i class="fas fa-search" aria-hidden="true"></i>L'analyse</h2>
     <p>
-        Une fois les preuves collectées et leur intégrité assurée, l'analyse peut commencer. Elle consiste à examiner les données pour y déceler des artefacts numériques, c'est-à-dire des traces laissées par l'activité d'un système ou d'un utilisateur. Une part importante de ces artefacts <strong>est constituée de</strong> métadonnées.
+        Une fois les preuves collectées et leur intégrité assurée, l'analyse peut commencer. Elle consiste à examiner les données pour y déceler des artefacts numériques, c'est-à-dire des traces laissées par l'activité d'un système ou d'un utilisateur. Une part importante de ces artefacts est constituée de métadonnées.
     </p>
     <p>
         Cruciales pour l'enquête, les métadonnées sont des informations descriptives associées aux fichiers qui permettent de contextualiser une action. Par exemple, l'analyse des métadonnées <code>EXIF</code> d'une photo peut révéler des informations précieuses :
@@ -68,12 +68,11 @@ Coordonnées GPS     : 44°54'58.819"N 4°54'46.82"E</code></pre>
     <p>
         On distingue trois grandes familles de métadonnées :
     </p>
-    <h3>Informations temporelles</h3>
-    <p>Dates et heures de création, de dernière modification ou de dernier accès à un fichier.</p>
-    <h3>Informations d'origine</h3>
-    <p>Nom de l'auteur d'un document, modèle de l'appareil photo pour une image, ou logiciel utilisé pour créer un fichier.</p>
-    <h3>Informations contextuelles</h3>
-    <p>Coordonnées de géolocalisation (<code>GPS</code>), versions de logiciels, ou informations sur les imprimantes utilisées.</p>
+    <ul>
+        <li><strong>Informations temporelles : </strong>Dates et heures de création, de dernière modification ou de dernier accès à un fichier.</li>
+        <li><strong>Informations d'origine : </strong>Nom de l'auteur d'un document, modèle de l'appareil photo pour une image, ou logiciel utilisé pour créer un fichier.</li>
+        <li><strong>Informations contextuelles : </strong>Coordonnées de géolocalisation (<code>GPS</code>), versions de logiciels, ou informations sur les imprimantes utilisées.</li>
+    </ul>
     <p>
         L'analyse des métadonnées transforme ainsi de simples fichiers en véritables pièces à conviction, en leur attribuant un contexte, une origine et une place dans la chronologie des événements.
     </p>
@@ -99,7 +98,7 @@ Coordonnées GPS     : 44°54'58.819"N 4°54'46.82"E</code></pre>
         <li><strong>La forensique sur poste de travail et serveur :</strong> L'analyse "classique" d'ordinateurs.</li>
         <li><strong>La forensique mobile :</strong> L'investigation sur les smartphones et les tablettes.</li>
         <li><strong>La forensique réseau :</strong> L'analyse du trafic et des communications pour retracer les actions d'un attaquant.</li>
-        <li><strong>La forensique du cloud :</strong> L'enquête sur des données hébergées <strong>par</strong> des fournisseurs de services en ligne.</li>
+        <li><strong>La forensique du cloud :</strong> L'enquête sur des données hébergées par des fournisseurs de services en ligne.</li>
     </ul>
 </section>
 <section class="content-block">

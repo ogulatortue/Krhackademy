@@ -106,7 +106,7 @@ SELECT * FROM utilisateurs WHERE username = '' OR '1'='1' -- ';</code></pre>
     <p>Les frameworks web modernes (<code>Symfony</code>, <code>Laravel</code>, <code>Django</code>...) incluent souvent un <code>ORM</code>. C'est une couche d'abstraction qui convertit les objets de votre code en requêtes SQL, en utilisant des requêtes préparées par défaut.</p>
 
     <h3>Validation des entrées (input validation)</h3>
-    <p>Appliquer une politique de "confiance zéro" envers toute donnée utilisateur. L'approche la plus sûre est celle des <strong>listes blanches (whitelisting)</strong> : définir un ensemble strict de formats autorisés (ex: un ID ne doit contenir que des chiffres) et rejeter tout le reste.</p>
+    <p>Appliquer une politique de "confiance zéro" envers toute donnée utilisateur. L'approche la plus sûre est celle des listes blanches (whitelisting) : définir un ensemble strict de formats autorisés (ex: un ID ne doit contenir que des chiffres) et rejeter tout le reste.</p>
 
     <h3>Principe du moindre privilège</h3>
     <p>Le compte de la base de données utilisé par l'application web ne doit avoir que les permissions strictement nécessaires à son fonctionnement. En cas d'injection réussie, les dégâts sont ainsi limités.</p>
@@ -115,7 +115,7 @@ SELECT * FROM utilisateurs WHERE username = '' OR '1'='1' -- ';</code></pre>
 <section class="content-block">
     <h2><i class="fas fa-flag-checkered" aria-hidden="true"></i> Conclusion</h2>
     <p>L'injection SQL est une vulnérabilité critique qui découle du mélange du code et des données de l'utilisateur. La construction de requêtes par concaténation est une pratique dangereuse et obsolète.</p>
-    <p>La prévention efficace et moderne repose sur l'adoption systématique des <strong>requêtes préparées</strong> (souvent via un ORM), complétée par une validation rigoureuse des entrées et le principe du moindre privilège.</p>
+    <p>La prévention efficace et moderne repose sur l'adoption systématique des requêtes préparées (souvent via un ORM), complétée par une validation rigoureuse des entrées et le principe du moindre privilège.</p>
     <p>
         Leçon créée par Hugo Bruchon.
     </p>

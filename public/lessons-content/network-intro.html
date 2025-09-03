@@ -1,7 +1,7 @@
 <section class="content-block">
     <h2><i class="fas fa-info-circle" aria-hidden="true"></i> Généralités sur les réseaux</h2>
     <p>
-        La communication au sein des réseaux informatiques repose <strong>sur</strong> un ensemble de mécanismes et de règles structurés. Pour aborder la sécurité réseau, la maîtrise de trois concepts fondamentaux est indispensable :
+        La communication au sein des réseaux informatiques repose sur un ensemble de mécanismes et de règles structurés. Pour aborder la sécurité réseau, la maîtrise de trois concepts fondamentaux est indispensable :
     </p>
     <ul>
         <li><strong>Les ports</strong>, qui servent de points de terminaison pour les communications.</li>
@@ -13,10 +13,10 @@
 <section class="content-block">
     <h2><i class="fas fa-network-wired" aria-hidden="true"></i> Les Ports Réseau</h2>
     <p>
-        Un port réseau est un point de terminaison logique au sein d'un système d'exploitation. Imaginez une adresse IP comme l'adresse d'un immeuble ; les ports sont alors les numéros d'appartement, <strong>permettant à chaque paquet de données d'arriver</strong> à la bonne application.
+        Un port réseau est un point de terminaison logique au sein d'un système d'exploitation. Imaginez une adresse IP comme l'adresse d'un immeuble ; les ports sont alors les numéros d'appartement, permettant à chaque paquet de données d'arriver à la bonne application.
     </p>
     <p>
-        Identifié par un numéro de <strong>0 à 65 535</strong>, un port permet à une machine de gérer simultanément plusieurs connexions (c'est le principe du <strong>multiplexage</strong>). Une connexion réseau est donc définie par une combinaison unique de quatre éléments, souvent appelée <strong>"4-tuple"</strong> :
+        Identifié par un numéro de 0 à 65 535, un port permet à une machine de gérer simultanément plusieurs connexions (c'est le principe du multiplexage). Une connexion réseau est donc définie par une combinaison unique de quatre éléments, souvent appelée "4-tuple" :
     </p>
 <pre><code># Le "4-tuple" qui identifie une connexion unique
 
@@ -47,10 +47,10 @@
     <h3>Ports enregistrés (1024-49151)</h3>
     <p>Ils sont utilisés par des applications spécifiques, comme des bases de données (MySQL sur le <code>port 3306</code>) ou des services logiciels.</p>
     <h3>Ports dynamiques ou privés (49152-65535)</h3>
-    <p><strong>Ils</strong> sont utilisés comme ports sources temporaires par les clients lorsqu'ils initient une connexion.</p>
+    <p>Ils sont utilisés comme ports sources temporaires par les clients lorsqu'ils initient une connexion.</p>
     <h3>Ports et sécurité</h3>
     <p>
-        Un port "ouvert" signifie qu'un service est en écoute, ce qui représente une <strong>surface d'attaque potentielle</strong>. Les attaquants utilisent des scanners de ports pour identifier ces services et y rechercher des failles connues.
+        Un port "ouvert" signifie qu'un service est en écoute, ce qui représente une surface d'attaque potentielle. Les attaquants utilisent des scanners de ports pour identifier ces services et y rechercher des failles connues.
     </p>
 <pre><code># Résultat simplifié d'un scan de ports sur un serveur
 PORT    STATE  SERVICE
@@ -58,7 +58,7 @@ PORT    STATE  SERVICE
 80/tcp  open   http
 443/tcp open   https</code></pre>
     <p>
-        Un principe de base en sécurité est donc de <strong>limiter le nombre de ports ouverts</strong> au strict minimum nécessaire.
+        Un principe de base en sécurité est donc de limiter le nombre de ports ouverts au strict minimum nécessaire.
     </p>
 </section>
 
@@ -83,7 +83,7 @@ PORT    STATE  SERVICE
     </p>
     <ul>
         <li>
-            <strong>TCP (Transmission Control Protocol) :</strong> C'est un protocole <strong>fiable et orienté connexion</strong>. Avant tout échange, il établit une connexion solide via un processus appelé "three-way handshake". Il garantit que toutes les données arrivent dans le bon ordre et sans erreur, ce qui est crucial pour le web, les e-mails, etc.
+            <strong>TCP (Transmission Control Protocol) :</strong> C'est un protocole fiable et orienté connexion. Avant tout échange, il établit une connexion solide via un processus appelé "three-way handshake". Il garantit que toutes les données arrivent dans le bon ordre et sans erreur, ce qui est crucial pour le web, les e-mails, etc.
         </li>
     </ul>
 <pre><code># Le "Three-Way Handshake" de TCP
@@ -94,11 +94,11 @@ Client           Serveur
 Connexion établie</code></pre>
     <ul>
         <li>
-            <strong>UDP (User Datagram Protocol) :</strong> C'est un protocole <strong>rapide, léger et sans connexion</strong>. Il envoie les données (datagrammes) sans établir de connexion préalable et sans garantie de livraison. Il est idéal pour les applications où la vitesse prime sur la fiabilité (streaming vidéo, jeux en ligne, VoIP).
+            <strong>UDP (User Datagram Protocol) :</strong> C'est un protocole rapide, léger et sans connexion. Il envoie les données (datagrammes) sans établir de connexion préalable et sans garantie de livraison. Il est idéal pour les applications où la vitesse prime sur la fiabilité (streaming vidéo, jeux en ligne, VoIP).
         </li>
     </ul>
     <h3>Le parcours d'une requête web (Encapsulation)</h3>
-    <p>Voici comment les couches collaborent lors d'une visite sur <code>https://google.com</code>. Ce processus s'appelle l'<strong>encapsulation</strong> :</p>
+    <p>Voici comment les couches collaborent lors d'une visite sur <code>https://google.com</code>. Ce processus s'appelle l'encapsulation :</p>
 <pre><code>[   Données de la requête HTTPS   ]
 [TCP Hdr | Données HTTPS ] ◀ Segment TCP (Port Src: 52100, Dst: 443)
 [IP Hdr | TCP Hdr | Données HTTPS ] ◀ Paquet IP (IP Src: 192.168.1.10, Dst: ...)
@@ -113,7 +113,7 @@ Connexion établie</code></pre>
     </p>
     <h3>Filtrage de paquets et règles</h3>
     <p>
-        Le pare-feu examine les en-têtes de chaque paquet (adresses IP, ports, protocole) et les compare à une liste de règles pour décider de l'<strong>autoriser (ALLOW)</strong> ou de le <strong>bloquer (DENY)</strong>.
+        Le pare-feu examine les en-têtes de chaque paquet (adresses IP, ports, protocole) et les compare à une liste de règles pour décider de l'autoriser (ALLOW) ou de le bloquer (DENY).
     </p>
 <pre><code># Exemples de règles de pare-feu (lues de haut en bas)
 # Règle 1: Autoriser le trafic HTTPS entrant vers notre serveur web
@@ -141,7 +141,7 @@ ALLOW TCP from 192.168.0.0/24 to ANY port 80,443</code></pre>
 <section class="content-block">
     <h2><i class="fas fa-flag-checkered" aria-hidden="true"></i> Conclusion</h2>
     <p>
-        La structure des communications réseau est régie par l'interaction entre les <strong>ports</strong>, qui canalisent le trafic vers les bonnes applications, et les <strong>protocoles</strong>, qui en définissent les règles. Au sein de cette architecture, le <strong>pare-feu</strong> s'impose comme un composant de sécurité essentiel, agissant comme un contrôleur de trafic.
+        La structure des communications réseau est régie par l'interaction entre les ports, qui canalisent le trafic vers les bonnes applications, et les protocoles, qui en définissent les règles. Au sein de cette architecture, le pare-feu s'impose comme un composant de sécurité essentiel, agissant comme un contrôleur de trafic.
     </p>
     <p>
         Une compréhension approfondie de la manière dont ces trois éléments interagissent est le prérequis indispensable à toute démarche de sécurisation d'une infrastructure réseau.

@@ -1,13 +1,4 @@
 <section class="content-block">
-    <h2><i class="fas fa-book"></i>Contexte</h2>
-    <p>
-        Le départ récent de l'ingénieur R&D, Hugo, a déclenché une procédure de sécurité interne. Cette procédure est d'autant plus critique que l'ingénieur avait accès à des brevets et des données de recherche confidentielles sur des projets à venir. Des activités réseau inhabituelles, détectées sur son poste de travail juste avant l'annonce de sa démission, laissent suspecter une tentative d'exfiltration de données.
-    </p>
-    <p>
-        Lors de son entretien de départ, Hugo a été interrogé sur l'utilisation de supports de stockage personnels. Il a remis une clé USB en affirmant qu'elle ne contenait que des fichiers personnels datant de plusieurs mois. En tant qu'analyste forensique, votre mission est de vérifier la véracité de cette affirmation. Heureusement, une image disque de référence de ce même support avait été créée il y a six mois lors d'un audit de sécurité. L'empreinte SHA-256 de cette image de référence constitue notre scellé numérique.
-    </p>
-</section>
-<section class="content-block">
     <h2><i class="fas fa-download"></i>Artefacts Numériques Fournis</h2>
     <p>
         Les éléments suivants sont mis à votre disposition pour l'analyse :
@@ -22,22 +13,33 @@
         </div>
         <div class="file-item">
             <div class="file-info">
-                <h4>6dc32c239f1a89bc371185ef1b9f306051674b973f80d544975c7c81973ec15a</h4>
+                <h4 id="text-to-copy">6dc32c239f1a89bc371185ef1b9f306051674b973f80d544975c7c81973ec15a</h4>
                 <p>La valeur de hachage SHA-256 de l'image disque de référence.</p>
             </div>
-            <a href="/ressources-challenges/forensics-integrity-key/integrite.txt" download class="btn-glass"><i class="fas fa-download"></i> Télécharger</a>
+            <button id="copy-button" class="btn-glass">
+                <i class="fas fa-copy"></i> Copier
+            </button>
         </div>
     </div>
+</section>
+<section class="content-block">
+    <h2><i class="fas fa-book"></i>Contexte</h2>
+    <p>
+        Le départ récent de l'ingénieur R&D, Hugo, a déclenché une procédure de sécurité interne. Cette procédure est d'autant plus critique que l'ingénieur avait accès à des brevets et des données de recherche confidentielles sur des projets à venir. Des activités réseau inhabituelles, détectées sur son poste de travail juste avant l'annonce de sa démission, laissent suspecter une tentative d'exfiltration de données.
+    </p>
+    <p>
+        Lors de son entretien de départ, Hugo a été interrogé sur l'utilisation de supports de stockage personnels. Il a remis une clé USB en affirmant qu'elle ne contenait que des fichiers personnels datant de plusieurs mois. En tant qu'analyste forensique, votre mission est de vérifier la véracité de cette affirmation. Heureusement, une image disque de référence de ce même support avait été créée il y a six mois lors d'un audit de sécurité. L'empreinte SHA-256 de cette image de référence constitue notre scellé numérique.
+    </p>
 </section>
 <section class="content-block">
     <h2><i class="fas fa-bullseye"></i>Objectif et Procédure</h2>
     <p>Votre mission est de réaliser une analyse comparative afin de déterminer si l'intégrité de l'image disque a été compromise. La procédure à suivre est la suivante :</p>
     <ul>
         <li>Calculez l'empreinte numérique de l'artefact <code>cle_usb_hugo.vhd</code> en utilisant l'algorithme de hachage cryptographique <code>SHA-256</code>.</li>
-        <li>Comparez la valeur de hachage obtenue avec celle consignée dans le fichier de référence <code>integrite.txt</code>.</li>
+        <li>Comparez la valeur de hachage obtenue avec celle donnée.</li>
         <li>Établissez une conclusion formelle quant à l'altération ou non du support de stockage depuis la date de création de l'image de référence.</li>
     </ul>
-     <p>
+    <p>
         <strong>Flag :</strong> Pour valider ce challenge, le flag à soumettre est l'empreinte SHA-256 que vous avez calculée pour le fichier cle_usb_hugo.vhd. Le format attendu est la chaîne de 64 caractères hexadécimaux.
     </p>
 </section>

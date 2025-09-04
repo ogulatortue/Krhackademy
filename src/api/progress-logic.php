@@ -16,6 +16,11 @@ $status = $input['status'] ?? null;
 $type = $input['type'] ?? null;
 $id = $input['id'] ?? null;
 
+if ($type === 'challenge' && $status === 'complete') {
+    http_response_code(403);
+    exit(json_encode(['status' => 'error', 'message' => 'Action non autorisée.']));
+}
+
 if (!$type || !$id || !$status) {
     http_response_code(400);
     exit(json_encode(['status' => 'error', 'message' => 'Paramètres manquants.']));

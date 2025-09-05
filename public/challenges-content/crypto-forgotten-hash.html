@@ -1,0 +1,40 @@
+<section class="content-block">
+    <h2><i class="fas fa-book"></i>Contexte</h2>
+    <p>
+        Un audit de sécurité de routine chez "Kolo-Corp" a mis en lumière une anomalie troublante. Un fichier d'archive, nommé <code>projets_R&D.zip</code>, a été découvert sur un serveur de partage interne accessible par plusieurs équipes. Ce qui a attiré l'attention des auditeurs, c'est que les métadonnées du fichier journal indiquent que le mot de passe de l'archive a été stocké sous forme de hash dans un ancien script de sauvegarde, aujourd'hui obsolète.
+    </p>
+    <p>
+        Les premières investigations suggèrent que ce script utilisait un algorithme de hachage ancien et non sécurisé. Votre prédécesseur avait noté que de nombreux systèmes historiques de l'entreprise utilisaient MD5 par défaut. Vous êtes chargé d'analyser ce hash pour retrouver le mot de passe de l'archive. La direction craint que des données sensibles soient exposées si ce mot de passe est faible et facilement devinable.
+    </p>
+</section>
+
+<section class="content-block">
+    <h2><i class="fas fa-download"></i>Artefacts Numériques Fournis</h2>
+    <p>
+        Le hash du mot de passe, extrait des logs du script de sauvegarde, est le suivant :
+    </p>
+    <div class="challenge-files">
+        <div class="file-item">
+            <div class="file-info">
+                <h4 id="text-to-copy">b6edd10559b20cb0a3ddaeb15e5267cc</h4>
+                <p>Le hash MD5 associé au fichier projets_R&D.zip.</p>
+            </div>
+            <button id="copy-button" class="btn-glass">
+                <i class="fas fa-copy"></i> Copier
+            </button>
+        </div>
+    </div>
+</section>
+
+<section class="content-block">
+    <h2><i class="fas fa-bullseye"></i>Objectif et Procédure</h2>
+    <p>Votre mission est de "casser" ce hash pour retrouver le mot de passe en clair et ainsi évaluer la robustesse des anciennes politiques de sécurité. La procédure à suivre est la suivante :</p>
+    <ul>
+        <li>Identifiez le type de hash (les soupçons se portent sur l'algorithme MD5 en raison de sa longueur et de son usage historique).</li>
+        <li>Utilisez un outil en ligne (comme CrackStation, md5decrypt, etc.) ou un logiciel spécialisé pour trouver la chaîne de caractères originale correspondant à ce hash.</li>
+        <li>La faiblesse des anciens algorithmes de hachage comme MD5 réside dans leur vulnérabilité face aux attaques par dictionnaire et par tables arc-en-ciel (rainbow tables).</li>
+    </ul>
+     <p>
+        <strong>Flag :</strong> Pour valider ce challenge, le flag à soumettre est le mot de passe en clair que vous avez découvert.
+    </p>
+</section>

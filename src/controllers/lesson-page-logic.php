@@ -1,12 +1,16 @@
 <?php
-$lesson_id = (int)($_GET['id'] ?? 0);
-if ($lesson_id <= 0) {
+$lesson_id_str = $_GET['id'] ?? '';
+
+if (empty($lesson_id_str)) {
     http_response_code(400);
     exit("ID de leçon invalide.");
 }
+
 $lessonService = new LessonService($pdo);
 $userId = $_SESSION['user_id'] ?? null;
-$lesson = $lessonService->findById($lesson_id, $userId);
+
+$lesson = $lessonService->findByLessonIdStr($lesson_id_str, $userId);
+
 if (!$lesson) {
     http_response_code(404);
     exit("Leçon non trouvée.");

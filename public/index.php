@@ -6,6 +6,7 @@ $request_uri = strtok($_SERVER['REQUEST_URI'], '?');
 if (strlen($request_uri) > 1) {
     $request_uri = rtrim($request_uri, '/');
 }
+
 $currentPage = '';
 $routes = [
     '/' => ['view' => 'index.phtml', 'currentPage' => 'index'],
@@ -26,9 +27,10 @@ $routes = [
     '/api/progress' => ['logic' => 'api/progress-logic.php'],
     '/api/get-progress' => ['logic' => 'api/get-progress-logic.php'],
 ];
+
 $routeFound = false;
 foreach ($routes as $route => $config) {
-    $pattern = preg_replace('/\{id\}/', '(\d+)', $route);
+    $pattern = preg_replace('/\{id\}/', '([a-zA-Z0-9-]+)', $route);
     if (preg_match('#^' . $pattern . '$#', $request_uri, $matches)) {
         if (!empty($config['auth'])) {
             require_page_login();
@@ -47,6 +49,7 @@ foreach ($routes as $route => $config) {
         break;
     }
 }
+
 if (!$routeFound) {
     http_response_code(404);
     echo "<h1>404 - Page non trouvée</h1>";

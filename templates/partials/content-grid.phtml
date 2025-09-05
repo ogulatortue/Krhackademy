@@ -15,16 +15,18 @@ foreach ($items as $item):
         $icon = $item['icon_class'] ?? 'fa-book-open';
         $description = '<p>' . htmlspecialchars($item['description']) . '</p>';
         $pointsDisplay = '';
+        $itemIdStr = $item['lesson_id_str'] ?? '';
     } else {
         $difficulty = $item['points'];
         $icon = $item['icon_class'] ?? 'fa-flag';
         $description = '';
         $pointsDisplay = htmlspecialchars($item['points']) . ' <i class="fas fa-flag"></i>';
+        $itemIdStr = $item['challenge_id_str'] ?? '';
     }
     $difficulty_class = getDifficultyClass($difficulty);
     $completed_class = !empty($item['is_completed']) ? 'completed' : '';
 ?>
-    <a href="/<?= htmlspecialchars($type) ?>/<?= htmlspecialchars($item['id']) ?>" class="card <?= $completed_class ?>">
+    <a href="/<?= htmlspecialchars($type) ?>/<?= htmlspecialchars($itemIdStr) ?>" class="card <?= $completed_class ?>">
         <i class="card-icon fas <?= htmlspecialchars($icon) ?>"></i>
         <div class="card-text-content">
             <div class="card-title-wrapper">

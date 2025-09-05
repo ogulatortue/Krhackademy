@@ -30,6 +30,19 @@ class LessonService {
         }
         return $lesson;
     }
+    public function findByLessonIdStr(string $idStr, ?int $userId = null) {
+        $stmt = $this->pdo->prepare("SELECT * FROM lessons WHERE lesson_id_str = ?");
+        $stmt->execute([$idStr]);
+        $lesson = $stmt->fetch();
+        if ($lesson && $userId) {
+            $stmt = $this->pdo->prepare("SELECT 1 FROM user_lessons_progress WHERE user_id = ? AND lesson_id = ?");
+            $stmt->execute([$userId, $lesson['id']]);
+            $lesson['is_completed'] = (bool) $stmt->fetchColumn();
+        } else if ($lesson) {
+            $lesson['is_completed'] = false;
+        }
+        return $lesson;
+    }
     public function markAsComplete(int $userId, int $lessonId): bool {
         $sql = "INSERT INTO user_lessons_progress (user_id, lesson_id, completed_at) VALUES (?, ?, NOW()) ON DUPLICATE KEY UPDATE completed_at = NOW()";
         $stmt = $this->pdo->prepare($sql);

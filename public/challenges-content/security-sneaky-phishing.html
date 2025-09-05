@@ -1,0 +1,60 @@
+<section class="content-block">
+    <h2><i class="fas fa-book"></i>Contexte</h2>
+    <p>
+        Amélie, du service comptabilité, reçoit un email semblant provenir du support technique interne. Le message l'informe que son espace de stockage réseau est quasiment saturé et que sans une action rapide de sa part, elle risque de perdre l'accès à ses fichiers de travail importants. L'email contient un lien pour "résoudre le problème" en augmentant son quota de stockage.
+    </p>
+    <p>
+        Cet email a été automatiquement signalé comme potentiellement suspect par le système de sécurité. En tant qu'analyste de la sécurité, votre mission est d'examiner cet email pour confirmer s'il s'agit bien d'une tentative de phishing (hameçonnage) et d'identifier le domaine malveillant utilisé par les attaquants.
+    </p>
+</section>
+
+<section class="content-block">
+    <h2><i class="fas fa-download"></i>Artefacts Numériques Fournis</h2>
+    <p>
+        Ci-dessous, le contenu de l'email suspect reçu par Amélie.
+    </p>
+    <div class="challenge-files">
+        <div class="file-item">
+            <div class="file-info">
+                <h4>Contenu de l'email suspect</h4>
+                <hr class="email-divider">
+                <div class="email-content">
+                    <p class="email-text">
+                        <strong>De :</strong> Support Technique &lt;support@kolo-corp-services.net&gt;<br>
+                        <strong>Objet :</strong> ACTION REQUISE: Votre quota de stockage est presque plein
+                    </p>
+                    <p class="email-text">
+                        Bonjour Amélie,
+                    </p>
+                    <p class="email-text">
+                        Notre système de surveillance indique que votre espace de stockage réseau a atteint 98% de sa capacité. Pour éviter toute interruption de service ou perte de données, veuillez augmenter votre quota immédiatement.
+                    </p>
+                    <p class="email-text">
+                        Cliquez sur le lien sécurisé ci-dessous pour une mise à niveau gratuite :<br>
+                        <a href="http://ko1o-corp.com/storage/upgrade" class="email-link">https://portail.kolo-corp.com/storage/upgrade</a>
+                    </p>
+                    <p class="email-text">
+                        <strong>ATTENTION :</strong> Sans action de votre part dans les 24 heures, votre accès au lecteur partagé sera suspendu.
+                    </p>
+                    <p class="email-text">
+                        Cordialement,<br>
+                        Votre équipe de support technique.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content-block">
+    <h2><i class="fas fa-bullseye"></i>Objectif et Procédure</h2>
+    <p>Votre mission est d'analyser attentivement l'email pour identifier les indicateurs d'une tentative de phishing.</p>
+    <ul>
+        <li>Examinez l'adresse email de l'expéditeur. Est-elle légitime ? Le domaine `kolo-corp-services.net` semble-t-il officiel ?</li>
+        <li>Analysez le texte affiché du lien et comparez-le avec l'URL de destination réelle (le plus souvent visible en survolant le lien avec la souris, ou en inspectant le code HTML de l'élément).</li>
+        <li>Identifiez le nom de domaine principal vers lequel le lien tente réellement de rediriger l'utilisateur. C'est ce domaine qui est considéré comme malveillant.</li>
+    </ul>
+     <p>
+        <strong>Flag :</strong> Pour valider ce challenge, le flag à soumettre est le nom de domaine frauduleux (sans `http://` ni la suite du chemin).
+    </p>
+</section>

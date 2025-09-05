@@ -1,0 +1,63 @@
+<section class="content-block">
+    <h2><i class="fas fa-book"></i>Contexte</h2>
+    <p>
+        <strong>AeroCorp Dynamics</strong>, un leader de la robotique de défense, a subi une fuite critique de données concernant son nouveau projet de drone autonome, nom de code "<strong>Project Chimera</strong>". Un fichier audio a été envoyé anonymement à plusieurs journalistes spécialisés. L'auteur de la fuite, qui se fait appeler "Viper", semble être un employé ou un ex-employé.
+    </p>
+    <p>
+        Votre mission est de remonter la piste numérique laissée par "Viper" pour découvrir son identité et trouver un "flag" qu'il a caché pour prouver son forfait.
+    </p>
+</section>
+<section class="content-block">
+    <h2><i class="fas fa-download"></i>Artefacts Numériques Fournis</h2>
+    <p>
+        Nos équipes ont intercepté deux pièces à conviction.
+    </p>
+    <div class="challenge-files">
+        <div class="file-item">
+            <div class="file-info">
+                <h4>DOC-01_leak.mp3</h4>
+                <p>Le fichier audio envoyé aux journalistes. Une analyse multi-spectrale est recommandée.</p>
+            </div>
+            <a href="/ressources-challenges/osint-viper/DOC-01_leak.mp3" download class="btn-glass"><i class="fas fa-download"></i> Télécharger (Lien Fictif)</a>
+        </div>
+        <div class="file-item">
+            <div class="file-info">
+                <h4>DOC-02_Memo_Securite.txt</h4>
+                <p>Note de service interne du département de la sécurité d'AeroCorp.</p>
+                <hr class="email-divider">
+                <div class="email-content monospace-block">
+                    <p><strong>À:</strong> Tous les départements<br>
+                        <strong>DE:</strong> Direction de la Sécurité<br>
+                        <strong>SUJET:</strong> Rappel de la politique de sécurité suite à l'incident "Chimera"<br><br>
+                        Suite à la fuite d'informations, nous avons identifié un mode opératoire pointant vers un initié. Le suspect, se nommant "Viper", possède une connaissance approfondie de nos anciens systèmes de navigation, notamment le framework "Legacy-Nav-System". L'enquête se concentre sur les ingénieurs ayant eu un accès de niveau 3 à ce framework au cours des 24 derniers mois. Toute information pertinente doit être remontée immédiatement.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content-block">
+    <h2><i class="fas fa-bullseye"></i>Objectif et Procédure</h2>
+    <p>Votre enquête se déroulera en plusieurs étapes. Chaque indice est la clé du suivant.</p>
+    <ul>
+        <li>
+            <strong>Étape 1 : Analyse Audio</strong><br>
+            Analysez le fichier <code>DOC-01_leak.mp3</code>. Ne vous contentez pas d'écouter le message à la voix modifiée. Des informations cruciales sont dissimulées dans le fichier lui-même. Cherchez un pseudonyme. Le bruit de fond pourrait également être une piste de géolocalisation.
+        </li>
+        <li>
+            <strong>Étape 2 : Le Dépôt de Code</strong><br>
+            Le pseudonyme découvert vous mènera vers une plateforme de développement collaborative bien connue. En recoupant avec la note de service (<code>DOC-02</code>), identifiez le projet pertinent sur le profil de ce suspect.
+        </li>
+        <li>
+            <strong>Étape 3 : Pivoter vers l'Identité Réelle</strong><br>
+            Le message audio de Viper contient un indice sur la manière de le démasquer : <i>"Pour trouver le serpent, suivez ceux qui admirent les anciennes étoiles."</i>. Utilisez cette information sur le dépôt de code pour pivoter vers un nouveau profil, celui de la véritable identité de Viper.
+        </li>
+        <li>
+            <strong>Étape 4 : La Preuve Finale</strong><br>
+            Explorez la présence en ligne (blog personnel, portfolio...) de cette personne. Le drapeau final est caché à la vue de tous, mais pas de la manière la plus évidente. Pensez à inspecter au-delà de ce que le navigateur affiche directement.
+        </li>
+    </ul>
+    <p>
+        <strong>Flag :</strong> Le flag est une chaîne de caractères spécifique laissée par Viper sur l'une de ses pages web publiques, au format <code>Flag{chaîne_de_caractères_unique}</code>.
+    </p>
+</section>

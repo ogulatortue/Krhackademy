@@ -456,6 +456,101 @@
 /* --------------------------------------- */
 
 
+/* --- Styles Spécifiques à la Personnalisation du Profil --- */
+
+/* Grille de sélection pour les images */
+.image-selector-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 1rem;
+}
+
+/* Grille spécifique pour les bannières (plus larges) */
+.image-selector-grid.banner-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+.selector-item {
+    position: relative;
+    cursor: pointer;
+}
+
+/* Cache les boutons radio par défaut */
+.selector-item input[type="radio"] {
+    display: none;
+}
+
+.selector-item img {
+    width: 100%;
+    display: block;
+    border-radius: 8px;
+    border: 3px solid var(--border-color);
+    transition: all 0.2s ease-in-out;
+}
+
+.selector-item label:hover img {
+    border-color: var(--text-subtle);
+}
+
+/* Style de l'image quand elle est sélectionnée */
+.selector-item input[type="radio"]:checked + label img {
+    border-color: var(--purple);
+    box-shadow: 0 0 10px var(--purple);
+    transform: scale(1.03);
+}
+
+/* Style pour les items bloqués */
+.selector-item.is-locked label {
+    cursor: not-allowed;
+    filter: grayscale(80%);
+    opacity: 0.6;
+}
+
+.lock-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    color: var(--white);
+    text-shadow: 0 0 5px var(--black);
+    z-index: 10;
+}
+
+/* Sélecteur de couleurs */
+.color-selector {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+}
+
+.color-swatch input[type="radio"] {
+    display: none;
+}
+
+.color-swatch label {
+    display: block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 3px solid var(--border-color);
+    transition: all 0.2s ease-in-out;
+}
+
+.color-swatch label:hover {
+    transform: scale(1.1);
+}
+
+/* Style de la couleur quand elle est sélectionnée */
+.color-swatch input[type="radio"]:checked + label {
+    border-color: var(--white);
+    box-shadow: 0 0 8px var(--white);
+    transform: scale(1.1);
+}
+
+
 
 
 /* --- ============== RESPONSIVE DESIGN ============== --- */

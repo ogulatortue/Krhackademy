@@ -27,6 +27,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['username'] = $user['username'];
+        $_SESSION['avatar_url'] = $user['avatar_url'];
+        $_SESSION['avatar_bg_color'] = $user['avatar_bg_color'];
         $_SESSION['flash_message'] = ['type' => 'success', 'title' => 'Connexion réussie', 'message' => 'Bienvenue, ' . htmlspecialchars($user['username']) . ' !'];
 
         $redirectTo = $_POST['redirect_to'] ?? '/';

@@ -1,15 +1,17 @@
 <?php
 if (isset($_SESSION['user_id'])) {
-    $avatar = $_SESSION['avatar_url'] ?? '/images/default-avatar.webp';
+    $avatar = $_SESSION['avatar_url'] ?? '/images/avatars/default-avatar.webp';
+    $avatar_bg_color = $_SESSION['avatar_bg_color'] ?? '#2b2b2d';
     $username = $_SESSION['username'] ?? 'Utilisateur';
-} else {
-    $avatar = '/images/default-avatar.webp';
+} else { 
+    $avatar = '/images/avatars/default-avatar.webp';
+    $avatar_bg_color = '#2b2b2d';
     $username = 'Visiteur';
 }
 ?>
 <section class="widget-panel profile-panel" id="profile-menu" aria-hidden="true">
     <div class="profile-header">
-        <img src="<?= htmlspecialchars($avatar) ?>" alt="Avatar" class="profile-avatar">
+        <img src="<?= htmlspecialchars($avatar) ?>" alt="Avatar" class="profile-avatar" style="background-color: <?= htmlspecialchars($avatar_bg_color) ?>">
         <span class="profile-username"><?= htmlspecialchars($username) ?></span>
         <button id="close-profile-btn" class="fas fa-times" aria-label="Fermer le menu du profil"></button>
     </div>

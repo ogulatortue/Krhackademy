@@ -243,11 +243,14 @@
 }
 .profile-avatar-wrapper {
     position: absolute;
-    bottom: -60px;
+    bottom: 10px;
     left: 40px;
     border: 5px solid var(--card-bg);
     border-radius: 50%;
     background-color: var(--card-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .profile-avatar {
     width: 150px;
@@ -397,10 +400,8 @@
         height: 150px;
     }
     .profile-avatar-wrapper {
-        left: 50%;
+        left: 20%;
         transform: translateX(-50%);
-        bottom: auto;
-        top: 100px;
     }
     .profile-avatar {
         width: 100px;

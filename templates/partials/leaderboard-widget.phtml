@@ -11,10 +11,11 @@
                     $podiumClass = 'podium-' . ($index + 1);
                     $isCurrentUser = ($_SESSION['user_id'] ?? null) == $user['id'];
                     $highlightClass = $isCurrentUser ? ' current-user-podium-border' : '';
+                    $avatar_bg_color = $user['avatar_bg_color'] ?? '#2b2b2d';
                 ?>
                 <li class="leaderboard-item <?= $podiumClass . $highlightClass ?>">
                     <span class="rank">#<?= $index + 1 ?></span>
-                    <img src="<?= htmlspecialchars($user['avatar_url'] ?? '/images/default-avatar.webp') ?>" alt="Avatar" class="leaderboard-avatar">
+                    <img src="<?= htmlspecialchars($user['avatar_url'] ?? '/images/avatars/default-avatar.webp') ?>" alt="Avatar" class="leaderboard-avatar" style="background-color: <?= htmlspecialchars($avatar_bg_color) ?>">
                     <span class="username"><?= htmlspecialchars($user['username']) ?></span>
                     <span class="score"><?= $user['score'] ?> <i class="fas fa-flag"></i></span>
                 </li>
@@ -23,7 +24,7 @@
                 <li class="leaderboard-separator"></li>
                 <li class="leaderboard-item current-user">
                     <span class="rank">#<?= $leaderboardWidgetData['currentUser']['rank'] ?></span>
-                    <img src="<?= htmlspecialchars($leaderboardWidgetData['currentUser']['avatar_url'] ?? '/images/default-avatar.webp') ?>" alt="Votre avatar" class="leaderboard-avatar">
+                    <img src="<?= htmlspecialchars($leaderboardWidgetData['currentUser']['avatar_url'] ?? '/images/avatars/default-avatar.webp') ?>" alt="Votre avatar" class="leaderboard-avatar" style="background-color:<?= htmlspecialchars($leaderboardWidgetData['currentUser']['avatar_bg_color'] ?? '#2b2b2d') ?>" >
                     <span class="username"><?= htmlspecialchars($leaderboardWidgetData['currentUser']['username']) ?></span>
                     <span class="score"><?= $leaderboardWidgetData['currentUser']['score'] ?> <i class="fas fa-flag"></i></span>
                 </li>

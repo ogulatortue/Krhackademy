@@ -9,6 +9,7 @@ $sql = "
         u.id,
         u.username,
         u.avatar_url,
+        u.avatar_bg_color,
         COALESCE(SUM(c.points), 0) AS score,
         MAX(ucp.completed_at) as last_completion_date
     FROM

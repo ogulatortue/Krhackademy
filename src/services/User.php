@@ -89,7 +89,9 @@ class User {
             SELECT
                 u.username,
                 u.avatar_url,
+                u.avatar_bg_color,
                 u.banner_url,
+                u.banner_bg_color,
                 u.bio,
                 u.created_at AS registration_date,
                 COALESCE(SUM(c.points), 0) AS total_score,

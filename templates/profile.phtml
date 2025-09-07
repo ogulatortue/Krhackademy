@@ -21,10 +21,10 @@ $specific_css = ['/css/menus.css'];
                 </header>
                     <div class="content-block">
                         <div class="profile-header-card">
-                            <div class="profile-banner">
+                            <div class="profile-banner" style="background-color: <?php echo htmlspecialchars($userProfile['banner_bg_color'] ?? '#2b2b2d'); ?>;">
                                 <img src="<?php echo htmlspecialchars($userProfile['banner_url'] ?? 'images/default-banner.webp'); ?>" alt="Bannière de profil">
                             </div>
-                            <div class="profile-avatar-wrapper">
+                            <div class="profile-avatar-wrapper" style="background-color: <?php echo htmlspecialchars($userProfile['avatar_bg_color'] ?? '#1a1a1c'); ?>;">
                                 <img class="profile-avatar" src="<?php echo htmlspecialchars($userProfile['avatar_url'] ?? 'images/default-avatar.webp'); ?>" alt="Avatar de <?php echo htmlspecialchars($userProfile['username']); ?>">
                             </div>
                         </div>

@@ -6,7 +6,7 @@ class LeaderboardService {
     }
     public function getWidgetData(?int $currentUserId): array {
         $sql = "
-            SELECT u.id, u.username, u.avatar_url, COALESCE(SUM(c.points), 0) AS score
+            SELECT u.id, u.username, u.avatar_url, u.avatar_bg_color, COALESCE(SUM(c.points), 0) AS score
             FROM users u
             LEFT JOIN user_challenges_progress ucp ON u.id = ucp.user_id
             LEFT JOIN challenges c ON ucp.challenge_id = c.id

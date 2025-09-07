@@ -4,9 +4,10 @@ $specific_css = ['/css/menus.css'];
 ?>
 <!DOCTYPE html>
 <html lang="fr">
-<?php require __DIR__ . '/partials/head.phtml';?>
+<?php require __DIR__ . '/partials/head.phtml';?> 
+<?php require __DIR__ . '/partials/modal.phtml';?>
 <body class="page-settings">
-    <a id="go-back-button" href="/" class="btn-glass back-button">
+    <a href="<?= $backUrl ?>" class="btn-glass back-button">
         <i class="fas fa-arrow-left"></i> Retour
     </a>
     <main class="container">
@@ -74,30 +75,98 @@ $specific_css = ['/css/menus.css'];
                 </div>
 
                 <div class="content-block">
+                    <form action="/settings" method="POST">
+                    <input type="hidden" name="csrf_token" value="<?php echo csrf_token(); ?>">
                     <div class="settings-section">
                         <h2>Personnalisation du Profil</h2>
-                        <form action="/settings" method="POST" enctype="multipart/form-data">
-                            <input type="hidden" name="csrf_token" value="<?php echo csrf_token(); ?>">
-                            <input type="hidden" name="action" value="update_profile">
 
-                            <div class="form-group">
-                                <label for="bio">Biographie</label>
-                                <textarea id="bio" name="bio" class="form-control" rows="3"><?php echo htmlspecialchars($currentUser['bio'] ?? ''); ?></textarea>
+                        <!-- AVATAR SELECTION -->
+                        <div class="form-group">
+                            <label>Choisissez votre avatar</label>
+                            <div class="image-selector-grid">
+                                <?php foreach ($availableAvatars as $avatarPath): ?>
+                                    <?php
+                                        $isChecked = ($user['avatar_url'] === $avatarPath);
+                                        $isLocked = in_array($avatarPath, $lockedAvatars);
+                                    ?>
+                                    <div class="selector-item <?= $isLocked ? 'is-locked' : '' ?>">
+                                        <input type="radio" 
+                                               id="avatar_<?= md5($avatarPath) ?>" 
+                                               name="avatar_url" 
+                                               value="<?= htmlspecialchars($avatarPath) ?>"
+                                               <?= $isChecked ? 'checked' : '' ?>
+                                               <?= $isLocked ? 'disabled' : '' ?>>
+                                        <label for="avatar_<?= md5($avatarPath) ?>">
+                                            <?php if ($isLocked): ?>
+                                                <i class="fas fa-lock lock-icon"></i>
+                                            <?php endif; ?>
+                                            <img src="<?= htmlspecialchars($avatarPath) ?>" alt="Avatar">
+                                        </label>
+                                    </div>
+                                <?php endforeach; ?>
                             </div>
-
-                            <div class="form-group">
-                                <label for="avatar_image">Avatar (JPG, PNG, GIF - Max 2Mo)</label>
-                                <input type="file" id="avatar_image" name="avatar_image" class="form-control">
+                        </div>
+                                            
+                        <!-- AVATAR BACKGROUND COLOR SELECTION (exemple de couleurs) -->
+                        <div class="form-group">
+                            <label>Couleur de fond de l'avatar</label>
+                            <?php $avatarColors = ['#9216a8', '#17b32c', '#cbce1e', '#2b2b2d', '#ff0000']; ?>
+                            <div class="color-selector">
+                                 <?php foreach ($avatarColors as $color): ?>
+                                    <div class="color-swatch">
+                                        <input type="radio" id="avatar_color_<?= str_replace('#','',$color) ?>" name="avatar_bg_color" value="<?= $color ?>" <?= ($user['avatar_bg_color'] ?? '') === $color ? 'checked' : '' ?>>
+                                        <label for="avatar_color_<?= str_replace('#','',$color) ?>" style="background-color: <?= $color ?>;"></label>
+                                    </div>
+                                <?php endforeach; ?>
                             </div>
-
-                            <div class="form-group">
-                                <label for="banner_image">Bannière de profil (JPG, PNG, GIF - Max 2Mo)</label>
-                                <input type="file" id="banner_image" name="banner_image" class="form-control">
+                        </div>
+                                
+                        <!-- BANNER SELECTION -->
+                        <div class="form-group">
+                            <label>Choisissez votre bannière</label>
+                            <div class="image-selector-grid banner-grid">
+                                <?php foreach ($availableBanners as $bannerPath): ?>
+                                    <?php
+                                        $isChecked = ($user['banner_url'] === $bannerPath);
+                                        $isLocked = in_array($bannerPath, $lockedBanners);
+                                    ?>
+                                    <div class="selector-item <?= $isLocked ? 'is-locked' : '' ?>">
+                                        <input type="radio" 
+                                               id="banner_<?= md5($bannerPath) ?>" 
+                                               name="banner_url" 
+                                               value="<?= htmlspecialchars($bannerPath) ?>"
+                                               <?= $isChecked ? 'checked' : '' ?>
+                                               <?= $isLocked ? 'disabled' : '' ?>>
+                                        <label for="banner_<?= md5($bannerPath) ?>">
+                                            <?php if ($isLocked): ?>
+                                                <i class="fas fa-lock lock-icon"></i>
+                                            <?php endif; ?>
+                                            <img src="<?= htmlspecialchars($bannerPath) ?>" alt="Bannière">
+                                        </label>
+                                    </div>
+                                <?php endforeach; ?>
                             </div>
+                        </div>
+                                            
+                        <!-- BANNER BACKGROUND COLOR SELECTION (exemple de couleurs) -->
+                        <div class="form-group">
+                            <label>Couleur de fond de la bannière</label>
+                             <?php $bannerColors = ['#9216a8', '#17b32c', '#cbce1e', '#2b2b2d', '#0e101c']; ?>
+                            <div class="color-selector">
+                                <?php foreach ($bannerColors as $color): ?>
+                                    <div class="color-swatch">
+                                        <input type="radio" id="banner_color_<?= str_replace('#','',$color) ?>" name="banner_bg_color" value="<?= $color ?>" <?= ($user['banner_bg_color'] ?? '') === $color ? 'checked' : '' ?>>
+                                        <label for="banner_color_<?= str_replace('#','',$color) ?>" style="background-color: <?= $color ?>;"></label>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
 
-                            <button type="submit" class="btn-primary">Mettre à jour le profil</button>
-                        </form>
+                        <div class="form-group">
+                            <button type="submit" name="update_customization" class="btn-primary">Enregistrer les modifications</button>
+                        </div>
                     </div>
+                    </form>
                 </div>
 
                 <div class="content-block">

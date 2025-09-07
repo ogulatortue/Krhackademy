@@ -112,33 +112,28 @@ class User {
         $stmt->execute(['user_id' => $userId]);
         return $stmt->fetch();
     }
-    public function updateProfileCustomization(int $userId, ?string $bio, ?string $bannerUrl, ?string $avatarUrl): bool {
-        if ($bio === null && $bannerUrl === null && $avatarUrl === null) {
-            return true;
-        }
 
-        $fields = [];
-        $params = [];
 
-        if ($bio !== null) {
-            $fields[] = "bio = :bio";
-            $params[':bio'] = $bio;
-        }
-
-        if ($bannerUrl !== null) {
-            $fields[] = "banner_url = :banner_url";
-            $params[':banner_url'] = $bannerUrl;
-        }
+    public function updateProfileAppearance(int $userId, string $avatarUrl, string $avatarBgColor, string $bannerUrl, string $bannerBgColor): bool
+    {
+        $sql = "UPDATE users SET 
+                    avatar_url = :avatar_url, 
+                    avatar_bg_color = :avatar_bg_color, 
+                    banner_url = :banner_url, 
+                    banner_bg_color = :banner_bg_color 
+                WHERE id = :id";
         
-        if ($avatarUrl !== null) {
-            $fields[] = "avatar_url = :avatar_url";
-            $params[':avatar_url'] = $avatarUrl;
-        }
-
-        $sql = "UPDATE users SET " . implode(', ', $fields) . " WHERE id = :id";
-        $params[':id'] = $userId;
-
         $stmt = $this->db->prepare($sql);
-        return $stmt->execute($params);
+        
+        return $stmt->execute([
+            ':avatar_url' => $avatarUrl,
+            ':avatar_bg_color' => $avatarBgColor,
+            ':banner_url' => $bannerUrl,
+            ':banner_bg_color' => $bannerBgColor,
+            ':id' => $userId
+        ]);
     }
+
+
+
 }

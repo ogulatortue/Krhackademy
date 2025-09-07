@@ -9,8 +9,127 @@ $currentUserId = $_SESSION['user_id'];
 $errors = [];
 $success = '';
 
+$backUrl = $_SESSION['settings_return_to'] ?? '/'; 
+
+if (isset($_SERVER['HTTP_REFERER'])) {
+    $refererPath = parse_url($_SERVER['HTTP_REFERER'], PHP_URL_PATH);
+    if ($refererPath !== '/settings') {
+        $backUrl = htmlspecialchars($_SERVER['HTTP_REFERER']);
+        $_SESSION['settings_return_to'] = $backUrl;
+    }
+}
+
+function getAvailableImages(string $directoryPath, string $webPath): array
+{
+    $allowedBaseDir = realpath(ROOT_PATH . '/public/images');
+    if (!$allowedBaseDir || strpos(realpath($directoryPath), $allowedBaseDir) !== 0) {
+        return [];
+    }
+    $allowedExtensions = ['webp'];
+    $files = glob($directoryPath . '*.{' . implode(',', $allowedExtensions) . '}', GLOB_BRACE);
+    
+    $imageList = [];
+    if ($files) {
+        foreach ($files as $file) {
+            $imageList[] = $webPath . basename($file);
+        }
+    }
+    return $imageList;
+}
+
+$lockedAvatars = [
+    '/images/avatars/bds.webp',
+    '/images/avatars/BRUCHON.webp',
+    '/images/avatars/buffon.webp',
+    '/images/avatars/cie.webp',
+    '/images/avatars/cre.webp',
+    '/images/avatars/discord.webp',
+    '/images/avatars/first.webp',
+    '/images/avatars/flag.webp',
+    '/images/avatars/guigui.webp',
+    '/images/avatars/lowres.webp',
+    '/images/avatars/musisar.webp',
+    '/images/avatars/smart.webp',
+];
+$lockedBanners = [];
+
+$allAvatars = getAvailableImages(ROOT_PATH . '/public/images/avatars/', '/images/avatars/');
+$allBanners = getAvailableImages(ROOT_PATH . '/public/images/banners/', '/images/banners/');
+
+$unlockedAvatarsList = [];
+$lockedAvatarsList = [];
+foreach ($allAvatars as $avatar) {
+    if (in_array($avatar, $lockedAvatars)) {
+        $lockedAvatarsList[] = $avatar;
+    } else {
+        $unlockedAvatarsList[] = $avatar;
+    }
+}
+$availableAvatars = array_merge($unlockedAvatarsList, $lockedAvatarsList);
+
+$unlockedBannersList = [];
+$lockedBannersList = [];
+foreach ($allBanners as $banner) {
+    if (in_array($banner, $lockedBanners)) {
+        $lockedBannersList[] = $banner;
+    } else {
+        $unlockedBannersList[] = $banner;
+    }
+}
+$availableBanners = array_merge($unlockedBannersList, $lockedBannersList);
+
+
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     verify_csrf_token();
+
+if (isset($_POST['update_customization'])) {
+    $avatarUrl = $_POST['avatar_url'] ?? null;
+    $avatarBgColor = $_POST['avatar_bg_color'] ?? null;
+    $bannerUrl = $_POST['banner_url'] ?? null;
+    $bannerBgColor = $_POST['banner_bg_color'] ?? null;
+    $validationErrors = [];
+
+    if (!in_array($avatarUrl, $availableAvatars) || in_array($avatarUrl, $lockedAvatars)) {
+        $validationErrors[] = "L'avatar sélectionné n'est pas valide ou est bloqué.";
+    }
+    if (!in_array($bannerUrl, $availableBanners) || in_array($bannerUrl, $lockedBanners)) {
+        $validationErrors[] = "La bannière sélectionnée n'est pas valide ou est bloquée.";
+    }
+    if (!preg_match('/^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/', $avatarBgColor)) {
+        $validationErrors[] = "La couleur de l'avatar n'est pas valide.";
+    }
+    if (!preg_match('/^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/', $bannerBgColor)) {
+        $validationErrors[] = "La couleur de la bannière n'est pas valide.";
+    }
+
+    if (empty($validationErrors)) {
+        if ($userService->updateProfileAppearance($currentUserId, $avatarUrl, $avatarBgColor, $bannerUrl, $bannerBgColor)) {
+            $_SESSION['flash_message'] = [
+                'type'    => 'success',
+                'title'   => 'Profil mis à jour',
+                'message' => 'Vos préférences ont été enregistrées avec succès.'
+            ];
+
+            $_SESSION['avatar_url'] = $avatarUrl;
+            $_SESSION['avatar_bg_color'] = $avatarBgColor;
+
+
+        } else {
+            $_SESSION['flash_message'] = [
+                'type'    => 'error',
+                'title'   => 'Erreur Serveur',
+                'message' => 'Impossible de sauvegarder vos préférences. Veuillez réessayer.'
+            ];
+        }
+    } else {
+        $_SESSION['flash_message'] = [
+            'type'    => 'error',
+            'title'   => 'Données invalides',
+            'message' => 'Certains des choix soumis ne sont pas valides. Veuillez corriger.'
+        ];
+    }
+}
     
     if (isset($_POST['action']) && $_POST['action'] === 'update_account') {
         $username = trim($_POST['username'] ?? '');
@@ -22,77 +141,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $errors[] = "L'adresse e-mail n'est pas valide.";
         } else {
             if ($userService->updateAccountInfo($currentUserId, $username, $email)) {
-                $success = "Vos informations ont été mises à jour avec succès.";
+                $_SESSION['username'] = $username; 
+                $_SESSION['flash_message'] = [
+                    'type'    => 'success',
+                    'title'   => 'Profil mis à jour',
+                    'message' => 'Vos informations ont été mises à jour avec succès.'
+                ];
             } else {
                 $errors[] = "Une erreur est survenue lors de la mise à jour.";
-            }
-        }
-    }
-
-    if (isset($_POST['action']) && $_POST['action'] === 'update_profile') {
-        $bio = $_POST['bio'] ?? null;
-        $bannerUrl = null;
-        $avatarUrl = null;
-        
-        $uploadOk = true;
-        $allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
-        $maxSize = 2 * 1024 * 1024;
-
-        if (isset($_FILES['avatar_image']) && $_FILES['avatar_image']['error'] === UPLOAD_ERR_OK) {
-            $uploadDirAvatar = ROOT_PATH . '/public/uploads/avatars/';
-            $fileType = mime_content_type($_FILES['avatar_image']['tmp_name']);
-            $fileSize = $_FILES['avatar_image']['size'];
-
-            if (!in_array($fileType, $allowedTypes)) {
-                $errors[] = "Avatar : Format de fichier non autorisé (JPG, PNG, GIF).";
-                $uploadOk = false;
-            } elseif ($fileSize > $maxSize) {
-                $errors[] = "Avatar : Le fichier est trop volumineux (Max 2Mo).";
-                $uploadOk = false;
-            }
-
-            if ($uploadOk) {
-                $extension = pathinfo($_FILES['avatar_image']['name'], PATHINFO_EXTENSION);
-                $newFilename = uniqid('avatar_', true) . '.' . $extension;
-                $destination = $uploadDirAvatar . $newFilename;
-                if (move_uploaded_file($_FILES['avatar_image']['tmp_name'], $destination)) {
-                    $avatarUrl = '/uploads/avatars/' . $newFilename;
-                } else {
-                    $errors[] = "Erreur lors de l'upload de l'avatar.";
-                }
-            }
-        }
-
-        if (isset($_FILES['banner_image']) && $_FILES['banner_image']['error'] === UPLOAD_ERR_OK) {
-            $uploadDirBanner = ROOT_PATH . '/public/uploads/banners/';
-            $fileType = mime_content_type($_FILES['banner_image']['tmp_name']);
-            $fileSize = $_FILES['banner_image']['size'];
-
-            if (!in_array($fileType, $allowedTypes)) {
-                $errors[] = "Bannière : Format de fichier non autorisé (JPG, PNG, GIF).";
-                $uploadOk = false;
-            } elseif ($fileSize > $maxSize) {
-                $errors[] = "Bannière : Le fichier est trop volumineux (Max 2Mo).";
-                $uploadOk = false;
-            }
-
-            if ($uploadOk) {
-                $extension = pathinfo($_FILES['banner_image']['name'], PATHINFO_EXTENSION);
-                $newFilename = uniqid('banner_', true) . '.' . $extension;
-                $destination = $uploadDirBanner . $newFilename;
-                if (move_uploaded_file($_FILES['banner_image']['tmp_name'], $destination)) {
-                    $bannerUrl = '/uploads/banners/' . $newFilename;
-                } else {
-                    $errors[] = "Erreur lors de l'upload de la bannière.";
-                }
-            }
-        }
-        
-        if (empty($errors)) {
-            if ($userService->updateProfileCustomization($currentUserId, $bio, $bannerUrl, $avatarUrl)) {
-                $success = "Votre profil a été mis à jour avec succès.";
-            } else {
-                $errors[] = "Une erreur est survenue lors de la mise à jour du profil.";
             }
         }
     }
@@ -131,9 +187,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-$currentUser = $userService->findById($currentUserId);
-
-if (!$currentUser) {
+$user = $userService->findById($currentUserId);
+if (!$user) {
     header('Location: /logout');
     exit();
 }
+$currentUser = $user;

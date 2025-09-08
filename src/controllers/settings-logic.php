@@ -50,6 +50,8 @@ $lockedAvatars = [
     '/images/avatars/lowres.webp',
     '/images/avatars/musisar.webp',
     '/images/avatars/smart.webp',
+    '/images/avatars/hely-copter.webp',
+    '/images/avatars/bazzys3.webp',
 ];
 $lockedBanners = [];
 

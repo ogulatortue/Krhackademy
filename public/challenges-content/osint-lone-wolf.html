@@ -1,70 +1,39 @@
 <section class="content-block">
     <h2><i class="fas fa-book"></i>Contexte</h2>
     <p>
-        Le groupe hacktiviste "Krhaken" a encore frappé en publiant des documents internes sensibles d'une grande entreprise du CAC 40. Le leader, se faisant appeler "Nexus", a laissé un message sur un forum chiffré pour revendiquer l'attaque. Nous suspectons que "Nexus" est un expert en cybersécurité qui utilise ses compétences de pointe pour ses opérations.
+        Un de vos contacts, actuellement en voyage en Europe, vous a envoyé une photographie jointe à un message. Dans son email, il mentionne avoir été particulièrement charmé par l'architecture d'un quartier, mais a complètement omis de noter l'endroit exact avant de continuer son périple.
     </p>
     <p>
-        Votre mission d'analyste est de recouper les informations de différentes sources que nous avons collectées pour démasquer "Nexus". Tous les éléments dont vous avez besoin se trouvent ci-dessous.
+        Connaissant vos compétences en investigation numérique et en renseignement d'origine sources ouvertes (OSINT), il vous met au défi de retrouver sa position précise au moment de la prise de vue. Votre mission est de transformer les pixels de cette image en une localisation géographique concrète.
     </p>
 </section>
+
 <section class="content-block">
-    <h2><i class="fas fa-download"></i>Artefacts Numériques Fournis</h2>
+    <h2><i class="fas fa-image"></i>Artefact Numérique Fourni</h2>
     <p>
-        Les trois documents suivants ont été rassemblés par nos équipes.
+        L'unique élément à votre disposition est la photographie transmise par votre contact.
     </p>
     <div class="challenge-files">
         <div class="file-item">
             <div class="file-info">
-                <h4>DOC-01: Message de "Nexus" (transcription)</h4>
-                <hr class="email-divider">
-                <div class="email-content">
-                    <p class="email-text text-quote">
-                        "Le titan est tombé. Leurs propres plans d'architecte furent la clé. Ironique, comment les outils du bâtisseur peuvent se retourner contre lui. La touche finale a été apportée autour d'un café, là où les stratèges se réunissent près de la grande boucle du fleuve. Les paroles des prophètes du cloud sécurisé résonnent encore. Le hurlement du loup solitaire est le signal, la chasse est ouverte."
-                    </p>
-                </div>
+                <h4>photo.png</h4>
+                <p>Image que votre collègue vous a envoyée</p>
             </div>
-        </div>
-        <div class="file-item">
-            <div class="file-info">
-                <h4>DOC-02: Programme de la conférence "CloudSecureDays" (extrait)</h4>
-                <hr class="email-divider">
-                <div class="email-content monospace-block">
-                    <p><strong class="text-highlight">SESSION 10: "Sécuriser le Pipeline CI/CD : Une Approche DevSecOps"</strong><br>
-                        Intervenant: Martin Dupont (Lead Architect @ SecurePipe)</p>
-                    <p><strong class="text-highlight">SESSION 11: "Kubernetes à Grande Échelle : Orchestrer une Architecture Microservices"</strong><br>
-                        Intervenante: Alice Dubois (Consultante Indépendante)</p>
-                    <p><strong class="text-highlight">SESSION 12: "Sécurité IaC : Audit Avancé des Blueprints Terraform & Ansible"</strong><br>
-                        Intervenant: Julien Bernard (Expert Sécurité Cloud)</p>
-                    <p><strong class="text-highlight">SESSION 13: "Threat Hunting Assisté par IA dans les Environnements Hybrides"</strong><br>
-                        Intervenante: Léa Petit (RSSI @ Finance Corp)</p>
-                </div>
-            </div>
-        </div>
-        <div class="file-item">
-            <div class="file-info">
-                <h4>DOC-03: Rapport de fuite de données (interne à l'ESN TechWave Solutions)</h4>
-                <hr class="email-divider">
-                <div class="email-content">
-                    <p class="email-text">
-                        <strong class="text-highlight">INCIDENT:</strong> Exfiltration de données via des manifestes d'architecture compromis.<br>
-                        <strong class="text-highlight">DATE:</strong> 04/09/2025<br>
-                        <strong class="text-highlight">ANALYSE:</strong> L'attaquant a reconfiguré notre environnement cloud à la volée en utilisant des fichiers de configuration déclaratifs. Cette technique est la signature du développeur principal de notre framework de sécurité interne, nom de code "Geri". Le badge de cet employé a été utilisé à la sortie de notre campus d'Issy peu avant la revendication. Son dernier entretien annuel mentionnait une "compétence technique exceptionnelle mais une attitude de franc-tireur, se considérant comme un opérateur solitaire".
-                    </p>
-                </div>
-            </div>
+            <a href="/ressources-challenges/forensics-integrity-key/cle_usb_hugo.vhd" download class="btn-glass"><i class="fas fa-download"></i> Télécharger</a>
         </div>
     </div>
 </section>
+
 <section class="content-block">
     <h2><i class="fas fa-bullseye"></i>Objectif et Procédure</h2>
-    <p>Votre mission est de synthétiser ces trois documents pour identifier formellement "Nexus".</p>
+    <p>Votre mission est de réaliser une analyse géospatiale (GEOINT) afin de déterminer la localisation exacte depuis laquelle la photographie a été prise.</p>
     <ul>
-        <li>Analysez le <strong>DOC-01</strong> pour extraire des mots-clés : une description de lieu, une thématique technique, un événement suggéré et un symbole personnel.</li>
-        <li>Consultez le <strong>DOC-02</strong> pour identifier les intervenants dont l'expertise pourrait correspondre à la thématique technique et aux termes employés par "Nexus".</li>
-        <li>Examinez le <strong>DOC-03</strong> pour trouver des corrélations (techniques, géographiques ou symboliques) avec les indices précédents.</li>
-        <li>Croisez les informations sur le suspect du DOC-03 avec la liste des intervenants potentiels du DOC-02 pour confirmer l'identité de "Nexus".</li>
+        <li>Examinez attentivement tous les indices visuels de l'image</li>
+        <li>Utilisez des techniques de recherche d'image inversée (Google Images, Yandex, TinEye) pour trouver des images similaires ou des pages web identifiant ce lieu.</li>
+        <li>Utilisez des services de cartographie en ligne (Google Maps, OpenStreetMap) et leur fonctionnalité de vue immersive (Street View) pour confirmer l'emplacement précis.</li>
+        <li>Déterminez les coordonnées géographiques exactes de la position du photographe.</li>
     </ul>
     <p>
-        <strong>Flag :</strong> Pour valider ce challenge, le flag à soumettre est le nom complet de la personne que vous avez identifiée, au format <code>PrénomNom</code>.
+        <strong>Flag :</strong> Pour valider ce challenge, le flag à soumettre correspond aux coordonnées GPS du lieu de la prise de vue. Le format attendu est <code>latitude,longitude</code>, avec une précision de quatre décimales (Exemple : <code>48.8584,2.2945</code>).
     </p>
 </section>

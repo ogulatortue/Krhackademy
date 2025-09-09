@@ -1,0 +1,35 @@
+<section class="content-block">
+    <h2><i class="fas fa-book"></i>Contexte</h2>
+    <p>
+        Suite à une récente vague d'attaques, le club "Kr[HACK]en" a attiré l'attention d'une cellule de cyber-veille. Au lieu d'une revendication classique, l'un des membres a laissé un message public qui s'apparente plus à un défi qu'à une menace.
+    </p>
+    <p>
+        Le message semble être une invitation lancée aux analystes en cybersécurité. Le club prétend avoir laissé une "signature numérique" cachée en pleine vue, sur la vitrine publique du club. Votre mission est de relever ce défi, de localiser leur plateforme et de trouver cette fameuse signature pour prouver que leurs méthodes ne sont pas infaillibles.
+    </p>
+</section>
+
+<section class="content-block">
+    <h2><i class="fas fa-download"></i>Artefacts Numériques Fournis</h2>
+    <p>
+        Le seul indice dont nous disposons est ce message, intercepté sur un canal de discussion public :
+    </p>
+    <div class="challenge-files">
+        <div class="file-item">
+            <div class="file-info">
+                <h4 id="text-to-copy">Notre vitrine est ouverte à tous. Mais notre mot de passe secret n'est pas visible du premier coup d'oeil.</h4>
+                <p>Message énigmatique...</p>
+            </div>
+            <button id="copy-button" class="btn-glass">
+                <i class="fas fa-copy"></i> Copier
+            </button>
+        </div>
+    </div>
+</section>
+
+<section class="content-block">
+    <h2><i class="fas fa-bullseye"></i>Objectif et Procédure</h2>
+    <p>Votre mission est de récupérer la "signature numérique".</p>
+     <p>
+        <strong>Flag :</strong> Pour valider ce challenge, le flag à soumettre est la signature que vous trouverez, en respectant son format exact.
+    </p>
+</section>

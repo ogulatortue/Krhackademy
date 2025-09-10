@@ -1,18 +1,28 @@
 <?php
     $isLesson = ($type === 'lesson');
-    $difficulty = $isLesson ? $item['difficulty'] : $item['points'];
-    $icon = $item['icon_class'] ?? ($isLesson ? 'fa-book-open' : 'fa-flag');
-    $pointsDisplay = $isLesson ? '' : htmlspecialchars($item['points']) . ' <i class="fas fa-flag"></i>';
+    $defaultIcon = $isLesson ? 'fa-book-open' : 'fa-flag';
+    $icon = $item['icon_class'] ?? $defaultIcon;
 ?>
 <header class="content-header">
     <i class="content-icon fas <?= htmlspecialchars($icon) ?>"></i>
     <div class="content-title-group">
         <h1><?= htmlspecialchars($item['title']) ?></h1>
-        <?php if ($isLesson): ?>
-            <p class="content-intro"><?= htmlspecialchars($item['description']) ?></p>
+        
+        <?php 
+        $introText = $item['intro'] ?? ($item['description'] ?? '');
+        if (!empty($introText)): 
+        ?>
+            <p class="content-intro"><?= htmlspecialchars($introText) ?></p>
         <?php endif; ?>
     </div>
-    <span class="difficulty-tag <?= getDifficultyClass($difficulty) ?>">
-        <?= $isLesson ? htmlspecialchars($difficulty) : $pointsDisplay ?>
-    </span>
+    
+    <?php if ($isLesson && isset($item['difficulty'])): ?>
+        <span class="difficulty-tag <?= getDifficultyClass($item['difficulty']) ?>">
+            <?= htmlspecialchars($item['difficulty']) ?>
+        </span>
+    <?php elseif (isset($item['points'])):?>
+        <span class="difficulty-tag <?= getDifficultyClass($item['points']) ?>">
+            <?= htmlspecialchars($item['points']) ?> <i class="fas fa-flag"></i>
+        </span>
+    <?php endif;?>
 </header>

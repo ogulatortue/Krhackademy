@@ -1,0 +1,38 @@
+<section class="content-block">
+    <h2><i class="fas fa-book"></i>Contexte</h2>
+    <p>
+        Un de vos collègues, en voyage d'affaires en Europe, vous envoie un message de détresse. Il s'est égaré dans une ville inconnu et, pour ne rien arranger, la batterie de son téléphone est presque vide. Dans un dernier effort pour obtenir de l'aide, il vous a envoyé une photographie de l'endroit où il se trouve.
+    </p>
+    <p>
+        Comptant sur vos compétences en investigation numérique et en renseignement d'origine sources ouvertes (OSINT), il vous supplie de l'aider à déterminer sa position. Votre mission, si vous l'acceptez : transformer les pixels de cette image en une localisation géographique concrète pour pouvoir lui porter secours.
+    </p>
+</section>
+
+<section class="content-block">
+    <h2><i class="fas fa-image"></i>Artefact Numérique Fourni</h2>
+    <p>
+        L'unique élément à votre disposition est la photographie transmise par votre contact.
+    </p>
+    <div class="challenge-files">
+        <div class="file-item">
+            <div class="file-info">
+                <h4>photo.jpg</h4>
+                <p>Image que votre collègue vous a envoyée</p>
+            </div>
+            <a href="/ressources-challenges/forensics-integrity-key/cle_usb_hugo.vhd" download class="btn-glass"><i class="fas fa-download"></i> Télécharger</a>
+        </div>
+    </div>
+</section>
+
+<section class="content-block">
+    <h2><i class="fas fa-bullseye"></i>Objectif et Procédure</h2>
+    <p>Votre mission est de réaliser une analyse géospatiale (GEOINT) afin de déterminer la localisation exacte depuis laquelle la photographie a été prise.</p>
+    <ul>
+        <li>Examinez attentivement tous les indices visuels de l'image qui pourraient révéler le pays et la ville.</li>
+        <li>Utilisez des techniques de recherche d'image inversée (Google Images, Yandex, TinEye) pour trouver des images similaires ou des pages web identifiant ce lieu et ainsi déterminer la ville.</li>
+        <li>Une fois la ville identifiée, utilisez des services de cartographie en ligne (Google Maps, OpenStreetMap) et leur fonctionnalité de vue immersive (Street View) pour confirmer votre hypothèse.</li>
+    </ul>
+    <p>
+        <strong>Flag :</strong> Pour valider ce challenge, le flag à soumettre correspond au nom de la ville. Le format attendu est le nom de la ville avec des "-" au lieu des espaces (Exemple : <code>Portes-lès-Valence</code>).
+    </p>
+</section>

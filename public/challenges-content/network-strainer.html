@@ -1,0 +1,42 @@
+<section class="content-block">
+    <h2><i class="fas fa-book"></i>Contexte</h2>
+    <p>
+        Hugo, un nouveau stagiaire un peu trop zélé, a tenté de se connecter à un ancien serveur de fichiers de l'entreprise pour, selon ses dires, "retrouver des archives importantes". Or, ce serveur était censé être hors service et n'est plus supervisé. Votre équipe de sécurité a été alertée par une activité inattendue sur ce segment du réseau et a immédiatement lancé une capture de trafic.
+    </p>
+    <p>
+        Hugo prétend n'avoir rien fait de mal, mais vous devez en avoir le cœur net. Votre mission est d'analyser la brève communication réseau qui a été enregistrée pour découvrir le mot de passe qu'il a utilisé et ainsi vérifier s'il correspond à un mot de passe autorisé ou à une tentative de connexion non conforme.
+    </p>
+</section>
+
+<section class="content-block">
+    <h2><i class="fas fa-download"></i>Artefact Numérique Fourni</h2>
+    <p>
+        L'élément suivant est mis à votre disposition pour l'analyse :
+    </p>
+    <div class="challenge-files">
+        <div class="file-item">
+            <div class="file-info">
+                <h4>trafic_suspect.pcapng</h4>
+                <p>Capture réseau de la connexion suspecte initiée par Hugo.</p>
+            </div>
+            <a href="/ressources-challenges/network-strainer/trafic_suspect.pcapng" download class="btn-glass"><i class="fas fa-download"></i> Télécharger</a>
+        </div>
+    </div>
+</section>
+
+<section class="content-block">
+    <h2><i class="fas fa-bullseye"></i>Objectif et Procédure</h2>
+    <p>Votre mission est de réaliser une analyse du réseau afin de retrouver le mot de passe utilisé lors de la tentative de connexion.</p>
+    <ul>
+        <li>Ouvrez l'artefact <code>trafic_suspect.pcapng</code> avec un analyseur de paquets comme Wireshark.</li>
+        <li>Le protocole de transfert de fichiers utilisé est <code>ftp</code>, connu pour son manque de chiffrement.</li>
+        <li>Isolez la conversation pertinente en utilisant les filtres d'affichage de l'outil.</li>
+        <li>Localisez la commande d'authentification et identifiez le mot de passe transmis.</li>
+    </ul>
+    <p>
+        <strong>Flag :</strong> Pour valider ce challenge, le flag à soumettre est le mot de passe que vous avez découvert.
+    </p>
+    <p>
+        Challenge créé par Hugo Bruchon.
+    </p>
+</section>

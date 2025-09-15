@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel</title>
+    <style>
+        body { 
+            font-family: monospace; 
+            background-color: #0c0c0c; 
+            color: #e0e0e0; 
+            text-align: center; 
+            padding-top: 20%; 
+        }
+        h1 { 
+            color: #ff4d4d;
+        }
+        h1.granted {
+            color: #00ff7f; 
+        }
+        
+        h1::before {
+            content: 'YWRtaW5fYXV0aF90b2tlbg==';
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="title">ACCESS DENIED</h1>
+    <p id="message">You do not have the required privileges to view the secret.</p>
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+        }
+
+        const userCookie = getCookie('isAdmin');
+
+        const h1Element = document.getElementById('title');
+        const secretToken = window.getComputedStyle(h1Element, '::before').getPropertyValue('content').slice(1, -1);
+        
+        if (userCookie === secretToken) {
+            h1Element.textContent = 'ACCESS GRANTED';
+            h1Element.classList.add('granted');
+            
+            const flag = (function() {
+                const a = [75, 82, 75, 123, 99, 48, 48, 107, 49, 101, 95, 109, 48, 110, 115, 116, 51, 114, 95, 67, 83, 83, 125];
+                return a.reduce((b, c) => b + String.fromCharCode(c), '');
+            })();
+            
+            document.getElementById('message').textContent = `Success! The flag is: ${flag}`;
+            console.log("Admin cookie accepted. 🍪");
+        }
+    });
+</script>
+</body>
+</html>

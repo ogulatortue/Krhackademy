@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The Uncrackable Vault</title>
+    <style>
+        body { font-family: monospace; background-color: #0c0c0c; color: #e0e0e0; text-align: center; padding-top: 20%; }
+        h1 { color: #00ff7f; }
+    </style>
+</head>
+<body>
+    <h1>Konami Code</h1>
+    <p id="message"> Don't know the Konami Code ? Up Up Down Down .... </p>
+    
+<script>
+    const obfuscatedSequence = 'a,b,thgiRworrA,tfeLworrA,thgiRworrA,tfeLworrA,nwoDworrA,nwoDworrA,pUworrA,pUworrA';
+    const konamiCode = obfuscatedSequence.split('').reverse().join('').split(',');
+    let konamiIndex = 0;
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === konamiCode[konamiIndex]) {
+            konamiIndex++; 
+
+            if (konamiIndex === konamiCode.length) {
+                konamiIndex = 0; 
+                
+                document.getElementById('message').textContent = '............ Check the console (F12) .............';
+                
+                const flag = (function() {
+                    const a = [75, 82, 75, 123, 107, 48, 110, 52, 109, 49, 95, 99, 48, 100, 51, 95, 109, 52, 115, 116, 51, 114, 125];
+                    return a.reduce((b, c) => b + String.fromCharCode(c), '');
+                })();
+
+                console.log("Flag :", flag);
+            }
+        } else {
+            konamiIndex = 0;
+        }
+    });
+</script>
+</body>
+</html>

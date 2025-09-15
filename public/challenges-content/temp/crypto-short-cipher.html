@@ -1,19 +1,50 @@
-OPERATION: SHORT CIPHER — WIENER ATTACK CONTEXT (INTEL BRIEF)
+<section class="content-block">
+    <h2><i class="fas fa-book"></i>Dossier de Terrain</h2>
+    <p>
+        Une cellule de renseignement a déployé un dispositif de signature rapide destiné à accélérer le débit des messages dans un canal secret. Pour économiser les cycles CPU, le développeur a choisi un exposant privé $d$ très petit. Le dispositif a rempli sa fonction — jusqu'à ce que les analystes découvrent que les petits $d$ peuvent être divulgués via les fractions continues.
+    </p>
+</section>
 
-An intelligence cutout deployed a fast-signing device meant to speed up message throughput in a covert channel. To save CPU cycles the developer chose a very small private exponent d. The device served its purpose — until analysts discovered that small d leaks via continued fractions.
+<section class="content-block">
+    <h2><i class="fas fa-download"></i>Artefacts Numériques Fournis</h2>
+    <div class="challenge-files">
+        <div class="file-item">
+            <div class="file-info">
+                <h4 id="cipher-text">37434145452455995011825035185710970762378527128236915882017694213338786737250107810261892694990885127045826256871026038541613304253889972848352742331260717852853128821498435587855037145914179946810785333590251265105292229927942530940628285998153257512989943018565988915552666609781788826245405244445304238808</h4>
+                <p>Message chiffré (cipher.txt)</p>
+            </div>
+            <button class="btn-glass" data-target="cipher-text">
+                <i class="fas fa-copy"></i> Copier
+            </button>
+        </div>
+        <div class="file-item">
+            <div class="file-info">
+                <h4 id="pubkey-n">n = 126655928065556818936547159450700306171911281936307288698023654534843112770615875831397726055052260115113049539702621850952450733668339663401137794913864628557353994390981563002323271590787634903222545180742133534051226598804739034295690423169759194463836499408190626154595535464428706023424816400408812539333</h4>
+                <h4 id="pubkey-e">e = 80732547432359731284923878292133571523044677245038670958128849898635611022806516140242402887097348060182410800607705867435231762322694760281587282241168971397761616261577072585697499512134679040150173798332618120427172783357016432909045064058587167776055527844130494904638747699706561103974300395417016781957</h4>
+                <p>Clé publique (pub_pub.txt)</p>
+            </div>
+            <button class="btn-glass" data-target="pubkey-n,pubkey-e">
+                <i class="fas fa-copy"></i> Copier
+            </button>
+        </div>
+    </div>
+</section>
 
-Mission briefing (what you are asked to do)
-- You have one public key (pub_pub.txt) and one ciphertext (cipher.txt).
-- Objective: Recover d, then decrypt to obtain the flag.
+<section class="content-block">
+    <h2><i class="fas fa-bullseye"></i>Briefing de Mission</h2>
+    <p>Votre mission est de casser la clé publique afin de déchiffrer le message chiffré.</p>
+    <ul>
+        <li><strong>Analyse :</strong> La sécurité d'une clé RSA peut être compromise si l'exposant privé $d$ est particulièrement petit. Cette vulnérabilité peut être exploitée à l'aide de l'algorithme des fractions continues.</li>
+        <li><strong>Objectif :</strong> Récupérer $d$, puis déchiffrer le contenu de <code>cipher.txt</code> pour obtenir le drapeau.</li>
+    </ul>
+    <div class="hint-block">
+        <p><i class="fas fa-lightbulb"></i> <strong>Indice :</strong> Challenge de Wiener : ce RSA a été généré avec un exposant privé $d$ très petit.</p>
+    </div>
+</section>
 
-
-Hint : 
-Wiener challenge: this RSA was generated with a small private exponent d.
-
-
-cipher.txt
-37434145452455995011825035185710970762378527128236915882017694213338786737250107810261892694990885127045826256871026038541613304253889972848352742331260717852853128821498435587855037145914179946810785333590251265105292229927942530940628285998153257512989943018565988915552666609781788826245405244445304238808
-
-pub_pub.txt :
-n = 126655928065556818936547159450700306171911281936307288698023654534843112770615875831397726055052260115113049539702621850952450733668339663401137794913864628557353994390981563002323271590787634903222545180742133534051226598804739034295690423169759194463836499408190626154595535464428706023424816400408812539333
-e = 80732547432359731284923878292133571523044677245038670958128849898635611022806516140242402887097348060182410800607705867435231762322694760281587282241168971397761616261577072585697499512134679040150173798332618120427172783357016432909045064058587167776055527844130494904638747699706561103974300395417016781957
+<section class="content-block">
+    <h2><i class="fas fa-flag"></i>Flag</h2>
+    <p>
+        Pour valider ce challenge, le flag à soumettre est le message déchiffré en clair.
+    </p>
+</section>

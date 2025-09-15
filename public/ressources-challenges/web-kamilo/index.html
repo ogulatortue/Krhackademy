@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grenoble INP - Kamilo</title>
+
+    <link href="https://chamilo.grenoble-inp.fr/web/assets/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://chamilo.grenoble-inp.fr/main/inc/lib/javascript/bootstrap-select/css/bootstrap-select.min.css" rel="stylesheet" type="text/css" />
+    
+    <link href="https://chamilo.grenoble-inp.fr/web/css/base.css" rel="stylesheet" type="text/css" />
+    <link href="https://chamilo.grenoble-inp.fr/web/css/themes/chamilo_inp/default.css" rel="stylesheet" type="text/css" />
+
+    <link rel="shortcut icon" href="https://chamilo.grenoble-inp.fr/web/css/themes/chamilo_inp/images/favicon.ico" type="image/x-icon" />
+</head>
+
+<body class="section-mycampussection-login">
+    <noscript>
+        Pour une meilleure expérience, veuillez activer JavaScript dans votre navigateur.
+    </noscript>
+
+    <div class="wrap">
+        <header id="header-section">
+            <section>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="logo">
+                                <a href="/">
+                                    <img title="Kamilo" class="img-responsive" id="header-logo" src="https://chamilo.grenoble-inp.fr/web/css/themes/chamilo_inp/images/header-logo-custom1.png" alt="Grenoble INP" />
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <nav id="menubar" class="navbar navbar-default">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menuone" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="collapse navbar-collapse" id="menuone">
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="/">Homepage</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <section id="content-section">
+            <div class="container">
+                <div class="col-md-3 menu-column">
+                    <div id="login_block" class="panel panel-default">
+                        <div class="panel-body">
+                            <div id="plugin_login_top">
+                                <link href="https://chamilo.grenoble-inp.fr/plugin/add_cas_login_button/css.css" rel="stylesheet" type="text/css">
+                                <div class="well">
+                                    <img src="https://chamilo.grenoble-inp.fr/app/upload/users/1/1/my_files/logo_inp_cas.png" class='cas_plugin_image'/>
+                                    <h4>Connexion par Agalan</h4>
+                                    <div class='cas_plugin_clear'>&nbsp;</div>
+                                    <div class='cas_plugin_comm'>compte universitaire</div>
+                                    <button class="btn btn-default" onclick="alert('Connexion via Agalan désactivée');">Login</button>
+                                </div>
+                            </div>
+                            
+                            <form class="form-horizontal" action="/index.php" method="post" name="formLogin" id="formLogin">
+                                <fieldset>
+                                    <label for="login">Username</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon"><em class="fa fa-user fa-fw"></em></div>
+                                        <input id="login" autofocus="autofocus" placeholder="Username" autocapitalize="none" class="form-control" name="login" type="text" />
+                                    </div>
+                                    <label for="password">Pass</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon"><em class="fa fa-lock fa-fw"></em></div>
+                                        <input id="password" placeholder="Pass" autocapitalize="none" class="form-control" name="password" type="password" />
+                                    </div>
+                                    <button class="btn-block btn btn-primary" name="submitAuth" type="submit" id="formLogin_submitAuth">Login</button>
+                                </fieldset>
+                            </form>
+                            
+                            <div id="plugin_login_bottom">
+                                <div class="well">
+                                    <a style="font-size:80%;" href="#" onclick="toogleAuthMenu()">Connexion hors compte universitaire</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-9">
+                    <section id="homepage-home">
+                        <div class="welcome-home-top-temp">
+                            <h2 class="ck ck-title2">Bienvenue sur la plateforme Kamilo</h2>
+                            <p>Kamilo est bien plus qu'une simple plateforme de gestion de cours en ligne. C'est un écosystème d'apprentissage dynamique, conçu et perfectionné au fil des années pour répondre aux besoins spécifiques de notre communauté éducative. Notre mission est de fournir un pont numérique solide et intuitif entre les enseignants et les étudiants, favorisant le partage de la connaissance, la collaboration et la réussite académique.</p>
+                            <h4>Notre Histoire : La Genèse d'un Projet Pédagogique</h4>
+                            <p>L'histoire de Kamilo a commencé il y a près d'une décennie, non pas comme un projet d'entreprise, mais comme une initiative née de la base. À une époque où les ressources pédagogiques étaient éparpillées entre les emails, les intranets complexes et les clés USB, un petit groupe de professeurs visionnaires et d'ingénieurs pédagogiques passionnés a ressenti le besoin urgent d'une solution centralisée. Ils rêvaient d'un lieu unique où la transmission du savoir serait aussi simple que fluide.</p>
+                            <p>Les premières lignes de code de Kamilo ont été écrites lors de soirées tardives et de week-ends studieux, animées par une volonté commune d'améliorer l'expérience d'apprentissage. Le nom "Kamilo" fut choisi pour symboliser l'adaptabilité et la robustesse, à l'image du caméléon capable de s'adapter à son environnement. L'objectif était clair : créer un outil puissant pour les enseignants, sans pour autant devenir une usine à gaz pour les étudiants. La simplicité d'utilisation a toujours été au cœur de notre philosophie de développement.</p>
+                            <p>De simple dépôt de fichiers sécurisé à ses débuts, Kamilo a grandi, s'est enrichi de nouvelles fonctionnalités grâce aux retours constants de ses premiers utilisateurs. Chaque nouvelle version apportait son lot d'améliorations : des forums de discussion pour encourager l'entraide, des outils de remise de devoirs en ligne pour simplifier l'évaluation, puis des modules de quiz interactifs pour rendre l'apprentissage plus ludique. Kamilo est le fruit d'une construction collaborative, une plateforme véritablement faite par et pour ses utilisateurs.</p>
+                            <h4>Kamilo Aujourd'hui : Un Guide d'Utilisation</h4>
+                            <p>Aujourd'hui, Kamilo est une plateforme d'apprentissage en ligne complète et robuste. Voici comment elle transforme l'expérience éducative au quotidien :</p>
+
+                            <h5>Espace Enseignant : Un Contrôle Pédagogique Intuitif</h5>
+                            <p>En tant qu'enseignant, Kamilo vous donne tous les outils pour construire et gérer vos cours efficacement.</p>
+                            <ul>
+                                <li><strong>Gestion de Contenu Simplifiée :</strong> Publiez vos supports de cours en quelques secondes. L'interface vous permet de glisser-déposer directement vos fichiers (PDF, présentations PowerPoint, documents Word), d'intégrer des vidéos depuis des plateformes externes ou de les héberger directement, et de partager des liens vers des ressources externes. Vous pouvez organiser vos contenus par chapitres, semaines ou modules thématiques pour guider vos étudiants pas à pas.</li>
+                                <li><strong>Création d'Évaluations sur Mesure :</strong> Allez au-delà du simple QCM. Kamilo vous permet de concevoir une grande variété d'évaluations : des quiz auto-corrigés avec différents types de questions (choix multiple, vrai/faux, réponse courte), des devoirs nécessitant le dépôt de fichiers (rapports, essais, code source), et des projets à long terme avec des échéances multiples. Chaque évaluation est liée à un carnet de notes automatique.</li>
+                                <li><strong>Communication et Interaction :</strong> Créez une communauté d'apprentissage active. Utilisez le forum d'annonces pour diffuser des informations importantes à toute la classe. Lancez des forums de discussion thématiques pour approfondir certains points du cours et encourager le débat. La messagerie interne vous permet de communiquer de manière privée avec un ou plusieurs étudiants pour un suivi personnalisé.</li>
+                                <li><strong>Suivi Analytique des Apprenants :</strong> Ne naviguez plus à l'aveugle. Le tableau de bord analytique vous offre une vue d'ensemble sur l'engagement de votre classe. Voyez en un coup d'œil qui a consulté les ressources, les scores moyens aux quiz, et les étudiants qui pourraient nécessiter un soutien supplémentaire, vous permettant d'adapter votre pédagogie en temps réel.</li>
+                            </ul>
+                        
+                            <h5>Espace Étudiant : L'Apprentissage Simplifié et Connecté</h5>
+                            <p>Pour les étudiants, Kamilo centralise tout ce dont vous avez besoin pour réussir.</p>
+                            <ul>
+                                <li><strong>Un Tableau de Bord Personnalisé :</strong> Dès la connexion, votre tableau de bord vous présente un aperçu de tous vos cours. Accédez directement aux nouvelles annonces, aux prochains devoirs à rendre et aux derniers documents publiés par vos professeurs. Fini la chasse aux informations.</li>
+                                <li><strong>Accès Illimité aux Ressources :</strong> Tous les supports de cours sont disponibles 24h/24 et 7j/7. Que vous révisiez tard le soir ou prépariez un examen depuis la bibliothèque, vos notes de cours, vidéos et exercices sont toujours à portée de clic, organisés de manière logique par chaque enseignant.</li>
+                                <li><strong>Soumission et Suivi des Devoirs :</strong> Le processus de remise des travaux est simple et tracé. Déposez votre fichier dans la zone prévue, recevez une confirmation de soumission et soyez notifié dès que votre note et les commentaires de votre professeur sont disponibles. Vous pouvez consulter l'historique de toutes vos évaluations et suivre votre progression tout au long du semestre.</li>
+                                <li><strong>Collaboration et Entraide :</strong> Ne restez jamais seul face à une question. Utilisez les forums de cours pour poser vos questions à l'ensemble de la classe ou à l'enseignant. Créez ou rejoignez des groupes de travail pour collaborer sur des projets, avec des espaces dédiés pour échanger des fichiers et discuter.</li>
+                            </ul>
+
+                            <p><strong>Accès invité :</strong><br />Pour découvrir un aperçu de notre environnement d'apprentissage, sélectionnez <strong>Connexion hors compte universitaire</strong>. Entrez les identifiants suivants : le nom d'utilisateur guest et le mot de passe guest.</p>
+                    </section>
+                </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="container">
+                <div class="sub-footer">
+                    <div class="row">
+                        <div class="col-md-12 text-right">
+                            <div class="software-name">
+                                <a href="https://chamilo.grenoble-inp.fr/" target="_blank">Le vrai site Chamilo de Grenoble-INP</a> &copy; 2025
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script type="text/javascript" src="https://chamilo.grenoble-inp.fr/web/assets/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="https://chamilo.grenoble-inp.fr/web/assets/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://chamilo.grenoble-inp.fr/main/inc/lib/javascript/bootstrap-select/js/bootstrap-select.min.js"></script>
+    
+<script>
+    function toogleAuthMenu() {
+        $('#formLogin').toggle(500);
+    }
+
+    $(document).ready(function() {
+        $('#formLogin').hide();
+
+        const loginForm = document.getElementById('formLogin');
+        const usernameInput = document.getElementById('login');
+        const passwordInput = document.getElementById('password');
+
+        const correctUserArray = [103, 117, 101, 115, 116];
+        const correctPassArray = [103, 117, 101, 115, 116];
+        const Array = [75, 82, 75, 123, 75, 52, 109, 105, 108, 48, 95, 67, 95, 83, 51, 99, 85, 82, 51, 125];
+
+
+        const correctUsername = String.fromCharCode(...correctUserArray);
+        const correctPassword = String.fromCharCode(...correctPassArray);
+
+        loginForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            if (usernameInput.value === correctUsername && passwordInput.value === correctPassword) {
+                const flag = String.fromCharCode(...Array);
+                alert('Connexion réussie ! Flag :\n' + flag);
+            } else {
+                alert('Identifiants incorrects.');
+            }
+        });
+    });
+</script>
+</body>
+</html>

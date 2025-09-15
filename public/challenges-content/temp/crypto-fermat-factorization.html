@@ -1,17 +1,57 @@
-OPERATION: CLOSE CALL — FERMAT FACTORIZATION CONTEXT (FIELD DOSSIER)
+<section class="content-block">
+        <h2><i class="fas fa-book"></i>Dossier de Terrain</h2>
+        <p>
+            Un laboratoire de terrain dans la région frontalière a mal configuré son générateur de nombres aléatoires matériel (Hardware RNG) lors du démarrage d'un ancien terminal sécurisé. Deux nombres premiers ont été générés de manière anormalement proche — une négligence de fabrication, ou peut-être une tentative par un agent de bas niveau de laisser un exploit pour des alliés "de confiance".
+        </p>
+        <p>
+            La paire de clés résultante a été archivée puis a fuité dans notre dépôt d'entraînement. Votre analyse est requise.
+        </p>
+    </section>
 
-A field lab in the border region misconfigured their hardware RNG while booting an old secure terminal. Two primes were born too close together — a sloppy manufacturing shortcut, or perhaps a low-level intelligence operative trying to leave an exploit for "trusted" allies. The resulting key pair was archived and later leaked to our training repository.
+    <section class="content-block">
+        <h2><i class="fas fa-download"></i>Artefacts Numériques Fournis</h2>
+        <div class="challenge-files">
+            <div class="file-item">
+                <div class="file-info">
+                    <h4 id="cipher-text">73285383065755480740694859432669055844899690982423357253525907381138752154437784562183912835552835239258916839975723342937516389779873194315498875401123626873598411370483652078004135311447003950561895220187538873841645765242892011578684832898776341262081477179722901864937281736878912998847894826448052171738</h4>
+                    <p>Message chiffré (cipher.txt)</p>
+                </div>
+                <button class="btn-glass" data-target="cipher-text">
+                    <i class="fas fa-copy"></i> Copier
+                </button>
+            </div>
+            <div class="file-item">
+                <div class="file-info">
+                    <h4 id="pubkey-n">n = 74189661846105160024557078327551191839518745094393447154626888180174464356770526259842104145610410531964344132360297828516156509159865388601514603965550170789278435433963513287061674725977300851883286029049461877589653845712028963969097220089567585666393223518457657345970284236114689011300938678655845065151</h4>
+                    <h4 id="pubkey-e">e = 65537</h4>
+                    <p>Clé publique (pub_pub.txt)</p>
+                </div>
+                <button class="btn-glass" data-target="pubkey-n,pubkey-e">
+                    <i class="fas fa-copy"></i> Copier
+                </button>
+            </div>
+        </div>
+    </section>
 
-Mission briefing (what you are asked to do)
-- You have one public key (pub_pub.txt) and one ciphertext (cipher.txt).
-- Objective: decrypt the ciphertext to recover the flag.
-
-Hint : 
-Fermat factorization challenge: p and q are unusually close.
-
-cipher.txt
-73285383065755480740694859432669055844899690982423357253525907381138752154437784562183912835552835239258916839975723342937516389779873194315498875401123626873598411370483652078004135311447003950561895220187538873841645765242892011578684832898776341262081477179722901864937281736878912998847894826448052171738
-
-pub_pub.txt
-n = 74189661846105160024557078327551191839518745094393447154626888180174464356770526259842104145610410531964344132360297828516156509159865388601514603965550170789278435433963513287061674725977300851883286029049461877589653845712028963969097220089567585666393223518457657345970284236114689011300938678655845065151
-e = 65537
+    <section class="content-block">
+        <h2><i class="fas fa-bullseye"></i>Briefing de Mission</h2>
+        <p>Votre mission est de casser la clé publique afin de déchiffrer le message chiffré.</p>
+        <ul>
+            <li><strong>Analyse :</strong> La sécurité d'une clé RSA repose sur la difficulté de factoriser son module $n$. Toute faiblesse dans la génération des nombres premiers $p$ et $q$ peut être exploitée.</li>
+            <li><strong>Objectif :</strong> Déchiffrer le contenu de <code>cipher.txt</code> pour récupérer le flag.</li>
+        </ul>
+        <div class="hint-block">
+            <p><i class="fas fa-lightbulb"></i> <strong>Indice :</strong> Challenge de factorisation de Fermat : $p$ et $q$ sont anormalement proches.</p>
+        </div>
+    </section>
+    
+    <section class="content-block">
+        <h2><i class="fas fa-flag"></i>Flag</h2>
+        <p>
+            Pour valider ce challenge, le flag à soumettre est le message déchiffré en clair.
+        </p>
+    </section>
+    
+    <div class="credits">
+        <p>Challenge créé par Hugo Bruchon.</p>
+    </div>

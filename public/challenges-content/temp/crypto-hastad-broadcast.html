@@ -1,34 +1,90 @@
-THREE-VOICE — HÅSTAD BROADCAST CONTEXT
+<section class="content-block">
+    <h2><i class="fas fa-book"></i>Dossier de Terrain</h2>
+    <p>
+        Un coursier compromis de la Section 7 de l'ambassade a accidentellement dupliqué un communiqué diplomatique sur trois liaisons montantes par satellite. L'adversaire a intercepté trois textes chiffrés — canaux différents, même message — et les a exfiltrés dans une seule archive. Le coursier a juré que ce n'était "que de la paperasse", mais nous savons que c'est faux.
+    </p>
+    <p>
+        Si un analyste peut reconstituer le message original, il lira le drapeau/secret attendu.
+    </p>
+</section>
 
-A compromised courier out of Embassy Section 7 accidentally duplicated a diplomatic communique across three satellite uplinks. The adversary intercepted three ciphertexts — different channels, same message — and exfiltrated them in a single archive. The courier swore it was "just paperwork", but we know better.
-if an analyst can reconstruct the original message, they'll read the intended flag/secret.
+<section class="content-block">
+    <h2><i class="fas fa-download"></i>Artefacts Numériques Fournis</h2>
+    <div class="challenge-files">
+        <div class="file-item">
+            <div class="file-info">
+                <h4 id="cipher1-text">22380721195224929953413233072500696116417165235578275922840792096369556780244835741275384014009776213905844934016623762914197483261866095496223905855394295909</h4>
+                <p>Message chiffré (cipher1.txt)</p>
+            </div>
+            <button class="btn-glass" data-target="cipher1-text">
+                <i class="fas fa-copy"></i> Copier
+            </button>
+        </div>
+        <div class="file-item">
+            <div class="file-info">
+                <h4 id="cipher2-text">22380721195224929953413233072500696116417165235578275922840792096369556780244835741275384014009776213905844934016623762914197483261866095496223905855394295909</h4>
+                <p>Message chiffré (cipher2.txt)</p>
+            </div>
+            <button class="btn-glass" data-target="cipher2-text">
+                <i class="fas fa-copy"></i> Copier
+            </button>
+        </div>
+        <div class="file-item">
+            <div class="file-info">
+                <h4 id="cipher3-text">22380721195224929953413233072500696116417165235578275922840792096369556780244835741275384014009776213905844934016623762914197483261866095496223905855394295909</h4>
+                <p>Message chiffré (cipher3.txt)</p>
+            </div>
+            <button class="btn-glass" data-target="cipher3-text">
+                <i class="fas fa-copy"></i> Copier
+            </button>
+        </div>
+        <div class="file-item">
+            <div class="file-info">
+                <h4 id="pubkey1-n">n = 76327377321284964748226314826266481098383540190159850798714309786880112003372293694545394233256333641018265161090989792934954023253472380504663212433406520401686545955796734582686659328320995064771903886764010093766325017002487480071507280910386769277829822962241377104032481296259862929631050659788272138627</h4>
+                <h4 id="pubkey1-e">e = 3</h4>
+                <p>Clé publique (key1_pub.txt)</p>
+            </div>
+            <button class="btn-glass" data-target="pubkey1-n,pubkey1-e">
+                <i class="fas fa-copy"></i> Copier
+            </button>
+        </div>
+        <div class="file-item">
+            <div class="file-info">
+                <h4 id="pubkey2-n">n = 85713835040485641715759235176650511715447534762254383278342754664097639769426768871775423760972171432289975968409333301498306340599726141492363062702386999471545337280119908071021207359376396145973383227182586524747040455327369256787812472847130543403272615861585755149307600616411749137357595883002670561603</h4>
+                <h4 id="pubkey2-e">e = 3</h4>
+                <p>Clé publique (key2_pub.txt)</p>
+            </div>
+            <button class="btn-glass" data-target="pubkey2-n,pubkey2-e">
+                <i class="fas fa-copy"></i> Copier
+            </button>
+        </div>
+        <div class="file-item">
+            <div class="file-info">
+                <h4 id="pubkey3-n">n = 143612614390667615686168925006656469424630870032080335316417575301035232504780665801497405554072752989746699634214985140079233120779798369506306493527662115776531166008195613574923081447746628493568929394425850688155544288316627808976371510136240097909744732561574268730416292063914638794927239544633985401359</h4>
+                <h4 id="pubkey3-e">e = 3</h4>
+                <p>Clé publique (key3_pub.txt)</p>
+            </div>
+            <button class="btn-glass" data-target="pubkey3-n,pubkey3-e">
+                <i class="fas fa-copy"></i> Copier
+            </button>
+        </div>
+    </div>
+</section>
 
-Mission briefing (what you are asked to do)
-- You have three public keys (key1_pub.txt, key2_pub.txt, key3_pub.txt) and three ciphertexts (cipher1.txt, cipher2.txt, cipher3.txt).
-- Objective: recover the plaintext (the flag) that was broadcast identically to all three recipients.
+<section class="content-block">
+    <h2><i class="fas fa-bullseye"></i>Briefing de Mission</h2>
+    <p>Vous disposez de trois clés publiques (key1_pub.txt, key2_pub.txt, key3_pub.txt) et de trois textes chiffrés (cipher1.txt, cipher2.txt, cipher3.txt).</p>
+    <ul>
+        <li><strong>Objectif :</strong> Récupérer le texte en clair (le drapeau) qui a été diffusé à l'identique aux trois destinataires.</li>
+    </ul>
+    <div class="hint-block">
+        <p><i class="fas fa-lightbulb"></i> <strong>Indice :</strong> Attaque par diffusion de Håstad (e=3). Étant donné trois clés publiques (n, e=3) et trois textes chiffrés pour le même message en clair.</p>
+    </div>
+</section>
 
-Hint :
-Håstad broadcast (e=3). Given three public keys (n,e=3) and three ciphertexts for the same plaintext.
-
-
-cipher1.txt :
-22380721195224929953413233072500696116417165235578275922840792096369556780244835741275384014009776213905844934016623762914197483261866095496223905855394295909
-
-cipher2.txt :
-22380721195224929953413233072500696116417165235578275922840792096369556780244835741275384014009776213905844934016623762914197483261866095496223905855394295909
-
-cipher3.txt : 
-22380721195224929953413233072500696116417165235578275922840792096369556780244835741275384014009776213905844934016623762914197483261866095496223905855394295909
-
-key1_pub.txt
-n = 76327377321284964748226314826266481098383540190159850798714309786880112003372293694545394233256333641018265161090989792934954023253472380504663212433406520401686545955796734582686659328320995064771903886764010093766325017002487480071507280910386769277829822962241377104032481296259862929631050659788272138627
-e = 3
-
-key2_pub.txt :
-n = 85713835040485641715759235176650511715447534762254383278342754664097639769426768871775423760972171432289975968409333301498306340599726141492363062702386999471545337280119908071021207359376396145973383227182586524747040455327369256787812472847130543403272615861585755149307600616411749137357595883002670561603
-e = 3
-
-key3_pub.txt :
-n = 143612614390667615686168925006656469424630870032080335316417575301035232504780665801497405554072752989746699634214985140079233120779798369506306493527662115776531166008195613574923081447746628493568929394425850688155544288316627808976371510136240097909744732561574268730416292063914638794927239544633985401359
-e = 3
-
+<section class="content-block">
+    <h2><i class="fas fa-flag"></i>Flag</h2>
+    <p>
+        Pour valider ce challenge, le flag à soumettre est le message déchiffré en clair.
+    </p>
+</section>

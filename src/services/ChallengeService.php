@@ -1,4 +1,5 @@
 <?php
+
 class ChallengeService {
     private $pdo;
 
@@ -7,7 +8,7 @@ class ChallengeService {
     }
 
     public function findAllSorted(?int $userId = null): array {
-        $sql = "SELECT c.id, c.challenge_id_str, c.title, c.category, c.points, c.icon_class FROM challenges c ORDER BY c.category ASC, c.points ASC, c.id ASC";
+        $sql = "SELECT c.id, c.challenge_id_str, c.title, c.category, c.points, c.icon_class FROM challenges c ORDER BY CASE WHEN c.category = 'Introduction' THEN 0 ELSE 1 END, c.category ASC, c.points ASC, c.id ASC";
         $challenges = $this->pdo->query($sql)->fetchAll();
         
         if ($userId && $challenges) {

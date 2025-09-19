@@ -87,6 +87,7 @@ class User {
     public function getFullProfileData(int $userId) {
         $sql = "
             SELECT
+                u.id,
                 u.username,
                 u.avatar_url,
                 u.avatar_bg_color,

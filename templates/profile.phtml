@@ -16,7 +16,7 @@ $specific_css = ['/css/menus.css'];
                     <i class="fas fa-user-circle content-icon"></i>
                     <div class="content-title-group">
                         <h1>Mon Profil</h1>
-                        <p class="content-intro">Votre vitrine sur Kr[HACK]ademy</p>
+                        <p class="content-intro">Votre vitrine sur la Kr[HACK]ademy</p>
                     </div>
                 </header>
                     <div class="content-block">
@@ -33,12 +33,16 @@ $specific_css = ['/css/menus.css'];
                             <h2 class="profile-username"><?php echo htmlspecialchars($userProfile['username']); ?></h2>
                             <p class="profile-bio"><?php echo nl2br(htmlspecialchars($userProfile['bio'] ?? 'Aucune biographie pour le moment.')); ?></p>
                         </div>
-                    </div>
-                
-                    <div class="profile-main-content" style="padding-top: 60px;">
-                        <h2 class="profile-username"><?php echo htmlspecialchars($userProfile['username']); ?></h2>
-                    </div>
-                </div>
+
+                        <?php if (isset($_SESSION['user_id']) && isset($userProfile['id']) && $_SESSION['user_id'] == $userProfile['id']): ?>
+                            <div style="text-align: center; margin-top: 20px;">
+                                <a href="/settings#custom-profile" class="btn-glass">
+                                    <i class="fas fa-paint-brush"></i> Personnaliser mon profil
+                                </a>
+                            </div>
+                        <?php endif; ?>
+                        </div>
+                </div><br>
 
                 <div class="content-block">
                     <div class="stats-grid">

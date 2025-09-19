@@ -5,6 +5,7 @@ require_once __DIR__ . '/../bootstrap.php';
 require_page_login();
 
 $userService = new User($pdo);
+$challengeService = new ChallengeService($pdo); 
 $currentUserId = $_SESSION['user_id'];
 $errors = [];
 $success = '';
@@ -54,6 +55,25 @@ $lockedAvatars = [
     '/images/avatars/bazzys3.webp',
 ];
 $lockedBanners = [];
+
+$challengeRewards = [
+    21 => '/images/avatars/discord.webp', // Chall 21 -> Pdp Discord
+];
+
+foreach ($challengeRewards as $challengeId => $rewardPath) {
+    if ($challengeService->hasCompletedChallenge($currentUserId, $challengeId)) {
+        $keyAvatar = array_search($rewardPath, $lockedAvatars);
+        if ($keyAvatar !== false) {
+            unset($lockedAvatars[$keyAvatar]);
+        }
+        $keyBanner = array_search($rewardPath, $lockedBanners);
+        if ($keyBanner !== false) {
+            unset($lockedBanners[$keyBanner]);
+        }
+    }
+}
+
+
 
 $allAvatars = getAvailableImages(ROOT_PATH . '/public/images/avatars/', '/images/avatars/');
 $allBanners = getAvailableImages(ROOT_PATH . '/public/images/banners/', '/images/banners/');

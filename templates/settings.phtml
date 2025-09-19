@@ -74,7 +74,7 @@ $specific_css = ['/css/menus.css'];
                     </div>
                 </div>
 
-                <div class="content-block">
+                <div class="content-block" id="custom-profile">
                     <form action="/settings" method="POST">
                     <input type="hidden" name="csrf_token" value="<?php echo csrf_token(); ?>">
                     <div class="settings-section">
@@ -107,10 +107,10 @@ $specific_css = ['/css/menus.css'];
                             </div>
                         </div>
                                             
-                        <!-- AVATAR BACKGROUND COLOR SELECTION (exemple de couleurs) -->
+                        <!-- AVATAR BACKGROUND COLOR SELECTION -->
                         <div class="form-group">
                             <label>Couleur de fond de l'avatar</label>
-                            <?php $avatarColors = ['#9216a8', '#17b32c', '#cbce1e', '#2b2b2d', '#ff0000']; ?>
+                            <?php $avatarColors = ['#E6DACC','#2b2b2d','#000000','#8C4040','#57408C','#1D591E','#C3BF60']; ?>
                             <div class="color-selector">
                                  <?php foreach ($avatarColors as $color): ?>
                                     <div class="color-swatch">
@@ -148,10 +148,10 @@ $specific_css = ['/css/menus.css'];
                             </div>
                         </div>
                                             
-                        <!-- BANNER BACKGROUND COLOR SELECTION (exemple de couleurs) -->
+                        <!-- BANNER BACKGROUND COLOR SELECTION -->
                         <div class="form-group">
                             <label>Couleur de fond de la bannière</label>
-                             <?php $bannerColors = ['#9216a8', '#17b32c', '#cbce1e', '#2b2b2d', '#0e101c']; ?>
+                             <?php $bannerColors = ['#E6DACC','#2b2b2d','#000000','#8C4040','#57408C','#1D591E','#C3BF60']; ?>
                             <div class="color-selector">
                                 <?php foreach ($bannerColors as $color): ?>
                                     <div class="color-swatch">

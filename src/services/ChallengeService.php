@@ -61,6 +61,19 @@ class ChallengeService {
         return $stmt->fetchColumn();
     }
 
+    public function hasCompletedChallenge(int $userId, int $challengeId): bool
+    {
+        $stmt = $this->pdo->prepare(
+            'SELECT 1 FROM user_challenges_progress WHERE user_id = :user_id AND challenge_id = :challenge_id LIMIT 1'
+        );
+        $stmt->execute([
+            ':user_id' => $userId,
+            ':challenge_id' => $challengeId
+        ]);
+        return (bool) $stmt->fetchColumn();
+    }
+
+
     public function markAsComplete(int $userId, int $challengeId): bool {
         $sql = "INSERT INTO user_challenges_progress (user_id, challenge_id, completed_at) VALUES (?, ?, NOW()) ON DUPLICATE KEY UPDATE completed_at = NOW()";
         $stmt = $this->pdo->prepare($sql);

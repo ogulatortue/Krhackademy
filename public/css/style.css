@@ -96,6 +96,14 @@ h2 {
 .difficulty-hard { background-color: var(--hard); box-shadow: 0 0 8px var(--hard); }
 .difficulty-expert { background-color: var(--expert); box-shadow: 0 0 8px var(--expert); }
 
+.user-profile-link {
+    color: inherit;
+    text-decoration: none;
+}
+.user-profile-link:hover {
+    text-decoration: none;
+}
+
 .modal-container {
     position: fixed;
     left: 0;

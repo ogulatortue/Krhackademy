@@ -46,9 +46,15 @@ $specific_css = ['/css/menus.css'];
                                                 <i class="podium-crown fas fa-crown"></i>
                                             <?php endif; ?>
 
-                                            <img src="<?php echo htmlspecialchars($user['avatar_url'] ?? 'images/avatars/default-avatar.webp'); ?>" alt="Avatar de <?php echo htmlspecialchars($user['username']); ?>" class="podium-avatar" style="background-color: <?= htmlspecialchars($user['avatar_bg_color'] ?? '#2b2b2d') ?>">
+                                            <a href="/profile?id=<?php echo htmlspecialchars($user['id']); ?>">
+                                                <img src="<?php echo htmlspecialchars($user['avatar_url'] ?? 'images/avatars/default-avatar.webp'); ?>" alt="Avatar de <?php echo htmlspecialchars($user['username']); ?>" class="podium-avatar" style="background-color: <?= htmlspecialchars($user['avatar_bg_color'] ?? '#2b2b2d') ?>">
+                                            </a>
                                             
-                                            <div class="podium-user"><?php echo htmlspecialchars($user['username']); ?></div>
+                                            <div class="podium-user">
+                                                <a href="/profile?id=<?php echo htmlspecialchars($user['id']); ?>" class="user-profile-link">
+                                                    <?php echo htmlspecialchars($user['username']); ?>
+                                                </a>
+                                            </div>
                                             <div class="podium-score"><?php echo $user['score']; ?> <i class="fas fa-flag podium-score"></i></div>
                                             
                                             <div class="podium-rank-badge">
@@ -80,9 +86,15 @@ $specific_css = ['/css/menus.css'];
                                 <div class="leaderboard-row <?php echo $isCurrentUser ? 'leaderboard-row--current-user' : ''; ?>">
                                     <span class="leaderboard-cell leaderboard-cell--rank">#<?php echo $rank; ?></span>
                                     <span class="leaderboard-cell leaderboard-cell--avatar">
-                                        <img src="<?php echo htmlspecialchars($user['avatar_url'] ?? 'images/avatars/default-avatar.webp'); ?>" alt="Avatar de <?php echo htmlspecialchars($user['username']); ?>" class="leaderboard-avatar-small" style="background-color: <?= htmlspecialchars($user['avatar_bg_color'] ?? '#2b2b2d') ?>">
+                                        <a href="/profile?id=<?php echo htmlspecialchars($user['id']); ?>">
+                                            <img src="<?php echo htmlspecialchars($user['avatar_url'] ?? 'images/avatars/default-avatar.webp'); ?>" alt="Avatar de <?php echo htmlspecialchars($user['username']); ?>" class="leaderboard-avatar-small" style="background-color: <?= htmlspecialchars($user['avatar_bg_color'] ?? '#2b2b2d') ?>">
+                                        </a>
                                     </span>
-                                    <span class="leaderboard-cell leaderboard-cell--user"><?php echo htmlspecialchars($user['username']); ?></span>
+                                    <span class="leaderboard-cell leaderboard-cell--user">
+                                        <a href="/profile?id=<?php echo htmlspecialchars($user['id']); ?>" class="user-profile-link">
+                                            <?php echo htmlspecialchars($user['username']); ?>
+                                        </a>
+                                    </span>
                                     <span class="leaderboard-cell leaderboard-cell--score"><?php echo $user['score']; ?> <i class="fas fa-flag leaderboard-cell--score"></i></span>
                                 </div>
                             <?php endforeach; ?>

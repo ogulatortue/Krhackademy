@@ -15,18 +15,31 @@
                 ?>
                 <li class="leaderboard-item <?= $podiumClass . $highlightClass ?>">
                     <span class="rank">#<?= $index + 1 ?></span>
-                    <img src="<?= htmlspecialchars($user['avatar_url'] ?? '/images/avatars/default-avatar.webp') ?>" alt="Avatar" class="leaderboard-avatar" style="background-color: <?= htmlspecialchars($avatar_bg_color) ?>">
-                    <span class="username"><?= htmlspecialchars($user['username']) ?></span>
+                    <a href="/profile?id=<?= htmlspecialchars($user['id']) ?>">
+                        <img src="<?= htmlspecialchars($user['avatar_url'] ?? '/images/avatars/default-avatar.webp') ?>" alt="Avatar" class="leaderboard-avatar" style="background-color: <?= htmlspecialchars($avatar_bg_color) ?>">
+                    </a>
+                    <span class="username">
+                        <a href="/profile?id=<?= htmlspecialchars($user['id']) ?>" class="user-profile-link">
+                            <?= htmlspecialchars($user['username']) ?>
+                        </a>
+                    </span>
                     <span class="score"><?= $user['score'] ?> <i class="fas fa-flag"></i></span>
                 </li>
             <?php endforeach; ?>
             <?php if ($leaderboardWidgetData['currentUser'] && !$leaderboardWidgetData['isCurrentUserInTop3']): ?>
+                <?php $currentUser = $leaderboardWidgetData['currentUser']; ?>
                 <li class="leaderboard-separator"></li>
                 <li class="leaderboard-item current-user">
-                    <span class="rank">#<?= $leaderboardWidgetData['currentUser']['rank'] ?></span>
-                    <img src="<?= htmlspecialchars($leaderboardWidgetData['currentUser']['avatar_url'] ?? '/images/avatars/default-avatar.webp') ?>" alt="Votre avatar" class="leaderboard-avatar" style="background-color:<?= htmlspecialchars($leaderboardWidgetData['currentUser']['avatar_bg_color'] ?? '#2b2b2d') ?>" >
-                    <span class="username"><?= htmlspecialchars($leaderboardWidgetData['currentUser']['username']) ?></span>
-                    <span class="score"><?= $leaderboardWidgetData['currentUser']['score'] ?> <i class="fas fa-flag"></i></span>
+                    <span class="rank">#<?= $currentUser['rank'] ?></span>
+                    <a href="/profile?id=<?= htmlspecialchars($currentUser['id']) ?>">
+                        <img src="<?= htmlspecialchars($currentUser['avatar_url'] ?? '/images/avatars/default-avatar.webp') ?>" alt="Votre avatar" class="leaderboard-avatar" style="background-color:<?= htmlspecialchars($currentUser['avatar_bg_color'] ?? '#2b2b2d') ?>" >
+                    </a>
+                    <span class="username">
+                        <a href="/profile?id=<?= htmlspecialchars($currentUser['id']) ?>" class="user-profile-link">
+                            <?= htmlspecialchars($currentUser['username']) ?>
+                        </a>
+                    </span>
+                    <span class="score"><?= $currentUser['score'] ?> <i class="fas fa-flag"></i></span>
                 </li>
             <?php endif; ?>
         </ul>

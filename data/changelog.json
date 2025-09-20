@@ -1,0 +1,84 @@
+[
+  {
+    "version": "0.3.0",
+    "date": "2025-09-20",
+    "changes": [
+      {
+        "type": "Nouveau",
+        "description": "Ajout de bannières et possibilité de personnaliser son profil avec avatars et images."
+      },
+      {
+        "type": "Amélioration",
+        "description": "Création et mise à jour de nombreux challenges et leçons de cryptographie (short cipher, hastad broadcast, fermat factorization)."
+      },
+      {
+        "type": "Correction",
+        "description": "Correction de bugs CSS et affichage des profils et avatars."
+      }
+    ]
+  },
+  {
+    "version": "0.2.0",
+    "date": "2025-09-07",
+    "changes": [
+      {
+        "type": "Nouveau",
+        "description": "Implémentation des photos de profil et personnalisation d'avatar."
+      },
+      {
+        "type": "Amélioration",
+        "description": "Ajout initial des fichiers d’avatars et de bannières."
+      },
+      {
+        "type": "Correction",
+        "description": "Correction de bugs CSS manquants et ajustements visuels pour la personnalisation d'avatars."
+      }
+    ]
+  },
+  {
+    "version": "0.1.5",
+    "date": "2025-08-30",
+    "changes": [
+      {
+        "type": "Amélioration",
+        "description": "Fonctionnalités profil et paramètres améliorées, optimisation des vues settings et profile."
+      },
+      {
+        "type": "Correction",
+        "description": "Correction de bugs divers sur le menu, les modals et les vues leaderboard."
+      }
+    ]
+  },
+  {
+    "version": "0.1.0",
+    "date": "2025-08-28",
+    "changes": [
+      {
+        "type": "Nouveau",
+        "description": "Mise en place du système de classement (leaderboard) avec widgets et interface visuelle."
+      },
+      {
+        "type": "Amélioration",
+        "description": "Centralisation et organisation du code, premiers correctifs d'affichage et de menu."
+      },
+      {
+        "type": "Correction",
+        "description": "Correction de bugs sur le menu, le header, les widgets et les avatars."
+      }
+    ]
+  },
+  {
+    "version": "0.0.0",
+    "date": "2025-04-25",
+    "changes": [
+      {
+        "type": "Nouveau",
+        "description": "Création initiale du site avec pages d'accueil, leçons et premières sections de présentation."
+      },
+      {
+        "type": "Correction",
+        "description": "Fix mineurs d'affichage, padding, images et responsive sur les premières pages."
+      }
+    ]
+  }
+]

@@ -11,6 +11,7 @@ $currentPage = '';
 $routes = [
     '/' => ['view' => 'index.phtml', 'currentPage' => 'index'],
     '/lessons' => ['logic' => 'controllers/lessons-logic.php', 'view' => 'lessons.phtml', 'currentPage' => 'lessons'],
+    '/changelog' => ['logic' => 'controllers/changelog-logic.php', 'view' => 'changelog.phtml', 'currentPage' => 'changelog'],
     '/lesson/{id}' => ['logic' => 'controllers/lesson-page-logic.php', 'view' => 'lesson-page.phtml', 'currentPage' => 'lessons', 'auth' => true],
     '/challenges' => ['logic' => 'controllers/challenges-logic.php', 'view' => 'challenges.phtml', 'currentPage' => 'challenges'],
     '/challenge/{id}' => ['logic' => 'controllers/challenge-page-logic.php', 'view' => 'challenge-page.phtml', 'currentPage' => 'challenges', 'auth' => true],

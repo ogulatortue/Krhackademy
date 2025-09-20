@@ -1,0 +1,59 @@
+﻿<?php
+$pageTitle = $pageTitle ?? 'Changelog - Kr[HACK]ademy';
+$specific_css = $specific_css ?? [];
+?>
+<!DOCTYPE html>
+<html lang="fr">
+<?php require __DIR__ . '/partials/head.phtml'; ?>
+
+<body class="page-leaderboard">
+    <?php require __DIR__ . '/partials/header.phtml'; ?>
+    <main class="container">
+        <div class="content-container">
+            <div class="content-wrapper menu">
+                <div class="content-header">
+                    <i class="fas fa-history content-icon"></i>
+                    <div class="content-title-group">
+                        <h1>Changelog</h1>
+                        <p class="content-intro">Les dernières mises à jour de la plateforme Kr[HACK]ademy</p>
+                    </div>
+                </div>
+
+                <div class="content-block">
+                    <?php if (!empty($error)): ?>
+                        <div class="alert alert-danger"><?= htmlspecialchars($error) ?></div>
+                    <?php else: ?>
+                        <div class="changelog-timeline">
+                            <?php foreach ($changelogEntries as $entry): ?>
+                                <article class="changelog-entry">
+                                    <div class="changelog-header">
+                                        <span class="changelog-version">v<?= htmlspecialchars($entry['version']) ?></span>
+                                        <span class="changelog-date"><?= date('d F Y', strtotime($entry['date'])) ?></span>
+                                    </div>
+                                    <ul class="changelog-changes-list">
+                                        <?php foreach ($entry['changes'] as $change): ?>
+                                            <li class="changelog-change">
+                                                <?php
+                                                    // MODIFICATION : Simplification pour mieux gérer les accents
+                                                    $type = $change['type'];
+                                                    // Remplace les caractères accentués courants
+                                                    $type = str_replace(['é', 'É', 'è', 'È', 'ê', 'Ê'], 'e', $type);
+                                                    // Met en minuscules
+                                                    $tagClass = strtolower($type);
+                                                ?>
+                                                <span class="change-tag <?= $tagClass ?>"><?= htmlspecialchars($change['type']) ?></span>
+                                                <p class="change-description"><?= htmlspecialchars($change['description']) ?></p>
+                                            </li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                </article>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+    </main>
+    <?php require __DIR__ . '/partials/footer.phtml'; ?>
+</body>
+</html>

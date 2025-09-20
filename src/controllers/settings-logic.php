@@ -105,65 +105,101 @@ $availableBanners = array_merge($unlockedBannersList, $lockedBannersList);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     verify_csrf_token();
 
-if (isset($_POST['update_customization'])) {
-    $avatarUrl = $_POST['avatar_url'] ?? null;
-    $avatarBgColor = $_POST['avatar_bg_color'] ?? null;
-    $bannerUrl = $_POST['banner_url'] ?? null;
-    $bannerBgColor = $_POST['banner_bg_color'] ?? null;
-    $validationErrors = [];
+    if (isset($_POST['update_customization'])) {
+        $avatarUrl = $_POST['avatar_url'] ?? null;
+        $avatarBgColor = $_POST['avatar_bg_color'] ?? null;
+        $bannerUrl = $_POST['banner_url'] ?? null;
+        $bannerBgColor = $_POST['banner_bg_color'] ?? null;
+        $validationErrors = [];
 
-    if (!in_array($avatarUrl, $availableAvatars) || in_array($avatarUrl, $lockedAvatars)) {
-        $validationErrors[] = "L'avatar sélectionné n'est pas valide ou est bloqué.";
-    }
-    if (!in_array($bannerUrl, $availableBanners) || in_array($bannerUrl, $lockedBanners)) {
-        $validationErrors[] = "La bannière sélectionnée n'est pas valide ou est bloquée.";
-    }
-    if (!preg_match('/^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/', $avatarBgColor)) {
-        $validationErrors[] = "La couleur de l'avatar n'est pas valide.";
-    }
-    if (!preg_match('/^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/', $bannerBgColor)) {
-        $validationErrors[] = "La couleur de la bannière n'est pas valide.";
-    }
+        if (!in_array($avatarUrl, $availableAvatars) || in_array($avatarUrl, $lockedAvatars)) {
+            $validationErrors[] = "L'avatar sélectionné n'est pas valide ou est bloqué.";
+        }
+        if (!in_array($bannerUrl, $availableBanners) || in_array($bannerUrl, $lockedBanners)) {
+            $validationErrors[] = "La bannière sélectionnée n'est pas valide ou est bloquée.";
+        }
+        if (!preg_match('/^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/', $avatarBgColor)) {
+            $validationErrors[] = "La couleur de l'avatar n'est pas valide.";
+        }
+        if (!preg_match('/^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/', $bannerBgColor)) {
+            $validationErrors[] = "La couleur de la bannière n'est pas valide.";
+        }
 
-    if (empty($validationErrors)) {
-        if ($userService->updateProfileAppearance($currentUserId, $avatarUrl, $avatarBgColor, $bannerUrl, $bannerBgColor)) {
-            $_SESSION['flash_message'] = [
-                'type'    => 'success',
-                'title'   => 'Profil mis à jour',
-                'message' => 'Vos préférences ont été enregistrées avec succès.'
-            ];
+        if (empty($validationErrors)) {
+            if ($userService->updateProfileAppearance($currentUserId, $avatarUrl, $avatarBgColor, $bannerUrl, $bannerBgColor)) {
+                $_SESSION['flash_message'] = [
+                    'type'    => 'success',
+                    'title'   => 'Profil mis à jour',
+                    'message' => 'Vos préférences ont été enregistrées avec succès.'
+                ];
 
-            $_SESSION['avatar_url'] = $avatarUrl;
-            $_SESSION['avatar_bg_color'] = $avatarBgColor;
+                $_SESSION['avatar_url'] = $avatarUrl;
+                $_SESSION['avatar_bg_color'] = $avatarBgColor;
 
 
+            } else {
+                $_SESSION['flash_message'] = [
+                    'type'    => 'error',
+                    'title'   => 'Erreur Serveur',
+                    'message' => 'Impossible de sauvegarder vos préférences. Veuillez réessayer.'
+                ];
+            }
         } else {
             $_SESSION['flash_message'] = [
                 'type'    => 'error',
-                'title'   => 'Erreur Serveur',
-                'message' => 'Impossible de sauvegarder vos préférences. Veuillez réessayer.'
+                'title'   => 'Données invalides',
+                'message' => 'Certains des choix soumis ne sont pas valides. Veuillez corriger.'
             ];
         }
-    } else {
-        $_SESSION['flash_message'] = [
-            'type'    => 'error',
-            'title'   => 'Données invalides',
-            'message' => 'Certains des choix soumis ne sont pas valides. Veuillez corriger.'
-        ];
     }
-}
-    
+
     if (isset($_POST['action']) && $_POST['action'] === 'update_account') {
         $username = trim($_POST['username'] ?? '');
         $email = trim($_POST['email'] ?? '');
-
+        $bio = trim($_POST['bio'] ?? '');
+        $currentUser = $userService->findById($currentUserId);
         if (empty($username) || empty($email)) {
-            $errors[] = "Le pseudo et l'e-mail ne peuvent pas être vides.";
+            $errors[] = "Le pseudo et l\'e-mail ne peuvent pas être vides.";
+            $_SESSION['flash_message'] = [
+                'type'    => 'error',
+                'title'   => 'Erreur',
+                'message' => 'Le pseudo et l\'e-mail ne peuvent pas être vides.'
+            ];
         } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $errors[] = "L'adresse e-mail n'est pas valide.";
-        } else {
-            if ($userService->updateAccountInfo($currentUserId, $username, $email)) {
-                $_SESSION['username'] = $username; 
+            $errors[] = "L\'adresse e-mail n\'est pas valide.";
+            $_SESSION['flash_message'] = [
+                'type'    => 'error',
+                'title'   => 'Erreur',
+                'message' => 'L\'adresse e-mail n\'est pas valide.'
+            ];
+        }
+        if (mb_strlen($bio) > 244) {
+            $errors[] = "La biographie ne doit pas dépasser 244 caractères.";
+            $_SESSION['flash_message'] = [
+                'type'    => 'error',
+                'title'   => 'Erreur',
+                'message' => 'La biographie ne doit pas dépasser 244 caractères.'
+            ];
+        }
+        if ($username !== $currentUser['username'] && $userService->findByUsername($username)) {
+            $errors[] = "Ce pseudo est déjà utilisé.";
+            $_SESSION['flash_message'] = [
+                'type'    => 'error',
+                'title'   => 'Erreur',
+                'message' => 'Ce pseudo est déjà utilisé.'
+            ];
+        }
+        if ($email !== $currentUser['email'] && $userService->findByEmail($email)) {
+            $errors[] = "Cette adresse e-mail est déjà utilisée.";
+            $_SESSION['flash_message'] = [
+                'type'    => 'error',
+                'title'   => 'Erreur',
+                'message' => 'Cette adresse e-mail est déjà utilisée.'
+            ];
+        }
+        if (empty($errors)) {
+            if ($userService->updateAccountInfo($currentUserId, $username, $email, $bio)) {
+                $_SESSION['username'] = $username;
                 $_SESSION['flash_message'] = [
                     'type'    => 'success',
                     'title'   => 'Profil mis à jour',

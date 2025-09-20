@@ -4,6 +4,8 @@ $changelogPath = ROOT_PATH . '/data/changelog.json';
 $changelogEntries = [];
 $error = '';
 
+$backUrl = '/';
+
 if (file_exists($changelogPath)) {
     $jsonContent = file_get_contents($changelogPath);
     $changelogData = json_decode($jsonContent, true);

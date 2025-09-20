@@ -6,8 +6,11 @@ $specific_css = $specific_css ?? [];
 <html lang="fr">
 <?php require __DIR__ . '/partials/head.phtml'; ?>
 
-<body class="page-leaderboard">
-    <?php require __DIR__ . '/partials/header.phtml'; ?>
+
+<body class="page-changelog">
+    <a href="<?= $backUrl ?>" class="btn-glass back-button">
+        <i class="fas fa-arrow-left"></i> Retour
+    </a>
     <main class="container">
         <div class="content-container">
             <div class="content-wrapper menu">
@@ -34,11 +37,8 @@ $specific_css = $specific_css ?? [];
                                         <?php foreach ($entry['changes'] as $change): ?>
                                             <li class="changelog-change">
                                                 <?php
-                                                    // MODIFICATION : Simplification pour mieux gérer les accents
                                                     $type = $change['type'];
-                                                    // Remplace les caractères accentués courants
                                                     $type = str_replace(['é', 'É', 'è', 'È', 'ê', 'Ê'], 'e', $type);
-                                                    // Met en minuscules
                                                     $tagClass = strtolower($type);
                                                 ?>
                                                 <span class="change-tag <?= $tagClass ?>"><?= htmlspecialchars($change['type']) ?></span>
@@ -54,6 +54,5 @@ $specific_css = $specific_css ?? [];
             </div>
         </div>
     </main>
-    <?php require __DIR__ . '/partials/footer.phtml'; ?>
 </body>
 </html>

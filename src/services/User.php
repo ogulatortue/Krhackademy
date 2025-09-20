@@ -43,12 +43,13 @@ class User {
         ]);
     }
 
-    public function updateAccountInfo(int $userId, string $username, string $email): bool {
-        $sql = "UPDATE users SET username = :username, email = :email WHERE id = :id";
+    public function updateAccountInfo(int $userId, string $username, string $email, string $bio): bool {
+        $sql = "UPDATE users SET username = :username, email = :email, bio = :bio WHERE id = :id";
         $stmt = $this->db->prepare($sql);
         return $stmt->execute([
             'username' => $username,
             'email' => $email,
+            'bio' => $bio,
             'id' => $userId
         ]);
     }
@@ -135,6 +136,19 @@ class User {
         ]);
     }
 
+    public function findByUsername(string $username){
+        $sql = "SELECT id, username, email FROM users WHERE username = :username";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute(['username' => $username]);
+        return $stmt->fetch();
+    }
+
+    public function findByEmail(string $email){
+        $sql = "SELECT id, username, email FROM users WHERE email = :email";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute(['email' => $email]);
+        return $stmt->fetch();
+    }
 
 
 }
